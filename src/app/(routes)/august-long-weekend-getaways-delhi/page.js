@@ -2,11 +2,12 @@ import { getFestivalBySlug } from '@/utilis/festivalData';
 import { getPostMonsoonBySlug } from '@/utilis/season/postMonsoonSeason';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('august-long-weekend-getaways-delhi') || getPostMonsoonBySlug('august-long-weekend-getaways-delhi');
 
 export const metadata = {
-  title: 'August 2026 Long Weekend Getaways from Delhi',
+  title: tightenTitle('August 2026 Long Weekend Getaways from Delhi'),
   description: 'August 2026 long weekend trips from Delhi — Aug 15-16 & Aug 28-30. Rishikesh, Corbett, Nainital, Shimla. Cab from ₹5,900. Call 7668570551.',
   keywords: 'august long weekend getaways delhi, long weekend august 2026, independence day weekend trip delhi, raksha bandhan long weekend 2026, weekend getaways from delhi august, 2 day trip from delhi august',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

@@ -1,12 +1,13 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "honeymoon-udaipur-by-car";
 const data = honeymoonTripData["udaipur"];
 
 export const metadata = {
-  title: 'Udaipur Honeymoon by Car | Royal Romance Rs 17,000 | 2026',
+  title: tightenTitle('Udaipur Honeymoon by Car | Royal Romance Rs 17,000 | 2026'),
   description: 'Book Udaipur honeymoon by car from Delhi. Sedan Rs 17,000, Innova Rs 22,000. Lake Pichola, City Palace, rooftop dining. Decorated car option. Call 7668570551.',
   keywords: 'udaipur honeymoon by car, honeymoon udaipur road trip, udaipur couple trip, romantic trip udaipur, honeymoon package udaipur by car',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

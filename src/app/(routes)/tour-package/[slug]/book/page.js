@@ -1,6 +1,7 @@
 // This is the Server Component for Booking Page
 import { tourDetails } from "@/utilis/data";
 import BookingForm from "@/components/BookingForm";
+import { tightenTitle, DESC_BUDGET, tightenDescription } from '@/lib/seo/serp-ctr';
 
 // SEO Content for booking pages
 const bookingSeoContent = {
@@ -93,6 +94,44 @@ const bookingSeoContent = {
 export const revalidate = 3600;
 export const dynamicParams = false;
 
+/**
+ * Derive booking-page copy for a package that has no hand-written
+ * `bookingSeoContent` entry.
+ *
+ * Week 43 — GSC/build audit. `generateStaticParams` emits every `tourDetails`
+ * key (18 packages) but this page required BOTH `tourDetails[slug]` and a
+ * hand-written `bookingSeoContent[slug]`, and only 6 of those entries were ever
+ * written. The other 12 prerendered as "Booking Not Found" with a bare
+ * "Package not found" body — indexable soft-404s served at HTTP 200 on real,
+ * bookable tour packages.
+ *
+ * Every field below is derived from the package's own data (title, price,
+ * duration, destination, overview, inclusions), so the fallback states nothing
+ * that is not already published on the package page itself.
+ */
+function buildBookingContent(packageInfo) {
+  const { title, price, duration, destination, overview, inclusions } = packageInfo;
+  const priceLine = [price, duration].filter(Boolean).join(' for ');
+
+  return {
+    title: `Book ${title} Online`,
+    h1: `Book Your ${title} — Instant Confirmation`,
+    intro: `Book the ${title} online${priceLine ? ` at ${priceLine}` : ''} and get instant confirmation. `
+      + `Secure payment, easy cancellation and 24/7 support on WhatsApp and phone.`,
+    whyBook: `Fill in the short form below and our team confirms your ${title} by email and WhatsApp, usually `
+      + `within a few minutes. Fares are all-inclusive with no hidden charges, and you can adjust dates or `
+      + `pickup details after booking by calling 7668570551.`,
+    benefits: [
+      ...(Array.isArray(inclusions) ? inclusions.slice(0, 4) : []),
+      'Instant booking confirmation by email and WhatsApp',
+      'No advance deposit — pay as per the agreed schedule',
+    ],
+    destinations: destination
+      ? `This package covers ${destination.split('-').join(', ')}. ${overview || ''}`.trim()
+      : (overview || ''),
+  };
+}
+
 // Generate static params for all tour packages
 export async function generateStaticParams() {
   return Object.keys(tourDetails).map((slug) => ({
@@ -104,20 +143,20 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = params;
   const packageInfo = tourDetails[slug];
-  const content = bookingSeoContent[slug];
-  
-  if (!packageInfo || !content) {
+  if (!packageInfo) {
     return {
-      title: "Booking Not Found | Triveni Cabs",
+      title: tightenTitle("Booking Not Found"),
       description: "The requested booking page could not be found",
     };
   }
+  const content = bookingSeoContent[slug] || buildBookingContent(packageInfo);
 
   // Create comprehensive meta description for booking page
-  const metaDescription = `${content.intro} Fill the booking form for ${packageInfo.title}. Best rates, instant confirmation, secure payment, 24/7 support. Call 7668570551 to book now.`;
+  const commercialTail = `Instant confirmation, secure payment. Call 7668570551.`;
+  const metaDescription = `${tightenDescription(content.intro, DESC_BUDGET - commercialTail.length - 1)} ${commercialTail}`;
 
   return {
-    title: `${content.title} | ${packageInfo.price} | Triveni Cabs`,
+    title: `${content.title} | ${packageInfo.price}`,
     description: metaDescription,
     openGraph: {
       title: `${content.title} - Instant Confirmation`,
@@ -244,11 +283,10 @@ const trackingScript = `
 export default function BookingPage({ params }) {
   const { slug } = params;
   const packageInfo = tourDetails[slug];
-  const content = bookingSeoContent[slug];
-  
-  if (!packageInfo || !content) {
+  if (!packageInfo) {
     return <div className="text-center py-16">Package not found</div>;
   }
+  const content = bookingSeoContent[slug] || buildBookingContent(packageInfo);
 
   // Generate JSON-LD structured data for booking page
   const bookingStructuredData = {

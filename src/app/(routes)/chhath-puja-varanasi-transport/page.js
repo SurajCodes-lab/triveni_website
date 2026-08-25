@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('chhath-puja-varanasi-transport');
 
 export const metadata = {
-  title: 'Chhath Puja Varanasi Cab Service 2026 | Ghat Transport',
+  title: tightenTitle('Chhath Puja Varanasi Cab Service 2026 | Ghat Transport'),
   description: 'Book cab from Delhi to Varanasi for Chhath Puja 2026. Sedan from ₹11,000, SUV ₹15,000. Ganga ghat transport, sunrise arghya. Call 7668570551.',
   keywords: 'chhath puja varanasi cab, delhi to varanasi chhath, chhath puja transport, varanasi ghat cab, chhath 2026 cab, chhath puja travel service',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

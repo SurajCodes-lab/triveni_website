@@ -3,6 +3,7 @@ import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getStationReviews, getStationHowToSchema } from '@/utilis/stationTaxiEnrichment';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -51,7 +52,7 @@ const STATION = {
 };
 
 export const metadata = {
-  title: 'Hazrat Nizamuddin Station Taxi | Pickup from ₹149 — 4.9★ Rated',
+  title: tightenTitle('Hazrat Nizamuddin Station Taxi | Pickup from ₹149 — 4.9★ Rated'),
   description: "Book taxi from Hazrat Nizamuddin Railway Station (NZM). Fixed fares from ₹149 to Humayun's Tomb, India Gate, Airport. AC sedan & SUV, 24/7. Call 7668570551.",
   keywords: 'nizamuddin station taxi, NZM taxi, hazrat nizamuddin cab, taxi from nizamuddin to airport, nizamuddin station to agra taxi, NZM station cab booking, nizamuddin railway station taxi, nizamuddin to connaught place cab, NZM station pickup, hazrat nizamuddin prepaid taxi',
   alternates: { canonical: '/hazrat-nizamuddin-station-taxi' },

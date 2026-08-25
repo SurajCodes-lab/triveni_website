@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Shimla Shopping Guide 2026 | What to Buy & Where (Prices)',
+  title: tightenTitle('Shimla Shopping Guide 2026 | What to Buy & Where (Prices)'),
   description: 'What to buy in Shimla: Kullu shawls ₹500-5K, wooden toys ₹50-500, Himachali caps ₹150+, dry fruits, jams. Lakkar Bazaar, Mall Road, Lower Bazaar.',
   keywords: 'shimla shopping guide, shopping in shimla, lakkar bazaar shimla, shimla mall road shopping, kullu shawls shimla, shimla wooden toys, himachali cap, shimla dry fruits',
   authors: [{ name: 'Triveni Cabs' }],

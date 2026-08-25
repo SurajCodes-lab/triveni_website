@@ -1,10 +1,11 @@
 import { getSpecialTransportBySlug } from '@/utilis/specialTransportData';
 import SpecialTransportClient from '@/components/special/SpecialTransportClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const service = getSpecialTransportBySlug('wheelchair-accessible-cab');
 
 export const metadata = {
-  title: 'Wheelchair Accessible Cab Service | Disability-Friendly Transport',
+  title: tightenTitle('Wheelchair Accessible Cab Service | Disability-Friendly Transport'),
   description: 'Book wheelchair accessible cab with ramp access and trained drivers. Disability-friendly transport with spacious vehicles. From Rs 16/km. Call 7668570551.',
   keywords: 'wheelchair accessible cab, disability friendly taxi, handicapped transport service, wheelchair cab, accessible vehicle hire, disabled transport india',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

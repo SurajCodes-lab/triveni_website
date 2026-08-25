@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Delhi Airport to Bareilly Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Delhi Airport to Bareilly Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Delhi Airport to Bareilly taxi at ₹${ROUTE.fare}. Fixed fare, flight tracking, meet & greet at IGI. Via NH-9. 24/7 service by Triveni Cabs.`,
   keywords: 'delhi airport to bareilly taxi, delhi airport to bareilly cab, delhi to bareilly airport taxi, taxi from delhi airport to bareilly, bareilly airport pickup, flight tracked bareilly taxi, fixed fare bareilly cab, delhi airport bareilly transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

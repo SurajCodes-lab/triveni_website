@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'India Road Trip Guide for International Tourists 2026',
+  title: tightenTitle('India Road Trip Guide for International Tourists 2026'),
   description: 'Comprehensive India road trip guide for foreign tourists. Visa, currency, safety, etiquette, best routes, hiring a driver vs self-drive, cultural tips.',
   keywords: 'india road trip guide for international tourists, india travel guide for foreigners, road trip india tips, driving in india guide, india tourist information',
   authors: [{ name: 'Triveni Cabs' }],

@@ -7,6 +7,7 @@ import { getAirportPlace } from '@/utilis/airportOutstationData';
 import AEOHead from '@/components/seo/AEOHead';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import { getMoneyPageLinks } from '@/lib/seo/linkingHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }) {
 
   if (!city) {
     return {
-      title: "City Not Found - Triveni Cabs",
+      title: tightenTitle("City Not Found"),
       description: "Airport service city not found"
     };
   }

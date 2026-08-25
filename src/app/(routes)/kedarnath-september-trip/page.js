@@ -2,11 +2,12 @@ import { getFestivalBySlug } from '@/utilis/festivalData';
 import { getPostMonsoonBySlug } from '@/utilis/season/postMonsoonSeason';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('kedarnath-september-trip') || getPostMonsoonBySlug('kedarnath-september-trip');
 
 export const metadata = {
-  title: 'Kedarnath in September 2026 | Delhi to Gaurikund Cab',
+  title: tightenTitle('Kedarnath in September 2026 | Delhi to Gaurikund Cab'),
   description: 'Kedarnath trip September 2026. Delhi to Gaurikund cab from ₹12,500 sedan, ₹16,500 Ertiga. 450 km road transport. Call 7668570551.',
   keywords: 'kedarnath september trip, kedarnath in september, delhi to kedarnath cab september, kedarnath september 2026, delhi to gaurikund taxi, kedarnath trip post monsoon',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

@@ -1,11 +1,12 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('monsoon-road-trip-packages');
 
 export const metadata = {
-  title: 'Monsoon Road Trip Packages 2026 | Delhi to North India',
+  title: tightenTitle('Monsoon Road Trip Packages 2026 | Delhi to North India'),
   description: 'Book monsoon road trips from Delhi Aug-Sep 2026. Sedan from ₹8,250, Innova ₹13,500, Tempo ₹15,000. Honest route advice. Call 7668570551.',
   keywords: 'monsoon road trip packages, monsoon road trip from delhi, august road trip north india, september road trip delhi, monsoon cab packages, rainy season road trip india',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

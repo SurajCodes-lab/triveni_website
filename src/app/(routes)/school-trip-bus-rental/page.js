@@ -1,6 +1,7 @@
 import { getSpecialTransportBySlug } from '@/utilis/specialTransportData';
 import SpecialTransportClient from '@/components/special/SpecialTransportClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const service = getSpecialTransportBySlug('school-trip-bus-rental');
 
@@ -16,7 +17,7 @@ const fleetImages = [
 ];
 
 export const metadata = {
-  title: 'School Trip Bus Rental Service | Safe Student Transport',
+  title: tightenTitle('School Trip Bus Rental Service | Safe Student Transport'),
   description: 'Book school trip bus rental with GPS tracking and verified drivers. 20-seater from Rs 30/km, 35-seater Rs 40/km. First-aid, speed governor, CCTV.',
   keywords: 'school trip bus rental, school bus hire, school excursion bus, student transport service, school picnic bus, school field trip bus, safe school transport',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

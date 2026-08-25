@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 import { getArticleSchema, getSpeakableSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Ayodhya Travel Guide 2026 | Ram Mandir, Temples, Food & Tips',
+  title: tightenTitle('Ayodhya Travel Guide 2026 | Ram Mandir, Temples, Food & Tips'),
   description: 'Complete Ayodhya travel guide 2026. Ram Mandir, Hanuman Garhi, Saryu aarti, Deepotsav, best time, food, darshan tips. Call 7668570551.',
   keywords: 'ayodhya travel guide, ram mandir guide, ayodhya tourist guide, ayodhya sightseeing, ram janmabhoomi, hanuman garhi, saryu ghat, deepotsav, things to do in ayodhya',
   authors: [{ name: 'Triveni Cabs' }],

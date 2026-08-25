@@ -52,19 +52,19 @@ export default function HotelCabPackageClient({ pkg, relatedPackages }) {
                 <Hotel className="w-3.5 h-3.5 text-rose-400" />
                 <span className="text-[11px] font-bold text-rose-300 uppercase tracking-widest">Hotel + Cab Package</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
+              <h1 className="font-display-serif text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.98] tracking-tight">
                 {pkg.destination}<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-amber-300">{pkg.duration}</span>
+                <span className="text-gold-foil">{pkg.duration}</span>
               </h1>
               <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">
                 Complete tour with hotel stay, AC cab, sightseeing & transfers
               </p>
 
               <div className="flex flex-wrap gap-3 mt-6">
-                <a href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('hotel_cab_hero')} className="inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-6 py-3.5 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
+                <a href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick('hotel_cab_hero')} className="sheen inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-6 py-3.5 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
                   Get Free Quote <ArrowRight className="w-4 h-4" />
                 </a>
-                <a href="tel:+917668570551" onClick={() => trackPhoneCall('hotel_cab_hero')} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3.5 rounded-full font-bold text-sm border border-white/15 hover:bg-white/15 transition-all">
+                <a href="tel:+917668570551" onClick={() => trackPhoneCall('hotel_cab_hero')} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3.5 rounded-full font-bold text-sm border border-white/15 hover:bg-white/15 transition-all lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
                   <Phone className="w-4 h-4" /> Call Now
                 </a>
               </div>
@@ -132,12 +132,12 @@ export default function HotelCabPackageClient({ pkg, relatedPackages }) {
         </div>
       </section>
 
-      {/* ━━━ INCLUSIONS ━━━ */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6">
+      {/* ━━━ INCLUSIONS — warm-light gold band ━━━ */}
+      <section className="py-16 md:py-24 px-4 sm:px-6 bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-transparent">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
-            <p className="text-[10px] font-bold text-rose-600 uppercase tracking-widest mb-1">Package Details</p>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">What&apos;s Included</h2>
+            <p className="text-[10px] font-bold text-amber-700 uppercase tracking-widest mb-1">Package Details</p>
+            <h2 className="font-display-serif text-2xl sm:text-3xl font-black text-slate-900 mb-8">What’s Included</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {pkg.includes.map((item, i) => (
@@ -153,11 +153,11 @@ export default function HotelCabPackageClient({ pkg, relatedPackages }) {
       </section>
 
       {/* ━━━ DAY-BY-DAY ITINERARY: Numbered timeline ━━━ */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
+      <section className="py-16 md:py-24 px-4 sm:px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>
             <p className="text-[10px] font-bold text-rose-600 uppercase tracking-widest mb-1">Day by Day</p>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">Your Itinerary</h2>
+            <h2 className="font-display-serif text-2xl sm:text-3xl font-black text-slate-900 mb-8">Your Itinerary</h2>
           </ScrollReveal>
 
           <div className="relative">
@@ -207,12 +207,12 @@ export default function HotelCabPackageClient({ pkg, relatedPackages }) {
       </section>
 
       {/* ━━━ HOTEL OPTIONS: Dark section ━━━ */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-slate-900">
+      <section className="py-16 md:py-24 px-4 sm:px-6 bg-slate-900">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <p className="text-[10px] font-bold text-[#FACF2D] uppercase tracking-widest mb-1">Choose Your Stay</p>
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-              <h2 className="text-2xl sm:text-3xl font-black text-white">Hotel Options</h2>
+              <h2 className="font-display-serif text-2xl sm:text-3xl font-black text-white">Hotel Options</h2>
               <p className="text-white/30 text-sm">Per person on twin-sharing basis</p>
             </div>
           </ScrollReveal>
@@ -249,12 +249,12 @@ export default function HotelCabPackageClient({ pkg, relatedPackages }) {
       </section>
 
       {/* ━━━ QUICK FACTS ━━━ */}
-      <section className="py-12 px-4 sm:px-6">
+      <section className="py-16 md:py-24 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>
             <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm" data-snippet-type="direct-answer">
               <div className="key-info">
-                <h2 className="text-xl font-black text-slate-900 mb-4">{pkg.destination} Package -- Quick Facts</h2>
+                <h2 className="font-display-serif text-xl font-black text-slate-900 mb-4">{pkg.destination} Package — Quick Facts</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                   {[
                     { label: 'Duration', value: pkg.duration, color: 'text-rose-600' },
@@ -279,11 +279,11 @@ export default function HotelCabPackageClient({ pkg, relatedPackages }) {
       <FaqAccordion heading={`${pkg.destination} Package FAQs`} faqs={pkg.faqs} />
 
       {relatedPackages.length > 0 && (
-        <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
+        <section className="py-16 md:py-24 px-4 sm:px-6 bg-white">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
               <p className="text-[10px] font-bold text-rose-600 uppercase tracking-widest mb-1">Explore More</p>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">More Packages</h2>
+              <h2 className="font-display-serif text-2xl sm:text-3xl font-black text-slate-900 mb-8">More Packages</h2>
             </ScrollReveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {relatedPackages.map((rp, i) => (

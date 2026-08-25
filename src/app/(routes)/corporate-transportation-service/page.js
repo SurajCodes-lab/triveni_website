@@ -49,11 +49,12 @@ import {
   Play,
   Star
 } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Corporate Transportation Service ₹11/km | Triveni Cabs',
+  title: tightenTitle('Corporate Transportation Service ₹11/km'),
   description: 'Corporate transportation & employee transport from ₹11/km. Monthly cab contracts, GST invoice, account manager, 24/7 ops. Get an enterprise quote today.',
   keywords: [
     'corporate transportation service',
@@ -124,9 +125,6 @@ export const metadata = {
       'max-snippet': -1,
       'max-video-preview': -1,
     },
-  },
-  verification: {
-    google: 'your-google-verification-code',
   },
   category: 'Corporate Transportation',
 };
@@ -446,8 +444,8 @@ export default function CorporateTransportationPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-transparent to-cyan-900/30" />
 
           {/* Floating Elements */}
-          <div className="absolute top-32 right-20 w-72 h-72 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse" />
-          <div className="absolute bottom-32 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-32 right-20 w-72 h-72 bg-cyan-500/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-32 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px]" />
 
           {/* Content */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
@@ -455,13 +453,13 @@ export default function CorporateTransportationPage() {
               {/* Left Content */}
               <div className="space-y-8">
                 <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-xl px-6 py-3 rounded-full border border-white/20">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full" />
                   <span className="text-cyan-300 font-medium text-sm tracking-widest uppercase">Enterprise Mobility Partner</span>
                 </div>
 
-                <h1 className="speakable-headline text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
+                <h1 className="speakable-headline font-display-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]">
                   Corporate
-                  <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                  <span className="block mt-2 text-gold-foil">
                     Transportation Service
                   </span>
                   <span className="block mt-2 text-4xl md:text-5xl lg:text-6xl font-light text-white/80">From ₹11/km</span>
@@ -496,9 +494,9 @@ export default function CorporateTransportationPage() {
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Link
                     href="/get-corporate-quote"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] transition-all duration-300"
+                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-b from-[#FFE9A0] via-[#FACF2D] to-[#E6B800] text-black px-8 py-5 rounded-2xl font-bold text-lg shadow-[0_10px_30px_-10px_rgba(250,207,45,0.55)] hover:brightness-105 transition-all duration-300 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]"
                   >
-                    <Phone className="w-5 h-5 group-hover:animate-pulse" />
+                    <Phone className="w-5 h-5" />
                     Get Enterprise Quote
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -547,7 +545,7 @@ export default function CorporateTransportationPage() {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
             <span className="text-white/60 text-xs tracking-widest uppercase">Scroll</span>
             <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
               <div className="w-1 h-3 bg-white/60 rounded-full" />
@@ -578,14 +576,14 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Direct Answer / Overview — AEO/GEO entity-dense lead */}
-        <section className="py-16 px-4 bg-white border-b border-slate-100">
+        <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] border-b border-amber-900/10">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-5 text-center">
+            <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-slate-900 mb-5 text-center">
               What Is Corporate Transportation Service?
             </h2>
-            <p className="text-lg text-slate-600 leading-relaxed text-center max-w-4xl mx-auto">
+            <p className="text-lg text-slate-700 leading-relaxed text-center max-w-4xl mx-auto">
               Corporate transportation (also called employee transportation or ETS) is a managed mobility
-              service where a single vendor handles a company&apos;s entire commute and travel needs — daily
+              service where a single vendor handles a company’s entire commute and travel needs — daily
               employee pick-up &amp; drop, executive travel, airport transfers and event logistics — under
               one contract with GST invoicing. Triveni Cabs operates a 500+ vehicle fleet across Delhi NCR,
               Jaipur, Chandigarh, Agra, Dehradun, Noida, Gurgaon, Lucknow and Haridwar, with police-verified
@@ -599,14 +597,14 @@ export default function CorporateTransportationPage() {
                 { value: '₹11/km', label: 'Starting Rate' },
                 { value: '24/7', label: 'Operations' }
               ].map((s, i) => (
-                <div key={i} className="rounded-2xl bg-slate-50 border border-slate-100 p-5 text-center">
-                  <div className="text-2xl md:text-3xl font-black text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">{s.value}</div>
+                <div key={i} className="rounded-2xl bg-white/70 ring-1 ring-amber-900/10 p-5 text-center">
+                  <div className="text-2xl md:text-3xl font-black text-gold-foil">{s.value}</div>
                   <div className="text-sm text-slate-500 mt-1">{s.label}</div>
                 </div>
               ))}
             </div>
             <div className="mt-8 text-center">
-              <Link href="/get-corporate-quote" className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-7 py-3.5 rounded-2xl font-bold shadow-lg shadow-cyan-500/30 hover:scale-[1.02] transition-all">
+              <Link href="/get-corporate-quote" className="inline-flex items-center gap-2 bg-gradient-to-b from-[#FFE9A0] via-[#FACF2D] to-[#E6B800] text-black px-7 py-3.5 rounded-2xl font-bold shadow-[0_10px_30px_-10px_rgba(250,207,45,0.55)] hover:brightness-105 transition-all lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
                 Get a Custom Corporate Quote
                 <ArrowRight className="w-5 h-5" />
               </Link>
@@ -615,7 +613,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Quick Enquiry Form — desktop lead path */}
-        <section className="py-16 px-4 bg-slate-950">
+        <section className="py-16 md:py-24 px-4 bg-slate-950">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Get a Custom Corporate Quote</h2>
@@ -628,7 +626,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Services Section - Premium Bento Grid */}
-        <section className="py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
           {/* Background Decorations */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-100/50 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
@@ -654,8 +652,8 @@ export default function CorporateTransportationPage() {
               <div className="lg:col-span-2 group relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 p-10 min-h-[400px]">
                 {/* Animated Background Pattern */}
                 <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-3xl animate-pulse" />
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-3xl" />
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/20 rounded-full blur-2xl" style={{ animationDelay: '1s' }} />
                 </div>
 
                 {/* Number Badge */}
@@ -760,7 +758,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Cities Section */}
-        <section className="py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 bg-indigo-100 px-5 py-2 rounded-full mb-6">
@@ -850,7 +848,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Industry Solutions Section */}
-        <section className="py-24 px-4 bg-white">
+        <section className="py-16 md:py-24 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 bg-cyan-100 px-5 py-2 rounded-full mb-6">
@@ -887,7 +885,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Use Case Solutions Section */}
-        <section className="py-24 px-4 bg-slate-50">
+        <section className="py-16 md:py-24 px-4 bg-slate-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 bg-blue-100 px-5 py-2 rounded-full mb-6">
@@ -924,7 +922,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Fleet & Capacity Table */}
-        <section className="py-24 px-4 bg-white">
+        <section className="py-16 md:py-24 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 bg-cyan-100 px-5 py-2 rounded-full mb-6">
@@ -939,8 +937,23 @@ export default function CorporateTransportationPage() {
               </p>
             </div>
 
-            <div className="overflow-x-auto rounded-3xl border border-slate-200 shadow-xl">
-              <table className="w-full text-left border-collapse min-w-[760px]">
+            {/* Mobile: stacked fleet cards */}
+            <div className="space-y-3 md:hidden">
+              {corporateFleet.map((v) => (
+                <div key={v.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-bold text-slate-900">{v.icon} {v.name}</span>
+                    <span className="font-black text-gold-foil whitespace-nowrap">{v.priceRange}</span>
+                  </div>
+                  <div className="mt-2 text-sm text-slate-600">{v.capacity} · {v.ideal}</div>
+                  <div className="mt-1 text-xs text-slate-500">{v.vehicles.join(', ')}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: full table */}
+            <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200 shadow-xl">
+              <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-slate-900 text-white">
                     <th className="px-6 py-4 font-semibold">Vehicle Type</th>
@@ -957,7 +970,7 @@ export default function CorporateTransportationPage() {
                       <td className="px-6 py-4 text-slate-600">{v.capacity}</td>
                       <td className="px-6 py-4 text-slate-600">{v.ideal}</td>
                       <td className="px-6 py-4 text-slate-600">{v.vehicles.join(', ')}</td>
-                      <td className="px-6 py-4 font-semibold text-cyan-600 whitespace-nowrap">{v.priceRange}</td>
+                      <td className="px-6 py-4 font-semibold text-gold-foil whitespace-nowrap">{v.priceRange}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -970,7 +983,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Pricing / Contract Models */}
-        <section className="py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 bg-blue-100 px-5 py-2 rounded-full mb-6">
@@ -1022,7 +1035,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Corporate Cabs vs Aggregators */}
-        <section className="py-24 px-4 bg-white">
+        <section className="py-16 md:py-24 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 bg-indigo-100 px-5 py-2 rounded-full mb-6">
@@ -1037,8 +1050,25 @@ export default function CorporateTransportationPage() {
               </p>
             </div>
 
-            <div className="overflow-x-auto rounded-3xl border border-slate-200 shadow-xl">
-              <table className="w-full text-left border-collapse min-w-[720px]">
+            {/* Mobile: stacked comparison cards */}
+            <div className="space-y-3 md:hidden">
+              {corporateVsAggregator.map((row, idx) => (
+                <div key={idx} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <div className="font-bold text-slate-900">{row.feature}</div>
+                  <div className="mt-2 flex items-start gap-2 text-sm text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 mt-0.5 text-green-500 flex-shrink-0" />
+                    <span><span className="font-semibold">Triveni:</span> {row.triveni}</span>
+                  </div>
+                  <div className="mt-1.5 text-sm text-slate-500">
+                    <span className="font-semibold">Ola / Uber:</span> {row.aggregator}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: full table */}
+            <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200 shadow-xl">
+              <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-slate-900 text-white">
                     <th className="px-6 py-4 font-semibold">Factor</th>
@@ -1072,7 +1102,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* How Onboarding Works (HowTo) */}
-        <section className="py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 bg-cyan-100 px-5 py-2 rounded-full mb-6">
@@ -1103,7 +1133,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Compliance, Safety, GST & MIS — E-E-A-T trust */}
-        <section className="py-24 px-4 bg-white">
+        <section className="py-16 md:py-24 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 bg-green-100 px-5 py-2 rounded-full mb-6">
@@ -1170,7 +1200,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Quick Links Section */}
-        <section className="py-16 px-4 bg-gradient-to-r from-cyan-500 to-blue-600">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-r from-cyan-500 to-blue-600">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-3 gap-6">
               <Link
@@ -1202,44 +1232,28 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Benefits Section - Ultra Premium 3D Design */}
-        <section className="py-32 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
           {/* Animated Mesh Gradient Background */}
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-cyan-500/20 via-transparent to-transparent" />
             <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[200px] animate-pulse" />
-          </div>
-
-          {/* Floating Particles Effect */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-cyan-400/30 rounded-full animate-pulse"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 3}s`
-                }}
-              />
-            ))}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[200px]" />
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
             {/* Section Header with Glow Effect */}
             <div className="text-center mb-20">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                 <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
-                  <Sparkles className="w-6 h-6 text-cyan-300 animate-pulse" />
+                  <Sparkles className="w-6 h-6 text-cyan-300" />
                   <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">The Triveni Advantage</span>
                 </div>
               </div>
 
-              <h2 className="text-5xl md:text-7xl font-black text-white mt-10 mb-6 leading-tight">
+              <h2 className="font-display-serif text-5xl md:text-7xl font-bold text-white mt-10 mb-6 leading-tight">
                 Why Choose
-                <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400 bg-clip-text animate-gradient">
+                <span className="block mt-2 text-gold-foil">
                   Triveni Cabs?
                 </span>
               </h2>
@@ -1254,12 +1268,12 @@ export default function CorporateTransportationPage() {
               <div className="lg:col-span-2 lg:row-span-2 group relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-[2.5rem] blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700" />
                 <div className="relative h-full bg-gradient-to-br from-cyan-500/10 to-blue-600/10 backdrop-blur-xl rounded-[2.5rem] border border-cyan-400/30 p-10 overflow-hidden group-hover:border-cyan-400/60 transition-all duration-700">
-                  {/* Animated Ring */}
-                  <div className="absolute -top-20 -right-20 w-64 h-64 border-4 border-cyan-400/20 rounded-full animate-spin-slow" />
-                  <div className="absolute -top-16 -right-16 w-52 h-52 border-2 border-blue-400/20 rounded-full animate-spin-slower" />
+                  {/* Decorative Ring */}
+                  <div className="absolute -top-20 -right-20 w-64 h-64 border-4 border-cyan-400/20 rounded-full" />
+                  <div className="absolute -top-16 -right-16 w-52 h-52 border-2 border-blue-400/20 rounded-full" />
 
                   {/* Floating Badge */}
-                  <div className="absolute top-8 right-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg shadow-cyan-500/50 animate-bounce">
+                  <div className="absolute top-8 right-8 bg-gradient-to-b from-[#FFE9A0] via-[#FACF2D] to-[#E6B800] text-black text-xs font-bold px-4 py-2 rounded-full shadow-lg">
                     MOST POPULAR
                   </div>
 
@@ -1389,14 +1403,14 @@ export default function CorporateTransportationPage() {
         <SectionDivider color="gray" className="my-4" />
 
         {/* FAQ Section - Open Cards Design */}
-        <section className="py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-purple-100 px-6 py-3 rounded-full mb-6">
                 <HeadphonesIcon className="w-5 h-5 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Got Questions?</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6">
+              <h2 className="font-display-serif text-4xl md:text-6xl font-bold text-slate-900 mb-6">
                 Frequently Asked
                 <span className="block text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text">Questions</span>
               </h2>
@@ -1406,7 +1420,7 @@ export default function CorporateTransportationPage() {
             </div>
 
             {/* FAQ Cards Grid - Always Open */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 md:items-start gap-6">
               {corporateFAQs.map((faq, idx) => (
                 <div
                   key={idx}
@@ -1512,9 +1526,9 @@ export default function CorporateTransportationPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
 
           {/* Animated Gradient Orbs */}
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px]" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/20 rounded-full blur-[100px]" style={{ animationDelay: '2s' }} />
 
           {/* Grid Pattern */}
           <div className="absolute inset-0 opacity-5" style={{
@@ -1531,9 +1545,9 @@ export default function CorporateTransportationPage() {
                   <span className="text-cyan-300 font-semibold text-sm tracking-wider uppercase">Get Started Today</span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                <h2 className="font-display-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                   Ready to
-                  <span className="block text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                  <span className="block text-gold-foil">
                     Transform Your
                   </span>
                   <span className="block">Corporate Mobility?</span>

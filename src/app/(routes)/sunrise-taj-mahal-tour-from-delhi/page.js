@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Sunrise Taj Mahal Tour from Delhi | 2-3 AM Start | 2026',
+  title: tightenTitle('Sunrise Taj Mahal Tour from Delhi | 2-3 AM Start | 2026'),
   description: 'Sunrise Taj Mahal tour from Delhi. Depart 2-3 AM, witness golden sunrise at Taj. Seasonal timing chart, photography tips. Sedan ₹4,500. Call 7668570551.',
   keywords: 'sunrise taj mahal tour from delhi, taj mahal sunrise tour, early morning taj mahal visit, taj mahal golden hour, sunrise at taj mahal',
   authors: [{ name: 'Triveni Cabs' }],

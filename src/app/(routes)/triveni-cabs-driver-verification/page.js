@@ -1,6 +1,7 @@
 import TrustPageClient from '@/components/competitor/TrustPageClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -9,7 +10,7 @@ const pageTitle = 'Triveni Cabs Driver Verification Process | Background-Checked
 const pageDesc = 'Triveni Cabs driver verification: police background check, driving test, customer service training, medical fitness. 100% verified drivers for safe travel. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs driver verification', 'verified cab drivers india', 'background checked cab drivers', 'safe cab drivers', 'driver verification process', 'cab driver training india', 'safe travel verified driver', 'police verified cab driver', 'trusted cab driver service', 'driver safety standards'],
   authors: [{ name: 'Triveni Cabs' }],

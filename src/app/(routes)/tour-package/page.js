@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { tourDetails } from '@/utilis/data';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -26,7 +26,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = 'Tour Packages by Car — Curated North India Trips';
+  const title = tightenTitle('Tour Packages by Car — Curated North India Trips');
   const description =
     'Browse curated multi-day tour packages across North India — Golden Triangle, Rajasthan, Himachal, Kashmir, Char Dham and more — with chauffeur-driven cabs. Triveni Cabs 7668570551.';
   return {

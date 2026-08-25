@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllPackageSlugs } from '@/utilis/packageData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Hotel + Cab Packages — Stay & Travel Bundled";
+  const title = tightenTitle("Hotel + Cab Packages — Stay & Travel Bundled");
   const description = "Hotel + cab packages across North India — stay plus chauffeur-driven car, one booking. Triveni Cabs 7668570551.";
   return {
     title,

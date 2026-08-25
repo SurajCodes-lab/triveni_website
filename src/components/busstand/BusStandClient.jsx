@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Phone, MapPin, Clock, Shield, Bus, Car, Users, Star, ChevronDown,
   CheckCircle2, ArrowRight, Route, Navigation, IndianRupee, Zap,
@@ -9,16 +10,50 @@ import {
 } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { getCityImage } from '@/utilis/imageUtils';
 import StickyPriceBar from '@/components/shared/StickyPriceBar';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import SectionDivider from '@/components/shared/SectionDivider';
+
+// ─── Ultra-Premium v2 vocabulary ────────────────────────────────────────────
+const FOIL =
+  'text-gold-foil bg-gradient-to-br from-[#FFE9A0] via-[#FACF2D] to-[#B8860B] bg-clip-text text-transparent drop-shadow-[0_2px_18px_rgba(250,207,45,0.35)]';
+const GOLD_BTN =
+  'sheen inline-flex items-center justify-center gap-2 rounded-full bg-[#FACF2D] font-black text-slate-950 shadow-[0_12px_36px_-10px_rgba(250,207,45,0.55)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-300 active:translate-y-0 active:scale-[0.98]';
+const GHOST_BTN =
+  'inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10';
+const CTA_SIZE = 'w-full px-7 py-4 text-sm lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]';
+const GLASS = 'bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10';
+
+function SerifHeading({ eyebrow, icon: EyebrowIcon, title, highlight, after, subtitle, tone = 'dark' }) {
+  const dark = tone === 'dark';
+  return (
+    <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
+      {eyebrow && (
+        <span className={`mb-4 inline-flex items-center gap-2 text-[0.68rem] font-bold uppercase tracking-[0.22em] sm:text-xs ${dark ? 'text-amber-300' : 'text-amber-600'}`}>
+          <span className={`h-px w-7 ${dark ? 'bg-amber-400/60' : 'bg-amber-500/60'}`} />
+          {EyebrowIcon && <EyebrowIcon className="h-3.5 w-3.5" />}
+          {eyebrow}
+          <span className={`h-px w-7 ${dark ? 'bg-amber-400/60' : 'bg-amber-500/60'}`} />
+        </span>
+      )}
+      <h2 className={`font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight sm:text-4xl lg:text-[2.75rem] ${dark ? 'text-white' : 'text-slate-900'}`}>
+        {title} {highlight && <span className={FOIL}>{highlight}</span>}{after ? <> {after}</> : null}
+      </h2>
+      {subtitle && (
+        <p className={`mx-auto mt-4 max-w-2xl text-sm leading-relaxed sm:text-base ${dark ? 'text-slate-300/80' : 'text-slate-600'}`}>{subtitle}</p>
+      )}
+    </div>
+  );
+}
 
 export default function BusStandClient({ stand, slug, allStands, faqs }) {
   const [openFaq, setOpenFaq] = useState(null);
   // Rich FAQ set passed from the server (10-12 stand-specific Qs). Falls back
   // to the curated stand.faqs if the prop is not provided.
   const faqList = Array.isArray(faqs) && faqs.length ? faqs : (stand.faqs || []);
+  const heroImage = getCityImage(stand.city);
 
   return (
     <article className="min-h-screen bg-slate-950 text-white" itemScope itemType="https://schema.org/TaxiService">
@@ -28,69 +63,61 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
         whatsappMessage={`Hi, I need a taxi from ${stand.name}, ${stand.city}`}
       />
 
-      {/* Hero Section - Dramatic Bus Terminal Design */}
-      <section className="relative overflow-hidden min-h-[72vh] flex items-center">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-amber-950/80 to-slate-950" />
+      {/* ====== HERO — visible city photo, scrim on the text side only ====== */}
+      <section className="relative flex min-h-[84vh] flex-col justify-end overflow-hidden">
+        <Image
+          src={heroImage}
+          alt={`${stand.city} — taxi from ${stand.name}`}
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/10" />
+        <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-slate-950/80 via-slate-950/25 to-transparent lg:w-3/4" />
+        <div className="absolute inset-x-0 top-0 z-20 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-        {/* Animated glowing orbs */}
-        <div className="absolute inset-0">
-          <div className="absolute top-16 left-[10%] w-80 h-80 bg-amber-500/15 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" />
-          <div className="absolute bottom-20 right-[5%] w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-yellow-400/8 rounded-full blur-3xl animate-pulse motion-reduce:animate-none" style={{ animationDelay: '2s' }} />
-        </div>
-
-        {/* Road-lines decorative pattern */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(245,158,11,0.5) 40px, rgba(245,158,11,0.5) 42px)', backgroundSize: '100% 42px' }} />
-        </div>
-
-        {/* Floating bus route numbers */}
-        <div className="absolute top-24 right-12 bg-amber-500/10 border border-amber-500/20 rounded-lg px-4 py-2 text-amber-400/40 font-mono text-sm animate-bounce motion-reduce:animate-none hidden lg:block" style={{ animationDuration: '3s' }}>
-          ROUTE 01
-        </div>
-        <div className="absolute bottom-32 left-16 bg-green-500/10 border border-green-500/20 rounded-lg px-4 py-2 text-green-400/30 font-mono text-sm animate-bounce motion-reduce:animate-none hidden lg:block" style={{ animationDuration: '4s', animationDelay: '1s' }}>
-          PLATFORM 3
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 w-full">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-28 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-10">
-            <Link href="/" className="hover:text-amber-400 transition-colors">Home</Link>
-            <ChevronDown className="w-3 h-3 -rotate-90" />
-            <Link href="/bus-stand-taxi" className="hover:text-amber-400 transition-colors">Bus Stand Taxi</Link>
-            <ChevronDown className="w-3 h-3 -rotate-90" />
-            <span className="text-amber-400">{stand.name}</span>
+          <nav className="mb-8 flex flex-wrap items-center gap-2 text-xs text-white/45" aria-label="Breadcrumb">
+            <Link href="/" className="transition-colors hover:text-amber-300">Home</Link>
+            <ChevronDown className="h-3 w-3 -rotate-90" />
+            <Link href="/bus-stand-taxi" className="transition-colors hover:text-amber-300">Bus Stand Taxi</Link>
+            <ChevronDown className="h-3 w-3 -rotate-90" />
+            <span className="text-amber-300">{stand.name}</span>
           </nav>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid items-end gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2.5 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-2.5 mb-8 backdrop-blur-sm">
-                <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                <span className="text-amber-400 text-sm font-semibold tracking-wide uppercase">{stand.city} Bus Terminal</span>
+              {/* Bus route-board seal — honest data: terminal + operators count */}
+              <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-amber-400/30 bg-slate-950/60 py-2 pl-2 pr-5 backdrop-blur-md">
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-[#FACF2D]/70 bg-amber-400/15">
+                  <Bus className="h-4 w-4 text-[#FACF2D]" />
+                </span>
+                <span className="text-left">
+                  <span className="block font-mono text-[11px] font-black tracking-[0.22em] text-amber-200">{stand.city.toUpperCase()} BUS TERMINAL · {stand.busOperators.length}+ OPERATORS</span>
+                  <span className="block text-[10px] text-white/55">Driver meets you at the bus stand exit, 24/7</span>
+                </span>
               </div>
 
-              <h1 className="speakable-headline text-3xl sm:text-5xl md:text-7xl font-black tracking-tight mb-6 leading-[1.1]">
-                <span className="bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent">
-                  {stand.name}
-                </span>
-                <br />
-                <span className="text-white text-2xl sm:text-3xl md:text-5xl font-bold">Cab &amp; Taxi Service</span>
+              <h1 className="speakable-headline font-display-serif text-balance text-4xl font-black leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-7xl">
+                {stand.name}
+                <span className={`block ${FOIL}`}>Cab &amp; Taxi Service</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-xl">
+              <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base md:text-lg">
                 {stand.description}
               </p>
 
-              {/* CTA buttons with glow */}
-              <div className="flex flex-wrap gap-4">
+              {/* CTA buttons — gold + ghost, compact on desktop */}
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a
                   href="tel:7668570551"
                   onClick={() => trackPhoneCall('bus_stand')}
-                  className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-bold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-amber-500/25 hover:shadow-amber-500/50 hover:-translate-y-1 hover:scale-105"
+                  className={`${GOLD_BTN} ${CTA_SIZE}`}
                 >
-                  <Phone className="w-5 h-5" />
+                  <Phone className="h-4 w-4" />
                   <span>Call Now - 7668570551</span>
                 </a>
                 <a
@@ -98,42 +125,39 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsAppClick('bus_stand')}
-                  className="group inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-amber-500/30 hover:border-amber-400/60 hover:bg-amber-500/10 text-white font-bold px-8 py-4 rounded-2xl transition-all duration-500 hover:-translate-y-1"
+                  className={`${GHOST_BTN} ${CTA_SIZE}`}
                 >
-                  <WhatsAppIcon className="w-5 h-5 text-amber-400" />
+                  <WhatsAppIcon className="h-4 w-4 text-[#FACF2D]" />
                   <span>WhatsApp Booking</span>
                 </a>
               </div>
             </div>
 
-            {/* Glass Info Card - Bus Route Board Style */}
+            {/* Glass Info Card — Bus Route Board Style */}
             <div className="relative">
-              {/* Glow behind card */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 rounded-3xl blur-2xl opacity-40" />
-
-              <div className="relative bg-white/[0.04] backdrop-blur-2xl rounded-3xl border border-white/10 shadow-2xl shadow-amber-500/10 overflow-hidden">
+              <div className="border-gradient-gold relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70 shadow-2xl backdrop-blur-xl">
                 {/* Route board header */}
-                <div className="bg-gradient-to-r from-amber-600/30 to-yellow-600/20 px-8 py-5 border-b border-white/10">
+                <div className="border-b border-amber-400/25 bg-gradient-to-r from-amber-400/15 via-amber-300/5 to-transparent px-8 py-5">
                   <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full bg-amber-400 animate-pulse" />
-                    <h2 className="text-lg font-bold text-yellow-300 tracking-wide uppercase font-mono">Station Info Board</h2>
+                    <span className="h-3 w-3 rounded-full bg-emerald-400" />
+                    <h2 className="font-mono text-lg font-bold uppercase tracking-wide text-amber-100">Station Info Board</h2>
                   </div>
                 </div>
 
-                <div className="p-8 space-y-5">
+                <div className="space-y-5 p-8">
                   {[
                     { icon: MapPin, label: 'Location', value: stand.area },
                     { icon: Navigation, label: 'Pickup Point', value: stand.cabWaitingArea },
                     { icon: Bus, label: 'Operators', value: stand.busOperators.join(' | ') },
                     { icon: Clock, label: 'Service Hours', value: '24/7 - Round the Clock' },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 group">
-                      <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
-                        <item.icon className="w-5 h-5 text-amber-400" />
+                    <div key={i} className="group flex items-start gap-4">
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 transition-colors group-hover:bg-amber-400/20">
+                        <item.icon className="h-5 w-5 text-[#FACF2D]" />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wider font-mono">{item.label}</p>
-                        <p className="font-medium text-gray-200 leading-snug">{item.value}</p>
+                        <p className="font-mono text-xs uppercase tracking-wider text-white/45">{item.label}</p>
+                        <p className="font-medium leading-snug text-gray-200">{item.value}</p>
                       </div>
                     </div>
                   ))}
@@ -141,10 +165,10 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
 
                 {/* Landmarks footer */}
                 <div className="px-8 pb-6">
-                  <p className="text-xs text-gray-500 uppercase tracking-wider font-mono mb-3">Nearby Landmarks</p>
+                  <p className="mb-3 font-mono text-xs uppercase tracking-wider text-white/45">Nearby Landmarks</p>
                   <div className="flex flex-wrap gap-2">
                     {stand.nearbyLandmarks.map((landmark, i) => (
-                      <span key={i} className="bg-amber-500/10 text-yellow-300 text-xs px-3 py-1.5 rounded-full border border-amber-500/15 hover:border-amber-500/40 transition-colors">
+                      <span key={i} className="rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1.5 text-xs text-amber-200 transition-colors hover:border-amber-400/40">
                         {landmark}
                       </span>
                     ))}
@@ -158,24 +182,24 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
 
       <SocialProofStrip theme="dark" />
 
-      {/* Quick Stats Bar - LED Board Style */}
-      <section className="relative border-y border-amber-500/10 bg-slate-900/80 backdrop-blur-sm">
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 via-transparent to-yellow-500/5" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      {/* Quick Stats Bar */}
+      <section className="relative border-y border-amber-400/10 bg-slate-900/80 backdrop-blur-sm">
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-400/5 via-transparent to-amber-400/5" />
+        <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 md:gap-8">
             {[
               { icon: Bus, label: 'Bus Operators', value: `${stand.busOperators.length}+ Lines` },
               { icon: Clock, label: 'Service', value: '24/7 Available' },
               { icon: Zap, label: 'Pickup', value: 'Instant' },
               { icon: MapPinned, label: 'GPS Tracked', value: 'Live Tracking' },
             ].map((stat, i) => (
-              <div key={i} className="flex items-center gap-4 group">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/15 to-yellow-500/10 border border-amber-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-7 h-7 text-amber-400" />
+              <div key={i} className="group flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-[#FACF2D]/40 bg-gradient-to-br from-amber-400/20 via-transparent to-transparent transition-transform duration-300 group-hover:scale-110">
+                  <stat.icon className="h-7 w-7 text-[#FACF2D]" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">{stat.label}</p>
-                  <p className="font-bold text-lg text-white">{stat.value}</p>
+                  <p className="text-xs uppercase tracking-wider text-white/45">{stat.label}</p>
+                  <p className="text-lg font-bold text-white">{stat.value}</p>
                 </div>
               </div>
             ))}
@@ -183,77 +207,76 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
         </div>
       </section>
 
-      {/* === DIRECT ANSWER BOX (AEO/Featured Snippet Target) === */}
-      <section className="py-10 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="direct-answer bg-white/5 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-amber-500/20" data-snippet-type="direct-answer">
-            <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
-              How do I get a taxi from {stand.name}?
+      {/* === DIRECT ANSWER BOX (AEO/Featured Snippet Target) — warm-light band === */}
+      <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-4xl">
+          <div className="direct-answer rounded-2xl border border-amber-200 bg-white p-6 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] md:p-8" data-snippet-type="direct-answer">
+            <h2 className="font-display-serif mb-4 text-2xl font-black text-slate-900 md:text-3xl">
+              How do I get a taxi from <span className={FOIL}>{stand.name}?</span>
             </h2>
-            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Starting Fare</p>
-                <p className="text-xl font-black text-amber-400">{stand.destinations?.[0]?.fare || '₹300'}</p>
+            <div className="key-info mb-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
+                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Starting Fare</p>
+                <p className="font-display-serif text-xl font-black text-amber-600">{stand.destinations?.[0]?.fare || '₹300'}</p>
               </div>
-              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Destinations</p>
-                <p className="text-xl font-black text-white">{stand.destinations.length}+</p>
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
+                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Destinations</p>
+                <p className="font-display-serif text-xl font-black text-slate-900">{stand.destinations.length}+</p>
               </div>
-              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Available</p>
-                <p className="text-xl font-black text-white">24/7</p>
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
+                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Available</p>
+                <p className="font-display-serif text-xl font-black text-slate-900">24/7</p>
               </div>
-              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Rating</p>
-                <p className="text-xl font-black text-amber-400">4.9★</p>
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
+                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Rating</p>
+                <p className="font-display-serif text-xl font-black text-amber-600">4.9★</p>
               </div>
             </div>
-            <p className="speakable-lead faq-answer text-slate-300 leading-relaxed text-base md:text-lg">
-              Taxi from <strong className="text-white">{stand.name}, {stand.city}</strong> starts at just <strong className="text-amber-400">{stand.destinations?.[0]?.fare || '₹300'}</strong> for AC sedan.
-              Our drivers wait at the <strong className="text-white">bus stand exit gate</strong> — no surge pricing, no meter tampering.
+            <p className="speakable-lead faq-answer text-base leading-relaxed text-slate-700 md:text-lg">
+              Taxi from <strong className="text-slate-900">{stand.name}, {stand.city}</strong> starts at just <strong className="text-amber-600">{stand.destinations?.[0]?.fare || '₹300'}</strong> for AC sedan.
+              Our drivers wait at the <strong className="text-slate-900">bus stand exit gate</strong> — no surge pricing, no meter tampering.
               Fixed fares to {stand.destinations.slice(0, 3).map(d => d.name).join(', ')} and {Math.max(0, stand.destinations.length - 3)}+ more destinations.
               AC sedan and SUV with verified drivers, GPS tracking, and 24/7 availability.
-              Call <strong className="text-white">+91-7668570551</strong> or WhatsApp to book instantly. 4.9★ rated by verified travellers.
+              Call <strong className="text-slate-900">+91-7668570551</strong> or WhatsApp to book instantly. 4.9★ rated by verified travellers.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Fare Table Section - Route Board Style Cards */}
-      <section className="py-14 md:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-2.5 mb-6">
-              <IndianRupee className="w-4 h-4 text-amber-400" />
-              <span className="text-amber-400 text-sm font-semibold">Transparent Pricing</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              What does a taxi from <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.name}</span> cost?
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">Fixed fares with no hidden charges. All prices for AC sedan (Swift Dzire / Honda Amaze).</p>
-          </div>
+      {/* ====== FARE CARDS — dark band ====== */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+          <SerifHeading
+            eyebrow="Transparent Pricing"
+            icon={IndianRupee}
+            title="What does a taxi from"
+            highlight={stand.name}
+            after="cost?"
+            subtitle="Fixed fares with no hidden charges. All prices for AC sedan (Swift Dzire / Honda Amaze)."
+            tone="dark"
+          />
 
           {/* Bus-route-board styled fare cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {stand.destinations.map((dest, i) => (
               <div key={i} className="group relative">
-                <div className="relative bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/40 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/10">
+                <div className={`relative overflow-hidden ${GLASS} transition-all duration-500 hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-xl hover:shadow-amber-500/10`}>
                   {/* Route number header */}
-                  <div className="bg-gradient-to-r from-amber-600/20 to-yellow-600/10 px-5 py-3 border-b border-white/5 flex items-center justify-between">
-                    <span className="text-amber-400 font-mono font-bold text-sm">ROUTE {String(i + 1).padStart(2, '0')}</span>
-                    <span className="text-yellow-300 font-bold">{dest.fare}</span>
+                  <div className="flex items-center justify-between border-b border-white/5 bg-gradient-to-r from-amber-400/15 to-transparent px-5 py-3">
+                    <span className="font-mono text-sm font-bold text-amber-300">ROUTE {String(i + 1).padStart(2, '0')}</span>
+                    <span className={`font-display-serif font-black ${FOIL}`}>{dest.fare}</span>
                   </div>
 
                   <div className="p-5">
-                    <div className="flex items-start gap-3 mb-4">
-                      <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <MapPin className="w-4 h-4 text-amber-400" />
+                    <div className="mb-4 flex items-start gap-3">
+                      <div className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border border-amber-400/25 bg-amber-400/10">
+                        <MapPin className="h-4 w-4 text-[#FACF2D]" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg group-hover:text-amber-400 transition-colors">{dest.name}</h3>
-                        <div className="flex items-center gap-3 mt-1 text-sm text-gray-400">
+                        <h3 className="font-display-serif text-lg font-black text-white transition-colors group-hover:text-amber-300">{dest.name}</h3>
+                        <div className="mt-1 flex items-center gap-3 text-sm text-gray-400">
                           <span>{dest.distance}</span>
-                          <span className="w-1 h-1 rounded-full bg-gray-600" />
+                          <span className="h-1 w-1 rounded-full bg-gray-600" />
                           <span>{dest.time}</span>
                         </div>
                       </div>
@@ -263,9 +286,9 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
                       <a
                         href="tel:7668570551"
                         onClick={() => trackPhoneCall('bus_stand')}
-                        className="flex items-center justify-center gap-2 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-sm font-semibold px-3 py-2.5 rounded-xl border border-amber-500/20 hover:border-amber-500/40 transition-all duration-300"
+                        className={`${GOLD_BTN} px-3 py-2.5 text-sm lg:px-5 lg:py-2 lg:text-[13px]`}
                       >
-                        <Phone className="w-3.5 h-3.5" />
+                        <Phone className="h-3.5 w-3.5" />
                         Call
                       </a>
                       <a
@@ -275,9 +298,9 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => trackWhatsAppClick('bus_stand')}
-                        className="flex items-center justify-center gap-2 bg-green-500/15 hover:bg-green-500/25 text-green-400 text-sm font-semibold px-3 py-2.5 rounded-xl border border-green-500/25 hover:border-green-500/50 transition-all duration-300"
+                        className={`${GHOST_BTN} px-3 py-2.5 text-sm lg:px-5 lg:py-2 lg:text-[13px]`}
                       >
-                        <WhatsAppIcon className="w-3.5 h-3.5" />
+                        <WhatsAppIcon className="h-3.5 w-3.5" />
                         WhatsApp
                       </a>
                     </div>
@@ -286,53 +309,51 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
               </div>
             ))}
           </div>
-          <p className="text-center text-sm text-gray-500 mt-6">* Fares are approximate for AC sedan. SUV and premium vehicles available at additional charges.</p>
+          <p className="mt-6 text-center text-sm text-gray-500">* Fares are approximate for AC sedan. SUV and premium vehicles available at additional charges.</p>
         </div>
       </section>
 
-      {/* Bus Operators Section */}
-      <section className="py-14 md:py-20 lg:py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/15 to-slate-950" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              Which bus operators run from <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">{stand.name}</span>?
-            </h2>
-            <p className="text-gray-400 text-lg">Major bus services operating from this terminal</p>
-          </div>
+      {/* ====== BUS OPERATORS — warm-light band ====== */}
+      <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/70 to-white px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+          <SerifHeading
+            eyebrow="Terminal Lines"
+            icon={Bus}
+            title="Which bus operators run from"
+            highlight={`${stand.name}?`}
+            subtitle="Major bus services operating from this terminal"
+            tone="light"
+          />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {stand.busOperators.map((operator, i) => (
-              <div key={i} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-500/10">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-yellow-500/10 border border-amber-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Bus className="w-7 h-7 text-amber-400" />
+              <div key={i} className="group rounded-2xl border border-amber-200 bg-white p-7 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] transition-all duration-500 hover:-translate-y-1 hover:border-amber-300 hover:shadow-[0_20px_60px_-28px_rgba(180,130,10,0.6)]">
+                <div className="mb-4 flex items-center gap-4">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-[#FACF2D]/50 bg-gradient-to-br from-amber-100 to-transparent transition-transform duration-300 group-hover:scale-110">
+                    <Bus className="h-7 w-7 text-amber-600" />
                   </div>
-                  <h3 className="text-xl font-bold group-hover:text-amber-400 transition-colors">{operator}</h3>
+                  <h3 className="font-display-serif text-xl font-black text-slate-900 transition-colors group-hover:text-amber-700">{operator}</h3>
                 </div>
-                <p className="text-gray-400 leading-relaxed">Regular interstate and local bus services connecting {stand.city} to multiple destinations across the region.</p>
+                <p className="leading-relaxed text-slate-600">Regular interstate and local bus services connecting {stand.city} to multiple destinations across the region.</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Triveni - Premium Feature Cards */}
-      <section className="py-14 md:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-2.5 mb-6">
-              <Star className="w-4 h-4 text-amber-400" />
-              <span className="text-amber-400 text-sm font-semibold">Why Choose Us</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              Why Triveni Cabs at{' '}
-              <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.name}</span>?
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">The most trusted cab service at {stand.name}, {stand.city}. Here is what makes us different.</p>
-          </div>
+      {/* ====== WHY CHOOSE TRIVENI — dark band ====== */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+          <SerifHeading
+            eyebrow="Why Choose Us"
+            icon={Star}
+            title="Why Triveni Cabs at"
+            highlight={`${stand.name}?`}
+            subtitle={`The most trusted cab service at ${stand.name}, ${stand.city}. Here is what makes us different.`}
+            tone="dark"
+          />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { icon: ShieldCheck, title: 'Verified Drivers', desc: 'All drivers are background-verified, licensed, and trained for professional service. Your safety is our top priority at every ride.' },
               { icon: IndianRupee, title: 'Fixed Fares', desc: 'No surge pricing, no hidden charges, no meter tampering. What we quote is what you pay - transparently guaranteed every single time.' },
@@ -342,13 +363,12 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
               { icon: Headphones, title: '24/7 Customer Support', desc: 'Dedicated helpline for any issues during your journey. Real-time GPS tracking so you and your family know exactly where you are.' },
             ].map((feature, i) => (
               <div key={i} className="group relative">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500" />
-                <div className="relative bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-7 transition-all duration-500 hover:-translate-y-1 h-full">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-yellow-500/10 border border-amber-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-7 h-7 text-amber-400" />
+                <div className={`relative h-full ${GLASS} p-7 transition-all duration-500 hover:-translate-y-1 hover:border-amber-400/40`}>
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-[#FACF2D]/40 bg-gradient-to-br from-amber-400/20 via-transparent to-transparent transition-transform duration-300 group-hover:scale-110">
+                    <feature.icon className="h-7 w-7 text-[#FACF2D]" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-amber-400 transition-colors">{feature.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{feature.desc}</p>
+                  <h3 className="font-display-serif mb-3 text-xl font-black text-white transition-colors group-hover:text-amber-300">{feature.title}</h3>
+                  <p className="leading-relaxed text-gray-400">{feature.desc}</p>
                 </div>
               </div>
             ))}
@@ -356,85 +376,79 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
         </div>
       </section>
 
-      {/* How to Book - 4 Step Process */}
-      <section className="py-14 md:py-20 lg:py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/15 to-slate-950" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              How to <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">Book Your Cab</span>
-            </h2>
-            <p className="text-gray-400 text-lg">4 simple steps to your comfortable ride from {stand.name}</p>
-          </div>
+      {/* ====== HOW TO BOOK — warm-light band ====== */}
+      <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+          <SerifHeading
+            eyebrow="Simple Process"
+            icon={Zap}
+            title="How to"
+            highlight="Book Your Cab"
+            subtitle={`4 simple steps to your comfortable ride from ${stand.name}`}
+            tone="light"
+          />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
             {[
               { step: '01', title: 'Call or WhatsApp', desc: 'Reach us at 7668570551 with your bus arrival details, expected time, and your destination.', icon: Phone },
               { step: '02', title: 'Share Bus Details', desc: 'Tell us your bus number, operator name, expected arrival time, and exact drop location.', icon: Bus },
               { step: '03', title: 'Driver Assigned', desc: 'We assign a verified, experienced driver who reaches the bus stand before your bus arrives.', icon: Navigation2 },
               { step: '04', title: 'Enjoy Your Ride', desc: 'Meet your driver at the pickup point and enjoy a comfortable, air-conditioned cab ride to your destination.', icon: Car },
             ].map((item, i) => (
-              <div key={i} className="relative text-center group">
-                {/* Connecting line */}
-                {i < 3 && (
-                  <div className="hidden lg:block absolute top-12 left-[60%] w-[80%] h-px bg-gradient-to-r from-lime-500/30 to-transparent" />
-                )}
-
+              <div key={i} className="group relative text-center">
                 <div className="relative inline-block">
-                  <div className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-br from-amber-500/15 to-yellow-500/10 border border-amber-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-lg group-hover:shadow-lime-500/20">
-                    <item.icon className="w-10 h-10 text-amber-400" />
+                  <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-3xl border-2 border-[#FACF2D]/50 bg-gradient-to-br from-amber-100 via-amber-50 to-transparent transition-transform duration-300 group-hover:scale-110">
+                    <item.icon className="h-10 w-10 text-amber-600" />
                   </div>
                   {/* Step number badge */}
-                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-bold text-sm flex items-center justify-center">
+                  <div className="absolute -right-2 -top-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#FACF2D] text-sm font-bold text-slate-950 shadow-[0_8px_24px_-8px_rgba(250,207,45,0.7)]">
                     {item.step}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+                <h3 className="font-display-serif mb-3 text-xl font-black text-slate-900">{item.title}</h3>
+                <p className="leading-relaxed text-slate-600">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Major Routes Section */}
-      <section className="py-14 md:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-5 py-2.5 mb-6">
-              <Route className="w-4 h-4 text-amber-400" />
-              <span className="text-amber-400 text-sm font-semibold">Bus Routes Served</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              Which major bus routes run from <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.name}</span>?
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">Popular bus routes with premium cab alternatives. Skip the bus, travel in comfort with Triveni Cabs.</p>
-          </div>
+      {/* ====== MAJOR ROUTES — dark band ====== */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+          <SerifHeading
+            eyebrow="Bus Routes Served"
+            icon={Route}
+            title="Which major bus routes run from"
+            highlight={`${stand.name}?`}
+            subtitle="Popular bus routes with premium cab alternatives. Skip the bus, travel in comfort with Triveni Cabs."
+            tone="dark"
+          />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {stand.majorRoutes.map((route, i) => (
               <div key={i} className="group relative">
-                <div className="relative bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 overflow-hidden transition-all duration-500 hover:-translate-y-1">
+                <div className={`relative overflow-hidden ${GLASS} transition-all duration-500 hover:-translate-y-1 hover:border-amber-400/40`}>
                   {/* Route stripe */}
-                  <div className="h-1.5 bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500" />
+                  <div className="h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" />
 
                   <div className="p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center group-hover:bg-amber-500/20 transition-colors">
-                        <Route className="w-6 h-6 text-amber-400" />
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 transition-colors group-hover:bg-amber-400/20">
+                        <Route className="h-6 w-6 text-[#FACF2D]" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg group-hover:text-amber-400 transition-colors">{route}</h3>
-                        <p className="text-xs text-gray-500 font-mono">BUS + CAB AVAILABLE</p>
+                        <h3 className="font-display-serif text-lg font-black text-white transition-colors group-hover:text-amber-300">{route}</h3>
+                        <p className="font-mono text-xs text-gray-500">BUS + CAB AVAILABLE</p>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-400 mb-5">Skip the crowded bus. Travel this route in a comfortable, air-conditioned Triveni cab with fixed transparent fares.</p>
+                    <p className="mb-5 text-sm text-gray-400">Skip the crowded bus. Travel this route in a comfortable, air-conditioned Triveni cab with fixed transparent fares.</p>
                     <a
                       href="tel:7668570551"
                       onClick={() => trackPhoneCall('bus_stand')}
-                      className="inline-flex items-center gap-2 text-amber-400 text-sm font-semibold hover:text-yellow-300 transition-colors"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-amber-300 transition-colors hover:text-amber-200"
                     >
-                      Book Cab Instead <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      Book Cab Instead <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </a>
                   </div>
                 </div>
@@ -444,33 +458,32 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
         </div>
       </section>
 
-      {/* SEO Content Section */}
-      <section className="py-14 md:py-20 lg:py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/[0.03] backdrop-blur-xl rounded-3xl border border-white/10 p-8 md:p-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6">
-              How do I book a cab from <span className="text-amber-400">{stand.name}, {stand.city}</span>?
+      {/* ====== SEO CONTENT — warm-light band ====== */}
+      <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-4xl sm:px-2 lg:px-4">
+          <div className="rounded-2xl border border-amber-200 bg-white p-8 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] md:p-12">
+            <h2 className="font-display-serif mb-6 text-2xl font-black text-slate-900 md:text-3xl">
+              How do I book a cab from <span className={FOIL}>{stand.name}, {stand.city}?</span>
             </h2>
-            <div className="space-y-4 text-gray-300 leading-relaxed">
+            <div className="space-y-4 leading-relaxed text-slate-700">
               <p>
                 Arriving at {stand.name} in {stand.city}? Finding reliable transportation after a long bus journey can be challenging, especially during late night hours or peak festival seasons. Triveni Cabs is your trusted partner for comfortable, affordable cab service right from {stand.name} to anywhere in {stand.city} and beyond.
               </p>
               <p>
                 {stand.name} is one of the busiest bus terminals in {stand.city}, served by major operators including {stand.busOperators.join(', ')}. With buses arriving from routes like {stand.majorRoutes.slice(0, 3).join(', ')}, thousands of passengers need reliable onward transportation daily.
               </p>
-              <h3 className="text-xl font-bold text-white pt-4">Why Pre-Book Your Cab from {stand.name}?</h3>
+              <h3 className="font-display-serif pt-4 text-xl font-black text-slate-900">Why Pre-Book Your Cab from {stand.name}?</h3>
               <p>
                 Auto-rickshaws and local taxis at bus stands often overcharge, especially late at night or during festivals. By pre-booking with Triveni Cabs, you get guaranteed fixed fares, a verified driver waiting at the pickup point ({stand.cabWaitingArea}), and a clean air-conditioned vehicle for your comfort after a tiring bus ride.
               </p>
               <p>
                 Our most popular destinations from {stand.name} include {stand.destinations.slice(0, 4).map(d => `${d.name} (${d.distance}, ${d.fare})`).join(', ')}. Whether you need a quick city transfer or a long-distance outstation trip, we have you covered 24 hours a day, 7 days a week, 365 days a year.
               </p>
-              <h3 className="text-xl font-bold text-white pt-4">Landmarks Near {stand.name}</h3>
+              <h3 className="font-display-serif pt-4 text-xl font-black text-slate-900">Landmarks Near {stand.name}</h3>
               <p>
                 {stand.name} is conveniently located near {stand.nearbyLandmarks.join(', ')}. Our drivers are local experts who know the fastest routes to all major destinations in {stand.city}, helping you avoid traffic congestion and reach your destination on time every time.
               </p>
-              <h3 className="text-xl font-bold text-white pt-4">Outstation Cabs from {stand.name}</h3>
+              <h3 className="font-display-serif pt-4 text-xl font-black text-slate-900">Outstation Cabs from {stand.name}</h3>
               <p>
                 Beyond city rides, Triveni Cabs also offers outstation cab services from {stand.name}. Popular outstation routes include {stand.majorRoutes.slice(0, 3).join(', ')} and more. All outstation trips come with experienced drivers who are familiar with highway driving and ensure a safe, comfortable journey.
               </p>
@@ -479,22 +492,23 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
         </div>
       </section>
 
-      {/* Travel Tips */}
-      <section className="py-14 md:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
-              What are the best travel tips for <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.name}</span>?
-            </h2>
-            <p className="text-gray-400 text-lg">Insider tips for a smooth journey from {stand.name}</p>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
+      {/* ====== TRAVEL TIPS — dark band ====== */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+          <SerifHeading
+            eyebrow="Insider Tips"
+            title="What are the best travel tips for"
+            highlight={`${stand.name}?`}
+            subtitle={`Insider tips for a smooth journey from ${stand.name}`}
+            tone="dark"
+          />
+          <div className="mx-auto grid max-w-4xl gap-5 sm:grid-cols-2">
             {stand.tips.map((tip, i) => (
-              <div key={i} className="flex items-start gap-4 bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-6 transition-all duration-300 group">
-                <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400" />
+              <div key={i} className={`group flex items-start gap-4 ${GLASS} p-6 transition-all duration-300 hover:border-amber-400/40`}>
+                <div className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border border-amber-400/25 bg-amber-400/10">
+                  <CheckCircle2 className="h-4 w-4 text-[#FACF2D]" />
                 </div>
-                <p className="text-gray-300 leading-relaxed">{tip}</p>
+                <p className="leading-relaxed text-gray-300">{tip}</p>
               </div>
             ))}
           </div>
@@ -504,33 +518,33 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
       <InclusionBadges preset="local" theme="dark" />
       <SectionDivider color="amber" className="my-8" />
 
-      {/* FAQ Section */}
-      <section className="faq-section py-14 md:py-20 lg:py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              Frequently Asked <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">Questions</span>
-            </h2>
-            <p className="text-gray-400 text-lg">Common queries about taxi service from {stand.name}, {stand.city}</p>
-          </div>
+      {/* ====== FAQ — warm-light band, two-column grid ====== */}
+      <section className="faq-section bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-6xl sm:px-2 lg:px-4">
+          <SerifHeading
+            eyebrow="FAQs"
+            title="Frequently Asked"
+            highlight="Questions"
+            subtitle={`Common queries about taxi service from ${stand.name}, ${stand.city}`}
+            tone="light"
+          />
 
-          <div className="space-y-4">
+          <div className="grid gap-3 md:grid-cols-2 md:items-start">
             {faqList.map((faq, i) => (
-              <div key={i} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 overflow-hidden transition-all duration-300">
+              <div key={i} className={`group overflow-hidden rounded-2xl border bg-white transition-all duration-300 ${openFaq === i ? 'border-amber-400 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.55)]' : 'border-amber-200 hover:border-amber-300'}`}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   aria-expanded={openFaq === i}
                   aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'}
-                  className="w-full flex items-center justify-between px-7 py-6 text-left focus:outline-none focus:ring-2 focus:ring-amber-500/50 rounded-2xl"
+                  className="flex w-full items-center justify-between rounded-2xl px-6 py-5 text-left focus:outline-none focus:ring-2 focus:ring-amber-500/50 md:px-7 md:py-6"
                 >
-                  <span className="font-bold text-lg pr-4 group-hover:text-amber-400 transition-colors">{faq.question}</span>
-                  <div className={`w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 ${openFaq === i ? 'rotate-180 bg-amber-500/20' : ''}`}>
-                    <ChevronDown className="w-4 h-4 text-amber-400" />
+                  <span className="pr-4 text-base font-bold text-slate-900 transition-colors group-hover:text-amber-700 md:text-lg">{faq.question}</span>
+                  <div className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border border-amber-300 transition-all duration-300 ${openFaq === i ? 'rotate-180 bg-[#FACF2D]' : 'bg-amber-50'}`}>
+                    <ChevronDown className={`h-4 w-4 ${openFaq === i ? 'text-slate-950' : 'text-amber-600'}`} />
                   </div>
                 </button>
-                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === i ? 'max-h-[32rem] pb-7' : 'max-h-0'}`}>
-                  <p className={`px-7 text-gray-300 leading-relaxed ${i === 0 ? 'speakable-faq-first faq-answer-1' : ''}`}>{faq.answer}</p>
+                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === i ? 'max-h-[32rem] pb-6 md:pb-7' : 'max-h-0'}`}>
+                  <p className={`px-6 leading-relaxed text-slate-600 md:px-7 ${i === 0 ? 'speakable-faq-first faq-answer-1' : ''}`}>{faq.answer}</p>
                 </div>
               </div>
             ))}
@@ -538,18 +552,17 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
         </div>
       </section>
 
-      {/* Cross-Service Links */}
-      <section className="py-14 md:py-20 lg:py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
-              What are other travel options from <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">{stand.city}</span>?
-            </h2>
-            <p className="text-gray-400 text-lg">Explore more ways to travel from {stand.city}</p>
-          </div>
+      {/* ====== CROSS-SERVICE LINKS — dark band ====== */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+          <SerifHeading
+            title="What are other travel options from"
+            highlight={`${stand.city}?`}
+            subtitle={`Explore more ways to travel from ${stand.city}`}
+            tone="dark"
+          />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { title: `${stand.city} Railway Station Taxi`, href: `/railway-station-taxi`, icon: Route, desc: 'Taxi service at railway stations' },
               { title: `${stand.city} Sightseeing Tours`, href: `/sightseeing/${stand.city.toLowerCase().replace(/\s+/g, '-')}`, icon: MapPin, desc: 'Explore tourist attractions' },
@@ -559,12 +572,12 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
               <Link
                 key={i}
                 href={link.href}
-                className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-6 transition-all duration-500 hover:-translate-y-1"
+                className={`group ${GLASS} p-6 transition-all duration-500 hover:-translate-y-1 hover:border-amber-400/40`}
               >
-                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <link.icon className="w-6 h-6 text-amber-400" />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 transition-transform duration-300 group-hover:scale-110">
+                  <link.icon className="h-6 w-6 text-[#FACF2D]" />
                 </div>
-                <h3 className="font-bold group-hover:text-amber-400 transition-colors mb-1">{link.title}</h3>
+                <h3 className="mb-1 font-bold text-white transition-colors group-hover:text-amber-300">{link.title}</h3>
                 <p className="text-sm text-gray-400">{link.desc}</p>
               </Link>
             ))}
@@ -572,17 +585,17 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
         </div>
       </section>
 
-      {/* Other Bus Stand Taxi Services */}
-      <section className="py-14 md:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">
-              Other <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">Bus Stand Taxi Services</span>
-            </h2>
-            <p className="text-gray-400 text-lg">Explore cab services at other bus stands across India</p>
-          </div>
+      {/* ====== OTHER BUS STAND TAXI SERVICES ====== */}
+      <section className="px-4 pb-16 md:pb-24">
+        <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+          <SerifHeading
+            title="Other"
+            highlight="Bus Stand Taxi Services"
+            subtitle="Explore cab services at other bus stands across India"
+            tone="dark"
+          />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {Object.entries(allStands)
               .filter(([key]) => key !== slug)
               .slice(0, 6)
@@ -590,73 +603,73 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
                 <Link
                   key={key}
                   href={`/bus-stand-taxi/${key}`}
-                  className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-6 transition-all duration-500 hover:-translate-y-1 flex items-center gap-4"
+                  className={`group flex items-center gap-4 ${GLASS} p-6 transition-all duration-500 hover:-translate-y-1 hover:border-amber-400/40`}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <Bus className="w-6 h-6 text-amber-400" />
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 transition-transform duration-300 group-hover:scale-110">
+                    <Bus className="h-6 w-6 text-[#FACF2D]" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-bold group-hover:text-amber-400 transition-colors">{s.name}</h3>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-bold text-white transition-colors group-hover:text-amber-300">{s.name}</h3>
                     <p className="text-sm text-gray-400">{s.city}</p>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-gray-600 group-hover:text-amber-400 transition-all group-hover:translate-x-1 flex-shrink-0" />
+                  <ArrowRight className="h-5 w-5 flex-shrink-0 text-gray-600 transition-all group-hover:translate-x-1 group-hover:text-amber-400" />
                 </Link>
               ))}
           </div>
 
-          <div className="text-center mt-10">
+          <div className="mt-10 text-center">
             <Link
               href="/bus-stand-taxi"
-              className="inline-flex items-center gap-2 text-amber-400 font-semibold hover:text-yellow-300 transition-colors text-lg"
+              className="inline-flex items-center gap-2 text-lg font-semibold text-amber-300 transition-colors hover:text-amber-200"
             >
-              View All Bus Stand Taxi Services <ArrowRight className="w-5 h-5" />
+              View All Bus Stand Taxi Services <ArrowRight className="h-5 w-5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-14 md:py-20 lg:py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl">
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-600 via-yellow-500 to-orange-500" />
-            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-            <div className="absolute top-0 left-1/4 w-64 h-64 bg-white/20 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-yellow-300/20 rounded-full blur-3xl" />
+      {/* ====== FINAL CTA — city photo banner with gold ====== */}
+      <section className="relative overflow-hidden px-4 py-24 md:py-32">
+        <Image
+          src={heroImage}
+          alt={`${stand.city} — book your bus stand taxi`}
+          fill
+          className="object-cover"
+          sizes="100vw"
+          quality={80}
+        />
+        <div className="absolute inset-0 bg-slate-950/80" />
+        <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-            <div className="relative px-8 py-16 sm:px-16 text-center">
-              <div className="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-2 mb-6">
-                <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                <span className="text-white text-sm font-semibold">Available Right Now</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-5xl font-black text-white mb-4 tracking-tight">
-                Need a Cab from {stand.name}?
-              </h2>
-              <p className="text-xl text-amber-100 mb-10 max-w-2xl mx-auto">
-                Book your ride now. Comfortable, safe, and affordable travel from {stand.name}, {stand.city}. Available 24/7 with fixed transparent fares.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href="tel:7668570551"
-                  onClick={() => trackPhoneCall('bus_stand')}
-                  className="inline-flex items-center gap-3 bg-white text-amber-700 font-black px-10 py-5 rounded-2xl hover:bg-amber-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:scale-105 text-lg"
-                >
-                  <Phone className="w-6 h-6" />
-                  Call 7668570551
-                </a>
-                <a
-                  href="https://wa.me/917668570551"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackWhatsAppClick('bus_stand')}
-                  className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-white font-bold px-10 py-5 rounded-2xl border-2 border-white/30 hover:bg-white/30 transition-all duration-300 hover:-translate-y-1 text-lg"
-                >
-                  <WhatsAppIcon className="w-6 h-6" />
-                  WhatsApp Us
-                </a>
-              </div>
-            </div>
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <div className="mb-8 inline-flex h-20 w-20 items-center justify-center rounded-full border-2 border-[#FACF2D]/70 bg-gradient-to-br from-amber-400/25 via-transparent to-transparent backdrop-blur-xl">
+            <Bus className="h-9 w-9 text-[#FACF2D]" />
+          </div>
+          <h2 className="font-display-serif mb-4 text-3xl font-black tracking-tight text-white sm:text-5xl">
+            Need a Cab from <span className={FOIL}>{stand.name}?</span>
+          </h2>
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-white/65 md:text-xl">
+            Book your ride now. Comfortable, safe, and affordable travel from {stand.name}, {stand.city}. Available 24/7 with fixed transparent fares.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="tel:7668570551"
+              onClick={() => trackPhoneCall('bus_stand')}
+              className={`${GOLD_BTN} ${CTA_SIZE}`}
+            >
+              <Phone className="h-4 w-4" />
+              Call 7668570551
+            </a>
+            <a
+              href="https://wa.me/917668570551"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('bus_stand')}
+              className={`${GHOST_BTN} ${CTA_SIZE}`}
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              WhatsApp Us
+            </a>
           </div>
         </div>
       </section>

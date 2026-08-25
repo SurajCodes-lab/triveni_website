@@ -1,6 +1,7 @@
 import TrustPageClient from '@/components/competitor/TrustPageClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -9,7 +10,7 @@ const pageTitle = 'Triveni Cabs Fleet: Sedans, SUVs, Tempo Travellers | Our Vehi
 const pageDesc = 'Explore Triveni Cabs fleet: Swift Dzire, Toyota Etios, Innova Crysta, Ertiga, Tempo Travellers. Well-maintained AC vehicles, GPS-tracked, sanitized. Book from ₹9/km. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs fleet', 'triveni cabs vehicles', 'innova crysta cab booking', 'swift dzire cab service', 'suv cab booking north india', 'tempo traveller booking', 'ac cab fleet india', 'sedan cab booking', 'ertiga cab service', 'premium cab fleet north india'],
   authors: [{ name: 'Triveni Cabs' }],
@@ -132,8 +133,8 @@ export default function FleetPage() {
             description: 'For large groups, corporate outings, weddings, and pilgrimage tours. Multiple seater options available.',
             features: [
               { title: '12-Seater Tempo Traveller', description: 'Compact group vehicle with pushback seats, AC, and music system. Perfect for small groups. From ₹18/km.' },
-              { title: '16-Seater Tempo Traveller', description: 'Mid-size group transport with comfortable seating, charging points, and ample luggage space. From ₹20/km.' },
-              { title: '20-26 Seater Options', description: 'Large group buses for corporate events, weddings, and pilgrimage tours. AC, music system, and experienced drivers. From ₹22/km.' },
+              { title: '16-Seater Tempo Traveller', description: 'Mid-size group transport with comfortable seating, charging points, and ample luggage space. From ₹23/km.' },
+              { title: '20-26 Seater Options', description: 'Large group buses for corporate events, weddings, and pilgrimage tours. AC, music system, and experienced drivers. From ₹25/km.' },
             ],
           },
           {

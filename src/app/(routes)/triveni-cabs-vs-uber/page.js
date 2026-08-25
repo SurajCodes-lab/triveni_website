@@ -1,6 +1,7 @@
 import CompetitorCompareClient from '@/components/competitor/CompetitorCompareClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getComparisonSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -9,7 +10,7 @@ const pageTitle = 'Triveni Cabs vs Uber: Honest Comparison 2026 | Who Wins? — 
 const pageDesc = 'Triveni Cabs vs Uber comparison 2026. Compare pricing, surge charges, outstation coverage, driver quality. Zero surge pricing, verified drivers, 24/7 support. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs vs uber', 'uber alternative india', 'better than uber cabs', 'uber vs triveni pricing', 'uber surge pricing alternative', 'no surge cab service india', 'uber outstation alternative', 'cab booking without app', 'uber competitor north india', 'reliable cab vs uber'],
   authors: [{ name: 'Triveni Cabs' }],

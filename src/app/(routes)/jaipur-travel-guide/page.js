@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 import { getArticleSchema, getSpeakableSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jaipur Travel Guide 2026 | Pink City Attractions, Food & Tips',
+  title: tightenTitle('Jaipur Travel Guide 2026 | Pink City Attractions, Food & Tips'),
   description: 'Complete Jaipur travel guide 2026. Amber Fort, Hawa Mahal, City Palace, Nahargarh, best time to visit, food, shopping. Call 7668570551.',
   keywords: 'jaipur travel guide, jaipur tourist guide, pink city guide, jaipur sightseeing, jaipur tourism, things to do in jaipur, jaipur attractions',
   authors: [{ name: 'Triveni Cabs' }],

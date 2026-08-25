@@ -1,10 +1,11 @@
 import { getSpecialTransportBySlug } from '@/utilis/specialTransportData';
 import SpecialTransportClient from '@/components/special/SpecialTransportClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const service = getSpecialTransportBySlug('women-safety-cab-service');
 
 export const metadata = {
-  title: 'Women Safety Cab Service | Verified Drivers, GPS Tracked',
+  title: tightenTitle('Women Safety Cab Service | Verified Drivers, GPS Tracked'),
   description: 'Book women safety cab with verified drivers, GPS tracking, SOS panic button. No night surcharge. Safe travel for women at all hours. Call 7668570551.',
   keywords: 'women safety cab, safe cab for women, women cab service, night cab for women, women safety taxi, lady cab service, SOS cab, GPS tracked cab women',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

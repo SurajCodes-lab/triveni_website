@@ -78,6 +78,9 @@ export async function generateMetadata({ params }) {
     city: record.city,
     vehicle: record.vehicle,
     monument: record.monuments?.[0],
+    // Each tour ships a distinct headline; without it three Taj Mahal tours
+    // collapsed onto the identical title "Taj Mahal ₹7,000 — Vehicle + Licensed Guide".
+    headline: record.headline,
     bundledFare: record.bundledFare,
     guideFee: record.guideFee,
     duration: record.duration,

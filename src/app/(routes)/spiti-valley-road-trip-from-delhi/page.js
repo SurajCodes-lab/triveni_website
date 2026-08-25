@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "spiti-valley-road-trip-from-delhi";
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Spiti Valley Road Trip from Delhi 2026 | 8-10 Day Plan',
+  title: tightenTitle('Spiti Valley Road Trip from Delhi 2026 | 8-10 Day Plan'),
   description: 'Spiti Valley road trip from Delhi: 8-10 day plan via Shimla & Manali. Route, permits, altitude tips, road conditions. SUV ₹65,000. Call 7668570551.',
   keywords: 'spiti valley road trip from delhi plan, delhi to spiti valley by car, spiti valley tour itinerary, spiti valley road conditions, spiti valley permit',
   authors: [{ name: 'Triveni Cabs' }],

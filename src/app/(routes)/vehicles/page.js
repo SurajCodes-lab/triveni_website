@@ -5,12 +5,13 @@ import { Car, Users, Fuel, Star, ArrowRight, Shield, Clock, Phone } from "@/comp
 import { vehicleDetails } from "@/utilis/data";
 import { getArticleSchema, getSpeakableSchema } from "@/lib/seo/speakable-helpers";
 import { getRatingAndReviews } from "@/lib/seo/review-helpers";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: "Car Rental Fleet | Sedan, SUV, Tempo Traveller, Bus Hire India",
-  description: "Browse our complete vehicle fleet for rental across India. Sedan from ₹11/km, SUV from ₹15/km, Tempo Traveller from ₹20/km, Bus from ₹30/km.",
+  title: tightenTitle("Car Rental Fleet | Sedan, SUV, Tempo Traveller, Bus Hire India"),
+  description: "Browse our complete vehicle fleet for rental across India. Sedan from ₹11/km, SUV from ₹15/km, Tempo Traveller from ₹23/km, Bus from ₹30/km.",
   keywords: "car rental india, vehicle hire, sedan rental, suv booking, tempo traveller hire, 12 seater tempo, 17 seater tempo, bus rental india, 27 seater bus, 45 seater volvo, cab fleet, taxi service",
   alternates: {
     canonical: "https://www.trivenicabs.in/vehicles"
@@ -76,7 +77,7 @@ const vehicleCategories = [
     description: "Comfortable 12-26 seater tempo travellers with luxury pushback seats, LED TV, and GPS tracking. Perfect for pilgrimages, corporate tours, and wedding parties.",
     capacity: "12-26 Passengers",
     luggage: "Ample Luggage Space",
-    priceStart: "₹20/km",
+    priceStart: "₹23/km",
     variants: ["12 Seater", "16 Seater", "17 Seater", "20 Seater Luxury", "26 Seater Maharaja"],
     features: ["AC", "Luxury Pushback Seats", "LED TV", "Music System", "GPS Tracking", "Charging Points"],
     image: "/images/tempo/17_seater.jpg",
@@ -145,10 +146,10 @@ function generateStructuredData() {
 
 // FAQ data for the fleet page (AEO/featured snippet capture)
 const vehicleFaqs = [
-  { q: "Which vehicle types can I rent from Triveni Cabs?", a: "Triveni Cabs offers sedans (from ₹11/km), SUVs (from ₹15/km), 12-26 seater tempo travellers (from ₹20/km), and 22-56 seater buses (from ₹30/km). All vehicles are AC, well-maintained, and come with a professional driver." },
+  { q: "Which vehicle types can I rent from Triveni Cabs?", a: "Triveni Cabs offers sedans (from ₹11/km), SUVs (from ₹15/km), 12-26 seater tempo travellers (from ₹23/km), and 22-56 seater buses (from ₹30/km). All vehicles are AC, well-maintained, and come with a professional driver." },
   { q: "Which car is best for a family trip?", a: "For a family of 4 a sedan like the Swift Dzire is comfortable and economical. For families of 5-7 or those with heavy luggage, a Toyota Innova or Ertiga SUV offers more space. Groups of 8 or more should choose a tempo traveller." },
   { q: "Do all Triveni Cabs vehicles have AC and a driver?", a: "Yes. Every vehicle in the Triveni Cabs fleet is air-conditioned, regularly sanitized, GPS-tracked, and comes with an experienced, background-verified driver included in the fare." },
-  { q: "How much does a tempo traveller or bus cost?", a: "Tempo travellers (12-26 seater) start at ₹20/km and buses (22-56 seater) start at ₹30/km. Exact pricing depends on the route, duration, and vehicle. Call 7668570551 or WhatsApp for an all-inclusive quote." },
+  { q: "How much does a tempo traveller or bus cost?", a: "Tempo travellers (12-26 seater) start at ₹23/km and buses (22-56 seater) start at ₹30/km. Exact pricing depends on the route, duration, and vehicle. Call 7668570551 or WhatsApp for an all-inclusive quote." },
   { q: "Can I book a luxury vehicle for a wedding or VIP travel?", a: "Yes, Triveni Cabs offers premium and luxury vehicles including Innova Crysta, premium sedans, and decorated wedding cars for weddings, corporate VIP travel, and special occasions across 50+ cities." },
 ];
 
@@ -178,7 +179,7 @@ export default function VehiclesPage() {
   const articleSchema = getArticleSchema({
     slug: 'vehicles',
     headline: 'Triveni Cabs Vehicle Fleet — Sedan, SUV, Tempo Traveller & Bus Hire',
-    description: 'Complete vehicle fleet for hire across India: sedan from ₹11/km, SUV from ₹15/km, tempo traveller from ₹20/km, bus from ₹30/km.',
+    description: 'Complete vehicle fleet for hire across India: sedan from ₹11/km, SUV from ₹15/km, tempo traveller from ₹23/km, bus from ₹30/km.',
     image: '/images/car/innova_crysta.jpg',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
   });
@@ -219,10 +220,22 @@ export default function VehiclesPage() {
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-yellow-400 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-yellow-500 rounded-full blur-3xl" />
+        <section className="relative py-20 bg-slate-950 overflow-hidden">
+          {/* Photo hero */}
+          <Image
+            src="/images/car/innova_crysta.jpg"
+            alt="Triveni Cabs premium fleet - Innova Crysta"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-950/70 to-slate-950/90" />
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400" />
+          <div className="absolute inset-0 opacity-20 pointer-events-none">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-yellow-400/40 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-yellow-500/30 rounded-full blur-3xl" />
           </div>
 
           <div className="relative max-w-7xl mx-auto px-4 text-center">
@@ -239,8 +252,8 @@ export default function VehiclesPage() {
               </ol>
             </nav>
 
-            <h1 className="speakable-headline text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Our Vehicle <span className="text-yellow-400">Fleet</span>
+            <h1 className="speakable-headline font-display-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Our Vehicle <span className="text-gold-foil">Fleet</span>
             </h1>
             <p className="speakable-lead text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               Choose from our wide range of well-maintained vehicles for any travel need.
@@ -271,7 +284,7 @@ export default function VehiclesPage() {
         <section className="py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Choose Your Perfect Ride
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
@@ -392,9 +405,9 @@ export default function VehiclesPage() {
         </section>
 
         {/* Why Choose Us */}
-        <section className="py-16 px-4 bg-gray-50">
+        <section className="py-16 px-4 bg-[#FFF6DC]">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            <h2 className="font-display-serif text-3xl font-bold text-center text-gray-900 mb-12">
               Why Choose Triveni Cabs?
             </h2>
             <div className="grid md:grid-cols-4 gap-8">
@@ -433,27 +446,29 @@ export default function VehiclesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-              Ready to Book Your Ride?
+        <section className="relative py-16 px-4 bg-slate-950 overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400" />
+          <div className="absolute -top-20 right-[15%] w-72 h-72 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="relative max-w-4xl mx-auto text-center">
+            <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-white mb-4">
+              Ready to Book <span className="text-gold-foil">Your Ride?</span>
             </h2>
-            <p className="text-gray-800 mb-8">
+            <p className="text-white/60 mb-8">
               Call us now or send a WhatsApp message for instant booking confirmation
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="tel:+917668570551"
-                className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full font-bold hover:bg-gray-800 transition-all"
+                className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-8 py-4 lg:px-5 lg:py-2 lg:text-[13px] rounded-full font-bold hover:bg-amber-300 transition-all"
               >
-                <Phone className="w-5 h-5" />
+                <Phone className="w-5 h-5 lg:w-4 lg:h-4" />
                 Call: +91 76685 70551
               </a>
               <a
                 href="https://wa.me/917668570551"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-full font-bold hover:bg-green-700 transition-all"
+                className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 lg:px-5 lg:py-2 lg:text-[13px] rounded-full font-bold hover:bg-green-700 transition-all"
               >
                 WhatsApp Booking
               </a>
@@ -463,11 +478,11 @@ export default function VehiclesPage() {
 
         {/* FAQ Section */}
         <section className="faq-section py-16 px-4 bg-white">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="font-display-serif text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8">
               Vehicle Fleet — Frequently Asked Questions
             </h2>
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:items-start gap-3">
               {vehicleFaqs.map((faq, index) => (
                 <details key={index} className="bg-gray-50 rounded-xl border border-gray-200 p-5 group">
                   <summary className="font-semibold text-gray-900 cursor-pointer flex items-center justify-between">

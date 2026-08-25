@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { busStands } from '@/utilis/busStandData';
 import { Phone, MapPin, Bus, ArrowRight, Clock, Shield, Star, Users, ChevronDown, CheckCircle, IndianRupee } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
@@ -9,11 +10,12 @@ import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import BookingJourney from '@/components/shared/BookingJourney';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SectionDivider from '@/components/shared/SectionDivider';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Bus Stand Taxi | Taxi from Bus Stand | 13+ ISBTs | Triveni Cabs',
+  title: tightenTitle('Bus Stand Taxi | Taxi from Bus Stand | 13+ ISBTs'),
   description: 'Book a taxi from any bus stand or ISBT across North India. Fixed fares, 24/7 pickup at the bus stand exit, AC cabs. Kashmere Gate, Anand Vihar, Sindhi Camp Jaipur, Agra Idgah & more. Call 7668570551.',
   keywords: 'bus stand taxi, taxi from bus stand, cab at bus stand, ISBT cab service, bus stand pickup taxi, bus terminal taxi, prepaid bus stand taxi, ISBT taxi India, bus stand cab booking',
   authors: [{ name: 'Triveni Cabs' }],
@@ -38,6 +40,16 @@ export const metadata = {
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
+
+// ─── Ultra-Premium v2 vocabulary ────────────────────────────────────────────
+const FOIL =
+  'text-gold-foil bg-gradient-to-br from-[#FFE9A0] via-[#FACF2D] to-[#B8860B] bg-clip-text text-transparent drop-shadow-[0_2px_18px_rgba(250,207,45,0.35)]';
+const GOLD_BTN =
+  'sheen inline-flex items-center justify-center gap-2 rounded-full bg-[#FACF2D] font-black text-slate-950 shadow-[0_12px_36px_-10px_rgba(250,207,45,0.55)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-300 active:translate-y-0 active:scale-[0.98]';
+const GHOST_BTN =
+  'inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10';
+const CTA_SIZE = 'w-full px-7 py-4 text-sm lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]';
+const GLASS = 'bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10';
 
 export default function BusStandTaxiHubPage() {
   const standEntries = Object.entries(busStands);
@@ -173,58 +185,55 @@ export default function BusStandTaxiHubPage() {
       <AEOHead pageType="busStand" data={{ url: '/bus-stand-taxi', title: 'Bus Stand Taxi Service' }} />
 
       <div className="min-h-screen bg-slate-950 text-white">
-        {/* Hero */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-green-950 via-slate-950 to-emerald-950" />
-          <div className="absolute inset-0">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-emerald-500/8 rounded-full blur-3xl" />
-            <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-lime-500/5 rounded-full blur-3xl" />
-          </div>
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(rgba(74,222,128,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(74,222,128,0.3) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
-          </div>
+        {/* Hero — visible photo, scrim on the text side only */}
+        <section className="relative flex min-h-[74vh] flex-col justify-end overflow-hidden">
+          <Image
+            src="/images/sightseeing/Delhi/Delhi_hero_section.jpg"
+            alt="Delhi — home of ISBT Kashmere Gate, flagship terminal of our bus stand taxi network"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/10" />
+          <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-slate-950/75 via-slate-950/30 to-transparent lg:w-3/4" />
+          <div className="absolute inset-x-0 top-0 z-20 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-            <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8">
-              <Link href="/" className="hover:text-green-400 transition-colors">Home</Link>
-              <ChevronDown className="w-3 h-3 -rotate-90" />
-              <span className="text-green-400">Bus Stand Taxi</span>
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-14 pt-28 sm:px-6 lg:px-8">
+            <nav className="mb-8 flex items-center gap-2 text-sm text-white/45" aria-label="Breadcrumb">
+              <Link href="/" className="transition-colors hover:text-amber-300">Home</Link>
+              <ChevronDown className="h-3 w-3 -rotate-90" />
+              <span className="text-amber-300">Bus Stand Taxi</span>
             </nav>
 
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-4 py-2 mb-6">
-                <Bus className="w-4 h-4 text-green-400" />
-                <span className="text-green-400 text-sm font-medium">13 Bus Stands Covered</span>
+              <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-amber-400/30 bg-slate-950/60 px-5 py-2.5 backdrop-blur-md">
+                <Bus className="h-4 w-4 text-[#FACF2D]" />
+                <span className="font-mono text-sm tracking-wider text-amber-200">13 BUS STANDS COVERED</span>
               </div>
 
-              <h1 className="speakable-headline text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-green-400 via-emerald-300 to-lime-400 bg-clip-text text-transparent">
-                  Bus Stand & ISBT
-                </span>
-                <br />
-                <span className="text-white">Taxi Service Across India</span>
+              <h1 className="speakable-headline font-display-serif text-balance text-4xl font-black leading-[1.04] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                <span className={FOIL}>Bus Stand &amp; ISBT</span>
+                <span className="block text-white">Taxi Service Across India</span>
               </h1>
 
-              <p className="speakable-lead text-lg text-gray-300 mb-8 leading-relaxed">
+              <p className="speakable-lead mb-8 mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
                 Book a taxi from any bus stand or ISBT and get a reliable, AC cab waiting at the exit gate. We serve 13 major bus terminals across North India with fixed fares starting at ₹100, 24/7 availability, verified drivers, and zero waiting time — no surge pricing, no haggling with autos.
               </p>
 
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="tel:7668570551"
-                  className="group inline-flex items-center gap-3 bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:-translate-y-0.5"
-                >
-                  <Phone className="w-5 h-5" />
+              <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                <a href="tel:7668570551" className={`${GOLD_BTN} ${CTA_SIZE}`}>
+                  <Phone className="h-4 w-4" />
                   Call Now - 7668570551
                 </a>
                 <a
                   href="https://wa.me/917668570551"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-green-500/30 hover:border-green-400/60 hover:bg-green-500/10 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300"
+                  className={`${GHOST_BTN} ${CTA_SIZE}`}
                 >
-                  <WhatsAppIcon className="w-5 h-5 text-green-400" />
+                  <WhatsAppIcon className="h-4 w-4 text-[#FACF2D]" />
                   WhatsApp Booking
                 </a>
               </div>
@@ -236,9 +245,9 @@ export default function BusStandTaxiHubPage() {
         <SocialProofStrip theme="dark" />
 
         {/* Stats */}
-        <section className="border-y border-white/5 bg-gradient-to-r from-green-950/50 via-slate-950 to-emerald-950/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <section className="border-y border-white/5 bg-gradient-to-r from-amber-950/40 via-slate-950 to-amber-950/40">
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
               {[
                 { icon: Bus, value: '13+', label: 'Bus Stands' },
                 { icon: Clock, value: '24/7', label: 'Availability' },
@@ -246,11 +255,11 @@ export default function BusStandTaxiHubPage() {
                 { icon: Star, value: '4.8/5', label: 'Customer Rating' },
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center">
-                    <stat.icon className="w-6 h-6 text-green-400" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-[#FACF2D]/40 bg-gradient-to-br from-amber-400/20 via-transparent to-transparent">
+                    <stat.icon className="h-6 w-6 text-[#FACF2D]" />
                   </div>
                   <div>
-                    <p className="font-bold text-xl text-white">{stat.value}</p>
+                    <p className="font-display-serif text-xl font-black text-white">{stat.value}</p>
                     <p className="text-sm text-gray-400">{stat.label}</p>
                   </div>
                 </div>
@@ -259,41 +268,36 @@ export default function BusStandTaxiHubPage() {
           </div>
         </section>
 
-        {/* Direct Answer (AEO / featured-snippet target) */}
-        <section className="py-12">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-green-500/20 p-6 md:p-8">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                How do I get a taxi from a bus stand?
+        {/* Direct Answer (AEO / featured-snippet target) — warm-light band */}
+        <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+          <div className="mx-auto max-w-4xl sm:px-2 lg:px-4">
+            <div className="rounded-2xl border border-amber-200 bg-white p-6 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] md:p-8">
+              <h2 className="font-display-serif mb-4 text-2xl font-black text-slate-900 md:text-3xl">
+                How do I get a taxi from a <span className={FOIL}>bus stand?</span>
               </h2>
-              <p className="speakable-faq-first text-gray-300 leading-relaxed text-base md:text-lg">
-                To get a taxi from a bus stand, call Triveni Cabs at <strong className="text-white">7668570551</strong> or WhatsApp with the bus stand name, your arrival time, and destination. A verified driver waits at the marked pickup point near the exit gate when your bus arrives. Fares are <strong className="text-green-400">fixed and start at ₹100</strong> for local drops, with AC sedans and SUVs available 24/7 and no surge pricing. This works at all 13+ ISBTs and bus stands we serve across North India.
+              <p className="speakable-faq-first text-base leading-relaxed text-slate-700 md:text-lg">
+                To get a taxi from a bus stand, call Triveni Cabs at <strong className="text-slate-900">7668570551</strong> or WhatsApp with the bus stand name, your arrival time, and destination. A verified driver waits at the marked pickup point near the exit gate when your bus arrives. Fares are <strong className="text-amber-700">fixed and start at ₹100</strong> for local drops, with AC sedans and SUVs available 24/7 and no surge pricing. This works at all 13+ ISBTs and bus stands we serve across North India.
               </p>
             </div>
           </div>
         </section>
 
         {/* How to Book — visible ordered list (HowTo schema mirror) */}
-        <section className="py-12">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-                How to <span className="text-green-400">Book a Taxi from a Bus Stand</span>
+        <section className="px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-4xl sm:px-2 lg:px-4">
+            <div className="mx-auto mb-10 max-w-3xl text-center">
+              <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-white sm:text-4xl">
+                How to <span className={FOIL}>Book a Taxi from a Bus Stand</span>
               </h2>
-              <p className="text-gray-400">Four simple steps to a fixed-fare cab waiting at your bus stand</p>
+              <p className="mt-4 text-gray-400">Four simple steps to a fixed-fare cab waiting at your bus stand</p>
             </div>
             <ol className="space-y-4">
-              {[
-                { name: 'Call or WhatsApp Triveni Cabs', text: 'Call 7668570551 or WhatsApp with the bus stand name, your expected arrival time, and your drop destination.' },
-                { name: 'Choose your vehicle & confirm the fare', text: 'Pick an AC sedan, SUV, or tempo traveller. You get a fixed, transparent fare quote upfront — no surge, no meter.' },
-                { name: 'Receive driver details', text: 'Get instant confirmation with the driver name, photo, phone number, and vehicle registration, plus live GPS tracking.' },
-                { name: 'Meet at the bus stand exit', text: 'Your driver waits at the marked pickup point near the exit gate when your bus arrives. Step out and ride away — no waiting, no haggling.' },
-              ].map((step, i) => (
-                <li key={i} className="flex items-start gap-4 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
-                  <div className="w-9 h-9 rounded-full bg-green-500 text-slate-950 font-bold flex items-center justify-center flex-shrink-0">{i + 1}</div>
+              {howToSteps.map((step, i) => (
+                <li key={i} className={`flex items-start gap-4 ${GLASS} p-5`}>
+                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-[#FACF2D] font-bold text-slate-950 shadow-[0_8px_24px_-8px_rgba(250,207,45,0.7)]">{i + 1}</div>
                   <div>
-                    <h3 className="font-bold text-lg mb-1">{step.name}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{step.text}</p>
+                    <h3 className="font-display-serif mb-1 text-lg font-black text-white">{step.name}</h3>
+                    <p className="text-sm leading-relaxed text-gray-400">{step.text}</p>
                   </div>
                 </li>
               ))}
@@ -301,39 +305,60 @@ export default function BusStandTaxiHubPage() {
           </div>
         </section>
 
-        {/* Comparison Table — prepaid stand taxi vs app cab vs auto */}
-        <section className="py-12">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-                Bus Stand Taxi vs <span className="text-green-400">App Cab vs Auto</span>
+        {/* Comparison — prepaid stand taxi vs app cab vs auto */}
+        <section className="px-4 pb-16 md:pb-24">
+          <div className="mx-auto max-w-5xl sm:px-2 lg:px-4">
+            <div className="mx-auto mb-10 max-w-3xl text-center">
+              <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-white sm:text-4xl">
+                Bus Stand Taxi vs <span className={FOIL}>App Cab vs Auto</span>
               </h2>
-              <p className="text-gray-400">Why a pre-booked bus stand taxi beats app cabs and autos on price, comfort, and safety</p>
+              <p className="mt-4 text-gray-400">Why a pre-booked bus stand taxi beats app cabs and autos on price, comfort, and safety</p>
             </div>
-            <div className="overflow-x-auto bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
+
+            {/* Mobile — stacked label/value cards */}
+            <div className="space-y-4 md:hidden">
+              {comparisonRows.map((row, i) => (
+                <div key={i} className={`${GLASS} p-5`}>
+                  <p className="font-display-serif mb-3 text-base font-black text-white">{row.feature}</p>
+                  <dl className="space-y-2 text-xs">
+                    <div className="flex justify-between gap-3 border-b border-white/5 pb-2">
+                      <dt className="font-mono uppercase tracking-widest text-amber-300">Triveni</dt>
+                      <dd className="flex items-start gap-1.5 text-right font-bold text-amber-200">
+                        <CheckCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
+                        {row.triveni}
+                      </dd>
+                    </div>
+                    <div className="flex justify-between gap-3 border-b border-white/5 pb-2">
+                      <dt className="font-mono uppercase tracking-widest text-white/40">App Cab</dt>
+                      <dd className="text-right text-white/60">{row.app}</dd>
+                    </div>
+                    <div className="flex justify-between gap-3">
+                      <dt className="font-mono uppercase tracking-widest text-white/40">Auto</dt>
+                      <dd className="text-right text-white/60">{row.auto}</dd>
+                    </div>
+                  </dl>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop — full table, no horizontal scroll wrapper */}
+            <div className={`hidden overflow-hidden md:block ${GLASS}`}>
               <table className="w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-white/10">
+                  <tr className="border-b border-amber-400/20 bg-amber-400/10">
                     <th className="px-4 py-4 font-semibold text-gray-300">Feature</th>
-                    <th className="px-4 py-4 font-semibold text-green-400">Triveni Bus Stand Taxi</th>
+                    <th className="px-4 py-4 font-semibold text-amber-300">Triveni Bus Stand Taxi</th>
                     <th className="px-4 py-4 font-semibold text-gray-300">App Cab</th>
                     <th className="px-4 py-4 font-semibold text-gray-300">Auto-Rickshaw</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {[
-                    { feature: 'Fare certainty', triveni: 'Fixed fare quoted upfront', app: 'Surges during peak bus arrivals', auto: 'Negotiated on the spot' },
-                    { feature: 'Vehicle', triveni: 'AC sedan / SUV guaranteed', app: 'Varies, AC not guaranteed', auto: 'Open auto, no AC' },
-                    { feature: 'Availability at night', triveni: '24/7, no night surcharge', app: 'Limited, high surge', auto: 'Scarce, premium charged' },
-                    { feature: 'Driver verification', triveni: 'Background-verified & GPS-tracked', app: 'Verified, varies by city', auto: 'Unverified' },
-                    { feature: 'Waiting for delayed bus', triveni: 'Driver waits free for delays', app: 'Cancels / re-books', auto: 'May refuse to wait' },
-                    { feature: 'Luggage & comfort', triveni: 'Fits suitcases, clean cabin', app: 'Depends on car', auto: 'Limited space' },
-                  ].map((row, i) => (
+                  {comparisonRows.map((row, i) => (
                     <tr key={i} className="border-b border-white/5 last:border-0">
                       <td className="px-4 py-3.5 font-medium text-gray-200">{row.feature}</td>
-                      <td className="px-4 py-3.5 text-green-300">
+                      <td className="px-4 py-3.5 text-amber-200">
                         <span className="inline-flex items-start gap-1.5">
-                          <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
                           {row.triveni}
                         </span>
                       </td>
@@ -344,79 +369,79 @@ export default function BusStandTaxiHubPage() {
                 </tbody>
               </table>
             </div>
-            <p className="text-center text-xs text-gray-500 mt-4">
-              <IndianRupee className="w-3 h-3 inline -mt-0.5" /> All Triveni fares are fixed AC-sedan rates with no surge or hidden charges.
+            <p className="mt-4 text-center text-xs text-gray-500">
+              <IndianRupee className="-mt-0.5 inline h-3 w-3" /> All Triveni fares are fixed AC-sedan rates with no surge or hidden charges.
             </p>
           </div>
         </section>
 
-        {/* Bus Stand Cards grouped by city */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Which <span className="text-green-400">bus stand</span> are you arriving at?
+        {/* Bus Stand Cards grouped by city — warm-light directory */}
+        <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/70 to-white px-4 py-16 text-slate-900 md:py-24">
+          <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
+              <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-slate-900 sm:text-4xl">
+                Which <span className={FOIL}>bus stand</span> are you arriving at?
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">Select the bus stand where you are arriving for instant cab service with transparent pricing</p>
+              <p className="mx-auto mt-4 max-w-2xl text-slate-600">Select the bus stand where you are arriving for instant cab service with transparent pricing</p>
             </div>
 
             {Object.entries(grouped).map(([city, stands]) => (
               <div key={city} className="mb-12">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center">
-                    <MapPin className="w-4 h-4 text-green-400" />
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-amber-300 bg-amber-50">
+                    <MapPin className="h-4 w-4 text-amber-600" />
                   </div>
-                  <h3 className="text-2xl font-bold">{city}</h3>
-                  <div className="flex-1 h-px bg-gradient-to-r from-green-500/20 to-transparent" />
+                  <h3 className="font-display-serif text-2xl font-black text-slate-900">{city}</h3>
+                  <div className="h-px flex-1 bg-gradient-to-r from-amber-400/40 to-transparent" />
                 </div>
 
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {stands.map((stand) => (
                     <Link
                       key={stand.slug}
                       href={`/bus-stand-taxi/${stand.slug}`}
-                      className="group bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-green-500/30 overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                      className="group overflow-hidden rounded-2xl border border-amber-200 bg-white shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:shadow-[0_20px_60px_-28px_rgba(180,130,10,0.6)]"
                     >
                       {/* Card Header */}
-                      <div className="bg-gradient-to-r from-green-600/20 to-emerald-500/10 px-6 py-4 border-b border-white/5">
+                      <div className="border-b border-amber-100 bg-gradient-to-r from-amber-50 via-[#FFF6DC] to-amber-50 px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 rounded-xl bg-green-500/20 border border-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <Bus className="w-6 h-6 text-green-400" />
+                          <div className="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-[#FACF2D]/50 bg-white transition-transform group-hover:scale-110">
+                            <Bus className="h-6 w-6 text-amber-600" />
                           </div>
                           <div>
-                            <h4 className="font-bold text-lg group-hover:text-green-400 transition-colors">{stand.name}</h4>
-                            <p className="text-sm text-gray-400">{stand.area}</p>
+                            <h4 className="font-display-serif text-lg font-black text-slate-900 transition-colors group-hover:text-amber-700">{stand.name}</h4>
+                            <p className="text-sm text-slate-500">{stand.area}</p>
                           </div>
                         </div>
                       </div>
 
                       {/* Card Body */}
                       <div className="px-6 py-5">
-                        <p className="text-sm text-gray-400 mb-4 line-clamp-2">{stand.description}</p>
+                        <p className="mb-4 line-clamp-2 text-sm text-slate-600">{stand.description}</p>
 
-                        <div className="space-y-2 mb-4">
+                        <div className="mb-4 space-y-2">
                           <div className="flex items-center gap-2 text-sm">
-                            <Users className="w-4 h-4 text-green-400 flex-shrink-0" />
-                            <span className="text-gray-300">{stand.busOperators.length} bus operators</span>
+                            <Users className="h-4 w-4 flex-shrink-0 text-amber-600" />
+                            <span className="text-slate-700">{stand.busOperators.length} bus operators</span>
                           </div>
                           <div className="flex items-center gap-2 text-sm">
-                            <MapPin className="w-4 h-4 text-green-400 flex-shrink-0" />
-                            <span className="text-gray-300">{stand.destinations.length} popular destinations</span>
+                            <MapPin className="h-4 w-4 flex-shrink-0 text-amber-600" />
+                            <span className="text-slate-700">{stand.destinations.length} popular destinations</span>
                           </div>
                         </div>
 
-                        <div className="flex flex-wrap gap-1.5 mb-4">
+                        <div className="mb-4 flex flex-wrap gap-1.5">
                           {stand.destinations.slice(0, 3).map((d, i) => (
-                            <span key={i} className="bg-green-500/10 text-green-300 text-xs px-2.5 py-1 rounded-full border border-green-500/15">
+                            <span key={i} className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs text-amber-800">
                               {d.name}
                             </span>
                           ))}
                         </div>
 
-                        <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                          <span className="text-sm text-gray-400">From <span className="text-green-400 font-semibold">{stand.destinations[0]?.fare}</span></span>
-                          <span className="inline-flex items-center gap-1 text-green-400 text-sm font-medium group-hover:gap-2 transition-all">
-                            View Fares <ArrowRight className="w-4 h-4" />
+                        <div className="flex items-center justify-between border-t border-amber-100 pt-3">
+                          <span className="text-sm text-slate-500">From <span className="font-display-serif font-black text-amber-700">{stand.destinations[0]?.fare}</span></span>
+                          <span className="inline-flex items-center gap-1 text-sm font-medium text-amber-700 transition-all group-hover:gap-2">
+                            View Fares <ArrowRight className="h-4 w-4" />
                           </span>
                         </div>
                       </div>
@@ -428,15 +453,15 @@ export default function BusStandTaxiHubPage() {
           </div>
         </section>
 
-        {/* Why Choose Section */}
-        <section className="py-20 bg-gradient-to-b from-slate-950 via-green-950/20 to-slate-950">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Why Choose <span className="text-green-400">Triveni Cabs</span> at Bus Stands?
+        {/* Why Choose Section — dark band */}
+        <section className="bg-gradient-to-b from-slate-950 via-amber-950/15 to-slate-950 px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+            <div className="mx-auto mb-12 max-w-3xl text-center">
+              <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-white sm:text-4xl">
+                Why Choose <span className={FOIL}>Triveni Cabs</span> at Bus Stands?
               </h2>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 { title: 'Pre-Booked Pickup', desc: 'No scrambling for autos or taxis. Your cab is ready before your bus arrives.' },
                 { title: 'Fixed Transparent Fares', desc: 'Know your fare upfront. No surge pricing, no meter tampering, no arguments.' },
@@ -445,8 +470,8 @@ export default function BusStandTaxiHubPage() {
                 { title: 'AC Comfort After Long Bus Rides', desc: 'Step out of a cramped bus into a clean, air-conditioned sedan or SUV.' },
                 { title: 'Outstation Available', desc: 'Not just local - book cabs to any destination across North India.' },
               ].map((feature, i) => (
-                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-green-500/30 p-6 transition-all duration-300">
-                  <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
+                <div key={i} className={`${GLASS} p-6 transition-all duration-300 hover:border-amber-400/40`}>
+                  <h3 className="font-display-serif mb-2 text-lg font-black text-white">{feature.title}</h3>
                   <p className="text-sm text-gray-400">{feature.desc}</p>
                 </div>
               ))}
@@ -462,36 +487,36 @@ export default function BusStandTaxiHubPage() {
         <BookingJourney theme="dark" />
         <SectionDivider color="emerald" className="my-4" />
 
-        {/* FAQ Section */}
-        <section className="py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Frequently Asked <span className="text-green-400">Questions</span>
+        {/* FAQ Section — warm-light band, two-column grid */}
+        <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+          <div className="mx-auto max-w-6xl sm:px-2 lg:px-4">
+            <div className="mx-auto mb-12 max-w-3xl text-center">
+              <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-slate-900 sm:text-4xl">
+                Frequently Asked <span className={FOIL}>Questions</span>
               </h2>
-              <p className="text-gray-400">Common queries about our bus stand taxi services</p>
+              <p className="mt-4 text-slate-600">Common queries about our bus stand taxi services</p>
             </div>
-            <div className="space-y-4">
+            <div className="grid gap-4 md:grid-cols-2 md:items-start">
               {hubFaqs.map((faq, i) => (
-                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6">
-                  <h3 className="font-bold text-lg mb-3 text-green-400">{faq.question}</h3>
-                  <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                <div key={i} className="rounded-2xl border border-amber-200 bg-white p-6 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] transition-all hover:border-amber-300">
+                  <h3 className="font-display-serif mb-3 text-lg font-black text-slate-900">{faq.question}</h3>
+                  <p className="leading-relaxed text-slate-600">{faq.answer}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Cross-Service Links */}
-        <section className="py-20 bg-gradient-to-b from-slate-950 via-green-950/20 to-slate-950">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Explore More <span className="text-green-400">Travel Services</span>
+        {/* Cross-Service Links — dark band */}
+        <section className="bg-gradient-to-b from-slate-950 via-amber-950/15 to-slate-950 px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-7xl sm:px-2 lg:px-4">
+            <div className="mx-auto mb-12 max-w-3xl text-center">
+              <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-white sm:text-4xl">
+                Explore More <span className={FOIL}>Travel Services</span>
               </h2>
-              <p className="text-gray-400">Other ways to travel across India with Triveni Cabs</p>
+              <p className="mt-4 text-gray-400">Other ways to travel across India with Triveni Cabs</p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 { title: 'Railway Station Taxi', href: '/railway-station-taxi', desc: 'Taxi at 27+ railway stations' },
                 { title: 'One-Way Cabs', href: '/one-way-cab', desc: 'Affordable outstation rides' },
@@ -501,12 +526,12 @@ export default function BusStandTaxiHubPage() {
                 <Link
                   key={i}
                   href={link.href}
-                  className="group bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-green-500/30 p-6 transition-all duration-300 hover:-translate-y-1"
+                  className={`group ${GLASS} p-6 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40`}
                 >
-                  <h3 className="font-bold group-hover:text-green-400 transition-colors mb-1">{link.title}</h3>
+                  <h3 className="mb-1 font-bold text-white transition-colors group-hover:text-amber-300">{link.title}</h3>
                   <p className="text-sm text-gray-400">{link.desc}</p>
-                  <span className="inline-flex items-center gap-1 text-green-400 text-sm font-medium mt-3 group-hover:gap-2 transition-all">
-                    Explore <ArrowRight className="w-4 h-4" />
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-amber-300 transition-all group-hover:gap-2">
+                    Explore <ArrowRight className="h-4 w-4" />
                   </span>
                 </Link>
               ))}
@@ -514,38 +539,40 @@ export default function BusStandTaxiHubPage() {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="py-20">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative overflow-hidden rounded-3xl">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-emerald-500 to-lime-500" />
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjA1Ij48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnYtNGgydjRoNHYyaC00djRoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30" />
-              <div className="relative px-8 py-14 sm:px-14 text-center">
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                  Arriving at a Bus Stand?
-                </h2>
-                <p className="text-lg text-green-100 mb-8 max-w-2xl mx-auto">
-                  Skip the chaos. Book a comfortable, AC cab with fixed fares. Available at 13+ bus stands across India.
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <a
-                    href="tel:7668570551"
-                    className="inline-flex items-center gap-3 bg-white text-green-700 font-bold px-8 py-4 rounded-2xl hover:bg-green-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-                  >
-                    <Phone className="w-5 h-5" />
-                    Call 7668570551
-                  </a>
-                  <a
-                    href="https://wa.me/917668570551"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-2xl border border-white/30 hover:bg-white/30 transition-all"
-                  >
-                    <WhatsAppIcon className="w-5 h-5" />
-                    WhatsApp Us
-                  </a>
-                </div>
-              </div>
+        {/* Final CTA — photo banner with gold */}
+        <section className="relative overflow-hidden px-4 py-24 md:py-32">
+          <Image
+            src="/images/sightseeing/Delhi/Delhi_hero_section.jpg"
+            alt="Book a bus stand taxi across North India"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            quality={80}
+          />
+          <div className="absolute inset-0 bg-slate-950/80" />
+          <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
+
+          <div className="relative z-10 mx-auto max-w-4xl text-center">
+            <h2 className="font-display-serif mb-4 text-3xl font-black text-white sm:text-5xl">
+              Arriving at a <span className={FOIL}>Bus Stand?</span>
+            </h2>
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-white/65">
+              Skip the chaos. Book a comfortable, AC cab with fixed fares. Available at 13+ bus stands across India.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a href="tel:7668570551" className={`${GOLD_BTN} ${CTA_SIZE}`}>
+                <Phone className="h-4 w-4" />
+                Call 7668570551
+              </a>
+              <a
+                href="https://wa.me/917668570551"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${GHOST_BTN} ${CTA_SIZE}`}
+              >
+                <WhatsAppIcon className="h-4 w-4" />
+                WhatsApp Us
+              </a>
             </div>
           </div>
         </section>

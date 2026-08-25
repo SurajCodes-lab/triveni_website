@@ -65,8 +65,8 @@ const newBlogsWeek39 = [
 <tr><td class="border border-gray-300 px-4 py-2">Sedan (Swift Dzire)</td><td class="border border-gray-300 px-4 py-2">Rs 11/km</td><td class="border border-gray-300 px-4 py-2">2-3 travellers</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Ertiga</td><td class="border border-gray-300 px-4 py-2">Rs 15/km</td><td class="border border-gray-300 px-4 py-2">4-5 travellers with luggage</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Innova Crysta</td><td class="border border-gray-300 px-4 py-2">Rs 18/km</td><td class="border border-gray-300 px-4 py-2">Families, hill comfort</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 20/km</td><td class="border border-gray-300 px-4 py-2">Small groups</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (17)</td><td class="border border-gray-300 px-4 py-2">Rs 24/km</td><td class="border border-gray-300 px-4 py-2">Large groups</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 23/km</td><td class="border border-gray-300 px-4 py-2">Small groups</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (17)</td><td class="border border-gray-300 px-4 py-2">Rs 25/km</td><td class="border border-gray-300 px-4 py-2">Large groups</td></tr>
 </tbody></table>
 <p class="text-gray-700 leading-relaxed mb-4">For a one-way drop, a sedan works out to roughly Rs 11 per km over the distance covered. For Tempo Travellers and buses, the one-way charge is the same as a round trip because the vehicle still returns empty. An Innova is the sweet spot for a family - it handles the hill road comfortably and seats up to six. Compare full options on our <a href="/one-way-cab/delhi-to-manali" class="text-blue-600 hover:underline font-semibold">Delhi to Manali cab page</a>.</p>
 
@@ -92,7 +92,7 @@ const newBlogsWeek39 = [
       { question: "Which vehicle is best for Manali?", answer: "An Innova Crysta for families and a 12-17 seater Tempo Traveller for groups - both handle hill roads well." },
       { question: "How far is Delhi to Manali by road?", answer: "Roughly 535 km via Chandigarh, Bilaspur and Mandi. The route runs on NH-44 to Chandigarh, then NH-3 through Bilaspur, Sundernagar, Mandi and the Aut tunnel." },
       { question: "What is the best season for the Delhi to Manali road trip?", answer: "March to June and September to October. In winter (December-February) check for snow closures beyond Manali at Rohtang and the Atal Tunnel." },
-      { question: "How much does a Delhi to Manali cab cost per km?", answer: "A sedan is Rs 11/km, an Ertiga Rs 15/km and an Innova Crysta Rs 18/km. A 12-seater Tempo Traveller is Rs 20/km and a 17-seater Rs 24/km." }
+      { question: "How much does a Delhi to Manali cab cost per km?", answer: "A sedan is Rs 11/km, an Ertiga Rs 15/km and an Innova Crysta Rs 18/km. A 12-seater Tempo Traveller is Rs 23/km and a 17-seater Rs 25/km." }
     ],
     date: "2026-07-18",
     readTime: "9 min read",
@@ -113,7 +113,7 @@ const newBlogsWeek39 = [
     excerpt: 'A Char Dham Yatra by road covers around 1,600 km over 10-12 days from Haridwar. Complete 2026 cost breakdown for car and Tempo Traveller, plus route order and timings.',
     relatedTours: [
       { id: "chardham", name: "Char Dham Yatra Package", slug: "chardham-yatra", city: "haridwar", price: "On request" },
-      { id: "tempo", name: "Tempo Traveller Hire", slug: "tempo-traveller", city: "delhi", price: "From Rs 20/km" }
+      { id: "tempo", name: "Tempo Traveller Hire", slug: "tempo-traveller", city: "delhi", price: "From Rs 23/km" }
     ],
     relatedDestinations: [
       { name: "Haridwar", slug: "haridwar", type: "city" },
@@ -152,9 +152,9 @@ const newBlogsWeek39 = [
 <tbody>
 <tr><td class="border border-gray-300 px-4 py-2">Ertiga</td><td class="border border-gray-300 px-4 py-2">Rs 15/km</td><td class="border border-gray-300 px-4 py-2">4-5 pilgrims</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Innova Crysta</td><td class="border border-gray-300 px-4 py-2">Rs 18/km</td><td class="border border-gray-300 px-4 py-2">5-6 pilgrims</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 20/km</td><td class="border border-gray-300 px-4 py-2">8-11 pilgrims</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (17)</td><td class="border border-gray-300 px-4 py-2">Rs 24/km</td><td class="border border-gray-300 px-4 py-2">13-15 pilgrims</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (26)</td><td class="border border-gray-300 px-4 py-2">Rs 28/km</td><td class="border border-gray-300 px-4 py-2">Large family/group</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 23/km</td><td class="border border-gray-300 px-4 py-2">8-11 pilgrims</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (17)</td><td class="border border-gray-300 px-4 py-2">Rs 25/km</td><td class="border border-gray-300 px-4 py-2">13-15 pilgrims</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (26)</td><td class="border border-gray-300 px-4 py-2">Rs 31/km</td><td class="border border-gray-300 px-4 py-2">Large family/group</td></tr>
 </tbody></table>
 <p class="text-gray-700 leading-relaxed mb-4">Over a ~1,600 km circuit, a Tempo Traveller (12-seater) works out to the lowest per-person transport cost for a group. Innova is ideal for one family who want comfort on narrow ghats. Budget separately for stays, food, pony/palki at Kedarnath and Yamunotri, and optional helicopter tickets.</p>
 
@@ -180,7 +180,7 @@ const newBlogsWeek39 = [
       { question: "When do the Char Dham temples open in 2026?", answer: "The portals typically open around Akshaya Tritiya (late April/early May) and close around Diwali (late October/November). Confirm exact dates before booking." },
       { question: "What is the correct order of the Char Dham Yatra?", answer: "The traditional order is Yamunotri, then Gangotri, then Kedarnath, then Badrinath, starting and ending at Haridwar or Rishikesh." },
       { question: "How long is the Char Dham circuit by road?", answer: "Around 1,600 km of mountain driving in total, covering all four dhams from Haridwar and back." },
-      { question: "What does a Tempo Traveller cost for Char Dham?", answer: "Rs 20/km for a 12-seater, Rs 24/km for a 17-seater and Rs 28/km for a 26-seater, billed with a minimum of 250-300 km per day." },
+      { question: "What does a Tempo Traveller cost for Char Dham?", answer: "Rs 23/km for a 12-seater, Rs 25/km for a 17-seater and Rs 31/km for a 26-seater, billed with a minimum of 250-300 km per day." },
       { question: "What else should I budget for besides transport?", answer: "Stays, food, pony or palki at Kedarnath and Yamunotri, and optional helicopter tickets. The Uttarakhand Char Dham registration is mandatory but free online." }
     ],
     date: "2026-07-18",
@@ -201,7 +201,7 @@ const newBlogsWeek39 = [
     title: 'Tempo Traveller vs Bus for Group Travel: Which to Book (2026)',
     excerpt: 'Book a Tempo Traveller for groups up to 26 and a bus for 27 or more. Full 2026 comparison of cost, comfort, seating and best use cases to help you choose.',
     relatedTours: [
-      { id: "tempo", name: "Tempo Traveller Hire", slug: "tempo-traveller", city: "delhi", price: "From Rs 20/km" },
+      { id: "tempo", name: "Tempo Traveller Hire", slug: "tempo-traveller", city: "delhi", price: "From Rs 23/km" },
       { id: "bus", name: "Bus Hire & Routes", slug: "bus-routes", city: "delhi", price: "From Rs 30/km" }
     ],
     relatedDestinations: [
@@ -414,7 +414,7 @@ const newBlogsWeek39 = [
 <tr><td class="border border-gray-300 px-4 py-2">Sedan (Swift Dzire)</td><td class="border border-gray-300 px-4 py-2">Rs 11/km</td><td class="border border-gray-300 px-4 py-2">4</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Ertiga</td><td class="border border-gray-300 px-4 py-2">Rs 15/km</td><td class="border border-gray-300 px-4 py-2">6</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Innova Crysta</td><td class="border border-gray-300 px-4 py-2">Rs 18/km</td><td class="border border-gray-300 px-4 py-2">6-7</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 20/km</td><td class="border border-gray-300 px-4 py-2">12</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 23/km</td><td class="border border-gray-300 px-4 py-2">12</td></tr>
 </tbody></table>
 <p class="text-gray-700 leading-relaxed mb-4">Fares are billed at the per-km rate with an outstation minimum of 250-300 km per day. A round-trip day tour is usually the most convenient way to see Jaipur and return the same day. If you plan to continue to Agra or Udaipur, a one-way drop makes more sense - compare on our <a href="/one-way-cab/delhi-to-jaipur" class="text-blue-600 hover:underline font-semibold">Delhi to Jaipur cab page</a>.</p>
 
@@ -432,7 +432,7 @@ const newBlogsWeek39 = [
       { question: "How much is a Delhi-Jaipur cab?", answer: "From Rs 11/km for a sedan, with the exact total depending on round-trip vs one-way and vehicle type." },
       { question: "How far is Delhi from Jaipur?", answer: "About 280 km, roughly 5 hours each way on NH-48 via Gurugram, Manesar, Behror and Shahpura." },
       { question: "Where is a good halt on the Delhi-Jaipur highway?", answer: "Behror or the Midway stops on NH-48 are the usual breakfast halts." },
-      { question: "Which vehicles are available for a Delhi to Jaipur trip?", answer: "A sedan seats 4 at Rs 11/km, an Ertiga seats 6 at Rs 15/km, an Innova Crysta seats 6-7 at Rs 18/km and a 12-seater Tempo Traveller is Rs 20/km." }
+      { question: "Which vehicles are available for a Delhi to Jaipur trip?", answer: "A sedan seats 4 at Rs 11/km, an Ertiga seats 6 at Rs 15/km, an Innova Crysta seats 6-7 at Rs 18/km and a 12-seater Tempo Traveller is Rs 23/km." }
     ],
     date: "2026-07-18",
     readTime: "8 min read",
@@ -565,7 +565,7 @@ const newBlogsWeek39 = [
 <tr><td class="border border-gray-300 px-4 py-2">Sedan (Swift Dzire)</td><td class="border border-gray-300 px-4 py-2">Rs 11/km</td><td class="border border-gray-300 px-4 py-2">Couples / small family</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Ertiga</td><td class="border border-gray-300 px-4 py-2">Rs 15/km</td><td class="border border-gray-300 px-4 py-2">Family of 4-5</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Innova Crysta</td><td class="border border-gray-300 px-4 py-2">Rs 18/km</td><td class="border border-gray-300 px-4 py-2">Comfort over long drive</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 20/km</td><td class="border border-gray-300 px-4 py-2">Group pilgrimage</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 23/km</td><td class="border border-gray-300 px-4 py-2">Group pilgrimage</td></tr>
 </tbody></table>
 <p class="text-gray-700 leading-relaxed mb-4">Cabs are billed per km with an outstation minimum of 250-300 km per day. For the long Delhi-Katra run, an Innova or Ertiga balances comfort and cost; large groups save with a Tempo Traveller (charged the same one-way or round-trip). A round trip is common as pilgrims return the same route.</p>
 
@@ -904,7 +904,7 @@ const newBlogsWeek39 = [
 <tr><td class="border border-gray-300 px-4 py-2">Sedan (Swift Dzire)</td><td class="border border-gray-300 px-4 py-2">Rs 11/km</td><td class="border border-gray-300 px-4 py-2">4</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Ertiga</td><td class="border border-gray-300 px-4 py-2">Rs 15/km</td><td class="border border-gray-300 px-4 py-2">6</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Innova Crysta</td><td class="border border-gray-300 px-4 py-2">Rs 18/km</td><td class="border border-gray-300 px-4 py-2">6-7</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 20/km</td><td class="border border-gray-300 px-4 py-2">12</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 23/km</td><td class="border border-gray-300 px-4 py-2">12</td></tr>
 </tbody></table>
 <p class="text-gray-700 leading-relaxed mb-4">Billed per km with an outstation minimum of 250-300 km per day. For a two-day weekend covering both towns, a round trip is convenient; if you continue onward to the hills, a one-way drop is better value for cars. Tempo Travellers cost the same either way.</p>
 
@@ -922,7 +922,7 @@ const newBlogsWeek39 = [
       { question: "What is the best time for river rafting in Rishikesh?", answer: "September to June, outside the monsoon high-flow months when rafting is usually suspended." },
       { question: "Which route connects Delhi to Haridwar and Rishikesh?", answer: "NH-334 and NH-7 via Meerut and Roorkee, a 5-6 hour drive from Delhi." },
       { question: "What should I see in Haridwar and Rishikesh on a weekend?", answer: "The Ganga Aarti at Har Ki Pauri in Haridwar, then Laxman Jhula, Ram Jhula and Triveni Ghat in Rishikesh, with optional river rafting or the Beatles Ashram." },
-      { question: "What does a Delhi to Rishikesh cab cost?", answer: "A sedan is Rs 11/km, an Ertiga Rs 15/km, an Innova Crysta Rs 18/km and a 12-seater Tempo Traveller Rs 20/km, billed with an outstation minimum of 250-300 km per day." }
+      { question: "What does a Delhi to Rishikesh cab cost?", answer: "A sedan is Rs 11/km, an Ertiga Rs 15/km, an Innova Crysta Rs 18/km and a 12-seater Tempo Traveller Rs 23/km, billed with an outstation minimum of 250-300 km per day." }
     ],
     date: "2026-07-18",
     readTime: "8 min read",
@@ -1079,7 +1079,7 @@ const newBlogsWeek39 = [
 <tr><td class="border border-gray-300 px-4 py-2">Sedan (Swift Dzire)</td><td class="border border-gray-300 px-4 py-2">Rs 11/km</td><td class="border border-gray-300 px-4 py-2">4</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Ertiga</td><td class="border border-gray-300 px-4 py-2">Rs 15/km</td><td class="border border-gray-300 px-4 py-2">6</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Innova Crysta</td><td class="border border-gray-300 px-4 py-2">Rs 18/km</td><td class="border border-gray-300 px-4 py-2">6-7</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 20/km</td><td class="border border-gray-300 px-4 py-2">12</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 23/km</td><td class="border border-gray-300 px-4 py-2">12</td></tr>
 </tbody></table>
 <p class="text-gray-700 leading-relaxed mb-4">A round-trip day tour is the easiest way to visit and return the same day; billing is per km with an outstation minimum of 250-300 km per day. Groups save with a Tempo Traveller, which costs the same one-way or round-trip.</p>
 
@@ -1098,7 +1098,7 @@ const newBlogsWeek39 = [
       { question: "How far is Mathura from Delhi?", answer: "About 145 km to Mathura and 160 km to Vrindavan, a 3 to 3.5 hour drive via the Yamuna Expressway." },
       { question: "Which temples should I cover?", answer: "Krishna Janmabhoomi in Mathura, then Banke Bihari, ISKCON and Prem Mandir in Vrindavan. Prem Mandir has a light show after sunset." },
       { question: "Do the temples close during the day?", answer: "Yes, many temples have a midday closure and open for morning and evening darshan. Timings shift seasonally and on festival days, so confirm before you go." },
-      { question: "What does a Mathura Vrindavan cab cost?", answer: "A sedan is Rs 11/km, an Ertiga Rs 15/km, an Innova Crysta Rs 18/km and a 12-seater Tempo Traveller Rs 20/km." }
+      { question: "What does a Mathura Vrindavan cab cost?", answer: "A sedan is Rs 11/km, an Ertiga Rs 15/km, an Innova Crysta Rs 18/km and a 12-seater Tempo Traveller Rs 23/km." }
     ],
     date: "2026-07-18",
     readTime: "8 min read",
@@ -1116,9 +1116,9 @@ const newBlogsWeek39 = [
     id: 91014,
     slug: 'tempo-traveller-rent-per-km-2026-rate-card',
     title: 'Tempo Traveller Rent Per KM in 2026: 12 to 26 Seater Rate Card',
-    excerpt: 'Tempo Traveller rent in 2026 ranges from Rs 20/km for a 12-seater to Rs 28/km for a 26-seater. Full per-km rate card, what is included and how billing works.',
+    excerpt: 'Tempo Traveller rent in 2026 ranges from Rs 23/km for a 12-seater to Rs 31/km for a 26-seater. Full per-km rate card, what is included and how billing works.',
     relatedTours: [
-      { id: "tempo", name: "Tempo Traveller Hire", slug: "tempo-traveller", city: "delhi", price: "From Rs 20/km" }
+      { id: "tempo", name: "Tempo Traveller Hire", slug: "tempo-traveller", city: "delhi", price: "From Rs 23/km" }
     ],
     relatedDestinations: [
       { name: "Delhi", slug: "delhi", type: "city" },
@@ -1167,16 +1167,16 @@ const newBlogsWeek39 = [
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">How much does a Tempo Traveller cost per km in 2026?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">From Rs 20/km for a 12-seater up to Rs 28/km for a 26-seater, with 16, 17 and 20-seaters priced in between.</p>
+<p class="text-gray-700 leading-relaxed mb-4">From Rs 23/km for a 12-seater up to Rs 31/km for a 26-seater, with 16, 17 and 20-seaters priced in between.</p>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is one-way cheaper than round-trip?</h3>
 <p class="text-gray-700 leading-relaxed mb-4">No. For Tempo Travellers, one-way and round-trip cost the same because the vehicle returns to base either way.</p>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is there a minimum daily distance?</h3>
 <p class="text-gray-700 leading-relaxed mb-4">Yes, outstation trips have a minimum of 250-300 km per day.</p>`,
     faqs: [
-      { question: "How much does a Tempo Traveller cost per km in 2026?", answer: "From Rs 20/km for a 12-seater up to Rs 28/km for a 26-seater, with 16, 17 and 20-seaters priced in between." },
+      { question: "How much does a Tempo Traveller cost per km in 2026?", answer: "From Rs 23/km for a 12-seater up to Rs 31/km for a 26-seater, with 16, 17 and 20-seaters priced in between." },
       { question: "Is one-way cheaper than round-trip?", answer: "No. For Tempo Travellers, one-way and round-trip cost the same because the vehicle returns to base either way." },
       { question: "Is there a minimum daily distance?", answer: "Yes, outstation trips have a minimum of 250-300 km per day." },
-      { question: "What is the full Tempo Traveller rate card?", answer: "12-seater Rs 20/km, 16-seater Rs 22/km, 17-seater Rs 24/km, 20-seater Rs 26/km and 26-seater Rs 28/km." },
+      { question: "What is the full Tempo Traveller rate card?", answer: "12-seater Rs 23/km, 16-seater Rs 25/km, 17-seater Rs 25/km, 20-seater Rs 28/km and 26-seater Rs 31/km." },
       { question: "What is included in the Tempo Traveller rent?", answer: "An experienced driver and fuel, AC push-back seating with luggage space, and standard road permits for the base state." },
       { question: "What costs extra?", answer: "Interstate or hill-state permits, toll and parking, and a driver night allowance for overnight trips. Always confirm inclusions when you get a quote." },
       { question: "Which seater should I book for my group?", answer: "A 12-seater comfortably carries 8-11 with bags, a 16-seater 12-14, a 17-seater 13-15, a 20-seater 16-18 and a 26-seater 20-24." }
@@ -1189,7 +1189,7 @@ const newBlogsWeek39 = [
     keywords: ["tempo traveller rent per km", "tempo traveller rate card 2026", "12 seater tempo traveller price", "17 seater tempo traveller rate", "26 seater tempo cost", "tempo traveller hire per km"],
     featured: true,
     metaTitle: "Tempo Traveller Rent Per KM 2026: 12 to 26 Seater Rate Card",
-    metaDescription: "Tempo Traveller rent in 2026: Rs 20/km (12-seater) to Rs 28/km (26-seater). Full per-km rate card, inclusions and how billing works. One-way = round-trip."
+    metaDescription: "Tempo Traveller rent in 2026: Rs 23/km (12-seater) to Rs 31/km (26-seater). Full per-km rate card, inclusions and how billing works. One-way = round-trip."
   },
 
   // 15 ============================================================

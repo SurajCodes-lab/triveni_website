@@ -5,6 +5,7 @@ import { generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema, com
 import SemanticComparison from '@/components/seo/SemanticComparison';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getComparisonSchema, getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'tempo-traveller-vs-mini-bus';
 const SITE = 'https://www.trivenicabs.in';
@@ -15,7 +16,7 @@ const data = getComparisonBySlug(SLUG);
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Tempo Traveller vs Mini Bus (2026) | Triveni Cabs',
+  title: tightenTitle('Tempo Traveller vs Mini Bus (2026)'),
   description:
     'Tempo traveller vs mini bus compared: capacity, price per km, hill access & comfort. Verdict: tempo for 12-17 & hills, mini bus for 20-27. Call 7668570551.',
   keywords:

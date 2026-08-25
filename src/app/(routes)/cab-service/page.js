@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllCabServiceSlugs } from '@/utilis/cabServiceCityData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "City Cab & Taxi Services Across North India";
+  const title = tightenTitle("City Cab & Taxi Services Across North India");
   const description = "City-wise cab and taxi services across North India: local, outstation, airport. Verified drivers, transparent fares. Triveni Cabs 7668570551.";
   return {
     title,

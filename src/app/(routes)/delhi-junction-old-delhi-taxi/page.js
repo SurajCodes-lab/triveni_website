@@ -2,6 +2,7 @@ import Script from 'next/script';
 import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -45,7 +46,7 @@ const STATION = {
 };
 
 export const metadata = {
-  title: 'Old Delhi Station Taxi Service | Pickup from ₹149 — 4.9★ Rated',
+  title: tightenTitle('Old Delhi Station Taxi Service | Pickup from ₹149 — 4.9★ Rated'),
   description: 'Book taxi from Delhi Junction / Old Delhi Railway Station (DLI). Fixed fares from ₹149 to Red Fort, Chandni Chowk, Airport. AC sedan & SUV, 24/7.',
   keywords: 'old delhi station taxi, delhi junction taxi, DLI station cab, taxi from old delhi to red fort, delhi junction cab booking, old delhi station to airport taxi, chandni chowk station taxi, old delhi railway station cab, DLI to connaught place taxi, old delhi station pickup',
   alternates: { canonical: '/delhi-junction-old-delhi-taxi' },

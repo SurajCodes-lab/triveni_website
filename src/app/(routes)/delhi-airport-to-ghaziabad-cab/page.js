@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Delhi Airport to Ghaziabad Cab ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Delhi Airport to Ghaziabad Cab ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Delhi Airport to Ghaziabad cab at ₹${ROUTE.fare}. Fixed fare, flight tracking, meet & greet at IGI arrivals, AC sedan/SUV. 24/7 service by Triveni Cabs.`,
   keywords: 'delhi airport to ghaziabad cab, delhi airport to ghaziabad taxi, delhi to ghaziabad airport taxi, taxi from delhi airport to ghaziabad, ghaziabad airport pickup, flight tracked ghaziabad taxi, fixed fare ghaziabad cab, delhi airport ghaziabad transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

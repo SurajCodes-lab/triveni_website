@@ -13,7 +13,6 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import { SectionHeader } from "@/components/ui/SectionHeading";
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 export default function TourPackage() {
@@ -69,15 +68,18 @@ Please provide more information and booking details.`;
   return (
     <div>
       {/* tour package */}
-      <section className="py-section-sm md:py-section-lg bg-gradient-to-b from-white to-primary-100">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-white via-[#FFF6DC]/70 to-white">
         <div className="max-w-container mx-auto px-4">
-          <SectionHeader
-            title="Featured Tour Packages - Book Your Adventure Today"
-            subtitle="Discover amazing destinations with our carefully curated travel packages and professional taxi services"
-            level={3}
-            align="center"
-            withUnderline={true}
-          />
+          {/* Premium light header — serif display + gold-foil accent */}
+          <div className="text-center mb-10 md:mb-14">
+            <h3 className="font-display-serif text-3xl md:text-4xl font-black text-slate-900 leading-tight">
+              Featured <span className="text-gold-foil">Tour Packages</span> — Book Your Adventure Today
+            </h3>
+            <span className="mt-4 inline-block h-1 w-16 rounded-full bg-[#FACF2D]" aria-hidden="true" />
+            <p className="mt-3 text-slate-600 max-w-2xl mx-auto">
+              Discover amazing destinations with our carefully curated travel packages and professional taxi services
+            </p>
+          </div>
 
           <div className="relative">
             {currentIndex > 0 && (
@@ -134,8 +136,8 @@ Please provide more information and booking details.`;
                       </div>
                       <div className="p-4 md:p-6">
                         <header>
-                          <h4 className="text-heading-xs md:text-heading-sm font-semibold mb-2">
-                            {pkg.title} - Complete Travel Package
+                          <h4 className="font-display-serif text-heading-xs md:text-heading-sm font-semibold mb-2">
+                            {pkg.title} — Complete Travel Package
                           </h4>
                         </header>
 

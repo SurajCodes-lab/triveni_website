@@ -4,7 +4,7 @@ import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import BusVsCabClient from '@/components/bus-vs-cab/BusVsCabClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
     return { title: 'Comparison Not Found' };
   }
 
-  const title = `Bus vs Cab: ${route.origin} to ${route.destination} | Cost & Time Comparison 2026`;
+  const title = tightenTitle(`Bus vs Cab: ${route.origin} to ${route.destination} | Cost & Time Comparison 2026`);
   const description = `${route.origin} to ${route.destination} — Bus (₹${route.busOptions[0].cost}-₹${route.busOptions[route.busOptions.length - 1].cost}) vs Cab (${route.cabOptions.sedan.fare}). Compare cost, time, comfort for solo/family. Save ${route.comparison.timeSaved}. Call 7668570551.`;
   const ogTitle = `Bus vs Cab: ${route.origin} to ${route.destination} — Which is Cheaper & Faster? | 2026 Guide | Triveni Cabs`;
 

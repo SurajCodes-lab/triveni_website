@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Jaipur Airport to Ajmer Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Jaipur Airport to Ajmer Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Jaipur Airport to Ajmer taxi at ₹${ROUTE.fare}. Fixed fare, flight tracking, meet & greet. Visit Ajmer Dargah and Pushkar. 24/7 by Triveni Cabs.`,
   keywords: 'jaipur airport to ajmer taxi, jaipur airport to ajmer cab, jaipur to ajmer airport taxi, taxi from jaipur airport to ajmer, ajmer airport pickup, flight tracked ajmer taxi, fixed fare ajmer cab, jaipur airport ajmer transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Agra Beyond Taj Mahal | Hidden Gems & Day Trips | 2026',
+  title: tightenTitle('Agra Beyond Taj Mahal | Hidden Gems & Day Trips | 2026'),
   description: 'Discover Agra beyond the Taj. Agra Fort, Fatehpur Sikri, Baby Taj, Mehtab Bagh, Sikandra + day trips to Mathura, Bharatpur. By Agra locals. Call 7668570551.',
   keywords: 'agra beyond taj mahal, places to visit in agra, agra fort, fatehpur sikri, agra hidden gems, agra day trips, baby taj, mehtab bagh',
   authors: [{ name: 'Triveni Cabs' }],

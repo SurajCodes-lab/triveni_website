@@ -2,11 +2,12 @@ import { getFestivalBySlug } from '@/utilis/festivalData';
 import { getPostMonsoonBySlug } from '@/utilis/season/postMonsoonSeason';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('chardham-yatra-september-2026') || getPostMonsoonBySlug('chardham-yatra-september-2026');
 
 export const metadata = {
-  title: 'Char Dham Yatra September 2026 | Post-Monsoon Cab',
+  title: tightenTitle('Char Dham Yatra September 2026 | Post-Monsoon Cab'),
   description: 'Char Dham Yatra in September 2026 — the post-monsoon window. Delhi cab from ₹32,000 sedan, ₹42,000 SUV. 10-11 day circuit. Call 7668570551.',
   keywords: 'chardham yatra september 2026, char dham september, post monsoon chardham yatra, chardham yatra october 2026, delhi to chardham cab september, chardham yatra best time september',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

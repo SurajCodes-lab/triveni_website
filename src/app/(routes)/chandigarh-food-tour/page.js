@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Coffee, ArrowRight, Calendar, Utensils, IndianRupee } from '@/components/ui/icons';
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Chandigarh Food Tour 2026 | Pal Dhaba, Sindhi Sweets, Sector 17 Cafes',
+  title: tightenTitle('Chandigarh Food Tour 2026 | Pal Dhaba, Sindhi Sweets, Sector 17 Cafes'),
   description: 'Complete Chandigarh food tour. Pal Dhaba kebabs, Sindhi Sweets jalebi, Chawla\'s Chicken, Hot Millions garlic toast, Brijwasi lassi, Kulcha Land, Sector 17 cafes.',
   keywords: 'chandigarh food tour, pal dhaba chandigarh, sindhi sweets chandigarh, chawla chicken, sector 17 cafes, best food in chandigarh, punjabi food chandigarh, where to eat chandigarh',
   authors: [{ name: 'Triveni Cabs Editorial' }],

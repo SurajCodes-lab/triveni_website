@@ -3,6 +3,7 @@ import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getStationReviews, getStationHowToSchema } from '@/utilis/stationTaxiEnrichment';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -51,7 +52,7 @@ const STATION = {
 };
 
 export const metadata = {
-  title: 'Ajmer Junction Station Taxi | Pickup from ₹149 — 4.9★ Rated',
+  title: tightenTitle('Ajmer Junction Station Taxi | Pickup from ₹149 — 4.9★ Rated'),
   description: 'Book taxi from Ajmer Junction Railway Station (AII). Fixed fares from ₹149 to Ajmer Sharif Dargah, Pushkar, Ana Sagar Lake. AC sedan & SUV, 24/7.',
   keywords: 'ajmer junction taxi, ajmer station cab, AII station taxi, taxi from ajmer to pushkar, ajmer junction cab booking, ajmer station to dargah taxi, ajmer railway station taxi fare, ajmer to jaipur cab, ajmer junction prepaid taxi, ajmer station pickup',
   alternates: { canonical: '/ajmer-junction-station-taxi' },

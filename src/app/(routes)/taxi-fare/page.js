@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllTaxiFareSlugs } from '@/utilis/taxiFareData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Taxi Fare Guides — Transparent City & Route Pricing";
+  const title = tightenTitle("Taxi Fare Guides — Transparent City & Route Pricing");
   const description = "Transparent taxi fares for North India cities and routes — sedan/SUV/tempo per-km rates and totals. Triveni Cabs 7668570551.";
   return {
     title,

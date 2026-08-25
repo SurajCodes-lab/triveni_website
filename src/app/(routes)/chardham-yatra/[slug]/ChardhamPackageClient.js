@@ -1,11 +1,12 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, XCircle, Clock, Sun, Award, Crown, Zap, Heart, Package, Bus, Fuel, Route, Compass } from '@/components/ui/icons';
 import { registrationSteps, packingTips, seasonGuide, exclusions } from '@/utilis/chardhamYatraData';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import ChardhamVehicleTable from '@/components/seo/ChardhamVehicleTable';
+import { vehicles } from '@/utilis/chardhamYatraData';
 
 // ============================================================================
 // CHARDHAM PACKAGE CLIENT — "Royal Yatra" Design
@@ -90,10 +91,8 @@ const packageThemes = {
 };
 
 export default function ChardhamPackageClient({ data }) {
-  const [mounted, setMounted] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState(null);
   const [activeDay, setActiveDay] = useState(0);
-  useEffect(() => { setMounted(true); }, []);
 
   const { title, vehicle, destination, duration, distance, distanceKm, estimatedPrice, priceNum, allCarPrices, allBusPrices, allBusOptions, allCarOptions, tempoOptions, itinerary, whyChoose, faqs, images, relatedRoutes, vehicleType } = data;
 
@@ -103,6 +102,12 @@ export default function ChardhamPackageClient({ data }) {
 
   // Per-person cost for group packages
   const perPersonCost = vehicleType === 'bus45' && priceNum > 0 ? Math.round(priceNum / 40) : null;
+
+  // Split the title so the hero H1 carries exactly one gold-foil accent line
+  const dashIdx = title.indexOf(' — ');
+  const byIdx = dashIdx === -1 ? title.lastIndexOf(' by ') : -1;
+  const titleMain = dashIdx > -1 ? title.slice(0, dashIdx) : byIdx > -1 ? title.slice(0, byIdx) : title;
+  const titleAccent = dashIdx > -1 ? title.slice(dashIdx + 3) : byIdx > -1 ? title.slice(byIdx + 1) : `by ${vehicle.name}`;
 
   return (
     <div className={`min-h-screen bg-gradient-to-b ${theme.bgPage}`}>
@@ -114,26 +119,6 @@ export default function ChardhamPackageClient({ data }) {
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         </div>
-
-        {/* Floating sparkle effect */}
-        {mounted && (
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                className={`absolute w-1.5 h-1.5 rounded-full ${theme.bg}`}
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: [0, 1, 0],
-                  scale: [0.5, 1.5, 0.5],
-                  y: [0, -100],
-                }}
-                transition={{ duration: 3 + i * 0.5, repeat: Infinity, delay: i * 0.7 }}
-                style={{ left: `${15 + i * 14}%`, top: `${60 + (i % 3) * 10}%` }}
-              />
-            ))}
-          </div>
-        )}
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -149,65 +134,49 @@ export default function ChardhamPackageClient({ data }) {
               </div>
 
               {/* Package badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+              <div
                 className={`inline-flex items-center gap-2 bg-gradient-to-r ${theme.gradientBg} border ${theme.border} rounded-full px-5 py-2 mb-6`}
               >
                 <ThemeIcon className={`w-4 h-4 ${theme.text}`} />
                 <span className={`${theme.text} text-xs font-bold tracking-widest uppercase`}>{theme.badge}</span>
-              </motion.div>
+              </div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="speakable-headline text-3xl sm:text-4xl md:text-5xl font-bold text-white font-serif mb-3 leading-tight"
+              <h1
+                className="speakable-headline font-display-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 leading-[1.05] tracking-tight"
               >
-                {title}
-              </motion.h1>
+                {titleMain}
+                <span className="mt-2 block text-gold-foil text-2xl sm:text-3xl md:text-4xl">{titleAccent}</span>
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.13 }}
+              <p
                 className="speakable-lead text-white/75 text-base md:text-lg mb-3 max-w-2xl leading-relaxed"
               >
                 This {theme.name.toLowerCase()} Char Dham Yatra 2026 package uses the {vehicle.name} ({vehicle.seats}-seater) at ₹{vehicle.perKm}/km — from {estimatedPrice} for the full {duration} circuit covering all four Dhams. Includes vehicle, fuel, driver, tolls and 24/7 support with experienced hill drivers.
-              </motion.p>
+              </p>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.16 }}
+              <p
                 className={`${theme.textMuted} text-lg italic mb-8`}
               >
                 {theme.tagline}
-              </motion.p>
+              </p>
 
               {/* Price highlight */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+              <div
                 className={`inline-block bg-gradient-to-r ${theme.gradientBg} border ${theme.border} rounded-2xl px-8 py-5 mb-8`}
               >
                 <p className="text-white/60 text-sm">Starting from</p>
                 <div className="flex items-baseline gap-2">
-                  <span className={`text-4xl font-bold ${theme.text}`}>{estimatedPrice}</span>
+                  <span className="text-4xl font-black text-gold-foil tabular-nums">{estimatedPrice}</span>
                   <span className="text-white/40 text-sm">for {duration}</span>
                 </div>
                 <p className="text-white/40 text-xs mt-1">₹{vehicle.perKm}/km | {distance}</p>
                 {perPersonCost && (
                   <p className={`${theme.text} text-sm font-semibold mt-2`}>Just ₹{perPersonCost.toLocaleString('en-IN')}/person (40 pax)</p>
                 )}
-              </motion.div>
+              </div>
 
               {/* Quick stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25 }}
+              <div
                 className="flex flex-wrap gap-3 mb-8"
               >
                 {[
@@ -221,28 +190,22 @@ export default function ChardhamPackageClient({ data }) {
                     <span className="text-white/80 text-sm">{s.label}</span>
                   </div>
                 ))}
-              </motion.div>
+              </div>
 
               {/* CTAs */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+              <div
                 className="flex flex-wrap gap-4"
               >
-                <a href="tel:+917668570551" className={`inline-flex items-center gap-2 bg-gradient-to-r ${theme.gradient} text-white px-8 py-3.5 rounded-full font-bold text-lg hover:shadow-lg ${theme.shadow} transition-all hover:scale-105`}>
-                  <Phone className="w-5 h-5" /> Book Now — 7668570551
+                <a href="tel:+917668570551" className="sheen inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-8 py-3.5 rounded-full font-black text-lg shadow-[0_12px_36px_-10px_rgba(250,207,45,0.55)] transition-all hover:bg-amber-300 hover:-translate-y-0.5 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
+                  <Phone className="w-5 h-5 lg:w-4 lg:h-4" /> Book Now — 7668570551
                 </a>
-                <a href={`https://wa.me/917668570551?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-green-500 transition-all hover:scale-105">
-                  <MessageCircle className="w-5 h-5" /> WhatsApp
+                <a href={`https://wa.me/917668570551?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-white/20 bg-white/10 backdrop-blur-md text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-white/20 transition-all lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
+                  <MessageCircle className="w-5 h-5 text-green-400 lg:w-4 lg:h-4" /> WhatsApp
                 </a>
-              </motion.div>
+              </div>
 
               {/* Trust Row */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
+              <div
                 className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-7 text-white/80 text-sm"
               >
                 <span className="flex items-center gap-1.5"><Star className={`w-4 h-4 ${theme.text}`} /> 4.9&#9733; Rated</span>
@@ -252,14 +215,11 @@ export default function ChardhamPackageClient({ data }) {
                 <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-cyan-400" /> Verified hill drivers</span>
                 <span className="w-1 h-1 rounded-full bg-white/30" />
                 <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> No advance payment</span>
-              </motion.div>
+              </div>
             </div>
 
             {/* Right: Vehicle Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
+            <div
               className="relative hidden lg:block"
             >
               <div className={`relative h-[400px] rounded-3xl overflow-hidden border ${theme.border}`}>
@@ -270,16 +230,23 @@ export default function ChardhamPackageClient({ data }) {
                   <p className="text-white/60 text-sm">{vehicle.category} | {vehicle.fuelType} | {vehicle.transmission}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* ===== Vehicle comparison table (AEO/GEO) ==========================
+           "Which vehicle for Char Dham" is a four-variable trade-off, and
+           these package pages carried no <table> at all despite existing to
+           answer exactly that. The circuit total is multiplied out here so a
+           per-km rate becomes a number someone can budget against. ======= */}
+      <ChardhamVehicleTable vehicles={vehicles} highlightType={data?.vehicleType} />
+
       {/* ===== Quick Enquiry Form ===== */}
-      <section className="py-14">
+      <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-4">Reserve the {theme.name} Package</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mb-4">Reserve the {theme.name} Package</h2>
             <p className="text-white/70 leading-relaxed">Share your dates and group size for a transparent, all-inclusive quote within minutes. Reserve with a small refundable token — pay the balance on arrival.</p>
           </div>
           <div className="flex lg:justify-end">
@@ -289,19 +256,16 @@ export default function ChardhamPackageClient({ data }) {
       </section>
 
       {/* ===== SECTION 2: Included / Excluded ===== */}
-      <section className="py-20">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <div className="text-center mb-14">
             <span className={`${theme.text} text-sm font-bold tracking-widest uppercase`}>Package Details</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">What is Included & Excluded</h2>
-          </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">What is Included & Excluded</h2>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Included */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+            <div
               className={`bg-white/5 backdrop-blur-xl rounded-2xl border ${theme.border} p-8`}
             >
               <div className="flex items-center gap-3 mb-6">
@@ -318,13 +282,10 @@ export default function ChardhamPackageClient({ data }) {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
 
             {/* Excluded */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+            <div
               className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-8"
             >
               <div className="flex items-center gap-3 mb-6">
@@ -341,52 +302,44 @@ export default function ChardhamPackageClient({ data }) {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ===== SECTION 3: Vehicle Gallery ===== */}
-      <section className="py-16 bg-black/20">
+      <section className="py-16 md:py-24 bg-black/20">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-white font-serif mb-8 text-center">Gallery</h2>
+          <h2 className="text-2xl font-bold text-white font-display-serif mb-8 text-center">Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             {images.gallery.map((img, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
                 className={`relative h-40 rounded-xl overflow-hidden border border-white/10 ${theme.hoverBorder} transition-all group`}
               >
                 <Image src={img} alt={`Package gallery ${i + 1}`} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ===== SECTION 4: Compare All Packages ===== */}
-      <section className="py-20">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <div className="text-center mb-14">
             <span className={`${theme.text} text-sm font-bold tracking-widest uppercase`}>Compare Packages</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">Which Package is Right for You?</h2>
-          </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">Which Package is Right for You?</h2>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {allCarPrices.map((car, i) => {
               const pkgTheme = packageThemes[car.type] || packageThemes.fortuner;
               const isCurrentPackage = car.type === vehicleType;
               return (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
                   className={`relative rounded-2xl overflow-hidden border transition-all ${
                     isCurrentPackage
                       ? `${pkgTheme.border} ring-1 ${pkgTheme.ring || 'ring-white/10'} bg-gradient-to-b ${pkgTheme.gradientBg}`
@@ -416,7 +369,7 @@ export default function ChardhamPackageClient({ data }) {
                       {isCurrentPackage ? 'Book This Package' : 'Enquire'}
                     </a>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -428,38 +381,51 @@ export default function ChardhamPackageClient({ data }) {
                 <Bus className={`w-5 h-5 ${theme.text}`} /> All Bus Sizes Available
               </h3>
               <div className="bg-white/5 rounded-2xl border border-white/10 overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-white/10 bg-white/[0.02]">
-                        <th className="text-left text-gray-400 p-4 font-medium">Bus Type</th>
-                        <th className="text-center text-gray-400 p-4 font-medium">Seats</th>
-                        <th className="text-center text-gray-400 p-4 font-medium">Per Km</th>
-                        <th className="text-center text-gray-400 p-4 font-medium">Min. Charge</th>
-                        <th className="text-center text-gray-400 p-4 font-medium">Per Person (est.)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {allBusOptions.map((bus, i) => (
-                        <tr key={i} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                          <td className="p-4">
-                            <div className="flex items-center gap-3">
-                              <div className="relative w-12 h-8 flex-shrink-0">
-                                <Image src={bus.image} alt={bus.name} fill sizes="96px" className="object-contain" />
-                              </div>
-                              <span className="text-white font-medium">{bus.name}</span>
+                {/* Desktop table */}
+                <table className="hidden md:table w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-white/10 bg-white/[0.02]">
+                      <th className="text-left text-gray-400 p-4 font-medium">Bus Type</th>
+                      <th className="text-center text-gray-400 p-4 font-medium">Seats</th>
+                      <th className="text-center text-gray-400 p-4 font-medium">Per Km</th>
+                      <th className="text-center text-gray-400 p-4 font-medium">Min. Charge</th>
+                      <th className="text-center text-gray-400 p-4 font-medium">Per Person (est.)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {allBusOptions.map((bus, i) => (
+                      <tr key={i} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                        <td className="p-4">
+                          <div className="flex items-center gap-3">
+                            <div className="relative w-12 h-8 flex-shrink-0">
+                              <Image src={bus.image} alt={bus.name} fill sizes="96px" className="object-contain" />
                             </div>
-                          </td>
-                          <td className="p-4 text-center text-gray-300">{bus.seats}</td>
-                          <td className={`p-4 text-center ${theme.text} font-semibold`}>₹{bus.perKm}</td>
-                          <td className="p-4 text-center text-gray-300">{bus.minCharge}</td>
-                          <td className="p-4 text-center text-gray-300">
-                            ~₹{Math.round((distanceKm * bus.perKm) / (bus.seats * 0.85)).toLocaleString('en-IN')}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                            <span className="text-white font-medium">{bus.name}</span>
+                          </div>
+                        </td>
+                        <td className="p-4 text-center text-gray-300">{bus.seats}</td>
+                        <td className="p-4 text-center text-[#FACF2D] font-semibold">₹{bus.perKm}</td>
+                        <td className="p-4 text-center text-gray-300">{bus.minCharge}</td>
+                        <td className="p-4 text-center text-gray-300">
+                          ~₹{Math.round((distanceKm * bus.perKm) / (bus.seats * 0.85)).toLocaleString('en-IN')}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {/* Mobile stacked cards */}
+                <div className="md:hidden divide-y divide-white/5">
+                  {allBusOptions.map((bus, i) => (
+                    <div key={i} className="p-4">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-white font-medium text-sm">{bus.name}</span>
+                        <span className="text-[#FACF2D] font-semibold text-sm">₹{bus.perKm}/km</span>
+                      </div>
+                      <p className="text-gray-400 text-xs">
+                        {bus.seats} seats · Min. {bus.minCharge} · ~₹{Math.round((distanceKm * bus.perKm) / (bus.seats * 0.85)).toLocaleString('en-IN')}/person
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -469,22 +435,18 @@ export default function ChardhamPackageClient({ data }) {
 
       {/* ===== SECTION 5: Itinerary ===== */}
       {itinerary.length > 0 && (
-        <section className="py-20 bg-black/20">
+        <section className="py-16 md:py-24 bg-black/20">
           <div className="max-w-5xl mx-auto px-4">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <div className="text-center mb-14">
               <span className={`${theme.text} text-sm font-bold tracking-widest uppercase`}>Your Itinerary</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">{theme.name} Package — {duration}</h2>
-            </motion.div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">{theme.name} Package — {duration}</h2>
+            </div>
 
             {/* Day cards in a grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {itinerary.map((day, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.06 }}
                   className={`bg-white/5 border border-white/10 rounded-xl p-5 ${theme.hoverBorder} transition-all cursor-pointer ${activeDay === i ? `ring-1 ${theme.border}` : ''}`}
                   onClick={() => setActiveDay(i)}
                 >
@@ -497,7 +459,7 @@ export default function ChardhamPackageClient({ data }) {
                       <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">{day.desc}</p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -505,24 +467,20 @@ export default function ChardhamPackageClient({ data }) {
       )}
 
       {/* ===== SECTION 6: Why Choose This Package ===== */}
-      <section className="py-20">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <div className="text-center mb-14">
             <span className={`${theme.text} text-sm font-bold tracking-widest uppercase`}>Why This Package</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">Why Choose the {theme.name} Package</h2>
-          </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">Why Choose the {theme.name} Package</h2>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {whyChoose.slice(0, 6).map((item, i) => {
               const icons = [Shield, Star, Award, Mountain, Compass, CheckCircle];
               const Icon = icons[i % icons.length];
               return (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
                   className={`bg-white/5 rounded-2xl border border-white/10 p-6 ${theme.hoverBorder} transition-all`}
                 >
                   <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${theme.gradientBg} flex items-center justify-center mb-4`}>
@@ -530,7 +488,7 @@ export default function ChardhamPackageClient({ data }) {
                   </div>
                   <h3 className="text-white font-bold mb-2">{item.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -538,10 +496,10 @@ export default function ChardhamPackageClient({ data }) {
       </section>
 
       {/* ===== SECTION 7: SEO Content ===== */}
-      <section className="py-20 bg-black/20">
+      <section className="py-16 md:py-24 bg-black/20">
         <div className="max-w-4xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-8">{theme.name} Char Dham Yatra Package 2026 — Complete Details</h2>
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-display-serif mb-8">{theme.name} Char Dham Yatra Package 2026 — Complete Details</h2>
 
             <div className="prose prose-invert max-w-none space-y-6 text-gray-300/80 leading-relaxed">
               <p>
@@ -580,38 +538,38 @@ export default function ChardhamPackageClient({ data }) {
                 <ArrowRight className="w-4 h-4 text-gray-500 ml-auto" />
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ===== SECTION: Registration & Biometric ===== */}
-      <section className="py-20 bg-black/20">
+      {/* ===== SECTION: Registration & Biometric — warm-light band ===== */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-[#FFF6DC] via-amber-50/70 to-white">
         <div className="max-w-5xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <span className={`${theme.text} text-sm font-bold tracking-widest uppercase`}>Mandatory in 2026</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">Registration &amp; Biometric Steps</h2>
-            <p className="text-gray-400 mt-3">Free with this package — we handle the paperwork for you</p>
-          </motion.div>
+          <div className="text-center mb-12">
+            <span className="text-amber-700 text-sm font-bold tracking-widest uppercase">Mandatory in 2026</span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 font-display-serif mt-3">Registration &amp; Biometric Steps</h2>
+            <p className="text-slate-600 mt-3">Free with this package — we handle the paperwork for you</p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {registrationSteps.map((step, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
-                className={`bg-white/5 border border-white/10 rounded-2xl p-6 ${theme.hoverBorder} transition-all`}
+              <div key={i}
+                className="bg-white border border-amber-200/60 rounded-2xl p-6 shadow-sm hover:border-amber-400/70 transition-all"
               >
-                <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${theme.gradient} flex items-center justify-center text-white font-bold text-sm mb-3`}>{i + 1}</div>
-                <h3 className="text-white font-semibold mb-2">{step.name}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{step.text}</p>
-              </motion.div>
+                <div className="w-9 h-9 rounded-full bg-[#FACF2D] flex items-center justify-center text-slate-900 font-black text-sm mb-3">{i + 1}</div>
+                <h3 className="text-slate-900 font-semibold mb-2">{step.name}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{step.text}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ===== SECTION: Packing, Season & Exclusions ===== */}
-      <section className="py-20">
+      <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-6">What to Pack &amp; Altitude Tips</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white font-display-serif mb-6">What to Pack &amp; Altitude Tips</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {packingTips.map((tip, i) => (
                   <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4">
@@ -622,7 +580,7 @@ export default function ChardhamPackageClient({ data }) {
               </div>
             </div>
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-6">Best Time to Travel</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white font-display-serif mb-6">Best Time to Travel</h2>
               <div className="space-y-3">
                 {seasonGuide.map((s, i) => (
                   <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4">
@@ -648,43 +606,31 @@ export default function ChardhamPackageClient({ data }) {
       </section>
 
       {/* ===== SECTION 8: FAQs ===== */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+      <section className="py-16 md:py-24">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-14">
             <span className={`${theme.text} text-sm font-bold tracking-widest uppercase`}>FAQs</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">{theme.name} Package — Common Questions</h2>
-          </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">{theme.name} Package — Common Questions</h2>
+          </div>
 
-          <div className="space-y-3">
+          <div className="grid gap-3 md:grid-cols-2 md:items-start">
             {faqs.map((faq, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className={`bg-white/5 border border-white/10 rounded-xl overflow-hidden ${theme.hoverBorder} transition-all`}
+                className={`bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden ${theme.hoverBorder} transition-all`}
               >
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
+                  aria-expanded={expandedFaq === i}
                   className="w-full flex items-center justify-between p-5 text-left"
                 >
                   <span className="text-white font-semibold pr-4">{faq.question}</span>
-                  <ChevronDown className={`w-5 h-5 ${theme.text} flex-shrink-0 transition-transform ${expandedFaq === i ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-5 h-5 text-[#FACF2D] flex-shrink-0 transition-transform ${expandedFaq === i ? 'rotate-180' : ''}`} />
                 </button>
-                <AnimatePresence>
-                  {expandedFaq === i && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <p className={`px-5 pb-5 text-gray-300/70 leading-relaxed${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                {expandedFaq === i && (
+                  <p className={`px-5 pb-5 text-gray-300/70 leading-relaxed${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
+                )}
+              </div>
             ))}
           </div>
         </div>
@@ -692,9 +638,9 @@ export default function ChardhamPackageClient({ data }) {
 
       {/* ===== SECTION 9: Other Packages ===== */}
       {relatedRoutes.length > 0 && (
-        <section className="py-16 bg-black/20">
+        <section className="py-16 md:py-24 bg-black/20">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl font-bold text-white font-serif mb-8 text-center">Explore Other Packages</h2>
+            <h2 className="text-2xl font-bold text-white font-display-serif mb-8 text-center">Explore Other Packages</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {relatedRoutes.slice(0, 3).map((slug, i) => {
                 const pkgType = slug.includes('luxury') ? 'fortuner' : slug.includes('budget') ? 'sedan' : slug.includes('family') ? 'ertiga' : 'bus45';
@@ -719,25 +665,25 @@ export default function ChardhamPackageClient({ data }) {
         </section>
       )}
 
-      {/* ===== FINAL CTA ===== */}
-      <section className={`py-20 bg-gradient-to-r ${theme.gradient} relative overflow-hidden`}>
+      {/* ===== FINAL CTA — gold-foil band ===== */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-orange-600 via-amber-600 to-[#FACF2D] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <ThemeIcon className="w-12 h-12 text-white/80 mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-4">Book the {theme.name} Char Dham Package</h2>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+          <div>
+            <ThemeIcon className="w-12 h-12 text-[#1a1206]/70 mx-auto mb-6" />
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1a1206] font-display-serif mb-4">Book the {theme.name} Char Dham Package</h2>
+            <p className="text-[#2a1d06]/85 text-lg mb-8 max-w-2xl mx-auto">
               Starting from {estimatedPrice}. {vehicle.name}, experienced drivers, 24/7 support. Secure your 2026 yatra season booking today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="tel:+917668570551" className="inline-flex items-center gap-2 bg-white text-gray-900 px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all">
-                <Phone className="w-5 h-5" /> Call 7668570551
+              <a href="tel:+917668570551" className="inline-flex items-center gap-2 bg-[#1a1206] text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-black hover:-translate-y-0.5 transition-all lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
+                <Phone className="w-5 h-5 text-amber-300 lg:w-4 lg:h-4" /> Call 7668570551
               </a>
-              <a href={`https://wa.me/917668570551?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-green-500 hover:scale-105 transition-all">
-                <MessageCircle className="w-5 h-5" /> WhatsApp Us
+              <a href={`https://wa.me/917668570551?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-[#1a1206] px-10 py-4 rounded-full font-bold text-lg hover:bg-amber-50 hover:-translate-y-0.5 transition-all lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
+                <MessageCircle className="w-5 h-5 text-green-600 lg:w-4 lg:h-4" /> WhatsApp Us
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

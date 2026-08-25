@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 import { getArticleSchema, getSpeakableSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Ajmer Travel Guide 2026 | Ajmer Sharif Dargah, Lakes & Tips',
+  title: tightenTitle('Ajmer Travel Guide 2026 | Ajmer Sharif Dargah, Lakes & Tips'),
   description: 'Complete Ajmer travel guide 2026. Ajmer Sharif Dargah, Adhai Din Ka Jhonpra, Ana Sagar Lake, Taragarh, best time, food, dargah etiquette. Call 7668570551.',
   keywords: 'ajmer travel guide, ajmer sharif dargah, khwaja moinuddin chishti, adhai din ka jhonpra, ana sagar lake, taragarh fort, ajmer sightseeing, things to do in ajmer',
   authors: [{ name: 'Triveni Cabs' }],

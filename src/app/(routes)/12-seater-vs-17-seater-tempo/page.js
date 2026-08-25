@@ -5,6 +5,7 @@ import { generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema, com
 import SemanticComparison from '@/components/seo/SemanticComparison';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getComparisonSchema, getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = '12-seater-vs-17-seater-tempo';
 const SITE = 'https://www.trivenicabs.in';
@@ -15,7 +16,7 @@ const data = getComparisonBySlug(SLUG);
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '12 Seater vs 17 Seater Tempo Traveller (2026) | Triveni Cabs',
+  title: tightenTitle('12 Seater vs 17 Seater Tempo Traveller (2026)'),
   description:
     '12 vs 17 seater tempo traveller compared: capacity, price per km, comfort & best-for. Verdict: 12-seater for 8-12, 17-seater for 13-17. Book on 7668570551.',
   keywords:
@@ -46,7 +47,7 @@ export const metadata = {
 
 const COMPARISON_ROWS = [
   { feature: 'Seating capacity', v1: '10-12 passengers + driver', v2: '15-17 passengers + driver' },
-  { feature: 'Price per km', v1: '₹20/km', v2: '₹24/km' },
+  { feature: 'Price per km', v1: '₹23/km', v2: '₹25/km' },
   { feature: 'Minimum charge', v1: '₹5,500 (250 km/day)', v2: '₹6,000 (250 km/day)' },
   { feature: 'Luggage space', v1: 'Moderate — 8-10 medium bags', v2: 'Larger boot — 12-15 bags' },
   { feature: 'Legroom per seat', v1: 'More (fewer seats)', v2: 'Standard' },
@@ -199,8 +200,8 @@ export default function TwelveVsSeventeenSeaterPage() {
 
           <h2 className="text-2xl font-bold text-slate-900 mb-4">Cost comparison example (500 km trip)</h2>
           <p className="text-slate-600 mb-8">
-            At ₹20/km, a 12 seater costs about <strong>₹10,000 + driver allowance</strong> — roughly ₹833 per person for 12
-            travellers. A 17 seater at ₹24/km costs about <strong>₹12,000 + driver allowance</strong> — but split across 17
+            At ₹23/km, a 12 seater costs about <strong>₹10,000 + driver allowance</strong> — roughly ₹833 per person for 12
+            travellers. A 17 seater at ₹25/km costs about <strong>₹12,000 + driver allowance</strong> — but split across 17
             people that is just <strong>₹706 per head</strong>. The takeaway: if you can fill 15+ seats, the 17 seater wins
             on per-person value; for 8-12 people the 12 seater is the cheaper total.
           </p>

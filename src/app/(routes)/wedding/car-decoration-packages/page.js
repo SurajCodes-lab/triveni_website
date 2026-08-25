@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getWeddingSpecialService } from '@/utilis/weddingCarModels';
 import { getWeddingPages } from '@/utilis/linkingHelper';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
@@ -6,13 +7,14 @@ import {
   Phone, ChevronRight, CheckCircle2, ArrowRight,
   Heart, Star, Sparkles, Crown, Car, Leaf, Gift
 } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 const service = getWeddingSpecialService('car-decoration-packages');
 
 export const metadata = {
-  title: service?.metaTitle || 'Wedding Car Decoration Packages | Triveni Cabs',
+  title: tightenTitle(service?.metaTitle || 'Wedding Car Decoration Packages | Triveni Cabs'),
   description: service?.metaDescription || 'Wedding car decoration packages with fresh flowers.',
   alternates: { canonical: 'https://www.trivenicabs.in/wedding/car-decoration-packages' },
   openGraph: {
@@ -85,31 +87,23 @@ export default function CarDecorationPage() {
 
       <div className="min-h-screen bg-[#FFFBF5]">
 
-        {/* === HERO: Enchanted Garden / Floral Boutique === */}
+        {/* === HERO: Real decorated-car photo, warm scrim on text side only (Ultra-Premium v2) === */}
         <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-          {/* Warm botanical gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#FFF8F0] via-[#FEF3E2] to-[#FCE7F3]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(244,114,182,0.12),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(52,211,153,0.08),transparent_50%)]" />
-
-          {/* Floral decorative elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Botanical outlines */}
-            <div className="absolute top-[8%] right-[5%] opacity-[0.06]">
-              <Leaf className="w-48 h-48 text-emerald-600 rotate-45" />
-            </div>
-            <div className="absolute bottom-[10%] left-[3%] opacity-[0.05]">
-              <Sparkles className="w-40 h-40 text-rose-400 -rotate-12" />
-            </div>
-            {/* Soft petal shapes */}
-            <div className="absolute top-[20%] left-[12%] w-20 h-20 bg-rose-200/30 rounded-full blur-2xl" />
-            <div className="absolute top-[35%] right-[15%] w-24 h-24 bg-emerald-200/20 rounded-full blur-3xl" />
-            <div className="absolute bottom-[25%] left-[25%] w-16 h-16 bg-amber-200/25 rounded-full blur-2xl" />
-            <div className="absolute bottom-[40%] right-[30%] w-14 h-14 bg-pink-200/30 rounded-full blur-xl" />
+          {/* Photo background — decorated luxury wedding car */}
+          <div className="absolute inset-0">
+            <Image
+              src="/images/wedding/luxury_car.jpg"
+              alt="Fresh-flower decorated luxury wedding car"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+            {/* Warm ivory scrim over the text side only — photo breathes on the right */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FFF6DC]/95 via-[#FFF6DC]/85 to-[#FFF6DC]/5" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#FFFBF5] to-transparent" />
           </div>
-
-          {/* Subtle vine border on left */}
-          <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-transparent via-emerald-300/30 to-transparent" />
 
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
             {/* Breadcrumb */}
@@ -129,20 +123,20 @@ export default function CarDecorationPage() {
                   <span className="text-rose-600 font-semibold text-sm tracking-widest uppercase">{data.tagline}</span>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-stone-900 leading-[0.95] mb-6">
+                <h1 className="font-display-serif text-5xl md:text-6xl lg:text-7xl font-bold text-[#3a1220] leading-[0.98] mb-6">
                   Wedding Car
-                  <span className="block text-transparent bg-gradient-to-r from-rose-500 via-pink-500 to-emerald-500 bg-clip-text">Decoration</span>
-                  <span className="block text-3xl md:text-4xl font-bold text-stone-400 mt-2 italic">Packages</span>
+                  <span className="block text-gold-foil">Decoration</span>
+                  <span className="block text-3xl md:text-4xl font-bold text-[#8a2140] mt-2 italic">Packages</span>
                 </h1>
 
-                <p className="text-lg text-stone-500 mb-10 max-w-xl leading-relaxed">{data.subtitle}</p>
+                <p className="text-lg text-[#6b3a4a] mb-10 max-w-xl leading-relaxed">{data.subtitle}</p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="tel:+917668570551" className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-8 py-5 rounded-2xl font-bold text-lg shadow-xl shadow-rose-500/20 hover:shadow-rose-500/35 hover:scale-[1.02] transition-all duration-300">
-                    <Phone className="w-5 h-5" /> Get Decoration Quote
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <Link href="tel:+917668570551" className="sheen group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FFE9A0] via-[#FACF2D] to-[#E8B923] text-black font-bold px-6 py-3.5 min-h-[48px] text-sm shadow-lg shadow-amber-500/30 hover:shadow-amber-400/45 transition-all duration-300 lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
+                    <Phone className="w-4 h-4" /> Get Decoration Quote
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
-                  <Link href="https://wa.me/917668570551?text=I need wedding car decoration packages" className="inline-flex items-center justify-center gap-3 bg-white text-stone-700 px-8 py-5 rounded-2xl font-bold text-lg border-2 border-stone-200 hover:border-rose-300 shadow-sm hover:shadow-md transition-all">
+                  <Link href="https://wa.me/917668570551?text=I need wedding car decoration packages" className="inline-flex items-center justify-center gap-2 bg-white text-[#3a1220] px-6 py-3.5 min-h-[48px] rounded-full font-semibold text-sm border border-amber-500/30 hover:border-amber-500/60 shadow-sm hover:shadow-md transition-all lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
                     WhatsApp Us
                   </Link>
                 </div>
@@ -277,7 +271,7 @@ export default function CarDecorationPage() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 md:items-start gap-6">
               {data.faqs.map((faq, idx) => (
                 <div key={idx} className="group bg-white rounded-3xl p-8 border border-stone-100 shadow-sm hover:shadow-xl hover:border-rose-200 transition-all duration-300">
                   <div className="flex items-start gap-4">
@@ -450,36 +444,36 @@ export default function CarDecorationPage() {
           </div>
         </section>
 
-        {/* === CTA: Floral Gradient Banner === */}
-        <section className="relative py-24 px-4 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-rose-500 via-pink-500 to-emerald-500" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.2),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,0,0,0.15),transparent_50%)]" />
+        {/* === CTA: Grand Banner (v2: dark + gold) === */}
+        <section className="relative py-16 md:py-24 px-4 overflow-hidden">
+          <div className="absolute inset-0 bg-slate-950" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(250,207,45,0.14),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(91,18,40,0.45),transparent_55%)]" />
 
           {/* Floating petals */}
           <div className="absolute top-8 left-[15%] opacity-10">
-            <Heart className="w-20 h-20 text-white rotate-12" />
+            <Heart className="w-20 h-20 text-amber-300 rotate-12" />
           </div>
           <div className="absolute bottom-8 right-[15%] opacity-10">
-            <Sparkles className="w-24 h-24 text-white -rotate-12" />
+            <Sparkles className="w-24 h-24 text-amber-300 -rotate-12" />
           </div>
 
           <div className="max-w-4xl mx-auto relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-2 rounded-full mb-8">
-              <Sparkles className="w-4 h-4 text-white" />
-              <span className="text-white/90 font-bold text-sm tracking-wider uppercase">Starting from Rs 2,000</span>
+            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full mb-8">
+              <Sparkles className="w-4 h-4 text-amber-300" />
+              <span className="text-amber-200 font-bold text-sm tracking-wider uppercase">Starting from Rs 2,000</span>
             </div>
 
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Transform Your<br />Wedding Car
+            <h2 className="font-display-serif text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              Transform Your<br /><span className="text-gold-foil">Wedding Car</span>
             </h2>
-            <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">Beautiful, fresh-flower decoration crafted by our expert team. Make every photograph frame-worthy.</p>
+            <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">Beautiful, fresh-flower decoration crafted by our expert team. Make every photograph frame-worthy.</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-3 bg-white text-rose-600 px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-black/20 hover:scale-[1.02] transition-all">
-                <Phone className="w-5 h-5" /> Call +91 7668570551
+              <Link href="tel:+917668570551" className="sheen inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FFE9A0] via-[#FACF2D] to-[#E8B923] text-black font-bold px-6 py-3.5 min-h-[48px] text-sm shadow-lg shadow-amber-500/30 hover:shadow-amber-400/45 transition-all lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
+                <Phone className="w-4 h-4" /> Call +91 7668570551
               </Link>
-              <Link href="https://wa.me/917668570551?text=I need wedding car decoration" className="inline-flex items-center justify-center gap-3 bg-green-500 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-black/20 hover:scale-[1.02] transition-all">
+              <Link href="https://wa.me/917668570551?text=I need wedding car decoration" className="inline-flex items-center justify-center gap-2 bg-white/5 backdrop-blur-xl border border-white/10 text-white px-6 py-3.5 min-h-[48px] rounded-full font-semibold text-sm hover:bg-white/10 transition-all lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
                 WhatsApp Us
               </Link>
             </div>

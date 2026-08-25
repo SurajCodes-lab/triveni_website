@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jaipur Beyond Hawa Mahal | Hidden Gems & Secret Spots | 2026',
+  title: tightenTitle('Jaipur Beyond Hawa Mahal | Hidden Gems & Secret Spots | 2026'),
   description: 'Discover Jaipur beyond Hawa Mahal. Panna Meena Ka Kund, Galtaji Monkey Temple, Chand Baori, Bhangarh Fort, Samode Palace + more. By locals. Call 7668570551.',
   keywords: 'jaipur beyond hawa mahal, jaipur hidden gems, panna meena ka kund, galtaji monkey temple, chand baori, bhangarh fort, jaipur secret places, jaipur offbeat',
   authors: [{ name: 'Triveni Cabs' }],

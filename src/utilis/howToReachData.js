@@ -5,7 +5,7 @@ export const howToReachData = {
   delhi: {
     name: 'Delhi',
     slug: 'delhi',
-    title: 'How to Reach Delhi - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Delhi - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Delhi by air, train, road and bus. Find the best routes, nearest airports, railway stations, and book affordable cabs.',
     introduction: 'Delhi, the capital city of India, is one of the most well-connected cities in the country. Situated in northern India, Delhi serves as the gateway to popular tourist destinations like Agra, Jaipur, Shimla, and Manali. Whether you are visiting for business, tourism, or pilgrimage, reaching Delhi is convenient from virtually any part of India or the world.',
     distanceFromDelhi: '0 km',
@@ -64,7 +64,7 @@ export const howToReachData = {
   agra: {
     name: 'Agra',
     slug: 'agra',
-    title: 'How to Reach Agra - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Agra - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Agra by air, train, road and bus. Best routes to the Taj Mahal city, nearest airports, railway stations, and cab booking.',
     introduction: 'Agra, home to the iconic Taj Mahal, is one of India\'s most visited cities. Located in Uttar Pradesh on the banks of the Yamuna River, Agra is well-connected by air, rail, and road. It forms part of the famous Golden Triangle tourist circuit with Delhi and Jaipur, making it easily accessible from multiple major cities.',
     distanceFromDelhi: '230 km',
@@ -121,7 +121,7 @@ export const howToReachData = {
   jaipur: {
     name: 'Jaipur',
     slug: 'jaipur',
-    title: 'How to Reach Jaipur - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Jaipur - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Jaipur by air, train, road and bus. Best routes to the Pink City, nearest airport, railway stations, and book cabs.',
     introduction: 'Jaipur, the Pink City and capital of Rajasthan, is a major tourist destination known for its magnificent forts, palaces, and vibrant culture. Part of the Golden Triangle circuit with Delhi and Agra, Jaipur is excellently connected by air, rail, and road, making it accessible from all major Indian cities.',
     distanceFromDelhi: '280 km',
@@ -178,7 +178,7 @@ export const howToReachData = {
   shimla: {
     name: 'Shimla',
     slug: 'shimla',
-    title: 'How to Reach Shimla - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Shimla - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Shimla by air, train, road and bus. Best routes to the Queen of Hills, nearest airport, toy train, and cab booking.',
     introduction: 'Shimla, the Queen of Hills and former summer capital of British India, is Himachal Pradesh\'s most popular hill station. Perched at an altitude of 2,205 meters in the foothills of the Himalayas, Shimla attracts tourists year-round with its colonial architecture, scenic beauty, and pleasant climate. The city is well-connected to Delhi, Chandigarh, and other major cities.',
     distanceFromDelhi: '350 km',
@@ -233,7 +233,7 @@ export const howToReachData = {
   manali: {
     name: 'Manali',
     slug: 'manali',
-    title: 'How to Reach Manali - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Manali - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Manali by air, train, road and bus. Best routes, nearest airports, bus services, and book affordable cabs to Manali.',
     introduction: 'Manali, nestled in the Beas River valley of Himachal Pradesh at an altitude of 2,050 meters, is one of India\'s most popular hill stations. Known for its adventure sports, hot springs, and stunning Himalayan landscapes, Manali serves as a gateway to Rohtang Pass, Solang Valley, and Leh-Ladakh. While there is no direct rail or air connectivity, Manali is well-connected by road.',
     distanceFromDelhi: '530 km',
@@ -289,7 +289,7 @@ export const howToReachData = {
   haridwar: {
     name: 'Haridwar',
     slug: 'haridwar',
-    title: 'How to Reach Haridwar - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Haridwar - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Haridwar by air, train, road and bus. Routes to the holy city, nearest airport, railway station, and cab booking.',
     introduction: 'Haridwar, one of the seven holiest places in Hinduism, sits at the foothills of the Himalayas where the Ganges enters the plains. Located in Uttarakhand, Haridwar is a gateway to the Char Dham pilgrimage and attracts millions of devotees annually for the Ganga Aarti at Har Ki Pauri. The city is well-connected by rail and road from Delhi and other major cities.',
     distanceFromDelhi: '210 km',
@@ -343,7 +343,7 @@ export const howToReachData = {
   rishikesh: {
     name: 'Rishikesh',
     slug: 'rishikesh',
-    title: 'How to Reach Rishikesh - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Rishikesh - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Rishikesh by air, train, road and bus. Routes to the Yoga Capital, nearest airport, railway station, and cab booking.',
     introduction: 'Rishikesh, known as the Yoga Capital of the World, is a spiritual and adventure hub on the banks of the Ganges in Uttarakhand. Famous for its ashrams, white-water rafting, bungee jumping, and the iconic Ram Jhula and Laxman Jhula, Rishikesh attracts both spiritual seekers and adventure enthusiasts from around the globe.',
     distanceFromDelhi: '230 km',
@@ -398,7 +398,7 @@ export const howToReachData = {
   varanasi: {
     name: 'Varanasi',
     slug: 'varanasi',
-    title: 'How to Reach Varanasi - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Varanasi - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Varanasi by air, train, road and bus. Routes to the spiritual capital, nearest airport, railway station, and cab booking.',
     introduction: 'Varanasi (Banaras), one of the oldest continuously inhabited cities in the world, is the spiritual capital of India. Situated on the banks of the sacred Ganges in Uttar Pradesh, Varanasi is famous for its ancient ghats, evening Ganga Aarti, Kashi Vishwanath Temple, and silk weaving. The city is well-connected by air, rail, and road.',
     distanceFromDelhi: '810 km',
@@ -454,7 +454,7 @@ export const howToReachData = {
   udaipur: {
     name: 'Udaipur',
     slug: 'udaipur',
-    title: 'How to Reach Udaipur - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Udaipur - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Udaipur by air, train, road and bus. Routes to the City of Lakes, nearest airport, railway station, and cab booking.',
     introduction: 'Udaipur, the City of Lakes and Venice of the East, is one of Rajasthan\'s most romantic destinations. Surrounded by the Aravalli Hills, Udaipur is famous for the Lake Palace, City Palace, and its stunning lakeside setting. Well-connected by air, rail, and road, Udaipur is a must-visit on any Rajasthan itinerary.',
     distanceFromDelhi: '660 km',
@@ -509,7 +509,7 @@ export const howToReachData = {
   amritsar: {
     name: 'Amritsar',
     slug: 'amritsar',
-    title: 'How to Reach Amritsar - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Amritsar - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Amritsar by air, train, road and bus. Routes to the Golden Temple city, nearest airport, railway station, and cab booking.',
     introduction: 'Amritsar, the spiritual and cultural centre of Sikhism, is home to the magnificent Golden Temple (Sri Harmandir Sahib). Located in Punjab near the Indo-Pakistan border, Amritsar is also known for the Wagah Border ceremony, Jallianwala Bagh, and its legendary street food. The city has excellent connectivity by air, rail, and road.',
     distanceFromDelhi: '450 km',
@@ -617,7 +617,7 @@ export const howToReachData = {
   dehradun: {
     name: 'Dehradun',
     slug: 'dehradun',
-    title: 'How to Reach Dehradun - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Dehradun - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Dehradun by air, train, road and bus. Routes to the gateway of Uttarakhand, airport, railway station, and cab booking.',
     introduction: 'Dehradun, the capital of Uttarakhand, is nestled in the Doon Valley between the Himalayas and the Shivalik range. Known for its prestigious educational institutions, pleasant climate, and proximity to Mussoorie, Rishikesh, and Haridwar, Dehradun serves as the primary gateway to Uttarakhand\'s hill stations and pilgrimage centres.',
     distanceFromDelhi: '260 km',
@@ -671,7 +671,7 @@ export const howToReachData = {
   mussoorie: {
     name: 'Mussoorie',
     slug: 'mussoorie',
-    title: 'How to Reach Mussoorie - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Mussoorie - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Mussoorie by air, train, road and bus. Routes to the Queen of Hills, nearest airport, railway station, and cab booking.',
     introduction: 'Mussoorie, the Queen of Hills, is a charming hill station in the Garhwal Himalayan range of Uttarakhand. At an altitude of 2,005 meters, Mussoorie offers breathtaking views of the Shivalik range and the Doon Valley. Known for its colonial-era charm, Kempty Falls, and Gun Hill, it is one of the most popular weekend getaways from Delhi.',
     distanceFromDelhi: '290 km',
@@ -725,7 +725,7 @@ export const howToReachData = {
   nainital: {
     name: 'Nainital',
     slug: 'nainital',
-    title: 'How to Reach Nainital - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Nainital - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Nainital by air, train, road and bus. Routes to the Lake District, nearest airport, railway station, and cab booking.',
     introduction: 'Nainital, the Lake District of India, is a charming hill station in the Kumaon foothills of Uttarakhand. Built around the beautiful Naini Lake and surrounded by seven hills, Nainital has been a favourite summer retreat since the British era. Known for its scenic beauty, boating, Naina Devi Temple, and panoramic views from Snow View Point, it attracts tourists throughout the year.',
     distanceFromDelhi: '300 km',
@@ -780,7 +780,7 @@ export const howToReachData = {
   jodhpur: {
     name: 'Jodhpur',
     slug: 'jodhpur',
-    title: 'How to Reach Jodhpur - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Jodhpur - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Jodhpur by air, train, road and bus. Routes to the Blue City, nearest airport, railway station, and cab booking.',
     introduction: 'Jodhpur, the Blue City and Sun City of India, is Rajasthan\'s second largest city and a former princely state capital. Dominated by the mighty Mehrangarh Fort perched on a rocky hilltop, Jodhpur is known for its blue-painted houses, Umaid Bhawan Palace, and spicy Rajasthani cuisine. It serves as a gateway to the Thar Desert and the western Rajasthan circuit.',
     distanceFromDelhi: '600 km',
@@ -834,7 +834,7 @@ export const howToReachData = {
   jaisalmer: {
     name: 'Jaisalmer',
     slug: 'jaisalmer',
-    title: 'How to Reach Jaisalmer - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Jaisalmer - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Jaisalmer by air, train, road and bus. Routes to the Golden City, nearest airport, railway station, and cab booking.',
     introduction: 'Jaisalmer, the Golden City, rises like a mirage from the Thar Desert in western Rajasthan. Known for its stunning sandstone fort (Sonar Quila), beautiful havelis, and mesmerizing sand dunes of Sam and Khuri, Jaisalmer is a must-visit destination on any Rajasthan trip. Despite its remote location, the city is accessible by air, rail, and road.',
     distanceFromDelhi: '780 km',
@@ -943,7 +943,7 @@ export const howToReachData = {
   kasol: {
     name: 'Kasol',
     slug: 'kasol',
-    title: 'How to Reach Kasol - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Kasol - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Kasol by air, train, road and bus. Routes to Mini Israel of India, nearest airport, and book affordable cabs to Kasol.',
     introduction: 'Kasol, often called the Mini Israel of India, is a picturesque hamlet in the Parvati Valley of Himachal Pradesh. Situated along the banks of the Parvati River at 1,640 meters, Kasol is a backpacker paradise known for its stunning natural beauty, trekking trails to Kheerganga and Malana, and vibrant cafe culture. Being a small village, Kasol has no direct air or rail connectivity.',
     distanceFromDelhi: '520 km',
@@ -999,7 +999,7 @@ export const howToReachData = {
   ayodhya: {
     name: 'Ayodhya',
     slug: 'ayodhya',
-    title: 'How to Reach Ayodhya - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Ayodhya - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Ayodhya by air, train, road and bus. Routes to Ram Mandir, nearest airport, railway station, and cab booking.',
     introduction: 'Ayodhya, the birthplace of Lord Ram, is one of the holiest cities in Hinduism. Located on the banks of the Saryu River in Uttar Pradesh, Ayodhya has witnessed a massive transformation with the construction of the grand Ram Mandir (inaugurated January 2024). The city now has a brand new international airport and improved rail connectivity, making it easier than ever to visit.',
     distanceFromDelhi: '640 km',
@@ -1055,7 +1055,7 @@ export const howToReachData = {
   lucknow: {
     name: 'Lucknow',
     slug: 'lucknow',
-    title: 'How to Reach Lucknow - By Air, Train, Road & Bus | Triveni Cabs',
+    title: 'How to Reach Lucknow - By Air, Train, Road & Bus',
     metaDescription: 'Complete guide on how to reach Lucknow by air, train, road and bus. Routes to the City of Nawabs, nearest airport, railway station, and cab booking.',
     introduction: 'Lucknow, the City of Nawabs, is the capital of Uttar Pradesh and a city of refined culture, stunning Mughal and Awadhi architecture, and legendary cuisine. Known for the Bara Imambara, Rumi Darwaza, and its famous kebabs and biryanis, Lucknow is excellently connected by air, rail, and road as one of North India\'s major metropolitan cities.',
     distanceFromDelhi: '500 km',

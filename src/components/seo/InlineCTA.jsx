@@ -24,7 +24,7 @@
  *   <InlineCTA
  *     theme="guide"
  *     headline="Planning the Same Trip? We Drive It Daily."
- *     sub="Sedan ₹11/km · SUV ₹15/km · Tempo from ₹20/km · No hidden charges."
+ *     sub="Sedan ₹11/km · SUV ₹15/km · Tempo from ₹23/km · No hidden charges."
  *     context="agra-food-tour"
  *     waMessage="Hi, I read the Agra Food Tour guide and want to book a cab."
  *   />

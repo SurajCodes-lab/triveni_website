@@ -115,7 +115,7 @@ export function generateLongTailFaqs({
       },
       {
         question: `What is the daily kilometre cap on a ${a} to ${b} round-trip?`,
-        answer: `Standard round-trip booking includes 250-300 km per day depending on vehicle. Extra kilometres charged at the per-km rate of your category (Sedan ₹11/km, SUV ₹15/km, Tempo ₹20/km). For multi-state itineraries crossing 300 km/day, we recommend the higher-km tier upfront.`,
+        answer: `Standard round-trip booking includes 250-300 km per day depending on vehicle. Extra kilometres charged at the per-km rate of your category (Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km). For multi-state itineraries crossing 300 km/day, we recommend the higher-km tier upfront.`,
       },
     ],
     'tempo': [

@@ -3,10 +3,11 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Agra Travel Guide 2026 | Attractions, Food, Tips',
+  title: tightenTitle('Agra Travel Guide 2026 | Attractions, Food, Tips'),
   description: 'Complete Agra travel guide 2026. Best time to visit, all attractions, food guide, shopping, local transport. By Agra locals. Call 7668570551.',
   keywords: 'agra travel guide, agra tourist guide, agra sightseeing guide, visiting agra, agra tourism, things to do in agra, agra attractions',
   authors: [{ name: 'Triveni Cabs' }],

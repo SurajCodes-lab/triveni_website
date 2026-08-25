@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-haridwar-from-delhi');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Haridwar Tour from Delhi | ₹5,000 AC Cab | 2026',
+  title: tightenTitle('Same Day Haridwar Tour from Delhi | ₹5,000 AC Cab | 2026'),
   description: 'Book same day Haridwar tour from Delhi. Visit Har Ki Pauri, Mansa Devi, Ganga Aarti. AC sedan ₹5,000, SUV ₹7,000. Call 7668570551.',
   keywords: 'same day haridwar tour from delhi, delhi to haridwar one day trip, delhi to haridwar cab, ganga aarti haridwar day trip',
   authors: [{ name: 'Triveni Cabs' }],

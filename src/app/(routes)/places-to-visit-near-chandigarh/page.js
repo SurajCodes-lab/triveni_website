@@ -1,5 +1,6 @@
 import { placesToVisitPages } from '@/utilis/placesToVisitData';
 import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = placesToVisitPages.chandigarh;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
@@ -7,7 +8,7 @@ const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, sl
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '15+ Places to Visit Near Chandigarh by Car | Hills & Heritage',
+  title: tightenTitle('15+ Places to Visit Near Chandigarh by Car | Hills & Heritage'),
   description: `Best places to visit near Chandigarh by car. Shimla (115 km), Kasauli (60 km), Manali (310 km), Amritsar (230 km) & more. Sedan ₹11/km. Call 7668570551.`,
   keywords: 'places to visit near chandigarh, places near chandigarh, weekend getaways from chandigarh, day trips from chandigarh, chandigarh nearby places, hill stations near chandigarh, places around chandigarh, tourist places near chandigarh',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

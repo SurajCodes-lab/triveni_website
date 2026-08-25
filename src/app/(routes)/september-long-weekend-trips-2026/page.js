@@ -2,11 +2,12 @@ import { getFestivalBySlug } from '@/utilis/festivalData';
 import { getPostMonsoonBySlug } from '@/utilis/season/postMonsoonSeason';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('september-long-weekend-trips-2026') || getPostMonsoonBySlug('september-long-weekend-trips-2026');
 
 export const metadata = {
-  title: 'September 2026 Long Weekend Trips from Delhi',
+  title: tightenTitle('September 2026 Long Weekend Trips from Delhi'),
   description: 'September 2026 long weekends from Delhi — Sep 4-6 Janmashtami & Sep 12-14 Ganesh Chaturthi. Vrindavan, Haridwar, hills. From ₹9,100. Call 7668570551.',
   keywords: 'september long weekend trips 2026, long weekend september 2026 delhi, janmashtami long weekend trip, ganesh chaturthi weekend getaway delhi, 3 day trip from delhi september, post monsoon weekend trips delhi',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

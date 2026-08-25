@@ -1,9 +1,10 @@
 import CancellationClient from "./CancellationClient";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: "Cancellation & Refund Policy | Triveni Cabs",
+  title: tightenTitle("Cancellation & Refund Policy"),
   description: "Learn about Triveni Cabs cancellation and refund policy. Fair, transparent, and customer-friendly terms.",
   keywords: "Triveni Cabs cancellation policy, taxi refund policy, cab booking cancellation, travel refund terms, cab service cancellation, taxi cancellation charges, refund process India",
   alternates: {

@@ -566,7 +566,7 @@ const costBlogs = [
 
       <div class="my-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-600 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">Hire a Bus in Delhi</h3>
-        <p class="mb-4 text-gray-700">27-56 seater buses from ₹28/km. Weddings, corporate events, tours.</p>
+        <p class="mb-4 text-gray-700">27-56 seater buses from ₹31/km. Weddings, corporate events, tours.</p>
         <a href="tel:7668570551" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-md">Call 7668570551</a>
       </div>
     `,

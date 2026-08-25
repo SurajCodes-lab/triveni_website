@@ -40,21 +40,21 @@ const TRUST_ROW = "4.9★ · Since 2015 · No hidden charges · Pay after trip";
 const fleet = [
   {
     seats: "12 Seater",
-    price: "₹20/km",
+    price: "₹23/km",
     image: "/images/tempo/12_seater.jpg",
     best: "Small families & friend groups",
     features: ["Push-back seats", "AC", "Music system", "Luggage space"],
   },
   {
     seats: "16 Seater",
-    price: "₹22/km",
+    price: "₹25/km",
     image: "/images/tempo/16_seater.jpg",
     best: "Bigger families & small tour groups",
     features: ["Push-back seats", "AC", "Music system", "GPS tracking"],
   },
   {
     seats: "17 Seater",
-    price: "₹24/km",
+    price: "₹25/km",
     image: "/images/tempo/17_seater.jpg",
     best: "Mid-size groups & corporate outings",
     features: ["Push-back seats", "AC", "Music system", "Extra legroom"],
@@ -69,7 +69,7 @@ const fleet = [
   },
   {
     seats: "26 Seater",
-    price: "₹28/km",
+    price: "₹31/km",
     image: "/images/tempo/26_seater.jpg",
     best: "Very large groups & events",
     features: ["Push-back seats", "AC", "Music system", "Maximum capacity"],
@@ -81,7 +81,7 @@ const seaterRows = [
     size: "12 Seater",
     capacity: "Up to 11 + driver",
     bestFor: "Families, small friend groups",
-    price: "From ₹20/km",
+    price: "From ₹23/km",
     popular: "Delhi to Agra, Vrindavan",
   },
   {
@@ -95,7 +95,7 @@ const seaterRows = [
     size: "17 Seater",
     capacity: "Up to 16 + driver",
     bestFor: "Corporate outings, mid groups",
-    price: "From ₹24/km",
+    price: "From ₹25/km",
     popular: "Delhi to Jaipur, Haridwar",
   },
   {
@@ -239,7 +239,7 @@ export default function TempoMainClient({ faqData = [], jsonLd }) {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
-      <SetStickyCta price="From ₹20/km" label="Tempo Traveller Hire" whatsappText="Hi, I want to book a Tempo Traveller. Please share availability and fare." />
+      <SetStickyCta price="From ₹23/km" label="Tempo Traveller Hire" whatsappText="Hi, I want to book a Tempo Traveller. Please share availability and fare." />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -273,12 +273,12 @@ export default function TempoMainClient({ faqData = [], jsonLd }) {
               <h1 className="speakable-headline font-display-serif text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 <span className="text-gradient-gold">Tempo Traveller</span> on Rent
                 <span className="mt-2 block text-lg font-bold text-white/75 sm:text-2xl">
-                  12–26 Seater AC · Driver &amp; Fuel Included · From ₹20/km
+                  12–26 Seater AC · Driver &amp; Fuel Included · From ₹23/km
                 </span>
               </h1>
               <p className="speakable-lead mt-5 max-w-xl text-base leading-relaxed text-slate-300/90 sm:text-lg">
                 Hire a 12, 17, 20, or 26 seater AC tempo traveller with an
-                experienced driver from just ₹20/km across Delhi NCR, Agra,
+                experienced driver from just ₹23/km across Delhi NCR, Agra,
                 Jaipur, Himachal, and the Chardham circuit. Fuel, driver, and AC
                 are included, with transparent pricing and 24/7 support.
               </p>
@@ -429,9 +429,9 @@ export default function TempoMainClient({ faqData = [], jsonLd }) {
             </h2>
             <p className="mb-4 leading-relaxed text-slate-300/90">
               A tempo traveller on rent in North India costs between{" "}
-              <strong className="text-amber-400">₹20/km and ₹28/km</strong> depending on the seater size: a
-              12-seater starts at ₹20/km, a 17-seater at ₹24/km, a 20-seater at
-              ₹26/km, and a 26-seater at ₹28/km. These rates include the vehicle,
+              <strong className="text-amber-400">₹23/km and ₹31/km</strong> depending on the seater size: a
+              12-seater starts at ₹23/km, a 17-seater at ₹25/km, a 20-seater at
+              ₹31/km, and a 26-seater at ₹31/km. These rates include the vehicle,
               fuel, air conditioning, and an experienced driver. For outstation
               trips a minimum of 250 km per day applies, and tolls, parking, state
               taxes, and overnight driver allowance are billed separately or

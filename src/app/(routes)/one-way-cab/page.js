@@ -13,11 +13,12 @@ import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SectionDivider from '@/components/shared/SectionDivider';
 import FleetShowcase from '@/components/shared/FleetShowcase';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'One Way Cab Service 2026 | Save 50% | Sedan ₹11/km | Book Now',
+  title: tightenTitle('One Way Cab Service 2026 | Save 50% | Sedan ₹11/km | Book Now'),
   description: 'Book one way cab service and save up to 50% vs round trip. Sedan ₹11/km, SUV ₹15/km. Delhi-Agra, Delhi-Jaipur & 200+ one way routes. Call 7668570551.',
   keywords: 'one way cab, one way taxi, one way cab service, one way cab booking, one way taxi service, one way drop, single direction cab, one way cab Delhi, one way cab Agra, one way cab Jaipur, one way outstation cab, cheap one way cab, affordable one way taxi, one way cab near me, one way cab rates, Delhi to Agra one way, Delhi to Jaipur one way, one way intercity cab, one way cab fare, best one way cab service',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
@@ -33,7 +34,7 @@ export default function OneWayCabPage() {
   const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "@id": "https://www.trivenicabs.in/one-way-cab/#service", "serviceType": "One Way Cab Service", "name": "One Way Cab Booking by Triveni Cabs - Pay Only One Direction", "brand": { "@type": "Brand", "name": "Triveni Cabs" }, "description": "Book one way cabs across India and save up to 50%. Starting at ₹11/km for Sedan on 200+ routes.", "provider": { "@id": "https://www.trivenicabs.in/#localbusiness" }, "areaServed": { "@type": "Country", "name": "India" }, "offers": { "@type": "AggregateOffer", "lowPrice": "11", "highPrice": "24", "priceCurrency": "INR" }, ...getRatingAndReviews('one-way-cab-hub', 'outstation') };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Outstation Cabs", "item": "https://www.trivenicabs.in/outstation-cabs" }, { "@type": "ListItem", "position": 3, "name": "One Way Cab", "item": "https://www.trivenicabs.in/one-way-cab" }] };
   const faqData = [
-    { question: "How much does a one-way cab cost?", answer: "One-way cab rates are Sedan ₹11/km, SUV ₹15/km, and Tempo Traveller from ₹20/km. For example, Delhi to Agra (230 km) one-way costs approximately ₹2,530 in a Sedan. Toll and state tax extra at actual." },
+    { question: "How much does a one-way cab cost?", answer: "One-way cab rates are Sedan ₹11/km, SUV ₹15/km, and Tempo Traveller from ₹23/km. For example, Delhi to Agra (230 km) one-way costs approximately ₹2,530 in a Sedan. Toll and state tax extra at actual." },
     { question: "How is one-way cab cheaper than round trip?", answer: "In a round trip, you pay for the vehicle both ways even if you only need one direction. With one-way cab, you pay only for pickup to drop-off distance, saving up to 50%." },
     { question: "Can I take luggage in a one-way cab?", answer: "Yes, standard luggage is included. Sedan accommodates 2 large bags + 1 small bag. SUV fits 3 large + 2 small bags. Inform us while booking for special luggage needs." },
     { question: "Can I make stops during a one-way trip?", answer: "Yes, up to 2 stops are allowed on one-way trips at no extra charge, provided they are on the route. Off-route stops may incur additional km charges." },
@@ -41,7 +42,7 @@ export default function OneWayCabPage() {
     { question: "Is one-way cab available for all routes?", answer: "One-way cabs are available on 200+ popular routes including Delhi-Agra, Delhi-Jaipur, Delhi-Chandigarh, Delhi-Haridwar. Call 7668570551 for less common routes." },
     { question: "How do I book a one-way cab?", answer: "Call 7668570551 or WhatsApp with your pickup location, destination, date, and time. Receive an instant quote with fare breakdown. No app download needed." },
     { question: "What is the cancellation policy for one-way cabs?", answer: "Free cancellation up to 6 hours before pickup. 25% charge within 6 hours. 50% charge for no-show." },
-    { question: "What does a one-way cab fare per km work out to?", answer: "One-way cab fare is charged at a flat per-km rate: Sedan ₹11/km, SUV (Ertiga) ₹15/km, and Innova ₹18/km, Tempo from ₹20/km, with a 300 km minimum billing. So a 230 km Delhi-Agra trip is billed at 300 km (₹3,300 for a Sedan). There is no separate return dead-mileage charge — you pay only the onward distance, which is what makes one-way up to 50% cheaper than a round trip." },
+    { question: "What does a one-way cab fare per km work out to?", answer: "One-way cab fare is charged at a flat per-km rate: Sedan ₹11/km, SUV (Ertiga) ₹15/km, and Innova ₹18/km, Tempo from ₹23/km, with a 300 km minimum billing. So a 230 km Delhi-Agra trip is billed at 300 km (₹3,300 for a Sedan). There is no separate return dead-mileage charge — you pay only the onward distance, which is what makes one-way up to 50% cheaper than a round trip." },
     { question: "Is a one-way cab cheaper than Ola or Uber for outstation trips?", answer: "Yes, for intercity drops a dedicated one-way cab is usually cheaper and more reliable than Ola/Uber outstation. App-based cabs add surge pricing, return-fare loading, and frequent cancellations on long routes. Our one-way fare is fixed and confirmed upfront (Sedan ₹11/km) with no surge, a verified driver, and FASTag included." },
     { question: "Do one-way cab fares include toll, tax and FASTag?", answer: "The base one-way fare includes fuel, driver allowance, and FASTag handling. Inter-state toll, state border tax, and parking are charged at actual and shown transparently before you confirm. There are no hidden return charges and no GST surprises." },
     { question: "Can I book a one-way cab one way and return by another mode?", answer: "Yes — that is the most common use case. Travellers take a one-way cab to the destination and return by train, flight, or bus. You pay only for the single direction, saving roughly 50% versus a round-trip cab that bills both legs." },
@@ -55,7 +56,7 @@ export default function OneWayCabPage() {
     estimatedCost: { currency: "INR", value: "3300" },
     steps: [
       { name: "Share Trip Details", text: "Call or WhatsApp 7668570551 with pickup city, drop city, date, and time." },
-      { name: "Get Instant Quote", text: "Receive a detailed one-way fare breakdown within 2 minutes — Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km, with toll and state tax shown at actual." },
+      { name: "Get Instant Quote", text: "Receive a detailed one-way fare breakdown within 2 minutes — Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km, with toll and state tax shown at actual." },
       { name: "Confirm & Pay", text: "Pay a small advance to lock your ride. The balance is payable to the driver after the trip." },
       { name: "Enjoy One-Way Trip", text: "A verified driver picks you up on time in a clean AC vehicle. Pay only for the one direction — no return charges." }
     ]
@@ -96,7 +97,7 @@ export default function OneWayCabPage() {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "One Way Cab Booking — Triveni Cabs (Sedan, SUV, Tempo Traveller)",
-    "description": "One way cab fleet across 200+ Indian routes. Sedan from ₹11/km, SUV ₹15/km, Tempo Traveller from ₹20/km. Pay only one direction, save up to 50% vs round trip, doorstep pickup, FASTag included.",
+    "description": "One way cab fleet across 200+ Indian routes. Sedan from ₹11/km, SUV ₹15/km, Tempo Traveller from ₹23/km. Pay only one direction, save up to 50% vs round trip, doorstep pickup, FASTag included.",
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "category": "One Way Cab Service",
     "offers": {
@@ -212,7 +213,7 @@ export default function OneWayCabPage() {
             {/* Direct-answer lead box — voice/AI answer target (.speakable-lead) */}
             <div className="speakable-lead bg-white/5 rounded-2xl border border-[#FACF2D]/25/70 shadow-[0_4px_24px_rgba(16,185,129,0.06)] p-6 md:p-8 mb-12">
               <p className="text-slate-200 text-base md:text-lg leading-relaxed">
-                A <strong>one-way cab</strong> is an intercity taxi booked for a single direction only — you pay only for the pickup-to-drop distance, with <strong>no charge for the empty return leg</strong>. One-way cab fares are charged per kilometre — <strong>Sedan ₹11/km, SUV ₹15/km, Tempo Traveller from ₹20/km</strong> — with a <strong>300 km minimum billing</strong>. Because a round trip bills both legs, a one-way cab is <strong>up to 50% cheaper</strong>: a Delhi to Agra one-way Sedan is about <strong>₹3,300</strong> versus ₹6,600 round trip. One-way cabs run on 200+ routes across Delhi, Agra, Jaipur, Chandigarh, Shimla, Manali, Haridwar and Amritsar, and are ideal when you return by train or flight, relocate, or only need a single drop. Toll, parking and state tax are extra at actual; FASTag and a verified driver are included.
+                A <strong>one-way cab</strong> is an intercity taxi booked for a single direction only — you pay only for the pickup-to-drop distance, with <strong>no charge for the empty return leg</strong>. One-way cab fares are charged per kilometre — <strong>Sedan ₹11/km, SUV ₹15/km, Tempo Traveller from ₹23/km</strong> — with a <strong>300 km minimum billing</strong>. Because a round trip bills both legs, a one-way cab is <strong>up to 50% cheaper</strong>: a Delhi to Agra one-way Sedan is about <strong>₹3,300</strong> versus ₹6,600 round trip. One-way cabs run on 200+ routes across Delhi, Agra, Jaipur, Chandigarh, Shimla, Manali, Haridwar and Amritsar, and are ideal when you return by train or flight, relocate, or only need a single drop. Toll, parking and state tax are extra at actual; FASTag and a verified driver are included.
               </p>
             </div>
             <h2 className="text-3xl md:text-4xl font-black text-center mb-8 text-white">
@@ -455,7 +456,7 @@ export default function OneWayCabPage() {
                 { icon: Route, t: "200+ Routes", d: "Delhi, Agra, Jaipur, Shimla, Manali, Chandigarh & more.", color: "bg-blue-50 border-blue-100 text-blue-600" },
                 { icon: Shield, t: "Verified Drivers", d: "Background-checked, GPS-tracked, 5+ years experience.", color: "bg-purple-50 border-purple-100 text-purple-600" },
                 { icon: Clock, t: "Flexible Timing", d: "Any hour. No surge pricing, no restrictions.", color: "bg-amber-50 border-amber-100 text-amber-600" },
-                { icon: Car, t: "Vehicle Options", d: "Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km.", color: "bg-cyan-50 border-cyan-100 text-cyan-600" },
+                { icon: Car, t: "Vehicle Options", d: "Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km.", color: "bg-cyan-50 border-cyan-100 text-cyan-600" },
                 { icon: Zap, t: "Instant Booking", d: "2-minute booking via call or WhatsApp.", color: "bg-rose-50 border-rose-100 text-rose-600" },
               ].map((item, i) => (
                 <div key={i} className={`${item.color} rounded-2xl p-6 border hover:shadow-lg hover:scale-[1.02] transition-all`}>

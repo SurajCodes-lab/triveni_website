@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Udaipur Food Tour 2026 | Dal Baati & Gatte Ki Sabzi',
+  title: tightenTitle('Udaipur Food Tour 2026 | Dal Baati & Gatte Ki Sabzi'),
   description: 'Udaipur food & culinary tour. Famous Dal Baati, Gatte Ki Sabzi, Kachori, Kulfi, Pani Puri. Street food itinerary, best restaurants, lakeside dining.',
   keywords: 'udaipur food tour, udaipur street food, udaipur famous food, dal baati udaipur, gatte ki sabzi, udaipur restaurants, lakeside dining udaipur, udaipur food guide',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

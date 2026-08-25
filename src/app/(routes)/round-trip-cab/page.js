@@ -8,11 +8,12 @@ import { getArticleSchema, getHowToSchema, getSpeakableSchema, getComparisonSche
 import { getAllRoundTripSlugs, getRoundTripRoute } from '@/utilis/roundTripData';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import TrackedCta from '@/components/ui/TrackedCta';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Round Trip Cab 2026 | Same Driver | Sedan ₹11/km',
+  title: tightenTitle('Round Trip Cab 2026 | Same Driver | Sedan ₹11/km'),
   description: 'Book round trip cabs with same driver for multi-day trips. Sedan ₹11/km, SUV ₹15/km. Delhi-Agra, Delhi-Jaipur & 500+ routes. Flexible schedules.',
   keywords: 'round trip cab, round trip taxi, round trip cab booking, return cab, round trip taxi service, multi-day cab, round trip outstation cab, round trip cab rates, round trip cab with driver, same driver cab, Delhi to Agra round trip, Delhi to Jaipur round trip, round trip cab near me, cheap round trip cab, affordable round trip taxi, family cab booking, vacation cab rental, round trip cab Delhi, round trip cab Agra, round trip cab Jaipur',
   authors: [{ name: 'Triveni Cabs' }],
@@ -93,7 +94,7 @@ export default function RoundTripCabPage() {
   const faqData = [
     {
       question: "How is round trip cab pricing calculated?",
-      answer: "Round trip cab pricing is calculated per-km with a minimum of 250 km per day. Sedan costs ₹11/km, SUV ₹15/km, Tempo Traveller from ₹20/km. For a 2-day trip, minimum billing is 500 km (250 x 2). Driver allowance of ₹300/night applies for overnight trips."
+      answer: "Round trip cab pricing is calculated per-km with a minimum of 250 km per day. Sedan costs ₹11/km, SUV ₹15/km, Tempo Traveller from ₹23/km. For a 2-day trip, minimum billing is 500 km (250 x 2). Driver allowance of ₹300/night applies for overnight trips."
     },
     {
       question: "Does the driver stay with me during a multi-day round trip?",
@@ -137,7 +138,7 @@ export default function RoundTripCabPage() {
     },
     {
       question: "Which vehicles are available for a round trip cab and what do they seat?",
-      answer: "We offer a Sedan (Swift Dzire/Etios, 4 seats) at ₹11/km, an SUV (Innova/Ertiga, 6-7 seats) at ₹15/km, and a Tempo Traveller (12-26 seats) from ₹20/km. Sedans suit couples and small families, SUVs suit families with luggage or hill routes, and Tempo Travellers suit large groups and multi-family trips."
+      answer: "We offer a Sedan (Swift Dzire/Etios, 4 seats) at ₹11/km, an SUV (Innova/Ertiga, 6-7 seats) at ₹15/km, and a Tempo Traveller (12-26 seats) from ₹23/km. Sedans suit couples and small families, SUVs suit families with luggage or hill routes, and Tempo Travellers suit large groups and multi-family trips."
     },
     {
       question: "Can I book a round trip cab for a one-way distance with same-day return?",
@@ -168,7 +169,7 @@ export default function RoundTripCabPage() {
     estimatedCost: { currency: "INR", value: "5500" },
     steps: [
       { name: "Share your itinerary", text: "Tell us your origin, destination, travel dates and group size. We map the route, the number of trip days and the recommended vehicle." },
-      { name: "Get an instant per-km quote", text: "Receive a transparent quote: Sedan ₹11/km, SUV ₹15/km or Tempo Traveller from ₹20/km, with the 250 km/day minimum and any driver night halt shown upfront." },
+      { name: "Get an instant per-km quote", text: "Receive a transparent quote: Sedan ₹11/km, SUV ₹15/km or Tempo Traveller from ₹23/km, with the 250 km/day minimum and any driver night halt shown upfront." },
       { name: "Confirm your booking", text: "Confirm by phone or WhatsApp on 7668570551. No heavy advance is needed for most routes; you get the driver and vehicle details before the trip." },
       { name: "Travel and return with the same driver", text: "Your dedicated driver picks you up, stays through sightseeing and overnight halts, and drives you back home. You pay only for the kilometres driven plus tolls and taxes at actual." }
     ]
@@ -209,7 +210,7 @@ export default function RoundTripCabPage() {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Round Trip Cab Booking — Triveni Cabs (Sedan, SUV, Tempo Traveller)",
-    "description": "Round trip cab fleet across 500+ Indian routes. Sedan from ₹11/km, SUV ₹15/km, Tempo Traveller from ₹20/km. Same driver throughout, 10% round trip discount, 250 km/day minimum.",
+    "description": "Round trip cab fleet across 500+ Indian routes. Sedan from ₹11/km, SUV ₹15/km, Tempo Traveller from ₹23/km. Same driver throughout, 10% round trip discount, 250 km/day minimum.",
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "category": "Round Trip Cab Service",
     "offers": {
@@ -405,7 +406,7 @@ export default function RoundTripCabPage() {
             {/* Direct-answer lead box — voice/AI answer target (.speakable-lead) */}
             <div className="speakable-lead bg-white/5 rounded-2xl border border-amber-200/70 shadow-[0_4px_24px_rgba(109,40,217,0.06)] p-6 md:p-8 mb-12">
               <p className="text-slate-200 text-base md:text-lg leading-relaxed">
-                A <strong>round trip cab</strong> is a cab booked for both the onward and return journey with the <strong>same driver and vehicle throughout</strong>, including any local sightseeing at your destination. Round trip cabs are billed per kilometre — <strong>Sedan ₹11/km, SUV ₹15/km, Tempo Traveller from ₹20/km</strong> — with a <strong>minimum of 250 km per day</strong> and a <strong>driver night halt of ₹300/night</strong> for overnight trips. A round trip is <strong>cheaper than booking two separate one-way cabs</strong> whenever you need the car at the destination or return on the same route within 1-3 days, because one-way cabs each carry a 300 km minimum plus a return dead-mileage charge, while a round trip applies a 10% discount on the actual distance. Toll, parking and state taxes are extra at actual.
+                A <strong>round trip cab</strong> is a cab booked for both the onward and return journey with the <strong>same driver and vehicle throughout</strong>, including any local sightseeing at your destination. Round trip cabs are billed per kilometre — <strong>Sedan ₹11/km, SUV ₹15/km, Tempo Traveller from ₹23/km</strong> — with a <strong>minimum of 250 km per day</strong> and a <strong>driver night halt of ₹300/night</strong> for overnight trips. A round trip is <strong>cheaper than booking two separate one-way cabs</strong> whenever you need the car at the destination or return on the same route within 1-3 days, because one-way cabs each carry a 300 km minimum plus a return dead-mileage charge, while a round trip applies a 10% discount on the actual distance. Toll, parking and state taxes are extra at actual.
               </p>
             </div>
 
@@ -414,7 +415,7 @@ export default function RoundTripCabPage() {
             </h2>
             <div className="prose prose-lg max-w-none text-slate-200 space-y-4">
               <p>
-                A <strong>round trip cab</strong> is the smartest way to travel for multi-day trips across North India. Unlike booking two separate <Link href="/one-way-cab" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">one-way cabs</Link>, a round trip gives you the <strong>same driver throughout your journey</strong> — from pickup to sightseeing to the return home. At Triveni Cabs, our round trip service starts at just <strong>₹11/km for sedans</strong>, with SUVs at ₹15/km and <Link href="/tempo-traveller" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">tempo travellers</Link> from ₹20/km, making it the most cost-effective choice for family vacations, group tours, and <Link href="/corporate-transportation-service" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">corporate business trips</Link> lasting 2 to 15+ days.
+                A <strong>round trip cab</strong> is the smartest way to travel for multi-day trips across North India. Unlike booking two separate <Link href="/one-way-cab" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">one-way cabs</Link>, a round trip gives you the <strong>same driver throughout your journey</strong> — from pickup to sightseeing to the return home. At Triveni Cabs, our round trip service starts at just <strong>₹11/km for sedans</strong>, with SUVs at ₹15/km and <Link href="/tempo-traveller" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">tempo travellers</Link> from ₹23/km, making it the most cost-effective choice for family vacations, group tours, and <Link href="/corporate-transportation-service" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">corporate business trips</Link> lasting 2 to 15+ days.
               </p>
               <p>
                 What sets our <strong>round trip cab booking</strong> apart is the flexibility and personal touch. Your dedicated driver gets to know your preferences, suggests local attractions, waits while you explore, and ensures a comfortable ride throughout. With a minimum of just 250 km per day (compared to 300 km for one-way), round trip cabs offer better value for travelers who want to explore destinations at their own pace. Popular routes include <Link href="/agra" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">Delhi to Agra</Link>, <Link href="/jaipur" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">Delhi to Jaipur</Link>, <Link href="/shimla" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">Delhi to Shimla</Link>, <Link href="/manali" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">Delhi to Manali</Link>, and the iconic <Link href="/sightseeing/golden-triangle-tour-3-days" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">Golden Triangle circuit</Link>.
@@ -470,7 +471,7 @@ export default function RoundTripCabPage() {
             <ol className="space-y-4 list-none">
               {[
                 { t: "Share your itinerary", d: "Tell us your origin, destination, travel dates and group size. We map the route, the number of trip days and the recommended vehicle." },
-                { t: "Get an instant per-km quote", d: "Receive a transparent quote — Sedan ₹11/km, SUV ₹15/km or Tempo Traveller from ₹20/km — with the 250 km/day minimum and any driver night halt shown upfront." },
+                { t: "Get an instant per-km quote", d: "Receive a transparent quote — Sedan ₹11/km, SUV ₹15/km or Tempo Traveller from ₹23/km — with the 250 km/day minimum and any driver night halt shown upfront." },
                 { t: "Confirm your booking", d: "Confirm by phone or WhatsApp on 7668570551. No heavy advance is needed for most routes; you get the driver and vehicle details before the trip." },
                 { t: "Travel and return with the same driver", d: "Your dedicated driver picks you up, stays through sightseeing and overnight halts, and drives you back home. You pay only for the kilometres driven plus tolls and taxes at actual." },
               ].map((s, i) => (
@@ -604,7 +605,7 @@ export default function RoundTripCabPage() {
                         {[
                           { label: "Sedan", price: pkg.sedanCost, sub: "₹11/km" },
                           { label: "SUV", price: pkg.suvCost, sub: "₹15/km" },
-                          { label: "Tempo", price: pkg.tempoPrice, sub: "from ₹20/km" },
+                          { label: "Tempo", price: pkg.tempoPrice, sub: "from ₹23/km" },
                         ].map((v, i) => (
                           <div key={i} className="text-center p-3 bg-[#0A0A0E] rounded-xl border border-amber-100/60">
                             <div className="text-[10px] text-slate-500 uppercase font-semibold tracking-wider mb-1">{v.label}</div>

@@ -1,11 +1,12 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('spiti-valley-august-trip');
 
 export const metadata = {
-  title: 'Spiti Valley August Trip 2026 | Dry in the Monsoon',
+  title: tightenTitle('Spiti Valley August Trip 2026 | Dry in the Monsoon'),
   description: 'Spiti Valley trip from Delhi in August 2026. Rain-shadow desert stays dry. Sedan ₹18,700, Innova ₹30,600. Kinnaur in, Kunzum out. Call 7668570551.',
   keywords: 'spiti valley august trip, spiti in monsoon, delhi to spiti valley, spiti valley trip cost, kaza trip from delhi, spiti circuit shimla manali, spiti valley tempo traveller',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

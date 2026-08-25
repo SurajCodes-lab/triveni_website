@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Agra Shopping Guide 2026 | Marble, Leather & Handicrafts',
+  title: tightenTitle('Agra Shopping Guide 2026 | Marble, Leather & Handicrafts'),
   description: 'Agra shopping guide. Marble inlay (Pietra Dura), leather goods, Zardozi embroidery. Sadar, Kinari, Subhash Bazaar. Price ranges & tips. Call 7668570551.',
   keywords: 'agra shopping guide, shopping in agra, agra marble inlay, agra leather market, agra handicrafts, pietra dura agra, agra bazaar',
   authors: [{ name: 'Triveni Cabs' }],

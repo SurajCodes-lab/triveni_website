@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-jim-corbett-from-delhi');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Jim Corbett Tour from Delhi | ₹6,500 AC Cab | 2026',
+  title: tightenTitle('Same Day Jim Corbett Tour from Delhi | ₹6,500 AC Cab | 2026'),
   description: 'Book same day Jim Corbett National Park tour from Delhi. Wildlife safari, Corbett Museum, Garjia Temple. AC sedan ₹6,500, SUV ₹8,500. Call 7668570551.',
   keywords: 'same day jim corbett tour from delhi, delhi to jim corbett one day trip, jim corbett safari day trip, corbett national park cab',
   authors: [{ name: 'Triveni Cabs' }],

@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, Sparkles, Navigation, Zap } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Ayodhya Ram Mandir Tour from Lucknow | Sedan ₹3,500 Same-Day',
+  title: tightenTitle('Ayodhya Ram Mandir Tour from Lucknow | Sedan ₹3,500 Same-Day'),
   description: 'Book Ayodhya Ram Mandir tour from Lucknow. Just 135km, 2.5-3 hrs drive. Sedan ₹3,500, SUV ₹5,000. Same-day return or overnight. Call 7668570551.',
   keywords: 'ayodhya ram mandir tour from lucknow, tour package india, sightseeing tour, triveni cabs',
   authors: [{ name: 'Triveni Cabs' }],

@@ -860,7 +860,7 @@ const vehicleHubPages = [
     destination: 'chardham',
     title: 'Char Dham Yatra by SUV — Innova, Fortuner, XUV700',
     seoTitle: 'Char Dham Yatra by SUV 2026 | Innova, Fortuner, XUV700 | Book Now',
-    seoDesc: 'Book SUV for Char Dham Yatra — Innova Crysta ₹18/km, XUV700 ₹22/km, Fortuner ₹25/km. 7-seater, AC, experienced driver. Call 7668570551.',
+    seoDesc: 'Book SUV for Char Dham Yatra — Innova Crysta ₹18/km, XUV700 ₹25/km, Fortuner ₹25/km. 7-seater, AC, experienced driver. Call 7668570551.',
     seoKeywords: ['chardham yatra by suv', 'suv for chardham', 'chardham by suv', 'best suv for char dham', 'suv rental chardham yatra'],
   }),
   generateRoute({

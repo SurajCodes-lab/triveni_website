@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-agra-tour-from-noida');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Agra Tour from Noida | ₹4,500 AC Cab | 2026',
+  title: tightenTitle('Same Day Agra Tour from Noida | ₹4,500 AC Cab | 2026'),
   description: 'Book same day Agra tour from Noida by car. Taj Mahal, Agra Fort via Yamuna Expressway. AC sedan ₹4,500, SUV ₹6,500. Call 7668570551.',
   keywords: 'same day agra tour from noida, noida to agra one day trip, noida to agra cab, taj mahal day trip from noida, noida to agra taxi',
   authors: [{ name: 'Triveni Cabs' }],

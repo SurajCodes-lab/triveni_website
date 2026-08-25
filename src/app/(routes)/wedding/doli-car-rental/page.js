@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getWeddingSpecialService } from '@/utilis/weddingCarModels';
 import { getWeddingPages } from '@/utilis/linkingHelper';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
@@ -6,13 +7,14 @@ import {
   Phone, ChevronRight, CheckCircle2, ArrowRight,
   Heart, Star, Sparkles, Crown, Car, Shield, Clock
 } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 const service = getWeddingSpecialService('doli-car-rental');
 
 export const metadata = {
-  title: service?.metaTitle || 'Doli Car Rental | Triveni Cabs',
+  title: tightenTitle(service?.metaTitle || 'Doli Car Rental | Triveni Cabs'),
   description: service?.metaDescription || 'Book doli car for bride vidai ceremony.',
   alternates: { canonical: 'https://www.trivenicabs.in/wedding/doli-car-rental' },
   openGraph: {
@@ -80,30 +82,23 @@ export default function DoliCarPage() {
 
       <div className="min-h-screen bg-[#0F0A1A]">
 
-        {/* === HERO: Cinematic Emotional Vidai Theme === */}
+        {/* === HERO: Real doli-car photo, scrim on text side only (Ultra-Premium v2) === */}
         <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-          {/* Deep purple/rose-gold cinematic gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1A0A2E] via-[#0F0A1A] to-[#2D1B37]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(244,114,182,0.12),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(217,169,130,0.08),transparent_50%)]" />
-
-          {/* Soft bokeh-like glows */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-[15%] right-[10%] w-48 h-48 bg-pink-500/[0.06] rounded-full blur-[80px]" />
-            <div className="absolute bottom-[20%] left-[8%] w-56 h-56 bg-purple-500/[0.05] rounded-full blur-[90px]" />
-            <div className="absolute top-[50%] left-[40%] w-40 h-40 bg-amber-400/[0.04] rounded-full blur-[70px]" />
-            {/* Decorative hearts */}
-            <div className="absolute top-[12%] left-[10%] opacity-[0.06]">
-              <Heart className="w-36 h-36 text-pink-400" />
-            </div>
-            <div className="absolute bottom-[12%] right-[7%] opacity-[0.05] rotate-12">
-              <Crown className="w-32 h-32 text-amber-400" />
-            </div>
+          {/* Photo background — decorated luxury vidai car */}
+          <div className="absolute inset-0">
+            <Image
+              src="/images/wedding/luxury_car.jpg"
+              alt="Decorated luxury doli car for the bride vidai ceremony"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+            {/* Text-side scrim only — photo stays visible on the right */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/10" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0F0A1A] to-transparent" />
           </div>
-
-          {/* Film-strip style vertical line */}
-          <div className="absolute left-8 top-0 w-px h-full bg-gradient-to-b from-transparent via-pink-500/20 to-transparent hidden lg:block" />
-          <div className="absolute left-12 top-0 w-px h-full bg-gradient-to-b from-transparent via-pink-500/10 to-transparent hidden lg:block" />
 
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
             {/* Breadcrumb */}
@@ -122,20 +117,20 @@ export default function DoliCarPage() {
                 <span className="text-pink-400/80 font-semibold text-sm tracking-[0.3em] uppercase">{data.tagline}</span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-white leading-[0.9] mb-8">
-                <span className="block text-transparent bg-gradient-to-r from-pink-300 via-rose-300 to-amber-300 bg-clip-text italic">Doli</span>
+              <h1 className="font-display-serif text-5xl md:text-6xl lg:text-8xl font-bold text-white leading-[0.95] mb-8">
+                <span className="block text-gold-foil italic">Doli</span>
                 <span className="block text-white/90 mt-2">Car Rental</span>
-                <span className="block text-2xl md:text-3xl font-medium text-slate-500 mt-4 not-italic">For the Most Emotional Moment of the Wedding</span>
+                <span className="block text-2xl md:text-3xl font-medium text-slate-300 mt-4 not-italic">For the Most Emotional Moment of the Wedding</span>
               </h1>
 
-              <p className="text-lg text-slate-400 mb-10 max-w-2xl leading-relaxed">{data.subtitle}</p>
+              <p className="text-lg text-slate-300 mb-10 max-w-2xl leading-relaxed">{data.subtitle}</p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="tel:+917668570551" className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 text-white px-8 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-pink-500/25 hover:shadow-pink-500/40 hover:scale-[1.02] transition-all duration-300">
-                  <Phone className="w-5 h-5" /> Book Doli Car
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Link href="tel:+917668570551" className="sheen group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FFE9A0] via-[#FACF2D] to-[#E8B923] text-black font-bold px-6 py-3.5 min-h-[48px] text-sm shadow-lg shadow-amber-500/30 hover:shadow-amber-400/45 transition-all duration-300 lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
+                  <Phone className="w-4 h-4" /> Book Doli Car
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="https://wa.me/917668570551?text=I need a doli car for bride vidai" className="inline-flex items-center justify-center gap-3 bg-white/[0.04] backdrop-blur-sm text-white px-8 py-5 rounded-2xl font-bold text-lg border border-white/[0.08] hover:border-pink-500/30 hover:bg-white/[0.08] transition-all">
+                <Link href="https://wa.me/917668570551?text=I need a doli car for bride vidai" className="inline-flex items-center justify-center gap-2 bg-white/5 backdrop-blur-xl text-white px-6 py-3.5 min-h-[48px] rounded-full font-semibold text-sm border border-white/10 hover:border-amber-400/40 hover:bg-white/10 transition-all lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
                   WhatsApp Us
                 </Link>
               </div>
@@ -270,9 +265,9 @@ export default function DoliCarPage() {
               </h2>
             </div>
 
-            <div className="space-y-4">
+            <div className="grid gap-4 md:grid-cols-2 md:items-start">
               {data.faqs.map((faq, idx) => (
-                <div key={idx} className="group relative overflow-hidden bg-white/[0.02] rounded-2xl border border-white/[0.05] hover:border-pink-500/20 transition-all duration-300">
+                <div key={idx} className="group relative overflow-hidden bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 transition-all duration-300">
                   {/* Left glow bar */}
                   <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-pink-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
 
@@ -293,15 +288,12 @@ export default function DoliCarPage() {
           </div>
         </section>
 
-        {/* === SECTION: Explore More === */}
-        <section className="relative py-20 px-4">
-          <div className="absolute inset-0 bg-[#0F0A1A]" />
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
+        {/* === SECTION: Explore More — warm light band === */}
+        <section className="relative py-16 md:py-24 px-4 bg-[#FFF6DC]">
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-3">Explore More <span className="text-transparent bg-gradient-to-r from-pink-400 to-amber-300 bg-clip-text">Wedding Services</span></h2>
-              <p className="text-slate-500">Complete wedding transportation solutions for every occasion</p>
+              <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-[#3a1220] mb-3">Explore More <span className="text-gold-foil">Wedding Services</span></h2>
+              <p className="text-[#6b3a4a]">Complete wedding transportation solutions for every occasion</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -313,9 +305,9 @@ export default function DoliCarPage() {
                 { href: '/wedding/baraat-tempo-traveller', label: 'Baraat Tempo', icon: Star },
                 { href: '/wedding/car-decoration-packages', label: 'Car Decoration', icon: Sparkles },
               ].map(link => (
-                <Link key={link.href} href={link.href} className="group flex flex-col items-center gap-3 p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-pink-500/20 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1">
-                  <link.icon className="w-6 h-6 text-slate-500 group-hover:text-pink-400 transition-colors" />
-                  <span className="text-sm font-semibold text-slate-400 group-hover:text-white transition-colors text-center">{link.label}</span>
+                <Link key={link.href} href={link.href} className="group flex flex-col items-center gap-3 p-5 rounded-2xl bg-white border border-amber-500/20 shadow-sm hover:border-amber-500/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  <link.icon className="w-6 h-6 text-amber-600 group-hover:text-amber-700 transition-colors" />
+                  <span className="text-sm font-semibold text-[#3a1220] transition-colors text-center">{link.label}</span>
                 </Link>
               ))}
             </div>
@@ -453,41 +445,37 @@ export default function DoliCarPage() {
           </div>
         </section>
 
-        {/* === CTA: Cinematic Emotional Banner === */}
-        <section className="relative py-24 px-4 overflow-hidden">
-          {/* Deep romantic gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-pink-600 via-rose-600 to-purple-700" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,0,0,0.2),transparent_50%)]" />
-
-          {/* Film grain texture via fine dot pattern */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '4px 4px' }} />
+        {/* === CTA: Cinematic Emotional Banner (v2: dark + gold) === */}
+        <section className="relative py-16 md:py-24 px-4 overflow-hidden">
+          <div className="absolute inset-0 bg-slate-950" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(250,207,45,0.14),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(91,18,40,0.45),transparent_55%)]" />
 
           {/* Decorative */}
           <div className="absolute top-8 left-[10%] opacity-10">
-            <Heart className="w-20 h-20 text-white" />
+            <Heart className="w-20 h-20 text-amber-300" />
           </div>
           <div className="absolute bottom-8 right-[10%] opacity-10">
-            <Crown className="w-24 h-24 text-white rotate-12" />
+            <Crown className="w-24 h-24 text-amber-300 rotate-12" />
           </div>
 
           <div className="max-w-4xl mx-auto relative z-10 text-center">
             <div className="inline-flex items-center gap-3 mb-8">
-              <div className="w-10 h-px bg-white/40" />
-              <span className="text-white/80 font-bold text-sm tracking-[0.3em] uppercase">Make Memories Forever</span>
-              <div className="w-10 h-px bg-white/40" />
+              <div className="w-10 h-px bg-amber-300/40" />
+              <span className="text-amber-200 font-bold text-sm tracking-[0.3em] uppercase">Make Memories Forever</span>
+              <div className="w-10 h-px bg-amber-300/40" />
             </div>
 
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Book Your Doli<br />Car Today
+            <h2 className="font-display-serif text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              Book Your <span className="text-gold-foil">Doli Car</span> Today
             </h2>
-            <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">Give the bride a beautiful, emotional farewell in a decorated luxury car she deserves.</p>
+            <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">Give the bride a beautiful, emotional farewell in a decorated luxury car she deserves.</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-3 bg-white text-pink-600 px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-black/20 hover:scale-[1.02] transition-all">
-                <Phone className="w-5 h-5" /> Call +91 7668570551
+              <Link href="tel:+917668570551" className="sheen inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FFE9A0] via-[#FACF2D] to-[#E8B923] text-black font-bold px-6 py-3.5 min-h-[48px] text-sm shadow-lg shadow-amber-500/30 hover:shadow-amber-400/45 transition-all lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
+                <Phone className="w-4 h-4" /> Call +91 7668570551
               </Link>
-              <Link href="https://wa.me/917668570551?text=I need a doli car for wedding vidai" className="inline-flex items-center justify-center gap-3 bg-green-500 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-black/20 hover:scale-[1.02] transition-all">
+              <Link href="https://wa.me/917668570551?text=I need a doli car for wedding vidai" className="inline-flex items-center justify-center gap-2 bg-white/5 backdrop-blur-xl border border-white/10 text-white px-6 py-3.5 min-h-[48px] rounded-full font-semibold text-sm hover:bg-white/10 transition-all lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
                 WhatsApp Us
               </Link>
             </div>

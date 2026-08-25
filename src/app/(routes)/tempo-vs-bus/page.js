@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Users, Fuel, Car, Check, X, ArrowRight, Phone, MapPin } from "@/components/ui/icons";
 import { getRatingAndReviews } from "@/lib/seo/review-helpers";
 import { getComparisonSchema, getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from "@/lib/seo/speakable-helpers";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "tempo-vs-bus";
 const SITE = "https://www.trivenicabs.in";
@@ -13,9 +14,9 @@ const OG_IMAGE = "/images/bus/35_SEATER_BUS.jpg";
 export const revalidate = 3600;
 
 export const metadata = {
-  title: "Tempo vs Bus for Group Travel (2026) | Triveni Cabs",
+  title: tightenTitle("Tempo vs Bus for Group Travel (2026)"),
   description:
-    "Tempo traveller vs bus for group travel: capacity, price per km, comfort & best-for. Verdict: tempo for 12-26, bus for 30-55. Tempo ₹22/km. Call 7668570551.",
+    "Tempo traveller vs bus for group travel: capacity, price per km, comfort & best-for. Verdict: tempo for 12-26, bus for 30-55. Tempo ₹25/km. Call 7668570551.",
   keywords:
     "tempo vs bus, tempo traveller vs bus, tempo or bus for group travel, which is better tempo or bus, tempo traveller vs bus rental, tempo vs bus price comparison, tempo vs bus for trip, group travel comparison india, tempo traveller bus difference, best vehicle for large group, tempo vs bus cost per person, bus vs tempo for tour, 17 seater tempo vs 35 seater bus, tempo or bus for pilgrimage, tempo or bus for hill station",
   authors: [{ name: "Triveni Cabs" }],
@@ -44,7 +45,7 @@ export const metadata = {
 
 const COMPARISON_ROWS = [
   { feature: "Seating capacity", v1: "12-26 passengers", v2: "28-55 passengers" },
-  { feature: "Price per km", v1: "₹22/km", v2: "₹55/km" },
+  { feature: "Price per km", v1: "₹25/km", v2: "₹55/km" },
   { feature: "Per-person cost (full)", v1: "~₹724 (17 pax, 500 km)", v2: "~₹843 (35 pax, 500 km)" },
   { feature: "Luggage space", v1: "Ample boot", v2: "Large cargo hold" },
   { feature: "Mileage", v1: "8-10 km/l", v2: "4-6 km/l" },
@@ -58,7 +59,7 @@ const TEMPO_VS_BUS_FAQS = [
   {
     question: "Is a tempo traveller or a bus cheaper for group travel?",
     answer:
-      "A tempo traveller is cheaper for groups up to 26 people. At about ₹22/km versus ₹55/km for a bus, a 17-seater tempo on a 500 km trip costs roughly ₹12,300 total (about ₹724 per person), while a 35-seater bus costs around ₹29,500 (about ₹843 per person). A bus only becomes cost-effective per head when you genuinely have 30+ travellers to fill it.",
+      "A tempo traveller is cheaper for groups up to 26 people. At about ₹25/km versus ₹55/km for a bus, a 17-seater tempo on a 500 km trip costs roughly ₹12,500 total (about ₹735 per person), while a 35-seater bus costs around ₹29,500 (about ₹843 per person). A bus only becomes cost-effective per head when you genuinely have 30+ travellers to fill it.",
   },
   {
     question: "Can a bus go to hill stations like Manali or Shimla?",
@@ -177,7 +178,7 @@ const comparisonData = {
   tempo: {
     name: "Tempo Traveller",
     image: "/images/tempo/17_seater.jpg",
-    price: "₹22/km",
+    price: "₹25/km",
     capacity: "12-26 Passengers",
     luggage: "Ample Boot Space",
     fuelEfficiency: "8-10 km/l",
@@ -251,7 +252,7 @@ export default function TempoVsBusPage() {
               Tempo Traveller vs Bus: <span className="text-yellow-400">Which Is Better for Group Travel?</span>
             </h1>
             <p className="speakable-lead text-lg text-gray-200 max-w-3xl mx-auto bg-white/10 border border-white/15 rounded-xl px-5 py-4">
-              Short answer: book a <strong>tempo traveller</strong> for groups of 12-26 — it is cheaper (about ₹22/km vs
+              Short answer: book a <strong>tempo traveller</strong> for groups of 12-26 — it is cheaper (about ₹25/km vs
               ₹55/km), more comfortable on push-back seats, and the only safe choice for hill stations and narrow roads.
               Book a <strong>bus</strong> only when your group is 30-55 people travelling on highways, where its huge
               capacity and cargo hold make it the lowest cost per head.
@@ -285,7 +286,7 @@ export default function TempoVsBusPage() {
                   <span className="text-xs bg-blue-400 text-white px-2 py-1 rounded-full">Best for Medium Groups</span>
                 </div>
                 <div className="space-y-4">
-                  <div className="py-3 border-b border-gray-100 text-center font-bold text-green-600">₹22/km</div>
+                  <div className="py-3 border-b border-gray-100 text-center font-bold text-green-600">₹25/km</div>
                   <div className="py-3 border-b border-gray-100 text-center">12-26 Passengers</div>
                   <div className="py-3 border-b border-gray-100 text-center">Ample Boot Space</div>
                   <div className="py-3 border-b border-gray-100 text-center text-green-600">8-10 km/l</div>

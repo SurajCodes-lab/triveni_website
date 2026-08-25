@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 import { getArticleSchema, getSpeakableSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Dehradun Travel Guide 2026 | Doon Valley Attractions & Tips',
+  title: tightenTitle('Dehradun Travel Guide 2026 | Doon Valley Attractions & Tips'),
   description: 'Complete Dehradun travel guide 2026. Robber\'s Cave, Sahastradhara, FRI, Tapkeshwar, Mindrolling, best time, food & transport. Call 7668570551.',
   keywords: 'dehradun travel guide, dehradun tourist guide, doon valley guide, dehradun sightseeing, dehradun tourism, things to do in dehradun, dehradun attractions',
   authors: [{ name: 'Triveni Cabs' }],

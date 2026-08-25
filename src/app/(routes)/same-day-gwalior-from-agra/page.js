@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-gwalior-from-agra');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Gwalior Tour from Agra | ₹3,500 AC Cab | 2026',
+  title: tightenTitle('Same Day Gwalior Tour from Agra | ₹3,500 AC Cab | 2026'),
   description: 'Book same day Gwalior tour from Agra. Gwalior Fort, Jai Vilas Palace, Tansen Tomb. 120 km. AC sedan ₹3,500, SUV ₹5,000. Call 7668570551.',
   keywords: 'same day gwalior tour from agra, agra to gwalior one day trip, agra to gwalior cab, gwalior fort day trip',
   authors: [{ name: 'Triveni Cabs' }],

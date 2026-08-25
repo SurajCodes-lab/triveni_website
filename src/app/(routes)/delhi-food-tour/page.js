@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Delhi Food Tour 2026 | Chandni Chowk & Paranthe Wali Gali',
+  title: tightenTitle('Delhi Food Tour 2026 | Chandni Chowk & Paranthe Wali Gali'),
   description: 'Delhi food guide — Chole Bhature, Paranthe Wali Gali, Butter Chicken, Chaat. Street food itinerary, best restaurants, by locals. Call 7668570551.',
   keywords: 'delhi food tour, delhi street food, chandni chowk food, paranthe wali gali, butter chicken delhi, karim delhi, delhi food guide, old delhi food walk',
   authors: [{ name: 'Triveni Cabs' }],

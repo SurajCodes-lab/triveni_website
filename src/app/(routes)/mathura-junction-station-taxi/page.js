@@ -3,6 +3,7 @@ import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getStationReviews, getStationHowToSchema } from '@/utilis/stationTaxiEnrichment';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -51,7 +52,7 @@ const STATION = {
 };
 
 export const metadata = {
-  title: 'Mathura Junction Station Taxi | Pickup from ₹149 — 4.9★ Rated',
+  title: tightenTitle('Mathura Junction Station Taxi | Pickup from ₹149 — 4.9★ Rated'),
   description: 'Book taxi from Mathura Junction Railway Station (MTJ). Fixed fares from ₹149 to Krishna Janmabhoomi, Vrindavan, Govardhan. AC sedan & SUV, 24/7.',
   keywords: 'mathura junction taxi, mathura station cab, MTJ station taxi, taxi from mathura to vrindavan, mathura junction cab booking, mathura station to govardhan taxi, mathura railway station taxi, mathura to barsana cab, mathura junction to agra taxi, mathura station pickup',
   alternates: { canonical: '/mathura-junction-station-taxi' },

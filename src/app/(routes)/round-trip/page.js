@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllRoundTripSlugs } from '@/utilis/roundTripData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Round Trip Cab Routes — Same Cab Both Ways";
+  const title = tightenTitle("Round Trip Cab Routes — Same Cab Both Ways");
   const description = "Round-trip cab routes across North India — same car both ways, transparent two-way fares, driver waiting included. Triveni Cabs 7668570551.";
   return {
     title,

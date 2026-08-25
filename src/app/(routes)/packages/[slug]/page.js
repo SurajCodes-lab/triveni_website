@@ -4,7 +4,7 @@ import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import HotelCabPackageClient from '@/components/packages/HotelCabPackageClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
-
+import { tightenTitle, tightenDescription, DESC_BUDGET } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -21,8 +21,13 @@ export async function generateMetadata({ params }) {
     return { title: 'Package Not Found' };
   }
 
-  const title = `${pkg.destination} ${pkg.duration} Package: Hotel + Cab ₹${pkg.startingPrice.toLocaleString('en-IN')}/person — 4.9★`;
-  const description = `${pkg.destination} ${pkg.duration} tour package with hotel & cab from ₹${pkg.startingPrice.toLocaleString('en-IN')} per person. Includes ${pkg.includes.slice(0, 3).join(', ')}. Book now — Call 7668570551.`;
+  const title = tightenTitle(`${pkg.destination} ${pkg.duration} Package: Hotel + Cab ₹${pkg.startingPrice.toLocaleString('en-IN')}/person — 4.9★`);
+  // Listing three inclusions pushed the longest of these to 224 characters.
+  // The price and the phone number sit at the end, so they are the first thing
+  // a trim would remove -- reserve them and let the inclusions take what is left.
+  const priceTail = `from ₹${pkg.startingPrice.toLocaleString('en-IN')} per person. Call 7668570551.`;
+  const descHead = `${pkg.destination} ${pkg.duration} tour package with hotel & cab. Includes ${pkg.includes.slice(0, 3).join(', ')}.`;
+  const description = `${tightenDescription(descHead, DESC_BUDGET - priceTail.length - 1)} ${priceTail}`;
   const ogTitle = `${pkg.destination} Tour Package — ${pkg.duration} | Hotel + Cab from ₹${pkg.startingPrice.toLocaleString('en-IN')} | Triveni Cabs`;
 
   return {

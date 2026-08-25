@@ -1,5 +1,6 @@
 import { placesToVisitPages } from '@/utilis/placesToVisitData';
 import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = placesToVisitPages.ghaziabad;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
@@ -7,7 +8,7 @@ const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, sl
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '15 Best Places to Visit Near Ghaziabad (2026) | With Distance',
+  title: tightenTitle('15 Best Places to Visit Near Ghaziabad (2026) | With Distance'),
   description: 'Best places to visit near Ghaziabad by car — Agra (200 km), Mathura (145 km), Jim Corbett (240 km), Rishikesh (230 km). Distances, drive time & cab fare included.',
   keywords: 'places to visit near noida, places near noida, weekend getaways from noida, day trips from noida, noida nearby places, places around noida, tourist places near noida, places to visit near noida by car',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

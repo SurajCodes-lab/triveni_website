@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import SearchResultsClient from './SearchResultsClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export async function generateMetadata({ searchParams }) {
@@ -14,7 +15,7 @@ export async function generateMetadata({ searchParams }) {
     const tripLabel = type === 'roundtrip' ? 'Round Trip' : 'One Way';
 
     return {
-      title: `${fromDisplay} to ${toDisplay} Cab — ${tripLabel} from ₹11/km | Triveni Cabs`,
+      title: tightenTitle(`${fromDisplay} to ${toDisplay} Cab — ${tripLabel} from ₹11/km`),
       description: `Book ${fromDisplay} to ${toDisplay} ${tripLabel.toLowerCase()} cab at lowest prices. Sedan, SUV, Tempo Traveller & Bus options available. 24/7 service, no hidden charges. Call 7668570551.`,
       alternates: {
         canonical: `https://www.trivenicabs.in/search?from=${from}&to=${to}&type=${type}`,

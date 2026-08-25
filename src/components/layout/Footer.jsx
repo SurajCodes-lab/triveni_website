@@ -8,6 +8,18 @@ import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Clock, ChevronRight,
 import { trackNavigation, trackSocialClick, trackPhoneCall, trackButtonClick } from "@/utilis/analytics";
 import { cn } from "@/utilis/cn";
 import { blurDataURL } from "@/utilis/imageUtils";
+import { bookingCanonicalRedirects } from '@/lib/seo/booking-canonical-redirects.mjs';
+
+// Week 43 consolidated 22 duplicate booking URLs behind 301s. The footer renders on
+// every page, so a stale href here aims the whole site's internal linking at a
+// redirect — wasted crawl budget and an extra hop for every visitor who clicks it.
+// Resolving through the live map keeps this correct as the map grows.
+//
+// Module scope, not component scope: the link arrays are initialised inside the
+// component body, and a helper declared after them fails at prerender with
+// "Cannot access 't' before initialization".
+const CANONICAL = new Map(bookingCanonicalRedirects.map((r) => [r.source, r.destination]));
+const canonical = (href) => CANONICAL.get(href) || href;
 
 const Footer = () => {
   const quickLinks = [
@@ -42,23 +54,23 @@ const Footer = () => {
 
   // Popular Routes - High traffic internal links
   const popularRoutes = [
-    { name: "Delhi to Agra", href: "/delhi-to-agra" },
-    { name: "Delhi to Jaipur", href: "/delhi-to-jaipur" },
-    { name: "Jaipur to Agra", href: "/jaipur-to-agra" },
-    { name: "Delhi to Chandigarh", href: "/delhi-to-chandigarh" },
-    { name: "Delhi to Haridwar", href: "/delhi-to-haridwar" },
-    { name: "Delhi to Shimla", href: "/delhi-to-shimla" },
-    { name: "Delhi to Manali", href: "/delhi-to-manali" },
-    { name: "Chandigarh to Shimla", href: "/chandigarh-to-shimla" },
-    { name: "Chandigarh to Manali", href: "/chandigarh-to-manali" },
-    { name: "Delhi to Amritsar", href: "/delhi-to-amritsar" },
+    { name: "Delhi to Agra", href: canonical("/delhi-to-agra") },
+    { name: "Delhi to Jaipur", href: canonical("/delhi-to-jaipur") },
+    { name: "Jaipur to Agra", href: canonical("/jaipur-to-agra") },
+    { name: "Delhi to Chandigarh", href: canonical("/delhi-to-chandigarh") },
+    { name: "Delhi to Haridwar", href: canonical("/delhi-to-haridwar") },
+    { name: "Delhi to Shimla", href: canonical("/delhi-to-shimla") },
+    { name: "Delhi to Manali", href: canonical("/delhi-to-manali") },
+    { name: "Chandigarh to Shimla", href: canonical("/chandigarh-to-shimla") },
+    { name: "Chandigarh to Manali", href: canonical("/chandigarh-to-manali") },
+    { name: "Delhi to Amritsar", href: canonical("/delhi-to-amritsar") },
     // Exact-match anchors for GSC booking queries stuck at pos 8-25 — the
     // "Cab"/"Taxi" word is intentional here and must not be trimmed to match
     // the shorter style of the entries above.
-    { name: "Delhi to Dehradun Taxi", href: "/delhi-to-dehradun" },
-    { name: "Chandigarh to Amritsar Cab", href: "/chandigarh-to-amritsar" },
-    { name: "Mussoorie to Delhi Cab", href: "/mussoorie-to-delhi" },
-    { name: "Chandigarh to Kasauli Cab", href: "/chandigarh-to-kasauli" },
+    { name: "Delhi to Dehradun Taxi", href: canonical("/delhi-to-dehradun") },
+    { name: "Chandigarh to Amritsar Cab", href: canonical("/chandigarh-to-amritsar") },
+    { name: "Mussoorie to Delhi Cab", href: canonical("/mussoorie-to-delhi") },
+    { name: "Chandigarh to Kasauli Cab", href: canonical("/chandigarh-to-kasauli") },
     { name: "Delhi to Kasol Cab", href: "/round-trip/delhi-to-kasol" }
   ];
 

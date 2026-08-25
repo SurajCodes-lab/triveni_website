@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllTrainTaxiSlugs } from '@/utilis/trainTaxiData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Train + Taxi — Station Transfers & Last-Mile Cabs";
+  const title = tightenTitle("Train + Taxi — Station Transfers & Last-Mile Cabs");
   const description = "Train + taxi guides: railway station pickups and onward cabs across North India. Triveni Cabs 7668570551.";
   return {
     title,

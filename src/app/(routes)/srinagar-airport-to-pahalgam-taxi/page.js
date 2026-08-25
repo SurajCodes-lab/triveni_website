@@ -1,5 +1,6 @@
 import { airportRoutes, getRelatedRoutes } from '@/utilis/airportOutstationData';
 import AirportOutstationClient from '@/components/airport/AirportOutstationClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'srinagar-airport-to-pahalgam-taxi';
 const data = airportRoutes[SLUG];
@@ -7,7 +8,7 @@ const data = airportRoutes[SLUG];
 export const revalidate = 3600;
 
 export const metadata = {
-  title: `Srinagar Airport to Pahalgam Taxi | Fixed \u20B9${data.fares.sedan.price} | Kashmir Valley`,
+  title: tightenTitle(`Srinagar Airport to Pahalgam Taxi | Fixed \u20B9${data.fares.sedan.price} | Kashmir Valley`),
   description: `Srinagar Airport to Pahalgam taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Kashmir Valley scenic route, Betaab Valley. ${data.time}. Call 7668570551.`,
   keywords: 'srinagar airport to pahalgam taxi, srinagar airport pahalgam cab, srinagar to pahalgam transfer, pahalgam airport taxi, amarnath yatra taxi',
   authors: [{ name: 'Triveni Cabs' }],

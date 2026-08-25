@@ -1,5 +1,6 @@
 import { getSpecialTransportBySlug } from '@/utilis/specialTransportData';
 import SpecialTransportClient from '@/components/special/SpecialTransportClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const service = getSpecialTransportBySlug('pet-friendly-cab-service');
 
@@ -15,7 +16,7 @@ const fleetImages = [
 ];
 
 export const metadata = {
-  title: 'Pet-Friendly Cab Service | Travel with Dogs & Cats | Triveni Cabs',
+  title: tightenTitle('Pet-Friendly Cab Service | Travel with Dogs & Cats'),
   description: 'Book pet-friendly cab service. Travel with dogs, cats and pets in sanitized vehicles with pet seat covers. AC cabs from Rs 15/km. Call 7668570551.',
   keywords: 'pet friendly cab, pet taxi service, travel with pets, dog friendly cab, cat transport service, cab for pets, pet travel india',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

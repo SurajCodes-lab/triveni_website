@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-shimla-from-delhi";
 const data = familyTripData["shimla"];
 
 export const metadata = {
-  title: 'Family Trip to Shimla from Delhi by Car | Innova Rs 11,500 | 2026',
+  title: tightenTitle('Family Trip to Shimla from Delhi by Car | Innova Rs 11,500 | 2026'),
   description: 'Book a family trip to Shimla from Delhi by car. Innova Crysta Rs 11,500, Sedan Rs 8,500. Toy Train, Kufri, Mall Road. Kid-friendly stops. Call 7668570551.',
   keywords: 'family trip shimla from delhi, delhi to shimla family tour, shimla family vacation by car, shimla trip with kids, family holiday shimla',
   authors: [{ name: 'Triveni Cabs' }],

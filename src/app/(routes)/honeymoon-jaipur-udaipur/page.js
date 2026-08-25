@@ -1,12 +1,13 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "honeymoon-jaipur-udaipur";
 const data = honeymoonTripData["jaipur-udaipur"];
 
 export const metadata = {
-  title: 'Jaipur Udaipur Honeymoon by Car | Royal Rajasthan ₹16,000',
+  title: tightenTitle('Jaipur Udaipur Honeymoon by Car | Royal Rajasthan ₹16,000'),
   description: 'Book Jaipur-Udaipur honeymoon by car from Delhi. Sedan Rs 16,000, Innova Rs 21,000. Amber Fort, Lake Pichola, palaces. Decorated car. Call 7668570551.',
   keywords: 'jaipur udaipur honeymoon, honeymoon jaipur udaipur by car, rajasthan honeymoon road trip, romantic trip jaipur udaipur, honeymoon rajasthan circuit',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

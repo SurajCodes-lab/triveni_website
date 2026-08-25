@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Delhi Shopping Guide 2026 | Chandni Chowk, Khan Market & More',
+  title: tightenTitle('Delhi Shopping Guide 2026 | Chandni Chowk, Khan Market & More'),
   description: 'Delhi shopping guide. Chandni Chowk, Khan Market, Dilli Haat, Sarojini Nagar, Janpath. Designer to street fashion, wedding shopping, spices, electronics.',
   keywords: 'delhi shopping guide, shopping in delhi, chandni chowk shopping, khan market delhi, dilli haat, sarojini nagar market, delhi wedding shopping, janpath market',
   authors: [{ name: 'Triveni Cabs' }],

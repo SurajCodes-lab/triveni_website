@@ -188,7 +188,7 @@ export const corporateIndustries = {
     slug: 'pharma-companies',
     name: 'Pharma & Healthcare',
     title: 'Corporate Transport for Pharma & Healthcare Companies',
-    metaTitle: 'Pharma Company Transport | Healthcare Employee Cab | Triveni Cabs',
+    metaTitle: 'Pharma Company Transport | Healthcare Employee Cab',
     metaDescription: 'Reliable corporate transport for pharmaceutical and healthcare companies. Industrial area connectivity, shift-based operations, clean vehicles. Call 7668570551.',
     heroImage: '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg',
     icon: '💊',

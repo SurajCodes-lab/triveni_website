@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur";
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '5 Day Rajasthan Road Trip 2026 | Jaipur Udaipur Jodhpur',
+  title: tightenTitle('5 Day Rajasthan Road Trip 2026 | Jaipur Udaipur Jodhpur'),
   description: '5-day Jaipur → Udaipur → Jodhpur circuit. Day-wise plan, hotel areas, costs from ₹28K Sedan / ₹40K SUV. Call 7668570551.',
   keywords: '5 day rajasthan road trip itinerary, jaipur udaipur jodhpur road trip, rajasthan 5 day tour by car, rajasthan road trip plan, rajasthan circuit tour',
   authors: [{ name: 'Triveni Cabs' }],

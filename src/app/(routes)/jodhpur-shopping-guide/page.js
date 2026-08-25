@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jodhpur Shopping Guide 2026 | Bandhani, Spices & Antiques',
+  title: tightenTitle('Jodhpur Shopping Guide 2026 | Bandhani, Spices & Antiques'),
   description: 'Jodhpur shopping guide. Bandhani textiles, antique furniture, spices, mojaris, lacquer bangles. Sardar Market, Clock Tower Bazaar, Tripolia Bazaar.',
   keywords: 'jodhpur shopping guide, shopping in jodhpur, sardar market jodhpur, clock tower bazaar, jodhpur spices, jodhpur bandhani, jodhpur antique furniture, jodhpur handicrafts',
   authors: [{ name: 'Triveni Cabs' }],

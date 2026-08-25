@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "kashmir-road-trip-from-delhi";
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Delhi to Kashmir Road Trip Plan 2026 | 7-8 Day Itinerary',
+  title: tightenTitle('Delhi to Kashmir Road Trip Plan 2026 | 7-8 Day Itinerary'),
   description: 'Delhi to Kashmir road trip plan covering Srinagar, Gulmarg, Pahalgam & Sonmarg. 7-8 day itinerary, road conditions, permits. Sedan ₹45,000, SUV ₹65,000.',
   keywords: 'delhi to kashmir road trip plan, kashmir road trip from delhi, srinagar gulmarg pahalgam tour by car, kashmir by car from delhi, kashmir tour itinerary',
   authors: [{ name: 'Triveni Cabs' }],

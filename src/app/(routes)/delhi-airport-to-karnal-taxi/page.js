@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Delhi Airport to Karnal Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Delhi Airport to Karnal Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Delhi Airport to Karnal taxi at ₹${ROUTE.fare}. Fixed fare, flight tracking, meet & greet at IGI. Via NH-44. 24/7 reliable service by Triveni Cabs.`,
   keywords: 'delhi airport to karnal taxi, delhi airport to karnal cab, delhi to karnal airport taxi, taxi from delhi airport to karnal, karnal airport pickup, flight tracked karnal taxi, fixed fare karnal cab, delhi airport karnal transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

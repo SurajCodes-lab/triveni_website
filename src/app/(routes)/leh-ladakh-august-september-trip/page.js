@@ -1,11 +1,12 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('leh-ladakh-august-september-trip');
 
 export const metadata = {
-  title: 'Leh Ladakh August September Trip 2026 | Last Road Window',
+  title: tightenTitle('Leh Ladakh August September Trip 2026 | Last Road Window'),
   description: 'Ladakh in August-September 2026 — the last dependable road window before the passes close. Manali-Leh in, Srinagar out. From ₹26,400. Call 7668570551.',
   keywords: 'leh ladakh august september trip, best time to visit ladakh, ladakh in august, ladakh in september, ladakh road closing date, manali leh highway august, ladakh trip from delhi september',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

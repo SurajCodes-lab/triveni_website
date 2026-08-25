@@ -47,7 +47,7 @@ const FEATURES = [
 const FLEET = [
   { name: 'Sedan', cars: 'Dzire · Etios · Ciaz', seats: '1–4', bags: '2–3', rate: '₹11/km', tag: null, img: '/images/car/swift_dzire.jpg' },
   { name: 'SUV', cars: 'Innova · Ertiga', seats: '1–6', bags: '4', rate: '₹15/km', tag: 'Most Booked', img: '/images/car/innova_crysta.jpg' },
-  { name: 'Tempo Traveller', cars: '12–26 Seater', seats: '7–26', bags: '12+', rate: '₹20/km', tag: null, img: '/images/tempo/16_seater.jpg' },
+  { name: 'Tempo Traveller', cars: '12–26 Seater', seats: '7–26', bags: '12+', rate: '₹23/km', tag: null, img: '/images/tempo/16_seater.jpg' },
   { name: 'Luxury', cars: 'Audi · BMW · Benz', seats: '1–4', bags: '3', rate: 'On Ask', tag: 'VIP', img: '/images/car/premium_suv.jpg' },
 ];
 

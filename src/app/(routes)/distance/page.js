@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllDistanceRouteSlugs } from '@/utilis/distanceData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Road Distance Guides — Km, Drive Time & Cab Fares";
+  const title = tightenTitle("Road Distance Guides — Km, Drive Time & Cab Fares");
   const description = "Road distance, drive time, toll and cab fares for hundreds of North India routes. Plan your trip and book an AC cab with Triveni Cabs. Call 7668570551.";
   return {
     title,

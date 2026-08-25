@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
 import { getSpeakableSchema, getArticleSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Safe Travel Tips India for Foreign Tourists 2026',
+  title: tightenTitle('Safe Travel Tips India for Foreign Tourists 2026'),
   description: 'Comprehensive safety guide for foreign tourists in India 2026. Transportation safety, health tips, scam awareness, emergency numbers, women safety.',
   keywords: 'safe travel tips india for foreign tourists, india safety guide, india travel safety, is india safe for tourists, india solo travel safety, women safety india',
   authors: [{ name: 'Triveni Cabs' }],

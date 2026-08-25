@@ -9,7 +9,7 @@ import { cities as hubCities, tourDetails } from '@/utilis/data';
 import BlogPostPageClient from '@/components/blog/BlogPostPageClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getSpeakableSchema, getTodayDate, getCityPlaceSchema, getHowToSchema } from '@/lib/seo/speakable-helpers';
-
+import { buildAttractionBlogMeta, tightenTitle } from '@/lib/seo/serp-ctr';
 // ISR - Revalidate every hour (3600 seconds)
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -346,17 +346,42 @@ export async function generateMetadata({ params }) {
 
   if (!post) {
     return {
-      title: 'Post Not Found',
+      title: tightenTitle('Post Not Found'),
     };
   }
 
+  // Week 43 — answer-box defence. 25 attraction guides carried 1,169,979
+  // impressions (78% of all /blog impressions) at ~0.3% CTR because their
+  // titles led with "Timings & Ticket Price" — precisely what Google's
+  // knowledge panel prints above the result. buildAttractionBlogMeta keeps
+  // the timings keyword but leads with "How to Reach", the largest slice of
+  // the query basket the panel does not answer. Titles that are already
+  // differentiated are returned untouched. See src/lib/seo/serp-ctr.js.
+  const { title: seoTitle, description: seoDescription } = buildAttractionBlogMeta({
+    title: post.title,
+    metaTitle: post.metaTitle,
+    excerpt: post.excerpt,
+    metaDescription: post.metaDescription,
+    city: post.city,
+    attractionName: post.attractionData?.name,
+  });
+
+  // OG/social keeps the original curated headline: a shared link is not
+  // competing with a SERP answer box, so the fact-led title reads better there.
+  const socialTitle = post.metaTitle || post.title || 'Blog Post';
+  const socialDescription = post.metaDescription || post.excerpt || '';
+
   return {
-    title: post.metaTitle || post.title || 'Blog Post',
-    description: post.metaDescription || post.excerpt || '',
+    // Title carries no brand suffix of its own: the root layout appends
+    // '%s | Triveni Cabs'. serp-ctr budgets the content half at 45 chars
+    // (TITLE_BUDGET) so the rendered title lands inside Google's ~60-char
+    // truncation instead of being cut mid-phrase.
+    title: seoTitle || socialTitle,
+    description: seoDescription || socialDescription,
     keywords: post.tags?.join(', ') || '',
     openGraph: {
-      title: post.metaTitle || post.title || 'Blog Post',
-      description: post.metaDescription || post.excerpt || '',
+      title: socialTitle,
+      description: socialDescription,
       type: 'article',
       publishedTime: post.date,
       authors: ['Triveni Cabs'],
@@ -364,8 +389,8 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.metaTitle || post.title || 'Blog Post',
-      description: post.metaDescription || post.excerpt || '',
+      title: socialTitle,
+      description: socialDescription,
       images: post.image ? [post.image] : [],
     },
     alternates: {

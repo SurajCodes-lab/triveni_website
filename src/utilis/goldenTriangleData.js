@@ -73,7 +73,7 @@ export const goldenTriangleTours = {
     citySlugs: ["chandigarh", "delhi", "agra", "jaipur"],
     priceFrom: 19999,
     tagline:
-      "Chandigarh → Delhi → Agra → Jaipur — the classic circuit with a tricity start",
+      "Chandigarh → Delhi → Agra → Jaipur",
     intro:
       "Start the Golden Triangle right from Chandigarh. Triveni Cabs runs a chauffeur-driven Chandigarh–Delhi–Agra–Jaipur tour that adds the 250 km Chandigarh-to-Delhi leg to the classic Taj Mahal and Pink City circuit — ideal for travellers based in the tricity (Chandigarh, Mohali, Panchkula) or flying into Chandigarh airport (IXC). You get a clean AC vehicle, an experienced English-speaking driver, and a flexible 4–6 day plan covering the Taj Mahal, Agra Fort, Amber Fort, City Palace and Delhi's landmarks. From ₹19,999 all-inclusive of fuel, tolls and driver.",
     landmarks: [

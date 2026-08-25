@@ -635,7 +635,7 @@ export function generateDefinitionContent(term, context = {}) {
     'tempo_traveller': {
       term: 'Tempo Traveller',
       definition: 'A tempo traveller is a large passenger vehicle with 12 to 26 seats, commonly used in India for group travel, pilgrimages, and family trips. It features pushback seats, AC, and ample luggage space.',
-      example: 'Triveni Cabs offers tempo travellers from ₹20/km with professional drivers for outstation and local trips.'
+      example: 'Triveni Cabs offers tempo travellers from ₹23/km with professional drivers for outstation and local trips.'
     },
     'airport_transfer': {
       term: 'Airport Transfer Service',
@@ -670,8 +670,8 @@ export function generatePricingTableSchema(vehicleData = []) {
   const defaultData = [
     { vehicle: 'Sedan (Dzire/Etios)', seats: 4, pricePerKm: 11, minKm: 250, driverAllowance: 300 },
     { vehicle: 'SUV (Innova/Crysta)', seats: 7, pricePerKm: 15, minKm: 250, driverAllowance: 350 },
-    { vehicle: 'Tempo Traveller 12-Seater', seats: 12, pricePerKm: 20, minKm: 250, driverAllowance: 400 },
-    { vehicle: 'Tempo Traveller 17-Seater', seats: 17, pricePerKm: 24, minKm: 250, driverAllowance: 450 },
+    { vehicle: 'Tempo Traveller 12-Seater', seats: 12, pricePerKm: 23, minKm: 250, driverAllowance: 400 },
+    { vehicle: 'Tempo Traveller 17-Seater', seats: 17, pricePerKm: 25, minKm: 250, driverAllowance: 450 },
     { vehicle: 'Bus 27-Seater', seats: 27, pricePerKm: 34, minKm: 250, driverAllowance: 500 },
     { vehicle: 'Volvo 45-Seater', seats: 45, pricePerKm: 45, minKm: 300, driverAllowance: 700 }
   ];

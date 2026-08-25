@@ -4,7 +4,7 @@ import VehicleHireClient from "@/components/vehicles/VehicleHireClient";
 import AEOHead from '@/components/seo/AEOHead';
 import { vehicleDetails } from "@/utilis/data";
 import { vehicleHirePages, getAllVehicleHireSlugs } from "@/utilis/vehicleHireData";
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -24,8 +24,8 @@ export async function generateMetadata({ params }) {
   const vehicleHire = vehicleHirePages[slug];
   if (vehicleHire) {
     const rate = vehicleHire.perKmRate.outstation;
-    const title = `${vehicleHire.name} on Rent | ${rate} | Book Now | Triveni Cabs`;
-    const description = `Rent ${vehicleHire.name} with driver at ${rate} for outstation trips. ${vehicleHire.seats} seats, ${vehicleHire.fuelType}, AC. Professional drivers, 24/7 support. Book ${vehicleHire.name} rental online.`;
+    const title = tightenTitle(`${vehicleHire.name} on Rent | ${rate} | Book Now`);
+    const description = `Rent ${vehicleHire.name} with driver at ${rate} for outstation trips. ${vehicleHire.seats} seats, ${vehicleHire.fuelType}, AC. Professional drivers, 24/7 support. Book online.`;
     const canonical = `https://www.trivenicabs.in/vehicles/${slug}`;
 
     return {
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }) {
   // Old category pages - SEO mapping
   const seoMapping = {
     sedan: {
-      title: "Book Sedan Car Rental Online India | AC Sedan Taxi Hire | Triveni Cabs",
+      title: "Book Sedan Car Rental Online India | AC Sedan Taxi Hire",
       description: "Rent AC sedan cars for outstation trips in India. Professional sedan taxi service with driver at \u20B911/km. Book sedan car rental for Delhi, Agra, Jaipur travel.",
     },
     suv: {
@@ -70,15 +70,15 @@ export async function generateMetadata({ params }) {
       description: "Book 6-7 seater SUV cars for family trips across India. Innova, Ertiga SUV rental with professional driver. Best rates for group travel.",
     },
     "tempo-traveller": {
-      title: "Tempo Traveller Rental India | 12-26 Seater | \u20B920/km Onwards | Triveni Cabs",
-      description: "Book 12, 16, 17, 20 & 26 seater tempo traveller for group tours. AC tempo with pushback seats from \u20B920/km.",
+      title: "Tempo Traveller Rental India | 12-26 Seater | \u20B923/km Onwards",
+      description: "Book 12, 16, 17, 20 & 26 seater tempo traveller for group tours. AC tempo with pushback seats from \u20B923/km.",
     },
     "luxury-bus": {
-      title: "Luxury Bus Rental India | Volvo 35-56 Seater | \u20B945/km | Triveni Cabs",
+      title: "Luxury Bus Rental India | Volvo 35-56 Seater | \u20B945/km",
       description: "Rent luxury Volvo & BharatBenz buses (35-56 seater) with LED TV, recliners, washroom, Wi-Fi from \u20B945/km.",
     },
     bus: {
-      title: "Bus Rental India | 22-41 Seater AC Bus | \u20B930/km | Triveni Cabs",
+      title: "Bus Rental India | 22-41 Seater AC Bus | \u20B930/km",
       description: "Book 22-41 seater AC buses for group travel. Affordable rates from \u20B930/km for school trips, corporate outings.",
     },
   };
@@ -102,7 +102,7 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: "Vehicle Rental | Triveni Cabs",
+    title: "Vehicle Rental",
     description: "Browse our vehicle fleet for rental across India.",
   };
 }

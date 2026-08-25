@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-amritsar-from-chandigarh');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Amritsar Tour from Chandigarh | ₹5,000 AC Cab | 2026',
+  title: tightenTitle('Same Day Amritsar Tour from Chandigarh | ₹5,000 AC Cab | 2026'),
   description: 'Book same day Amritsar tour from Chandigarh. Golden Temple, Jallianwala Bagh, Wagah Border ceremony. AC sedan ₹5,000, SUV ₹7,000. Call 7668570551.',
   keywords: 'same day amritsar tour from chandigarh, chandigarh to amritsar one day trip, golden temple day trip from chandigarh, wagah border tour',
   authors: [{ name: 'Triveni Cabs' }],

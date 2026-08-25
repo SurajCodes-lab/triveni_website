@@ -3,10 +3,11 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Varanasi Travel Guide 2026 | Ghats, Temples, Spiritual Capital',
+  title: tightenTitle('Varanasi Travel Guide 2026 | Ghats, Temples, Spiritual Capital'),
   description: 'Complete Varanasi travel guide 2026. Ganga Aarti, Kashi Vishwanath, Sarnath, ghats, best time to visit, food, tips. Call 7668570551.',
   keywords: 'varanasi travel guide, varanasi tourist guide, kashi guide, banaras tourism, varanasi ghats, ganga aarti, varanasi attractions',
   authors: [{ name: 'Triveni Cabs' }],

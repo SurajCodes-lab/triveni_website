@@ -205,8 +205,8 @@ export default async function EventCityPage({ params }) {
           </div>
 
           {/* Floating Gradient Orbs */}
-          <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-cyan-500/30 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-20 left-10 w-[500px] h-[500px] bg-blue-600/25 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-cyan-500/30 rounded-full blur-[150px]" />
+          <div className="absolute bottom-20 left-10 w-[500px] h-[500px] bg-blue-600/25 rounded-full blur-[150px]" style={{ animationDelay: '1s' }} />
 
           {/* Content */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
@@ -223,21 +223,21 @@ export default async function EventCityPage({ params }) {
               {/* Left Content */}
               <div className="space-y-8">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50 animate-pulse" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <MapPin className="w-6 h-6 text-cyan-300" />
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">{city.tagline}</span>
                   </div>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
+                <h1 className="speakable-headline font-display-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]">
                   Event Transport
-                  <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                  <span className="block mt-2 text-gold-foil">
                     in {city.name}
                   </span>
                 </h1>
 
-                <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
+                <p className="speakable-lead text-xl text-slate-300 max-w-lg leading-relaxed">
                   {city.subtitle}
                 </p>
 
@@ -286,9 +286,9 @@ export default async function EventCityPage({ params }) {
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Link
                     href="tel:+917668570551"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] transition-all duration-300"
+                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-b from-[#FFE9A0] via-[#FACF2D] to-[#E6B800] text-black px-8 py-5 rounded-2xl font-bold text-lg shadow-[0_10px_30px_-10px_rgba(250,207,45,0.55)] hover:brightness-105 transition-all duration-300 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]"
                   >
-                    <Phone className="w-5 h-5 group-hover:animate-pulse" />
+                    <Phone className="w-5 h-5" />
                     Get {city.name} Quote
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -325,7 +325,7 @@ export default async function EventCityPage({ params }) {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
             <span className="text-white/60 text-xs tracking-widest uppercase">Scroll</span>
             <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
               <div className="w-1 h-3 bg-white/60 rounded-full" />
@@ -352,18 +352,15 @@ export default async function EventCityPage({ params }) {
           </div>
         </section>
 
-        {/* Popular Venues Section */}
-        <section className="py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-100/50 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
-
+        {/* Popular Venues Section — warm band */}
+        <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] relative overflow-hidden">
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-cyan-500/30">
                 <Building2 className="w-5 h-5 text-white" />
                 <span className="text-white font-semibold text-sm tracking-wider uppercase">Popular Venues</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+              <h2 className="font-display-serif text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                 Venues We Serve in
                 <span className="block text-transparent bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 bg-clip-text">{city.name}</span>
               </h2>
@@ -372,7 +369,7 @@ export default async function EventCityPage({ params }) {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {city.popularVenues.map((venue, idx) => (
                 <div key={idx} className="group">
-                  <div className="bg-white rounded-2xl p-6 shadow-lg shadow-slate-200/50 border border-slate-100 hover:shadow-xl hover:border-cyan-200 transition-all duration-300 hover:-translate-y-1 h-full">
+                  <div className="bg-white/70 rounded-2xl p-6 shadow-sm ring-1 ring-amber-900/10 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full">
                     <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ${
                       idx % 4 === 0 ? 'bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/30' :
                       idx % 4 === 1 ? 'bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/30' :
@@ -391,9 +388,9 @@ export default async function EventCityPage({ params }) {
         </section>
 
         {/* All Event Types Section */}
-        <section className="py-24 px-4 bg-slate-900 relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-slate-900 relative overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[200px] animate-pulse" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[200px]" />
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
@@ -470,7 +467,7 @@ export default async function EventCityPage({ params }) {
         </section>
 
         {/* Fleet Section */}
-        <section className="py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-100/50 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
 
@@ -530,24 +527,21 @@ export default async function EventCityPage({ params }) {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-24 px-4 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-100/50 rounded-full blur-[120px]" />
-
+        {/* FAQ Section — warm band */}
+        <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] relative overflow-hidden">
           <div className="max-w-5xl mx-auto relative z-10">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-blue-100 px-6 py-3 rounded-full mb-6">
+              <div className="inline-flex items-center gap-2 bg-white/70 ring-1 ring-amber-900/10 px-6 py-3 rounded-full mb-6">
                 <HelpCircle className="w-5 h-5 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">FAQ</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+              <h2 className="font-display-serif text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                 Common Questions About
                 <span className="block text-transparent bg-gradient-to-r from-indigo-500 to-blue-600 bg-clip-text">{city.name} Events</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 md:items-start gap-6">
               {eventFAQs.slice(0, 4).map((faq, idx) => (
                 <div
                   key={idx}
@@ -585,8 +579,8 @@ export default async function EventCityPage({ params }) {
         {/* CTA Section */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px]" style={{ animationDelay: '1s' }} />
 
           <div className="absolute inset-0 opacity-5" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
@@ -601,9 +595,9 @@ export default async function EventCityPage({ params }) {
                   <span className="text-cyan-300 font-semibold text-sm tracking-wider uppercase">Plan Your {city.name} Event</span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                <h2 className="font-display-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                   Ready to Make Your
-                  <span className="block text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                  <span className="block text-gold-foil">
                     {city.name} Event Memorable?
                   </span>
                 </h2>

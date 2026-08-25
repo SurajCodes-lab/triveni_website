@@ -92,8 +92,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹10,800",
-        "perKm": "₹20/km"
+        "price": "₹12,420",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -211,8 +211,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹7,000",
-        "perKm": "₹20/km"
+        "price": "₹8,050",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -329,8 +329,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -444,8 +444,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -559,8 +559,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -670,8 +670,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹10,400",
-        "perKm": "₹20/km"
+        "price": "₹11,960",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -781,8 +781,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹19,800",
-        "perKm": "₹20/km"
+        "price": "₹22,770",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -891,8 +891,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹13,600",
-        "perKm": "₹20/km"
+        "price": "₹15,640",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -1008,8 +1008,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹12,600",
-        "perKm": "₹20/km"
+        "price": "₹14,490",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -1117,8 +1117,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹9,200",
-        "perKm": "₹20/km"
+        "price": "₹10,580",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -1225,8 +1225,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹10,600",
-        "perKm": "₹20/km"
+        "price": "₹12,190",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -1340,8 +1340,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -1453,8 +1453,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹7,900",
-        "perKm": "₹20/km"
+        "price": "₹9,085",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -1562,8 +1562,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹11,400",
-        "perKm": "₹20/km"
+        "price": "₹13,110",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -1670,8 +1670,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -1779,8 +1779,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹10,000",
-        "perKm": "₹20/km"
+        "price": "₹11,500",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -1888,8 +1888,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -1996,8 +1996,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -2099,8 +2099,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,200",
-        "perKm": "₹20/km"
+        "price": "₹7,130",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -2209,8 +2209,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -2311,8 +2311,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -2421,8 +2421,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -2535,8 +2535,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -2746,8 +2746,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [
@@ -2860,8 +2860,8 @@ const howToReachRoutes = {
       },
       "tempo": {
         "type": "Tempo Traveller (12-seater)",
-        "price": "₹6,000",
-        "perKm": "₹20/km"
+        "price": "₹6,900",
+        "perKm": "₹23/km"
       }
     },
     "faqs": [

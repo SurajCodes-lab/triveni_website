@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('christmas-shimla-manali-package');
 
 export const metadata = {
-  title: 'Christmas 2026 Shimla Manali Cab Package | White Christmas',
+  title: tightenTitle('Christmas 2026 Shimla Manali Cab Package | White Christmas'),
   description: 'Book Christmas cab package Delhi to Shimla and Manali 2026. From Rs 10,000 sedan. White Christmas, snow sports, Mall Road. Winter-ready vehicles.',
   keywords: 'christmas shimla cab, christmas manali package, delhi to shimla christmas, white christmas cab, shimla manali christmas 2026, christmas holiday cab, snow trip christmas',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

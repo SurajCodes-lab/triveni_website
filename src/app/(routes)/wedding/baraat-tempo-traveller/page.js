@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getWeddingSpecialService } from '@/utilis/weddingCarModels';
 import { getWeddingPages } from '@/utilis/linkingHelper';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
@@ -6,13 +7,14 @@ import {
   Phone, ChevronRight, CheckCircle2, ArrowRight, Shield, Clock,
   Car, Heart, Star, Sparkles, Music, Crown, Users, Zap, PartyPopper
 } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 const service = getWeddingSpecialService('baraat-tempo-traveller');
 
 export const metadata = {
-  title: service?.metaTitle || 'Baraat Tempo Traveller | Triveni Cabs',
+  title: tightenTitle(service?.metaTitle || 'Baraat Tempo Traveller | Triveni Cabs'),
   description: service?.metaDescription || 'Book baraat tempo traveller with DJ for your wedding.',
   alternates: { canonical: 'https://www.trivenicabs.in/wedding/baraat-tempo-traveller' },
   openGraph: {
@@ -80,32 +82,23 @@ export default function BaraatTempoPage() {
 
       <div className="min-h-screen bg-slate-950">
 
-        {/* === HERO: Festive Night Energy === */}
+        {/* === HERO: Real tempo photo, scrim on text side only (Ultra-Premium v2) === */}
         <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-          {/* Multi-layer gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-950 via-slate-950 to-amber-950" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(251,146,60,0.15),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(234,179,8,0.1),transparent_50%)]" />
-
-          {/* Confetti-like decorative dots */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-[15%] left-[8%] w-2 h-2 bg-orange-400 rounded-full animate-pulse opacity-60" />
-            <div className="absolute top-[25%] right-[12%] w-3 h-3 bg-yellow-400 rounded-full animate-pulse opacity-50" style={{ animationDelay: '0.5s' }} />
-            <div className="absolute top-[40%] left-[20%] w-2 h-2 bg-amber-300 rounded-full animate-pulse opacity-40" style={{ animationDelay: '1s' }} />
-            <div className="absolute top-[60%] right-[25%] w-2.5 h-2.5 bg-orange-300 rounded-full animate-pulse opacity-50" style={{ animationDelay: '1.5s' }} />
-            <div className="absolute bottom-[30%] left-[15%] w-3 h-3 bg-yellow-500 rounded-full animate-pulse opacity-40" style={{ animationDelay: '2s' }} />
-            <div className="absolute bottom-[20%] right-[10%] w-2 h-2 bg-amber-400 rounded-full animate-pulse opacity-60" style={{ animationDelay: '0.8s' }} />
-            {/* Large decorative music notes */}
-            <div className="absolute top-[10%] right-[8%] opacity-10">
-              <Music className="w-32 h-32 text-orange-400" />
-            </div>
-            <div className="absolute bottom-[15%] left-[5%] opacity-[0.07] rotate-12">
-              <PartyPopper className="w-40 h-40 text-yellow-400" />
-            </div>
+          {/* Photo background — the baraat tempo itself */}
+          <div className="absolute inset-0">
+            <Image
+              src="/images/tempo/17_seater.jpg"
+              alt="Decorated baraat tempo traveller with DJ for wedding procession"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+            {/* Text-side scrim only — photo stays visible on the right */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/10" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/90 to-transparent" />
           </div>
-
-          {/* Diagonal stripe accent */}
-          <div className="absolute top-0 right-0 w-[40%] h-full bg-gradient-to-l from-orange-500/5 to-transparent skew-x-[-12deg] translate-x-[15%]" />
 
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
             {/* Breadcrumb */}
@@ -125,36 +118,34 @@ export default function BaraatTempoPage() {
                   <span className="text-orange-300 font-semibold text-sm tracking-widest uppercase">{data.tagline}</span>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] mb-6">
+                <h1 className="font-display-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.98] mb-6">
                   Baraat
-                  <span className="block text-transparent bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-400 bg-clip-text">Tempo Traveller</span>
-                  <span className="block text-3xl md:text-4xl lg:text-5xl font-bold text-slate-400 mt-2">with DJ & Lights</span>
+                  <span className="block text-gold-foil">Tempo Traveller</span>
+                  <span className="block text-3xl md:text-4xl lg:text-5xl font-bold text-slate-300 mt-2">with DJ &amp; Lights</span>
                 </h1>
 
-                <p className="text-lg text-slate-400 mb-10 max-w-xl leading-relaxed">{data.subtitle}</p>
+                <p className="text-lg text-slate-300 mb-10 max-w-xl leading-relaxed">{data.subtitle}</p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="tel:+917668570551" className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-8 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-[1.02] transition-all duration-300">
-                    <Phone className="w-5 h-5" /> Book Baraat Tempo
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <Link href="tel:+917668570551" className="sheen group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FFE9A0] via-[#FACF2D] to-[#E8B923] text-black font-bold px-6 py-3.5 min-h-[48px] text-sm shadow-lg shadow-amber-500/30 hover:shadow-amber-400/45 transition-all duration-300 lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
+                    <Phone className="w-4 h-4" /> Book Baraat Tempo
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
-                  <Link href="https://wa.me/917668570551?text=I want to book a baraat tempo traveller with DJ" className="inline-flex items-center justify-center gap-3 bg-white/5 backdrop-blur-sm text-white px-8 py-5 rounded-2xl font-bold text-lg border border-white/10 hover:border-orange-500/30 hover:bg-white/10 transition-all">
+                  <Link href="https://wa.me/917668570551?text=I want to book a baraat tempo traveller with DJ" className="inline-flex items-center justify-center gap-2 bg-white/5 backdrop-blur-xl text-white px-6 py-3.5 min-h-[48px] rounded-full font-semibold text-sm border border-white/10 hover:border-amber-400/40 hover:bg-white/10 transition-all lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
                     WhatsApp Us
                   </Link>
                 </div>
               </div>
 
-              {/* Right: Highlight stats grid */}
+              {/* Right: Highlight stats grid — glass panels over the photo */}
               <div className="grid grid-cols-2 gap-4">
                 {tempoHighlights.map((item, idx) => (
-                  <div key={idx} className={`group relative overflow-hidden rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-1 ${
-                    idx === 0 ? 'col-span-2 bg-gradient-to-br from-orange-500/15 to-amber-500/10 border-orange-500/20 hover:border-orange-400/40' :
-                    'bg-white/[0.03] border-white/[0.06] hover:border-orange-500/20 hover:bg-white/[0.05]'
+                  <div key={idx} className={`group relative overflow-hidden bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40 ${
+                    idx === 0 ? 'col-span-2' : ''
                   }`}>
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-orange-500/10 to-transparent rounded-bl-full" />
-                    <item.icon className={`w-8 h-8 mb-3 ${idx === 0 ? 'text-orange-400' : 'text-slate-500 group-hover:text-orange-400'} transition-colors`} />
+                    <item.icon className={`w-8 h-8 mb-3 ${idx === 0 ? 'text-amber-300' : 'text-slate-300 group-hover:text-amber-300'} transition-colors`} />
                     <h3 className="text-white font-bold text-lg mb-1">{item.label}</h3>
-                    <p className="text-slate-500 text-sm">{item.desc}</p>
+                    <p className="text-slate-300 text-sm">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -162,30 +153,26 @@ export default function BaraatTempoPage() {
           </div>
         </section>
 
-        {/* === SECTION: The Baraat Experience === */}
-        <section className="relative py-24 px-4">
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(251,146,60,0.05),transparent_60%)]" />
-
+        {/* === SECTION: The Baraat Experience — warm light band === */}
+        <section className="relative py-16 md:py-24 px-4 bg-[#FFF6DC]">
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <span className="inline-block text-orange-400 text-sm font-bold tracking-widest uppercase mb-4">The Experience</span>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+              <span className="inline-block text-amber-700 text-sm font-bold tracking-widest uppercase mb-4">The Experience</span>
+              <h2 className="font-display-serif text-4xl md:text-5xl font-bold text-[#3a1220] mb-6">
                 Make Your Baraat
-                <span className="text-transparent bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text"> Unforgettable</span>
+                <span className="text-gold-foil"> Unforgettable</span>
               </h2>
-              <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">{data.description}</p>
+              <p className="text-lg text-[#6b3a4a] max-w-3xl mx-auto leading-relaxed">{data.description}</p>
             </div>
 
             {/* Features - horizontal scroll-like cards */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {data.features.map((feature, idx) => (
-                <div key={idx} className="group relative overflow-hidden bg-gradient-to-br from-white/[0.04] to-white/[0.01] rounded-2xl p-5 border border-white/[0.06] hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-1">
-                  <div className="absolute -top-2 -right-2 w-12 h-12 bg-orange-500/10 rounded-full blur-xl group-hover:bg-orange-500/20 transition-colors" />
-                  <div className="w-10 h-10 bg-gradient-to-br from-orange-500/20 to-amber-500/10 rounded-xl flex items-center justify-center mb-3">
-                    <CheckCircle2 className="w-5 h-5 text-orange-400" />
+                <div key={idx} className="group relative overflow-hidden bg-white rounded-2xl p-5 border border-amber-500/20 shadow-sm hover:shadow-lg hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#FFE9A0] to-[#E8B923] rounded-xl flex items-center justify-center mb-3">
+                    <CheckCircle2 className="w-5 h-5 text-black" />
                   </div>
-                  <span className="text-sm font-semibold text-slate-300 leading-snug">{feature}</span>
+                  <span className="text-sm font-semibold text-[#3a1220] leading-snug">{feature}</span>
                 </div>
               ))}
             </div>
@@ -265,9 +252,9 @@ export default function BaraatTempoPage() {
               </h2>
             </div>
 
-            <div className="space-y-4">
+            <div className="grid gap-4 md:grid-cols-2 md:items-start">
               {data.faqs.map((faq, idx) => (
-                <div key={idx} className="group relative overflow-hidden bg-white/[0.03] rounded-2xl border border-white/[0.06] hover:border-orange-500/20 transition-all duration-300">
+                <div key={idx} className="group relative overflow-hidden bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 transition-all duration-300">
                   {/* Left accent bar */}
                   <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-orange-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity" />
 
@@ -288,15 +275,12 @@ export default function BaraatTempoPage() {
           </div>
         </section>
 
-        {/* === SECTION: Explore More Wedding Services === */}
-        <section className="relative py-20 px-4">
-          <div className="absolute inset-0 bg-slate-950" />
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
+        {/* === SECTION: Explore More Wedding Services — warm light band === */}
+        <section className="relative py-16 md:py-24 px-4 bg-[#FFF6DC]">
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-3">Explore More <span className="text-transparent bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text">Wedding Services</span></h2>
-              <p className="text-slate-500">Complete your wedding transportation with our premium fleet</p>
+              <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-[#3a1220] mb-3">Explore More <span className="text-gold-foil">Wedding Services</span></h2>
+              <p className="text-[#6b3a4a]">Complete your wedding transportation with our premium fleet</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -308,9 +292,9 @@ export default function BaraatTempoPage() {
                 { href: '/wedding/car-decoration-packages', label: 'Car Decoration', icon: Sparkles },
                 { href: '/wedding/doli-car-rental', label: 'Doli Car Rental', icon: Heart },
               ].map(link => (
-                <Link key={link.href} href={link.href} className="group flex flex-col items-center gap-3 p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-orange-500/30 hover:bg-white/[0.06] transition-all duration-300 hover:-translate-y-1">
-                  <link.icon className="w-6 h-6 text-slate-500 group-hover:text-orange-400 transition-colors" />
-                  <span className="text-sm font-semibold text-slate-400 group-hover:text-white transition-colors text-center">{link.label}</span>
+                <Link key={link.href} href={link.href} className="group flex flex-col items-center gap-3 p-5 rounded-2xl bg-white border border-amber-500/20 shadow-sm hover:border-amber-500/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  <link.icon className="w-6 h-6 text-amber-600 group-hover:text-amber-700 transition-colors" />
+                  <span className="text-sm font-semibold text-[#3a1220] transition-colors text-center">{link.label}</span>
                 </Link>
               ))}
             </div>
@@ -448,37 +432,36 @@ export default function BaraatTempoPage() {
           </div>
         </section>
 
-        {/* === CTA: Grand Festive Banner === */}
-        <section className="relative py-24 px-4 overflow-hidden">
-          {/* Festive gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-600" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,0,0,0.2),transparent_50%)]" />
+        {/* === CTA: Grand Festive Banner (v2: dark + gold) === */}
+        <section className="relative py-16 md:py-24 px-4 overflow-hidden">
+          <div className="absolute inset-0 bg-slate-950" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(250,207,45,0.14),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(251,146,60,0.10),transparent_50%)]" />
 
           {/* Decorative elements */}
           <div className="absolute top-10 left-10 opacity-10">
-            <Music className="w-24 h-24 text-white" />
+            <Music className="w-24 h-24 text-amber-300" />
           </div>
           <div className="absolute bottom-10 right-10 opacity-10 rotate-12">
-            <PartyPopper className="w-20 h-20 text-white" />
+            <PartyPopper className="w-20 h-20 text-amber-300" />
           </div>
 
           <div className="max-w-4xl mx-auto relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-2 rounded-full mb-8">
-              <Music className="w-4 h-4 text-white" />
-              <span className="text-white/90 font-bold text-sm tracking-wider uppercase">Limited Season Slots</span>
+            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full mb-8">
+              <Music className="w-4 h-4 text-amber-300" />
+              <span className="text-amber-200 font-bold text-sm tracking-wider uppercase">Limited Season Slots</span>
             </div>
 
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Book Your Baraat<br />Tempo Today
+            <h2 className="font-display-serif text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              Book Your <span className="text-gold-foil">Baraat Tempo</span> Today
             </h2>
-            <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">Make your baraat procession unforgettable with our DJ tempo travellers. Dance, celebrate, and arrive in style.</p>
+            <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">Make your baraat procession unforgettable with our DJ tempo travellers. Dance, celebrate, and arrive in style.</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-3 bg-white text-orange-600 px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-black/20 hover:scale-[1.02] transition-all">
-                <Phone className="w-5 h-5" /> Call +91 7668570551
+              <Link href="tel:+917668570551" className="sheen inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FFE9A0] via-[#FACF2D] to-[#E8B923] text-black font-bold px-6 py-3.5 min-h-[48px] text-sm shadow-lg shadow-amber-500/30 hover:shadow-amber-400/45 transition-all lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
+                <Phone className="w-4 h-4" /> Call +91 7668570551
               </Link>
-              <Link href="https://wa.me/917668570551?text=I want to book a baraat tempo with DJ" className="inline-flex items-center justify-center gap-3 bg-green-500 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-black/20 hover:scale-[1.02] transition-all">
+              <Link href="https://wa.me/917668570551?text=I want to book a baraat tempo with DJ" className="inline-flex items-center justify-center gap-2 bg-white/5 backdrop-blur-xl border border-white/10 text-white px-6 py-3.5 min-h-[48px] rounded-full font-semibold text-sm hover:bg-white/10 transition-all lg:w-auto lg:min-h-0 lg:px-5 lg:py-2 lg:text-[13px]">
                 WhatsApp Us
               </Link>
             </div>

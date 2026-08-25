@@ -4,12 +4,13 @@ import { busFleet, busRoutes } from '@/utilis/busRoutesData';
 import BusMainClient from '@/components/BusMainClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getArticleSchema, getSpeakableSchema, getComparisonSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
-  title: 'Bus Hire India from ₹30/km — 22-56 Seater AC 4.9★ | Book Now',
+  title: tightenTitle('Bus Hire India from ₹30/km — 22-56 Seater AC 4.9★ | Book Now'),
   description: '22-56 seater AC buses from ₹30/km. Weddings, corporate, pilgrimages. Reclining seats, GPS tracking. 4.9★ rated. Book in 2 min.',
   keywords: 'bus hire India, luxury bus rental, 22 seater bus, 35 seater Volvo, 45 seater AC bus, 56 seater coach, group travel bus, wedding bus rental, corporate bus service, pilgrimage bus, Triveni Cabs',
   alternates: {

@@ -1,5 +1,6 @@
 import { getSpecialTransportBySlug } from '@/utilis/specialTransportData';
 import SpecialTransportClient from '@/components/special/SpecialTransportClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const service = getSpecialTransportBySlug('hospital-visit-cab-service');
 
@@ -15,7 +16,7 @@ const fleetImages = [
 ];
 
 export const metadata = {
-  title: 'Hospital Visit Cab Service | Medical Transport | Triveni Cabs',
+  title: tightenTitle('Hospital Visit Cab Service | Medical Transport'),
   description: 'Book hospital visit cab service. Sanitized vehicles, punctual drivers, patient-friendly driving. From Rs 500. Regular dialysis/chemo transport available.',
   keywords: 'hospital visit cab, medical transport cab, hospital cab service, dialysis transport, chemotherapy transport, doctor visit cab, patient cab service, medical taxi',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

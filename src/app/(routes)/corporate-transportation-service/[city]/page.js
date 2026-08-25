@@ -11,6 +11,7 @@ import {
   getCorporateCityPlaceSchema
 } from '@/utilis/corporateTransportData';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { generateGeoMeta } from '@/lib/seo/metadata-factory';
 import { getArticleSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import { getAllIndustries } from '@/utilis/corporateIndustryData';
 import { getAllUseCases } from '@/utilis/corporateUseCaseData';
@@ -42,6 +43,7 @@ import {
   Target,
   Zap
 } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // Generate static params for all cities
 export async function generateStaticParams() {
@@ -56,7 +58,7 @@ export async function generateMetadata({ params }) {
 
   if (!cityData) {
     return {
-      title: 'City Not Found | Triveni Cabs',
+      title: tightenTitle('City Not Found'),
     };
   }
 
@@ -102,6 +104,12 @@ export async function generateMetadata({ params }) {
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
+    },
+    other: {
+      ...generateGeoMeta(cityData.name),
+      'service-area': cityData.name,
+      'service-type': 'Corporate Transportation',
+      'rating': '4.9',
     },
   };
 }
@@ -205,8 +213,8 @@ export default async function CorporateCityPage({ params }) {
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/30 via-transparent to-blue-900/30" />
 
           {/* Floating Elements */}
-          <div className="absolute top-32 right-20 w-72 h-72 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse" />
-          <div className="absolute bottom-32 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-32 right-20 w-72 h-72 bg-cyan-500/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-32 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px]" />
 
           {/* Content */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
@@ -227,9 +235,9 @@ export default async function CorporateCityPage({ params }) {
                   <span className="text-cyan-300 font-medium text-sm tracking-widest uppercase">{cityData.tagline}</span>
                 </div>
 
-                <h1 className="speakable-headline text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
+                <h1 className="speakable-headline font-display-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]">
                   Corporate
-                  <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                  <span className="block mt-2 text-gold-foil">
                     Transportation
                   </span>
                   <span className="block mt-2 text-4xl md:text-5xl lg:text-6xl font-light text-white/80">in {cityData.name}</span>
@@ -264,9 +272,9 @@ export default async function CorporateCityPage({ params }) {
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Link
                     href="tel:+917668570551"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] transition-all duration-300"
+                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-b from-[#FFE9A0] via-[#FACF2D] to-[#E6B800] text-black px-8 py-5 rounded-2xl font-bold text-lg shadow-[0_10px_30px_-10px_rgba(250,207,45,0.55)] hover:brightness-105 transition-all duration-300 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]"
                   >
-                    <Phone className="w-5 h-5 group-hover:animate-pulse" />
+                    <Phone className="w-5 h-5" />
                     Get {cityData.name} Quote
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -322,7 +330,7 @@ export default async function CorporateCityPage({ params }) {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
             <span className="text-white/60 text-xs tracking-widest uppercase">Explore Services</span>
             <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
               <div className="w-1 h-3 bg-white/60 rounded-full" />
@@ -350,7 +358,7 @@ export default async function CorporateCityPage({ params }) {
         </section>
 
         {/* About Section */}
-        <section className="py-24 px-4 bg-gradient-to-b from-white to-slate-50">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white to-slate-50">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -413,7 +421,7 @@ export default async function CorporateCityPage({ params }) {
         </section>
 
         {/* Fleet Section */}
-        <section className="py-24 px-4 bg-slate-900 relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-slate-900 relative overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0" style={{
@@ -421,9 +429,9 @@ export default async function CorporateCityPage({ params }) {
             }} />
           </div>
 
-          {/* Animated Orbs */}
-          <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+          {/* Decorative Orbs */}
+          <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-16">
@@ -481,7 +489,7 @@ export default async function CorporateCityPage({ params }) {
         </section>
 
         {/* Services Detail Section */}
-        <section className="py-24 px-4 bg-gradient-to-b from-white to-slate-50">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white to-slate-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 bg-indigo-100 px-5 py-2 rounded-full mb-6">
@@ -527,7 +535,7 @@ export default async function CorporateCityPage({ params }) {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-24 px-4 bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 relative overflow-hidden">
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
@@ -560,7 +568,7 @@ export default async function CorporateCityPage({ params }) {
         </section>
 
         {/* FAQ Section - Open Cards */}
-        <section className="py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-purple-100 px-6 py-3 rounded-full mb-6">
@@ -573,7 +581,7 @@ export default async function CorporateCityPage({ params }) {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 md:items-start gap-6">
               {corporateFAQs.slice(0, 4).map((faq, idx) => (
                 <div
                   key={idx}
@@ -595,22 +603,22 @@ export default async function CorporateCityPage({ params }) {
         </section>
 
         {/* Combo links — industry & use-case transport in this city */}
-        <section className="bg-slate-50 border-y border-slate-100">
-          <div className="max-w-7xl mx-auto px-4 py-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-600">By industry</p>
-            <h2 className="mt-2 text-2xl md:text-3xl font-black text-slate-900">Corporate transport by industry in {cityData.name}</h2>
+        <section className="bg-[#FFF6DC] border-y border-amber-900/10">
+          <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">By industry</p>
+            <h2 className="font-display-serif mt-2 text-2xl md:text-3xl font-bold text-slate-900">Corporate transport by industry in {cityData.name}</h2>
             <div className="mt-6 flex flex-wrap gap-2.5">
               {getAllIndustries().map((ind) => (
-                <Link key={ind.slug} href={`/corporate-transportation-service/${city}/${ind.slug}`} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-cyan-300 hover:text-cyan-700 hover:shadow-sm transition">
+                <Link key={ind.slug} href={`/corporate-transportation-service/${city}/${ind.slug}`} className="inline-flex items-center gap-2 rounded-full border border-amber-900/15 bg-white/70 px-4 py-2 text-sm font-medium text-slate-700 hover:border-amber-500 hover:text-slate-900 hover:shadow-sm transition">
                   <span>{ind.icon}</span> {ind.name} in {cityData.name}
                 </Link>
               ))}
             </div>
-            <p className="mt-10 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-600">By service</p>
-            <h2 className="mt-2 text-2xl md:text-3xl font-black text-slate-900">Corporate services in {cityData.name}</h2>
+            <p className="mt-10 text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">By service</p>
+            <h2 className="font-display-serif mt-2 text-2xl md:text-3xl font-bold text-slate-900">Corporate services in {cityData.name}</h2>
             <div className="mt-6 flex flex-wrap gap-2.5">
               {getAllUseCases().map((uc) => (
-                <Link key={uc.slug} href={`/corporate-transportation-service/${city}/${uc.slug}`} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-cyan-300 hover:text-cyan-700 hover:shadow-sm transition">
+                <Link key={uc.slug} href={`/corporate-transportation-service/${city}/${uc.slug}`} className="inline-flex items-center gap-2 rounded-full border border-amber-900/15 bg-white/70 px-4 py-2 text-sm font-medium text-slate-700 hover:border-amber-500 hover:text-slate-900 hover:shadow-sm transition">
                   <span>{uc.icon}</span> {uc.name} in {cityData.name}
                 </Link>
               ))}
@@ -622,9 +630,9 @@ export default async function CorporateCityPage({ params }) {
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
 
-          {/* Animated Orbs */}
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
+          {/* Decorative Orbs */}
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px]" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -634,9 +642,9 @@ export default async function CorporateCityPage({ params }) {
                   <span className="text-cyan-300 font-semibold text-sm tracking-wider uppercase">Partner With Us</span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                <h2 className="font-display-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                   Start Your Corporate
-                  <span className="block text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                  <span className="block text-gold-foil">
                     Partnership in {cityData.name}
                   </span>
                 </h2>

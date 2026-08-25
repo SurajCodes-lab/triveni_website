@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Trees } from '@/components/ui/icons';
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Chandigarh Travel Guide 2026 | City Beautiful — Attractions, Food, Transport',
+  title: tightenTitle('Chandigarh Travel Guide 2026 | City Beautiful — Attractions, Food, Transport'),
   description: 'Complete Chandigarh travel guide. Rock Garden, Sukhna Lake, Capitol Complex, Sector 17, Pinjore Gardens, food, shopping, day trips, monthly weather. Call 7668570551.',
   keywords: 'chandigarh travel guide, chandigarh tourism, rock garden chandigarh, sukhna lake, capitol complex le corbusier, sector 17, things to do in chandigarh, chandigarh attractions, city beautiful guide',
   authors: [{ name: 'Triveni Cabs Editorial' }],

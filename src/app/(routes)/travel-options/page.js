@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllTravelOptionsSlugs } from '@/utilis/travelOptionsData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Travel Options Compared — Cab vs Train vs Bus";
+  const title = tightenTitle("Travel Options Compared — Cab vs Train vs Bus");
   const description = "Compare cab vs train vs bus vs flight for North India routes — cost, time, comfort. Triveni Cabs 7668570551.";
   return {
     title,

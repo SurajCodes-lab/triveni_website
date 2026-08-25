@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('summer-hill-station-packages');
 
 export const metadata = {
-  title: 'Summer Hill Station Cab Packages 2026 | Escape the Heat',
+  title: tightenTitle('Summer Hill Station Cab Packages 2026 | Escape the Heat'),
   description: 'Book summer hill station cab from Delhi to Shimla, Manali, Mussoorie, Nainital. From ₹5,500 sedan. AC vehicles, mountain-experienced drivers. Call 7668570551.',
   keywords: 'summer hill station cab, delhi to shimla cab summer, delhi to manali summer package, hill station cab booking, mussoorie cab summer, nainital cab summer, summer vacation cab',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

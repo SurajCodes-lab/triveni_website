@@ -3,6 +3,7 @@ import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getStationReviews, getStationHowToSchema } from '@/utilis/stationTaxiEnrichment';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -51,7 +52,7 @@ const STATION = {
 };
 
 export const metadata = {
-  title: 'Jaipur Junction Station Taxi | Pickup from ₹199 — 4.9★ Rated',
+  title: tightenTitle('Jaipur Junction Station Taxi | Pickup from ₹199 — 4.9★ Rated'),
   description: 'Book taxi from Jaipur Junction Railway Station (JP). Fixed fares from ₹199 to Hawa Mahal, Amber Fort, City Palace. AC sedan & SUV, 24/7. Call 7668570551.',
   keywords: 'jaipur junction taxi, jaipur station cab, JP station taxi, taxi from jaipur station to amber fort, jaipur junction cab booking, jaipur station to hawa mahal taxi, jaipur railway station taxi fare, jaipur station to airport cab, jaipur junction prepaid taxi, jaipur station pickup',
   alternates: { canonical: '/jaipur-junction-station-taxi' },

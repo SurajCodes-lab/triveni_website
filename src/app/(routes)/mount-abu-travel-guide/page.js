@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 import { getArticleSchema, getSpeakableSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Mount Abu Travel Guide 2026 | Attractions, Food & Tips',
+  title: tightenTitle('Mount Abu Travel Guide 2026 | Attractions, Food & Tips'),
   description: 'Complete Mount Abu travel guide 2026. Dilwara Temples, Nakki Lake, Guru Shikhar, Sunset Point, best time, food, shopping & transport. Call 7668570551.',
   keywords: 'mount abu travel guide, mount abu tourist guide, dilwara temples guide, mount abu sightseeing, mount abu tourism, things to do in mount abu, mount abu attractions',
   authors: [{ name: 'Triveni Cabs' }],

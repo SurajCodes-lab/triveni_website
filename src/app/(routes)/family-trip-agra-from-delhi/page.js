@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-agra-from-delhi";
 const data = familyTripData["agra"];
 
 export const metadata = {
-  title: 'Family Trip to Agra from Delhi by Car | Innova Rs 6,500 | 2026',
+  title: tightenTitle('Family Trip to Agra from Delhi by Car | Innova Rs 6,500 | 2026'),
   description: 'Book a family trip to Agra from Delhi by car. Innova Rs 6,500, Sedan Rs 4,500. Taj Mahal, Agra Fort, Wildlife SOS. Kids under 15 free at Taj. Call 7668570551.',
   keywords: 'family trip agra from delhi, delhi to agra family tour, agra family vacation by car, taj mahal with kids, family day trip agra',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

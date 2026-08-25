@@ -1,15 +1,16 @@
 import TrustPageClient from '@/components/competitor/TrustPageClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 const slug = 'why-triveni-cabs';
 const pageTitle = 'Why Choose Triveni Cabs? | 10 Reasons Travelers Trust Us — 4.9★';
-const pageDesc = 'Why choose Triveni Cabs? 4.9-star Google rating, 10,000+ happy customers, verified drivers, no surge pricing, 24/7 support. Discover what makes us North India\'s most trusted cab service. Call 7668570551.';
+const pageDesc = 'Why choose Triveni Cabs? 4.9-star Google rating, 10,000+ happy customers, verified drivers, no surge pricing, 24/7 support. North India\'s most trusted cab service. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['why triveni cabs', 'triveni cabs review', 'best cab service north india', 'trusted cab service india', 'triveni cabs rating', 'reliable cab booking india', 'triveni cabs features', 'safe cab service india', 'no surge pricing cab', 'cab service with verified drivers'],
   authors: [{ name: 'Triveni Cabs' }],

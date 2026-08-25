@@ -8,13 +8,14 @@ import {
   getComparisonSchema,
   getTodayDate,
 } from "@/lib/seo/speakable-helpers";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 const SITE_URL = "https://www.trivenicabs.in";
 
 export const metadata = {
-  title: "Tempo Traveller ₹20/km — 12-26 Seater AC 4.9★ | Book",
+  title: tightenTitle("Tempo Traveller ₹23/km — 12-26 Seater AC 4.9★ | Book"),
   description:
     "Book AC tempo travellers (12, 17, 20, 26 seater) with experienced drivers across North India. Transparent ₹/km pricing, 24/7 support, clean fleet. Get instant quote.",
   keywords:
@@ -57,7 +58,7 @@ export default function TempoTravellerPage() {
     {
       question: "How much does a tempo traveller cost per km?",
       answer:
-        "Tempo traveller rentals start at ₹20/km for a 12-seater and go up to ₹28/km for a 26-seater luxury model. Final pricing depends on the route, season, and vehicle type. We provide transparent per-km quotes with no hidden charges.",
+        "Tempo traveller rentals start at ₹23/km for a 12-seater and go up to ₹31/km for a 26-seater luxury model. Final pricing depends on the route, season, and vehicle type. We provide transparent per-km quotes with no hidden charges.",
     },
     {
       question: "Which tempo traveller seater should I choose?",
@@ -168,10 +169,10 @@ export default function TempoTravellerPage() {
     description:
       "Compare 12, 17, 20, and 26 seater tempo travellers by passenger capacity, best use case, price per km, and popular trips to pick the right size.",
     rows: [
-      { name: "12 Seater Tempo Traveller (from ₹20/km)" },
-      { name: "17 Seater Tempo Traveller (from ₹24/km)" },
-      { name: "20 Seater Tempo Traveller (from ₹26/km)" },
-      { name: "26 Seater Tempo Traveller (from ₹28/km)" },
+      { name: "12 Seater Tempo Traveller (from ₹23/km)" },
+      { name: "17 Seater Tempo Traveller (from ₹25/km)" },
+      { name: "20 Seater Tempo Traveller (from ₹31/km)" },
+      { name: "26 Seater Tempo Traveller (from ₹31/km)" },
     ],
     mentions: [
       "Tempo Traveller",

@@ -3,10 +3,11 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Shimla Travel Guide 2026: Best Time, Cost & Top Sights',
+  title: tightenTitle('Shimla Travel Guide 2026: Best Time, Cost & Top Sights'),
   description: 'Best time to visit Shimla: Apr-Jun for pleasant weather, Dec-Feb for snow. Plan 2-3 days, budget ₹4,000-8,000/day. Mall Road, Kufri, Jakhu, toy train + Delhi cab tips. Call 7668570551.',
   keywords: 'shimla travel guide, shimla tourist guide, queen of hills, shimla sightseeing, shimla tourism, things to do in shimla, shimla snow',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

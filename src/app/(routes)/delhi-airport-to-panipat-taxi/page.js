@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Delhi Airport to Panipat Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Delhi Airport to Panipat Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Delhi Airport to Panipat taxi at ₹${ROUTE.fare}. Fixed fare, flight tracking, meet & greet at IGI. Via NH-44. 24/7 service by Triveni Cabs.`,
   keywords: 'delhi airport to panipat taxi, delhi airport to panipat cab, delhi to panipat airport taxi, taxi from delhi airport to panipat, panipat airport pickup, flight tracked panipat taxi, fixed fare panipat cab, delhi airport panipat transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

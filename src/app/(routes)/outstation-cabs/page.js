@@ -5,11 +5,12 @@ import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema, getComparisonSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import TrackedCta from '@/components/ui/TrackedCta';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Outstation Cab Booking 2026 | ₹11/km Sedan | 500+ Routes',
+  title: tightenTitle('Outstation Cab Booking 2026 | ₹11/km Sedan | 500+ Routes'),
   description: 'Book outstation cabs from Delhi, Agra, Jaipur at ₹11/km. One-way & round trip. 500+ routes, verified drivers, AC vehicles. 10,000+ trips completed.',
   keywords: 'outstation cab booking, outstation taxi, intercity cab, outstation cab service, one way outstation cab, round trip cab booking, outstation cab near me, cheap outstation cab, outstation cab with driver, long distance taxi India, outstation car rental, outstation cab rates',
   authors: [{ name: 'Triveni Cabs' }],
@@ -53,7 +54,7 @@ export default function OutstationCabsPage() {
     "@context": "https://schema.org", "@type": "Product",
     "@id": "https://www.trivenicabs.in/outstation-cabs/#product",
     "name": "Outstation Cab Booking - Sedan, SUV & Tempo Traveller",
-    "description": "Book outstation cabs across India. Sedan ₹11/km (Swift Dzire, Etios), SUV ₹15/km (Innova Crysta, Ertiga), Tempo Traveller from ₹20/km (12-26 seater). 500+ one-way and round-trip routes.",
+    "description": "Book outstation cabs across India. Sedan ₹11/km (Swift Dzire, Etios), SUV ₹15/km (Innova Crysta, Ertiga), Tempo Traveller from ₹23/km (12-26 seater). 500+ one-way and round-trip routes.",
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "image": "https://www.trivenicabs.in/images/citypage_hero_section_image.jpg",
     "offers": {
@@ -68,7 +69,7 @@ export default function OutstationCabsPage() {
   };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Outstation Cabs", "item": "https://www.trivenicabs.in/outstation-cabs" }] };
   const faqData = [
-    { question: "What is the cost of outstation cab booking?", answer: "Outstation cab rates start from ₹11/km for Sedan (Swift Dzire, Etios), ₹15/km for SUV (Innova Crysta, Ertiga), and from ₹20/km for Tempo Traveller (12-26 seater). Minimum billing of 250 km/day for round trips and 300 km for one-way trips. Toll, parking, and state tax extra." },
+    { question: "What is the cost of outstation cab booking?", answer: "Outstation cab rates start from ₹11/km for Sedan (Swift Dzire, Etios), ₹15/km for SUV (Innova Crysta, Ertiga), and from ₹23/km for Tempo Traveller (12-26 seater). Minimum billing of 250 km/day for round trips and 300 km for one-way trips. Toll, parking, and state tax extra." },
     { question: "Can I book a one-way outstation cab?", answer: "Yes, we offer one-way outstation cabs on all major routes. One-way pricing means you pay only for a single journey, saving up to 50% compared to round-trip charges. Available on Delhi-Agra, Delhi-Jaipur, Delhi-Chandigarh, and 200+ routes." },
     { question: "What is the difference between one-way and round-trip outstation cabs?", answer: "A one-way outstation cab charges only for the single direction of travel with a 300 km minimum, ideal when you do not need a return. A round-trip cab keeps the same driver and vehicle for your entire journey, bills at 250 km per day minimum, and is best for multi-day trips and local sightseeing at the destination. One-way saves up to 50% for single journeys; round trip is more economical for stays of 2+ days." },
     { question: "What is included in outstation cab fare?", answer: "Our outstation cab fare includes driver charges, fuel cost, and vehicle usage. Toll charges, state taxes, parking fees, and driver allowance (₹300/night for trips beyond 10 PM) are extra. No hidden charges - you get a detailed fare breakdown before booking." },
@@ -90,7 +91,7 @@ export default function OutstationCabsPage() {
     estimatedCost: { currency: "INR", value: "11" },
     steps: [
       { name: "Choose Your Route", text: "Select your pickup city, destination, and travel date. Choose between one-way or round trip options." },
-      { name: "Select Your Vehicle", text: "Pick from Sedan (₹11/km), SUV (₹15/km), or Tempo Traveller (from ₹20/km) based on group size and comfort preference." },
+      { name: "Select Your Vehicle", text: "Pick from Sedan (₹11/km), SUV (₹15/km), or Tempo Traveller (from ₹23/km) based on group size and comfort preference." },
       { name: "Confirm Booking", text: "Call 7668570551 or WhatsApp to confirm your booking. Get instant confirmation with driver details and exact fare." },
       { name: "Enjoy Your Trip", text: "Your verified driver arrives on time with a clean, sanitized AC vehicle. Track your ride with GPS and enjoy 24/7 support." }
     ]
@@ -261,7 +262,7 @@ export default function OutstationCabsPage() {
                 Our <strong className="text-white/90">outstation taxi service</strong> covers 500+ routes across Uttar Pradesh, Rajasthan, Himachal Pradesh, Uttarakhand, Punjab, Haryana, and Madhya Pradesh. Every vehicle — from budget sedans like Swift Dzire and Toyota Etios to <Link href="/blog/innova-crysta-outstation-fare-2026" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">premium Innova Crysta</Link> and spacious tempo travellers — comes equipped with AC, GPS tracking, and a <Link href="/safety" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">verified professional driver</Link> with 5+ years of highway experience. Based in <Link href="/agra" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">Agra</Link> (366 Dandupura, near Tajganj), we bring local expertise and round-the-clock support to every journey.
               </p>
               <p>
-                What makes our <strong className="text-white/90">intercity cab service</strong> different? Simplicity. Call <strong className="text-white/90">7668570551</strong> or WhatsApp us your route and travel date — receive an instant fare quote within minutes. No app downloads, no surge pricing, no minimum booking value. Rates start at just <strong className="text-white/90">₹11 per km for Sedan</strong>, ₹15/km for SUV, and from ₹20/km for Tempo Traveller — check the <Link href="/pricing" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">complete fare breakdown</Link> or read our <Link href="/blog/delhi-to-agra-cab-fare-guide-2026" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">Delhi to Agra cab fare guide</Link>. Toll, parking, and state tax are always charged at actuals with complete transparency.
+                What makes our <strong className="text-white/90">intercity cab service</strong> different? Simplicity. Call <strong className="text-white/90">7668570551</strong> or WhatsApp us your route and travel date — receive an instant fare quote within minutes. No app downloads, no surge pricing, no minimum booking value. Rates start at just <strong className="text-white/90">₹11 per km for Sedan</strong>, ₹15/km for SUV, and from ₹23/km for Tempo Traveller — check the <Link href="/pricing" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">complete fare breakdown</Link> or read our <Link href="/blog/delhi-to-agra-cab-fare-guide-2026" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">Delhi to Agra cab fare guide</Link>. Toll, parking, and state tax are always charged at actuals with complete transparency.
               </p>
               <p>
                 Families, solo travelers, <Link href="/corporate-transportation-service" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">corporate teams</Link>, and <Link href="/wedding" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">wedding parties</Link> across North India trust Triveni Cabs for safe, comfortable, and affordable <strong className="text-white/90">outstation car rental with driver</strong>. Every driver undergoes police verification, license validation, and annual re-checks. Vehicles are sanitized after each trip, and real-time GPS tracking keeps you and your family informed throughout the journey. Planning a <Link href="/same-day-agra-tour-from-delhi" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">same-day Agra tour from Delhi</Link> or a <Link href="/sightseeing/golden-triangle-tour-3-days" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">Golden Triangle tour</Link>? We have you covered. Book once, and you will understand why <Link href="/reviews" className="text-yellow-400 hover:text-yellow-300 underline underline-offset-2">2,847+ customers rate us 4.8 out of 5</Link>.
@@ -473,7 +474,7 @@ export default function OutstationCabsPage() {
               {[
                 { v: "Sedan", r: "₹11/km", m: "250 km", a: "₹300/night", c: "4 Pax" },
                 { v: "SUV", r: "₹15/km", m: "250 km", a: "₹300/night", c: "7 Pax" },
-                { v: "Tempo Traveller", r: "from ₹20/km", m: "250 km", a: "₹500/night", c: "12-26 Pax" },
+                { v: "Tempo Traveller", r: "from ₹23/km", m: "250 km", a: "₹500/night", c: "12-26 Pax" },
               ].map((row, i) => (
                 <div key={i} className={`grid grid-cols-5 border-b border-white/[0.03] hover:bg-white/[0.03] transition-colors ${i % 2 ? 'bg-white/[0.01]' : ''}`}>
                   <div className="px-5 py-5 font-bold">{row.v}</div>

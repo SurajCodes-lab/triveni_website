@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-manali-from-delhi";
 const data = familyTripData["manali"];
 
 export const metadata = {
-  title: 'Family Trip to Manali from Delhi by Car | Innova Rs 14,500 | 2026',
+  title: tightenTitle('Family Trip to Manali from Delhi by Car | Innova Rs 14,500 | 2026'),
   description: 'Book a family trip to Manali from Delhi by car. Innova Crysta Rs 14,500, Sedan Rs 11,000. Solang Valley, Rohtang Pass, snow activities. Call 7668570551.',
   keywords: 'family trip manali from delhi, delhi to manali family tour, manali family vacation by car, manali trip with kids, family holiday manali',
   authors: [{ name: 'Triveni Cabs' }],

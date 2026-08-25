@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Car, MapPin, ThumbsUp, Award, Quote } from '@/components/ui/icons';
 import { getSpeakableSchema, getArticleSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Triveni Cabs Reviews | 4.8★ Rating | 2,847+ Customer Reviews 2026',
+  title: tightenTitle('Triveni Cabs Reviews | 4.8★ Rating | 2,847+ Customer Reviews 2026'),
   description: 'Read 2,847+ genuine Triveni Cabs reviews. 4.8/5 rating. Customer feedback on outstation cabs, airport taxi, wedding cars & more.',
   keywords: 'Triveni Cabs reviews, Triveni Cabs rating, cab service reviews, taxi service rating, customer feedback Triveni Cabs, Triveni Cabs testimonials, outstation cab reviews, airport taxi reviews, wedding car reviews, best cab service reviews India, Triveni Cabs customer experience, Triveni Cabs feedback, reliable cab reviews, safe cab service reviews',
   authors: [{ name: 'Triveni Cabs' }],
@@ -361,7 +362,7 @@ export default function ReviewsPage() {
 
             {/* Large rating display */}
             <div className="mb-6">
-              <span className="text-8xl md:text-9xl font-black text-transparent bg-gradient-to-r from-amber-300 via-rose-300 to-pink-300 bg-clip-text leading-none">
+              <span className="font-display-serif text-8xl md:text-9xl font-black text-gold-foil leading-none">
                 4.8
               </span>
               <span className="text-3xl md:text-4xl font-bold text-white/50 ml-2">/5</span>
@@ -373,9 +374,9 @@ export default function ReviewsPage() {
               ))}
             </div>
 
-            <p className="speakable-headline text-xl md:text-2xl text-rose-100/70 mb-4 max-w-2xl mx-auto">
+            <h1 className="speakable-headline font-display-serif text-xl md:text-2xl font-medium text-rose-100/70 mb-4 max-w-2xl mx-auto">
               Triveni Cabs is rated 4.8 out of 5 based on <strong className="text-white font-bold">2,847+</strong> verified customer reviews
-            </p>
+            </h1>
 
             <p className="speakable-lead text-rose-200/50 max-w-lg mx-auto text-sm">
               Real feedback from real travelers who trust Triveni Cabs for outstation, airport, wedding, and local cab services across North India.
@@ -393,7 +394,7 @@ export default function ReviewsPage() {
         {/* ─── OVERVIEW: SEO prose content section ─── */}
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-[#1c1017]">
+            <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-center mb-8 text-[#1c1017]">
               Why Thousands of Travellers Trust Triveni Cabs
             </h2>
             <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
@@ -410,7 +411,7 @@ export default function ReviewsPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <span className="inline-block text-sm font-bold text-rose-600 bg-rose-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Breakdown</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1c1017] mb-2">
+              <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-[#1c1017] mb-2">
                 Rating by Category
               </h2>
             </div>
@@ -441,7 +442,7 @@ export default function ReviewsPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
               <span className="inline-block text-sm font-bold text-amber-600 bg-amber-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">By Service</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1c1017] mb-2">
+              <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-[#1c1017] mb-2">
                 Ratings by Service Type
               </h2>
             </div>
@@ -468,7 +469,7 @@ export default function ReviewsPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-pink-600 bg-pink-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Testimonials</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1c1017] mb-4">
+              <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-[#1c1017] mb-4">
                 What Our Customers Say
               </h2>
               <p className="text-lg text-stone-600 max-w-2xl mx-auto">
@@ -537,8 +538,8 @@ export default function ReviewsPage() {
           <div className="relative z-10 max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-amber-300 bg-amber-500/10 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase border border-amber-400/20">Why Us</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Why 2,847+ Customers Trust Triveni Cabs
+              <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-white mb-4">
+                Why 2,847+ Customers <span className="text-gold-foil">Trust Triveni Cabs</span>
               </h2>
             </div>
 
@@ -564,7 +565,7 @@ export default function ReviewsPage() {
         {/* ─── SEO Prose Section with Contextual Links ─── */}
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1c1017] mb-6 text-center">Why Customers Rate Triveni Cabs 4.8 Out of 5</h2>
+            <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-[#1c1017] mb-6 text-center">Why Customers Rate Triveni Cabs 4.8 Out of 5</h2>
             <div className="prose prose-lg max-w-none text-stone-700 space-y-4">
               <p>
                 Our <strong>4.8-star rating</strong> across 2,847+ verified reviews reflects a relentless focus on three things: <Link href="/safety" className="text-rose-600 hover:text-pink-600 underline underline-offset-2">passenger safety</Link>, transparent pricing, and genuine hospitality. Whether customers book an <Link href="/outstation-cabs" className="text-rose-600 hover:text-pink-600 underline underline-offset-2">outstation cab</Link> for a family vacation, a <Link href="/one-way-cab" className="text-rose-600 hover:text-pink-600 underline underline-offset-2">one-way cab</Link> to save 50% on intercity travel, or a <Link href="/wedding" className="text-rose-600 hover:text-pink-600 underline underline-offset-2">wedding car</Link> for their special day — the consistent praise centers on driver behavior (4.9/5) and no-hidden-charges billing.
@@ -611,7 +612,7 @@ export default function ReviewsPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-rose-600 bg-rose-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">FAQ</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1c1017] mb-4">
+              <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-[#1c1017] mb-4">
                 Frequently Asked Questions
               </h2>
               <p className="text-lg text-stone-600">
@@ -619,7 +620,7 @@ export default function ReviewsPage() {
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:items-start gap-4">
               {faqData.map((faq, idx) => (
                 <div key={idx} className="bg-[#faf7f5] rounded-2xl p-6 border border-rose-100/40 hover:border-rose-200 transition-colors">
                   <div className="flex items-start gap-4">
@@ -721,8 +722,8 @@ export default function ReviewsPage() {
                   <Star key={i} className="w-7 h-7 text-amber-400 fill-amber-400" />
                 ))}
               </div>
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-                Join 2,847+ Happy Customers
+              <h2 className="font-display-serif text-3xl md:text-4xl font-black text-white mb-4">
+                Join 2,847+ <span className="text-gold-foil">Happy Customers</span>
               </h2>
               <p className="text-rose-200/60 mb-8 text-lg max-w-xl mx-auto">
                 Experience the service that earned us a 4.8/5 rating
@@ -730,9 +731,9 @@ export default function ReviewsPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="tel:+917668570551"
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-rose-500/20 hover:scale-[1.02] transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-[#FACF2D] text-black px-8 py-4 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px] rounded-2xl font-bold text-lg shadow-xl shadow-amber-500/20 hover:scale-[1.02] transition-all"
                 >
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-5 h-5 lg:w-4 lg:h-4" />
                   Book Now: 7668570551
                 </Link>
                 <Link

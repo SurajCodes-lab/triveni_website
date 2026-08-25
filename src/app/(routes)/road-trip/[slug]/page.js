@@ -8,7 +8,7 @@ import {
   getSpeakableSchema, getArticleSchema, getHowToSchema,
   getComparisonSchema, getCityPlaceSchema,
 } from '@/lib/seo/speakable-helpers';
-
+import { tightenTitle, tightenDescription, DESC_BUDGET } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -25,8 +25,10 @@ export async function generateMetadata({ params }) {
     return { title: 'Road Trip Not Found' };
   }
 
-  const title = `${trip.name}: ${trip.totalDistance} km, ${trip.totalDays} Days | Cab ₹${trip.totalCost.sedan.toLocaleString('en-IN')} — 4.9★`;
-  const description = `${trip.name} road trip covering ${trip.totalDistance} km in ${trip.totalDays} days. ${trip.stops.map(s => s.city).join(' → ')}. Book AC cab from ₹${trip.totalCost.sedan.toLocaleString('en-IN')}. Call 7668570551.`;
+  const title = tightenTitle(`${trip.name}: ${trip.totalDistance} km, ${trip.totalDays} Days | Cab ₹${trip.totalCost.sedan.toLocaleString('en-IN')} — 4.9★`);
+  const tripTail = `Book AC cab from ₹${trip.totalCost.sedan.toLocaleString('en-IN')}. Call 7668570551.`;
+  const tripHead = `${trip.name} road trip covering ${trip.totalDistance} km in ${trip.totalDays} days. ${trip.stops.map(s => s.city).join(' → ')}.`;
+  const description = `${tightenDescription(tripHead, DESC_BUDGET - tripTail.length - 1)} ${tripTail}`;
   const ogTitle = `${trip.name} — ${trip.totalDistance} km Road Trip | Cab from ₹${trip.totalCost.sedan.toLocaleString('en-IN')} | Triveni Cabs`;
 
   return {

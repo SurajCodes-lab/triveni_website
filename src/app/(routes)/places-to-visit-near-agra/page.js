@@ -1,5 +1,6 @@
 import { placesToVisitPages } from '@/utilis/placesToVisitData';
 import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = placesToVisitPages.agra;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
@@ -7,7 +8,7 @@ const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, sl
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '15+ Places to Visit Near Agra by Car | Day Trips | Book Cab',
+  title: tightenTitle('15+ Places to Visit Near Agra by Car | Day Trips | Book Cab'),
   description: `Best places to visit near Agra by car. Fatehpur Sikri (40 km), Mathura (58 km), Bharatpur (55 km), Gwalior (120 km) & more. Sedan ₹11/km. Call 7668570551.`,
   keywords: 'places to visit near agra, places near agra, day trips from agra, agra nearby places, weekend getaways from agra, places around agra, tourist places near agra, road trips from agra, places to visit near agra by car',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

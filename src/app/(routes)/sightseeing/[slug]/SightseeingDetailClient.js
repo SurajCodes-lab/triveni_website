@@ -50,6 +50,7 @@ import { generateTourFAQs } from '@/lib/seo/faq-generator';
 import { getRelatedToursByCity, getRelatedContent } from '@/utilis/linkingHelper';
 // May 2026: real reviews + urgency signals from sightseeingEnrichment
 import { getReviews as getSightseeingReviewsForSlug, getReviewCount as getSightseeingReviewCountForSlug, getUrgencySignals as getSightseeingUrgency } from '@/utilis/sightseeingEnrichment';
+import TourFareTable from '@/components/seo/TourFareTable';
 
 /* Emerald lane motif — a quiet road-lane divider, this family's signature. */
 function EmeraldLane({ className = '' }) {
@@ -423,6 +424,18 @@ export default function SightseeingDetailClient({ tour, cityLabel = null }) {
             tone="dark"
             className="border-emerald-500/20"
           />
+        </div>
+      </section>
+
+      {/* === FARE TABLE (AEO/GEO) ============================================
+           A real <table>, not styled divs. Google table snippets require an
+           actual table with a header row, and an assistant asked what this
+           tour costs needs the vehicle-to-price relationship stated rather
+           than inferred from DOM order. None of the 170 sightseeing pages
+           contained a <table> before this. ==================================== */}
+      <section className="bg-slate-950 px-4 py-6" aria-labelledby="tour-fare-heading">
+        <div className="mx-auto max-w-4xl">
+          <TourFareTable tour={tour} tone="dark" />
         </div>
       </section>
 

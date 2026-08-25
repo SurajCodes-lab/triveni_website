@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Varanasi Beyond the Ghats | Hidden Gems & Day Trips | 2026',
+  title: tightenTitle('Varanasi Beyond the Ghats | Hidden Gems & Day Trips | 2026'),
   description: 'Discover Varanasi beyond the ghats. Sarnath, Ramnagar Fort, Chunar Fort, BHU, Kabir Math, silk weaving villages + more. By locals. Call 7668570551.',
   keywords: 'varanasi beyond ghats, varanasi hidden gems, sarnath, ramnagar fort, chunar fort, varanasi offbeat, bhu campus, kabir math, varanasi silk weaving',
   authors: [{ name: 'Triveni Cabs' }],

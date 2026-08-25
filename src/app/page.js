@@ -1,4 +1,5 @@
-import NewHomeClient from "@/components/home/NewHomeClient";
+import Link from "next/link";
+import HomeRedesign from "@/components/home/HomeRedesign";
 import { phoneNumber } from "@/utilis/data";
 import { generateEntityDefinitionSchema, generateServiceAreaBusinessSchema } from '@/lib/seo/aeo-generators';
 // Rich UI + ranking-lift block — May 23 2026 sprint extended to homepage
@@ -9,6 +10,7 @@ import ExpertQuote from "@/components/seo/ExpertQuote";
 import LongTailFAQ from "@/components/seo/LongTailFAQ";
 import { getCitations } from "@/utilis/outboundCitations";
 import { getFounderQuoteForContext } from "@/utilis/expertQuotes";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // Company info - consistent NAP across all pages
 const companyName = "Triveni Cabs";
@@ -20,7 +22,7 @@ const companyZip = "282006";
 
 // Server-side metadata for SEO
 export const metadata = {
-  title: "Triveni Cabs — Cab ₹11/km | Delhi Agra Jaipur Shimla | 4.9★",
+  title: tightenTitle("Triveni Cabs — Cab ₹11/km | Delhi Agra Jaipur Shimla | 4.9★"),
   description: "Cab service from ₹11/km across 500+ cities. Delhi, Agra, Jaipur, Shimla airport pickup, wedding cars, tempo traveller. 4.9★ rated, 10K+ trips. Call 7668570551",
   keywords: [
     "taxi service india",
@@ -275,7 +277,7 @@ function generateStructuredData() {
     "estimatedCost": { "@type": "MonetaryAmount", "currency": "INR", "value": "1500-25000" },
     "step": [
       { "@type": "HowToStep", "position": 1, "name": "Choose Your Service", "text": "Select your required service: outstation taxi, local rental, airport transfer, or sightseeing tour. Browse our website or call 7668570551." },
-      { "@type": "HowToStep", "position": 2, "name": "Select Vehicle Type", "text": "Choose from Sedan (4 seater, ₹11/km), SUV (6 seater, ₹15/km), or Tempo Traveller (12-17 seater, ₹24/km) based on your group size." },
+      { "@type": "HowToStep", "position": 2, "name": "Select Vehicle Type", "text": "Choose from Sedan (4 seater, ₹11/km), SUV (6 seater, ₹15/km), or Tempo Traveller (12-17 seater, ₹25/km) based on your group size." },
       { "@type": "HowToStep", "position": 3, "name": "Provide Trip Details", "text": "Enter your pickup location, drop location, date, time, and number of passengers. Mention any special requirements." },
       { "@type": "HowToStep", "position": 4, "name": "Get Instant Quote", "text": "Receive transparent quote with all costs included - base fare, driver allowance, tolls, and taxes. No hidden charges." },
       { "@type": "HowToStep", "position": 5, "name": "Confirm Booking", "text": "Confirm via WhatsApp, phone call (7668570551), or online form. Pay small advance to secure your vehicle." },
@@ -297,7 +299,7 @@ const HOME_LONG_TAIL_FAQS = [
   { question: 'Which cities does Triveni Cabs cover?', answer: '46+ cities including Delhi, Agra, Jaipur, Chandigarh, Amritsar, Dehradun, Haridwar, Rishikesh, Shimla, Manali, Udaipur, Jodhpur, Jaisalmer, Pushkar, Ajmer, Varanasi, Lucknow, Ayodhya, Mathura, Vrindavan, Mussoorie, Nainital, Jim Corbett, Dharamshala, Dalhousie, Mount Abu, Bikaner, Ranthambore, Pathankot, Ludhiana, Patiala, Ambala, Karnal, plus full Char Dham Yatra circuit (Yamunotri, Gangotri, Kedarnath, Badrinath).' },
   { question: 'Is Triveni Cabs available 24×7?', answer: 'Yes, Triveni Cabs is available 24×7. Call or WhatsApp +91 7668570551 any time. For night driving between 10 PM and 6 AM, a night allowance of ₹250 applies. For early-morning pickups (5–9 AM), we recommend booking the night before.' },
   { question: 'How do I book a Triveni Cabs taxi?', answer: 'Three ways: (1) Call +91 7668570551 directly for fastest confirmation, (2) WhatsApp the same number with your route, date and vehicle preference, (3) Use any route page on our website — every route page has a "Confirm fare on WhatsApp" button that pre-fills your selection. Booking confirmation arrives within 15 minutes during business hours.' },
-  { question: 'What are Triveni Cabs prices in 2026?', answer: 'Per-km rates start at ₹11/km for Sedan, ₹15/km for SUV (Ertiga; Innova ₹18/km), ₹20/km for 12-seater Tempo Traveller, ₹24/km for 17-seater, ₹28/km for 26-seater, and ₹30–65/km for buses (22–56 seater). Outstation routes have published flat fares — see any city or one-way route page. All fares include fuel, driver, and AC.' },
+  { question: 'What are Triveni Cabs prices in 2026?', answer: 'Per-km rates start at ₹11/km for Sedan, ₹15/km for SUV (Ertiga; Innova ₹18/km), ₹23/km for 12-seater Tempo Traveller, ₹25/km for 17-seater, ₹31/km for 26-seater, and ₹30–65/km for buses (22–56 seater). Outstation routes have published flat fares — see any city or one-way route page. All fares include fuel, driver, and AC.' },
   { question: 'Are GST invoices available?', answer: 'Yes. Triveni Cabs is GST-registered. Mention "GST invoice" at the time of booking and we will issue a tax invoice against your firm\'s GSTIN. Corporate customers receive monthly consolidated invoices. Individual customers can request a tax invoice for any single booking.' },
   { question: 'Are Triveni Cabs drivers verified?', answer: 'Every driver holds a valid commercial driving licence with minimum 5 years of commercial experience and a clean background check. All drivers are GPS-tracked, carry company ID, and undergo refresher training every six months. Our long-distance lead drivers have done specific routes (Delhi-Agra, Delhi-Manali, Char Dham) hundreds of times.' },
   { question: 'Is the vehicle insured?', answer: 'Yes. Every vehicle in our fleet carries comprehensive vehicle insurance plus passenger insurance covering each seat. In the event of any incident, the operations desk activates roadside assistance within 30 minutes and arranges a backup vehicle.' },
@@ -428,12 +430,75 @@ export default function HomePage() {
       />
 
       {/* Client-side interactive content */}
-      <NewHomeClient />
+      <HomeRedesign />
+
+      {/* Season Specials — Aug/Sep 2026 in-window campaign pages given homepage
+          equity (they previously had zero homepage links). Server-rendered,
+          date-gated: renders only during the Aug–Oct season window, null
+          off-season. Paired with the layout revalidate=3600 so it stays fresh. */}
+      <SeasonSpecials />
 
       {/* Rich-UI + ranking-lift block — sits after the interactive hero
           experience. Animated counters, calculator, founder quote, long-tail
           FAQ accordion (17 brand-level Q&A), authority citations. */}
       <HomeRichBlock />
     </>
+  );
+}
+
+// Aug–Oct 2026 seasonal campaign cards. Gives the seasonal money pages
+// homepage equity (previously footer-only). Date-gated to the season window.
+const SEASON_SPECIALS = [
+  { name: 'Char Dham Yatra — September 2026', href: '/chardham-yatra-september-2026', blurb: 'Post-monsoon Char Dham — portals open through October. Taxi packages from Haridwar, Rishikesh & Delhi.' },
+  { name: 'Kedarnath in September', href: '/kedarnath-september-trip', blurb: 'Best weather window for Kedarnath. Road + helicopter packages from Delhi, Rishikesh & Haridwar.' },
+  { name: 'Janmashtami — Mathura & Vrindavan', href: '/janmashtami-mathura-vrindavan-cab', blurb: 'Sep 4–6 darshan. Same-day Vrindavan & Gokul cabs from Delhi, Agra & Jaipur.' },
+  { name: 'Independence Day Weekend', href: '/independence-day-weekend-packages-2026', blurb: '15 Aug long weekend. Hill-station, Golden Triangle & short-getaway cab packages from Delhi.' },
+  { name: 'Ganesh Chaturthi Transport', href: '/ganesh-chaturthi-transport', blurb: 'Group & family cabs for Ganesh festival bring-home and visarjan across Delhi, Mumbai & Pune routes.' },
+  { name: 'Leh–Ladakh — Aug & Sep', href: '/leh-ladakh-august-september-trip', blurb: 'Last road-trip window before the high passes close. Manali–Leh & Srinagar–Leh taxi packages.' },
+  { name: 'Monsoon Hill Stations', href: '/monsoon-hill-station-packages', blurb: 'Misty Himachal & Uttarakhand getaways — Mussoorie, Nainital, Shimla, Dalhousie from Delhi & Chandigarh.' },
+  { name: 'September Long Weekends', href: '/september-long-weekend-trips-2026', blurb: 'Every September long weekend — curated road trips and fixed-fare cabs from Delhi NCR.' },
+];
+
+function SeasonSpecials() {
+  const now = new Date();
+  const seasonStart = new Date('2026-08-01T00:00:00+05:30');
+  const seasonEnd = new Date('2026-10-31T23:59:59+05:30');
+  // Off-season: render nothing (homepage stays as-is, no stale seasonal block).
+  if (now < seasonStart || now > seasonEnd) return null;
+
+  return (
+    <section className="bg-gradient-to-b from-amber-50 to-white py-14 md:py-20 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="text-amber-600 font-semibold text-sm tracking-widest uppercase">Season Specials · Aug–Sep 2026</span>
+          <h2 className="text-2xl sm:text-4xl font-black mt-3 tracking-tight text-slate-900">
+            Book the season before the window closes
+          </h2>
+          <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
+            Monsoon road trips, Char Dham & Kedarnath in September, Janmashtami in Mathura, and the last Leh–Ladakh window — fixed-fare, chauffeur-driven cabs from Delhi, Haridwar & Agra.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {SEASON_SPECIALS.map((card) => (
+            <Link
+              key={card.href}
+              href={card.href}
+              className="group flex flex-col rounded-2xl border border-amber-200 bg-white p-5 shadow-sm transition hover:border-amber-400 hover:shadow-md"
+            >
+              <h3 className="text-base font-bold text-slate-900 group-hover:text-amber-700">
+                {card.name}
+              </h3>
+              <p className="mt-2 text-sm text-slate-600 leading-snug flex-grow">
+                {card.blurb}
+              </p>
+              <span className="mt-4 text-sm font-semibold text-amber-700 group-hover:underline">
+                View packages →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

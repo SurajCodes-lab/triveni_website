@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jodhpur Food Tour 2026 | Mirchi Vada & Mawa Kachori',
+  title: tightenTitle('Jodhpur Food Tour 2026 | Mirchi Vada & Mawa Kachori'),
   description: 'Jodhpur food & culinary tour. Famous Mirchi Vada, Mawa Kachori, Pyaaz Kachori, Gulab Jamun, Makhaniya Lassi. Street food itinerary, best restaurants.',
   keywords: 'jodhpur food tour, jodhpur street food, mirchi vada jodhpur, mawa kachori jodhpur, makhaniya lassi, jodhpur food guide, rajasthani food jodhpur, clock tower food jodhpur',
   authors: [{ name: 'Triveni Cabs' }],

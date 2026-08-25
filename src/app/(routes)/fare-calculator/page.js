@@ -2,13 +2,14 @@ import Link from 'next/link';
 import FareCalculator from '@/components/calculator/FareCalculator';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
 
 export const metadata = {
-  title: 'Taxi Fare Calculator India 2026 — Cab, Tempo & Bus Rates in 10 Seconds',
+  title: tightenTitle('Taxi Fare Calculator India 2026 — Cab, Tempo & Bus Rates in 10 Seconds'),
   description:
     'Free taxi fare calculator: sedan ₹11/km, SUV ₹15–18/km, tempo traveller ₹20–28/km, bus from ₹30/km. Enter your route, get the all-inclusive fare instantly — fuel, driver and GST included.',
   keywords:
@@ -29,11 +30,11 @@ const RATE_ROWS = [
   ['Sedan (Dzire / Etios)', '₹11/km', '4 passengers', 'One-way discount applies'],
   ['SUV Ertiga', '₹15/km', '6 passengers', 'One-way discount applies'],
   ['SUV Innova Crysta', '₹18/km', '7 passengers', 'One-way discount applies'],
-  ['Tempo Traveller 12-seater', '₹20/km', '12 passengers', 'Billed as round trip'],
-  ['Tempo Traveller 16-seater', '₹22/km', '16 passengers', 'Billed as round trip'],
-  ['Tempo Traveller 17-seater', '₹24/km', '17 passengers', 'Billed as round trip'],
-  ['Tempo Traveller 20-seater', '₹26/km', '20 passengers', 'Billed as round trip'],
-  ['Tempo Traveller 26-seater', '₹28/km', '26 passengers', 'Billed as round trip'],
+  ['Tempo Traveller 12-seater', '₹23/km', '12 passengers', 'Billed as round trip'],
+  ['Tempo Traveller 16-seater', '₹25/km', '16 passengers', 'Billed as round trip'],
+  ['Tempo Traveller 17-seater', '₹25/km', '17 passengers', 'Billed as round trip'],
+  ['Tempo Traveller 20-seater', '₹31/km', '20 passengers', 'Billed as round trip'],
+  ['Tempo Traveller 26-seater', '₹31/km', '26 passengers', 'Billed as round trip'],
   ['Bus (22–56 seater)', 'from ₹30/km', 'up to 56', 'Billed as round trip'],
 ];
 

@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Hire Car with English-Speaking Driver in India 2026',
+  title: tightenTitle('Hire Car with English-Speaking Driver in India 2026'),
   description: 'Hire a car with English-speaking driver in India. Multi-day packages from $45/day. Golden Triangle, Rajasthan, Kerala circuits.',
   keywords: 'hire car with driver india for foreigners, private driver india, english speaking driver india, chauffeur hire india, india car rental with driver',
   authors: [{ name: 'Triveni Cabs' }],

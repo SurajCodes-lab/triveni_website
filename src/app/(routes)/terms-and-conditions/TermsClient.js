@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { TypeAnimation } from 'react-type-animation';
 // Centralized icon imports for better bundle optimization
 import {
   ScrollText,
@@ -218,27 +217,15 @@ export default function TermsClient() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-6"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight tracking-tight">
+            <h1 className="font-display-serif text-4xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight tracking-tight">
               <span className="block text-white drop-shadow-lg">Terms &</span>
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
-                className="block bg-gradient-to-r from-yellow-300 via-[#FACF2D] to-orange-400 bg-clip-text text-transparent"
+                className="block text-gold-foil"
               >
-                <TypeAnimation
-                  sequence={[
-                    'Conditions',
-                    3000,
-                    'Guidelines',
-                    2000,
-                    'Conditions',
-                    3000,
-                  ]}
-                  wrapper="span"
-                  speed={50}
-                  repeat={Infinity}
-                />
+                Conditions
               </motion.span>
             </h1>
           </motion.div>
@@ -264,10 +251,10 @@ export default function TermsClient() {
               
               whileTap={{ scale: 0.95 }}
               onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs.")}
-              className="group px-8 py-4 bg-gradient-to-r from-[#FACF2D] to-amber-500 text-gray-800 font-bold rounded-full shadow-xl flex items-center gap-3"
+              className="group px-8 py-4 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px] bg-gradient-to-r from-[#FACF2D] to-amber-500 text-black font-bold rounded-full shadow-xl flex items-center gap-3"
             >
               Book Now
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 lg:w-4 lg:h-4 group-hover:translate-x-1 transition-transform" />
             </motion.button>
 
             <motion.a
@@ -282,23 +269,15 @@ export default function TermsClient() {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
-        >
+        {/* Scroll Indicator (static — infinite animation removed for INP) */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
           <div className="flex flex-col items-center gap-2">
             <span className="text-white/80 text-sm font-medium">Scroll to explore</span>
             <div className="w-8 h-14 border-2 border-white/40 rounded-full flex items-start justify-center p-2">
-              <motion.div
-                animate={{ y: [0, 20, 0], opacity: [1, 0, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-4 bg-amber-400 rounded-full"
-              />
+              <div className="w-2 h-4 bg-amber-400 rounded-full" />
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* TERMS SECTIONS */}
@@ -314,7 +293,7 @@ export default function TermsClient() {
               <span className="font-semibold">Service Agreement</span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
+            <h2 className="font-display-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
               Our Terms of Service
             </h2>
 
@@ -394,17 +373,13 @@ export default function TermsClient() {
 
       {/* STATS SECTION */}
       <section className="py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
-        {/* Animated Background */}
-        <motion.div
-          animate={{ x: [0, 100, 0], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 20, repeat: Infinity }}
-          className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-amber-600/10 via-transparent to-orange-600/10"
-        />
+        {/* Static background wash (infinite animation removed for INP) */}
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-amber-600/10 via-transparent to-orange-600/10 opacity-40" />
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-              Key Highlights
+            <h2 className="font-display-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
+              Key <span className="text-gold-foil">Highlights</span>
             </h2>
             <p className="text-gray-400 text-lg">
               What you should know about our services

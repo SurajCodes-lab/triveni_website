@@ -53,7 +53,7 @@ export const specialTransportData = [
     tagline: "Affordable Group Transport for College Trips and Events",
     vehicles: [
       { name: "Tempo Traveller 12-Seater", capacity: "12 students", rate: "\u20B918/km" },
-      { name: "Tempo Traveller 17-Seater", capacity: "17 students", rate: "\u20B922/km" },
+      { name: "Tempo Traveller 17-Seater", capacity: "17 students", rate: "\u20B925/km" },
       { name: "35-Seater Bus", capacity: "35 students", rate: "\u20B938/km" },
       { name: "45-Seater Volvo", capacity: "45 students", rate: "\u20B948/km" }
     ],
@@ -65,7 +65,7 @@ export const specialTransportData = [
       "Large luggage compartment for camping gear",
       "Multiple pickup point coordination"
     ],
-    pricing: { tempo12: "\u20B918/km", tempo17: "\u20B922/km", bus35: "\u20B938/km", volvo: "\u20B948/km", minimumKm: "250 km/day" },
+    pricing: { tempo12: "\u20B918/km", tempo17: "\u20B925/km", bus35: "\u20B938/km", volvo: "\u20B948/km", minimumKm: "250 km/day" },
     safetyMeasures: [
       "Verified drivers with valid commercial license",
       "GPS tracking enabled vehicles",

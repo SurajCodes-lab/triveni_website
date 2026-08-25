@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jaisalmer Shopping Guide 2026 | Mirror Work & Desert Crafts',
+  title: tightenTitle('Jaisalmer Shopping Guide 2026 | Mirror Work & Desert Crafts'),
   description: 'Jaisalmer shopping guide. Mirror work embroidery, leather mojaris, patchwork textiles, silver jewelry, Rajasthani paintings, camel leather products.',
   keywords: 'jaisalmer shopping guide, shopping in jaisalmer, jaisalmer fort market, sadar bazaar jaisalmer, jaisalmer mirror work, jaisalmer leather mojaris, rajasthani crafts jaisalmer, jaisalmer souvenirs',
   authors: [{ name: 'Triveni Cabs' }],

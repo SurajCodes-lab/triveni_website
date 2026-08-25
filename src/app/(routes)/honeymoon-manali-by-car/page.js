@@ -1,12 +1,13 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "honeymoon-manali-by-car";
 const data = honeymoonTripData["manali"];
 
 export const metadata = {
-  title: 'Manali Honeymoon by Car | Snow Romance Rs 14,500 | 2026',
+  title: tightenTitle('Manali Honeymoon by Car | Snow Romance Rs 14,500 | 2026'),
   description: 'Book Manali honeymoon by car from Delhi. Sedan Rs 14,500, Innova Rs 18,500. Solang Valley, Old Manali cafes, snow. Decorated car option. Call 7668570551.',
   keywords: 'manali honeymoon by car, honeymoon manali road trip, manali couple trip, romantic trip manali, honeymoon package manali by car',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

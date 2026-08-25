@@ -2,12 +2,13 @@ import { friendsTripData } from '@/utilis/friendsTripData';
 import FriendsTripClient from '@/components/audience/FriendsTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "friends-trip-tirthan-valley";
 const data = friendsTripData["tirthan-valley"];
 
 export const metadata = {
-  title: 'Friends Trip to Tirthan Valley by Tempo Traveller | Rs 1,235/Person | 2026',
+  title: tightenTitle('Friends Trip to Tirthan Valley by Tempo Traveller | Rs 1,235/Person | 2026'),
   description: 'Book Tempo Traveller for a friends trip to Tirthan Valley from Delhi. Rs 1,235/person. GHNP treks, trout fishing, riverside camping. 12-17 seater AC. Call 7668570551.',
   keywords: 'friends trip tirthan valley, tirthan valley group trip, tirthan tempo traveller, delhi to tirthan friends, ghnp trek trout fishing, tirthan valley camping package',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

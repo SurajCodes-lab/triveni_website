@@ -92,14 +92,14 @@ export default function DynamicTempoRoutesClient({ data }) {
     .filter(Boolean)
     .sort((a, b) => Number(a.seats) - Number(b.seats)), [fleetList]);
 
-  const lowestRate = seaterRates[0]?.rate || '₹20/km';
+  const lowestRate = seaterRates[0]?.rate || '₹23/km';
   const highestRate = seaterRates[seaterRates.length - 1]?.rate || '₹28/km';
   const seaterRateSentence = seaterRates.length
     ? seaterRates.map((s) => `${s.rate} for a ${s.seats} seater`).join(', ')
-    : '₹20/km for a 12 seater, ₹22/km for a 16 seater, ₹24/km for a 17 seater, ₹26/km for a 20 seater, ₹28/km for a 26 seater';
+    : '₹23/km for a 12 seater, ₹25/km for a 16 seater, ₹25/km for a 17 seater, ₹26/km for a 20 seater, ₹31/km for a 26 seater';
   const seaterList = seaterRates.length
     ? seaterRates.map((s) => `${s.seats}-seat ${s.rate}`).join(' · ')
-    : '12-seat ₹20/km · 16-seat ₹22/km · 17-seat ₹24/km · 20-seat ₹26/km · 26-seat ₹28/km';
+    : '12-seat ₹23/km · 16-seat ₹25/km · 17-seat ₹25/km · 20-seat ₹28/km · 26-seat ₹31/km';
 
   // Fare estimate for the selected seater — mirrors PriceCalculator's
   // oneWayEqualsRoundTrip math exactly (distance × 2 × rate; billed both ways).
@@ -1235,7 +1235,7 @@ export default function DynamicTempoRoutesClient({ data }) {
                     <h3 className="font-bold text-slate-900 transition-colors group-hover:text-amber-600">
                       {origin} to {r.name}
                     </h3>
-                    <p className="text-xs text-slate-500">{r.type} • Tempo Traveller from ₹20/km</p>
+                    <p className="text-xs text-slate-500">{r.type} • Tempo Traveller from ₹23/km</p>
                   </div>
                   <ArrowRight className="ml-auto h-4 w-4 text-slate-400 transition-all group-hover:translate-x-1 group-hover:text-amber-500" />
                 </Link>
@@ -1311,7 +1311,7 @@ export default function DynamicTempoRoutesClient({ data }) {
           <p className="leading-relaxed text-slate-700">
             Book a comfortable AC tempo traveller from {origin} to {displayDestination} with Triveni Cabs. We offer 12-seater,
             17-seater, 20-seater, and 26-seater Maharaja tempo travellers with professional drivers, GPS tracking, pushback
-            recliner seats, music system, and charging points. Our rates start at just <strong>₹20/km</strong> for a 12-seater —
+            recliner seats, music system, and charging points. Our rates start at just <strong>₹23/km</strong> for a 12-seater —
             making group travel affordable and comfortable.
           </p>
           <p className="leading-relaxed text-slate-700">
@@ -1345,7 +1345,7 @@ function TempoRouteRichBlock({ origin, destination, displayDestination, routeDat
   const routeDuration = realValue(routeData?.duration);
   const distanceKm = parseFloat((routeDistance || '').replace(/[^0-9.]/g, '')) || 300;
   const durationHrs = parseFloat((routeDuration || '').replace(/[^0-9.]/g, '')) || 6;
-  // Canonical tempo card rates (12→₹20/km, 17→₹24/km) — must match the fare
+  // Canonical tempo card rates (12→₹23/km, 17→₹25/km) — must match the fare
   // chart, the seater selector and the PriceCalculator below.
   const seater12 = 20;
   const seater17 = 24;

@@ -13,7 +13,7 @@ import { getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate, get
 // client component or blog.js lands in the browser bundle.
 import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
 import { BookOpen, Clock, ArrowRight } from '@/components/ui/icons';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
     return { title: 'Round Trip Route Not Found' };
   }
 
-  const title = `${route.origin} to ${route.destination} Round Trip Cab | ₹${route.sedanRaw.toLocaleString('en-IN')} — Driver Stays With You — 4.9★`;
+  const title = tightenTitle(`${route.origin} to ${route.destination} Round Trip Cab | ₹${route.sedanRaw.toLocaleString('en-IN')} — Driver Stays With You — 4.9★`);
   // Fare-first snippet: the concrete numbers lead so the SERP result answers
   // "how much / how far / how long" before the click. Parentheticals are
   // stripped from route.duration to keep the whole line inside ~160 characters.

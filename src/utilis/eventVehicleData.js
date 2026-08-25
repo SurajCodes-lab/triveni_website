@@ -71,7 +71,7 @@ export const eventVehicles = {
     accent: "#2563eb", // blue-600
     image: "/images/tempo/17_seater.jpg",
     fallbackImage: "/images/tempo/17_seater.jpg",
-    priceFrom: "₹20/km",
+    priceFrom: "₹23/km",
     tagline: "12–26 seater AC tempos for mid-size event groups",
     intro:
       "Tempo travellers are the workhorse of event transport — perfect for mid-size groups that need to travel together in AC comfort. From wedding family and guest movement to corporate team offsites, sangeet and mehendi transfers, and small pilgrimage or college groups, our 12 to 26 seater AC tempo travellers with pushback seats and experienced drivers keep your group together without the cost of a full coach.",
@@ -85,7 +85,7 @@ export const eventVehicles = {
     specs: [
       ["Seating options", "12, 16, 17, 20 & 26 seater"],
       ["Best group size", "10 – 25 guests per vehicle"],
-      ["Rate", "From ₹20/km (by seater size)"],
+      ["Rate", "From ₹23/km (by seater size)"],
       ["Configuration", "AC, pushback seats, music system, luggage space"],
       ["Use cases", "Weddings, offsites, transfers, small groups"],
     ],
@@ -102,7 +102,7 @@ export const eventVehicles = {
       {
         question: "What does a tempo traveller for events cost?",
         answer:
-          "Event tempo travellers start from ₹20/km for a 12 seater and scale up to ₹28/km for a 26 seater Maharaja edition. Local event-day packages (8 hours / 80 km) are available. We quote a fixed, GST-invoiced price based on your seater and itinerary.",
+          "Event tempo travellers start from ₹23/km for a 12 seater and scale up to ₹31/km for a 26 seater Maharaja edition. Local event-day packages (8 hours / 80 km) are available. We quote a fixed, GST-invoiced price based on your seater and itinerary.",
       },
       {
         question: "Which tempo traveller size is right for my event?",

@@ -3,6 +3,7 @@ import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getStationReviews, getStationHowToSchema } from '@/utilis/stationTaxiEnrichment';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -51,7 +52,7 @@ const STATION = {
 };
 
 export const metadata = {
-  title: 'Agra Fort Station Taxi Service | Pickup from ₹149 — 4.9★ Rated',
+  title: tightenTitle('Agra Fort Station Taxi Service | Pickup from ₹149 — 4.9★ Rated'),
   description: 'Book taxi from Agra Fort Railway Station (AF). Fixed fares from ₹149 to Taj Mahal, Agra Fort, Fatehpur Sikri. AC sedan & SUV, 24/7, station exit pickup.',
   keywords: 'agra fort station taxi, agra fort railway station cab, AF station taxi, taxi from agra fort station to taj mahal, agra fort station cab booking, agra fort to fatehpur sikri taxi, agra fort station pickup, agra fort station to kinari bazaar cab, agra fort railway taxi fare, AF station cab service',
   alternates: { canonical: '/agra-fort-station-taxi' },

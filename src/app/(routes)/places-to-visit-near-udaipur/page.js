@@ -1,5 +1,6 @@
 import { placesToVisitPages } from '@/utilis/placesToVisitData';
 import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = placesToVisitPages.udaipur;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
@@ -7,7 +8,7 @@ const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, sl
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '15+ Places to Visit Near Udaipur by Car | Royal Mewar | Book Cab',
+  title: tightenTitle('15+ Places to Visit Near Udaipur by Car | Royal Mewar | Book Cab'),
   description: `Best places to visit near Udaipur by car. Chittorgarh (115 km), Kumbhalgarh (85 km), Ranakpur (90 km), Mount Abu (165 km) & more. Sedan ₹11/km. Call 7668570551.`,
   keywords: 'places to visit near udaipur, places near udaipur, day trips from udaipur, weekend getaways from udaipur, udaipur nearby places, places around udaipur, tourist places near udaipur, rajasthan from udaipur',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

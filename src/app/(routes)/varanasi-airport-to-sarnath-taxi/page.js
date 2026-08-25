@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Varanasi Airport to Sarnath Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Varanasi Airport to Sarnath Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Varanasi Airport to Sarnath taxi at ₹${ROUTE.fare}. Direct to Buddhist heritage site. Flight tracking, meet & greet. 24/7 by Triveni Cabs.`,
   keywords: 'varanasi airport to sarnath taxi, varanasi airport to sarnath cab, varanasi to sarnath airport taxi, taxi from varanasi airport to sarnath, sarnath airport pickup, flight tracked sarnath taxi, fixed fare sarnath cab, varanasi airport sarnath transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

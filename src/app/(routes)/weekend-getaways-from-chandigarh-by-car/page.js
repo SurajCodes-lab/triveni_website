@@ -4,12 +4,13 @@ import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
 
 import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
 import { buildStaticService, buildPlaceSchemas, getHowToSchema, getComparisonSchema } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'weekend-getaways-from-chandigarh-by-car';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Top 18 Weekend Getaways from Chandigarh by Car 2026',
+  title: tightenTitle('Top 18 Weekend Getaways from Chandigarh by Car 2026'),
   description: 'Best weekend trips from Chandigarh by car in 2026. Shimla, Kasauli, Manali, Dharamshala & more. Distance, drive time, costs. AC cab from ₹9/km. Call 7668570551.',
   keywords: 'weekend trips from chandigarh by car, weekend getaways from chandigarh, short trips from chandigarh, road trips from chandigarh, places near chandigarh by car',
   authors: [{ name: 'Triveni Cabs' }],

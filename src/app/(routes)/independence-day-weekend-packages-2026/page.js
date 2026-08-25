@@ -2,11 +2,12 @@ import { notFound } from 'next/navigation';
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('independence-day-weekend-packages-2026');
 
 export const metadata = {
-  title: 'Independence Day Weekend Packages 2026 from Delhi',
+  title: tightenTitle('Independence Day Weekend Packages 2026 from Delhi'),
   description: 'Short getaways for the 15-16 Aug 2026 weekend: Rishikesh, Neemrana, Agra, Corbett. Sedan ₹11/km, Innova ₹18/km, no surge. Call 7668570551.',
   keywords: 'independence day weekend packages 2026, 15 august trip from delhi, long weekend trip delhi august 2026, independence day getaway delhi, delhi to rishikesh 15 august, weekend cab package delhi',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

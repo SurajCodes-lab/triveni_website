@@ -16,11 +16,13 @@ export {
   AGGREGATE_RATING,
   SERVICE_AREAS,
   VEHICLE_TYPES,
-  DEFAULT_FAQ_COUNT
+  DEFAULT_FAQ_COUNT,
+  CITY_GEO_COORDS
 } from './constants';
 
 // Metadata Factory
 export {
+  generateGeoMeta,
   generateRouteMetadata,
   generateTourMetadata,
   generateCityHubMetadata,

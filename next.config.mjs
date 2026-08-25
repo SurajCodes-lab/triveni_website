@@ -1,3 +1,4 @@
+import { bookingCanonicalRedirects } from './src/lib/seo/booking-canonical-redirects.mjs';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // URL Handling - Ensure consistent canonical URLs (no trailing slashes)
@@ -10,6 +11,9 @@ const nextConfig = {
       'framer-motion',
       '@heroicons/react',
     ],
+    // Tag the LCP/CLS/INP elements in the build so field-CWV attribution
+    // (WebVitalsReporter) can pinpoint the exact element behind a regression.
+    webVitalsAttribution: ['LCP', 'CLS', 'INP'],
   },
 
   // Image Optimization
@@ -55,6 +59,11 @@ const nextConfig = {
         destination: 'https://www.trivenicabs.in/:path*',
         permanent: true, // 301 redirect — tells Google to consolidate
       },
+      // Week 43 — booking-cluster canonicalisation. 21 duplicate booking URLs
+      // folded into one canonical page per route so link equity stops being
+      // split five ways. See src/lib/seo/booking-canonical-redirects.mjs for the
+      // Search Console evidence behind each entry.
+      ...bookingCanonicalRedirects,
     ];
   },
 

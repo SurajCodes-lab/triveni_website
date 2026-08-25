@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, Sparkles, Droplets } from '@/components/ui/icons';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Kanwar Yatra Cab to Haridwar 2026 | AC Vehicle ₹4,000',
+  title: tightenTitle('Kanwar Yatra Cab to Haridwar 2026 | AC Vehicle ₹4,000'),
   description: 'Book Kanwar Yatra cab to Haridwar from Delhi, Noida, Ghaziabad. AC sedan, SUV, Tempo Traveller. Safe transport for Kanwariyas. Group discounts. Call 7668570551.',
   keywords: 'kanwar yatra cab haridwar, kanwar cab service, kanwar taxi, kanwar transport, book cab kanwar, book cab online, taxi service india, triveni cabs',
   authors: [{ name: 'Triveni Cabs' }],

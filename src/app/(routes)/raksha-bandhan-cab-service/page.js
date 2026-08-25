@@ -2,11 +2,12 @@ import { notFound } from 'next/navigation';
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('raksha-bandhan-cab-service');
 
 export const metadata = {
-  title: 'Raksha Bandhan Cab Service 2026 | Delhi NCR & Intercity',
+  title: tightenTitle('Raksha Bandhan Cab Service 2026 | Delhi NCR & Intercity'),
   description: 'Book a Raksha Bandhan cab for 28-30 Aug 2026. NCR multi-stop family trips & intercity drops. Sedan ₹11/km, no surge pricing. Call 7668570551.',
   keywords: 'raksha bandhan cab service, rakhi cab booking delhi, raksha bandhan 2026 taxi, delhi to jaipur rakhi cab, family cab raksha bandhan, rakhi day cab ncr, intercity cab raksha bandhan',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

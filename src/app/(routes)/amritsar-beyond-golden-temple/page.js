@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Amritsar Beyond Golden Temple | Hidden Gems & Heritage | 2026',
+  title: tightenTitle('Amritsar Beyond Golden Temple | Hidden Gems & Heritage | 2026'),
   description: 'Discover Amritsar beyond the Golden Temple. Gobindgarh Fort, Maharaja Ranjit Singh Museum, Pul Kanjri, Sadda Pind, Durgiana Temple + more. Call 7668570551.',
   keywords: 'amritsar beyond golden temple, amritsar hidden gems, gobindgarh fort, pul kanjri, sadda pind, amritsar heritage walk, durgiana temple, amritsar offbeat',
   authors: [{ name: 'Triveni Cabs' }],

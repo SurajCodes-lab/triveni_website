@@ -5,11 +5,12 @@ import { vehiclesServices } from '@/utilis/data';
 import { tempoFleet } from '@/utilis/tempoTravellerData';
 import { busFleet } from '@/utilis/busRoutesData';
 import CityRoutesMainClient from '@/components/CityRoutesMainClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Outstation Cab Routes 2026 | 500+ Destinations from ₹3K',
+  title: tightenTitle('Outstation Cab Routes 2026 | 500+ Destinations from ₹3K'),
   description: 'Book outstation cabs from Delhi: Agra ₹3K, Jaipur ₹4.5K, Shimla ₹6K, Manali ₹8K. One-way & round trips. ₹11-15/km. 10,000+ trips done. Call 7668570551.',
   keywords: 'outstation cab service, taxi booking India, Delhi to Agra cab, Delhi to Jaipur taxi, Delhi to Shimla cab, Chandigarh to Manali taxi, intercity cab service, long distance taxi, car rental India, outstation taxi booking, one way cab, round trip taxi, Delhi taxi service, Jaipur cab booking, Agra taxi service, Shimla cab hire, Manali taxi booking, Haridwar cab service, Rishikesh taxi, Amritsar cab booking, Udaipur taxi service, Jodhpur cab hire, affordable taxi service, premium cab rental, online taxi booking, instant cab booking, 24/7 taxi service, professional drivers, AC cabs, GPS tracking taxi, safe taxi service, comfortable cab journey, family taxi service, group cab booking, corporate taxi rental, wedding cab service, airport taxi transfer, railway station cab, hill station taxi, pilgrimage cab service, tourist taxi booking, sightseeing cab rental, multi-city taxi tour, North India cab routes, Rajasthan taxi service, Himachal taxi booking, Uttarakhand cab service, Uttar Pradesh taxi, Punjab cab service, Haryana taxi booking, best taxi service India, reliable cab company, trusted taxi provider, cheap cab rates, budget taxi service, luxury cab rental, tempo traveller booking, SUV taxi hire, sedan cab service, innova crysta rental, ertiga cab booking, Delhi NCR taxi, Gurgaon cab service, Noida taxi booking, Faridabad cab hire, Golden Triangle tour taxi, char dham taxi service, heritage tour cab, adventure tour taxi, weekend getaway cab, holiday taxi booking, vacation cab rental, summer tour taxi, winter trip cab, monsoon travel taxi, Delhi to Agra same day, Delhi to Jaipur one way, Delhi to Haridwar round trip, Delhi to Shimla cab fare, Delhi to Manali taxi charges, Chandigarh to Shimla cab, Chandigarh to Manali taxi, Jaipur to Udaipur cab, Jaipur to Jodhpur taxi, Agra to Jaipur cab service',
   alternates: {

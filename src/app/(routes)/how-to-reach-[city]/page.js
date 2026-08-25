@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { getAllHowToReachCities, getHowToReachCityData } from '@/utilis/howToReachData';
 import HowToReachClient from '@/components/content/HowToReachClient';
 import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // ISR - Revalidate every hour
 export const revalidate = 3600;
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }) {
   const cityData = getHowToReachCityData(city);
   if (!cityData) {
     return {
-      title: 'How to Reach - Travel Guide | Triveni Cabs',
+      title: tightenTitle('How to Reach - Travel Guide'),
       description: 'Complete travel guide on how to reach popular Indian destinations by air, train, road and bus.',
     };
   }

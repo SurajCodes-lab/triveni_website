@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Rajasthan Desert Circuit 2026 | Jaisalmer Jodhpur Bikaner',
+  title: tightenTitle('Rajasthan Desert Circuit 2026 | Jaisalmer Jodhpur Bikaner'),
   description: 'Rajasthan desert circuit Jaisalmer Jodhpur Bikaner 5-6 day tour by car. Desert safari, forts, cultural experiences. Sedan ₹30,000, SUV ₹42,000. Call 7668570551.',
   keywords: 'rajasthan desert circuit jaisalmer jodhpur bikaner, rajasthan desert tour, thar desert tour by car, jaisalmer jodhpur tour, desert safari rajasthan',
   authors: [{ name: 'Triveni Cabs' }],

@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Manali Beyond Solang Valley | Hidden Gems & Secret Spots | 2026',
+  title: tightenTitle('Manali Beyond Solang Valley | Hidden Gems & Secret Spots | 2026'),
   description: 'Discover Manali beyond Solang Valley. Jogini Falls, Naggar Castle, Great Himalayan National Park, Hampta Pass, Sethan Village, Vashisht + more. Call 7668570551.',
   keywords: 'manali beyond solang valley, manali hidden gems, jogini falls, naggar castle, great himalayan national park, hampta pass, sethan village, vashisht, malana',
   authors: [{ name: 'Triveni Cabs' }],

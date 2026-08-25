@@ -1,5 +1,5 @@
 // src/utilis/taxiFareData.js - Complete data for 18 city taxi fare pages
-// Base Rates: Sedan ₹11/km, SUV ₹15/km, Tempo ₹20/km | Minimum Fare: ₹300
+// Base Rates: Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km | Minimum Fare: ₹300
 
 function generateFaqs(city, baseFare, comparisonWithOla) {
   return [
@@ -29,7 +29,7 @@ function createCity({ slug, city, baseFare, minimumFare, surcharges, popularFare
 export const taxiFareCities = {
   "delhi": createCity({
     slug: "delhi", city: "Delhi",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -48,7 +48,7 @@ export const taxiFareCities = {
 
   "agra": createCity({
     slug: "agra", city: "Agra",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -67,7 +67,7 @@ export const taxiFareCities = {
 
   "jaipur": createCity({
     slug: "jaipur", city: "Jaipur",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -86,7 +86,7 @@ export const taxiFareCities = {
 
   "chandigarh": createCity({
     slug: "chandigarh", city: "Chandigarh",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -105,7 +105,7 @@ export const taxiFareCities = {
 
   "lucknow": createCity({
     slug: "lucknow", city: "Lucknow",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -124,7 +124,7 @@ export const taxiFareCities = {
 
   "varanasi": createCity({
     slug: "varanasi", city: "Varanasi",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -143,7 +143,7 @@ export const taxiFareCities = {
 
   "amritsar": createCity({
     slug: "amritsar", city: "Amritsar",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -162,7 +162,7 @@ export const taxiFareCities = {
 
   "haridwar": createCity({
     slug: "haridwar", city: "Haridwar",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -181,7 +181,7 @@ export const taxiFareCities = {
 
   "dehradun": createCity({
     slug: "dehradun", city: "Dehradun",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -200,7 +200,7 @@ export const taxiFareCities = {
 
   "shimla": createCity({
     slug: "shimla", city: "Shimla",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -219,7 +219,7 @@ export const taxiFareCities = {
 
   "manali": createCity({
     slug: "manali", city: "Manali",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -238,7 +238,7 @@ export const taxiFareCities = {
 
   "udaipur": createCity({
     slug: "udaipur", city: "Udaipur",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -257,7 +257,7 @@ export const taxiFareCities = {
 
   "jodhpur": createCity({
     slug: "jodhpur", city: "Jodhpur",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -276,7 +276,7 @@ export const taxiFareCities = {
 
   "rishikesh": createCity({
     slug: "rishikesh", city: "Rishikesh",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -295,7 +295,7 @@ export const taxiFareCities = {
 
   "nainital": createCity({
     slug: "nainital", city: "Nainital",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -314,7 +314,7 @@ export const taxiFareCities = {
 
   "mussoorie": createCity({
     slug: "mussoorie", city: "Mussoorie",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -333,7 +333,7 @@ export const taxiFareCities = {
 
   "noida": createCity({
     slug: "noida", city: "Noida",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [
@@ -352,7 +352,7 @@ export const taxiFareCities = {
 
   "gurgaon": createCity({
     slug: "gurgaon", city: "Gurgaon",
-    baseFare: { sedan: 11, suv: 15, tempo: 20 },
+    baseFare: { sedan: 11, suv: 15, tempo: 23 },
     minimumFare: 300,
     surcharges: { night: "25% after 11 PM", holiday: "10%", airport: "₹100 pickup fee" },
     popularFares: [

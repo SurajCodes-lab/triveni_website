@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('winter-snow-trip-packages');
 
 export const metadata = {
-  title: 'Winter Snow Trip Cab Packages 2026 | Snowfall Destinations',
+  title: tightenTitle('Winter Snow Trip Cab Packages 2026 | Snowfall Destinations'),
   description: 'Book winter snow trip cab from Delhi to Shimla, Manali, Auli, Chopta. From ₹6,000 sedan. Snow chains, experienced mountain drivers. Call 7668570551.',
   keywords: 'winter snow trip cab, delhi to shimla snow cab, delhi to manali winter, snow trip packages, auli skiing cab, snowfall destination cab, winter vacation cab delhi',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

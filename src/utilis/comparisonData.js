@@ -60,7 +60,7 @@ export const comparisonData = {
 
   'tempo-traveller-vs-mini-bus': {
     title: 'Tempo Traveller vs Mini Bus - Which is Better for Group Travel?',
-    metaDescription: 'Compare Tempo Traveller (12-17 seater) vs Mini Bus (20-27 seater) for group trips. Side-by-side comparison of capacity, pricing from ₹20/km, comfort.',
+    metaDescription: 'Compare Tempo Traveller (12-17 seater) vs Mini Bus (20-27 seater) for group trips. Side-by-side comparison of capacity, pricing from ₹23/km, comfort.',
     slug: 'tempo-traveller-vs-mini-bus',
     category: 'Group Travel',
     vehicle1: {
@@ -106,7 +106,7 @@ export const comparisonData = {
     ],
     faqs: [
       { question: 'Can a mini bus go to Manali or Shimla?', answer: 'Mini buses (20+ seater) are not recommended for Manali or Shimla routes. The narrow mountain roads, sharp hairpin bends, and steep inclines make it difficult for larger vehicles. Tempo Travellers (12-17 seater) are the best choice for hill station trips as they can navigate these roads safely.' },
-      { question: 'What is the cost difference for a Delhi-Rishikesh group trip?', answer: 'For a Delhi-Rishikesh round trip (460km): 17-Seater Tempo costs approximately ₹11,960-12,420 while a 22-Seater Mini Bus costs ₹14,720-17,480. Per person, the tempo costs ₹700-730 (17 people) vs mini bus at ₹670-795 (22 people). The mini bus is cheaper per head only if you fill all seats.' },
+      { question: 'What is the cost difference for a Delhi-Rishikesh group trip?', answer: 'For a Delhi-Rishikesh round trip (460km): 17-Seater Tempo costs approximately ₹11,500-12,000 while a 22-Seater Mini Bus costs ₹14,720-17,480. Per person, the tempo costs ₹676-706 (17 people) vs mini bus at ₹670-795 (22 people). The mini bus is cheaper per head only if you fill all seats.' },
       { question: 'Which is better for a wedding guest pickup?', answer: 'It depends on the number of guests. For 12-17 guests, a Tempo Traveller offers more comfortable push-back seats and a premium feel. For 20-27 guests, a Mini Bus is more practical and cost-effective. For very large weddings, you can combine both vehicles.' },
       { question: 'Do tempo travellers have AC?', answer: 'Yes, all our Tempo Travellers come with roof-mounted AC that cools the entire cabin effectively. We also offer Maharaja variant tempo travellers with enhanced AC, larger seats, and premium interiors for an upgraded experience at slightly higher rates.' },
       { question: 'Can I book multiple tempo travellers instead of one bus?', answer: 'Absolutely. Many groups prefer 2 tempo travellers over 1 mini bus for hill trips. Two 17-seater tempos carry 34 people and can navigate mountain roads, whereas a single bus cannot. The total cost may be similar but the flexibility and safety on hills is much better.' },
@@ -228,7 +228,7 @@ export const comparisonData = {
 
   '12-seater-vs-17-seater-tempo': {
     title: '12 Seater vs 17 Seater Tempo Traveller - Which to Book?',
-    metaDescription: 'Compare 12-seater vs 17-seater Tempo Traveller for your group trip. Pricing from ₹20/km, seat comfort, luggage space, and best use cases.',
+    metaDescription: 'Compare 12-seater vs 17-seater Tempo Traveller for your group trip. Pricing from ₹23/km, seat comfort, luggage space, and best use cases.',
     slug: '12-seater-vs-17-seater-tempo',
     category: 'Group Size Decision',
     vehicle1: {
@@ -254,7 +254,7 @@ export const comparisonData = {
       seating: '17 passengers',
       bootSpace: 'Larger boot area',
       acType: 'Roof-mounted AC (powerful)',
-      ratePerKm: '₹24/km',
+      ratePerKm: '₹25/km',
       minimumCharge: '₹6,000 (250km/day)',
       fuelType: 'Diesel',
       mileage: '8-10 km/l',

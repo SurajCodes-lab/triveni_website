@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Amritsar Shopping Guide 2026 | Phulkari, Juttis & Dry Fruits',
+  title: tightenTitle('Amritsar Shopping Guide 2026 | Phulkari, Juttis & Dry Fruits'),
   description: 'Amritsar shopping guide. Phulkari dupattas, Juttis, Amritsari papad, dry fruits, Pashmina shawls. Hall Bazaar, Katra Jaimal Singh, Guru Bazaar. Call 7668570551.',
   keywords: 'amritsar shopping guide, shopping in amritsar, phulkari amritsar, amritsar juttis, hall bazaar amritsar, katra jaimal singh, amritsar dry fruits, pashmina shawls',
   authors: [{ name: 'Triveni Cabs' }],

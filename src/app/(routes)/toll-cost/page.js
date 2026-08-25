@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllTollCostSlugs } from '@/utilis/tollCostData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Toll Cost & Toll Plaza Lists for North India Routes";
+  const title = tightenTitle("Toll Cost & Toll Plaza Lists for North India Routes");
   const description = "Plaza-wise toll charges and total toll cost for North India car routes, plus toll-inclusive cab fares. Triveni Cabs — call 7668570551.";
   return {
     title,

@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Delhi Airport to Meerut Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Delhi Airport to Meerut Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Delhi Airport to Meerut taxi at ₹${ROUTE.fare}. Fixed fare, flight tracking, meet & greet at IGI arrivals. Via Delhi-Meerut Expressway. 24/7 by Triveni Cabs.`,
   keywords: 'delhi airport to meerut taxi, delhi airport to meerut cab, delhi to meerut airport taxi, taxi from delhi airport to meerut, meerut airport pickup, flight tracked meerut taxi, fixed fare meerut cab, delhi airport meerut transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

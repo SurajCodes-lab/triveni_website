@@ -2,11 +2,12 @@ import { allRoutes, vehicleHubPages, dhamPages, packagePages, imageBank, opening
 import ChardhamHubRedesign from './ChardhamHubRedesign';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getHowToSchema, getArticleSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Char Dham Yatra 2026 by Car, SUV, Bus | Sedan ₹12/km',
+  title: tightenTitle('Char Dham Yatra 2026 by Car, SUV, Bus | Sedan ₹12/km'),
   description: 'Book Char Dham Yatra 2026 by car from ₹38,400 — Sedan ₹12/km, Innova ₹18/km, Bus ₹32/km. All 4 Dhams, 35+ routes, expert hill drivers. Call 7668570551.',
   keywords: 'chardham yatra by car, char dham yatra 2026, char dham yatra package, chardham yatra cost, how much does chardham yatra cost, chardham by innova, chardham by bus, chardham by sedan, kedarnath by car, badrinath by car, do dham yatra, ek dham yatra, kedarnath badrinath package, chardham yatra from delhi, chardham yatra from haridwar, chardham yatra from rishikesh, chardham yatra from dehradun, chardham yatra registration 2026, chardham opening dates 2026, garhwal himalayas pilgrimage, chardham helicopter, chardham car rental, chardham yatra itinerary, best time chardham yatra',
   alternates: {

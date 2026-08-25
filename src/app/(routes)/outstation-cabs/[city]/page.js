@@ -5,7 +5,7 @@ import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema, getCityPlaceSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
   const lowestFare = Math.min(...cityData.popularRoutes.map((r) => r.fare));
   const routeCount = cityData.popularRoutes.length;
 
-  const title = `Outstation Cabs from ${cityData.city} | ${routeCount}0+ Routes from \u20B9${lowestFare.toLocaleString('en-IN')} \u2014 4.9\u2605`;
+  const title = tightenTitle(`Outstation Cabs from ${cityData.city} | ${routeCount}0+ Routes from \u20B9${lowestFare.toLocaleString('en-IN')} \u2014 4.9\u2605`);
   const description = `Book outstation cabs from ${cityData.city} starting \u20B9${cityData.vehicleOptions[0].perKm}/km. ${routeCount}0+ routes with one-way & round trip options. Sedan, SUV, Tempo Traveller. Verified drivers, AC vehicles. Call 7668570551 for instant booking.`;
 
   return {

@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jaipur Food Tour 2026 | Dal Baati Churma & Pyaaz Kachori',
+  title: tightenTitle('Jaipur Food Tour 2026 | Dal Baati Churma & Pyaaz Kachori'),
   description: 'Jaipur food & culinary tour. Famous Dal Baati Churma, Pyaaz Kachori, Laal Maas, Ghewar, Lassi. Street food itinerary, best restaurants. By Jaipur locals.',
   keywords: 'jaipur food tour, jaipur street food, jaipur famous food, dal baati churma, pyaaz kachori jaipur, laal maas, ghewar jaipur, jaipur food guide, rajasthani food jaipur',
   authors: [{ name: 'Triveni Cabs' }],

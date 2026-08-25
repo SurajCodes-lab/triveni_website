@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { railwayStations, getAllStationSlugs } from '@/utilis/railwayStationData';
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import AEOHead from '@/components/seo/AEOHead';
@@ -6,11 +7,12 @@ import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import BookingJourney from '@/components/shared/BookingJourney';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SectionDivider from '@/components/shared/SectionDivider';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Railway Station Taxi Service | 27 Stations | 24/7 Cab Booking',
+  title: tightenTitle('Railway Station Taxi Service | 27 Stations | 24/7 Cab Booking'),
   description: 'Book reliable taxi at 27+ railway stations across India. Fixed fares, 24/7 service, meet at platform exit.',
   keywords: 'railway station taxi, station cab booking, train station taxi service, railway station cab, station pickup taxi, india railway station taxi, station to hotel taxi, prepaid taxi railway station, 24/7 station taxi, railway station cab service near me',
   authors: [{ name: 'Triveni Cabs' }],
@@ -39,6 +41,16 @@ export const metadata = {
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
 };
+
+// ─── Ultra-Premium v2 vocabulary ────────────────────────────────────────────
+const FOIL =
+  'text-gold-foil bg-gradient-to-br from-[#FFE9A0] via-[#FACF2D] to-[#B8860B] bg-clip-text text-transparent drop-shadow-[0_2px_18px_rgba(250,207,45,0.35)]';
+const GOLD_BTN =
+  'sheen inline-flex items-center justify-center gap-2 rounded-full bg-[#FACF2D] font-black text-slate-950 shadow-[0_12px_36px_-10px_rgba(250,207,45,0.55)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-300 active:translate-y-0 active:scale-[0.98]';
+const GHOST_BTN =
+  'inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10';
+const CTA_SIZE = 'w-full px-7 py-4 text-sm lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]';
+const GLASS = 'bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10';
 
 // Group stations by region for better UX
 const regionGroups = {
@@ -125,47 +137,44 @@ export default function RailwayStationTaxiHub() {
 
       <div className="min-h-screen bg-slate-950">
 
-        {/* === HERO === */}
-        <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-indigo-950/80 to-violet-950" />
+        {/* === HERO — visible photo, scrim on the text side only === */}
+        <section className="relative flex min-h-[74vh] flex-col justify-end overflow-hidden">
+          <Image
+            src="/images/sightseeing/Delhi/Delhi_hero_section.jpg"
+            alt="New Delhi — flagship station of our railway station taxi network"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/10" />
+          <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-slate-950/75 via-slate-950/30 to-transparent lg:w-3/4" />
+          <div className="absolute inset-x-0 top-0 z-20 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-          {/* Track Pattern */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%23a78bfa\' stroke-width=\'0.5\'%3E%3Cline x1=\'20\' y1=\'0\' x2=\'20\' y2=\'60\'/%3E%3Cline x1=\'40\' y1=\'0\' x2=\'40\' y2=\'60\'/%3E%3Cline x1=\'10\' y1=\'10\' x2=\'50\' y2=\'10\'/%3E%3Cline x1=\'10\' y1=\'30\' x2=\'50\' y2=\'30\'/%3E%3Cline x1=\'10\' y1=\'50\' x2=\'50\' y2=\'50\'/%3E%3C/g%3E%3C/svg%3E")' }} />
-
-          {/* Glows */}
-          <div className="absolute top-[20%] left-[25%] w-[500px] h-[500px] bg-violet-500/8 rounded-full blur-[150px]" />
-          <div className="absolute bottom-[15%] right-[20%] w-[400px] h-[400px] bg-indigo-500/6 rounded-full blur-[120px]" />
-
-          <div className="relative z-10 max-w-6xl mx-auto px-4 w-full text-center py-20">
-            <div className="inline-flex items-center gap-2 bg-violet-500/10 backdrop-blur-sm border border-violet-400/20 rounded-lg px-4 py-2 mb-6">
-              <svg className="w-4 h-4 text-violet-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
-              <span className="text-violet-200 text-sm font-mono tracking-wider">{totalStations} STATIONS COVERED</span>
+          <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-14 pt-28 text-center">
+            <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-amber-400/30 bg-slate-950/60 px-5 py-2.5 backdrop-blur-md">
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="font-mono text-sm tracking-wider text-amber-200">{totalStations} STATIONS COVERED</span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[0.95]">
+            <h1 className="font-display-serif text-balance text-4xl font-black leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
               Railway Station
-              <span className="block text-transparent bg-gradient-to-r from-violet-300 via-purple-200 to-indigo-300 bg-clip-text">Taxi Service</span>
+              <span className={`block ${FOIL}`}>Taxi Service</span>
             </h1>
 
-            <p className="text-slate-400 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="mx-auto mb-8 mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
               Reliable 24/7 taxi service at {totalStations} major railway stations across India. Fixed fares, AC vehicles, meet at platform exit. No surge pricing, no hidden charges.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-2xl shadow-violet-500/20 hover:shadow-violet-500/40 hover:scale-105 transition-all">
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <Link href="tel:+917668570551" className={`${GOLD_BTN} ${CTA_SIZE}`}>
                 Call: 7668570551
               </Link>
-              <Link href="https://wa.me/917668570551?text=I need a railway station taxi" className="inline-flex items-center justify-center gap-2 bg-white/5 backdrop-blur-xl text-white px-8 py-4 rounded-xl font-bold border border-violet-400/20 hover:bg-white/10 transition-all">
+              <Link href="https://wa.me/917668570551?text=I need a railway station taxi" className={`${GHOST_BTN} ${CTA_SIZE}`}>
                 WhatsApp Booking
               </Link>
             </div>
-          </div>
-
-          <div className="absolute bottom-0 left-0 right-0">
-            <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" className="w-full h-14">
-              <path d="M0 60 L0 30 L1440 0 L1440 60Z" fill="#020617" />
-            </svg>
           </div>
         </section>
 
@@ -173,8 +182,8 @@ export default function RailwayStationTaxiHub() {
         <SocialProofStrip theme="dark" />
 
         {/* === STATS BAR === */}
-        <section className="py-10 px-4 border-b border-white/5">
-          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <section className="border-b border-white/5 px-4 py-10">
+          <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 text-center md:grid-cols-4">
             {[
               { value: `${totalStations}+`, label: "Railway Stations" },
               { value: "24/7", label: "Service Available" },
@@ -182,34 +191,36 @@ export default function RailwayStationTaxiHub() {
               { value: "4.9", label: "Customer Rating" },
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-3xl font-black text-transparent bg-gradient-to-r from-violet-300 to-indigo-300 bg-clip-text">{stat.value}</div>
-                <div className="text-slate-500 text-sm mt-1">{stat.label}</div>
+                <div className={`font-display-serif text-3xl font-black ${FOIL}`}>{stat.value}</div>
+                <div className="mt-1 text-sm text-slate-500">{stat.label}</div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* === STATION LISTINGS BY REGION === */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <div className="inline-flex items-center gap-2 bg-violet-500/10 text-violet-300 text-xs font-bold px-4 py-1.5 rounded-full mb-4 border border-violet-500/20 tracking-wider uppercase">
+        {/* === STATION LISTINGS BY REGION — warm-light directory === */}
+        <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/70 to-white px-4 py-16 text-slate-900 md:py-24">
+          <div className="mx-auto max-w-6xl">
+            <div className="mx-auto mb-14 max-w-3xl text-center">
+              <span className="mb-4 inline-flex items-center gap-2 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-amber-600 sm:text-xs">
+                <span className="h-px w-7 bg-amber-500/60" />
                 All Stations
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
-                Choose Your <span className="text-transparent bg-gradient-to-r from-violet-300 to-indigo-300 bg-clip-text">Station</span>
+                <span className="h-px w-7 bg-amber-500/60" />
+              </span>
+              <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+                Choose Your <span className={FOIL}>Station</span>
               </h2>
-              <p className="text-slate-400 max-w-2xl mx-auto">Select a railway station to view taxi fares, destinations, and book your ride.</p>
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">Select a railway station to view taxi fares, destinations, and book your ride.</p>
             </div>
 
             {Object.entries(regionGroups).map(([region, slugs]) => (
               <div key={region} className="mb-12">
-                <h3 className="text-xl font-bold text-white mb-5 flex items-center gap-3">
-                  <span className="w-8 h-0.5 bg-gradient-to-r from-violet-500 to-indigo-500 rounded"></span>
+                <h3 className="font-display-serif mb-5 flex items-center gap-3 text-xl font-black text-slate-900">
+                  <span className="h-0.5 w-8 rounded bg-gradient-to-r from-[#B8860B] to-[#FACF2D]"></span>
                   {region}
-                  <span className="text-violet-400 text-sm font-normal">({slugs.length} stations)</span>
+                  <span className="text-sm font-normal text-amber-600">({slugs.length} stations)</span>
                 </h3>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {slugs.map((stationSlug) => {
                     const s = railwayStations[stationSlug];
                     if (!s) return null;
@@ -218,17 +229,17 @@ export default function RailwayStationTaxiHub() {
                       <Link
                         key={stationSlug}
                         href={`/railway-station-taxi/${stationSlug}`}
-                        className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5 hover:border-violet-500/30 transition-all group"
+                        className="group rounded-2xl border border-amber-200 bg-white p-5 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] transition-all hover:border-amber-300 hover:shadow-[0_20px_60px_-28px_rgba(180,130,10,0.6)]"
                       >
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="bg-violet-500/10 text-violet-300 border border-violet-500/20 rounded-md px-2 py-0.5 text-xs font-mono font-bold">{s.stationCode}</span>
-                          <svg className="w-4 h-4 text-slate-600 group-hover:text-violet-400 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        <div className="mb-3 flex items-center justify-between">
+                          <span className="rounded-md border border-amber-300 bg-amber-50 px-2 py-0.5 font-mono text-xs font-bold text-amber-700">{s.stationCode}</span>
+                          <svg className="h-4 w-4 text-slate-400 transition-colors group-hover:text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </div>
-                        <h4 className="text-white font-bold text-sm mb-1 group-hover:text-violet-300 transition-colors">{s.name}</h4>
-                        <p className="text-slate-500 text-xs mb-3">{s.platforms} Platforms</p>
-                        <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                          <div className="text-slate-500 text-xs">Taxi from</div>
-                          <div className="text-violet-300 font-bold text-sm">{'\u20B9'}{minFare.toLocaleString()}</div>
+                        <h4 className="mb-1 text-sm font-bold text-slate-900 transition-colors group-hover:text-amber-700">{s.name}</h4>
+                        <p className="mb-3 text-xs text-slate-500">{s.platforms} Platforms</p>
+                        <div className="flex items-center justify-between border-t border-amber-100 pt-3">
+                          <div className="text-xs text-slate-500">Taxi from</div>
+                          <div className="font-display-serif text-sm font-black text-amber-700">{'₹'}{minFare.toLocaleString()}</div>
                         </div>
                       </Link>
                     );
@@ -239,15 +250,15 @@ export default function RailwayStationTaxiHub() {
           </div>
         </section>
 
-        {/* === WHY CHOOSE US === */}
-        <section className="py-20 px-4 border-t border-white/5">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
-                Why Choose <span className="text-transparent bg-gradient-to-r from-violet-300 to-indigo-300 bg-clip-text">Triveni Cabs</span>
+        {/* === WHY CHOOSE US — dark band === */}
+        <section className="border-t border-white/5 px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-5xl">
+            <div className="mx-auto mb-14 max-w-3xl text-center">
+              <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+                Why Choose <span className={FOIL}>Triveni Cabs</span>
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {[
                 { title: "Meet at Platform Exit", desc: "Our driver waits right at the station exit with your name board. No confusion, no searching." },
                 { title: "Train Tracking", desc: "We track your train status. If delayed, the driver adjusts accordingly. Always there when you arrive." },
@@ -256,9 +267,9 @@ export default function RailwayStationTaxiHub() {
                 { title: "AC Clean Vehicles", desc: "Well-maintained, sanitized AC vehicles. Choose from Sedan, SUV, or Tempo Traveller." },
                 { title: "Verified Professional Drivers", desc: "Background-verified drivers who know local routes. Courteous, helpful, and experienced." },
               ].map((item, i) => (
-                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 hover:border-violet-500/30 transition-all">
-                  <h3 className="text-white font-bold text-lg mb-2">{item.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                <div key={i} className={`${GLASS} p-6 transition-all hover:border-amber-400/40`}>
+                  <h3 className="font-display-serif mb-2 text-lg font-black text-white">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-slate-400">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -273,36 +284,36 @@ export default function RailwayStationTaxiHub() {
         <BookingJourney theme="dark" />
         <SectionDivider color="violet" className="my-4" />
 
-        {/* === FAQ Section === */}
-        <section className="py-20 px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
-                Frequently Asked <span className="text-transparent bg-gradient-to-r from-violet-300 to-indigo-300 bg-clip-text">Questions</span>
+        {/* === FAQ Section — two-column grid === */}
+        <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+          <div className="mx-auto max-w-6xl">
+            <div className="mx-auto mb-14 max-w-3xl text-center">
+              <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+                Frequently Asked <span className={FOIL}>Questions</span>
               </h2>
-              <p className="text-slate-400">Common queries about railway station taxi services</p>
+              <p className="mt-4 text-slate-600">Common queries about railway station taxi services</p>
             </div>
-            <div className="space-y-4">
+            <div className="grid gap-4 md:grid-cols-2 md:items-start">
               {faqSchema.mainEntity.map((faq, i) => (
-                <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-6 hover:border-violet-500/30 transition-all">
-                  <h3 className="font-bold text-lg mb-3 text-violet-300">{faq.name}</h3>
-                  <p className="text-slate-400 leading-relaxed">{faq.acceptedAnswer.text}</p>
+                <div key={i} className="rounded-2xl border border-amber-200 bg-white p-6 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] transition-all hover:border-amber-300">
+                  <h3 className="font-display-serif mb-3 text-lg font-black text-slate-900">{faq.name}</h3>
+                  <p className="leading-relaxed text-slate-600">{faq.acceptedAnswer.text}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* === Cross-Service Links === */}
-        <section className="py-20 px-4 border-t border-white/5">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
-                Explore More <span className="text-transparent bg-gradient-to-r from-violet-300 to-indigo-300 bg-clip-text">Travel Services</span>
+        {/* === Cross-Service Links — dark band === */}
+        <section className="border-t border-white/5 px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-7xl">
+            <div className="mx-auto mb-14 max-w-3xl text-center">
+              <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+                Explore More <span className={FOIL}>Travel Services</span>
               </h2>
-              <p className="text-slate-400">Other ways to travel across India with Triveni Cabs</p>
+              <p className="mt-4 text-slate-400">Other ways to travel across India with Triveni Cabs</p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 { title: 'Bus Stand Taxi', href: '/bus-stand-taxi', desc: 'Taxi at 13+ bus terminals' },
                 { title: 'One-Way Cabs', href: '/one-way-cab', desc: 'Affordable outstation rides' },
@@ -312,9 +323,9 @@ export default function RailwayStationTaxiHub() {
                 <Link
                   key={i}
                   href={link.href}
-                  className="group bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-violet-500/30 p-5 transition-all group"
+                  className={`group ${GLASS} p-5 transition-all hover:border-amber-400/40`}
                 >
-                  <h3 className="text-white font-bold group-hover:text-violet-300 transition-colors mb-1">{link.title}</h3>
+                  <h3 className="mb-1 font-bold text-white transition-colors group-hover:text-amber-300">{link.title}</h3>
                   <p className="text-sm text-slate-400">{link.desc}</p>
                 </Link>
               ))}
@@ -323,21 +334,29 @@ export default function RailwayStationTaxiHub() {
         </section>
 
         {/* === CTA === */}
-        <section className="relative py-24 px-4 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-600 via-indigo-600 to-purple-700" />
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%23fff\' stroke-width=\'0.5\'%3E%3Cline x1=\'20\' y1=\'0\' x2=\'20\' y2=\'60\'/%3E%3Cline x1=\'40\' y1=\'0\' x2=\'40\' y2=\'60\'/%3E%3Cline x1=\'10\' y1=\'10\' x2=\'50\' y2=\'10\'/%3E%3Cline x1=\'10\' y1=\'30\' x2=\'50\' y2=\'30\'/%3E%3Cline x1=\'10\' y1=\'50\' x2=\'50\' y2=\'50\'/%3E%3C/g%3E%3C/svg%3E")' }} />
+        <section className="relative overflow-hidden px-4 py-24 md:py-32">
+          <Image
+            src="/images/sightseeing/Delhi/Delhi_hero_section.jpg"
+            alt="Book a railway station taxi across India"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            quality={80}
+          />
+          <div className="absolute inset-0 bg-slate-950/80" />
+          <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-          <div className="relative z-10 max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              Arriving by Train?
+          <div className="relative z-10 mx-auto max-w-4xl text-center">
+            <h2 className="font-display-serif mb-4 text-4xl font-black text-white md:text-6xl">
+              Arriving by <span className={FOIL}>Train?</span>
             </h2>
-            <p className="text-2xl text-violet-100 font-semibold mb-3">Your taxi is waiting at the station.</p>
-            <p className="text-violet-100/70 text-lg mb-8 max-w-xl mx-auto">{totalStations} stations covered. Fixed fares. 24/7 service. AC vehicles. Meet at platform exit.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-violet-600 px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl hover:bg-violet-50 transition-all">
+            <p className="mb-3 text-2xl font-semibold text-amber-100">Your taxi is waiting at the station.</p>
+            <p className="mx-auto mb-8 max-w-xl text-lg text-white/60">{totalStations} stations covered. Fixed fares. 24/7 service. AC vehicles. Meet at platform exit.</p>
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <Link href="tel:+917668570551" className={`${GOLD_BTN} ${CTA_SIZE}`}>
                 Call: 7668570551
               </Link>
-              <Link href="https://wa.me/917668570551?text=I need a railway station taxi" className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 transition-all">
+              <Link href="https://wa.me/917668570551?text=I need a railway station taxi" className={`${GHOST_BTN} ${CTA_SIZE}`}>
                 WhatsApp Booking
               </Link>
             </div>
@@ -345,11 +364,11 @@ export default function RailwayStationTaxiHub() {
         </section>
 
         {/* === BREADCRUMB === */}
-        <nav className="py-4 px-4 border-t border-white/5">
-          <div className="max-w-6xl mx-auto flex items-center gap-2 text-sm text-slate-500">
-            <Link href="/" className="hover:text-violet-400 transition-colors">Home</Link>
-            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            <span className="text-slate-300 font-medium">Railway Station Taxi</span>
+        <nav className="border-t border-white/5 px-4 py-4">
+          <div className="mx-auto flex max-w-6xl items-center gap-2 text-sm text-slate-500">
+            <Link href="/" className="transition-colors hover:text-amber-300">Home</Link>
+            <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            <span className="font-medium text-slate-300">Railway Station Taxi</span>
           </div>
         </nav>
       </div>

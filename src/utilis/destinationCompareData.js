@@ -2,7 +2,7 @@ export const destinationCompareData = [
   {
     slug: "shimla-vs-manali",
     title: "Shimla vs Manali 2026: Which Is Better? Cost & Verdict",
-    metaDescription: "Shimla wins for budget & families (350 km, ₹7,700); Manali wins for snow & adventure (540 km). Full 2026 cost, distance & activity comparison. Cab from Delhi at ₹11/km. Call 7668570551.",
+    metaDescription: "Shimla wins for budget & families (350 km, ₹7,700); Manali wins for snow & adventure (540 km). Full 2026 cost & distance compared. Cab from Delhi at ₹11/km. Call 7668570551.",
     quickAnswer: "For a relaxed, budget-friendly trip with families or seniors, choose Shimla — it's closer (350 km, 7-8 hrs) and cheaper at around ₹7,700 by cab. For snow, adventure sports and cafe culture, choose Manali despite the longer 540 km drive. Do both over 6-7 days for the ultimate Himachal road trip.",
     keywords: "shimla vs manali, shimla or manali which is better, shimla manali comparison, shimla vs manali for couples, shimla vs manali cost",
     dest1: {
@@ -347,7 +347,7 @@ export const destinationCompareData = [
   {
     slug: "dharamshala-vs-dalhousie",
     title: "Dharamshala vs Dalhousie 2026: Which Hill Town Wins?",
-    metaDescription: "Dharamshala wins for Tibetan culture, Triund trekking & cafes; Dalhousie wins for quiet colonial charm & pine forests. 2026 cost, distance & activity comparison. Cab from Delhi at ₹11/km. Call 7668570551.",
+    metaDescription: "Dharamshala wins for Tibetan culture, Triund trekking & cafes; Dalhousie wins for quiet colonial charm & pine forests. 2026 cost & distance compared. Cab from Delhi at ₹11/km. Call 7668570551.",
     quickAnswer: "Choose Dharamshala (McLeodganj) for vibrant Tibetan culture, the famous Triund trek, buzzing cafes and the Dalai Lama's home — it's also closer at 480 km. Choose Dalhousie for a quieter, old-world colonial retreat with pine forests and gentle walks. Dharamshala suits younger, active travellers; Dalhousie suits peaceful getaways.",
     keywords: "dharamshala vs dalhousie, dharamshala or dalhousie which is better, dharamshala dalhousie comparison, mcleodganj vs dalhousie, himachal hill station comparison",
     dest1: {

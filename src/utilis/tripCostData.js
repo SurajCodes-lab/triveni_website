@@ -442,7 +442,7 @@ The best time to visit Udaipur is September-October, right after monsoon when th
   {
     slug: "chardham-yatra-cost-by-car",
     title: "Char Dham Yatra Cost by Car 2026: ₹25,000–70,000 (10–12 Days)",
-    metaDescription: "Char Dham Yatra package cost by car: ₹25,000–70,000 for the full 10–12 day circuit (Yamunotri, Gangotri, Kedarnath, Badrinath) from Delhi/Haridwar. Sedan/SUV/Tempo rates, day-wise budget. Call 7668570551.",
+    metaDescription: "Char Dham Yatra cost by car: ₹25,000–70,000 for the full 10–12 day circuit (Yamunotri, Gangotri, Kedarnath, Badrinath) from Delhi/Haridwar. Sedan/SUV/Tempo rates, day-wise budget. Call 7668570551.",
     keywords: "chardham yatra cost by car, chardham trip budget, char dham yatra expenses, chardham yatra car rental cost, uttarakhand chardham cost",
     origin: "Delhi/Haridwar",
     destination: "Chardham (Yamunotri, Gangotri, Kedarnath, Badrinath)",

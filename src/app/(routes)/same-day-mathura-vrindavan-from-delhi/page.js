@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-mathura-vrindavan-from-delhi');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Mathura Vrindavan Tour from Delhi | ₹4,000 AC Cab | 2026',
+  title: tightenTitle('Same Day Mathura Vrindavan Tour from Delhi | ₹4,000 AC Cab | 2026'),
   description: 'Book same day Mathura Vrindavan tour from Delhi. Visit Krishna Janmabhoomi, Banke Bihari, ISKCON, Prem Mandir. AC sedan ₹4,000. Call 7668570551.',
   keywords: 'same day mathura vrindavan tour from delhi, delhi to mathura one day trip, delhi to vrindavan cab, krishna janmabhoomi tour',
   authors: [{ name: 'Triveni Cabs' }],

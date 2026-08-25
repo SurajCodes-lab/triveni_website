@@ -5,6 +5,7 @@ import { generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema, com
 import SemanticComparison from '@/components/seo/SemanticComparison';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getComparisonSchema, getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'bus-vs-tempo-for-wedding';
 const SITE = 'https://www.trivenicabs.in';
@@ -15,7 +16,7 @@ const data = getComparisonBySlug(SLUG);
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Bus vs Tempo for Wedding (2026) | Triveni Cabs',
+  title: tightenTitle('Bus vs Tempo for Wedding (2026)'),
   description:
     'Bus or tempo for wedding guest transport & baraat? Compare capacity, cost per guest & venue access. Verdict: bus for 40+, tempo for baraat. Call 7668570551.',
   keywords:

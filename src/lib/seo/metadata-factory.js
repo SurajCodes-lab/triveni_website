@@ -19,8 +19,35 @@ import {
   SITE_CONFIG,
   PAGE_TYPES,
   AGGREGATE_RATING,
-  SERVICE_AREAS
+  SERVICE_AREAS,
+  CITY_GEO_COORDS
 } from './constants';
+import { tightenTitle, finalizeTitle } from './serp-ctr';
+
+/**
+ * Generate local-SEO geo meta tags (geo.region, geo.placename, geo.position,
+ * ICBM) for a given city. Resolves coordinates + ISO 3166-2 region from the
+ * shared CITY_GEO_COORDS map.
+ *
+ * - When the city is in the map: emits all four tags (accurate lat/lng + region).
+ * - When the city is NOT in the map: emits only geo.placename (the city name) —
+ *   never falls back to HQ coordinates for a different city (wrong location
+ *   signal is worse than a partial one).
+ *
+ * Returns a flat { key: value } object meant to be spread into a metadata
+ * export's `other` field.
+ */
+export function generateGeoMeta(city) {
+  if (!city) return {};
+  const coords = CITY_GEO_COORDS[city];
+  const meta = { 'geo.placename': city };
+  if (coords) {
+    meta['geo.position'] = `${coords.lat};${coords.lng}`;
+    meta['ICBM'] = `${coords.lat}, ${coords.lng}`;
+    if (coords.region) meta['geo.region'] = coords.region;
+  }
+  return meta;
+}
 
 /**
  * Generate route page metadata (A to B taxi)
@@ -270,6 +297,7 @@ export function generateCityHubMetadata({ city, minPrice = 11, services = [], sl
     robots: getDefaultRobots(),
     category: 'Transportation',
     other: {
+      ...generateGeoMeta(city),
       'price-range': `From ₹${minPrice}/km`,
       'service-area': city,
       'available-services': serviceList,
@@ -331,6 +359,7 @@ export function generateAirportMetadata({ city, airportName, price, slug }) {
     robots: getDefaultRobots(),
     category: 'Transportation',
     other: {
+      ...generateGeoMeta(city),
       'price-range': `₹${price}`,
       'service-type': 'Airport Transfer',
       'airport': airportName,
@@ -435,7 +464,14 @@ export function generateCorporateMetadata({ city, industry, useCase, slug }) {
       site: SITE_CONFIG.twitterHandle
     },
     robots: getDefaultRobots(),
-    category: 'Business Services'
+    category: 'Business Services',
+    other: {
+      ...generateGeoMeta(city),
+      'price-range': 'From ₹11/km',
+      'service-type': 'Corporate Transportation',
+      'service-area': city,
+      'rating': String(AGGREGATE_RATING.ratingValue)
+    }
   };
 }
 
@@ -491,6 +527,7 @@ export function generateWeddingMetadata({ city, slug }) {
     robots: getDefaultRobots(),
     category: 'Wedding Services',
     other: {
+      ...generateGeoMeta(city),
       'price-range': 'From ₹4,999',
       'service-type': 'Wedding Car Rental',
       'service-area': city,
@@ -691,7 +728,19 @@ function smartTruncate(text, maxLength) {
  * Uses word-boundary truncation to avoid mid-word cuts
  */
 function truncateTitle(title) {
-  return smartTruncate(title, 60);
+  // Clause-drop, not mid-phrase truncation.
+  //
+  // This used to call smartTruncate(title, 45), which cuts at a word boundary and
+  // appends "...". Lowering the budget to 45 turned that into a visible defect:
+  // 906 titles rendered in Google as "Agra to Amritsar Cab ₹7,440 — AC, 24/7... |
+  // Triveni Cabs" — a broken-looking result that also wasted three characters,
+  // and 368 of them were the root booking pages.
+  //
+  // tightenTitle strips known filler clauses ("Book Now", a trailing 4.9★) and
+  // drops whole trailing clauses instead of cutting through one, keeping the fare
+  // and never emitting an ellipsis. It also guards a visible ₹ figure, so a
+  // fare-led title cannot lose its price to the truncation.
+  return finalizeTitle(title, 45);
 }
 
 /**
@@ -938,6 +987,7 @@ function generateBusKeywords(origin, destination, seats) {
  */
 export function generateTourWithGuideMetadata({
   slug,
+  headline,
   city,
   vehicle,
   monument,
@@ -951,13 +1001,40 @@ export function generateTourWithGuideMetadata({
 }) {
   const monumentSegment = monument || (city || 'India');
   const langTag = guideLanguage ? `${guideLanguage}-Speaking ` : 'Licensed ';
-  const baseTitle = group === 'B'
+  // Prefer the tour's own headline: it is written per tour and already names the
+  // origin and vehicle, which is what distinguishes otherwise-identical Taj Mahal
+  // tours from each other. The generic formulas below key only on monument+fare,
+  // so several tours rendered the same title and competed with one another.
+  const baseTitle = headline
+    ? headline
+    : group === 'B'
     ? `${guideLanguage || 'English'}-Speaking Tour Guide India ₹${guideFee}/day — Ministry-Licensed | Book`
     : group === 'C'
     ? `${monumentSegment} with ${langTag}Guide ₹${bundledFare?.toLocaleString('en-IN')} — All-In | Book`
     : `${monumentSegment} ₹${bundledFare?.toLocaleString('en-IN')} — Vehicle + Licensed Guide | Book`;
 
-  const title = truncateTitle(baseTitle);
+  // Language variants share one headline and differ only in a word that sits past
+  // the truncation point: ten "Same Day Taj Mahal from Delhi with <Lang>-Speaking
+  // Guide" pages all rendered as "Same Day Taj Mahal from Delhi with...", ten
+  // identical titles competing for the same result. Leading with the language
+  // guarantees the distinguishing term survives any cut.
+  // Built with string slicing rather than a constructed RegExp on purpose: a
+  // backslash escape written inside a template literal (`\s`) collapses to a bare
+  // "s" before RegExp ever sees it, which silently produces a pattern that matches
+  // nothing. Regex literals below are safe because they are not interpolated.
+  const langLed = (() => {
+    if (!guideLanguage) return baseTitle;
+    const at = baseTitle.toLowerCase().indexOf(guideLanguage.toLowerCase());
+    if (at <= 24) return baseTitle; // language already survives truncation
+    const stem = baseTitle
+      .slice(0, at)
+      .replace(/\s*\b(with|in)\s*$/i, '')
+      .replace(/\s*[—–|-]\s*$/, '')
+      .trim();
+    return stem ? `${guideLanguage} Guide — ${stem}` : baseTitle;
+  })();
+
+  const title = truncateTitle(langLed);
   const ogTitle = truncateOGTitle(
     group === 'B'
       ? `Hire a ${guideLanguage}-Speaking Tour Guide in India — ₹${guideFee}/day, Ministry-Licensed | Triveni Cabs`
@@ -1057,6 +1134,7 @@ function generateTourWithGuideKeywords(monument, city, language, group) {
 }
 
 export default {
+  generateGeoMeta,
   generateRouteMetadata,
   generateTourMetadata,
   generateSightseeingCityMetadata,

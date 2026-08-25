@@ -1,6 +1,7 @@
 import FAQClient from "./FAQClient";
 import { AGGREGATE_RATING, COMPANY_INFO, BASE_URL } from "@/lib/seo/constants";
 import { getSpeakableSchema, getArticleSchema } from "@/lib/seo/speakable-helpers";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -15,7 +16,7 @@ const faqCategories = [
       },
       {
         q: "What is your per-km rate for outstation cabs?",
-        a: "Our outstation cab rates start at ₹11/km for sedan (Swift Dzire/Honda Amaze), ₹15/km for SUV (Ertiga), ₹18/km for Innova Crysta, ₹20/km for Tempo Traveller (12-26 seater), and ₹30/km for bus hire (22-56 seater). These are all-inclusive rates with no hidden charges."
+        a: "Our outstation cab rates start at ₹11/km for sedan (Swift Dzire/Honda Amaze), ₹15/km for SUV (Ertiga), ₹18/km for Innova Crysta, ₹23/km for Tempo Traveller (12-26 seater), and ₹30/km for bus hire (22-56 seater). These are all-inclusive rates with no hidden charges."
       },
       {
         q: "Do you charge for return trips on one-way bookings?",
@@ -45,7 +46,7 @@ const faqCategories = [
       },
       {
         q: "Which car is best for a family trip — sedan or SUV?",
-        a: "For a family of 4 with moderate luggage, a sedan (Swift Dzire) is comfortable and budget-friendly at ₹11/km. For families of 5-7 or those with heavy luggage, an SUV (Innova/Ertiga) at ₹15/km provides more space and comfort. For groups of 8+, a Tempo Traveller at ₹20/km is the best value."
+        a: "For a family of 4 with moderate luggage, a sedan (Swift Dzire) is comfortable and budget-friendly at ₹11/km. For families of 5-7 or those with heavy luggage, an SUV (Innova/Ertiga) at ₹15/km provides more space and comfort. For groups of 8+, a Tempo Traveller at ₹23/km is the best value."
       },
       {
         q: "Are your vehicles AC and well-maintained?",
@@ -107,7 +108,7 @@ const faqCategories = [
     faqs: [
       {
         q: "Do you offer tempo traveller for group trips?",
-        a: "Yes! We offer 12-seater, 17-seater, 20-seater, and 26-seater Tempo Travellers for group trips, corporate outings, pilgrimages, and family vacations. Rates start at ₹20/km with push-back seats, AC, music system, and ample luggage space. Available on all routes across North India."
+        a: "Yes! We offer 12-seater, 17-seater, 20-seater, and 26-seater Tempo Travellers for group trips, corporate outings, pilgrimages, and family vacations. Rates start at ₹23/km with push-back seats, AC, music system, and ample luggage space. Available on all routes across North India."
       },
       {
         q: "Can I hire a bus for a corporate event or wedding?",
@@ -129,7 +130,7 @@ const faqCategories = [
 const allFaqs = faqCategories.flatMap(cat => cat.faqs);
 
 export const metadata = {
-  title: "FAQ — Cab Booking Questions Answered | Triveni Cabs",
+  title: tightenTitle("FAQ — Cab Booking Questions Answered"),
   description: "Find answers to common questions about taxi booking, pricing (₹11/km sedan), vehicles, routes, safety, and more. 24/7 cab service across 50+ cities in India.",
   keywords: "cab booking FAQ, taxi service questions, Triveni Cabs FAQ, cab pricing India, outstation cab questions, airport taxi FAQ, tempo traveller FAQ, wedding car FAQ",
   alternates: {

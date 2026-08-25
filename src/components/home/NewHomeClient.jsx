@@ -36,7 +36,7 @@ function HeroSection() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 pt-6 sm:pt-10 pb-8 sm:pb-12">
         {/* Trust micro-strip — immediately visible */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 1, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           className="flex items-center justify-center gap-2 sm:gap-4 mb-6 flex-wrap"
@@ -57,7 +57,7 @@ function HeroSection() {
 
         {/* Headline — benefit-driven with price as the hook */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 1, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-center mb-6 sm:mb-8"
@@ -82,7 +82,7 @@ function HeroSection() {
 
         {/* Search Widget — THE hero element */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-4xl mx-auto relative"
@@ -97,7 +97,7 @@ function HeroSection() {
           <LiveActivityBadge type="booked" min={8} max={24} />
         </div>
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.35 }}
           className="flex items-center justify-center gap-4 sm:gap-6 mt-3 flex-wrap text-xs sm:text-sm text-white/70"
@@ -250,7 +250,7 @@ const SERVICES = [
   {
     title: 'Tempo Traveller',
     desc: '12-26 seater for family & groups',
-    price: 'From ₹20/km',
+    price: 'From ₹23/km',
     icon: Users,
     href: '/tempo-traveller',
     gradient: 'from-amber-500 to-orange-600',

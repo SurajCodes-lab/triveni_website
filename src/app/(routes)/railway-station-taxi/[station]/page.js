@@ -6,7 +6,7 @@ import RailwayStationClient from '@/components/railway/RailwayStationClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getCityPlaceSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
   if (!station) return {};
 
   const lowestFare = station.destinations.reduce((min, d) => Math.min(min, d.sedanFare), Infinity);
-  const title = `${station.name} Taxi from \u20B9${lowestFare} | Platform Pickup | 24/7`;
+  const title = tightenTitle(`${station.name} Taxi from \u20B9${lowestFare} | Platform Pickup | 24/7`);
   const description = `Taxi from ${station.name} starting \u20B9${lowestFare}. Meet at platform exit, AC sedan/SUV, fixed fares, no surge. ${station.destinations.length}+ destinations. Call 7668570551.`;
 
   return {

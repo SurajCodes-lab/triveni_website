@@ -1,12 +1,13 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "honeymoon-kashmir-by-car";
 const data = honeymoonTripData["kashmir"];
 
 export const metadata = {
-  title: 'Kashmir Honeymoon by Car | Paradise Romance Rs 28,000 | 2026',
+  title: tightenTitle('Kashmir Honeymoon by Car | Paradise Romance Rs 28,000 | 2026'),
   description: 'Book Kashmir honeymoon package. Sedan Rs 28,000, Innova Rs 35,000. Srinagar, Gulmarg, Pahalgam, Dal Lake houseboat. Decorated car option. Call 7668570551.',
   keywords: 'kashmir honeymoon by car, honeymoon kashmir package, kashmir couple trip, romantic trip kashmir, honeymoon srinagar gulmarg pahalgam',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

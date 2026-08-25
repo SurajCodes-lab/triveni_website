@@ -2,11 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 // Centralized icon imports for better bundle optimization
 import { Users, Fuel, Car, Star, Check, X, ArrowRight, Phone } from "@/components/ui/icons";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: "Sedan vs SUV: Which Car to Rent? | Complete Comparison Guide",
+  title: tightenTitle("Sedan vs SUV: Which Car to Rent? | Complete Comparison Guide"),
   description: "Confused between Sedan and SUV rental? Compare capacity, comfort, pricing, fuel efficiency & best use cases. Sedan from ₹11/km, SUV from ₹15/km.",
   keywords: "sedan vs suv rental, which car to rent, sedan or suv for trip, car comparison india, innova vs dzire, family car rental, sedan suv difference, best car for outstation",
   alternates: {

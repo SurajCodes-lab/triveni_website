@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('baisakhi-amritsar-cab');
 
 export const metadata = {
-  title: 'Baisakhi Amritsar Cab Service 2026 | Golden Temple Special',
+  title: tightenTitle('Baisakhi Amritsar Cab Service 2026 | Golden Temple Special'),
   description: 'Book Baisakhi cab from Delhi to Amritsar 2026. Sedan from ₹7,000, SUV ₹10,000. Golden Temple celebrations, Wagah Border. Call 7668570551.',
   keywords: 'baisakhi amritsar cab, delhi to amritsar baisakhi, golden temple baisakhi cab, baisakhi 2026 cab, amritsar cab service baisakhi, punjab festival cab',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

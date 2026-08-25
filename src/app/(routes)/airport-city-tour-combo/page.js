@@ -1,5 +1,6 @@
 import { getRentalBySlug } from '@/utilis/rentalPackageData';
 import RentalPackageClient from '@/components/rental/RentalPackageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const rental = getRentalBySlug('airport-city-tour-combo');
 
@@ -15,7 +16,7 @@ const fleetImages = [
 ];
 
 export const metadata = {
-  title: 'Airport Pickup + City Tour Combo | 12 Hrs Rs 3,500 | Triveni Cabs',
+  title: tightenTitle('Airport Pickup + City Tour Combo | 12 Hrs Rs 3,500'),
   description: 'Airport pickup with city tour combo package. 12 hours, 120 km. Sedan from Rs 3,500. Flight tracking, name board, sightseeing driver. Call 7668570551.',
   keywords: 'airport city tour combo, airport pickup city tour, delhi airport sightseeing, airport cab with tour, IGI airport city tour, airport transfer plus tour',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

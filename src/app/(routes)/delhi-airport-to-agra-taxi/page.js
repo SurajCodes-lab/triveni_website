@@ -1,9 +1,10 @@
 import AirportOutstationClient from '@/components/airport/AirportOutstationClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Delhi Airport to Agra Taxi | Fixed ₹3,500 | Meet & Greet',
+  title: tightenTitle('Delhi Airport to Agra Taxi | Fixed ₹3,500 | Meet & Greet'),
   description: 'Delhi Airport (IGI) to Agra taxi. Fixed fare sedan ₹3,500, SUV ₹5,000. T1, T2, T3 pickup. Flight tracking, meet & greet. 3-4 hrs. Call 7668570551.',
   keywords: 'delhi airport to agra taxi, igi airport to agra cab, delhi airport agra transfer, airport taxi to agra, delhi to agra airport cab',
   authors: [{ name: 'Triveni Cabs' }],

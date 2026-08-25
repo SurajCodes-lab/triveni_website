@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Varanasi Food Tour 2026 | Kachori Sabzi & Banarasi Cuisine',
+  title: tightenTitle('Varanasi Food Tour 2026 | Kachori Sabzi & Banarasi Cuisine'),
   description: 'Varanasi food & culinary tour. Famous Kachori Sabzi, Tamatar Chaat, Banarasi Paan, Thandai, Malaiyo. Street food itinerary, best restaurants.',
   keywords: 'varanasi food tour, varanasi street food, banarasi food, kachori sabzi varanasi, tamatar chaat, banarasi paan, thandai varanasi, malaiyo, varanasi food guide',
   authors: [{ name: 'Triveni Cabs' }],

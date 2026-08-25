@@ -39,7 +39,7 @@ export default function TempoCityClient({ data }) {
   return (
     <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
     <div className="min-h-screen bg-white overflow-hidden">
-      <SetStickyCta price="From ₹20/km" label={`${data.city} Tempo Traveller`} whatsappText={`Hi, I want to book a Tempo Traveller in ${data.city}. Please share availability and fare.`} />
+      <SetStickyCta price="From ₹23/km" label={`${data.city} Tempo Traveller`} whatsappText={`Hi, I want to book a Tempo Traveller in ${data.city}. Please share availability and fare.`} />
       {/* ============================================ */}
       {/* HERO SECTION - City Specific */}
       {/* ============================================ */}
@@ -104,7 +104,7 @@ export default function TempoCityClient({ data }) {
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-16">
           {/* Back Button */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 1, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="absolute top-8 left-4 sm:left-8"
@@ -130,7 +130,7 @@ export default function TempoCityClient({ data }) {
 
           {/* Tagline Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full mb-6 border border-white/30 shadow-lg"
@@ -141,7 +141,7 @@ export default function TempoCityClient({ data }) {
 
           {/* City Name */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="speakable-headline text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 tracking-tight"
@@ -156,7 +156,7 @@ export default function TempoCityClient({ data }) {
 
           {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-xl text-white max-w-2xl mx-auto mb-8 font-medium"
@@ -167,7 +167,7 @@ export default function TempoCityClient({ data }) {
 
           {/* Quick Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-wrap justify-center gap-4 mb-10"
@@ -209,7 +209,7 @@ export default function TempoCityClient({ data }) {
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -266,8 +266,8 @@ export default function TempoCityClient({ data }) {
               How much does a tempo traveller cost in {cityData.name}?
             </h2>
             <p className="speakable-lead text-slate-700 leading-relaxed text-base md:text-lg">
-              A <strong>tempo traveller in {cityData.name}</strong> starts at <strong>₹20/km</strong> for a 12-seater AC tempo and
-              goes up to <strong>₹28/km</strong> for a 26-seater Maharaja edition, with local 8-hour/80-km day packages from
+              A <strong>tempo traveller in {cityData.name}</strong> starts at <strong>₹23/km</strong> for a 12-seater AC tempo and
+              goes up to <strong>₹31/km</strong> for a 26-seater Maharaja edition, with local 8-hour/80-km day packages from
               <strong> ₹6,000</strong>. Triveni Cabs offers 12, 16, 17, 20 and 26 seater AC tempo travellers in {cityData.name} with
               pushback seats, music system, charging points and GPS tracking — ideal for family trips, pilgrimages, weddings and
               corporate outings to {cityData.popularDestinations?.slice(0, 3).join(', ')} and {routes.length}+ destinations. Book by
@@ -288,9 +288,9 @@ export default function TempoCityClient({ data }) {
                 </thead>
                 <tbody className="text-sm text-slate-700">
                   {[
-                    { v: '12 Seater Tempo', s: '10-12', r: '₹20/km', b: 'Small families' },
-                    { v: '17 Seater Tempo', s: '15-17', r: '₹24/km', b: 'Most popular — groups' },
-                    { v: '20 Seater Tempo', s: '18-20', r: '₹26/km', b: 'Large groups with LED TV' },
+                    { v: '12 Seater Tempo', s: '10-12', r: '₹23/km', b: 'Small families' },
+                    { v: '17 Seater Tempo', s: '15-17', r: '₹25/km', b: 'Most popular — groups' },
+                    { v: '20 Seater Tempo', s: '18-20', r: '₹31/km', b: 'Large groups with LED TV' },
                     { v: '26 Seater Maharaja', s: '24-26', r: '₹28/km', b: 'Weddings & big groups' },
                   ].map((row, i) => (
                     <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-amber-50/40'}>
@@ -903,7 +903,7 @@ export default function TempoCityClient({ data }) {
                     </span>
                     <span className="font-bold text-gray-900">
                       {cityData.name} to {formatDestinationForDisplay(dest.name)}
-                      <span className="block text-xs font-medium text-gray-500">Tempo Traveller • from ₹20/km</span>
+                      <span className="block text-xs font-medium text-gray-500">Tempo Traveller • from ₹23/km</span>
                     </span>
                   </span>
                   <ArrowRight className="w-5 h-5 text-amber-500 group-hover:translate-x-1 transition-transform" />
@@ -970,7 +970,7 @@ export default function TempoCityClient({ data }) {
           <p className="text-gray-700 leading-relaxed">
             Looking for a tempo traveller in {cityData.name}? Triveni Cabs offers 12 to 26 seater AC tempo travellers
             with professional drivers for outstation trips, local sightseeing, pilgrimages, corporate events, and weddings
-            from {cityData.name}. {cityData.description} Our outstation rates start from <strong>₹20/km</strong> and local
+            from {cityData.name}. {cityData.description} Our outstation rates start from <strong>₹23/km</strong> and local
             day packages from <strong>₹6,000/day</strong>.
           </p>
           <p className="text-gray-700 leading-relaxed">

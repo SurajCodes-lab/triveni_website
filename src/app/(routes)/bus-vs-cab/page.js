@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllBusVsCabSlugs } from '@/utilis/busVsCabData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Bus vs Cab — Honest Route-by-Route Comparison";
+  const title = tightenTitle("Bus vs Cab — Honest Route-by-Route Comparison");
   const description = "Bus vs cab comparison for North India routes — cost, time, comfort. Decide and book. Triveni Cabs 7668570551.";
   return {
     title,

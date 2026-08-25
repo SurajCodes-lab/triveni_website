@@ -1,11 +1,12 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('monsoon-hill-station-packages');
 
 export const metadata = {
-  title: 'Monsoon Hill Station Packages 2026 | Shimla & Manali',
+  title: tightenTitle('Monsoon Hill Station Packages 2026 | Shimla & Manali'),
   description: 'Monsoon hill station cab packages from Delhi 2026. Shimla, Manali, Mussoorie, Nainital. Sedan from ₹8,250, Tempo ₹15,000. Call 7668570551.',
   keywords: 'monsoon hill station packages, shimla in monsoon, manali monsoon trip, mussoorie monsoon package, nainital in rains, delhi to hill station august, monsoon hill station cab',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

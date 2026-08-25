@@ -2,12 +2,13 @@ import { friendsTripData } from '@/utilis/friendsTripData';
 import FriendsTripClient from '@/components/audience/FriendsTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "friends-trip-spiti";
 const data = friendsTripData["spiti"];
 
 export const metadata = {
-  title: 'Friends Trip to Spiti Valley by Tempo Traveller | Rs 3,410/Person | 2026',
+  title: tightenTitle('Friends Trip to Spiti Valley by Tempo Traveller | Rs 3,410/Person | 2026'),
   description: 'Book Tempo Traveller for a friends trip to Spiti Valley from Delhi. Rs 3,410/person. Kaza, Key Monastery, Chandratal, Kalpa circuit. 12-17 seater hill-spec. Call 7668570551.',
   keywords: 'friends trip spiti, spiti valley group trip, spiti tempo traveller, delhi to spiti friends, kaza chandratal circuit, spiti valley road trip package',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

@@ -13,13 +13,14 @@ import Link from "next/link";
 import { FOUNDER_AUTHOR, EDITORIAL_TEAM, getAllEditorialPersons } from "@/lib/seo/authors";
 import { BASE_URL, COMPANY_INFO } from "@/lib/seo/constants";
 import { getSpeakableSchema, getArticleSchema } from "@/lib/seo/speakable-helpers";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 const PAGE_URL = `${BASE_URL}/trust`;
 
 export const metadata = {
-  title: "Trust & Credentials | Triveni Cabs — Verified Since 2015",
+  title: tightenTitle("Trust & Credentials | Triveni Cabs — Verified Since 2015"),
   description:
     "Triveni Cabs trust signals: founder Pankaj Singh Gaur, since 2015, 50,000+ trips, verified drivers, full insurance. Read who runs Triveni Cabs and why North India travellers trust us.",
   keywords: [

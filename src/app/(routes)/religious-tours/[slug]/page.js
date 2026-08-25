@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { getTourBySlug, getAllTourSlugs } from '@/utilis/religiousTourData';
 import ReligiousTourClient from '@/components/religious/ReligiousTourClient';
 import AEOHead from '@/components/seo/AEOHead';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }) {
 
   if (!tour) {
     return {
-      title: 'Tour Not Found | Triveni Cabs'
+      title: tightenTitle('Tour Not Found')
     };
   }
 

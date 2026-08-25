@@ -1,6 +1,7 @@
 import { getTripCostBySlug } from '@/utilis/tripCostData';
 import TripCostClient from '@/components/tripcost/TripCostClient';
 import { buildTripCostBareGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'rajasthan-trip-cost-budget';
 const data = getTripCostBySlug(SLUG);
@@ -8,7 +9,7 @@ const data = getTripCostBySlug(SLUG);
 export const revalidate = 3600;
 
 export const metadata = {
-  title: data.title,
+  title: tightenTitle(data.title),
   description: data.metaDescription,
   keywords: data.keywords,
   authors: [{ name: 'Triveni Cabs' }],

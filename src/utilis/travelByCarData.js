@@ -1,5 +1,5 @@
 // src/utilis/travelByCarData.js - Complete data for 40 travel-by-car driving guide pages
-// Pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹20/km (min 300km billing)
+// Pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km (min 300km billing)
 
 function calcFares(distanceKm) {
   const billableKm = Math.max(distanceKm, 300);
@@ -25,7 +25,7 @@ function generateFaqs(origin, dest, distKm, drivingTime, bestCarType, sedanFare)
     { question: `How far is ${dest} from ${origin} by car?`, answer: `${dest} is approximately ${distKm} km from ${origin} by road. The drive takes around ${drivingTime} depending on traffic, road conditions, and stops. Starting early (5-6 AM) is recommended for the best experience.` },
     { question: `How long does it take to drive from ${origin} to ${dest}?`, answer: `The ${origin} to ${dest} drive takes about ${drivingTime} for the ${distKm} km journey, including short breaks. Early-morning departures avoid city traffic and, on hill routes, let you cover the mountain stretches in daylight.` },
     { question: `What is the best car for a ${origin} to ${dest} road trip?`, answer: `For the ${origin} to ${dest} drive, a ${bestCarType} is recommended. For families, an SUV like Innova/Ertiga offers more space and comfort. Solo travellers or couples can opt for a sedan like Swift Dzire.` },
-    { question: `How much does a cab from ${origin} to ${dest} cost?`, answer: `A cab from ${origin} to ${dest} starts at ${sedanFare} for an AC Sedan (₹11/km). SUV starts at ₹${suvFare.toLocaleString('en-IN')} (₹15/km). Tempo Traveller at ₹${tempoFare.toLocaleString('en-IN')} (₹20/km). Toll and state tax extra.` },
+    { question: `How much does a cab from ${origin} to ${dest} cost?`, answer: `A cab from ${origin} to ${dest} starts at ${sedanFare} for an AC Sedan (₹11/km). SUV starts at ₹${suvFare.toLocaleString('en-IN')} (₹15/km). Tempo Traveller at ₹${tempoFare.toLocaleString('en-IN')} (₹23/km). Toll and state tax extra.` },
     { question: `What is the best route from ${origin} to ${dest} by car?`, answer: `The recommended driving route from ${origin} to ${dest} follows the main national highways and expressways for the smoothest, fastest journey across ${distKm} km. Our drivers know the optimal route, real-time diversions, and the cleanest rest stops along the way.` },
     { question: `Is the ${origin} to ${dest} road safe for driving?`, answer: `Yes, the ${origin} to ${dest} route is generally safe with well-maintained highways for most stretches. However, mountain sections (if any) require careful driving. We recommend experienced drivers for hill routes, especially during monsoon and winter.` },
     { question: `Where should I stop for food on the ${origin} to ${dest} drive?`, answer: `Popular food stops on the ${origin} to ${dest} route include highway dhabas and restaurants at major towns en route. Our drivers know the best clean and hygienic food stops. We recommend stopping every 2-3 hours for refreshments.` },

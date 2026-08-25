@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-mussoorie-from-delhi";
 const data = familyTripData["mussoorie"];
 
 export const metadata = {
-  title: 'Family Trip Mussoorie from Delhi | Innova ₹9,000 | 2026',
+  title: tightenTitle('Family Trip Mussoorie from Delhi | Innova ₹9,000 | 2026'),
   description: 'Book a family trip to Mussoorie from Delhi by car. Innova Rs 9,000, Sedan Rs 6,500. Kempty Falls, Gun Hill, Mall Road. Kid-friendly. Call 7668570551.',
   keywords: 'family trip mussoorie from delhi, delhi to mussoorie family tour, mussoorie family vacation by car, mussoorie trip with kids, family holiday mussoorie',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

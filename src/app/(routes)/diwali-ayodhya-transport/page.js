@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('diwali-ayodhya-transport');
 
 export const metadata = {
-  title: 'Diwali in Ayodhya Cab Service 2026 | Deepotsav Special',
+  title: tightenTitle('Diwali in Ayodhya Cab Service 2026 | Deepotsav Special'),
   description: 'Book cab from Delhi to Ayodhya for Diwali Deepotsav 2026. Sedan from ₹9,500, SUV ₹13,000. Ram Mandir aarti, Saryu Ghat diyas, drone show. Call 7668570551.',
   keywords: 'diwali ayodhya cab, deepotsav ayodhya transport, delhi to ayodhya cab, ayodhya diwali 2026, ram mandir diwali cab, ayodhya cab service, diwali travel ayodhya',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

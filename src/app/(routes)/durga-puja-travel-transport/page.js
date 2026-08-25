@@ -1,5 +1,6 @@
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import SeasonalPageClient from '@/components/seasonal/SeasonalPageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -8,7 +9,7 @@ const pageTitle = 'Durga Puja 2026 Cab & Transport Service | Pandal Hopping Cabs
 const pageDesc = 'Book Durga Puja 2026 cab service for pandal hopping, airport transfers, and outstation trips. Kolkata, Delhi, and North India coverage. No surge pricing. From ₹1,499. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['durga puja cab service 2026', 'durga puja transport', 'pandal hopping cab booking', 'navratri cab service', 'durga puja travel package', 'navratri taxi booking', 'dussehra cab service', 'festive season cab north india', 'durga puja outstation cab', 'navratri pandal cab'],
   authors: [{ name: 'Triveni Cabs' }],

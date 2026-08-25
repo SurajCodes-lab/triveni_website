@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, ChevronRight, ArrowRight, CheckCircle2, X, Building2, Home, Briefcase, Utensils, IndianRupee } from '@/components/ui/icons';
 import { getArticleSchema, withSpeakableFAQ, getComparisonSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Chandigarh vs Mohali 2026 | Real Estate, Lifestyle, IT Hub Comparison',
+  title: tightenTitle('Chandigarh vs Mohali 2026 | Real Estate, Lifestyle, IT Hub Comparison'),
   description: 'Detailed Chandigarh vs Mohali comparison 2026. Real estate, lifestyle, IT hub, food, transport, schools, infrastructure. Which is better to live or visit?',
   keywords: 'chandigarh vs mohali, mohali vs chandigarh, mohali real estate, chandigarh tricity, mohali it hub, chandigarh lifestyle, where to live tricity',
   authors: [{ name: 'Triveni Cabs Editorial' }],

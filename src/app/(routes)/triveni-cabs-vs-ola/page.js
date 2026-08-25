@@ -1,6 +1,7 @@
 import CompetitorCompareClient from '@/components/competitor/CompetitorCompareClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getComparisonSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -9,7 +10,7 @@ const pageTitle = 'Triveni Cabs vs Ola: Honest Comparison 2026 | Who Wins? — 4
 const pageDesc = 'Triveni Cabs vs Ola comparison 2026. Compare pricing, surge charges, fleet, driver quality, outstation coverage. No surge pricing, verified drivers, 24/7 support. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs vs ola', 'ola alternative india', 'better than ola cabs', 'ola vs triveni pricing', 'ola surge pricing alternative', 'no surge pricing cab india', 'ola outstation alternative', 'cab service comparison india', 'reliable cab service vs ola', 'ola competitor north india'],
   authors: [{ name: 'Triveni Cabs' }],

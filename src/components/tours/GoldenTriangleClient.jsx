@@ -243,9 +243,11 @@ export default function GoldenTriangleClient({ data, others = [] }) {
         </div>
       </section>
 
-      {/* RELATED */}
-      {others.length > 0 && (
-        <section className="bg-white border-y border-stone-100">
+      {/* RELATED — deliberately not gated on `others`. The three static links
+          below are the only contextual links this template gives the tour-cost
+          and English-speaking-driver pages, and they were dead while the whole
+          section was hidden whenever there was only one origin in the data. */}
+      <section className="bg-white border-y border-stone-100">
           <div className="max-w-7xl mx-auto px-4 py-12">
             <h2 className="text-xl font-black">More Golden Triangle options</h2>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -259,8 +261,7 @@ export default function GoldenTriangleClient({ data, others = [] }) {
               <Link href="/golden-triangle-english-speaking-driver" className="inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-[#fbf7ef] px-4 py-2 text-sm font-medium text-stone-700 hover:border-amber-300 hover:text-amber-700 transition">English-speaking driver</Link>
             </div>
           </div>
-        </section>
-      )}
+      </section>
 
       {/* FINAL CTA */}
       <section className="relative overflow-hidden bg-[#140f0a] text-white">

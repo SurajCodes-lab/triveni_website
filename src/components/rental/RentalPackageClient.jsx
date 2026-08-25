@@ -23,17 +23,7 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
-      {/* Animations */}
-      <style jsx>{`
-        @keyframes clock-pulse { 0%,100% { box-shadow: 0 0 20px rgba(245,158,11,0.2), 0 0 60px rgba(245,158,11,0.05); } 50% { box-shadow: 0 0 30px rgba(245,158,11,0.35), 0 0 80px rgba(245,158,11,0.1); } }
-        @keyframes tick { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes slide-in { 0% { transform: translateX(-10px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
-        .clock-card { animation: clock-pulse 4s ease-in-out infinite; }
-        .shimmer-blue { background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b, #fbbf24); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite; }
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-      `}</style>
-
-      {/* HERO SECTION - Clean professional blue */}
+      {/* HERO SECTION — deep slate + gold */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-amber-950 to-yellow-950">
         {/* Real photo behind the gradient wash (optional, per page) */}
         {heroImage && (
@@ -57,8 +47,8 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(245,158,11,0.15),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(56,189,248,0.1),transparent_50%)]" />
 
-        {/* Floating orbs */}
-        <div className="absolute top-20 right-[15%] w-60 h-60 md:w-80 md:h-80 bg-gradient-to-br from-amber-500/15 to-yellow-500/10 rounded-full blur-3xl animate-pulse" />
+        {/* Still gold glow — no animation */}
+        <div className="absolute top-20 right-[15%] w-60 h-60 md:w-80 md:h-80 bg-gradient-to-br from-amber-500/15 to-yellow-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-[10%] w-48 h-48 md:w-72 md:h-72 bg-gradient-to-br from-yellow-500/15 to-amber-500/10 rounded-full blur-3xl" />
 
         {/* Hero Content */}
@@ -83,10 +73,10 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
           </div>
 
           {/* Title */}
-          <h1 className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
+          <h1 className="speakable-headline font-display-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-6 leading-[1.05] tracking-tight">
             <span className="text-white drop-shadow-lg">{rental.duration}</span>
             <br />
-            <span className="shimmer-blue">Cab Rental Package</span>
+            <span className="text-gold-foil">Cab Rental Package</span>
           </h1>
 
           {/* Direct-answer lead (voice/AEO) — data-driven, only when provided */}
@@ -115,9 +105,9 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
           {/* Price */}
           <div className="mb-10">
             <p className="text-white/50 text-sm mb-2 uppercase tracking-wider">Starting from</p>
-            <div className="inline-block clock-card bg-white/[0.05] backdrop-blur-xl rounded-2xl border border-amber-500/20 px-8 py-5">
+            <div className="inline-block bg-white/[0.05] backdrop-blur-xl rounded-2xl border border-amber-500/20 px-8 py-5 shadow-[0_0_30px_rgba(245,158,11,0.2)]">
               <div className="flex items-center justify-center gap-4">
-                <span className="text-5xl md:text-6xl font-black bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 bg-clip-text text-transparent">{rental.fares.sedan}</span>
+                <span className="text-5xl md:text-6xl font-black text-gold-foil tabular-nums">{rental.fares.sedan}</span>
                 <span className="text-white/50 text-lg text-left">Sedan<br/>{rental.km}</span>
               </div>
             </div>
@@ -133,16 +123,16 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href={whatsappURL} target="_blank" rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-105 transition-all duration-300">
-              <BsWhatsapp className="w-6 h-6" />
+              className="sheen group inline-flex items-center gap-3 bg-[#FACF2D] hover:bg-amber-300 text-slate-900 px-8 py-4 rounded-2xl font-black text-lg shadow-[0_12px_36px_-10px_rgba(250,207,45,0.55)] hover:-translate-y-0.5 transition-all duration-300 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
+              <BsWhatsapp className="w-6 h-6 lg:w-4 lg:h-4" />
               <span>Book on WhatsApp</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform lg:w-4 lg:h-4" />
             </a>
             <a onClick={() => trackPhoneCall('rental_package')} href={`tel:+91${phoneNumber}`}
-              className="group inline-flex items-center gap-3 bg-white/[0.07] backdrop-blur-xl hover:bg-white/15 text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:border-amber-500/30 hover:scale-105 transition-all duration-300">
-              <Phone className="w-6 h-6 text-amber-400" />
+              className="group inline-flex items-center gap-3 bg-white/[0.07] backdrop-blur-xl hover:bg-white/15 text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:border-amber-500/30 transition-all duration-300 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
+              <Phone className="w-6 h-6 text-amber-400 lg:w-4 lg:h-4" />
               <span>Call {phoneNumber}</span>
             </a>
           </div>
@@ -150,7 +140,7 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
       </section>
 
       {/* VEHICLE OPTIONS - Timer/clock style cards */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-6 py-2.5 mb-5">
@@ -218,11 +208,11 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
       </section>
 
       {/* PACKAGE DETAILS - What's included */}
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
-              What&#39;s <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">Included</span>
+              What’s <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">Included</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -266,47 +256,67 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
         </div>
       </section>
 
-      {/* FARE TABLE - How much does it cost? (AEO featured-snippet target) */}
-      <section className="py-20 md:py-28">
+      {/* FARE TABLE — warm-light gold ledger band (AEO featured-snippet target) */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-[#FFF6DC] via-amber-50/70 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
-              How Much Does a <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">{rental.duration} Cab</span> Cost?
+            <h2 className="font-display-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
+              How Much Does a <span className="text-gold-foil">{rental.duration} Cab</span> Cost?
             </h2>
             <p className="text-gray-500 mt-4 max-w-2xl mx-auto">Flat-rate fares for {rental.duration} / {rental.km}. No surge pricing — extra km and hours billed transparently only if you exceed the package.</p>
           </div>
-          <div className="overflow-x-auto rounded-3xl border border-gray-100 shadow-xl">
-            <table className="w-full text-left text-sm">
-              <thead>
-                <tr className="bg-gray-900 text-white">
-                  <th className="p-4 font-bold">Vehicle</th>
-                  <th className="p-4 font-bold text-amber-300">Package Fare</th>
-                  <th className="p-4 font-bold">Extra km</th>
-                  <th className="p-4 font-bold">Extra hour</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100 bg-white">
-                {[
-                  { type: "Sedan (4 seater)", fare: rental.fares.sedan, km: rental.extraKm.sedan, hr: rental.extraHour.sedan },
-                  { type: "SUV (6 seater)", fare: rental.fares.suv, km: rental.extraKm.suv, hr: rental.extraHour.suv },
-                  { type: "Innova Crysta (6 seater)", fare: rental.fares.innova, km: rental.extraKm.innova, hr: rental.extraHour.innova },
-                ].map((r, i) => (
-                  <tr key={i} className={i % 2 ? "bg-amber-50/30" : "bg-white"}>
-                    <td className="p-4 font-semibold text-gray-800">{r.type}</td>
-                    <td className="p-4 font-black text-amber-600">{r.fare}</td>
-                    <td className="p-4 text-gray-500">{r.km}</td>
-                    <td className="p-4 text-gray-500">{r.hr}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {(() => {
+            const fareTableRows = [
+              { type: 'Sedan (4 seater)', fare: rental.fares.sedan, km: rental.extraKm.sedan, hr: rental.extraHour.sedan },
+              { type: 'SUV (6 seater)', fare: rental.fares.suv, km: rental.extraKm.suv, hr: rental.extraHour.suv },
+              { type: 'Innova Crysta (6 seater)', fare: rental.fares.innova, km: rental.extraKm.innova, hr: rental.extraHour.innova },
+            ];
+            return (
+              <>
+                {/* Desktop ledger table */}
+                <div className="hidden md:block rounded-3xl border border-amber-300/60 shadow-[0_20px_60px_-30px_rgba(184,134,11,0.35)] overflow-hidden">
+                  <table className="w-full text-left text-sm">
+                    <thead>
+                      <tr className="bg-gray-900 text-white">
+                        <th className="p-4 font-bold">Vehicle</th>
+                        <th className="p-4 font-bold text-[#FACF2D]">Package Fare</th>
+                        <th className="p-4 font-bold">Extra km</th>
+                        <th className="p-4 font-bold">Extra hour</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-amber-100 bg-white">
+                      {fareTableRows.map((r, i) => (
+                        <tr key={i} className={i % 2 ? 'bg-amber-50/40' : 'bg-white'}>
+                          <td className="p-4 font-semibold text-gray-800">{r.type}</td>
+                          <td className="p-4 font-black text-amber-700 tabular-nums">{r.fare}</td>
+                          <td className="p-4 text-gray-500">{r.km}</td>
+                          <td className="p-4 text-gray-500">{r.hr}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {/* Mobile stacked cards */}
+                <div className="space-y-3 md:hidden">
+                  {fareTableRows.map((r, i) => (
+                    <div key={i} className="rounded-2xl border border-amber-200/60 bg-white p-4 shadow-sm">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm font-bold text-gray-900">{r.type}</span>
+                        <span className="text-sm font-black text-amber-700 tabular-nums">{r.fare}</span>
+                      </div>
+                      <p className="text-xs text-gray-500">Extra km: {r.km} · Extra hour: {r.hr}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            );
+          })()}
           <p className="text-gray-400 text-xs mt-4 text-center">Fares include AC vehicle, fuel and driver. Toll, parking and night charges (after 10 PM) are extra at actuals.</p>
         </div>
       </section>
 
       {/* BEST FOR - Badge/certificate style */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-6 py-2.5 mb-5">
@@ -331,7 +341,7 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
       </section>
 
       {/* AVAILABLE CITIES */}
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
@@ -352,7 +362,7 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
       </section>
 
       {/* DESCRIPTION */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="bg-white rounded-3xl border border-gray-100 shadow-xl p-8 md:p-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-amber-50 to-transparent rounded-bl-full" />
@@ -369,7 +379,7 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
       </section>
 
       {/* WHY TRIVENI */}
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
@@ -396,14 +406,14 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <FAQSection faqs={rental.faqs} title={`${rental.duration} Cab Rental - FAQs`} variant="light" />
         </div>
       </section>
 
       {/* CROSS-SERVICE LINKS */}
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-6 py-2.5 mb-5">
@@ -438,7 +448,7 @@ const RentalPackageClient = ({ rental, heroImage, fleetImages }) => {
       </section>
 
       {/* BOOKING CTA */}
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="relative bg-gradient-to-r from-amber-500 to-yellow-500 rounded-3xl p-8 md:p-14 text-center shadow-2xl shadow-amber-500/20 overflow-hidden">
             <div className="absolute top-0 left-0 w-40 h-40 bg-white/10 rounded-full blur-3xl" />

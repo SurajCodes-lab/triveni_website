@@ -2,12 +2,13 @@ import { friendsTripData } from '@/utilis/friendsTripData';
 import FriendsTripClient from '@/components/audience/FriendsTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "friends-trip-jaisalmer";
 const data = friendsTripData["jaisalmer"];
 
 export const metadata = {
-  title: 'Friends Trip Jaisalmer by Tempo Traveller | ₹1,765/Person',
+  title: tightenTitle('Friends Trip Jaisalmer by Tempo Traveller | ₹1,765/Person'),
   description: 'Book Tempo Traveller for friends trip to Jaisalmer from Delhi. Rs 1,765/person. Desert safari, dune bashing, camping under stars. 12-17 seater AC.',
   keywords: 'friends trip jaisalmer, jaisalmer group trip, jaisalmer tempo traveller, delhi to jaisalmer friends, desert safari friends, sam sand dunes group trip',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

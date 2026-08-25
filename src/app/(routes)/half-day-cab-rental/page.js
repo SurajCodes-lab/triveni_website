@@ -2,11 +2,12 @@ import { getRentalBySlug } from '@/utilis/rentalPackageData';
 import RentalPackageClient from '@/components/rental/RentalPackageClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const rental = getRentalBySlug('half-day-cab-rental');
 
 export const metadata = {
-  title: 'Half Day Cab Rental | 4 Hours 40 km from Rs 1,500 | Triveni Cabs',
+  title: tightenTitle('Half Day Cab Rental | 4 Hours 40 km from Rs 1,500'),
   description: 'Book half day cab rental for 4 hours 40 km. Sedan Rs 1,500, SUV Rs 2,200, Innova Rs 2,800. Shopping, doctor visits, meetings. Call 7668570551.',
   keywords: 'half day cab rental, 4 hour cab rental, cab for 4 hours, half day taxi, short duration cab hire, cab for shopping, cab for doctor visit',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

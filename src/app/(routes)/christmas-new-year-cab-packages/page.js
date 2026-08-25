@@ -1,5 +1,6 @@
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import SeasonalPageClient from '@/components/seasonal/SeasonalPageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -8,7 +9,7 @@ const pageTitle = 'Christmas & New Year Cab Packages 2026 | Book Holiday Cabs â€
 const pageDesc = 'Book Christmas & New Year 2026 cab packages across India. AC sedan & SUV, verified drivers, no surge pricing. Delhi, Agra, Jaipur, Shimla, Manali holiday cabs from â‚¹2,499. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['christmas cab packages 2026', 'new year cab booking', 'christmas holiday cab india', 'new year eve cab service', 'christmas travel packages north india', 'holiday season cab booking', 'new year trip cab delhi', 'christmas shimla cab package', 'new year manali cab', 'festive season taxi service'],
   authors: [{ name: 'Triveni Cabs' }],

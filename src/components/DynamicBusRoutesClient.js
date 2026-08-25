@@ -1021,7 +1021,7 @@ export default function DynamicBusRoutesClient({ data }) {
             >
               <div className="mb-2 text-2xl">🚐</div>
               <h3 className="font-bold text-slate-900 transition-colors group-hover:text-amber-600">{origin} to {destination} Tempo</h3>
-              <p className="mt-1 text-sm text-slate-500">12-26 seater AC tempo from ₹20/km</p>
+              <p className="mt-1 text-sm text-slate-500">12-26 seater AC tempo from ₹23/km</p>
             </Link>
             <Link
               href={`/one-way-cab/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`}

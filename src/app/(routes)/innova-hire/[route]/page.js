@@ -4,7 +4,7 @@ import VehicleHireClient from '@/components/vehicle-hire/VehicleHireClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 const VEHICLE_TYPE = 'innova';
 const VEHICLE_SLUG = 'innova-hire';
 
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
     return { title: 'Vehicle Hire Route Not Found' };
   }
 
-  const title = `${vehicleSpec.name} Hire: ${routeData.origin} to ${routeData.destination} | Rs ${routeData.fare.toLocaleString('en-IN')} — Triveni Cabs`;
+  const title = tightenTitle(`${vehicleSpec.name} Hire: ${routeData.origin} to ${routeData.destination} | Rs ${routeData.fare.toLocaleString('en-IN')}`);
   const description = `Hire ${vehicleSpec.name} (${vehicleSpec.type}) from ${routeData.origin} to ${routeData.destination} at Rs ${routeData.fare.toLocaleString('en-IN')}. ${routeData.distanceKm} km, ${routeData.duration}. ${vehicleSpec.seating} seater, AC, experienced driver. Call 7668570551.`;
   const ogTitle = `${vehicleSpec.name} on Hire: ${routeData.origin} to ${routeData.destination} — Rs ${routeData.fare.toLocaleString('en-IN')} All-Inclusive | Triveni Cabs`;
 

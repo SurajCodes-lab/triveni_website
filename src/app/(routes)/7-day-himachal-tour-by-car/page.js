@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "7-day-himachal-tour-by-car";
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '7 Day Himachal Tour by Car 2026 | Shimla Manali Dharamshala',
+  title: tightenTitle('7 Day Himachal Tour by Car 2026 | Shimla Manali Dharamshala'),
   description: '7-day Himachal trip: Shimla, Manali, Dharamshala, Dalhousie. Day-wise plan, costs from ₹35K Sedan / ₹50K SUV. Call 7668570551.',
   keywords: '7 day himachal pradesh tour plan by car, himachal tour itinerary, shimla manali tour by car, himachal road trip, himachal pradesh tour package by car',
   authors: [{ name: 'Triveni Cabs' }],

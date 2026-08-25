@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Calendar, ChevronRight, Hourglass } from '@/components/ui/icons';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -117,7 +118,7 @@ const WA_LINK = `https://wa.me/917668570551?text=${encodeURIComponent(
 )}`;
 
 export const metadata = {
-  title: 'Long Weekend Calendar 2026 India — Dates + Where To Go | Triveni Cabs',
+  title: tightenTitle('Long Weekend Calendar 2026 India — Dates + Where To Go'),
   description:
     '2026 long weekends: 15-16 Aug, 28-30 Aug, 4-6 Sep, 12-14 Sep, 2-4 Oct, Diwali 7-9 Nov, 25-27 Dec. Every date with the best road trip from Delhi and a cab to get you there.',
   keywords:

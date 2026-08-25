@@ -32,6 +32,7 @@ import {
   getCityPlaceSchema,
   getTodayDate
 } from '@/lib/seo/speakable-helpers';
+import { tightenTitle, tightenDescription } from '@/lib/seo/serp-ctr';
 
 /* ------------------------------------------------------------------ *
  * Money-page linking (Week 41)
@@ -313,7 +314,7 @@ export async function generateMetadata({ params }) {
 
   if (!slug) {
     return {
-      title: 'Sightseeing Tour | Premium Guided Tours',
+      title: tightenTitle('Sightseeing Tour | Premium Guided Tours'),
       description: 'Discover amazing sightseeing tours across India with expert guides.'
     };
   }
@@ -354,13 +355,24 @@ export async function generateMetadata({ params }) {
   // Get the lowest price from available vehicle types
   const lowestPrice = tour.price.sedan || tour.price.carRental || tour.price.suv;
 
+  const baseDesc = tour.shortDescription || tour.fullDescription?.substring(0, 155) || null;
+  const composedDescription = baseDesc
+    ? tightenDescription(
+        baseDesc.replace(/[.\s]+$/, '') +
+          `. ${tour.duration} private tour with an experienced driver, from ₹${lowestPrice?.toLocaleString() || '1,499'}. Hotel pickup included.`
+      )
+    : null;
+
   return generateTourMetadata({
     tourName: tour.name,
     city: tour.category || slug.split('-')[0],
     price: lowestPrice?.toLocaleString() || '1,499',
     duration: tour.duration,
     slug,
-    description: tour.shortDescription || tour.fullDescription?.substring(0, 155) || null,
+    // A bare shortDescription runs as low as 51 characters, well short of what
+    // Google will render. Compose it with the two facts a searcher wants next --
+    // how long the tour takes and what it starts at -- instead of a thin snippet.
+    description: composedDescription,
     image: tour.heroImage || null,
     highlights: tour.highlights || [],
     inclusions: tour.inclusions || []
@@ -1043,50 +1055,14 @@ export default async function SightseeingDetailPage({ params }) {
         }}
       />
 
-      {/* Review Schema - Sample Reviews */}
-      {tour.reviews && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Product",
-              "name": tour.name,
-              "review": [
-                {
-                  "@type": "Review",
-                  "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                  },
-                  "author": {
-                    "@type": "Person",
-                    "name": "Verified Tourist"
-                  },
-                  "reviewBody": `Excellent ${tour.category.toLowerCase()} tour! The guide was knowledgeable and the vehicle was very comfortable. Highly recommended for anyone visiting.`,
-                  "datePublished": new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-                },
-                {
-                  "@type": "Review",
-                  "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5",
-                    "bestRating": "5"
-                  },
-                  "author": {
-                    "@type": "Person",
-                    "name": "International Traveler"
-                  },
-                  "reviewBody": `Amazing experience! The ${tour.duration} tour covered all major attractions. Professional service and great value for money.`,
-                  "datePublished": new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-                }
-              ],
-              "aggregateRating": realRR.aggregateRating
-            })
-          }}
-        />
-      )}
+      {/* The second Product node here was removed in Week 44. It carried two
+          fabricated five-star reviews ("Verified Tourist", "International
+          Traveler") whose text was generated from the tour fields and whose
+          dates were Date.now() minus 7 and 14 days, so they moved on every
+          build. Google's review snippet policy requires review markup to
+          describe real customer reviews. It was also a duplicate Product with
+          no price, competing with the priced Product node above. Real rating
+          and review data comes from review-helpers via realRR. */}
 
       {/* Event Schema - For upcoming tour availability */}
       <script
@@ -1152,101 +1128,12 @@ export default async function SightseeingDetailPage({ params }) {
 
       <AEOHead pageType="tour" data={{ url: `/sightseeing/${slug}`, title: tour.name, city: tour.category || slug.split('-')[0] }} />
 
-      {/* Server-rendered SEO content — visible to Googlebot immediately */}
-      <div className="sr-only-seo" aria-hidden="false" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
-        <article itemScope itemType="https://schema.org/TouristTrip">
-          <h1 className="speakable-headline" itemProp="name">{tour.name}</h1>
-          <p className="speakable-lead" itemProp="description">{tour.fullDescription}</p>
-          <p className="faq-answer">
-            The {tour.name} is a {tour.duration} guided sightseeing experience starting from ₹{lowestPrice?.toLocaleString()} (AC sedan).
-            {tour.highlights?.length > 0 ? ` It covers ${tour.highlights.slice(0, 4).map(h => h.split(' - ')[0]).join(', ')} and more.` : ''}
-            {' '}Book with Triveni Cabs on +91-7668570551 — hotel pickup, experienced driver and flexible timing included.
-          </p>
-
-          <div>
-            <span>Duration: <strong itemProp="duration">{tour.duration}</strong></span>
-            <span>Starting Price: <strong>₹{lowestPrice?.toLocaleString()}</strong></span>
-            {tour.reviews && <span>Rating: <strong>{tour.reviews.averageRating}★</strong> ({tour.reviews.totalReviews} reviews)</span>}
-            <span>Group Size: <strong>{tour.groupSize}</strong></span>
-            <span>Best Time: <strong>{tour.bestTimeToVisit}</strong></span>
-            <span>Category: <strong itemProp="category">{tour.category}</strong></span>
-          </div>
-
-          {tour.highlights && tour.highlights.length > 0 && (
-            <section>
-              <h2>Tour Highlights</h2>
-              <ul>{tour.highlights.map((h, i) => <li key={i}>{typeof h === 'string' ? h : h.name || h.title || ''}</li>)}</ul>
-            </section>
-          )}
-
-          {tour.itinerary && tour.itinerary.length > 0 && (
-            <section>
-              <h2>{tour.name} — Detailed Itinerary</h2>
-              <ol>{tour.itinerary.map((item, i) => (
-                <li key={i}>
-                  <strong>{item.time}</strong> — {item.activity}
-                  {item.duration && <span> ({item.duration})</span>}
-                  {item.description && <p>{item.description}</p>}
-                </li>
-              ))}</ol>
-            </section>
-          )}
-
-          {tour.inclusions && tour.inclusions.length > 0 && (
-            <section>
-              <h2>What&apos;s Included in {tour.name}</h2>
-              <ul>{tour.inclusions.map((inc, i) => <li key={i}>{inc}</li>)}</ul>
-            </section>
-          )}
-
-          {tour.exclusions && tour.exclusions.length > 0 && (
-            <section>
-              <h2>Exclusions</h2>
-              <ul>{tour.exclusions.map((exc, i) => <li key={i}>{exc}</li>)}</ul>
-            </section>
-          )}
-
-          {tour.tips && tour.tips.length > 0 && (
-            <section>
-              <h2>Travel Tips for {tour.name}</h2>
-              <ul>{tour.tips.map((tip, i) => <li key={i}>{tip}</li>)}</ul>
-            </section>
-          )}
-
-          <section>
-            <h2>Pricing — {tour.name}</h2>
-            <ul>
-              {tour.price.sedan && <li>Sedan (4-seater): ₹{tour.price.sedan.toLocaleString()}</li>}
-              {tour.price.suv && <li>SUV (6-seater): ₹{tour.price.suv.toLocaleString()}</li>}
-              {tour.price.tempoTraveller && <li>Tempo Traveller (12-16 seater): ₹{tour.price.tempoTraveller.toLocaleString()}</li>}
-            </ul>
-          </section>
-
-          {(() => {
-            const faqs = generateTourFAQs({
-              tourName: tour.name,
-              city: tour.city || slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
-              duration: tour.duration,
-              price: lowestPrice,
-              highlights: tour.highlights || [],
-              inclusions: tour.inclusions || []
-            });
-            return (
-              <section>
-                <h2>Frequently Asked Questions — {tour.name}</h2>
-                {faqs.map((faq, i) => (
-                  <details key={i}>
-                    <summary>{faq.question}</summary>
-                    <p>{faq.answer}</p>
-                  </details>
-                ))}
-              </section>
-            );
-          })()}
-
-          <p>Book {tour.name} with Triveni Cabs — call +91-7668570551 or WhatsApp for instant booking.</p>
-        </article>
-      </div>
+      {/* The off-screen "sr-only-seo" duplicate of this page's content was
+          removed in Week 44. It shipped a second <h1> on 133 pages and used
+          an off-screen text block, which is the pattern Google treats as
+          hidden text. It was also redundant: this page's client component is
+          server-rendered, and every string the block contained was verified
+          present in the visible HTML without it. */}
 
       <SightseeingDetailClient tour={tour} cityLabel={tourCityLabel} />
 

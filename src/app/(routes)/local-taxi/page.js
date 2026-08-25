@@ -3,11 +3,12 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 import { getGeneralContent, getWeddingPages } from '@/utilis/linkingHelper';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema, getComparisonSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Local Taxi Service 2026 | 4hr/40km from ₹1,200 | Hourly Packages',
+  title: tightenTitle('Local Taxi Service 2026 | 4hr/40km from ₹1,200 | Hourly Packages'),
   description: 'Book local taxi service in Delhi, Agra, Jaipur & 50+ cities. Hourly packages: 4hr/40km ₹1,200, 8hr/80km ₹2,200. Verified drivers, AC cabs, GPS tracked.',
   keywords: 'local taxi service, local taxi near me, local cab booking, hourly taxi, taxi service near me, local cab service, city taxi booking, hire taxi for local use, local taxi for shopping, local taxi for hospital, local taxi for meetings, local sightseeing taxi, hourly cab rental, 4 hour taxi package, 8 hour taxi package, local taxi Delhi, local taxi Agra, local taxi Jaipur, cheap local taxi, affordable local cab, best local taxi service, AC local taxi, GPS tracked taxi, safe local cab',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
@@ -223,7 +224,7 @@ export default function LocalTaxiPage() {
               ))}
             </div>
 
-            <p className="text-stone-400 text-sm mt-6 text-center">Extra km: Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km. Extra hours: ₹150-250/hr.</p>
+            <p className="text-stone-400 text-sm mt-6 text-center">Extra km: Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km. Extra hours: ₹150-250/hr.</p>
           </div>
         </section>
 

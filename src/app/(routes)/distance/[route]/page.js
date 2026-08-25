@@ -6,6 +6,7 @@ import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getArticleSchema, getHowToSchema, getComparisonSchema, getTodayDate, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { buildDistanceMeta, enrichRouteWithToll } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -23,12 +24,20 @@ export async function generateMetadata({ params }) {
     return { title: 'Distance Guide Not Found' };
   }
 
-  const title = `${route.origin} to ${route.destination} Distance: ${route.distance.km} km | Cab ₹${route.sedanRaw} — 4.9★`;
-  const description = `${route.origin} to ${route.destination} distance is ${route.distance.km} km by road via ${route.highway}. Drive time: ${route.duration}. Book AC cab from ₹${route.sedanRaw}. Toll info, route map, stops. Call 7668570551.`;
-  const ogTitle = `${route.origin} to ${route.destination} Distance by Road — ${route.distance.km} km | Cab from ₹${route.sedanRaw} | Triveni Cabs`;
+  // Week 43 — answer-box defence. The previous title led with the km figure,
+  // which is exactly what Google's distance panel already shows above us; these
+  // pages carried 2,898,687 impressions at 0.14% CTR while /toll-cost pages hit
+  // 4.10% on queries Google cannot answer inline. buildDistanceMeta keeps the
+  // exact-match keyword but makes the *promise* toll + fare instead of the km.
+  // See src/lib/seo/serp-ctr.js for the position-controlled evidence.
+  const { title, description, ogTitle } = buildDistanceMeta(route, slug);
 
   return {
-    title,
+    // Title carries no brand suffix of its own: the root layout appends
+    // '%s | Triveni Cabs'. serp-ctr budgets the content half at 45 chars
+    // (TITLE_BUDGET) so the rendered title lands inside Google's ~60-char
+    // truncation instead of being cut mid-phrase.
+    title: title,
     description,
     keywords: [
       `${route.origin.toLowerCase()} to ${route.destination.toLowerCase()} distance`,
@@ -76,7 +85,9 @@ export async function generateMetadata({ params }) {
 export default async function DistanceGuidePage({ params }) {
   const resolvedParams = await params;
   const { route: slug } = resolvedParams;
-  const route = getDistanceRoute(slug);
+  // Fill tollPlazas from the measured /toll-cost dataset so the page delivers
+  // the toll figure its title now promises (Week 43 — see serp-ctr.js).
+  const route = enrichRouteWithToll(getDistanceRoute(slug), slug);
 
   if (!route) {
     notFound();

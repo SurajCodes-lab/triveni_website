@@ -1,12 +1,18 @@
 // Week 39 new Delhi one-way corridors (batch B)
+import { fareFor, isLocalPackageRoute, rupees } from '../pricing';
+
+// Fare policy lives in src/utilis/pricing.js — do NOT reintroduce a local copy.
+// A duplicated calcFares in this file is exactly why these corridors kept quoting
+// the ₹3,300 outstation floor on 25 km trips after the rest of the site was fixed.
 function calcFares(distanceKm) {
-  const billableKm = Math.max(distanceKm, 300);
-  const sedan = billableKm * 11, ertiga = billableKm * 15, innova = billableKm * 18;
-  const f = (n) => `₹${n.toLocaleString('en-IN')}`;
+  const sedan = fareFor(distanceKm, 'sedan').amount;
+  const ertiga = fareFor(distanceKm, 'ertiga').amount;
+  const innova = fareFor(distanceKm, 'innova').amount;
   return {
-    oneWayFares: { sedan: f(sedan), ertiga: f(ertiga), innova: f(innova) },
-    roundTripFares: { sedan: f(sedan*2), ertiga: f(ertiga*2), innova: f(innova*2) },
-    savings: f(sedan), savingsPercent: "50%", sedanRaw: sedan,
+    oneWayFares: { sedan: rupees(sedan), ertiga: rupees(ertiga), innova: rupees(innova) },
+    roundTripFares: { sedan: rupees(sedan * 2), ertiga: rupees(ertiga * 2), innova: rupees(innova * 2) },
+    savings: rupees(sedan), savingsPercent: "50%", sedanRaw: sedan,
+    localPackage: isLocalPackageRoute(distanceKm),
   };
 }
 

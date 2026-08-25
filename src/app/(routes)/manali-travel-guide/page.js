@@ -3,10 +3,11 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Manali Travel Guide 2026: Best Time, Cost & Top Sights',
+  title: tightenTitle('Manali Travel Guide 2026: Best Time, Cost & Top Sights'),
   description: 'Best time to visit Manali: Apr-Jun for adventure, Dec-Feb for snow. Plan 3-4 days, budget ₹4,000-9,000/day. Solang Valley, Rohtang Pass, Hidimba Temple + Delhi cab tips. Call 7668570551.',
   keywords: 'manali travel guide, manali tourist guide, solang valley, rohtang pass, manali sightseeing, manali tourism, things to do in manali',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

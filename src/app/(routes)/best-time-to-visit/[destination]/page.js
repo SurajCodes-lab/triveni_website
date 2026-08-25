@@ -4,6 +4,7 @@ import BestTimeClient from '@/components/best-time/BestTimeClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getCityImage } from '@/utilis/imageUtils';
+import { buildBestTimeMeta } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -36,12 +37,18 @@ export async function generateMetadata({ params }) {
     return { title: 'Best Time to Visit - Not Found' };
   }
 
-  const title = `Best Time to Visit ${data.destination} | Month-by-Month Guide 2026 — Triveni Cabs`;
-  const description = `Best time to visit ${data.destination}: ${data.peakSeason}. Complete month-by-month weather, crowd, festival & budget guide. Book cab from ₹11/km. Call 7668570551.`;
+  // Week 43 — answer-box defence: Google prints a weather widget and a
+  // featured snippet for "best time to visit X". Lead with cost + crowds
+  // instead, which the panel never shows. See src/lib/seo/serp-ctr.js.
+  const { title, description } = buildBestTimeMeta(data);
   const ogTitle = `When to Visit ${data.destination}? | Season-by-Season Travel Guide with Cab Booking | Triveni Cabs`;
 
   return {
-    title,
+    // Title carries no brand suffix of its own: the root layout appends
+    // '%s | Triveni Cabs'. serp-ctr budgets the content half at 45 chars
+    // (TITLE_BUDGET) so the rendered title lands inside Google's ~60-char
+    // truncation instead of being cut mid-phrase.
+    title: title,
     description,
     keywords: [
       `best time to visit ${data.destination.toLowerCase()}`,

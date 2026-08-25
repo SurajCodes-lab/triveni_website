@@ -2,11 +2,12 @@ import { notFound } from 'next/navigation';
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('ganesh-chaturthi-transport');
 
 export const metadata = {
-  title: 'Ganesh Chaturthi Transport 2026 | Delhi NCR Cab',
+  title: tightenTitle('Ganesh Chaturthi Transport 2026 | Delhi NCR Cab'),
   description: 'Ganesh Chaturthi 12-14 Sep 2026 transport: pandal-hopping cabs, visarjan Tempo Travellers, murti transport. Sedan ₹11/km. Call 7668570551.',
   keywords: 'ganesh chaturthi transport, ganpati visarjan tempo traveller delhi, pandal hopping cab delhi, ganesh chaturthi 2026 cab, murti transport delhi, ganpati bus booking ncr',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

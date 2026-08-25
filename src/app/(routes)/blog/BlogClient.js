@@ -358,7 +358,7 @@ export default function BlogClient({ posts }) {
             </p>
             <p>
               Planning a group trip? Check out our <Link href="/tempo-traveller" className="font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">tempo traveller rental</Link> starting
-              at ₹20/km for 12–26 seater AC vehicles. For families and couples, our{' '}
+              at ₹23/km for 12–26 seater AC vehicles. For families and couples, our{' '}
               <Link href="/pricing" className="font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">sedan rentals start at just ₹11/km</Link> with
               professional drivers, transparent pricing, and no hidden charges. We also offer{' '}
               <Link href="/airport-service" className="font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">24/7 airport transfer services</Link> across

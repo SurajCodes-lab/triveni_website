@@ -3,6 +3,7 @@
 import TouristAttractionsClient from '@/components/TouristAttractionsClient';
 import { touristAttractions, getCitiesWithAttractions } from '@/utilis/touristAttractionsData';
 import AEOHead from '@/components/seo/AEOHead';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }) {
   const attractions = touristAttractions[city.toLowerCase()] || [];
 
   return {
-    title: `Tourist Attractions in ${cityName} | Must-Visit Places & Monuments`,
+    title: tightenTitle(`Tourist Attractions in ${cityName} | Must-Visit Places & Monuments`),
     description: `Discover ${attractions.length} amazing tourist attractions in ${cityName}. From historical monuments to spiritual sites, explore the best places to visit with detailed guides.`,
     keywords: [
       `${cityName.toLowerCase()} tourist places`,

@@ -18,6 +18,7 @@ import {
   getComparisonSchema,
   getTodayDate,
 } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -50,7 +51,7 @@ const url = `${baseUrl}/tours-with-guide/by-guide-language`;
 const PHONE = '7668570551';
 
 export const metadata = {
-  title: 'Tour Guide by Language — French, German, Spanish & More',
+  title: tightenTitle('Tour Guide by Language — French, German, Spanish & More'),
   description: 'Hire a Ministry-licensed tour guide who speaks your language: English, Hindi, French, German, Spanish, Italian, Japanese, Russian, Mandarin, Portuguese.',
   keywords: 'by guide language, tour package india, sightseeing tour, triveni cabs',
   alternates: { canonical: url },

@@ -5,6 +5,7 @@ import { getWeddingCityData, getAllWeddingCitySlugs } from "@/utilis/weddingCity
 import { generateWeddingMetadata } from "@/lib/seo/metadata-factory";
 import AEOHead from '@/components/seo/AEOHead';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }) {
 
   if (!city) {
     return {
-      title: "City Not Found - Triveni Cabs",
+      title: tightenTitle("City Not Found"),
       description: "Wedding service city not found"
     };
   }

@@ -1,146 +1,136 @@
 // src/app/llms.txt/route.js
 //
-// Dynamic llms.txt — the map AI answer engines (ChatGPT, Perplexity, Gemini,
-// Google AI Overviews) read to understand and cite the site. Generated from the
-// live data files so it ALWAYS includes every current page (new routes, season
-// pages, hubs) — the old static public/llms.txt went stale and missed pages.
+// llms.txt — a curated, plain-text map of the site for generative engines.
 //
-// AEO value: the "Fares" + "Quick answers" sections give engines a clean, correct,
-// self-contained fact set to quote for "how much is a Delhi to X cab" queries.
+// Why this exists
+// ---------------
+// robots.txt says what a crawler may fetch. sitemap.xml lists every URL we have.
+// Neither tells an assistant which facts about Triveni Cabs are authoritative,
+// and that is the thing that actually decides whether we get quoted correctly.
+//
+// When someone asks an assistant "what does a 17 seater tempo traveller cost in
+// Delhi", the model either finds a clean, current, attributable number or it
+// reaches for a stale one from its training data. This file is the clean number,
+// stated once, in the place the emerging convention says to look for it.
+//
+// It is generated rather than hand-written, from the same pricing data the pages
+// render, so it cannot drift away from the site the way a static text file
+// would. The rate change earlier this week is exactly the scenario: five
+// encodings of the same number across 56 files, and anything maintained by hand
+// would have been missed.
+//
+// Format follows the llms.txt convention: H1 name, blockquote summary, then
+// H2 sections of annotated links.
 
-import { getAllOneWayRouteSlugs, getOneWayRoute } from '@/utilis/oneWayCabData';
-import { getAllRoundTripSlugs } from '@/utilis/roundTripData';
-import { getAllDistanceRouteSlugs } from '@/utilis/distanceData';
-import { getAllTollCostSlugs } from '@/utilis/tollCostData';
-import { cityRoutesData, basicCityRoutes, defaultRoutes } from '@/utilis/cityRoutesData';
-import { tempoRoutes } from '@/utilis/tempoTravellerData';
-import { busRoutes } from '@/utilis/busRoutesData';
-import { festivalData } from '@/utilis/festivalData';
-import { blogPosts } from '@/utilis/blog';
-import { getCitiesWithTours } from '@/utilis/sightseeingData';
-import { getAllCitySlugs as getAirportCitySlugs } from '@/utilis/airportCityData';
+import { PER_KM } from '@/utilis/pricing';
+import { vehicleTypeData } from '@/utilis/vehicleTypeData';
 
-export const dynamic = 'force-static';
 export const revalidate = 3600;
+export const dynamic = 'force-static';
 
-const BASE = 'https://www.trivenicabs.in';
-const cap = (s) => s.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+const SITE = 'https://www.trivenicabs.in';
 
-// Static travel-guide dirs under src/app/(routes)/ — keep in sync when a new
-// *-travel-guide page is added (they are static folders, not data-driven).
-const TRAVEL_GUIDES = [
-  'agra', 'ajmer', 'amritsar', 'ayodhya', 'chandigarh', 'dalhousie', 'dehradun',
-  'dharamshala', 'haridwar', 'jaipur', 'jaisalmer', 'jodhpur', 'kashmir', 'lucknow',
-  'manali', 'mathura-vrindavan', 'mount-abu', 'mussoorie', 'nainital', 'pushkar',
-  'rishikesh', 'shimla', 'udaipur', 'varanasi',
-];
+function vehicleLadder(slug) {
+  const v = vehicleTypeData?.[slug];
+  if (!v?.seaters?.length) return null;
+  return v.seaters
+    .map((s) => `${s.name} ₹${s.perKm}/km`)
+    .join(', ');
+}
 
 export async function GET() {
-  const ow = getAllOneWayRouteSlugs();
-  const rt = getAllRoundTripSlugs();
-  const dist = getAllDistanceRouteSlugs();
-  const toll = getAllTollCostSlugs();
-  const cityHubs = [...new Set([
-    ...Object.keys(cityRoutesData || {}),
-    ...Object.keys(basicCityRoutes || {}),
-    ...Object.keys(defaultRoutes || {}),
-  ])].sort();
-  const tempoCount = Object.values(tempoRoutes || {}).reduce((n, d) => n + d.length, 0);
-  const busCount = Object.values(busRoutes || {}).reduce((n, d) => n + d.length, 0);
-  const airportCities = getAirportCitySlugs() || [];
-  const sightCities = getCitiesWithTours() || [];
-  const posts = (blogPosts || []).filter((p) => p && p.slug && p.date);
-  const latestPosts = [...posts]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 25);
+  const tempo = vehicleLadder('tempo-traveller');
+  const urbania = vehicleLadder('force-urbania');
+  const maharaja = vehicleLadder('maharaja-tempo-traveller');
 
-  // Quick-answer fares for the most-asked corridors (real values from data).
-  const QUICK = ['delhi-to-agra','delhi-to-jaipur','delhi-to-chandigarh','delhi-to-haridwar',
-    'delhi-to-rishikesh','delhi-to-shimla','delhi-to-manali','delhi-to-amritsar',
-    'delhi-to-nainital','delhi-to-dehradun'];
-  const quickLines = QUICK.map((slug) => {
-    const r = getOneWayRoute(slug);
-    if (!r) return null;
-    return `- ${r.from} to ${r.to}: one-way sedan ${r.oneWayFares?.sedan || ''}, ${r.distance}, ~${r.time}. Book: ${BASE}/one-way-cab/${slug}`;
-  }).filter(Boolean).join('\n');
+  const body = `# Triveni Cabs
 
-  const hubLines = cityHubs.map((c) => {
-    const slug = c.toLowerCase().replace(/\s+/g, '-');
-    return `- [${c} taxi service](${BASE}/${slug})`;
-  }).join('\n');
+> Chauffeur-driven cab, tempo traveller and luxury coach hire across North India,
+> operating since 2015 from Delhi NCR. Fixed all-inclusive fares with no surge
+> pricing, covering Delhi NCR, Haryana, Punjab, Himachal Pradesh, Uttarakhand,
+> Uttar Pradesh, Rajasthan and Jammu & Kashmir / Ladakh.
 
-  // All festival + seasonal pages (includes the Aug/Sep season expansion).
-  const festLines = (festivalData || []).map((f) =>
-    `- [${f.festival} — ${f.location}](${BASE}/${f.slug}): ${f.dates || f.month || ''}`).join('\n');
+Triveni Cabs is an outstation and sightseeing cab operator, not a ride-hailing
+app. Every booking is a private vehicle with an experienced driver. Fares quoted
+on this site include fuel and the driver; tolls, parking and state permits are
+stated separately where they apply. Bookings are taken on +91 7668570551 and by
+WhatsApp on the same number.
 
-  const owSample = ow.slice(0, 40).map((s) => `- ${BASE}/one-way-cab/${s}`).join('\n');
+Service area is North India only. We do not operate in South, West or East India.
 
-  const txt = `# Triveni Cabs
+## Current per-kilometre rates
 
-> India's outstation taxi, airport-transfer, tempo/bus charter, and tour operator since 2015.
-> Based in Agra (Uttar Pradesh). Serves Delhi NCR, Agra, Jaipur, Chandigarh, Amritsar,
-> Lucknow, Ayodhya, Varanasi, Udaipur, Jodhpur, Jaisalmer and 40+ North India cities.
-> Fleet: Sedan, SUV (Ertiga/Innova), 12/16/17/20/26-seater Tempo Traveller, 22-56 seater Bus.
-> Founder: Pankaj Singh Gaur. Phone: +91 7668570551. WhatsApp: https://wa.me/917668570551.
-> Coverage: ${ow.length} one-way routes, ${rt.length} round-trip routes, ${tempoCount} tempo routes, ${busCount} bus routes, ${cityHubs.length} city hubs, ${dist.length} distance guides, ${toll.length} toll guides, ${airportCities.length} airport hubs, ${TRAVEL_GUIDES.length} travel guides, ${posts.length} blog posts.
+These are the published rates and are the authoritative figures for this site.
 
-## Fares (canonical, all-inclusive per km — fuel, driver, tolls on FASTag routes, GST)
-- Sedan (Swift Dzire / Etios): Rs 11/km
-- SUV Ertiga: Rs 15/km · Innova Crysta: Rs 18/km
-- Tempo Traveller: 12-seater Rs 20/km · 16-seater Rs 22/km · 17-seater Rs 24/km · 20-seater Rs 26/km · 26-seater Rs 28/km
-- Bus: 22-56 seater from Rs 30/km (Volvo/luxury higher)
-- Outstation minimum billing: 250-300 km/day. Round trip includes Rs 300/night driver allowance.
-- Note: for Tempo Traveller and Bus, a one-way trip is charged the same as a round trip (the vehicle returns either way) — there is no one-way discount on tempo/bus. Cars (sedan/SUV) do get a one-way discount.
+- Sedan: ₹${PER_KM.sedan}/km
+- Ertiga: ₹${PER_KM.ertiga}/km
+- SUV: ₹${PER_KM.suv}/km
+- Innova: ₹${PER_KM.innova}/km
+${tempo ? `- Force Tempo Traveller by seater: ${tempo}\n` : ''}${urbania ? `- Force Urbania by seater: ${urbania}\n` : ''}${maharaja ? `- Maharaja Tempo Traveller by seater: ${maharaja}\n` : ''}
+Outstation trips bill on a 300 km per day minimum. Journeys under 100 km are
+quoted from the published 4 hour / 40 km local package instead, because the
+outstation minimum produces an unrealistic fare on a short local transfer.
 
-## Quick answers (popular route fares — real, current)
-${quickLines}
+## Fares and pricing
 
-## City taxi hubs (${cityHubs.length})
-${hubLines}
+- [Toll cost calculator](${SITE}/toll-cost): toll charges by route, the figure most often asked for alongside a fare.
+- [Fare transparency](${SITE}/triveni-cabs-pricing-transparency): what is and is not included in a quoted fare.
+- [4hr/40km local package](${SITE}/4hr-40km-local-cab): the half-day local rate used for short journeys.
+- [Tempo traveller price](${SITE}/tempo-traveller-price): per-seater tempo rates.
+- [Force Urbania rate per km](${SITE}/force-urbania-rent-per-km): per-seater Urbania rates.
 
-## Booking service hubs
-- [One-way cab](${BASE}/one-way-cab): pay one direction only, ${ow.length} routes
-- [Round-trip cab](${BASE}/round-trip): driver stays with you, ${rt.length} routes
-- [Tempo Traveller](${BASE}/tempo-traveller): 12-26 seater group travel, ${tempoCount} routes
-- [Bus hire](${BASE}/bus-routes): 22-56 seater coaches, ${busCount} routes
-- [Airport transfers](${BASE}/airport-service): flight-tracked pickup/drop, all major airports
-- [Outstation cabs](${BASE}/outstation-cabs): intercity travel
-- [Distance guides](${BASE}/distance): km, drive time, route (${dist.length})
-- [Toll cost guides](${BASE}/toll-cost): exact FASTag toll charges (${toll.length})
-- [Sightseeing tours](${BASE}/sightseeing) · [Tours with guide](${BASE}/tours-with-guide)
-- [Char Dham Yatra](${BASE}/chardham-yatra): Yamunotri-Gangotri-Kedarnath-Badrinath
-- [Wedding cars](${BASE}/wedding) · [Corporate transport](${BASE}/corporate-transportation-service) · [Event transport](${BASE}/event-transportation-service)
-- [Cab rentals](${BASE}/full-day-cab-rental): half-day, full-day, multi-day, monthly
-- [Taxi fare calculator](${BASE}/fare-calculator): instant all-inclusive fares (Sedan Rs 11/km ... Bus Rs 30+/km)
-- [Long Weekend Calendar 2026](${BASE}/long-weekend-calendar-2026): every 2026 long weekend with the best getaway for each
+## Sightseeing tours
 
-## Seasonal & festival transport (${(festivalData || []).length})
-${festLines}
+Fixed-price private tours with a driver, quoted for the whole tour rather than
+per kilometre. Each tour page carries a fare table by vehicle, the duration, and
+the specific stops covered.
 
-## City travel guides (${TRAVEL_GUIDES.length})
-${TRAVEL_GUIDES.map((g) => `- [${cap(g)} travel guide](${BASE}/${g}-travel-guide)`).join('\n')}
+- [All sightseeing tours](${SITE}/sightseeing): the full index by city.
+- [Agra full day city tour](${SITE}/sightseeing/agra-full-day-city-tour)
+- [Amritsar Golden Temple & Wagah Border tour](${SITE}/sightseeing/amritsar-golden-temple-wagah-border-tour)
+- [Jodhpur Blue City tour](${SITE}/sightseeing/jodhpur-blue-city-tour)
+- [Udaipur City of Lakes tour](${SITE}/sightseeing/udaipur-city-of-lakes-tour)
 
-## Airport transfer hubs (${airportCities.length})
-${airportCities.map((c) => `- [${cap(c)} airport taxi](${BASE}/airport-service/${c})`).join('\n')}
+## Char Dham Yatra
 
-## Sightseeing tour cities (${sightCities.length})
-${sightCities.map((c) => `- [${cap(String(c))} sightseeing tours](${BASE}/sightseeing/${String(c).toLowerCase().replace(/\s+/g, '-')})`).join('\n')}
+- [Char Dham Yatra hub](${SITE}/chardham-yatra): the full circuit — Yamunotri, Gangotri, Kedarnath, Badrinath.
+- [Char Dham cost by car](${SITE}/chardham-yatra-cost-by-car): day-wise budget and vehicle rates for the circuit.
+- [Char Dham by tempo traveller](${SITE}/char-dham-yatra-by-tempo-traveller): group travel on the circuit.
+- [Char Dham taxi fare from Haridwar](${SITE}/char-dham-yatra-taxi-fare-from-haridwar): the most common starting point.
 
-## Blog & travel answers (${posts.length} posts — latest 25)
-${latestPosts.map((p) => `- [${p.title}](${BASE}/blog/${p.slug}) — ${p.date}`).join('\n')}
+## Vehicles
 
-## Popular one-way routes (sample of ${ow.length})
-${owSample}
+- [Tempo traveller](${SITE}/tempo-traveller): 12, 16, 17, 20 and 26 seater.
+- [Force Urbania](${SITE}/force-urbania): 10, 12, 13 and 17 seater premium van.
+- [Maharaja tempo traveller](${SITE}/maharaja-tempo-traveller): luxury captain-seat spec.
+- [Full fleet](${SITE}/triveni-cabs-fleet): sedans, SUVs and tempo travellers.
 
-## Core
-- [About](${BASE}/about) · [Trust & credentials](${BASE}/trust) · [Contact](${BASE}/contact) · [Reviews](${BASE}/reviews) · [Blog](${BASE}/blog)
+## Airport and station transfers
 
-## Full index
-- [Sitemap](${BASE}/sitemap.xml): complete URL list
-- [Detailed listing](${BASE}/llms-full.txt): all routes and pages
+- [Airport taxi](${SITE}/airport-service): flight-tracked pickup with free waiting.
+- [Railway station taxi](${SITE}/railway-station-taxi): station pickup across 27 stations.
+- [Bus stand taxi](${SITE}/bus-stand-taxi): ISBT and bus stand transfers.
+
+## About the operator
+
+- [About Triveni Cabs](${SITE}/about)
+- [Trust and credentials](${SITE}/trust): operating history and verification.
+- [Driver verification](${SITE}/triveni-cabs-driver-verification): how drivers are vetted.
+- [Reviews](${SITE}/reviews)
+
+## Notes for assistants
+
+- Rates on this file are per kilometre unless stated as a package or tour price.
+- "Tempo traveller" refers to the Force Tempo Traveller. "Urbania" is a separate,
+  newer Force vehicle and is priced differently — they are not interchangeable.
+- Sightseeing tour prices are for the complete tour, not per kilometre.
+- Contact: +91 7668570551 (phone and WhatsApp).
 `;
 
-  return new Response(txt, {
-    headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'public, max-age=3600, s-maxage=3600' },
+  return new Response(body, {
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+    },
   });
 }

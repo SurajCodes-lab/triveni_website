@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera, Route, Coffee } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Agra Tour from Delhi | ₹4,500 AC Cab | 2026',
+  title: tightenTitle('Same Day Agra Tour from Delhi | ₹4,500 AC Cab | 2026'),
   description: 'Book same day Agra tour from Delhi by car. Taj Mahal, Agra Fort, Baby Taj visit. AC sedan ₹4,500, SUV ₹6,500. Yamuna Expressway. Call 7668570551.',
   keywords: 'same day agra tour from delhi, delhi to agra one day trip, agra tour from delhi by car, delhi agra same day tour, taj mahal day trip from delhi',
   authors: [{ name: 'Triveni Cabs' }],

@@ -8,12 +8,13 @@ import { getRatingAndReviews, getDeterministicReviewCount } from '@/lib/seo/revi
 import { getSightseeingReviews } from '@/lib/seo/review-helpers';
 // June 2026 deep AEO/GEO: Speakable + Article for the hub
 import { getSpeakableSchema, getArticleSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // ISR: Revalidate every hour for fresh content and SEO signals
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Sightseeing Tours India 2026 | Taj Mahal ₹3,500 | Triveni',
+  title: tightenTitle('Sightseeing Tours India 2026 | Taj Mahal ₹3,500 | Triveni'),
   description: 'Sightseeing tours: Taj Mahal ₹3,500, Jaipur ₹4,500, Golden Triangle ₹12K. AC cars, expert guides, 4.9★ verified reviews. Book in 2 min.',
   keywords: 'sightseeing tours India, Taj Mahal tour from Delhi, same day Agra tour, Golden Triangle tour, Delhi city tour, Jaipur sightseeing, heritage tours India, day tour packages, guided city tours, book sightseeing tour online, private tours India, full day tour, Agra sightseeing, Varanasi tour, Triveni Cabs tours',
   alternates: {
@@ -110,15 +111,12 @@ export default function SightseeingPage() {
       <AEOHead pageType="tour" data={{ url: '/sightseeing', title: 'Sightseeing Tours India' }} />
 
       {/* Server-rendered direct-answer lead — AEO / featured-snippet + Speakable target */}
-      <div className="sr-only-seo" aria-hidden="false" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
-        <p className="faq-answer">
-          Triveni Cabs runs {allTours.length}+ expert-guided sightseeing tours across 20+ Indian destinations,
-          starting from ₹3,000 for an AC sedan. Popular tours include the Taj Mahal in Agra, Amber Fort and City Palace
-          in Jaipur, Red Fort and Qutub Minar in Delhi, and the Varanasi ghats. Every tour includes an air-conditioned
-          vehicle, an experienced driver, hotel pickup and drop-off, and fully customizable itineraries. Licensed
-          multilingual guides are available on request. Book in about 2 minutes by calling +91-7668570551 or on WhatsApp.
-        </p>
-      </div>
+      {/* The off-screen "sr-only-seo" duplicate of this page's content was
+          removed in Week 44. It shipped a second <h1> on 133 pages and used
+          an off-screen text block, which is the pattern Google treats as
+          hidden text. It was also redundant: this page's client component is
+          server-rendered, and every string the block contained was verified
+          present in the visible HTML without it. */}
       <SightseeingMainClient data={pageData} faqData={faqData} />
     </>
   );

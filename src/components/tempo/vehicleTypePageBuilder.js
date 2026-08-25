@@ -1,6 +1,8 @@
-// src/components/tempo/seaterPageBuilder.js
-// Shared metadata + JSON-LD graph builder for per-seater Tempo Traveller pages.
-import { seaterTempoData } from "@/utilis/seaterTempoData";
+// src/components/tempo/vehicleTypePageBuilder.js
+// Shared metadata + JSON-LD @graph builder for the three vehicle-type hub
+// demo pages (Tempo Traveller, Force Urbania, Maharaja Tempo Traveller).
+// Conventions mirror src/components/tempo/seaterPageBuilder.js.
+import { vehicleTypeData } from "@/utilis/vehicleTypeData";
 import {
   getSpeakableSchema,
   getHowToSchema,
@@ -10,30 +12,18 @@ import {
 
 const SITE_URL = "https://www.trivenicabs.in";
 
-export function buildSeaterMetadata(key) {
-  const d = seaterTempoData[key];
+export function buildVehicleTypeMetadata(slug) {
+  const d = vehicleTypeData[slug];
+  // Real top-level routes — one page per vehicle type.
   const url = `${SITE_URL}/${d.slug}`;
-  const title = `${d.seats} Seater Tempo Traveller on Rent ₹${d.perKm}/km | AC + Driver`;
-  const description = `Hire a ${d.name.toLowerCase()} (${d.capacity}) from ₹${d.perKm}/km. ${d.tagline}. AC, push-back seats, experienced driver, transparent pricing. Call 7668570551.`;
-  const ogTitle = `${d.name} on Rent — ${d.capacity}, From ₹${d.perKm}/km | Triveni Cabs`;
+  const title = d.meta.title;
+  const description = d.meta.description;
+  const ogTitle = `${d.name} — Triveni Cabs`;
 
   return {
     title,
     description,
-    keywords: [
-      `${d.seats} seater tempo traveller`,
-      `${d.seats} seater tempo traveller on rent`,
-      `${d.seats} seater tempo traveller price`,
-      `${d.seats} seater tempo traveller per km`,
-      `${d.seats} seater tempo traveller hire`,
-      `${d.seats} seater tempo traveller delhi`,
-      `${d.seats} seater tempo traveller rate`,
-      `rent ${d.seats} seater tempo traveller`,
-      `${d.seats} seater ac tempo traveller`,
-      `tempo traveller ${d.seats} seater booking`,
-      d.premium ? "maharaja tempo traveller" : "tempo traveller on rent",
-      "tempo traveller with driver",
-    ],
+    keywords: d.meta.keywords,
     authors: [{ name: "Triveni Cabs" }],
     creator: "Triveni Cabs",
     publisher: "Triveni Cabs",
@@ -51,7 +41,7 @@ export function buildSeaterMetadata(key) {
           url: `${SITE_URL}${d.image}`,
           width: 1200,
           height: 630,
-          alt: `${d.name} on rent — Triveni Cabs`,
+          alt: `${d.name} — Triveni Cabs`,
         },
       ],
     },
@@ -76,8 +66,8 @@ export function buildSeaterMetadata(key) {
   };
 }
 
-export function buildSeaterJsonLd(key, { aggregateRating, review }) {
-  const d = seaterTempoData[key];
+export function buildVehicleTypeJsonLd(slug, { aggregateRating, review }) {
+  const d = vehicleTypeData[slug];
   const url = `${SITE_URL}/${d.slug}`;
   const today = getTodayDate();
   const speakable = getSpeakableSchema([
@@ -93,7 +83,7 @@ export function buildSeaterJsonLd(key, { aggregateRating, review }) {
     steps: [
       {
         name: "Share your trip details",
-        text: `Call 7668570551 or WhatsApp us with your route, dates and group size to confirm the ${d.shortName} is the right fit.`,
+        text: `Call 7668570551 or WhatsApp us with your route, dates and group size to confirm the right ${d.shortName} variant.`,
       },
       {
         name: "Get a transparent quote",
@@ -101,21 +91,21 @@ export function buildSeaterJsonLd(key, { aggregateRating, review }) {
       },
       {
         name: "Confirm your booking",
-        text: `Approve the quote and confirm with a small advance. We lock in your AC ${d.shortName} tempo traveller and assign a driver.`,
+        text: `Approve the quote and confirm with a small advance. We lock in your AC ${d.shortName} and assign an experienced driver.`,
       },
       {
         name: "Travel comfortably",
-        text: "Your tempo traveller arrives on time. Enjoy AC comfort, push-back seats and 24/7 support throughout the journey.",
+        text: "Your vehicle arrives on time. Enjoy AC comfort, premium seats and 24/7 support throughout the journey.",
       },
     ],
   });
 
   const article = getArticleSchema({
-    slug: d.slug,
-    headline: `${d.name} on Rent — Capacity, Pricing & Booking Guide`,
-    description: `Complete guide to hiring a ${d.name.toLowerCase()}: seating capacity, per-km pricing from ₹${d.perKm}/km, what's included, popular routes and how to book.`,
+    slug: `${d.slug}`,
+    headline: `${d.name} — Capacity, Pricing & Booking Guide`,
+    description: `Complete guide to hiring a ${d.name.toLowerCase()}: seater variants, per-km pricing from ₹${d.perKm}/km, what's included, popular routes and how to book.`,
     image: d.image,
-    datePublished: "2024-02-01",
+    datePublished: "2026-08-12",
     dateModified: today,
     authorName: "editorial",
     speakableSelectors: [
@@ -132,8 +122,8 @@ export function buildSeaterJsonLd(key, { aggregateRating, review }) {
         "@type": "WebPage",
         "@id": `${url}#webpage`,
         url,
-        name: `${d.name} on Rent`,
-        description: `Hire a ${d.name.toLowerCase()} (${d.capacity}) from ₹${d.perKm}/km with AC and an experienced driver.`,
+        name: `${d.name}`,
+        description: d.meta.description,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         breadcrumb: { "@id": `${url}#breadcrumb` },
         inLanguage: "en-IN",
@@ -147,13 +137,7 @@ export function buildSeaterJsonLd(key, { aggregateRating, review }) {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Tempo Traveller",
-            item: `${SITE_URL}/tempo-traveller`,
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: d.name,
+            name: d.shortName,
             item: url,
           },
         ],
@@ -173,9 +157,9 @@ export function buildSeaterJsonLd(key, { aggregateRating, review }) {
       {
         "@type": "Service",
         "@id": `${url}#service`,
-        serviceType: "Tempo Traveller Rental",
-        name: `${d.name} on Rent`,
-        description: `${d.name} rental (${d.capacity}) with an experienced driver across North India for outstation trips, weddings, group tours and pilgrimages.`,
+        serviceType: `${d.type} Rental`,
+        name: `${d.name}`,
+        description: `${d.name} (${d.capacity}) with an experienced driver across North India for outstation trips, weddings, group tours and pilgrimages.`,
         provider: {
           "@type": "TravelAgency",
           "@id": `${SITE_URL}/#organization`,
@@ -197,10 +181,10 @@ export function buildSeaterJsonLd(key, { aggregateRating, review }) {
         "@type": "Product",
         "@id": `${url}#product`,
         name: `${d.name} — Triveni Cabs`,
-        description: `${d.name} (${d.model}, ${d.capacity}) for hire across North India. AC, push-back seats and an experienced driver from ₹${d.perKm}/km.`,
+        description: `${d.name} (${d.model}, ${d.capacity}) for hire across North India. AC, premium seats and an experienced driver from ₹${d.perKm}/km.`,
         image: `${SITE_URL}${d.image}`,
         brand: { "@type": "Brand", name: "Triveni Cabs" },
-        category: "Tempo Traveller Rental",
+        category: `${d.type} Rental`,
         offers: {
           "@type": "Offer",
           priceCurrency: "INR",

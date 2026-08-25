@@ -1,5 +1,6 @@
 import { placesToVisitPages } from '@/utilis/placesToVisitData';
 import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = placesToVisitPages.lucknow;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
@@ -7,7 +8,7 @@ const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, sl
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '15+ Places to Visit Near Lucknow by Car | Heritage & Pilgrimage',
+  title: tightenTitle('15+ Places to Visit Near Lucknow by Car | Heritage & Pilgrimage'),
   description: `Best places to visit near Lucknow by car. Ayodhya (135 km), Varanasi (300 km), Prayagraj (200 km), Agra (330 km) & more. Sedan ₹11/km. Call 7668570551.`,
   keywords: 'places to visit near lucknow, places near lucknow, weekend getaways from lucknow, day trips from lucknow, lucknow nearby places, places around lucknow, tourist places near lucknow, places to visit near lucknow by car',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

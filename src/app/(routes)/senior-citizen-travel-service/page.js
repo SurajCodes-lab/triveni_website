@@ -1,5 +1,6 @@
 import { getSpecialTransportBySlug } from '@/utilis/specialTransportData';
 import SpecialTransportClient from '@/components/special/SpecialTransportClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const service = getSpecialTransportBySlug('senior-citizen-travel-service');
 
@@ -15,7 +16,7 @@ const fleetImages = [
 ];
 
 export const metadata = {
-  title: 'Senior Citizen Travel Service | Elderly-Friendly Cabs',
+  title: tightenTitle('Senior Citizen Travel Service | Elderly-Friendly Cabs'),
   description: 'Book senior citizen cab service. Patient drivers, gentle driving, door-to-door assistance. Sedan from Rs 12/km. Regular packages for temple visits.',
   keywords: 'senior citizen cab, elderly cab service, senior citizen travel, elderly transport, old age cab, senior citizen taxi, elderly friendly cab, senior citizen car service',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

@@ -1,11 +1,30 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Heart, Camera, Hotel, Coffee, Route, Compass, HelpCircle, Gift, Sparkles } from '@/components/ui/icons';
+import { Phone, MapPin, Shield, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Heart, Camera, Hotel, Compass, HelpCircle, Gift, Sparkles } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+
+/* Verified destination hero photos (public/images/sightseeing/<City>/) */
+const HERO_IMAGES = {
+  'Shimla & Manali': '/images/sightseeing/Shimla/shimla_hero_section.jpg',
+  Mussoorie: '/images/sightseeing/Mussoorie/Mussorrie_hero_section.jpg',
+  Nainital: '/images/sightseeing/Nainital/Nainital_hero_section.jpg',
+  Udaipur: '/images/sightseeing/Udaipur/Lake_Pichola.jpg',
+  Kashmir: '/images/sightseeing/Kashmir_Valley/Dal_Lake.jpg',
+  Manali: '/images/sightseeing/Manali/Manali_hero_section.jpg',
+  'Jaipur & Udaipur': '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
+  'Agra - Taj Mahal': '/images/sightseeing/Agra/Taj_mahal.jpg',
+  Dharamshala: '/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg',
+};
+const HUB_HERO_IMAGE = '/images/sightseeing/Agra/Taj_mahal.jpg';
+
+/* Ultra-Premium v2 CTA system — gold bg + black text, compact on desktop */
+const GOLD_CTA =
+  'sheen inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-7 py-3.5 text-base font-bold text-black shadow-gold-bloom transition-colors hover:bg-[#ffd84f] lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]';
+const GHOST_CTA_DARK =
+  'inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-7 py-3.5 text-base font-semibold text-white backdrop-blur-xl transition-colors hover:bg-white/10 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]';
 
 export default function HoneymoonTripClient({ data }) {
   const phoneNumber = '7668570551';
@@ -17,259 +36,136 @@ export default function HoneymoonTripClient({ data }) {
   }
 
   const stickyWhatsappText = `Hi, I'd like to plan a honeymoon trip to ${data.destination} by car from Delhi. Please share package details and best rates.`;
+  const heroImg = HERO_IMAGES[data.destination];
 
   return (
-    <main className="min-h-screen bg-rose-950 text-white">
+    <main className="min-h-screen bg-slate-950 text-white">
       <SetStickyCta
         price={`Rs ${data.price.sedan.toLocaleString()}`}
         label={`${data.destination} Honeymoon`}
         whatsappText={stickyWhatsappText}
       />
-      <style jsx>{`
-        @keyframes heart-float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
-          25% { transform: translateY(-20px) rotate(5deg); opacity: 1; }
-          50% { transform: translateY(-35px) rotate(-3deg); opacity: 0.8; }
-          75% { transform: translateY(-15px) rotate(4deg); opacity: 0.9; }
-        }
-        @keyframes shimmer {
-          0% { background-position: -200% center; }
-          100% { background-position: 200% center; }
-        }
-        @keyframes rose-glow {
-          0%, 100% { box-shadow: 0 0 15px rgba(244, 63, 94, 0.1), 0 0 30px rgba(244, 63, 94, 0.05); }
-          50% { box-shadow: 0 0 25px rgba(244, 63, 94, 0.25), 0 0 50px rgba(244, 63, 94, 0.1); }
-        }
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          25% { background-position: 50% 100%; }
-          50% { background-position: 100% 50%; }
-          75% { background-position: 50% 0%; }
-          100% { background-position: 0% 50%; }
-        }
-        @keyframes petal-fall {
-          0% { transform: translateY(-10%) rotate(0deg) translateX(0px); opacity: 0; }
-          10% { opacity: 0.6; }
-          50% { transform: translateY(50vh) rotate(180deg) translateX(30px); opacity: 0.4; }
-          90% { opacity: 0.2; }
-          100% { transform: translateY(100vh) rotate(360deg) translateX(-20px); opacity: 0; }
-        }
-        @keyframes pulse-cta {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.5); }
-          50% { box-shadow: 0 0 0 12px rgba(244, 63, 94, 0); }
-        }
-        @keyframes icon-glow {
-          0%, 100% { filter: drop-shadow(0 0 4px rgba(251, 113, 133, 0.3)); }
-          50% { filter: drop-shadow(0 0 12px rgba(251, 113, 133, 0.6)); }
-        }
-        .shimmer-rose {
-          background: linear-gradient(
-            120deg,
-            #fda4af 0%,
-            #fecdd3 25%,
-            #fff1f2 50%,
-            #fecdd3 75%,
-            #fda4af 100%
-          );
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation: shimmer 4s linear infinite;
-        }
-        .hover-lift {
-          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-        }
-        .hover-lift:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(244, 63, 94, 0.15), 0 8px 16px rgba(244, 63, 94, 0.1);
-        }
-        .gradient-bg-animated {
-          background: linear-gradient(135deg, #1a0a0e, #2d0a18, #1a0a0e, #2d0a18, #1a0a0e);
-          background-size: 400% 400%;
-          animation: gradient-shift 15s ease infinite;
-        }
-      `}</style>
 
-      {/* Hero Section - Romantic Rose/Pink */}
-      <section className="relative overflow-hidden min-h-[90vh] flex items-center gradient-bg-animated">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-950 via-rose-900/80 to-pink-950/90" />
+      {/* ─── HERO — destination photo, scrim on the text side only ─── */}
+      <section className="relative isolate overflow-hidden bg-slate-950">
+        {heroImg ? (
+          <img
+            src={heroImg}
+            alt={`${data.destination} — honeymoon destination by car from Delhi`}
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-aurora" />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/15" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 to-transparent" />
 
-        {/* Glowing orbs with pulse */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-[10%] w-72 h-72 bg-rose-500/15 rounded-full blur-[100px] animate-pulse" />
-          <div className="absolute bottom-20 right-[15%] w-96 h-96 bg-pink-500/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-rose-400/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '4s' }} />
-        </div>
-
-        {/* Grid/dot pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
-          backgroundSize: '32px 32px'
-        }} />
-
-        {/* Floating decorative hearts */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[
-            { left: '8%', top: '15%', delay: '0s', size: 'w-5 h-5', duration: '6s' },
-            { left: '85%', top: '25%', delay: '1.5s', size: 'w-4 h-4', duration: '7s' },
-            { left: '20%', top: '70%', delay: '3s', size: 'w-6 h-6', duration: '5s' },
-            { left: '75%', top: '60%', delay: '0.8s', size: 'w-3 h-3', duration: '8s' },
-            { left: '50%', top: '20%', delay: '2.2s', size: 'w-4 h-4', duration: '6.5s' },
-            { left: '92%', top: '75%', delay: '4s', size: 'w-5 h-5', duration: '5.5s' },
-          ].map((heart, i) => (
-            <div
-              key={i}
-              className={`absolute ${heart.size} text-rose-400/30`}
-              style={{
-                left: heart.left,
-                top: heart.top,
-                animation: `heart-float ${heart.duration} ease-in-out infinite`,
-                animationDelay: heart.delay,
-              }}
-            >
-              <Heart className="w-full h-full fill-current" />
-            </div>
-          ))}
-        </div>
-
-        {/* Falling petals */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={`petal-${i}`}
-              className="absolute w-2 h-2 rounded-full bg-rose-400/20"
-              style={{
-                left: `${15 + i * 15}%`,
-                animation: `petal-fall ${8 + i * 2}s linear infinite`,
-                animationDelay: `${i * 1.5}s`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Sparkle accents */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[30%] left-[30%] w-1 h-1 bg-white rounded-full animate-ping" style={{ animationDuration: '3s' }} />
-          <div className="absolute top-[50%] right-[25%] w-1.5 h-1.5 bg-rose-200 rounded-full animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }} />
-          <div className="absolute top-[20%] right-[40%] w-1 h-1 bg-pink-200 rounded-full animate-ping" style={{ animationDuration: '3.5s', animationDelay: '2s' }} />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
+        <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-rose-300/80 mb-8">
-            <Link href="/" className="hover:text-white transition-colors duration-300">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <Link href="/honeymoon-trip-by-car" className="hover:text-white transition-colors duration-300">Honeymoon Trips</Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-rose-200">{data.destination}</span>
+          <nav className="mb-8 flex items-center gap-2 text-sm text-rose-200/80">
+            <Link href="/" className="transition-colors hover:text-white">Home</Link>
+            <ChevronRight className="h-3 w-3" />
+            <Link href="/honeymoon-trip-by-car" className="transition-colors hover:text-white">Honeymoon Trips</Link>
+            <ChevronRight className="h-3 w-3" />
+            <span className="text-rose-100">{data.destination}</span>
           </nav>
 
-          <div className="flex items-center gap-3 mb-6">
-            <div className="flex items-center gap-2 bg-rose-500/15 text-rose-200 px-5 py-2 rounded-full text-sm font-medium border border-rose-500/25 backdrop-blur-sm">
-              <Heart className="w-4 h-4" style={{ animation: 'icon-glow 2s ease-in-out infinite' }} />
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#FACF2D]/30 bg-black/40 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#FACF2D] backdrop-blur-xl">
+              <Heart className="h-3.5 w-3.5" />
               Honeymoon Trip
-            </div>
-            <div className="flex items-center gap-1 bg-pink-500/15 text-pink-200 px-5 py-2 rounded-full text-sm font-medium border border-pink-500/25 backdrop-blur-sm">
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-full border border-rose-400/30 bg-black/40 px-4 py-1.5 backdrop-blur-xl">
               {[...Array(data.romanceRating)].map((_, i) => (
-                <Heart key={i} className="w-3.5 h-3.5 fill-current" />
+                <Heart key={i} className="h-3.5 w-3.5 fill-current text-rose-300" />
               ))}
-            </div>
+            </span>
           </div>
 
-          <h1 className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="shimmer-rose">{data.destination}</span>
-            <br />
-            <span className="text-white/90 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Honeymoon by Car</span>
+          <h1 className="speakable-headline font-display-serif mb-6 max-w-3xl text-3xl font-bold leading-[1.08] sm:text-4xl md:text-5xl lg:text-6xl">
+            <span className="text-gold-foil">{data.destination}</span>
+            <span className="mt-2 block text-xl font-semibold text-white/85 sm:text-2xl md:text-3xl lg:text-4xl">Honeymoon by Car</span>
           </h1>
-          <p className="speakable-lead text-lg sm:text-xl text-rose-200/90 mb-4 max-w-3xl leading-relaxed">
+          <p className="speakable-lead mb-4 max-w-3xl text-lg leading-relaxed text-rose-50/85 sm:text-xl">
             A {data.destination} honeymoon by car from Delhi starts at Rs {data.price.sedan.toLocaleString()} for a private sedan, all-inclusive of toll, parking and driver allowance. Triveni Cabs offers a complimentary decorated car option, experienced couple-friendly drivers and scenic romantic stops for an intimate getaway.
           </p>
-          <p className="text-base text-rose-200/70 mb-10 max-w-3xl leading-relaxed">
+          <p className="mb-10 max-w-3xl text-base leading-relaxed text-rose-50/65">
             {data.tagline}. Private {data.vehicle.type.toLowerCase()} ride with decorated car option and scenic stops.
           </p>
 
-          {/* Animated Stat Badges */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+          {/* Stat panel — glass on dark */}
+          <div className="mb-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
             {[
-              { icon: Route, label: 'Distance', value: data.distance, color: 'from-rose-500/20 to-pink-500/20', borderColor: 'border-rose-500/20' },
-              { icon: Calendar, label: 'Duration', value: data.duration, color: 'from-pink-500/20 to-rose-500/20', borderColor: 'border-pink-500/20' },
-              { icon: Heart, label: 'Romance Rating', value: `${data.romanceRating}/5`, color: 'from-rose-500/20 to-red-500/20', borderColor: 'border-rose-500/20' },
-              { icon: IndianRupee, label: 'Starting From', value: `Rs ${data.price.sedan.toLocaleString()}`, color: 'from-red-500/20 to-rose-500/20', borderColor: 'border-red-500/20' },
+              { icon: MapPin, label: 'Distance', value: data.distance },
+              { icon: Calendar, label: 'Duration', value: data.duration },
+              { icon: Heart, label: 'Romance Rating', value: `${data.romanceRating}/5` },
+              { icon: IndianRupee, label: 'Starting From', value: `Rs ${data.price.sedan.toLocaleString()}` },
             ].map((item, i) => (
-              <div
-                key={i}
-                className={`hover-lift bg-gradient-to-br ${item.color} backdrop-blur-2xl rounded-2xl border ${item.borderColor} p-5 cursor-default`}
-                style={{ animation: 'rose-glow 4s ease-in-out infinite', animationDelay: `${i * 0.5}s` }}
-              >
-                <item.icon className="w-5 h-5 text-rose-400 mb-2" style={{ animation: 'icon-glow 3s ease-in-out infinite' }} />
-                <p className="text-xs text-rose-300/80 uppercase tracking-wider font-medium">{item.label}</p>
-                <p className="font-bold text-white text-lg mt-0.5">{item.value}</p>
+              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl sm:p-5">
+                <item.icon className="mb-2 h-5 w-5 text-[#FACF2D]" />
+                <p className="text-[11px] font-medium uppercase tracking-wider text-rose-100/60">{item.label}</p>
+                <p className="mt-0.5 text-lg font-bold text-white">{item.value}</p>
               </div>
             ))}
           </div>
 
           {/* CTA + Lead Capture */}
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="grid items-start gap-8 lg:grid-cols-2">
             <div>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3">
                 <a
                   onClick={() => trackPhoneCall('honeymoon_trip_hero')} href={`tel:${phoneNumber}`}
-                  className="inline-flex items-center justify-center gap-2 min-h-[52px] bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-rose-500/25"
-                  style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
+                  className={GOLD_CTA}
                 >
-                  <Phone className="w-5 h-5" />
-                  Call Now - {phoneNumber}
+                  <Phone className="h-4 w-4" />
+                  Call Now — {phoneNumber}
                 </a>
                 <a
                   onClick={() => trackWhatsAppClick('honeymoon_trip_hero', stickyWhatsappText)}
                   href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`}
                   target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 min-h-[52px] bg-green-600/90 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 backdrop-blur-sm border border-green-500/30 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/15"
+                  className={GHOST_CTA_DARK}
                 >
                   WhatsApp Enquiry
                 </a>
               </div>
               {/* Trust row */}
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-6 text-sm text-rose-100/80">
-                <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-rose-300 fill-current" /> 4.9&#9733; Rated</span>
-                <span className="flex items-center gap-1.5"><Heart className="w-4 h-4 text-rose-300" /> 10,000+ trips</span>
-                <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-rose-300" /> Verified drivers</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-rose-300" /> No advance payment</span>
-                <span className="flex items-center gap-1.5"><Gift className="w-4 h-4 text-rose-300" /> Decorated car option</span>
+              <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-rose-50/75">
+                <span className="flex items-center gap-1.5"><Star className="h-4 w-4 fill-current text-[#FACF2D]" /> 4.9&#9733; Rated</span>
+                <span className="flex items-center gap-1.5"><Heart className="h-4 w-4 text-rose-300" /> 10,000+ trips</span>
+                <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-[#FACF2D]" /> Verified drivers</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-[#FACF2D]" /> No advance payment</span>
+                <span className="flex items-center gap-1.5"><Gift className="h-4 w-4 text-rose-300" /> Decorated car option</span>
               </div>
             </div>
-            <div className="lg:justify-self-end w-full">
+            <div className="w-full lg:justify-self-end">
               <QuickEnquiryForm fromCity="Delhi" toCity={data.destination} pageType="route" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Decorated Car Upsell */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-rose-950 via-rose-900/50 to-rose-950" />
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
-        }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="hover-lift bg-gradient-to-r from-rose-500/10 via-pink-500/15 to-rose-500/10 backdrop-blur-2xl rounded-3xl border border-rose-500/20 p-8 sm:p-10" style={{ animation: 'rose-glow 5s ease-in-out infinite' }}>
-            <div className="flex flex-col sm:flex-row items-center gap-8">
-              <div className="w-24 h-24 bg-gradient-to-br from-rose-500/30 to-pink-500/30 rounded-3xl flex items-center justify-center flex-shrink-0 border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-                <Gift className="w-12 h-12 text-rose-300" style={{ animation: 'icon-glow 2s ease-in-out infinite' }} />
-              </div>
+      {/* ─── DECORATED CAR UPSELL — warm-light band ─── */}
+      <section className="bg-[#FFF3EE] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-rose-900/10 bg-white p-8 shadow-sm sm:p-10">
+            <div className="flex flex-col items-center gap-8 sm:flex-row">
+              <span className="flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-3xl bg-rose-50 ring-1 ring-rose-200">
+                <Gift className="h-12 w-12 text-rose-500" />
+              </span>
               <div className="flex-1 text-center sm:text-left">
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Decorated Car Package</h2>
-                <p className="text-rose-200/90 mb-4 leading-relaxed">
+                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.25em] text-rose-600">Just Married</p>
+                <h2 className="font-display-serif mb-3 text-2xl font-bold sm:text-3xl">Decorated Car Package</h2>
+                <p className="mb-4 leading-relaxed text-slate-600">
                   Make your journey special! Fresh flower decoration, &quot;Just Married&quot; ribbon, welcome bouquet, chocolates, and congratulations card.
                 </p>
-                <p className="text-4xl font-bold shimmer-rose inline-block">
-                  +Rs {data.decoratedCarPrice.toLocaleString()} <span className="text-base font-normal text-rose-400">only</span>
+                <p className="text-4xl font-bold text-slate-900">
+                  +Rs {data.decoratedCarPrice.toLocaleString()} <span className="text-base font-normal text-rose-500">only</span>
                 </p>
               </div>
-              <a onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`} className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 whitespace-nowrap shadow-lg shadow-rose-500/20 hover:shadow-rose-500/30">
+              <a onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`} className={GOLD_CTA}>
                 Add to Booking
               </a>
             </div>
@@ -277,69 +173,69 @@ export default function HoneymoonTripClient({ data }) {
         </div>
       </section>
 
-      {/* Vehicle & Pricing */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-rose-950" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-500/5 rounded-full blur-[120px]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-              <Car className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Your Private Ride</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-8">
+      {/* ─── VEHICLE & PRICING — dark band ─── */}
+      <section className="relative overflow-hidden bg-slate-950 py-16 md:py-24">
+        <div className="absolute inset-0 bg-aurora opacity-60" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FACF2D]">Private &amp; Intimate</p>
+          <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-400/25 bg-rose-500/10">
+              <Car className="h-5 w-5 text-rose-300" />
+            </span>
+            Your Private Ride
+          </h2>
+          <div className="grid gap-8 sm:grid-cols-2">
             {/* Sedan */}
-            <div className="hover-lift bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-rose-500/25 p-8 hover:bg-white/[0.08] hover:border-rose-500/40 hover:shadow-2xl hover:shadow-rose-500/10 transition-all duration-500 relative overflow-hidden" style={{ animation: 'rose-glow 5s ease-in-out infinite' }}>
-              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-rose-500 via-pink-500 to-rose-500 rounded-r" />
-              <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg shadow-rose-500/20">
-                <Heart className="w-3.5 h-3.5 fill-current" /> Popular for Couples
+            <div className="relative overflow-hidden rounded-2xl border border-[#FACF2D]/30 bg-white/5 p-8 backdrop-blur-xl">
+              <div className="absolute left-0 top-0 h-full w-1 rounded-r bg-gradient-to-b from-[#FACF2D] via-rose-400 to-[#FACF2D]" />
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FACF2D] px-4 py-1.5 text-sm font-semibold text-black">
+                <Heart className="h-3.5 w-3.5 fill-current" /> Popular for Couples
               </span>
-              <h3 className="text-xl font-bold text-white mt-4 mb-1">{data.vehicle.name}</h3>
-              <p className="text-rose-300/80 text-sm mb-5">Private & intimate for two</p>
-              <ul className="space-y-3 mb-8">
+              <h3 className="mb-1 mt-4 text-xl font-bold text-white">{data.vehicle.name}</h3>
+              <p className="mb-5 text-sm text-rose-200/70">Private &amp; intimate for two</p>
+              <ul className="mb-8 space-y-3">
                 {data.vehicle.features.map((f, i) => (
-                  <li key={i} className="flex items-center gap-3 text-rose-200/90 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-rose-400 flex-shrink-0" />
+                  <li key={i} className="flex items-center gap-3 text-sm text-rose-50/85">
+                    <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[#FACF2D]" />
                     {f}
                   </li>
                 ))}
               </ul>
-              <div className="border-t border-rose-500/15 pt-5">
-                <p className="text-3xl font-bold shimmer-rose inline-block">Rs {data.price.sedan.toLocaleString()}</p>
-                <p className="text-rose-300/70 text-sm mt-1">Round trip, all inclusive</p>
+              <div className="border-t border-white/10 pt-5">
+                <p className="text-3xl font-bold text-[#FACF2D]">Rs {data.price.sedan.toLocaleString()}</p>
+                <p className="mt-1 text-sm text-rose-200/60">Round trip, all inclusive</p>
               </div>
             </div>
             {/* SUV */}
             {data.vehicle.suvOption && (
-              <div className="hover-lift bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-8 hover:bg-white/[0.08] hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 transition-all duration-500 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-pink-500/50 via-rose-500/50 to-pink-500/50 rounded-r" />
-                <span className="inline-flex items-center gap-1.5 bg-white/10 text-rose-200 px-4 py-1.5 rounded-full text-sm font-semibold border border-white/10">
-                  <Sparkles className="w-3.5 h-3.5" /> Extra Comfort
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+                <div className="absolute left-0 top-0 h-full w-1 rounded-r bg-gradient-to-b from-rose-400/50 via-rose-500/50 to-rose-400/50" />
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-semibold text-rose-100">
+                  <Sparkles className="h-3.5 w-3.5" /> Extra Comfort
                 </span>
-                <h3 className="text-xl font-bold text-white mt-4 mb-1">{data.vehicle.suvOption.name}</h3>
-                <p className="text-rose-300/80 text-sm mb-5">Spacious & premium ride</p>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center gap-3 text-rose-200/90 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-rose-400 flex-shrink-0" />
+                <h3 className="mb-1 mt-4 text-xl font-bold text-white">{data.vehicle.suvOption.name}</h3>
+                <p className="mb-5 text-sm text-rose-200/70">Spacious &amp; premium ride</p>
+                <ul className="mb-8 space-y-3">
+                  <li className="flex items-center gap-3 text-sm text-rose-50/85">
+                    <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[#FACF2D]" />
                     7-seater spacious SUV
                   </li>
-                  <li className="flex items-center gap-3 text-rose-200/90 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-rose-400 flex-shrink-0" />
+                  <li className="flex items-center gap-3 text-sm text-rose-50/85">
+                    <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[#FACF2D]" />
                     Extra luggage capacity
                   </li>
-                  <li className="flex items-center gap-3 text-rose-200/90 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-rose-400 flex-shrink-0" />
+                  <li className="flex items-center gap-3 text-sm text-rose-50/85">
+                    <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[#FACF2D]" />
                     Premium comfort on hills
                   </li>
-                  <li className="flex items-center gap-3 text-rose-200/90 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-rose-400 flex-shrink-0" />
+                  <li className="flex items-center gap-3 text-sm text-rose-50/85">
+                    <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[#FACF2D]" />
                     Captain seats for relaxation
                   </li>
                 </ul>
                 <div className="border-t border-white/10 pt-5">
                   <p className="text-3xl font-bold text-white">Rs {data.vehicle.suvOption.price.toLocaleString()}</p>
-                  <p className="text-rose-300/70 text-sm mt-1">Round trip, all inclusive</p>
+                  <p className="mt-1 text-sm text-rose-200/60">Round trip, all inclusive</p>
                 </div>
               </div>
             )}
@@ -347,55 +243,41 @@ export default function HoneymoonTripClient({ data }) {
         </div>
       </section>
 
-      {/* Couple Activities */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-rose-950 via-rose-900/30 to-rose-950" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(244, 63, 94, 0.06) 0%, transparent 70%)'
-        }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-              <Heart className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Romantic Activities for Couples</h2>
-          </div>
-          <p className="text-rose-300/80 mb-10 ml-16">Experiences that bring you closer together</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* ─── COUPLE ACTIVITIES — warm-light band ─── */}
+      <section className="bg-[#FFF3EE] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-rose-600">Together</p>
+          <h2 className="font-display-serif mb-3 text-2xl font-bold sm:text-3xl md:text-4xl">Romantic Activities for Couples</h2>
+          <p className="mb-10 text-lg text-slate-600">Experiences that bring you closer together</p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {data.coupleActivities.map((activity, i) => (
-              <div key={i} className="hover-lift bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-7 hover:bg-white/[0.08] hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 transition-all duration-500 group">
-                <div className="w-12 h-12 bg-gradient-to-br from-rose-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:from-rose-500/30 group-hover:to-pink-500/30 transition-all duration-500 border border-rose-500/10 group-hover:border-rose-500/25">
-                  <Heart className="w-6 h-6 text-rose-400 group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="font-bold text-white text-lg mb-2">{activity.name}</h3>
-                <p className="text-sm text-rose-200/80 leading-relaxed">{activity.description}</p>
+              <div key={i} className="rounded-2xl border border-rose-900/10 bg-white p-7 shadow-sm">
+                <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-rose-50 ring-1 ring-rose-200">
+                  <Heart className="h-5 w-5 text-rose-500" />
+                </span>
+                <h3 className="mb-2 text-lg font-bold">{activity.name}</h3>
+                <p className="text-sm leading-relaxed text-slate-600">{activity.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Romantic Spots */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-rose-950" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-500/5 rounded-full blur-[120px]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-              <MapPin className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Romantic Spots to Visit</h2>
-          </div>
-          <p className="text-rose-300/80 mb-10 ml-16">Hidden gems and scenic viewpoints for couples</p>
-          <div className="grid sm:grid-cols-2 gap-6">
+      {/* ─── ROMANTIC SPOTS — dark band ─── */}
+      <section className="bg-slate-950 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-rose-300">Hidden Gems</p>
+          <h2 className="font-display-serif mb-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">Romantic Spots to Visit</h2>
+          <p className="mb-10 text-lg text-rose-100/55">Hidden gems and scenic viewpoints for couples</p>
+          <div className="grid gap-6 sm:grid-cols-2">
             {data.romanticSpots.map((spot, i) => (
-              <div key={i} className="hover-lift flex gap-5 bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-6 hover:bg-white/[0.08] hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 transition-all duration-500 group">
-                <div className="w-14 h-14 bg-gradient-to-br from-rose-500/20 to-pink-500/20 rounded-2xl flex items-center justify-center flex-shrink-0 border border-rose-500/10 group-hover:border-rose-500/25 transition-all duration-300">
-                  <Sparkles className="w-7 h-7 text-rose-400 group-hover:scale-110 transition-transform duration-300" />
-                </div>
+              <div key={i} className="flex gap-5 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-colors hover:border-rose-400/30">
+                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl border border-rose-400/20 bg-rose-500/10">
+                  <Sparkles className="h-6 w-6 text-rose-300" />
+                </span>
                 <div>
-                  <h3 className="font-bold text-white text-lg mb-1.5">{spot.name}</h3>
-                  <p className="text-sm text-rose-200/80 leading-relaxed">{spot.description}</p>
+                  <h3 className="mb-1.5 text-lg font-bold text-white">{spot.name}</h3>
+                  <p className="text-sm leading-relaxed text-rose-50/65">{spot.description}</p>
                 </div>
               </div>
             ))}
@@ -403,33 +285,24 @@ export default function HoneymoonTripClient({ data }) {
         </div>
       </section>
 
-      {/* Day-wise Itinerary */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-rose-950 via-rose-900/30 to-rose-950" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse at 30% 50%, rgba(244, 63, 94, 0.05) 0%, transparent 60%)'
-        }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-              <Calendar className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Your Romantic Itinerary</h2>
-          </div>
-          <p className="text-rose-300/80 mb-10 ml-16">Designed for romance at every turn</p>
+      {/* ─── ITINERARY — warm-light band ─── */}
+      <section className="bg-[#FFF3EE] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-rose-600">Day by Day</p>
+          <h2 className="font-display-serif mb-3 text-2xl font-bold sm:text-3xl md:text-4xl">Your Romantic Itinerary</h2>
+          <p className="mb-10 text-lg text-slate-600">Designed for romance at every turn</p>
           <div className="space-y-5">
             {data.itinerary.map((day, i) => (
-              <div key={i} className="hover-lift bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-7 hover:bg-white/[0.08] hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 transition-all duration-500 relative overflow-hidden">
-                {/* Gradient accent border on left */}
-                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-rose-400 via-pink-500 to-rose-600 rounded-r" />
-                <div className="flex items-start gap-5 ml-3">
-                  <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-pink-500 rounded-2xl flex flex-col items-center justify-center flex-shrink-0 shadow-lg shadow-rose-500/20">
-                    <span className="text-xs font-semibold text-rose-100 uppercase tracking-wider">Day</span>
+              <div key={i} className="relative overflow-hidden rounded-2xl border border-rose-900/10 bg-white p-7 shadow-sm">
+                <div className="absolute left-0 top-0 h-full w-1.5 rounded-r bg-gradient-to-b from-rose-400 via-rose-500 to-rose-400" />
+                <div className="ml-3 flex items-start gap-5">
+                  <div className="flex h-16 w-16 flex-shrink-0 flex-col items-center justify-center rounded-2xl bg-slate-900">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[#FACF2D]">Day</span>
                     <span className="text-xl font-bold leading-none text-white">{day.day}</span>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white mb-2">{day.title}</h3>
-                    <p className="text-rose-200/80 leading-relaxed">{day.description}</p>
+                    <h3 className="mb-2 text-lg font-bold">{day.title}</h3>
+                    <p className="leading-relaxed text-slate-600">{day.description}</p>
                   </div>
                 </div>
               </div>
@@ -438,115 +311,96 @@ export default function HoneymoonTripClient({ data }) {
         </div>
       </section>
 
-      {/* Photography Spots */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-rose-950" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-rose-500/5 rounded-full blur-[120px]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-              <Camera className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Best Photography Spots for Couples</h2>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
+      {/* ─── PHOTOGRAPHY SPOTS — dark band ─── */}
+      <section className="bg-slate-950 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-rose-300">Frame It</p>
+          <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-400/25 bg-rose-500/10">
+              <Camera className="h-5 w-5 text-rose-300" />
+            </span>
+            Best Photography Spots for Couples
+          </h2>
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3">
             {data.photographySpots.map((spot, i) => (
-              <div key={i} className="hover-lift bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-6 text-center hover:bg-white/[0.08] hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 transition-all duration-500 group">
-                <div className="w-10 h-10 bg-rose-500/15 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-rose-500/25 transition-colors duration-300 border border-rose-500/10">
-                  <Camera className="w-5 h-5 text-rose-400 group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <p className="text-sm text-rose-200/80 font-medium">{spot}</p>
+              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-xl">
+                <span className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-xl border border-rose-400/20 bg-rose-500/10">
+                  <Camera className="h-5 w-5 text-rose-300" />
+                </span>
+                <p className="text-sm font-medium text-rose-50/80">{spot}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Hotel Recommendations */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-rose-950 via-rose-900/30 to-rose-950" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse at 70% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 60%)'
-        }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-              <Hotel className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Recommended Romantic Stays</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-5">
+      {/* ─── HOTELS + BEST SEASON — warm-light band ─── */}
+      <section className="bg-[#FFF3EE] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-rose-600">Stay in Love</p>
+          <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold sm:text-3xl md:text-4xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900">
+              <Hotel className="h-5 w-5 text-[#FACF2D]" />
+            </span>
+            Recommended Romantic Stays
+          </h2>
+          <div className="grid gap-5 sm:grid-cols-2">
             {data.hotelRecommendations.map((hotel, i) => (
-              <div key={i} className="hover-lift flex items-center gap-4 bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-6 hover:bg-white/[0.08] hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 transition-all duration-500 group">
-                <div className="w-10 h-10 bg-rose-500/15 rounded-xl flex items-center justify-center flex-shrink-0 border border-rose-500/10 group-hover:border-rose-500/25 transition-all duration-300">
-                  <Hotel className="w-5 h-5 text-rose-400" />
-                </div>
-                <span className="text-rose-100 font-medium">{hotel}</span>
+              <div key={i} className="flex items-center gap-4 rounded-2xl border border-rose-900/10 bg-white p-6 shadow-sm">
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-rose-50 ring-1 ring-rose-200">
+                  <Hotel className="h-5 w-5 text-rose-500" />
+                </span>
+                <span className="font-medium text-slate-700">{hotel}</span>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Best Season */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-rose-950" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.08) 0%, transparent 50%)'
-        }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="hover-lift bg-gradient-to-r from-rose-500/10 via-pink-500/15 to-rose-500/10 backdrop-blur-2xl rounded-3xl border border-rose-500/20 p-10 sm:p-14 text-center" style={{ animation: 'rose-glow 5s ease-in-out infinite' }}>
-            <div className="w-16 h-16 bg-rose-500/15 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-rose-500/20">
-              <Calendar className="w-8 h-8 text-rose-400" style={{ animation: 'icon-glow 2s ease-in-out infinite' }} />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Best Season for Your Honeymoon</h2>
-            <p className="text-xl font-semibold shimmer-rose inline-block">{data.bestSeason}</p>
+          <div className="mt-16 rounded-3xl border border-[#FACF2D]/50 bg-[#FACF2D]/10 p-10 text-center sm:p-14">
+            <span className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-900">
+              <Calendar className="h-7 w-7 text-[#FACF2D]" />
+            </span>
+            <h2 className="font-display-serif mb-4 text-2xl font-bold sm:text-3xl">Best Season for Your Honeymoon</h2>
+            <p className="text-xl font-semibold text-rose-600">{data.bestSeason}</p>
           </div>
         </div>
       </section>
 
-      {/* Package Includes */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-rose-950 via-rose-900/30 to-rose-950" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-              <CheckCircle2 className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">What&apos;s Included</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-5">
+      {/* ─── PACKAGE INCLUDES — dark band ─── */}
+      <section className="bg-slate-950 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FACF2D]">All-Inclusive</p>
+          <h2 className="font-display-serif mb-10 text-2xl font-bold text-white sm:text-3xl md:text-4xl">What’s Included</h2>
+          <div className="grid gap-5 sm:grid-cols-2">
             {data.packageIncludes.map((item, i) => (
-              <div key={i} className="hover-lift flex items-center gap-4 bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-5 hover:bg-white/[0.08] hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 transition-all duration-500">
-                <div className="w-8 h-8 bg-green-500/15 rounded-lg flex items-center justify-center flex-shrink-0 border border-green-500/20">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                </div>
-                <span className="text-rose-100 font-medium">{item}</span>
+              <div key={i} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+                <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border border-[#FACF2D]/25 bg-[#FACF2D]/10">
+                  <CheckCircle2 className="h-4 w-4 text-[#FACF2D]" />
+                </span>
+                <span className="font-medium text-rose-50/85">{item}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-rose-950" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-rose-500/5 rounded-full blur-[120px]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-              <HelpCircle className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Frequently Asked Questions</h2>
-          </div>
-          <div className="space-y-4">
+      {/* ─── FAQ — warm-light band, two-column ─── */}
+      <section className="bg-[#FFF3EE] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-rose-600">Good to Know</p>
+          <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold sm:text-3xl md:text-4xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900">
+              <HelpCircle className="h-5 w-5 text-[#FACF2D]" />
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2 md:items-start">
             {data.faqs.map((faq, i) => (
-              <details key={i} className="group bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] overflow-hidden hover:border-rose-500/20 transition-all duration-300">
-                <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-white/[0.03] transition-colors duration-300">
-                  <h3 className="font-semibold text-white pr-4 text-lg">{faq.question}</h3>
-                  <ChevronRight className="w-5 h-5 text-rose-400 group-open:rotate-90 transition-transform duration-300 flex-shrink-0" />
+              <details key={i} className="group overflow-hidden rounded-2xl border border-rose-900/10 bg-white shadow-sm transition-colors open:border-[#FACF2D]/60">
+                <summary className="flex cursor-pointer items-center justify-between p-6 transition-colors hover:bg-rose-50/50">
+                  <h3 className="pr-4 text-lg font-semibold">{faq.question}</h3>
+                  <ChevronRight className="h-5 w-5 flex-shrink-0 text-rose-500 transition-transform duration-300 group-open:rotate-90" />
                 </summary>
-                <div className={`px-6 pb-6 text-rose-200/80 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>
+                <div className={`px-6 pb-6 leading-relaxed text-slate-600 ${i === 0 ? 'speakable-faq-first' : ''}`}>
                   {faq.answer}
                 </div>
               </details>
@@ -555,20 +409,16 @@ export default function HoneymoonTripClient({ data }) {
         </div>
       </section>
 
-      {/* Cross-Service Links */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-rose-950" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(244, 63, 94, 0.05) 0%, transparent 60%)'
-        }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20">
-              <Compass className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Explore More Services</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* ─── CROSS-SERVICE LINKS — dark band ─── */}
+      <section className="bg-slate-950 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold text-white sm:text-3xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-400/25 bg-rose-500/10">
+              <Compass className="h-5 w-5 text-rose-300" />
+            </span>
+            Explore More Services
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {(() => {
               const destSlug = data.destination.toLowerCase().replace(/\s+/g, '-');
               const links = [
@@ -582,9 +432,9 @@ export default function HoneymoonTripClient({ data }) {
                 { href: '/outstation-cabs', label: 'Outstation Cab Service' },
               ];
               return links.map((link, i) => (
-                <Link key={i} href={link.href} className="group bg-white/[0.04] backdrop-blur-2xl rounded-xl border border-white/[0.08] p-4 hover:bg-white/[0.08] hover:border-rose-500/30 transition-all duration-300 flex items-center gap-3">
-                  <ArrowRight className="w-4 h-4 text-rose-400 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
-                  <span className="text-rose-100/90 text-sm font-medium group-hover:text-white transition-colors">{link.label}</span>
+                <Link key={i} href={link.href} className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-colors hover:border-rose-400/30 hover:bg-white/10">
+                  <ArrowRight className="h-4 w-4 flex-shrink-0 text-rose-300 transition-transform group-hover:translate-x-1" />
+                  <span className="text-sm font-medium text-rose-50/85 transition-colors group-hover:text-white">{link.label}</span>
                 </Link>
               ));
             })()}
@@ -592,61 +442,33 @@ export default function HoneymoonTripClient({ data }) {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700" />
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 left-[15%] w-64 h-64 bg-white rounded-full blur-[100px]" />
-          <div className="absolute bottom-10 right-[15%] w-80 h-80 bg-pink-300 rounded-full blur-[100px]" />
-        </div>
-
-        {/* Floating hearts in CTA */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[
-            { left: '10%', top: '20%', delay: '0s', size: 'w-4 h-4' },
-            { left: '90%', top: '30%', delay: '1s', size: 'w-3 h-3' },
-            { left: '25%', top: '75%', delay: '2s', size: 'w-5 h-5' },
-            { left: '80%', top: '70%', delay: '3s', size: 'w-4 h-4' },
-          ].map((heart, i) => (
-            <div
-              key={i}
-              className={`absolute ${heart.size} text-white/20`}
-              style={{
-                left: heart.left,
-                top: heart.top,
-                animation: `heart-float 5s ease-in-out infinite`,
-                animationDelay: heart.delay,
-              }}
-            >
-              <Heart className="w-full h-full fill-current" />
-            </div>
-          ))}
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-16 h-16 bg-white/15 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/20 backdrop-blur-sm">
-            <Heart className="w-8 h-8 text-rose-100" style={{ animation: 'icon-glow 2s ease-in-out infinite' }} />
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-5 text-white">
+      {/* ─── FINAL CTA — dark band with gold ─── */}
+      <section className="relative overflow-hidden bg-slate-950 py-16 md:py-24">
+        <div className="absolute inset-0 bg-aurora" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FACF2D]/60 to-transparent" />
+        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <span className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-rose-400/25 bg-rose-500/10">
+            <Heart className="h-8 w-8 text-rose-300" />
+          </span>
+          <h2 className="font-display-serif mb-5 text-3xl font-bold text-white sm:text-4xl">
             Begin Your Love Story at {data.destination}
           </h2>
-          <p className="text-lg text-rose-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-rose-100/70">
             Private sedan, decorated car option, scenic route. From Rs {data.price.sedan.toLocaleString()}.
           </p>
-          <div className="flex flex-wrap justify-center gap-5">
+          <div className="flex flex-col flex-wrap justify-center gap-4 sm:flex-row">
             <a
               onClick={() => trackPhoneCall('honeymoon_trip_footer')} href={`tel:${phoneNumber}`}
-              className="inline-flex items-center gap-2 bg-white text-rose-700 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-rose-50 transition-all duration-300 shadow-2xl hover:shadow-white/20"
-              style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
+              className={GOLD_CTA}
             >
-              <Phone className="w-6 h-6" />
+              <Phone className="h-4 w-4" />
               Call {phoneNumber}
             </a>
-            <a onClick={() => trackWhatsAppClick('honeymoon_trip_footer', stickyWhatsappText)} href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl border border-green-500/30">
+            <a onClick={() => trackWhatsAppClick('honeymoon_trip_footer', stickyWhatsappText)} href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`} target="_blank" rel="noopener noreferrer" className={GHOST_CTA_DARK}>
               WhatsApp Booking
             </a>
           </div>
-          <p className="mt-8 text-sm text-rose-200/70">
+          <p className="mt-8 text-sm text-rose-100/50">
             Decorated car Rs 2,000 extra | Free cancellation up to 48 hours
           </p>
         </div>
@@ -658,260 +480,107 @@ export default function HoneymoonTripClient({ data }) {
 function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
   const hubWhatsappText = 'Hi, I want to plan a honeymoon trip by car from Delhi. Please share destinations and package details.';
   return (
-    <main className="min-h-screen bg-rose-950 text-white">
+    <main className="min-h-screen bg-slate-950 text-white">
       <SetStickyCta
         price="Rs 4,500"
         label="Honeymoon Trip by Car"
         whatsappText={hubWhatsappText}
       />
-      <style jsx>{`
-        @keyframes heart-float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
-          25% { transform: translateY(-20px) rotate(5deg); opacity: 1; }
-          50% { transform: translateY(-35px) rotate(-3deg); opacity: 0.8; }
-          75% { transform: translateY(-15px) rotate(4deg); opacity: 0.9; }
-        }
-        @keyframes shimmer {
-          0% { background-position: -200% center; }
-          100% { background-position: 200% center; }
-        }
-        @keyframes rose-glow {
-          0%, 100% { box-shadow: 0 0 15px rgba(244, 63, 94, 0.1), 0 0 30px rgba(244, 63, 94, 0.05); }
-          50% { box-shadow: 0 0 25px rgba(244, 63, 94, 0.25), 0 0 50px rgba(244, 63, 94, 0.1); }
-        }
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          25% { background-position: 50% 100%; }
-          50% { background-position: 100% 50%; }
-          75% { background-position: 50% 0%; }
-          100% { background-position: 0% 50%; }
-        }
-        @keyframes petal-fall {
-          0% { transform: translateY(-10%) rotate(0deg) translateX(0px); opacity: 0; }
-          10% { opacity: 0.6; }
-          50% { transform: translateY(50vh) rotate(180deg) translateX(30px); opacity: 0.4; }
-          90% { opacity: 0.2; }
-          100% { transform: translateY(100vh) rotate(360deg) translateX(-20px); opacity: 0; }
-        }
-        @keyframes pulse-cta {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.5); }
-          50% { box-shadow: 0 0 0 12px rgba(244, 63, 94, 0); }
-        }
-        @keyframes icon-glow {
-          0%, 100% { filter: drop-shadow(0 0 4px rgba(251, 113, 133, 0.3)); }
-          50% { filter: drop-shadow(0 0 12px rgba(251, 113, 133, 0.6)); }
-        }
-        @keyframes arrow-slide {
-          0%, 100% { transform: translateX(0); }
-          50% { transform: translateX(6px); }
-        }
-        .shimmer-rose {
-          background: linear-gradient(
-            120deg,
-            #fda4af 0%,
-            #fecdd3 25%,
-            #fff1f2 50%,
-            #fecdd3 75%,
-            #fda4af 100%
-          );
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation: shimmer 4s linear infinite;
-        }
-        .hover-lift {
-          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-        }
-        .hover-lift:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(244, 63, 94, 0.15), 0 8px 16px rgba(244, 63, 94, 0.1);
-        }
-        .gradient-bg-animated {
-          background: linear-gradient(135deg, #1a0a0e, #2d0a18, #1a0a0e, #2d0a18, #1a0a0e);
-          background-size: 400% 400%;
-          animation: gradient-shift 15s ease infinite;
-        }
-        .hub-card-arrow {
-          transition: transform 0.3s ease;
-        }
-        .hub-card:hover .hub-card-arrow {
-          animation: arrow-slide 1s ease-in-out infinite;
-        }
-      `}</style>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[90vh] flex items-center gradient-bg-animated">
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-950 via-rose-900/80 to-pink-950/90" />
+      {/* ─── HERO — Taj Mahal photo, scrim on the text side only ─── */}
+      <section className="relative isolate overflow-hidden bg-slate-950">
+        <img
+          src={HUB_HERO_IMAGE}
+          alt="Taj Mahal, Agra — the symbol of eternal love, a top honeymoon drive from Delhi"
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/15" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 to-transparent" />
 
-        {/* Glowing orbs */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-[10%] w-72 h-72 bg-rose-500/15 rounded-full blur-[100px] animate-pulse" />
-          <div className="absolute bottom-20 right-[15%] w-96 h-96 bg-pink-500/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-rose-400/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '4s' }} />
-        </div>
-
-        {/* Grid/dot pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
-          backgroundSize: '32px 32px'
-        }} />
-
-        {/* Floating hearts */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[
-            { left: '5%', top: '10%', delay: '0s', size: 'w-5 h-5', duration: '6s' },
-            { left: '88%', top: '20%', delay: '1.5s', size: 'w-4 h-4', duration: '7s' },
-            { left: '15%', top: '65%', delay: '3s', size: 'w-6 h-6', duration: '5s' },
-            { left: '70%', top: '55%', delay: '0.8s', size: 'w-3 h-3', duration: '8s' },
-            { left: '45%', top: '15%', delay: '2.2s', size: 'w-4 h-4', duration: '6.5s' },
-            { left: '93%', top: '70%', delay: '4s', size: 'w-5 h-5', duration: '5.5s' },
-            { left: '55%', top: '80%', delay: '1.2s', size: 'w-3 h-3', duration: '7.5s' },
-          ].map((heart, i) => (
-            <div
-              key={i}
-              className={`absolute ${heart.size} text-rose-400/25`}
-              style={{
-                left: heart.left,
-                top: heart.top,
-                animation: `heart-float ${heart.duration} ease-in-out infinite`,
-                animationDelay: heart.delay,
-              }}
-            >
-              <Heart className="w-full h-full fill-current" />
-            </div>
-          ))}
-        </div>
-
-        {/* Falling petals */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={`petal-${i}`}
-              className="absolute w-2 h-2 rounded-full bg-rose-400/15"
-              style={{
-                left: `${10 + i * 12}%`,
-                animation: `petal-fall ${7 + i * 1.5}s linear infinite`,
-                animationDelay: `${i * 1.2}s`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Sparkle accents */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[30%] left-[30%] w-1 h-1 bg-white rounded-full animate-ping" style={{ animationDuration: '3s' }} />
-          <div className="absolute top-[50%] right-[25%] w-1.5 h-1.5 bg-rose-200 rounded-full animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }} />
-          <div className="absolute top-[20%] right-[40%] w-1 h-1 bg-pink-200 rounded-full animate-ping" style={{ animationDuration: '3.5s', animationDelay: '2s' }} />
-          <div className="absolute bottom-[30%] left-[60%] w-1 h-1 bg-white rounded-full animate-ping" style={{ animationDuration: '5s', animationDelay: '1.5s' }} />
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
-          <nav className="flex items-center gap-2 text-sm text-rose-300/80 mb-8">
-            <Link href="/" className="hover:text-white transition-colors duration-300">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-rose-200">Honeymoon by Car</span>
+        <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+          <nav className="mb-8 flex items-center gap-2 text-sm text-rose-200/80">
+            <Link href="/" className="transition-colors hover:text-white">Home</Link>
+            <ChevronRight className="h-3 w-3" />
+            <span className="text-rose-100">Honeymoon by Car</span>
           </nav>
 
-          <div className="flex items-center gap-2 bg-rose-500/15 text-rose-200 px-5 py-2 rounded-full text-sm font-medium border border-rose-500/25 w-fit mb-6 backdrop-blur-sm">
-            <Heart className="w-4 h-4" style={{ animation: 'icon-glow 2s ease-in-out infinite' }} />
+          <span className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-[#FACF2D]/30 bg-black/40 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#FACF2D] backdrop-blur-xl">
+            <Heart className="h-3.5 w-3.5" />
             Honeymoon Road Trips
-          </div>
+          </span>
 
-          <h2 className="speakable-headline text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span className="shimmer-rose">Honeymoon Trip by Car</span>
-            <br />
-            <span className="text-white/90">from Delhi</span>
+          <h2 className="speakable-headline font-display-serif mb-6 max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-6xl">
+            <span className="text-gold-foil">Honeymoon Trip by Car</span>
+            <span className="mt-2 block text-2xl font-semibold text-white/85 sm:text-3xl">from Delhi</span>
           </h2>
-          <p className="speakable-lead text-lg sm:text-xl text-rose-200/90 mb-10 max-w-3xl leading-relaxed">
+          <p className="speakable-lead mb-10 max-w-3xl text-lg leading-relaxed text-rose-50/85 sm:text-xl">
             {data.heroDescription}
           </p>
 
-          {/* Animated Stat Badges */}
-          <div className="grid grid-cols-3 gap-4 mb-10 max-w-lg">
+          {/* Stat panel — glass on dark */}
+          <div className="mb-10 grid max-w-lg grid-cols-3 gap-4">
             {[
               { label: 'Destinations', value: `${data.allDestinations?.length || 0}+`, icon: MapPin },
               { label: 'Starting From', value: 'Rs 4,500', icon: IndianRupee },
               { label: 'Romance', value: '5-Star', icon: Heart },
             ].map((stat, i) => (
-              <div
-                key={i}
-                className="hover-lift bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-rose-500/15 p-4 text-center"
-                style={{ animation: 'rose-glow 4s ease-in-out infinite', animationDelay: `${i * 0.5}s` }}
-              >
-                <stat.icon className="w-5 h-5 text-rose-400 mx-auto mb-1.5" />
-                <p className="font-bold text-white text-lg">{stat.value}</p>
-                <p className="text-xs text-rose-300/70 uppercase tracking-wider">{stat.label}</p>
+              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-xl">
+                <stat.icon className="mx-auto mb-1.5 h-5 w-5 text-[#FACF2D]" />
+                <p className="text-lg font-bold text-white">{stat.value}</p>
+                <p className="text-[11px] uppercase tracking-wider text-rose-100/60">{stat.label}</p>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-3">
             <a
               onClick={() => trackPhoneCall('honeymoon_hub_hero')} href={`tel:${phoneNumber}`}
-              className="inline-flex items-center justify-center gap-2 min-h-[52px] bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-rose-500/25"
-              style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
+              className={GOLD_CTA}
             >
-              <Phone className="w-5 h-5" />
-              Call Now - {phoneNumber}
+              <Phone className="h-4 w-4" />
+              Call Now — {phoneNumber}
             </a>
-            <a onClick={() => trackWhatsAppClick('honeymoon_hub_hero', hubWhatsappText)} href={`${whatsappLink}?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 min-h-[52px] bg-green-600/90 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 backdrop-blur-sm border border-green-500/30 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/15">
+            <a onClick={() => trackWhatsAppClick('honeymoon_hub_hero', hubWhatsappText)} href={`${whatsappLink}?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer" className={GHOST_CTA_DARK}>
               WhatsApp Enquiry
             </a>
           </div>
           {/* Trust row */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-6 text-sm text-rose-100/80">
-            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-rose-300 fill-current" /> 4.9&#9733; Rated</span>
-            <span className="flex items-center gap-1.5"><Heart className="w-4 h-4 text-rose-300" /> 10,000+ trips</span>
-            <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-rose-300" /> Verified drivers</span>
-            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-rose-300" /> No advance payment</span>
+          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-rose-50/75">
+            <span className="flex items-center gap-1.5"><Star className="h-4 w-4 fill-current text-[#FACF2D]" /> 4.9&#9733; Rated</span>
+            <span className="flex items-center gap-1.5"><Heart className="h-4 w-4 text-rose-300" /> 10,000+ trips</span>
+            <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-[#FACF2D]" /> Verified drivers</span>
+            <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-[#FACF2D]" /> No advance payment</span>
           </div>
         </div>
       </section>
 
-      {/* All Destinations */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-rose-950 via-rose-900/30 to-rose-950" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse at 50% 30%, rgba(244, 63, 94, 0.06) 0%, transparent 70%)'
-        }} />
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
-          backgroundSize: '48px 48px'
-        }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-              <Compass className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Romantic Destinations</h2>
-          </div>
-          <p className="text-rose-300/80 mb-10 ml-16">Choose your perfect honeymoon road trip</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+      {/* ─── ALL DESTINATIONS — warm-light band ─── */}
+      <section className="bg-[#FFF3EE] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-rose-600">Pick Your Escape</p>
+          <h2 className="font-display-serif mb-3 text-2xl font-bold sm:text-3xl md:text-4xl">Romantic Destinations</h2>
+          <p className="mb-10 text-lg text-slate-600">Choose your perfect honeymoon road trip</p>
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {data.allDestinations.map((dest, i) => (
-              <Link key={i} href={`/${dest.slug}`} className="hub-card hover-lift bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-7 hover:bg-white/[0.08] hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-500/10 transition-all duration-500 group block relative overflow-hidden">
-                {/* Glow border on hover */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{
-                  background: 'linear-gradient(135deg, rgba(244, 63, 94, 0.1) 0%, transparent 50%, rgba(236, 72, 153, 0.1) 100%)'
-                }} />
-                <div className="relative">
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(dest.romance)].map((_, j) => (
-                      <Heart key={j} className="w-4 h-4 text-rose-400 fill-current" />
-                    ))}
-                    {[...Array(5 - dest.romance)].map((_, j) => (
-                      <Heart key={j} className="w-4 h-4 text-rose-800/50" />
-                    ))}
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-rose-300 transition-colors duration-300">{dest.name}</h3>
-                  <p className="text-sm text-rose-300/80 mb-4 leading-relaxed">{dest.highlight}</p>
-                  <div className="flex items-center justify-between text-sm mb-4">
-                    <span className="text-rose-400/80 font-medium">{dest.days} Days</span>
-                    <span className="font-bold shimmer-rose text-base">From Rs {dest.price.toLocaleString()}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-rose-400 text-sm font-semibold group-hover:text-rose-300 transition-colors duration-300">
-                    View Details <ArrowRight className="w-4 h-4 hub-card-arrow" />
-                  </div>
+              <Link key={i} href={`/${dest.slug}`} className="group block rounded-2xl border border-rose-900/10 bg-white p-7 shadow-sm transition-colors hover:border-[#FACF2D]/60">
+                <div className="mb-4 flex items-center gap-1">
+                  {[...Array(dest.romance)].map((_, j) => (
+                    <Heart key={j} className="h-4 w-4 fill-current text-rose-500" />
+                  ))}
+                  {[...Array(5 - dest.romance)].map((_, j) => (
+                    <Heart key={j} className="h-4 w-4 text-rose-200" />
+                  ))}
+                </div>
+                <h3 className="mb-2 text-xl font-bold transition-colors group-hover:text-rose-600">{dest.name}</h3>
+                <p className="mb-4 text-sm leading-relaxed text-slate-600">{dest.highlight}</p>
+                <div className="mb-4 flex items-center justify-between text-sm">
+                  <span className="font-medium text-slate-500">{dest.days} Days</span>
+                  <span className="text-base font-bold text-slate-900">From Rs {dest.price.toLocaleString()}</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm font-semibold text-rose-600">
+                  View Details <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </Link>
             ))}
@@ -919,72 +588,63 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
         </div>
       </section>
 
-      {/* Decorated Car Section */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-rose-950" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.06) 0%, transparent 50%)'
-        }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="hover-lift bg-gradient-to-r from-rose-500/10 via-pink-500/15 to-rose-500/10 backdrop-blur-2xl rounded-3xl border border-rose-500/20 p-10 sm:p-14 text-center" style={{ animation: 'rose-glow 5s ease-in-out infinite' }}>
-            <div className="w-20 h-20 bg-gradient-to-br from-rose-500/25 to-pink-500/25 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-rose-500/20">
-              <Gift className="w-10 h-10 text-rose-300" style={{ animation: 'icon-glow 2s ease-in-out infinite' }} />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Decorated Car for Every Honeymoon</h2>
-            <p className="text-rose-200/85 mb-8 max-w-2xl mx-auto leading-relaxed">
+      {/* ─── DECORATED CAR — dark band ─── */}
+      <section className="relative overflow-hidden bg-slate-950 py-16 md:py-24">
+        <div className="absolute inset-0 bg-aurora opacity-60" />
+        <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-[#FACF2D]/25 bg-white/5 p-10 text-center backdrop-blur-xl sm:p-14">
+            <span className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl border border-rose-400/25 bg-rose-500/10">
+              <Gift className="h-10 w-10 text-rose-300" />
+            </span>
+            <h2 className="font-display-serif mb-4 text-2xl font-bold text-white sm:text-3xl">Decorated Car for Every Honeymoon</h2>
+            <p className="mx-auto mb-8 max-w-2xl leading-relaxed text-rose-100/70">
               Fresh flowers, &quot;Just Married&quot; ribbons, welcome bouquet, chocolates, and a congratulations card. Available for all destinations at just Rs 2,000 extra.
             </p>
             <a
               onClick={() => trackPhoneCall('honeymoon_trip')} href={`tel:${phoneNumber}`}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-rose-500/20"
-              style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
+              className={GOLD_CTA}
             >
-              <Phone className="w-5 h-5" />
+              <Phone className="h-4 w-4" />
               Book Decorated Car
             </a>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-rose-950 via-rose-900/30 to-rose-950" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-rose-500/5 rounded-full blur-[120px]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20" style={{ animation: 'rose-glow 3s ease-in-out infinite' }}>
-              <HelpCircle className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Frequently Asked Questions</h2>
-          </div>
-          <div className="space-y-4">
+      {/* ─── FAQ — warm-light band, two-column ─── */}
+      <section className="bg-[#FFF3EE] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-rose-600">Good to Know</p>
+          <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold sm:text-3xl md:text-4xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900">
+              <HelpCircle className="h-5 w-5 text-[#FACF2D]" />
+            </span>
+            Frequently Asked Questions
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2 md:items-start">
             {data.faqs.map((faq, i) => (
-              <details key={i} className="group bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] overflow-hidden hover:border-rose-500/20 transition-all duration-300">
-                <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-white/[0.03] transition-colors duration-300">
-                  <h3 className="font-semibold text-white pr-4 text-lg">{faq.question}</h3>
-                  <ChevronRight className="w-5 h-5 text-rose-400 group-open:rotate-90 transition-transform duration-300 flex-shrink-0" />
+              <details key={i} className="group overflow-hidden rounded-2xl border border-rose-900/10 bg-white shadow-sm transition-colors open:border-[#FACF2D]/60">
+                <summary className="flex cursor-pointer items-center justify-between p-6 transition-colors hover:bg-rose-50/50">
+                  <h3 className="pr-4 text-lg font-semibold">{faq.question}</h3>
+                  <ChevronRight className="h-5 w-5 flex-shrink-0 text-rose-500 transition-transform duration-300 group-open:rotate-90" />
                 </summary>
-                <div className={`px-6 pb-6 text-rose-200/80 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</div>
+                <div className={`px-6 pb-6 leading-relaxed text-slate-600 ${i === 0 ? 'speakable-faq-first' : ''}`}>{faq.answer}</div>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Cross-Service Links */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-rose-950" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(244, 63, 94, 0.05) 0%, transparent 60%)'
-        }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="w-12 h-12 bg-rose-500/15 rounded-2xl flex items-center justify-center border border-rose-500/20">
-              <Compass className="w-6 h-6 text-rose-400" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Explore More Services</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* ─── CROSS-SERVICE LINKS — dark band ─── */}
+      <section className="bg-slate-950 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold text-white sm:text-3xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-rose-400/25 bg-rose-500/10">
+              <Compass className="h-5 w-5 text-rose-300" />
+            </span>
+            Explore More Services
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { href: '/honeymoon-shimla-manali-by-car', label: 'Shimla Manali Honeymoon' },
               { href: '/honeymoon-kashmir-by-car', label: 'Kashmir Honeymoon by Car' },
@@ -995,63 +655,34 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
               { href: '/tour-package', label: 'Tour Packages from Delhi' },
               { href: '/outstation-cabs', label: 'Outstation Cab Service' },
             ].map((link, i) => (
-              <Link key={i} href={link.href} className="group bg-white/[0.04] backdrop-blur-2xl rounded-xl border border-white/[0.08] p-4 hover:bg-white/[0.08] hover:border-rose-500/30 transition-all duration-300 flex items-center gap-3">
-                <ArrowRight className="w-4 h-4 text-rose-400 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
-                <span className="text-rose-100/90 text-sm font-medium group-hover:text-white transition-colors">{link.label}</span>
+              <Link key={i} href={link.href} className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-colors hover:border-rose-400/30 hover:bg-white/10">
+                <ArrowRight className="h-4 w-4 flex-shrink-0 text-rose-300 transition-transform group-hover:translate-x-1" />
+                <span className="text-sm font-medium text-rose-50/85 transition-colors group-hover:text-white">{link.label}</span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700" />
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 left-[15%] w-64 h-64 bg-white rounded-full blur-[100px]" />
-          <div className="absolute bottom-10 right-[15%] w-80 h-80 bg-pink-300 rounded-full blur-[100px]" />
-        </div>
-
-        {/* Floating hearts in CTA */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[
-            { left: '8%', top: '15%', delay: '0s', size: 'w-4 h-4' },
-            { left: '92%', top: '25%', delay: '1s', size: 'w-3 h-3' },
-            { left: '20%', top: '80%', delay: '2s', size: 'w-5 h-5' },
-            { left: '78%', top: '65%', delay: '3s', size: 'w-4 h-4' },
-            { left: '50%', top: '10%', delay: '1.5s', size: 'w-3 h-3' },
-          ].map((heart, i) => (
-            <div
-              key={i}
-              className={`absolute ${heart.size} text-white/20`}
-              style={{
-                left: heart.left,
-                top: heart.top,
-                animation: `heart-float 5s ease-in-out infinite`,
-                animationDelay: heart.delay,
-              }}
-            >
-              <Heart className="w-full h-full fill-current" />
-            </div>
-          ))}
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-16 h-16 bg-white/15 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/20 backdrop-blur-sm">
-            <Heart className="w-8 h-8 text-rose-100" style={{ animation: 'icon-glow 2s ease-in-out infinite' }} />
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-5 text-white">Start Your Honeymoon Journey</h2>
-          <p className="text-lg text-rose-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">Private car, decorated option, experienced drivers. Your love story begins on the road.</p>
-          <div className="flex flex-wrap justify-center gap-5">
+      {/* ─── FINAL CTA — dark band with gold ─── */}
+      <section className="relative overflow-hidden bg-slate-950 py-16 md:py-24">
+        <div className="absolute inset-0 bg-aurora" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FACF2D]/60 to-transparent" />
+        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <span className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-rose-400/25 bg-rose-500/10">
+            <Heart className="h-8 w-8 text-rose-300" />
+          </span>
+          <h2 className="font-display-serif mb-5 text-3xl font-bold text-white sm:text-4xl">Start Your Honeymoon Journey</h2>
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-rose-100/70">Private car, decorated option, experienced drivers. Your love story begins on the road.</p>
+          <div className="flex flex-col flex-wrap justify-center gap-4 sm:flex-row">
             <a
               onClick={() => trackPhoneCall('honeymoon_hub_footer')} href={`tel:${phoneNumber}`}
-              className="inline-flex items-center gap-2 bg-white text-rose-700 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-rose-50 transition-all duration-300 shadow-2xl hover:shadow-white/20"
-              style={{ animation: 'pulse-cta 2.5s ease-in-out infinite' }}
+              className={GOLD_CTA}
             >
-              <Phone className="w-6 h-6" />
+              <Phone className="h-4 w-4" />
               Call {phoneNumber}
             </a>
-            <a onClick={() => trackWhatsAppClick('honeymoon_hub_footer', hubWhatsappText)} href={`${whatsappLink}?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl border border-green-500/30">
+            <a onClick={() => trackWhatsAppClick('honeymoon_hub_footer', hubWhatsappText)} href={`${whatsappLink}?text=${encodeURIComponent(hubWhatsappText)}`} target="_blank" rel="noopener noreferrer" className={GHOST_CTA_DARK}>
               WhatsApp Booking
             </a>
           </div>

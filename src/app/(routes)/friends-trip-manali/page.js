@@ -2,12 +2,13 @@ import { friendsTripData } from '@/utilis/friendsTripData';
 import FriendsTripClient from '@/components/audience/FriendsTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "friends-trip-manali";
 const data = friendsTripData["manali"];
 
 export const metadata = {
-  title: 'Friends Trip Manali by Tempo Traveller | ₹1,295/Person',
+  title: tightenTitle('Friends Trip Manali by Tempo Traveller | ₹1,295/Person'),
   description: 'Book Tempo Traveller for friends trip to Manali from Delhi. Rs 1,295/person. Paragliding, snow, Old Manali nightlife. 12-17 seater AC. Call 7668570551.',
   keywords: 'friends trip manali, manali group trip, manali tempo traveller, delhi to manali friends, manali snow trip friends, friends trip package manali',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

@@ -1,12 +1,13 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "honeymoon-dharamshala";
 const data = honeymoonTripData["dharamshala"];
 
 export const metadata = {
-  title: 'Dharamshala Honeymoon by Car | Himalayan Peace Rs 11,000 | 2026',
+  title: tightenTitle('Dharamshala Honeymoon by Car | Himalayan Peace Rs 11,000 | 2026'),
   description: 'Book Dharamshala honeymoon by car from Delhi. Sedan Rs 11,000, Innova Rs 15,000. McLeodganj cafes, Bhagsunag waterfall, Triund trek. Call 7668570551.',
   keywords: 'dharamshala honeymoon by car, honeymoon dharamshala road trip, dharamshala couple trip, mcleodganj honeymoon, romantic trip dharamshala',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

@@ -19,6 +19,7 @@ import {
   getComparisonSchema,
   getTodayDate,
 } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -49,7 +50,7 @@ const url = `${baseUrl}/tours-with-guide/by-vehicle`;
 const PHONE = '7668570551';
 
 export const metadata = {
-  title: 'Tour With Guide — Pick by Vehicle | Sedan, Tempo, Bus, Luxury Car',
+  title: tightenTitle('Tour With Guide — Pick by Vehicle | Sedan, Tempo, Bus, Luxury Car'),
   description: 'Group tours with guide by vehicle: Swift Dzire sedan, Maharaja Tempo Traveller, Volvo 45-seater bus, Force Urbania, BMW/Audi luxury.',
   keywords: 'by vehicle, tour package india, sightseeing tour, triveni cabs',
   alternates: { canonical: url },

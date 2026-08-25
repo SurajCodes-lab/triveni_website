@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, IndianRupee, Moon, Camera, Calendar, Ticket } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Moonlight Taj Mahal Tour | Full Moon Night Visit | 2026',
+  title: tightenTitle('Moonlight Taj Mahal Tour | Full Moon Night Visit | 2026'),
   description: 'Moonlight Taj Mahal tour on full moon nights. ASI night viewing schedule, ticket booking guide. 5 nights monthly. Combine with Mehtab Bagh. Call 7668570551.',
   keywords: 'moonlight taj mahal tour, taj mahal night visit, full moon taj mahal, taj mahal moonlight viewing, night tour taj mahal',
   authors: [{ name: 'Triveni Cabs' }],

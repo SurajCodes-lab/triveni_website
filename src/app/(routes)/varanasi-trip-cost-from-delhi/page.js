@@ -2,13 +2,14 @@ import { getTripCostBySlug } from '@/utilis/tripCostData';
 import TripCostClient from '@/components/tripcost/TripCostClient';
 import { getArticleSchema, getHowToSchema, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { buildTripCostService } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = getTripCostBySlug('varanasi-trip-cost-from-delhi');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: data.title,
+  title: tightenTitle(data.title),
   description: data.metaDescription,
   keywords: data.keywords,
   authors: [{ name: 'Triveni Cabs' }],

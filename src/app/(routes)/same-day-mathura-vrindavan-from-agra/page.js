@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-mathura-vrindavan-from-agra');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Mathura Vrindavan Tour from Agra | ₹2,500 AC Cab | 2026',
+  title: tightenTitle('Same Day Mathura Vrindavan Tour from Agra | ₹2,500 AC Cab | 2026'),
   description: 'Book same day Mathura Vrindavan tour from Agra. Krishna Janmabhoomi, Banke Bihari, ISKCON, Prem Mandir. Just 58 km. AC sedan ₹2,500. Call 7668570551.',
   keywords: 'same day mathura vrindavan tour from agra, agra to mathura one day trip, agra to vrindavan cab, krishna tour from agra',
   authors: [{ name: 'Triveni Cabs' }],

@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Jaipur Airport to Ranthambore Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Jaipur Airport to Ranthambore Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Jaipur Airport to Ranthambore taxi at ₹${ROUTE.fare}. Direct transfer to safari zone. Flight tracking, meet & greet. 24/7 by Triveni Cabs.`,
   keywords: 'jaipur airport to ranthambore taxi, jaipur airport to ranthambore cab, jaipur to ranthambore airport taxi, taxi from jaipur airport to ranthambore, ranthambore airport pickup, flight tracked ranthambore taxi, fixed fare ranthambore cab, jaipur airport ranthambore transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

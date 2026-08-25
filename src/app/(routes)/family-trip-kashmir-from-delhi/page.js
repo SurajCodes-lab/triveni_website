@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-kashmir-from-delhi";
 const data = familyTripData["kashmir"];
 
 export const metadata = {
-  title: 'Family Trip Kashmir from Delhi | Innova ₹28,000 | 2026',
+  title: tightenTitle('Family Trip Kashmir from Delhi | Innova ₹28,000 | 2026'),
   description: 'Book a family trip to Kashmir from Delhi. Innova Rs 28,000, Sedan Rs 22,000. Srinagar, Gulmarg, Pahalgam, Dal Lake houseboat. Kid-friendly. Call 7668570551.',
   keywords: 'family trip kashmir from delhi, delhi to kashmir family tour, kashmir family vacation by car, kashmir trip with kids, family holiday kashmir srinagar',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

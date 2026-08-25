@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('holi-mathura-vrindavan-cab-service');
 
 export const metadata = {
-  title: 'Holi Special Mathura Vrindavan Cab Service 2026 | Book Early',
+  title: tightenTitle('Holi Special Mathura Vrindavan Cab Service 2026 | Book Early'),
   description: 'Book Holi special cab from Delhi to Mathura Vrindavan 2026. Sedan from ₹3,500, SUV ₹5,000. Lathmar Holi Barsana, Phalen ki Holi Vrindavan. AC vehicles.',
   keywords: 'holi cab mathura, holi vrindavan cab, holi special cab service, delhi to mathura holi cab, barsana holi cab, holi 2026 cab booking, mathura vrindavan taxi, holi festival transport',
   authors: [{ name: 'Triveni Cabs' }],

@@ -1,5 +1,6 @@
 import { getCompareBySlug } from '@/utilis/destinationCompareData';
 import DestinationCompareClient from '@/components/compare/DestinationCompareClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = getCompareBySlug('jaisalmer-vs-jodhpur');
 
@@ -17,7 +18,7 @@ const images = {
 export const revalidate = 3600;
 
 export const metadata = {
-  title: data.title,
+  title: tightenTitle(data.title),
   description: data.metaDescription,
   keywords: data.keywords,
   authors: [{ name: 'Triveni Cabs' }],

@@ -2264,7 +2264,7 @@ const newBlogs2026 = [
     excerpt: 'Step-by-step guide on booking a tempo traveller for your trip - what to check, pricing factors, tips and common mistakes to avoid.',
     relatedTours: [
       { id: "tempo-12", name: "12-Seater Tempo Traveller", slug: "12-seater-tempo", city: "delhi", price: "₹18/km" },
-      { id: "tempo-17", name: "17-Seater Tempo Traveller", slug: "17-seater-tempo", city: "delhi", price: "₹22/km" }
+      { id: "tempo-17", name: "17-Seater Tempo Traveller", slug: "17-seater-tempo", city: "delhi", price: "₹25/km" }
     ],
     relatedDestinations: [
       { name: "Delhi", slug: "delhi", type: "city" },

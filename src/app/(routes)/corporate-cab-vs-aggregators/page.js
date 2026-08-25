@@ -16,11 +16,12 @@ import {
   DollarSign,
   Headphones
 } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Corporate Cab vs Ola/Uber 2026 | Complete Comparison',
+  title: tightenTitle('Corporate Cab vs Ola/Uber 2026 | Complete Comparison'),
   description: 'In-depth comparison: Dedicated corporate cab service vs Ola/Uber for business. Fixed rates vs surge pricing, dedicated drivers vs random, GST invoicing.',
   authors: [{ name: 'Triveni Cabs' }],
   creator: 'Triveni Cabs',

@@ -17,6 +17,7 @@ import { Calendar, MapPin, Clock, Users, Car, Star, Coffee, BedDouble, CheckCirc
 
 // Import the client components
 import { TrackingProvider, ItineraryWrapper, AccommodationWrapper, BookNowButton } from "./client-components";
+import { tightenTitle, tightenDescription, DESC_BUDGET } from '@/lib/seo/serp-ctr';
 
 // SEO Content for each package - This will be visible on the page
 const seoContent = {
@@ -300,15 +301,21 @@ export async function generateMetadata({ params }) {
 
   if (!packageInfo || !content) {
     return {
-      title: "Package Not Found | Triveni Cabs",
+      title: tightenTitle("Package Not Found"),
       description: "The requested tour package could not be found",
     };
   }
 
-  const metaDescription = `${content.intro} Book ${packageInfo.title} at ${packageInfo.price} for ${packageInfo.duration}. Best rates, comfortable stay, guided tours. Call 7668570551.`;
+  // Reserve the commercial tail first, then give the intro whatever budget is
+  // left. Trimming the other way round loses the price and the phone number,
+  // which are the only two things in here that produce a booking.
+  const commercialTail = `${packageInfo.price} for ${packageInfo.duration}. Call 7668570551.`;
+  const metaDescription = `${tightenDescription(content.intro, DESC_BUDGET - commercialTail.length - 1)} ${commercialTail}`;
 
   return {
-    title: `${content.title} | ${packageInfo.price} | ${packageInfo.duration} | Triveni Cabs`,
+    // Was unbounded: the Amritsar-Dharamshala-Dalhousie package ran to 71
+    // characters of content before the brand suffix was even appended.
+    title: tightenTitle(`${content.title} | ${packageInfo.price} | ${packageInfo.duration}`, 58),
     description: metaDescription,
     openGraph: {
       title: `${content.title} - Book Now at ${packageInfo.price}`,

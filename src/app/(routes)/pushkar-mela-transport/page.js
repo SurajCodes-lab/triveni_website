@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('pushkar-mela-transport');
 
 export const metadata = {
-  title: 'Pushkar Mela Cab Service 2026 | Camel Fair Transport',
+  title: tightenTitle('Pushkar Mela Cab Service 2026 | Camel Fair Transport'),
   description: 'Book cab from Delhi to Pushkar for Pushkar Mela 2026. Sedan from ₹6,500, SUV ₹9,000. Camel fair, Brahma Temple, hot air balloon. Call 7668570551.',
   keywords: 'pushkar mela cab, pushkar camel fair transport, delhi to pushkar cab, pushkar mela 2026, pushkar fair cab service, rajasthan cab pushkar',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

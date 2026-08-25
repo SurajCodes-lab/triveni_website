@@ -1,9 +1,10 @@
 import TerminalPageClient from '@/components/airport/TerminalPageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Delhi T1 Airport Taxi ₹450 | Flight-Tracked · No Surge',
+  title: tightenTitle('Delhi T1 Airport Taxi ₹450 | Flight-Tracked · No Surge'),
   description: 'T1 domestic terminal taxi — Arrival Gate 1-4 pickup. Connaught Place ₹450, Gurgaon ₹550. 60 min free wait, no surge. Call 7668570551.',
   alternates: { canonical: 'https://www.trivenicabs.in/airport-service/delhi/igi-terminal-1-domestic' },
   openGraph: {

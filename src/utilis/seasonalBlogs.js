@@ -160,9 +160,13 @@ export const seasonalBlogs = [
       { name: "Shimla", slug: "shimla", type: "city" },
       { name: "Auli", slug: "auli", type: "destination" }
     ],
+    // Week 43: this CTA pointed at /contact while /winter-snow-trip-packages —
+    // the exact commercial page for this intent — sat with zero Search Console
+    // visibility. The blog earns 2,676 impressions a quarter on snow-destination
+    // queries; sending that intent to a generic contact form wasted all of it.
     primaryCTA: {
-      text: "Book Snow Trip",
-      url: "/contact",
+      text: "See Winter Snow Packages",
+      url: "/winter-snow-trip-packages",
       description: "Experience Himalayan winters",
       price: "Starting ₹18,000"
     },

@@ -103,7 +103,7 @@ export default function DistanceGuideClient({ route, relatedRoutes, corridorLink
   const fareRows = [
     { name: 'AC Sedan', sub: 'Swift Dzire / Etios · 4 seater', fare: route.cabFares.sedan, perKm: '₹11/km' },
     { name: 'SUV', sub: 'Innova Crysta / Ertiga · 6-7 seater', fare: route.cabFares.suv, perKm: '₹15/km' },
-    { name: 'Tempo Traveller', sub: '12-seater AC', fare: route.cabFares.tempo, perKm: '₹20/km' },
+    { name: 'Tempo Traveller', sub: '12-seater AC', fare: route.cabFares.tempo, perKm: '₹23/km' },
   ];
   const heroHours = route.duration.split('-')[0].trim();
 
@@ -815,7 +815,7 @@ export default function DistanceGuideClient({ route, relatedRoutes, corridorLink
             {[
               { name: 'Sedan', sub: 'Swift Dzire / Etios', fare: route.cabFares.sedan, seats: '4', perKm: '₹11/km', img: '/images/car/swift_dzire.jpg', pop: false },
               { name: 'SUV', sub: 'Innova Crysta / Ertiga', fare: route.cabFares.suv, seats: '6-7', perKm: '₹15/km', img: '/images/car/innova_crysta.jpg', pop: true },
-              { name: 'Tempo Traveller', sub: '12-Seater AC', fare: route.cabFares.tempo, seats: '12', perKm: '₹20/km', img: '/images/tempo/12_seater.jpg', pop: false },
+              { name: 'Tempo Traveller', sub: '12-Seater AC', fare: route.cabFares.tempo, seats: '12', perKm: '₹23/km', img: '/images/tempo/12_seater.jpg', pop: false },
             ].map((v, i) => (
               <ScrollReveal key={i} stagger={i * 100}>
                 <div className={`group relative overflow-hidden rounded-3xl transition-transform duration-300 hover:-translate-y-1 ${v.pop ? 'border-gradient-gold glow-gold' : 'ring-1 ring-white/10'}`}>

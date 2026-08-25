@@ -21,6 +21,7 @@ import {
   getComparisonSchema,
   getTodayDate,
 } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -79,7 +80,7 @@ const baseUrl = 'https://www.trivenicabs.in';
 const url = `${baseUrl}/tours-with-guide`;
 
 export const metadata = {
-  title: 'Tours With Licensed Guide India — Vehicle + Guide ₹3,000',
+  title: tightenTitle('Tours With Licensed Guide India — Vehicle + Guide ₹3,000'),
   description: 'Bundled tour packages: Taj Mahal, Delhi, Jaipur, Golden Triangle. Vehicle + Ministry-licensed guide. Multilingual guides. ₹3,000+. 4.9★, no surprise fees.',
   keywords: 'tours with guide, tour package india, sightseeing tour, triveni cabs',
   alternates: { canonical: url },

@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllRoadTripSlugs } from '@/utilis/roadTripData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Road Trip Circuits by Car — Multi-Day Itineraries";
+  const title = tightenTitle("Road Trip Circuits by Car — Multi-Day Itineraries");
   const description = "Multi-day road trip circuits by car across North India — itineraries, distances, chauffeur. Triveni Cabs 7668570551.";
   return {
     title,

@@ -2,11 +2,12 @@ import { notFound } from 'next/navigation';
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('janmashtami-mathura-vrindavan-cab');
 
 export const metadata = {
-  title: 'Janmashtami Mathura Vrindavan Cab 2026 | Sep 4-6',
+  title: tightenTitle('Janmashtami Mathura Vrindavan Cab 2026 | Sep 4-6'),
   description: 'Book Janmashtami cab from Delhi to Mathura Vrindavan, 4-6 Sep 2026. Sedan ₹11/km, Innova ₹18/km, no surge. Yamuna Expressway. Call 7668570551.',
   keywords: 'janmashtami mathura vrindavan cab, delhi to mathura janmashtami 2026, vrindavan cab janmashtami, krishna janmabhoomi taxi, banke bihari temple cab, mathura vrindavan tempo traveller, janmashtami 2026 date cab',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

@@ -295,7 +295,7 @@ Book the Mahindra XUV700 with Triveni Cabs at \u20B922/km for outstation trips a
     ac: true,
     fuelType: "Diesel",
     transmission: "Manual",
-    perKmRate: { outstation: "\u20B926/km", local: "\u20B930/km" },
+    perKmRate: { outstation: "\u20B931/km", local: "\u20B930/km" },
     packages: {
       halfDay: "\u20B96,500 (4 hrs / 40 km)",
       fullDay: "\u20B910,500 (8 hrs / 80 km)",
@@ -320,11 +320,11 @@ Triveni Cabs offers Maharaja Tempo Travellers in 12-seater and 17-seater configu
 
 The Maharaja Tempo is the preferred choice for Char Dham Yatra, Do Dham pilgrimages, Rajasthan tours, and wedding guest transfers. The spacious interior, roof-mounted luggage carrier, and ice box make multi-day trips comfortable and convenient.
 
-Book a Maharaja Tempo Traveller with Triveni Cabs starting at \u20B926/km. Available in 12 and 17-seater variants with professional drivers experienced in hill and highway driving.`,
+Book a Maharaja Tempo Traveller with Triveni Cabs starting at \u20B931/km. Available in 12 and 17-seater variants with professional drivers experienced in hill and highway driving.`,
     faqs: [
       { question: "What is the difference between Maharaja and regular tempo traveller?", answer: "The Maharaja variant features luxury pushback seats with more recline, LED TV, premium interior, curtains, ice box, and shoe rack. Regular tempo travellers have standard fixed seats and basic amenities." },
       { question: "How many seats are available in a Maharaja Tempo?", answer: "We offer Maharaja Tempo Travellers in 12-seater and 17-seater variants. The 12-seater offers more space per passenger." },
-      { question: "What is the per km rate for Maharaja Tempo?", answer: "The Maharaja Tempo Traveller rate is \u20B926/km for outstation with a minimum of 300 km/day. Local usage is \u20B930/km." },
+      { question: "What is the per km rate for Maharaja Tempo?", answer: "The Maharaja Tempo Traveller rate is \u20B931/km for outstation with a minimum of 300 km/day. Local usage is \u20B930/km." },
       { question: "Is the Maharaja Tempo good for Char Dham Yatra?", answer: "Yes, the Maharaja Tempo is one of the most popular vehicles for Char Dham Yatra. The comfortable seats, powerful engine, and experienced hill drivers make it ideal for the pilgrimage route." },
       { question: "Does the Maharaja Tempo have a TV?", answer: "Yes, all our Maharaja Tempo Travellers are equipped with LED TV screens for passenger entertainment during long journeys." },
       { question: "Can I book a Maharaja Tempo for a wedding?", answer: "Absolutely. The Maharaja Tempo is very popular for wedding guest transfers, baraat parties, and mehndi events. We can arrange decorated vehicles on request." },
@@ -343,7 +343,7 @@ Book a Maharaja Tempo Traveller with Triveni Cabs starting at \u20B926/km. Avail
     ac: true,
     fuelType: "Diesel",
     transmission: "Manual",
-    perKmRate: { outstation: "\u20B924/km", local: "\u20B927/km" },
+    perKmRate: { outstation: "\u20B925/km", local: "\u20B927/km" },
     packages: {
       halfDay: "\u20B95,500 (4 hrs / 40 km)",
       fullDay: "\u20B99,000 (8 hrs / 80 km)",
@@ -367,14 +367,14 @@ Triveni Cabs offers AC Deluxe Tempo Travellers in 12-seater and 17-seater varian
 
 The vehicle comes equipped with a music system, curtains for privacy, USB charging points, and a first aid kit. The roof carrier provides ample space for group luggage. Our experienced drivers are well-versed in both highway and hill station routes.
 
-Book an AC Deluxe Tempo Traveller with Triveni Cabs at just \u20B924/km for outstation trips. The most cost-effective way to travel as a group.`,
+Book an AC Deluxe Tempo Traveller with Triveni Cabs at just \u20B925/km for outstation trips. The most cost-effective way to travel as a group.`,
     faqs: [
       { question: "What is the difference between AC Deluxe and Maharaja Tempo?", answer: "The AC Deluxe has standard comfortable seats while the Maharaja has luxury pushback seats, LED TV, and premium interiors. The AC Deluxe is \u20B924/km vs Maharaja at \u20B926/km." },
       { question: "How many people can travel in an AC Deluxe Tempo?", answer: "We offer 12-seater and 17-seater AC Deluxe Tempo Travellers. The 17-seater is the most popular choice for large groups." },
       { question: "Is the AC Deluxe Tempo good for hill stations?", answer: "Yes, the AC Deluxe Tempo handles hill roads well. Our drivers are experienced with routes to Manali, Shimla, Nainital, Mussoorie, and other hill destinations." },
       { question: "What is included in the AC Deluxe Tempo rental?", answer: "The rental includes the vehicle, professional driver, AC, music system, and 24/7 support. Toll taxes and parking are paid separately." },
       { question: "Can I book for a school trip?", answer: "Yes, the AC Deluxe Tempo is very popular for school excursions and educational tours. We provide safe, verified drivers and well-maintained vehicles for school groups." },
-      { question: "What is the minimum booking for AC Deluxe Tempo?", answer: "The minimum booking is 300 km/day for outstation trips at \u20B924/km. For local usage, the rate is \u20B927/km with a minimum of 4 hours or 8 hours package." }
+      { question: "What is the minimum booking for AC Deluxe Tempo?", answer: "The minimum booking is 300 km/day for outstation trips at \u20B925/km. For local usage, the rate is \u20B927/km with a minimum of 4 hours or 8 hours package." }
     ],
     comparisons: ["maharaja-tempo", "mini-bus-20-seater"]
   },

@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-neemrana-from-delhi');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Neemrana Fort Tour from Delhi | ₹3,000 AC Cab | 2026',
+  title: tightenTitle('Same Day Neemrana Fort Tour from Delhi | ₹3,000 AC Cab | 2026'),
   description: 'Book same day Neemrana tour from Delhi. Neemrana Fort Palace, zip-lining, stepwell. Just 120 km. AC sedan ₹3,000, SUV ₹4,500. Call 7668570551.',
   keywords: 'same day neemrana tour from delhi, delhi to neemrana one day trip, neemrana fort day trip, neemrana cab from delhi, neemrana zip lining',
   authors: [{ name: 'Triveni Cabs' }],

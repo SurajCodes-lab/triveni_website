@@ -2,6 +2,7 @@ import { getComparisonBySlug } from '@/utilis/comparisonData';
 import ComparisonClient from '@/components/content/ComparisonClient';
 import { generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema, combineSchemas } from '@/lib/seo/schema-generators';
 import SemanticComparison from '@/components/seo/SemanticComparison';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'self-drive-vs-chauffeur';
 const data = getComparisonBySlug(SLUG);
@@ -22,7 +23,7 @@ const media = {
 export const revalidate = 3600;
 
 export const metadata = {
-  title: `${data.title} | Triveni Cabs`,
+  title: tightenTitle(`${data.title}`),
   description: data.metaDescription,
   keywords: 'self drive vs chauffeur india, hire driver or self drive, car with driver india, self drive rental india, chauffeur driven car cost, is self drive safe india',
   alternates: { canonical: `https://www.trivenicabs.in/${SLUG}` },

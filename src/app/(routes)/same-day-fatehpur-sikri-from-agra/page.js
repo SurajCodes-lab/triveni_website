@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-fatehpur-sikri-from-agra');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Fatehpur Sikri Tour from Agra | ₹1,800 AC Cab | 2026',
+  title: tightenTitle('Same Day Fatehpur Sikri Tour from Agra | ₹1,800 AC Cab | 2026'),
   description: 'Book same day Fatehpur Sikri tour from Agra. Buland Darwaza, Salim Chishti Tomb, Panch Mahal. Just 40 km. AC sedan ₹1,800. Call 7668570551.',
   keywords: 'same day fatehpur sikri tour from agra, agra to fatehpur sikri cab, fatehpur sikri day trip, buland darwaza tour',
   authors: [{ name: 'Triveni Cabs' }],

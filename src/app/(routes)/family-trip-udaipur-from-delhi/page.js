@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-udaipur-from-delhi";
 const data = familyTripData["udaipur"];
 
 export const metadata = {
-  title: 'Family Trip Udaipur from Delhi | Innova ₹17,000 | 2026',
+  title: tightenTitle('Family Trip Udaipur from Delhi | Innova ₹17,000 | 2026'),
   description: 'Book a family trip to Udaipur from Delhi by car. Innova Rs 17,000, Sedan Rs 13,000. City Palace, Lake Pichola, Vintage Car Museum. Kid-friendly.',
   keywords: 'family trip udaipur from delhi, delhi to udaipur family tour, udaipur family vacation by car, udaipur trip with kids, family holiday udaipur',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

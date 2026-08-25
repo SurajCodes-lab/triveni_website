@@ -1,5 +1,6 @@
 import { airportRoutes, getRelatedRoutes } from '@/utilis/airportOutstationData';
 import AirportOutstationClient from '@/components/airport/AirportOutstationClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'srinagar-airport-to-gulmarg-taxi';
 const data = airportRoutes[SLUG];
@@ -7,7 +8,7 @@ const data = airportRoutes[SLUG];
 export const revalidate = 3600;
 
 export const metadata = {
-  title: `Srinagar Airport to Gulmarg Taxi | Fixed \u20B9${data.fares.sedan.price} | Kashmir`,
+  title: tightenTitle(`Srinagar Airport to Gulmarg Taxi | Fixed \u20B9${data.fares.sedan.price} | Kashmir`),
   description: `Srinagar Airport to Gulmarg taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Scenic Kashmir drive, Gondola coordination. ${data.time}. Call 7668570551.`,
   keywords: 'srinagar airport to gulmarg taxi, srinagar airport gulmarg cab, srinagar to gulmarg transfer, gulmarg airport taxi, kashmir taxi',
   authors: [{ name: 'Triveni Cabs' }],

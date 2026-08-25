@@ -1,5 +1,6 @@
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import SeasonalPageClient from '@/components/seasonal/SeasonalPageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -8,7 +9,7 @@ const pageTitle = 'Summer Vacation Cab Packages 2026 | Hill Station Cabs — 4.9
 const pageDesc = 'Book summer vacation 2026 cab packages to Shimla, Manali, Mussoorie, Nainital, Dharamshala. AC sedan & SUV, verified drivers, no surge pricing. Packages from ₹3,999. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['summer vacation cab packages 2026', 'hill station cab booking', 'summer holiday cab india', 'shimla manali cab package', 'summer trip cab north india', 'family vacation cab 2026', 'hill station taxi service', 'summer travel cab booking', 'cool places cab package', 'nainital cab summer 2026'],
   authors: [{ name: 'Triveni Cabs' }],

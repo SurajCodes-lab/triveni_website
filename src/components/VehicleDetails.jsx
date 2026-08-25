@@ -70,8 +70,8 @@ const VehicleDetails = ({ slug }) => {
       }
     },
     "tempo-traveller": {
-      title: "Tempo Traveller Rental India | 12-26 Seater | ₹20/km Onwards",
-      description: "Book 12, 16, 17, 20 & 26 seater tempo traveller for group travel in India. AC tempo traveller with pushback seats, GPS tracking. Best rates from ₹20/km for pilgrimage, wedding, corporate tours.",
+      title: "Tempo Traveller Rental India | 12-26 Seater | ₹23/km Onwards",
+      description: "Book 12, 16, 17, 20 & 26 seater tempo traveller for group travel in India. AC tempo traveller with pushback seats, GPS tracking. Best rates from ₹23/km for pilgrimage, wedding, corporate tours.",
       keywords: "tempo traveller rental india, 12 seater tempo traveller, 17 seater tempo, 20 seater luxury tempo, 26 seater maharaja tempo, group travel india, tempo traveller hire delhi, pilgrimage tour vehicle",
       schema: {
         vehicleType: "Tempo Traveller",
@@ -109,11 +109,11 @@ const VehicleDetails = ({ slug }) => {
 
   const seatingOptions = {
     "tempo-traveller": [
-      { seats: 12, priceMultiplier: 1, popular: false, rate: "₹20/km", localRate: "₹6,000-7,500/Day" },
-      { seats: 16, priceMultiplier: 1.09, popular: false, rate: "₹22/km", localRate: "₹7,500-8,500/Day" },
-      { seats: 17, priceMultiplier: 1.13, popular: true, rate: "₹24/km", localRate: "₹9,000-10,500/Day" },
-      { seats: 20, priceMultiplier: 1.17, popular: false, rate: "₹26/km", localRate: "₹9,000-10,000/Day" },
-      { seats: 26, priceMultiplier: 1.13, popular: true, rate: "₹28/km", localRate: "₹10,000-11,000/Day", premium: true },
+      { seats: 12, priceMultiplier: 1, popular: false, rate: "₹23/km", localRate: "₹6,000-7,500/Day" },
+      { seats: 16, priceMultiplier: 1.09, popular: false, rate: "₹25/km", localRate: "₹7,500-8,500/Day" },
+      { seats: 17, priceMultiplier: 1.13, popular: true, rate: "₹25/km", localRate: "₹9,000-10,500/Day" },
+      { seats: 20, priceMultiplier: 1.17, popular: false, rate: "₹31/km", localRate: "₹9,000-10,000/Day" },
+      { seats: 26, priceMultiplier: 1.13, popular: true, rate: "₹31/km", localRate: "₹10,000-11,000/Day", premium: true },
     ],
     bus: [
       { seats: 22, priceMultiplier: 1, popular: false, rate: "₹30-35/km", minCharge: "₹6,000/day" },
@@ -560,7 +560,7 @@ const VehicleDetails = ({ slug }) => {
       </Head>
 
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className="min-h-screen bg-gradient-to-b from-white to-[#FFFCD1]"

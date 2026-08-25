@@ -1,0 +1,12 @@
+{
+  "$comment": "Resource-size budgets (KB) enforced by the Lighthouse CLI via --budget-path in the npm run lh:* scripts. Sizes are transfer-size per resource type. Script budget targets the post-refactor first-load JS (~180 KB); total targets a lean mobile payload. Tuned for the ranking/LCP uplift goal — LCP bound by image, not by JS.",
+  "resource-budget": [
+    { "resourceType": "script", "budget": 180 },
+    { "resourceType": "stylesheet", "budget": 50 },
+    { "resourceType": "image", "budget": 600 },
+    { "resourceType": "font", "budget": 120 },
+    { "resourceType": "document", "budget": 80 },
+    { "resourceType": "third-party", "budget": 200 },
+    { "resourceType": "total", "budget": 1500 }
+  ]
+}

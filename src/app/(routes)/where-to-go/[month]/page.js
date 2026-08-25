@@ -3,7 +3,7 @@ import { getMonthData, getAllMonthSlugs, getAdjacentMonths } from '@/utilis/mont
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import MonthlyCalendarClient from '@/components/monthly-calendar/MonthlyCalendarClient';
 import AEOHead from '@/components/seo/AEOHead';
-
+import { tightenTitle, tightenDescription, DESC_BUDGET } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -21,8 +21,10 @@ export async function generateMetadata({ params }) {
   }
 
   const topDest = data.destinations.slice(0, 4).map(d => d.name).join(', ');
-  const title = `Where to Go in ${data.month} 2026 | Top ${data.destinations.length} Destinations — Triveni Cabs`;
-  const description = `Best places to visit in ${data.month} 2026: ${topDest} & more. Weather, crowd levels, budget ranges, cab fares included. Book travel with Triveni Cabs — Call 7668570551.`;
+  const title = tightenTitle(`Where to Go in ${data.month} 2026 | Top ${data.destinations.length} Destinations`);
+  const monthTail = `Weather, crowd levels, budget and cab fares. Call 7668570551.`;
+  const monthHead = `Best places to visit in ${data.month} 2026: ${topDest} & more.`;
+  const description = `${tightenDescription(monthHead, DESC_BUDGET - monthTail.length - 1)} ${monthTail}`;
   const ogTitle = `Where to Go in ${data.month} 2026 — ${data.destinations.length} Best Destinations with Cab Service | Triveni Cabs`;
 
   return {

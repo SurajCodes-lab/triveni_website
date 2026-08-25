@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-auli-from-delhi";
 const data = familyTripData["auli"];
 
 export const metadata = {
-  title: 'Family Trip to Auli from Delhi by Car | Innova Rs 18,000 | 2026',
+  title: tightenTitle('Family Trip to Auli from Delhi by Car | Innova Rs 18,000 | 2026'),
   description: 'Book a family trip to Auli from Delhi by car. Innova Crysta Rs 18,000, Sedan Rs 14,000. Skiing, cable car, Gurso Bugyal, Nanda Devi views. Call 7668570551.',
   keywords: 'family trip auli from delhi, delhi to auli family tour, auli skiing family vacation, auli trip with kids, auli snow trip by car',
   authors: [{ name: 'Triveni Cabs' }],

@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('maha-shivratri-pilgrimage-cab');
 
 export const metadata = {
-  title: 'Maha Shivratri Pilgrimage Cab 2026 | Jyotirlinga Yatra',
+  title: tightenTitle('Maha Shivratri Pilgrimage Cab 2026 | Jyotirlinga Yatra'),
   description: 'Book Maha Shivratri cab from Delhi to Haridwar, Varanasi, Rishikesh 2026. Sedan from ₹4,000. Night puja transport, holy dip. Call 7668570551.',
   keywords: 'maha shivratri cab, shivratri pilgrimage cab, delhi to haridwar shivratri, shivratri 2026 cab, shiva temple cab, jyotirlinga yatra cab, shivratri transport',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

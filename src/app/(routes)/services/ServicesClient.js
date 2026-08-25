@@ -25,7 +25,7 @@ const SERVICE_CATEGORIES = [
   { name: "Wedding Cars", desc: "Luxury cars & Baraat vehicles", icon: Heart, image: "/images/wedding/luxury_car.jpg", href: "/wedding", gradient: "from-pink-500 to-rose-600", accent: "#e11d48", count: "5 options", price: "\u20B915,000+" },
   { name: "Sightseeing Tours", desc: "Guided city tours across India", icon: Compass, image: "/images/sightseeing/Sightseeingpage_hero_section_image.jpg", href: "/sightseeing", gradient: "from-emerald-500 to-teal-600", accent: "#059669", count: "6 tours", price: "\u20B92,500+" },
   { name: "Same-Day Tours", desc: "Explore & return the same day", icon: Sunrise, image: "/images/sightseeing/Agra/Taj_mahal.jpg", href: "/same-day-agra-tour-from-delhi", gradient: "from-amber-500 to-orange-600", accent: "#d97706", count: "6 tours", price: "\u20B94,500+" },
-  { name: "Tempo Traveller", desc: "12-26 seater for group trips", icon: Bus, image: "/images/tempo/17_seater.jpg", href: "/tempo-traveller", gradient: "from-orange-500 to-red-600", accent: "#ea580c", count: "4 options", price: "\u20B920/km" },
+  { name: "Tempo Traveller", desc: "12-26 seater for group trips", icon: Bus, image: "/images/tempo/17_seater.jpg", href: "/tempo-traveller", gradient: "from-orange-500 to-red-600", accent: "#ea580c", count: "4 options", price: "\u20B923/km" },
   { name: "Trip Planning", desc: "Honeymoon, family & friends trips", icon: Map, image: "/images/sightseeing/Kashmir_Valley/Dal_Lake.jpg", href: "/tour-package", gradient: "from-violet-500 to-purple-600", accent: "#7c3aed", count: "6 packages", price: "\u20B98,000+" },
   { name: "Corporate Travel", desc: "Professional employee transport", icon: Building2, image: "/images/car/premium_suv.jpg", href: "/corporate-transportation-service", gradient: "from-sky-500 to-indigo-600", accent: "#0284c7", count: "Custom plans", price: "Custom" },
   { name: "Specialty Services", desc: "Women safety, pet-friendly & more", icon: ShieldCheck, image: "/images/car/swift_dzire.jpg", href: "/women-safety-cab-service", gradient: "from-teal-500 to-emerald-600", accent: "#0d9488", count: "5 services", price: "\u20B911/km" },
@@ -43,7 +43,7 @@ const POPULAR_SERVICES = [
   { title: "Airport Taxi", href: "/airport-service", image: "/images/airport_section.jpg", desc: "24/7 flight-tracked pickup & drop at 50+ airports", price: "\u20B91,500+", gradient: "from-cyan-500 to-blue-600", accent: "#0891b2" },
   { title: "Wedding Car Rental", href: "/wedding", image: "/images/wedding/luxury_car.jpg", desc: "Fortuner, Innova & luxury cars for your big day", price: "\u20B915,000+", gradient: "from-pink-500 to-rose-600", accent: "#e11d48" },
   { title: "Sightseeing Tours", href: "/sightseeing", image: "/images/sightseeing/Sightseeingpage_hero_section_image.jpg", desc: "Guided city tours across India with expert drivers", price: "\u20B92,500+", gradient: "from-emerald-500 to-teal-600", accent: "#059669" },
-  { title: "Tempo Traveller", href: "/tempo-traveller", image: "/images/tempo/17_seater.jpg", desc: "12-26 seater for group travel & pilgrimages", price: "\u20B920/km", gradient: "from-orange-500 to-red-600", accent: "#ea580c" },
+  { title: "Tempo Traveller", href: "/tempo-traveller", image: "/images/tempo/17_seater.jpg", desc: "12-26 seater for group travel & pilgrimages", price: "\u20B923/km", gradient: "from-orange-500 to-red-600", accent: "#ea580c" },
   { title: "Chardham Yatra", href: "/chardham-yatra", image: "/images/sightseeing/Char_Dham/Kedarnath_Temple.jpg", desc: "Complete Chardham pilgrimage with dedicated driver", price: "\u20B918,000+", gradient: "from-emerald-500 to-teal-600", accent: "#059669" },
 ];
 
@@ -128,7 +128,7 @@ function HeroSection() {
           <div className="lg:col-span-3 text-center lg:text-left">
             {/* Trust micro-strip */}
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 1, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
               className="flex items-center justify-center lg:justify-start gap-2 sm:gap-4 mb-7 flex-wrap"
@@ -149,30 +149,30 @@ function HeroSection() {
 
             {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 1, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-black text-white leading-[1.05] tracking-tight drop-shadow-lg mb-5"
+              className="font-display-serif text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-black text-white leading-[1.05] tracking-tight drop-shadow-lg mb-5"
             >
               Every Service{" "}
               <br className="hidden sm:block" />
               You Need.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400">
+              <span className="text-gold-foil">
                 One Platform.
               </span>
             </motion.h1>
 
             {/* Pricing strip */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 1, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex items-center justify-center lg:justify-start gap-3 sm:gap-5 mb-4 flex-wrap"
             >
               {[
                 { type: "Sedan", price: "\u20B911/km" },
-                { type: "SUV", price: "\u20B914/km" },
-                { type: "Tempo", price: "\u20B920/km" },
+                { type: "SUV", price: "\u20B915/km" },
+                { type: "Tempo", price: "\u20B923/km" },
               ].map((v, i) => (
                 <span key={i} className="text-base sm:text-lg font-black text-white">
                   {v.type}{" "}<span className="text-[#FACF2D]">{v.price}</span>
@@ -180,7 +180,7 @@ function HeroSection() {
               ))}
             </motion.div>
             <motion.p
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.25 }}
               className="text-sm text-white/50 mb-8 max-w-lg mx-auto lg:mx-0"
@@ -190,7 +190,7 @@ function HeroSection() {
 
             {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-wrap gap-3 justify-center lg:justify-start"
@@ -215,7 +215,7 @@ function HeroSection() {
 
             {/* Live activity */}
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
               className="flex justify-center lg:justify-start mt-6"
@@ -235,7 +235,7 @@ function HeroSection() {
               ].map((stat, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                  initial={{ opacity: 1, scale: 0.8, y: 30 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: stat.delay }}
                   className="absolute"
@@ -254,7 +254,7 @@ function HeroSection() {
 
         {/* Mobile stats grid */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
           className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 lg:hidden"
@@ -319,9 +319,9 @@ function ServiceCategoriesSection() {
             <Sparkles className="w-3.5 h-3.5 text-amber-600" />
             <span className="text-[11px] font-bold text-amber-700 uppercase tracking-[0.15em]">Complete Service Suite</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight mb-4">
+          <h2 className="font-display-serif text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight mb-4">
             Browse Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-amber-500 to-orange-500">Services</span>
+            <span className="text-gold-foil">Services</span>
           </h2>
           <p className="text-gray-500 text-sm sm:text-base max-w-xl mx-auto">9 categories, 55+ services — from daily rides to dream vacations</p>
         </motion.div>
@@ -666,9 +666,9 @@ function TrustSection() {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
+          <h2 className="font-display-serif text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
             Why 10,000+ Travellers{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] to-amber-500">Choose Us</span>
+            <span className="text-gold-foil">Choose Us</span>
           </h2>
         </motion.div>
 
@@ -772,9 +772,9 @@ function CitiesCTASection() {
             <MapPin className="w-3.5 h-3.5 text-amber-600" />
             <span className="text-[11px] font-bold text-amber-700 uppercase tracking-[0.15em]">Nationwide Coverage</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight mb-4">
+          <h2 className="font-display-serif text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight mb-4">
             Available in{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] to-amber-500">50+ Cities</span>
+            <span className="text-gold-foil">50+ Cities</span>
           </h2>
           <p className="text-gray-500 text-sm sm:text-base max-w-xl mx-auto">Premium cab services across major destinations in India</p>
         </motion.div>
@@ -919,7 +919,7 @@ function CitiesCTASection() {
         <div className="border-t border-gray-200/60 pt-8 mt-12">
           <div className="prose prose-sm max-w-none text-gray-500 text-xs sm:text-sm leading-relaxed space-y-4">
             <p>
-              <strong className="text-gray-700">Triveni Cabs</strong> offers a complete range of <Link href="/outstation-cabs" className="text-amber-600 hover:underline">outstation cab services</Link> starting at just <strong>&#8377;11/km for sedans</strong> and <strong>&#8377;14/km for SUVs</strong>. Whether you need an <Link href="/airport-service" className="text-amber-600 hover:underline">airport transfer</Link>, <Link href="/wedding" className="text-amber-600 hover:underline">wedding car rental</Link>, <Link href="/tempo-traveller" className="text-amber-600 hover:underline">tempo traveller for group travel</Link>, or a <Link href="/sightseeing" className="text-amber-600 hover:underline">guided sightseeing tour</Link>, we cover 50+ cities across North India with 5,000+ verified drivers.
+              <strong className="text-gray-700">Triveni Cabs</strong> offers a complete range of <Link href="/outstation-cabs" className="text-amber-600 hover:underline">outstation cab services</Link> starting at just <strong>&#8377;11/km for sedans</strong> and <strong>&#8377;15/km for SUVs</strong>. Whether you need an <Link href="/airport-service" className="text-amber-600 hover:underline">airport transfer</Link>, <Link href="/wedding" className="text-amber-600 hover:underline">wedding car rental</Link>, <Link href="/tempo-traveller" className="text-amber-600 hover:underline">tempo traveller for group travel</Link>, or a <Link href="/sightseeing" className="text-amber-600 hover:underline">guided sightseeing tour</Link>, we cover 50+ cities across North India with 5,000+ verified drivers.
             </p>
             <p>
               Popular routes include <Link href="/one-way-cab/delhi-to-agra" className="text-amber-600 hover:underline">Delhi to Agra (&#8377;2,400)</Link>, <Link href="/one-way-cab/delhi-to-jaipur" className="text-amber-600 hover:underline">Delhi to Jaipur (&#8377;3,200)</Link>, and <Link href="/one-way-cab/delhi-to-shimla" className="text-amber-600 hover:underline">Delhi to Shimla (&#8377;4,500)</Link>. Book <Link href="/chardham-yatra" className="text-amber-600 hover:underline">Chardham Yatra packages</Link>, <Link href="/same-day-agra-tour-from-delhi" className="text-amber-600 hover:underline">same-day Taj Mahal tours</Link>, or <Link href="/corporate-transportation-service" className="text-amber-600 hover:underline">corporate transportation</Link> — all with 24/7 support and transparent pricing.

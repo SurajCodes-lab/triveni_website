@@ -1,10 +1,11 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = honeymoonTripData['agra'];
 
 export const metadata = {
-  title: 'Romantic Trip to Agra Taj Mahal | Couple Trip Rs 4,500 | 2026',
+  title: tightenTitle('Romantic Trip to Agra Taj Mahal | Couple Trip Rs 4,500 | 2026'),
   description: 'Book romantic Agra trip from Delhi. Sedan Rs 4,500, Innova Rs 8,500. Taj Mahal sunrise, Mehtab Bagh sunset, decorated car. Couples special. Call 7668570551.',
   keywords: 'romantic trip agra taj mahal, couple trip agra, taj mahal romantic trip, agra honeymoon trip, romantic agra day trip from delhi',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

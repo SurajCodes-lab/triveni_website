@@ -20,6 +20,7 @@ import RelatedLinks from '@/components/seo/RelatedLinks';
 import { getMoneyPageLinks, getSiloHubLinks } from '@/lib/seo/linkingHelper';
 // Server-only: pulls in the large blog dataset, never import from a client component.
 import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // Some routeDescriptions carry prose-y distances ("1000 km (one way via Manali,
 // ~2000 km circuit)") that would eat the whole snippet — keep only the number.
@@ -101,7 +102,7 @@ export async function generateMetadata({ params }) {
   // Add null check
   if (!route) {
     return {
-      title: 'Tempo Traveller Service | Premium Group Travel',
+      title: tightenTitle('Tempo Traveller Service | Premium Group Travel'),
       description: 'Book premium tempo travellers for comfortable group travel across India.'
     };
   }
@@ -206,9 +207,9 @@ export async function generateMetadata({ params }) {
 
     return {
       // Title under 60 chars, Description under 155 chars
-      title: `Tempo Traveller in ${cityData.name} | 12-26 Seater ₹20/km`,
+      title: `Tempo Traveller in ${cityData.name} | 12-26 Seater ₹23/km`,
       description: buildFareFirstDescription([
-        '12-26 seater tempo ₹20-₹28/km',
+        '12-26 seater tempo ₹20-₹31/km',
         `${routeCount}+ routes from ${cityData.name}`,
         'driver + fuel included',
         '4.9★',
@@ -238,7 +239,7 @@ export async function generateMetadata({ params }) {
       },
       twitter: {
         card: 'summary_large_image',
-        title: `Tempo Traveller from ${cityData.name} | ${routeCount} Destinations | ₹20/km`,
+        title: `Tempo Traveller from ${cityData.name} | ${routeCount} Destinations | ₹23/km`,
         description: `${cityData.tagline} | Book tempo traveller to ${cityData.popularDestinations.join(', ')} | Call +91-7668570551`,
         site: '@trivenicabs',
         images: ['/images/tempo_hero_section.jpg'],
@@ -284,7 +285,7 @@ export async function generateMetadata({ params }) {
   const baseMeta = generateTempoMetadata({
     origin: originFormatted,
     destination: destinationFormatted,
-    price: '20/km',
+    price: '23/km',
     seats: '12-26',
     slug: route
   });
@@ -292,7 +293,7 @@ export async function generateMetadata({ params }) {
   return {
     ...baseMeta,
     description: buildFareFirstDescription([
-      '12-26 seater tempo from ₹20/km',
+      '12-26 seater tempo from ₹23/km',
       `${originFormatted} to ${destinationFormatted}${compactKm(routeMeta?.distance) ? ` ${compactKm(routeMeta.distance)}` : ''}`,
       compactTravelTime(routeMeta?.travelTime),
       'driver + fuel included',
@@ -545,7 +546,7 @@ export default async function TempoTravellerRoutePage({ params }) {
       "serviceType": "Tempo Traveller Rental",
       "name": `Tempo Traveller on Rent in ${cityData.name} — Triveni Cabs`,
       "brand": { "@type": "Brand", "name": "Triveni Cabs" },
-      "description": `Book 12-26 seater AC tempo traveller in ${cityData.name}. ${cityRoutes.length}+ routes to ${cityData.popularDestinations.join(', ')} and more. From ₹20/km all-inclusive.`,
+      "description": `Book 12-26 seater AC tempo traveller in ${cityData.name}. ${cityRoutes.length}+ routes to ${cityData.popularDestinations.join(', ')} and more. From ₹23/km all-inclusive.`,
       "provider": {
         "@type": "LocalBusiness",
         "@id": "https://www.trivenicabs.in/#organization",
@@ -588,7 +589,7 @@ export default async function TempoTravellerRoutePage({ params }) {
     const cityFaqs = [
       {
         question: `How much does a tempo traveller cost in ${cityData.name}?`,
-        answer: `Tempo traveller hire in ${cityData.name} starts at ₹20/km for a 12-seater AC tempo and goes up to ₹28/km for a 26-seater Maharaja edition. Local 8-hour/80-km day packages start around ₹6,000. Fares include fuel and driver; tolls, parking and state taxes are extra. Call 7668570551 for an exact ${cityData.name} quote.`
+        answer: `Tempo traveller hire in ${cityData.name} starts at ₹23/km for a 12-seater AC tempo and goes up to ₹31/km for a 26-seater Maharaja edition. Local 8-hour/80-km day packages start around ₹6,000. Fares include fuel and driver; tolls, parking and state taxes are extra. Call 7668570551 for an exact ${cityData.name} quote.`
       },
       {
         question: `What seater tempo travellers are available in ${cityData.name}?`,
@@ -659,7 +660,7 @@ export default async function TempoTravellerRoutePage({ params }) {
     const cityArticleSchema = getArticleSchema({
       slug: `tempo-traveller/${route}`,
       headline: `Tempo Traveller in ${cityData.name} (2026) — Fares, Seater Options, Routes & Booking Guide`,
-      description: `Complete guide to hiring a 12-26 seater AC tempo traveller in ${cityData.name}: per-km fares from ₹20/km, local day packages, ${cityRoutes.length}+ outstation routes, wedding and corporate options.`,
+      description: `Complete guide to hiring a 12-26 seater AC tempo traveller in ${cityData.name}: per-km fares from ₹23/km, local day packages, ${cityRoutes.length}+ outstation routes, wedding and corporate options.`,
       image: '/images/tempo_hero_section.jpg',
       authorName: 'editorial',
       speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
@@ -886,7 +887,7 @@ export default async function TempoTravellerRoutePage({ params }) {
         "name": `What is the fare for ${originFormatted} to ${destinationFormatted} tempo traveller?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `Tempo traveller fare from ${originFormatted} to ${destinationFormatted} starts at ₹20/km for 12 seater and goes up to ₹28/km for 26 seater AC tempo. ${routeDesc?.distance ? `The total distance is approximately ${routeDesc.distance}.` : ''} Price includes driver, fuel, and AC. Toll and parking extra. Call 7668570551 for exact quote.`
+          "text": `Tempo traveller fare from ${originFormatted} to ${destinationFormatted} starts at ₹23/km for 12 seater and goes up to ₹31/km for 26 seater AC tempo. ${routeDesc?.distance ? `The total distance is approximately ${routeDesc.distance}.` : ''} Price includes driver, fuel, and AC. Toll and parking extra. Call 7668570551 for exact quote.`
         }
       },
       {
@@ -973,7 +974,7 @@ export default async function TempoTravellerRoutePage({ params }) {
   const routeArticleSchema = getArticleSchema({
     slug: `tempo-traveller/${route}`,
     headline: `${originFormatted} to ${destinationFormatted} Tempo Traveller (2026) — Fare, Seater Options & Booking Guide`,
-    description: `Complete guide to booking a 12-26 seater AC tempo traveller from ${originFormatted} to ${destinationFormatted}${routeDesc?.distance ? ` (${routeDesc.distance})` : ''}. Fares from ₹20/km, all-inclusive of fuel, driver and tolls.`,
+    description: `Complete guide to booking a 12-26 seater AC tempo traveller from ${originFormatted} to ${destinationFormatted}${routeDesc?.distance ? ` (${routeDesc.distance})` : ''}. Fares from ₹23/km, all-inclusive of fuel, driver and tolls.`,
     image: '/images/tempo_hero_section.jpg',
     authorName: 'editorial',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']

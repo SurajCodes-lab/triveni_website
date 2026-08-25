@@ -707,7 +707,7 @@ export default function CityNamePage({ params }) {
           "@type": "HowToStep",
           "position": 3,
           "name": "Select Your Vehicle",
-          "text": "Choose from Sedan (₹11/km), SUV (₹15/km), Tempo Traveller (from ₹20/km), or Bus (from ₹30/km) based on group size."
+          "text": "Choose from Sedan (₹11/km), SUV (₹15/km), Tempo Traveller (from ₹23/km), or Bus (from ₹30/km) based on group size."
         },
         {
           "@type": "HowToStep",
@@ -763,7 +763,7 @@ export default function CityNamePage({ params }) {
     const cityExtraFAQs = [
       {
         question: `What types of vehicles can I book in ${formattedCityName}?`,
-        answer: `In ${formattedCityName} you can book a Sedan (₹11/km, 4 seats), SUV Ertiga (6 seats, ₹15/km) and SUV Innova (7 seats, ₹18/km), 12-26 seater Tempo Travellers (from ₹20/km) and 22-56 seater buses (from ₹30/km). Every vehicle is AC, GPS-tracked, sanitised and driven by a verified professional.`
+        answer: `In ${formattedCityName} you can book a Sedan (₹11/km, 4 seats), SUV Ertiga (6 seats, ₹15/km) and SUV Innova (7 seats, ₹18/km), 12-26 seater Tempo Travellers (from ₹23/km) and 22-56 seater buses (from ₹30/km). Every vehicle is AC, GPS-tracked, sanitised and driven by a verified professional.`
       },
       {
         question: `What is the difference between local and outstation taxi in ${formattedCityName}?`,

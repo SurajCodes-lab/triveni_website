@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 import { getArticleSchema, getSpeakableSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Dalhousie Travel Guide 2026 | Khajjiar, Attractions & Tips',
+  title: tightenTitle('Dalhousie Travel Guide 2026 | Khajjiar, Attractions & Tips'),
   description: 'Complete Dalhousie travel guide 2026. Khajjiar, Panchpula, Dainkund Peak, churches, Kalatop, best time, food & transport. Call 7668570551.',
   keywords: 'dalhousie travel guide, dalhousie tourist guide, khajjiar guide, dalhousie sightseeing, dalhousie tourism, things to do in dalhousie, dalhousie attractions',
   authors: [{ name: 'Triveni Cabs' }],

@@ -1,5 +1,6 @@
 import { getTripCostBySlug } from '@/utilis/tripCostData';
 import TripCostClient from '@/components/tripcost/TripCostClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = getTripCostBySlug('chardham-yatra-cost-by-car');
 
@@ -19,7 +20,7 @@ const media = {
 export const revalidate = 3600;
 
 export const metadata = {
-  title: data.title,
+  title: tightenTitle(data.title),
   description: data.metaDescription,
   keywords: data.keywords,
   authors: [{ name: 'Triveni Cabs' }],

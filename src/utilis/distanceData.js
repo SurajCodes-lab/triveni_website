@@ -1,20 +1,27 @@
-// src/utilis/distanceData.js - Complete data for 100 distance & travel guide pages
-// Pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹20/km (min 300km billing)
+import { fareFor, isLocalPackageRoute, rupees } from './pricing';
 
+// src/utilis/distanceData.js - Complete data for 100 distance & travel guide pages
+// Pricing: outstation Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km (min 300 km billing).
+// Short routes (< 100 km) are quoted from the published local half-day package
+// instead — see src/utilis/pricing.js for the policy and the reasoning.
+
+// Fare policy lives in src/utilis/pricing.js — do NOT reintroduce a local copy.
+// A duplicated copy of this function in the one-way corridor files is what let
+// /distance and /one-way-cab quote two different prices for the same journey.
 function calcFares(distanceKm) {
-  const billableKm = Math.max(distanceKm, 300);
-  const sedan = billableKm * 11;
-  const suv = billableKm * 15;
-  const tempo = billableKm * 20;
+  const sedan = fareFor(distanceKm, 'sedan').amount;
+  const suv = fareFor(distanceKm, 'suv').amount;
+  const tempo = fareFor(distanceKm, 'tempo').amount;
   return {
     cabFares: {
-      sedan: `₹${sedan.toLocaleString('en-IN')}`,
-      suv: `₹${suv.toLocaleString('en-IN')}`,
-      tempo: `₹${tempo.toLocaleString('en-IN')}`,
+      sedan: rupees(sedan),
+      suv: rupees(suv),
+      tempo: rupees(tempo),
     },
     sedanRaw: sedan,
     suvRaw: suv,
     tempoRaw: tempo,
+    localPackage: isLocalPackageRoute(distanceKm),
   };
 }
 
@@ -29,10 +36,14 @@ function lowerHours(duration) {
   return m ? parseFloat(m[1]) : null;
 }
 
-function generateFaqs(origin, dest, distKm, duration, highway, sedanFare, bestTime, majorStops) {
-  const billableKm = Math.max(distKm, 300);
-  const suvFare = `₹${(billableKm * 15).toLocaleString('en-IN')}`;
-  const tempoFare = `₹${(billableKm * 20).toLocaleString('en-IN')}`;
+function generateFaqs(origin, dest, distKm, duration, highway, fares, bestTime, majorStops) {
+  // Fares are passed in rather than recomputed. Short routes are priced from the
+  // local half-day package (see calcFares), so recomputing billableKm * rate here
+  // would make the FAQ answers contradict the fare table on the same page.
+  const sedanFare = fares.cabFares.sedan;
+  const suvFare = fares.cabFares.suv;
+  const tempoFare = fares.cabFares.tempo;
+  const isLocal = fares.localPackage;
   const fuelCost = calcFuelCost(distKm);
   const stopsText = (majorStops && majorStops.length)
     ? `Popular stops en route include ${majorStops.join(', ')}.`
@@ -40,8 +51,8 @@ function generateFaqs(origin, dest, distKm, duration, highway, sedanFare, bestTi
   return [
     { question: `What is the distance from ${origin} to ${dest} by road?`, answer: `The road distance from ${origin} to ${dest} is approximately ${distKm} km via ${highway}. By air the straight-line distance is shorter, but ${distKm} km is the actual driving distance you cover by car, cab or bus.` },
     { question: `How long does it take to drive from ${origin} to ${dest}?`, answer: `The drive from ${origin} to ${dest} takes approximately ${duration} via ${highway} in normal traffic. Starting early morning (5-6 AM) helps you avoid city congestion and reduces total travel time.` },
-    { question: `How much does a cab from ${origin} to ${dest} cost?`, answer: `A one-way cab from ${origin} to ${dest} starts at ${sedanFare} for an AC sedan (Swift Dzire/Etios). An SUV (Innova Crysta/Ertiga) starts at ${suvFare} and a 12-seater Tempo Traveller from ${tempoFare}. Toll and state tax are extra at actual.` },
-    { question: `What is the cab fare for an SUV or Innova from ${origin} to ${dest}?`, answer: `An SUV such as the Innova Crysta or Ertiga from ${origin} to ${dest} starts at ${suvFare} for the ${distKm} km one-way trip, billed at ₹15/km. SUVs are ideal for families of 6-7 and for hill or rough-road sections.` },
+    { question: `How much does a cab from ${origin} to ${dest} cost?`, answer: `A cab from ${origin} to ${dest} starts at ${sedanFare} for an AC sedan (Swift Dzire/Etios). An SUV (Innova Crysta/Ertiga) starts at ${suvFare} and a 12-seater Tempo Traveller from ${tempoFare}. ${isLocal ? `At ${distKm} km this is a local trip, so it is quoted on our 4 hr / 40 km package rather than the outstation minimum — distance beyond 40 km is added at the per-km rate.` : 'Outstation trips are billed on a 300 km per day minimum.'} Toll and state tax are extra at actual.` },
+    { question: `What is the cab fare for an SUV or Innova from ${origin} to ${dest}?`, answer: `An SUV such as the Innova Crysta or Ertiga from ${origin} to ${dest} starts at ${suvFare} for the ${distKm} km trip${isLocal ? ', quoted on our 4 hr / 40 km local package with extra distance billed at ₹15/km' : ', billed at ₹15/km'}. SUVs are ideal for families of 6-7 and for hill or rough-road sections.` },
     { question: `What is the best route from ${origin} to ${dest}?`, answer: `The recommended and fastest route from ${origin} to ${dest} is via ${highway}. ${stopsText} Our drivers know all alternative routes and pick the optimal path based on live traffic, road work and weather.` },
     { question: `How much toll do you pay from ${origin} to ${dest}?`, answer: `Toll charges from ${origin} to ${dest} depend on the highway plazas on ${highway} and are paid at actual via FASTag. The driver handles all toll payments and they are added transparently to your final bill — there are no hidden charges.` },
     { question: `What is the approximate fuel cost from ${origin} to ${dest}?`, answer: `If you self-drive, expect roughly ₹${fuelCost.toLocaleString('en-IN')} in petrol/diesel one-way for ${origin} to ${dest} (based on about 14 km/l). Booking a Triveni cab includes fuel in the fare, so you only pay toll and state tax extra.` },
@@ -123,6 +134,10 @@ const ONE_WAY_SLUGS = new Set([
   'varanasi-to-bodhgaya',
   // Week 38 P3 — new outstation twins
   'manali-to-leh', 'srinagar-to-gulmarg',
+  // Week 43 — dormant funnels found in the GSC audit: a /one-way-cab twin
+  // already existed for these but the booking link was never wired on the
+  // matching /distance page.
+  'chandigarh-to-kasauli', 'kasol-to-chandigarh', 'dharamshala-to-manali',
   // Week 38 P2 — tourist short-route local-taxi pages (half-day hire framing)
   'dehradun-to-mussoorie', 'dehradun-to-rishikesh', 'haridwar-to-rishikesh', 'rishikesh-to-dehradun',
   // Week 39 (Jul 18 2026) — all 47 new Delhi one-way corridors (sync with
@@ -171,7 +186,7 @@ function createRoute({ slug, origin, destination, distanceKm, duration, highway,
     oneWaySlug: ONE_WAY_SLUGS.has(slug) ? slug : null,
     travelModes: buildTravelModes(distanceKm, duration, fares.cabFares.sedan),
     directAnswer: `The distance from ${origin} to ${destination} is ${distanceKm} km by road via ${highway}, and the drive takes about ${duration}. A one-way AC cab starts from ${fares.cabFares.sedan} (sedan), with SUV and Tempo Traveller options also available. Toll and state tax are charged extra at actual.`,
-    faqs: generateFaqs(origin, destination, distanceKm, duration, highway, fares.cabFares.sedan, bestTime || 'October to March offers the most pleasant weather for this route.', majorStops),
+    faqs: generateFaqs(origin, destination, distanceKm, duration, highway, fares, bestTime || 'October to March offers the most pleasant weather for this route.', majorStops),
   };
 }
 

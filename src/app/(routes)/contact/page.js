@@ -2,6 +2,7 @@ import ContactClient from "./ContactClient";
 import { getSpeakableSchema } from "@/lib/seo/speakable-helpers";
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import { COMPANY_INFO, BASE_URL } from "@/lib/seo/constants";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -9,7 +10,7 @@ const PAGE_URL = `${BASE_URL}/contact`;
 const REVIEW_COUNT = String(getDeterministicReviewCount("contact"));
 
 export const metadata = {
-  title: "Contact Us | Triveni Cabs - 24/7 Customer Support",
+  title: tightenTitle("Contact Us — 24/7 Support, Call 7668570551"),
   description: "Contact Triveni Cabs for reliable taxi booking across India. 24/7 customer support, instant WhatsApp booking, and quick response times.",
   keywords: "contact Triveni Cabs, taxi booking support, cab service contact, 24/7 taxi support, WhatsApp cab booking, Agra taxi contact, India cab service contact, emergency taxi support, reliable cab customer service",
   alternates: {

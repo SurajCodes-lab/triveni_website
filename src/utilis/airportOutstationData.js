@@ -1464,7 +1464,12 @@ export function getAirportRouteMetadata(slug) {
   const sedanPrice = route.fares?.sedan?.price || '0';
   const suvPrice = route.fares?.suv?.price || '0';
   const dest = route.destination;
-  const airportShort = route.airport.replace(/(\sIGI|\sInternational)?\sAirport$/, '');
+  // The old rule stripped a trailing ' Airport', which only works when the name
+  // ends in it. 'Jolly Grant Airport Dehradun' and 'Sheikh ul-Alam International
+  // Airport Srinagar' came through untouched, producing titles that said Airport
+  // twice. The city is also the term people actually search -- nobody types
+  // 'Sri Guru Ram Dass Jee airport to Dalhousie taxi'.
+  const airportShort = route.airportCity || route.airport.replace(/(\sIGI|\sInternational)?\sAirport$/, '');
   const distance = route.distance;
   const time = route.time;
   const isInternational = /T3|International/i.test((route.terminals || []).map(t => t.name + ' ' + (t.type || '')).join(' '));

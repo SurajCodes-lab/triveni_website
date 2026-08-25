@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Udaipur Shopping 2026 | Miniature Paintings & Silver',
+  title: tightenTitle('Udaipur Shopping 2026 | Miniature Paintings & Silver'),
   description: 'Udaipur shopping guide. Miniature paintings, Pichwai art, silver jewelry, puppets, marble crafts, Bandhani. Hathi Pol, Bada Bazaar, Shilpgram. Prices & tips.',
   keywords: 'udaipur shopping guide, shopping in udaipur, hathi pol udaipur, udaipur miniature paintings, pichwai paintings, udaipur silver jewelry, shilpgram udaipur',
   authors: [{ name: 'Triveni Cabs' }],

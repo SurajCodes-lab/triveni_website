@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Haridwar Food Tour 2026 | Pure Veg Kachori & Aloo Puri Guide',
+  title: tightenTitle('Haridwar Food Tour 2026 | Pure Veg Kachori & Aloo Puri Guide'),
   description: 'Haridwar pure veg food guide — Kachori Sabzi, Aloo Puri, Chole Bhature, Rabri, Lassi. Best restaurants & ghat-side eateries. Call 7668570551.',
   keywords: 'haridwar food tour, haridwar street food, haridwar food guide, pure vegetarian haridwar, kachori haridwar, har ki pauri food, haridwar restaurants, hoshiyar puri haridwar',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

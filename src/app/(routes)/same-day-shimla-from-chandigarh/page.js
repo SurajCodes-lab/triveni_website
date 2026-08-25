@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-shimla-from-chandigarh');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Shimla Tour from Chandigarh | ₹3,500 AC Cab | 2026',
+  title: tightenTitle('Same Day Shimla Tour from Chandigarh | ₹3,500 AC Cab | 2026'),
   description: 'Book same day Shimla tour from Chandigarh. The Ridge, Mall Road, Kufri, Jakhoo Temple. AC sedan ₹3,500, SUV ₹5,000. Call 7668570551.',
   keywords: 'same day shimla tour from chandigarh, chandigarh to shimla one day trip, chandigarh to shimla cab, shimla day trip',
   authors: [{ name: 'Triveni Cabs' }],

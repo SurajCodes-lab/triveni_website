@@ -165,8 +165,8 @@ const vehicleTypes = [
   { type: 'Sedan', seats: '4', price: '₹11/km', image: '/images/car/swift_dzire.jpg', rating: '4.9', category: 'car' },
   { type: 'SUV Ertiga', seats: '6', price: '₹15/km', image: '/images/car/ertiga.jpg', rating: '4.8', category: 'car' },
   { type: 'SUV Innova', seats: '7', price: '₹18/km', image: '/images/car/innova_crysta.jpg', rating: '4.9', category: 'car' },
-  { type: '12 Seater Tempo', seats: '12', price: '₹20/km', image: '/images/tempo/12_seater.jpg', rating: '4.8', category: 'tempo' },
-  { type: '17 Seater Tempo', seats: '17', price: '₹24/km', image: '/images/tempo/17_seater.jpg', rating: '4.8', category: 'tempo' },
+  { type: '12 Seater Tempo', seats: '12', price: '₹23/km', image: '/images/tempo/12_seater.jpg', rating: '4.8', category: 'tempo' },
+  { type: '17 Seater Tempo', seats: '17', price: '₹25/km', image: '/images/tempo/17_seater.jpg', rating: '4.8', category: 'tempo' },
   { type: '26 Seater Maharaja', seats: '26', price: '₹28/km', image: '/images/tempo/26_seater.jpg', rating: '4.9', category: 'tempo' },
   { type: '27 Seater Bus', seats: '27', price: '₹30/km', image: '/images/bus/27_SEATER_BUS.jpg', rating: '4.7', category: 'bus' },
   { type: '45 Seater Bus', seats: '45', price: '₹40/km', image: '/images/bus/45_SEATER_BUS.jpg', rating: '4.8', category: 'bus' }
@@ -287,7 +287,7 @@ export default function CityRoutesMainClient({ data }) {
 
           {/* Breadcrumb */}
           <motion.nav
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 1, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8"
           >
@@ -305,7 +305,7 @@ export default function CityRoutesMainClient({ data }) {
 
             {/* Main Content - Left */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 1, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               className="lg:col-span-7 xl:col-span-8"
@@ -384,7 +384,7 @@ export default function CityRoutesMainClient({ data }) {
 
             {/* Right Side - Search & Quick Links */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 1, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 md:gap-6"
@@ -544,7 +544,7 @@ export default function CityRoutesMainClient({ data }) {
 
           {/* Trust Badges */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10"

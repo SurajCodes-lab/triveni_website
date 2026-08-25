@@ -1,6 +1,7 @@
 import CompetitorCompareClient from '@/components/competitor/CompetitorCompareClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getComparisonSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -9,7 +10,7 @@ const pageTitle = 'Triveni Cabs vs MakeMyTrip Cabs: Comparison 2026 | Who Wins? 
 const pageDesc = 'Triveni Cabs vs MakeMyTrip Cabs comparison 2026. Compare pricing, service quality, fleet, booking process. Direct cab service vs OTA intermediary. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs vs makemytrip cabs', 'makemytrip cab alternative', 'better than makemytrip cabs', 'mmt cab comparison', 'makemytrip outstation cab alternative', 'direct cab booking vs ota', 'makemytrip cab service review', 'cab booking without makemytrip', 'mmt cab competitor', 'best cab service north india'],
   authors: [{ name: 'Triveni Cabs' }],

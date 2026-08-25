@@ -2,10 +2,27 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, ChevronDown, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Mountain, Tent, Flame, Music, Compass, HelpCircle, Zap, UsersRound, Route } from '@/components/ui/icons';
+import { Phone, MapPin, Shield, Users, Star, ChevronRight, ChevronDown, CheckCircle2, Calendar, ArrowRight, IndianRupee, Tent, Flame, Music, HelpCircle, Zap, UsersRound, Route } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+
+/* Verified destination hero photos (public/images/) */
+const HERO_IMAGES = {
+  Rishikesh: '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg',
+  Manali: '/images/sightseeing/Manali/Manali_hero_section.jpg',
+  Kasol: '/images/sightseeing/Kasol/Kasol_hero_section.jpg',
+  Jaisalmer: '/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg',
+  Goa: '/images/packages/goa.webp',
+  'Spiti Valley': '/images/sightseeing/Spiti_Valley/Kunzum Pass.jpg',
+  'Bachelor Trip - North India': '/images/sightseeing/Manali/Manali_hero_section.jpg',
+};
+
+/* Ultra-Premium v2 CTA system — gold bg + black text, compact on desktop */
+const GOLD_CTA =
+  'sheen inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-7 py-3.5 text-base font-bold text-black shadow-gold-bloom transition-colors hover:bg-[#ffd84f] lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]';
+const GHOST_CTA_DARK =
+  'inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-7 py-3.5 text-base font-semibold text-white backdrop-blur-xl transition-colors hover:bg-white/10 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]';
 
 export default function FriendsTripClient({ data }) {
   const phoneNumber = '7668570551';
@@ -18,6 +35,10 @@ export default function FriendsTripClient({ data }) {
   const tripName = isBachelor ? 'Bachelor Trip North India' : `Friends Trip to ${data.destination}`;
   const perPersonPrice = (data.price.perPerson17 || data.price.perPerson27 || 815).toLocaleString();
   const stickyWhatsappText = `Hi, I'd like to plan a ${tripName.toLowerCase()} for my group. Please share Tempo Traveller package details and best rates.`;
+  const heroImg = HERO_IMAGES[data.destination];
+  const heroAlt = isBachelor
+    ? 'Manali — a top North India bachelor trip destination'
+    : `${data.destination} — friends group trip destination from Delhi`;
 
   return (
     <main className="min-h-screen bg-slate-950 text-white">
@@ -26,367 +47,215 @@ export default function FriendsTripClient({ data }) {
         label={tripName}
         whatsappText={stickyWhatsappText}
       />
-      <style jsx>{`
-        @keyframes shimmer {
-          0% { background-position: -200% center; }
-          100% { background-position: 200% center; }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          33% { transform: translateY(-12px) rotate(2deg); }
-          66% { transform: translateY(-6px) rotate(-1deg); }
-        }
-        @keyframes campfire-glow {
-          0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.15), 0 0 40px rgba(245, 158, 11, 0.05); }
-          50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.3), 0 0 60px rgba(245, 158, 11, 0.1); }
-        }
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        @keyframes adventure-pulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.2); }
-          50% { transform: scale(1.02); box-shadow: 0 0 20px 5px rgba(245, 158, 11, 0.1); }
-        }
-        @keyframes glow-pulse {
-          0%, 100% { opacity: 0.6; }
-          50% { opacity: 1; }
-        }
-        @keyframes badge-bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-4px); }
-        }
-        @keyframes orbit {
-          0% { transform: rotate(0deg) translateX(8px) rotate(0deg); }
-          100% { transform: rotate(360deg) translateX(8px) rotate(-360deg); }
-        }
-        .shimmer-gold {
-          background: linear-gradient(
-            90deg,
-            #f59e0b 0%,
-            #fbbf24 25%,
-            #fef3c7 50%,
-            #fbbf24 75%,
-            #f59e0b 100%
-          );
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: shimmer 3s linear infinite;
-        }
-        .hover-lift {
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hover-lift:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px -12px rgba(245, 158, 11, 0.25),
-                      0 8px 20px -8px rgba(251, 191, 36, 0.15);
-        }
-        .campfire-card {
-          animation: campfire-glow 3s ease-in-out infinite;
-        }
-        .adventure-card:hover {
-          animation: adventure-pulse 2s ease-in-out infinite;
-        }
-        .gradient-bg {
-          background-size: 200% 200%;
-          animation: gradient-shift 8s ease infinite;
-        }
-        .dot-grid {
-          background-image: radial-gradient(circle, rgba(251, 191, 36, 0.4) 1px, transparent 1px);
-          background-size: 24px 24px;
-        }
-        .flame-glow {
-          position: relative;
-        }
-        .flame-glow::after {
-          content: '';
-          position: absolute;
-          inset: -1px;
-          border-radius: inherit;
-          background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), transparent, rgba(239, 68, 68, 0.1));
-          z-index: -1;
-          opacity: 0;
-          transition: opacity 0.4s ease;
-        }
-        .flame-glow:hover::after {
-          opacity: 1;
-        }
-      `}</style>
 
-      {/* ============================================ */}
-      {/* HERO SECTION - Full Viewport Adventure      */}
-      {/* ============================================ */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-amber-950/80 to-orange-950/70 gradient-bg" />
+      {/* ─── HERO — destination photo, scrim on the text side only ─── */}
+      <section className="relative isolate overflow-hidden bg-slate-950">
+        {heroImg ? (
+          <img
+            src={heroImg}
+            alt={heroAlt}
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-aurora" />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/15" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 to-transparent" />
 
-        {/* Glowing orbs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[10%] left-[5%] w-[500px] h-[500px] bg-amber-500/20 rounded-full blur-[100px]" style={{ animation: 'glow-pulse 4s ease-in-out infinite' }} />
-          <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-orange-500/20 rounded-full blur-[100px]" style={{ animation: 'glow-pulse 5s ease-in-out infinite 1s' }} />
-          <div className="absolute top-[50%] left-[50%] w-[300px] h-[300px] bg-yellow-500/15 rounded-full blur-[100px]" style={{ animation: 'glow-pulse 6s ease-in-out infinite 2s' }} />
-        </div>
-
-        {/* Dot grid pattern */}
-        <div className="absolute inset-0 dot-grid opacity-[0.04]" />
-
-        {/* Floating decorative icons */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
-          <div className="absolute top-[15%] right-[12%] text-amber-500/10" style={{ animation: 'float 6s ease-in-out infinite' }}>
-            <Mountain className="w-20 h-20" />
-          </div>
-          <div className="absolute top-[60%] left-[8%] text-orange-500/10" style={{ animation: 'float 7s ease-in-out infinite 1s' }}>
-            <Compass className="w-16 h-16" />
-          </div>
-          <div className="absolute bottom-[20%] right-[20%] text-yellow-500/10" style={{ animation: 'float 8s ease-in-out infinite 2s' }}>
-            <Tent className="w-18 h-18" />
-          </div>
-          <div className="absolute top-[35%] right-[35%] text-amber-500/8" style={{ animation: 'float 9s ease-in-out infinite 0.5s' }}>
-            <Flame className="w-14 h-14" />
-          </div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
+        <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-amber-300/80 mb-8">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-amber-200">
+          <nav className="mb-8 flex items-center gap-2 text-sm text-orange-200/80">
+            <Link href="/" className="transition-colors hover:text-white">Home</Link>
+            <ChevronRight className="h-3 w-3" />
+            <span className="text-orange-100">
               {isBachelor ? 'Bachelor Trip North India' : `Friends Trip to ${data.destination}`}
             </span>
           </nav>
 
-          {/* Adventure badge with glow */}
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <div className="relative group" style={{ animation: 'badge-bounce 3s ease-in-out infinite' }}>
-              <div className="absolute inset-0 bg-amber-500/20 rounded-full blur-md group-hover:blur-lg transition-all" />
-              <div className="relative flex items-center gap-2 bg-amber-500/15 text-amber-200 px-5 py-2 rounded-full text-sm font-semibold border border-amber-500/30 backdrop-blur-sm">
-                <UsersRound className="w-4 h-4" />
-                {isBachelor ? 'Bachelor Trip' : 'Friends Trip'}
-              </div>
-            </div>
-            <div className="relative group" style={{ animation: 'badge-bounce 3s ease-in-out infinite 0.3s' }}>
-              <div className="absolute inset-0 bg-orange-500/15 rounded-full blur-md" />
-              <div className="relative flex items-center gap-2 bg-orange-500/15 text-orange-200 px-5 py-2 rounded-full text-sm font-semibold border border-orange-500/30 backdrop-blur-sm">
-                <Users className="w-4 h-4" />
-                {data.groupSize}
-              </div>
-            </div>
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#FACF2D]/30 bg-black/40 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#FACF2D] backdrop-blur-xl">
+              <UsersRound className="h-3.5 w-3.5" />
+              {isBachelor ? 'Bachelor Trip' : 'Friends Trip'}
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-orange-400/30 bg-black/40 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-orange-200 backdrop-blur-xl">
+              <Users className="h-3.5 w-3.5" />
+              {data.groupSize}
+            </span>
           </div>
 
-          {/* H1 with shimmer */}
-          <h1 className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1] tracking-tight">
+          <h1 className="speakable-headline font-display-serif mb-6 max-w-3xl text-3xl font-bold leading-[1.08] sm:text-4xl md:text-5xl lg:text-6xl">
             {isBachelor
-              ? <><span className="shimmer-gold">Bachelor Trip</span><br /><span className="text-white/90">North India Adventures</span></>
-              : <><span className="text-white/90">Friends Trip to</span><br /><span className="shimmer-gold">{data.destination}</span></>
+              ? <><span className="text-gold-foil">Bachelor Trip</span><span className="mt-2 block text-xl font-semibold text-white/85 sm:text-2xl lg:text-3xl">North India Adventures</span></>
+              : <>Friends Trip to <span className="text-gold-foil">{data.destination}</span><span className="mt-2 block text-xl font-semibold text-white/85 sm:text-2xl lg:text-3xl">by Tempo Traveller from Delhi</span></>
             }
           </h1>
 
-          <p className="speakable-lead text-lg sm:text-xl text-amber-100/80 mb-4 max-w-3xl leading-relaxed">
+          <p className="speakable-lead mb-4 max-w-3xl text-lg leading-relaxed text-orange-50/85 sm:text-xl">
             A friends trip to {data.destination} from Delhi by Tempo Traveller starts at around Rs {(data.price.perPerson17 || data.price.perPerson12 || 0).toLocaleString()} per person (12-17 seater AC). The full {data.vehicle.type} Tempo Traveller is Rs {(data.price.tempo12 || 0).toLocaleString()} to Rs {(data.price.tempo17 || 0).toLocaleString()}, all-inclusive of toll, parking and driver allowance, with a music system, reclining seats and luggage space for the whole gang.
           </p>
-          <p className="text-base text-amber-100/65 mb-10 max-w-3xl leading-relaxed">
+          <p className="mb-10 max-w-3xl text-base leading-relaxed text-orange-50/65">
             {data.tagline}. {data.vehicle.type} Tempo Traveller with music system, reclining seats, and space for your entire gang.
           </p>
 
-          {/* Animated stat badges */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-10">
+          {/* Stat panel — glass on dark */}
+          <div className="mb-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
             {[
-              { icon: Route, label: 'Distance', value: data.distance, color: 'amber' },
-              { icon: Calendar, label: 'Duration', value: data.duration, color: 'orange' },
-              { icon: Users, label: 'Group Size', value: data.groupSize, color: 'yellow' },
-              { icon: IndianRupee, label: 'Per Person From', value: `Rs ${(data.price.perPerson17 || data.price.perPerson27 || 815).toLocaleString()}`, color: 'amber' },
+              { icon: Route, label: 'Distance', value: data.distance },
+              { icon: Calendar, label: 'Duration', value: data.duration },
+              { icon: Users, label: 'Group Size', value: data.groupSize },
+              { icon: IndianRupee, label: 'Per Person From', value: `Rs ${(data.price.perPerson17 || data.price.perPerson27 || 815).toLocaleString()}` },
             ].map((item, i) => (
-              <div
-                key={i}
-                className="hover-lift group relative bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-5 hover:bg-white/[0.08] hover:border-amber-500/30 transition-all duration-300 cursor-default"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="w-10 h-10 bg-amber-500/15 rounded-xl flex items-center justify-center mb-3 group-hover:bg-amber-500/25 transition-colors">
-                    <item.icon className="w-5 h-5 text-amber-400" />
-                  </div>
-                  <p className="text-xs text-amber-300/70 font-medium uppercase tracking-wider mb-1">{item.label}</p>
-                  <p className="font-bold text-white text-lg">{item.value}</p>
-                </div>
+              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl sm:p-5">
+                <item.icon className="mb-2 h-5 w-5 text-[#FACF2D]" />
+                <p className="text-[11px] font-medium uppercase tracking-wider text-orange-100/60">{item.label}</p>
+                <p className="text-lg font-bold text-white">{item.value}</p>
               </div>
             ))}
           </div>
 
           {/* CTA + Lead Capture */}
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="grid items-start gap-8 lg:grid-cols-2">
             <div>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3">
                 <a
                   onClick={() => trackPhoneCall('friends_trip_hero')} href={`tel:${phoneNumber}`}
-                  className="group relative inline-flex items-center justify-center gap-2.5 min-h-[52px] bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg shadow-amber-600/25 hover:shadow-amber-500/40 hover:scale-[1.02]"
+                  className={GOLD_CTA}
                 >
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-amber-400 to-orange-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity" />
-                  <Phone className="w-5 h-5 relative" />
-                  <span className="relative">Call Now - {phoneNumber}</span>
+                  <Phone className="h-4 w-4" />
+                  Call Now — {phoneNumber}
                 </a>
                 <a
                   onClick={() => trackWhatsAppClick('friends_trip_hero', stickyWhatsappText)}
                   href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 min-h-[52px] bg-green-600/90 hover:bg-green-500 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-green-500/25 backdrop-blur-sm border border-green-500/20 hover:scale-[1.02]"
+                  className={GHOST_CTA_DARK}
                 >
                   WhatsApp Group Booking
                 </a>
               </div>
               {/* Trust row */}
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-6 text-sm text-amber-100/80">
-                <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-400 fill-current" /> 4.9&#9733; Rated</span>
-                <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-amber-400" /> 10,000+ trips</span>
-                <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-amber-400" /> Verified drivers</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-amber-400" /> No advance payment</span>
-                <span className="flex items-center gap-1.5"><Route className="w-4 h-4 text-amber-400" /> Customizable itinerary</span>
+              <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-orange-50/75">
+                <span className="flex items-center gap-1.5"><Star className="h-4 w-4 fill-current text-[#FACF2D]" /> 4.9&#9733; Rated</span>
+                <span className="flex items-center gap-1.5"><Users className="h-4 w-4 text-[#FACF2D]" /> 10,000+ trips</span>
+                <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-[#FACF2D]" /> Verified drivers</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-[#FACF2D]" /> No advance payment</span>
+                <span className="flex items-center gap-1.5"><Route className="h-4 w-4 text-[#FACF2D]" /> Customizable itinerary</span>
               </div>
             </div>
-            <div className="lg:justify-self-end w-full">
+            <div className="w-full lg:justify-self-end">
               <QuickEnquiryForm fromCity="Delhi" toCity={data.destination || 'North India'} pageType="route" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ============================================ */}
-      {/* BUDGET BREAKDOWN PER PERSON                  */}
-      {/* ============================================ */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/40 to-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/5 via-transparent to-transparent" />
+      {/* ─── BUDGET BREAKDOWN — warm-light band ─── */}
+      <section className="bg-[#FFF6DC] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-orange-700">Split the Bill</p>
+          <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold sm:text-3xl md:text-4xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900">
+              <IndianRupee className="h-5 w-5 text-[#FACF2D]" />
+            </span>
+            Budget Breakdown Per Person
+          </h2>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="relative">
-              <div className="absolute inset-0 bg-amber-500/30 rounded-2xl blur-lg" />
-              <div className="relative w-14 h-14 bg-amber-500/15 backdrop-blur-xl rounded-2xl border border-amber-500/30 flex items-center justify-center">
-                <IndianRupee className="w-7 h-7 text-amber-400" />
-              </div>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Budget Breakdown <span className="text-amber-400">Per Person</span>
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {Object.entries(data.budgetBreakdown).filter(([key]) => key !== 'total').map(([key, value], i) => (
-              <div
-                key={i}
-                className="hover-lift campfire-card group bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-6 hover:bg-white/[0.08] hover:border-amber-500/30 hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-8 h-8 bg-amber-500/15 rounded-lg flex items-center justify-center text-sm font-bold text-amber-400 border border-amber-500/20">
+              <div key={i} className="rounded-2xl border border-amber-900/10 bg-white p-6 shadow-sm">
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-sm font-bold text-[#FACF2D]">
                     {i + 1}
-                  </div>
-                  <p className="text-amber-300/80 text-sm font-medium capitalize">{key.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1')}</p>
+                  </span>
+                  <p className="text-sm font-medium capitalize text-slate-500">{key.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1')}</p>
                 </div>
-                <p className="font-bold text-white text-xl pl-11">{value}</p>
+                <p className="pl-11 text-xl font-bold">{value}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 via-amber-500/20 to-yellow-500/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity" />
-            <div className="relative bg-gradient-to-r from-orange-500/15 via-amber-500/15 to-yellow-500/15 backdrop-blur-2xl rounded-2xl border border-orange-500/30 p-8 text-center">
-              <p className="text-amber-300/80 text-sm font-medium uppercase tracking-wider mb-2">Total Estimated Budget Per Person</p>
-              <p className="text-4xl sm:text-5xl font-black shimmer-gold">{data.budgetBreakdown.total}</p>
-            </div>
+          <div className="mt-8 rounded-2xl border border-[#FACF2D]/60 bg-[#FACF2D]/15 p-8 text-center">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-amber-800">Total Estimated Budget Per Person</p>
+            <p className="font-display-serif text-4xl font-black text-slate-900 sm:text-5xl">{data.budgetBreakdown.total}</p>
           </div>
         </div>
       </section>
 
-      {/* ============================================ */}
-      {/* TEMPO TRAVELLER FEATURES                     */}
-      {/* ============================================ */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-orange-500/5 via-transparent to-transparent" />
+      {/* ─── TEMPO TRAVELLER + GROUP PRICING — dark band ─── */}
+      <section className="relative overflow-hidden bg-slate-950 py-16 md:py-24">
+        <div className="absolute inset-0 bg-aurora opacity-60" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FACF2D]">Party on Wheels</p>
+          <h2 className="font-display-serif mb-10 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+            Your Ride — {data.vehicle.name}
+          </h2>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="relative">
-              <div className="absolute inset-0 bg-amber-500/30 rounded-2xl blur-lg" />
-              <div className="relative w-14 h-14 bg-amber-500/15 backdrop-blur-xl rounded-2xl border border-amber-500/30 flex items-center justify-center">
-                <Car className="w-7 h-7 text-amber-400" />
-              </div>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Your Ride - <span className="text-amber-400">{data.vehicle.name}</span>
-            </h2>
-          </div>
-
-          <div className="hover-lift bg-white/[0.04] backdrop-blur-2xl rounded-3xl border border-amber-500/20 p-6 sm:p-10 hover:bg-white/[0.06] hover:border-amber-500/30 transition-all duration-300">
-            <div className="flex flex-col lg:flex-row gap-8">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-10">
+            <div className="flex flex-col gap-8 lg:flex-row">
               <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-2xl font-bold text-white">{data.vehicle.type} {data.vehicle.name}</h3>
-                </div>
-                <p className="text-amber-300/80 mb-6 text-lg">{data.vehicle.seats} seats - Party on wheels!</p>
-                <div className="grid sm:grid-cols-2 gap-3">
+                <h3 className="mb-2 text-2xl font-bold text-white">{data.vehicle.type} {data.vehicle.name}</h3>
+                <p className="mb-6 text-lg text-orange-200/70">{data.vehicle.seats} seats — the whole gang travels together</p>
+                <div className="grid gap-3 sm:grid-cols-2">
                   {data.vehicle.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-3 bg-white/[0.04] rounded-xl border border-white/[0.06] p-3 hover:border-amber-500/20 transition-colors">
-                      <div className="w-7 h-7 bg-amber-500/15 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="w-4 h-4 text-amber-400" />
-                      </div>
-                      <span className="text-amber-100/90 text-sm">{feature}</span>
+                    <div key={i} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-3">
+                      <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-[#FACF2D]/10">
+                        <CheckCircle2 className="h-4 w-4 text-[#FACF2D]" />
+                      </span>
+                      <span className="text-sm text-orange-50/85">{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="lg:w-80 bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-amber-500/20 p-6">
-                <h4 className="font-bold text-white text-lg mb-5 flex items-center gap-2">
-                  <IndianRupee className="w-5 h-5 text-amber-400" />
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl lg:w-80">
+                <h4 className="mb-5 flex items-center gap-2 text-lg font-bold text-white">
+                  <IndianRupee className="h-5 w-5 text-[#FACF2D]" />
                   Group Pricing
                 </h4>
                 <div className="space-y-4">
                   {data.price.tempo12 && (
-                    <div className="group bg-white/[0.03] rounded-xl p-4 border border-white/[0.06] hover:border-amber-500/20 transition-colors">
-                      <div className="flex justify-between items-center">
-                        <span className="text-amber-200/80 font-medium">12-Seater</span>
-                        <span className="font-bold text-white text-lg">Rs {data.price.tempo12.toLocaleString()}</span>
+                    <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium text-orange-100/80">12-Seater</span>
+                        <span className="text-lg font-bold text-white">Rs {data.price.tempo12.toLocaleString()}</span>
                       </div>
                       {data.price.perPerson12 && (
-                        <p className="text-xs text-amber-400/80 mt-1">~Rs {data.price.perPerson12}/person</p>
+                        <p className="mt-1 text-xs text-orange-200/60">~Rs {data.price.perPerson12}/person</p>
                       )}
                     </div>
                   )}
                   {data.price.tempo17 && (
-                    <div className="group relative bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-xl p-4 border border-amber-500/30">
-                      <div className="absolute top-0 right-0 bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase px-2 py-0.5 rounded-bl-lg rounded-tr-xl tracking-wider">
+                    <div className="relative rounded-xl border border-[#FACF2D]/50 bg-[#FACF2D]/10 p-4">
+                      <span className="absolute right-0 top-0 rounded-bl-lg rounded-tr-xl bg-[#FACF2D] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-black">
                         Popular
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-amber-100 font-semibold">17-Seater</span>
-                        <span className="font-bold text-white text-lg">Rs {data.price.tempo17.toLocaleString()}</span>
+                      </span>
+                      <div className="flex items-center justify-between">
+                        <span className="font-semibold text-white">17-Seater</span>
+                        <span className="text-lg font-bold text-white">Rs {data.price.tempo17.toLocaleString()}</span>
                       </div>
                       {data.price.perPerson17 && (
-                        <p className="text-xs text-amber-300 mt-1">~Rs {data.price.perPerson17}/person</p>
+                        <p className="mt-1 text-xs text-[#FACF2D]">~Rs {data.price.perPerson17}/person</p>
                       )}
                     </div>
                   )}
                   {data.price.minibus && (
-                    <div className="group bg-white/[0.03] rounded-xl p-4 border border-white/[0.06] hover:border-amber-500/20 transition-colors">
-                      <div className="flex justify-between items-center">
-                        <span className="text-amber-200/80 font-medium">27-Seater Mini Bus</span>
-                        <span className="font-bold text-white text-lg">Rs {data.price.minibus.toLocaleString()}</span>
+                    <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium text-orange-100/80">27-Seater Mini Bus</span>
+                        <span className="text-lg font-bold text-white">Rs {data.price.minibus.toLocaleString()}</span>
                       </div>
                       {data.price.perPerson27 && (
-                        <p className="text-xs text-amber-400/80 mt-1">~Rs {data.price.perPerson27}/person</p>
+                        <p className="mt-1 text-xs text-orange-200/60">~Rs {data.price.perPerson27}/person</p>
                       )}
                     </div>
                   )}
                 </div>
                 {data.price.note && (
-                  <p className="text-xs text-amber-400/70 mt-4 flex items-start gap-1.5">
-                    <Star className="w-3 h-3 mt-0.5 flex-shrink-0" />
+                  <p className="mt-4 flex items-start gap-1.5 text-xs text-orange-200/60">
+                    <Star className="mt-0.5 h-3 w-3 flex-shrink-0" />
                     {data.price.note}
                   </p>
                 )}
@@ -396,43 +265,30 @@ export default function FriendsTripClient({ data }) {
         </div>
       </section>
 
-      {/* ============================================ */}
-      {/* TOP DESTINATIONS (Bachelor only)             */}
-      {/* ============================================ */}
+      {/* ─── TOP DESTINATIONS (Bachelor only) — warm-light band ─── */}
       {isBachelor && data.topDestinations && (
-        <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/40 to-slate-950" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-500/5 via-transparent to-transparent" />
+        <section className="bg-[#FFF6DC] py-16 text-slate-900 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-orange-700">Pick Your Adventure</p>
+            <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold sm:text-3xl md:text-4xl">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900">
+                <MapPin className="h-5 w-5 text-[#FACF2D]" />
+              </span>
+              Top Bachelor Trip Destinations
+            </h2>
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-4 mb-3">
-              <div className="relative">
-                <div className="absolute inset-0 bg-amber-500/30 rounded-2xl blur-lg" />
-                <div className="relative w-14 h-14 bg-amber-500/15 backdrop-blur-xl rounded-2xl border border-amber-500/30 flex items-center justify-center">
-                  <MapPin className="w-7 h-7 text-amber-400" />
-                </div>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                Top Bachelor Trip <span className="text-amber-400">Destinations</span>
-              </h2>
-            </div>
-            <p className="text-amber-300/70 mb-10 pl-[4.5rem] text-lg">Pick your adventure</p>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {data.topDestinations.map((dest, i) => (
-                <div
-                  key={i}
-                  className="hover-lift adventure-card group relative bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-7 hover:bg-white/[0.08] hover:border-amber-500/30 hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-300"
-                >
-                  <div className="absolute top-4 right-4 w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-400/60 font-bold text-sm border border-amber-500/15">
+                <div key={i} className="relative rounded-2xl border border-amber-900/10 bg-white p-7 shadow-sm">
+                  <span className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-xl bg-[#FACF2D]/15 text-sm font-bold text-amber-800">
                     {String(i + 1).padStart(2, '0')}
-                  </div>
-                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-2xl flex items-center justify-center mb-4 group-hover:from-amber-500/30 group-hover:to-orange-500/30 transition-all border border-amber-500/15">
-                    <MapPin className="w-6 h-6 text-amber-400" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{dest.name}</h3>
-                  <p className="text-sm text-amber-100/70 mb-4 leading-relaxed">{dest.description}</p>
-                  <p className="font-semibold text-amber-400 text-lg">{dest.price}</p>
+                  </span>
+                  <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-slate-900">
+                    <MapPin className="h-5 w-5 text-[#FACF2D]" />
+                  </span>
+                  <h3 className="mb-2 text-xl font-bold">{dest.name}</h3>
+                  <p className="mb-4 text-sm leading-relaxed text-slate-600">{dest.description}</p>
+                  <p className="text-lg font-semibold text-amber-800">{dest.price}</p>
                 </div>
               ))}
             </div>
@@ -440,43 +296,31 @@ export default function FriendsTripClient({ data }) {
         </section>
       )}
 
-      {/* ============================================ */}
-      {/* ADVENTURE ACTIVITIES                         */}
-      {/* ============================================ */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-orange-950/30 to-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-orange-500/5 via-transparent to-transparent" />
+      {/* ─── ADVENTURE ACTIVITIES — dark band ─── */}
+      <section className="bg-slate-950 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-orange-400">Adrenaline Hit</p>
+          <h2 className="font-display-serif mb-3 flex items-center gap-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-orange-400/25 bg-orange-500/10">
+              <Zap className="h-5 w-5 text-orange-400" />
+            </span>
+            Adventure Activities
+          </h2>
+          <p className="mb-10 text-lg text-orange-100/55">Adrenaline-pumping experiences for your squad</p>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="relative">
-              <div className="absolute inset-0 bg-orange-500/30 rounded-2xl blur-lg" style={{ animation: 'glow-pulse 3s ease-in-out infinite' }} />
-              <div className="relative w-14 h-14 bg-orange-500/15 backdrop-blur-xl rounded-2xl border border-orange-500/30 flex items-center justify-center">
-                <Zap className="w-7 h-7 text-orange-400" />
-              </div>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Adventure <span className="text-orange-400">Activities</span>
-            </h2>
-          </div>
-          <p className="text-amber-300/70 mb-10 pl-[4.5rem] text-lg">Adrenaline-pumping experiences for your squad</p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {data.adventureActivities.map((activity, i) => (
-              <div
-                key={i}
-                className="hover-lift adventure-card group relative bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-7 hover:bg-white/[0.08] hover:border-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300"
-              >
-                <div className="absolute top-4 right-4 w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-400/60 font-bold text-sm border border-orange-500/15">
+              <div key={i} className="relative rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl transition-colors hover:border-orange-400/30">
+                <span className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-xl border border-orange-400/20 bg-orange-500/10 text-sm font-bold text-orange-300">
                   {String(i + 1).padStart(2, '0')}
-                </div>
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-2xl flex items-center justify-center mb-4 group-hover:from-orange-500/30 group-hover:to-amber-500/30 transition-all border border-orange-500/15">
-                  <Zap className="w-6 h-6 text-orange-400" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">{activity.name}</h3>
-                <p className="text-sm text-amber-100/70 mb-4 leading-relaxed">{activity.description}</p>
-                <div className="flex items-center gap-2 text-orange-400 font-semibold">
-                  <IndianRupee className="w-4 h-4" />
+                </span>
+                <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-orange-400/20 bg-orange-500/10">
+                  <Zap className="h-5 w-5 text-orange-400" />
+                </span>
+                <h3 className="mb-2 text-lg font-bold text-white">{activity.name}</h3>
+                <p className="mb-4 text-sm leading-relaxed text-orange-50/65">{activity.description}</p>
+                <div className="flex items-center gap-2 font-semibold text-[#FACF2D]">
+                  <IndianRupee className="h-4 w-4" />
                   {activity.price}
                 </div>
               </div>
@@ -485,44 +329,24 @@ export default function FriendsTripClient({ data }) {
         </div>
       </section>
 
-      {/* ============================================ */}
-      {/* DAY-WISE ITINERARY                           */}
-      {/* ============================================ */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-500/5 via-transparent to-transparent" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="relative">
-              <div className="absolute inset-0 bg-amber-500/30 rounded-2xl blur-lg" />
-              <div className="relative w-14 h-14 bg-amber-500/15 backdrop-blur-xl rounded-2xl border border-amber-500/30 flex items-center justify-center">
-                <Calendar className="w-7 h-7 text-amber-400" />
-              </div>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              The <span className="text-amber-400">Game Plan</span>
-            </h2>
-          </div>
-          <p className="text-amber-300/70 mb-10 pl-[4.5rem] text-lg">Day-by-day adventure itinerary</p>
+      {/* ─── ITINERARY — warm-light band ─── */}
+      <section className="bg-[#FFF6DC] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-orange-700">Day by Day</p>
+          <h2 className="font-display-serif mb-3 text-2xl font-bold sm:text-3xl md:text-4xl">The Game Plan</h2>
+          <p className="mb-10 text-lg text-slate-600">Day-by-day adventure itinerary</p>
 
           <div className="space-y-4">
             {data.itinerary.map((day, i) => (
-              <div
-                key={i}
-                className="hover-lift group relative bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-6 sm:p-7 hover:bg-white/[0.08] hover:border-amber-500/30 hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-300"
-              >
+              <div key={i} className="rounded-2xl border border-amber-900/10 bg-white p-6 shadow-sm sm:p-7">
                 <div className="flex items-start gap-5">
-                  <div className="relative flex-shrink-0">
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/40 to-orange-500/40 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="relative w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-600 rounded-2xl flex flex-col items-center justify-center shadow-lg shadow-amber-500/20">
-                      <span className="text-[10px] font-bold text-amber-200 uppercase tracking-wider">Day</span>
-                      <span className="text-2xl font-black leading-none text-white">{day.day}</span>
-                    </div>
+                  <div className="flex h-16 w-16 flex-shrink-0 flex-col items-center justify-center rounded-2xl bg-slate-900">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#FACF2D]">Day</span>
+                    <span className="text-2xl font-black leading-none text-white">{day.day}</span>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-amber-100 transition-colors">{day.title}</h3>
-                    <p className="text-amber-100/70 leading-relaxed">{day.description}</p>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="mb-2 text-lg font-bold sm:text-xl">{day.title}</h3>
+                    <p className="leading-relaxed text-slate-600">{day.description}</p>
                   </div>
                 </div>
               </div>
@@ -531,39 +355,28 @@ export default function FriendsTripClient({ data }) {
         </div>
       </section>
 
-      {/* ============================================ */}
-      {/* CAMPING OPTIONS                              */}
-      {/* ============================================ */}
+      {/* ─── CAMPING OPTIONS — dark band ─── */}
       {data.campingOptions && (
-        <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/40 to-slate-950" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-yellow-500/5 via-transparent to-transparent" />
+        <section className="relative overflow-hidden bg-slate-950 py-16 md:py-24">
+          <div className="absolute inset-0 bg-aurora opacity-50" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FACF2D]">Under the Stars</p>
+            <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#FACF2D]/25 bg-[#FACF2D]/10">
+                <Tent className="h-5 w-5 text-[#FACF2D]" />
+              </span>
+              Stay Options
+            </h2>
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-4 mb-10">
-              <div className="relative">
-                <div className="absolute inset-0 bg-yellow-500/30 rounded-2xl blur-lg" style={{ animation: 'glow-pulse 4s ease-in-out infinite' }} />
-                <div className="relative w-14 h-14 bg-yellow-500/15 backdrop-blur-xl rounded-2xl border border-yellow-500/30 flex items-center justify-center">
-                  <Tent className="w-7 h-7 text-yellow-400" />
-                </div>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                Stay <span className="text-yellow-400">Options</span>
-              </h2>
-            </div>
-
-            <div className="grid sm:grid-cols-3 gap-6">
+            <div className="grid gap-6 sm:grid-cols-3">
               {data.campingOptions.map((camp, i) => (
-                <div
-                  key={i}
-                  className="hover-lift campfire-card group relative bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-7 hover:bg-white/[0.08] hover:border-yellow-500/30 hover:shadow-2xl hover:shadow-yellow-500/10 transition-all duration-300"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-amber-500/20 rounded-2xl flex items-center justify-center mb-4 group-hover:from-yellow-500/30 group-hover:to-amber-500/30 transition-all border border-yellow-500/15">
-                    <Tent className="w-6 h-6 text-yellow-400" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-2">{camp.name}</h3>
-                  <p className="text-sm text-amber-100/70 mb-4 leading-relaxed">{camp.description}</p>
-                  <p className="text-xl font-bold text-amber-400">{camp.priceRange}</p>
+                <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-xl">
+                  <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-[#FACF2D]/20 bg-[#FACF2D]/10">
+                    <Tent className="h-5 w-5 text-[#FACF2D]" />
+                  </span>
+                  <h3 className="mb-2 text-lg font-bold text-white">{camp.name}</h3>
+                  <p className="mb-4 text-sm leading-relaxed text-orange-50/65">{camp.description}</p>
+                  <p className="text-xl font-bold text-[#FACF2D]">{camp.priceRange}</p>
                 </div>
               ))}
             </div>
@@ -571,57 +384,42 @@ export default function FriendsTripClient({ data }) {
         </section>
       )}
 
-      {/* ============================================ */}
-      {/* NIGHTLIFE / FUN OPTIONS                      */}
-      {/* ============================================ */}
+      {/* ─── NIGHTLIFE / PARTY IDEAS — dark band ─── */}
       {data.nightlifeOptions && (
-        <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-slate-950" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-500/5 via-transparent to-transparent" />
+        <section className="bg-slate-950 py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-orange-400">After Dark</p>
+            <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-orange-400/25 bg-orange-500/10">
+                <Flame className="h-5 w-5 text-orange-400" />
+              </span>
+              {isBachelor ? 'Bachelor Party Ideas' : 'Nightlife & Fun'}
+            </h2>
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-4 mb-10">
-              <div className="relative">
-                <div className="absolute inset-0 bg-orange-500/30 rounded-2xl blur-lg" style={{ animation: 'glow-pulse 3s ease-in-out infinite' }} />
-                <div className="relative w-14 h-14 bg-orange-500/15 backdrop-blur-xl rounded-2xl border border-orange-500/30 flex items-center justify-center">
-                  <Flame className="w-7 h-7 text-orange-400" />
-                </div>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                {isBachelor ? <><span className="text-orange-400">Bachelor</span> Party Ideas</> : <>Nightlife & <span className="text-orange-400">Fun</span></>}
-              </h2>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid gap-4 sm:grid-cols-2">
               {(isBachelor && data.bachelorGameIdeas ? data.bachelorGameIdeas : data.nightlifeOptions).map((item, i) => (
-                <div
-                  key={i}
-                  className="hover-lift flame-glow group flex items-center gap-4 bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-5 hover:bg-white/[0.08] hover:border-orange-500/30 transition-all duration-300"
-                >
-                  <div className="w-10 h-10 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:from-orange-500/30 group-hover:to-red-500/30 transition-all">
-                    <Music className="w-5 h-5 text-orange-400" />
-                  </div>
-                  <span className="text-amber-100/90 font-medium">{item}</span>
+                <div key={i} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+                  <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-orange-400/20 bg-orange-500/10">
+                    <Music className="h-5 w-5 text-orange-400" />
+                  </span>
+                  <span className="font-medium text-orange-50/85">{item}</span>
                 </div>
               ))}
             </div>
 
             {isBachelor && data.nightlifeOptions && (
               <>
-                <h3 className="text-2xl font-bold text-white mt-14 mb-6 flex items-center gap-3">
-                  <Flame className="w-6 h-6 text-orange-400" />
+                <h3 className="mb-6 mt-14 flex items-center gap-3 text-2xl font-bold text-white">
+                  <Flame className="h-6 w-6 text-orange-400" />
                   Nightlife at Destinations
                 </h3>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid gap-4 sm:grid-cols-2">
                   {data.nightlifeOptions && data.nightlifeOptions.map((item, i) => (
-                    <div
-                      key={i}
-                      className="hover-lift flame-glow flex items-center gap-4 bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-5 hover:bg-white/[0.08] hover:border-red-500/20 transition-all duration-300"
-                    >
-                      <div className="w-10 h-10 bg-red-500/15 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Flame className="w-5 h-5 text-red-400" />
-                      </div>
-                      <span className="text-amber-100/90 font-medium">{item}</span>
+                    <div key={i} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+                      <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-orange-400/20 bg-orange-500/10">
+                        <Flame className="h-5 w-5 text-orange-400" />
+                      </span>
+                      <span className="font-medium text-orange-50/85">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -631,137 +429,83 @@ export default function FriendsTripClient({ data }) {
         </section>
       )}
 
-      {/* ============================================ */}
-      {/* PACKAGE INCLUDES                             */}
-      {/* ============================================ */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/40 to-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-green-500/5 via-transparent to-transparent" />
+      {/* ─── PACKAGE INCLUDES + GROUP SAFETY — warm-light band ─── */}
+      <section className="bg-[#FFF6DC] py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-orange-700">All-Inclusive</p>
+          <h2 className="font-display-serif mb-10 text-2xl font-bold sm:text-3xl md:text-4xl">What’s Included</h2>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="relative">
-              <div className="absolute inset-0 bg-green-500/30 rounded-2xl blur-lg" />
-              <div className="relative w-14 h-14 bg-green-500/15 backdrop-blur-xl rounded-2xl border border-green-500/30 flex items-center justify-center">
-                <CheckCircle2 className="w-7 h-7 text-green-400" />
-              </div>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              What&apos;s <span className="text-green-400">Included</span>
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             {data.packageIncludes.map((item, i) => (
-              <div
-                key={i}
-                className="hover-lift group flex items-center gap-4 bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-5 hover:bg-white/[0.08] hover:border-green-500/30 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-300"
-              >
-                <div className="w-10 h-10 bg-green-500/15 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/25 transition-colors">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                </div>
-                <span className="text-amber-100/90 font-medium">{item}</span>
+              <div key={i} className="flex items-center gap-4 rounded-2xl border border-amber-900/10 bg-white p-5 shadow-sm">
+                <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-emerald-100">
+                  <CheckCircle2 className="h-5 w-5 text-emerald-700" />
+                </span>
+                <span className="font-medium text-slate-700">{item}</span>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ============================================ */}
-      {/* SAFETY FOR GROUPS                            */}
-      {/* ============================================ */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="relative">
-              <div className="absolute inset-0 bg-emerald-500/30 rounded-2xl blur-lg" />
-              <div className="relative w-14 h-14 bg-emerald-500/15 backdrop-blur-xl rounded-2xl border border-emerald-500/30 flex items-center justify-center">
-                <Shield className="w-7 h-7 text-emerald-400" />
-              </div>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Group <span className="text-emerald-400">Safety</span>
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <h2 className="font-display-serif mb-10 mt-16 text-2xl font-bold sm:text-3xl md:text-4xl">Group Safety</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {data.safetyFeatures.map((feature, i) => (
-              <div
-                key={i}
-                className="hover-lift group flex items-start gap-4 bg-emerald-500/[0.06] backdrop-blur-2xl rounded-2xl border border-emerald-500/15 p-5 hover:bg-emerald-500/[0.1] hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300"
-              >
-                <div className="w-10 h-10 bg-emerald-500/15 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500/25 transition-colors">
-                  <Shield className="w-5 h-5 text-emerald-400" />
-                </div>
-                <span className="text-emerald-100/90 font-medium mt-2">{feature}</span>
+              <div key={i} className="flex items-start gap-4 rounded-2xl border border-amber-900/10 bg-white p-5 shadow-sm">
+                <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-emerald-100">
+                  <Shield className="h-5 w-5 text-emerald-700" />
+                </span>
+                <span className="mt-1.5 font-medium text-slate-700">{feature}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============================================ */}
-      {/* FAQ SECTION - Interactive Accordion           */}
-      {/* ============================================ */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/40 to-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/5 via-transparent to-transparent" />
+      {/* ─── FAQ — dark band, two-column ─── */}
+      <section className="bg-slate-950 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FACF2D]">Good to Know</p>
+          <h2 className="font-display-serif mb-10 flex items-center gap-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#FACF2D]/25 bg-[#FACF2D]/10">
+              <HelpCircle className="h-5 w-5 text-[#FACF2D]" />
+            </span>
+            Frequently Asked Questions
+          </h2>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="relative">
-              <div className="absolute inset-0 bg-amber-500/30 rounded-2xl blur-lg" />
-              <div className="relative w-14 h-14 bg-amber-500/15 backdrop-blur-xl rounded-2xl border border-amber-500/30 flex items-center justify-center">
-                <HelpCircle className="w-7 h-7 text-amber-400" />
-              </div>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Frequently Asked <span className="text-amber-400">Questions</span>
-            </h2>
-          </div>
-
-          <div className="space-y-4 max-w-4xl">
+          <div className="grid gap-4 md:grid-cols-2 md:items-start">
             {data.faqs.map((faq, i) => (
               <div
                 key={i}
-                className={`group bg-white/[0.04] backdrop-blur-2xl rounded-2xl border transition-all duration-300 overflow-hidden ${
-                  openFaq === i
-                    ? 'border-amber-500/30 bg-white/[0.06] shadow-lg shadow-amber-500/5'
-                    : 'border-white/[0.08] hover:border-amber-500/20'
+                className={`overflow-hidden rounded-2xl border bg-white/5 backdrop-blur-xl transition-colors ${
+                  openFaq === i ? 'border-[#FACF2D]/40' : 'border-white/10 hover:border-white/20'
                 }`}
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   aria-expanded={openFaq === i}
                   aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'}
-                  className="w-full flex items-center gap-4 p-6 text-left cursor-pointer hover:bg-white/[0.03] transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/50 rounded-2xl"
+                  className="flex w-full cursor-pointer items-center gap-4 rounded-2xl p-5 text-left transition-colors focus:outline-none focus:ring-2 focus:ring-[#FACF2D]/50 sm:p-6"
                 >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-sm font-bold transition-colors ${
+                  <span className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl text-sm font-bold transition-colors ${
                     openFaq === i
-                      ? 'bg-amber-500/25 text-amber-300 border border-amber-500/40'
-                      : 'bg-amber-500/10 text-amber-400/70 border border-amber-500/15'
+                      ? 'bg-[#FACF2D] text-black'
+                      : 'border border-[#FACF2D]/20 bg-[#FACF2D]/10 text-[#FACF2D]'
                   }`}>
                     {String(i + 1).padStart(2, '0')}
-                  </div>
-                  <h3 className="font-semibold text-white flex-1 pr-2">{faq.question}</h3>
+                  </span>
+                  <h3 className="flex-1 pr-2 font-semibold text-white">{faq.question}</h3>
                   <ChevronDown
-                    className={`w-5 h-5 text-amber-400 flex-shrink-0 transition-transform duration-300 ${
+                    className={`h-5 w-5 flex-shrink-0 text-[#FACF2D] transition-transform duration-300 ${
                       openFaq === i ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
                 <div
                   className={`transition-all duration-300 ease-in-out ${
-                    openFaq === i
-                      ? 'max-h-[500px] opacity-100'
-                      : 'max-h-0 opacity-0'
+                    openFaq === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                   }`}
                   style={{ overflow: 'hidden' }}
                 >
-                  <div className={`px-6 pb-6 pl-[5.5rem] text-amber-100/70 leading-relaxed ${i === 0 ? 'speakable-faq-first' : ''}`}>
+                  <div className={`px-5 pb-6 pl-[4.5rem] leading-relaxed text-orange-50/70 sm:px-6 ${i === 0 ? 'speakable-faq-first' : ''}`}>
                     {faq.answer}
                   </div>
                 </div>
@@ -771,27 +515,11 @@ export default function FriendsTripClient({ data }) {
         </div>
       </section>
 
-      {/* ============================================ */}
-      {/* CROSS-SERVICE LINKS                          */}
-      {/* ============================================ */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/5 via-transparent to-transparent" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="relative">
-              <div className="absolute inset-0 bg-amber-500/30 rounded-2xl blur-lg" />
-              <div className="relative w-14 h-14 bg-amber-500/15 backdrop-blur-xl rounded-2xl border border-amber-500/30 flex items-center justify-center">
-                <Compass className="w-7 h-7 text-amber-400" />
-              </div>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Explore More <span className="text-amber-400">Services</span>
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* ─── CROSS-SERVICE LINKS — dark band ─── */}
+      <section className="bg-slate-950 pb-16 md:pb-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display-serif mb-8 text-2xl font-bold text-white sm:text-3xl">Explore More Services</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {(() => {
               const destSlug = data.destination ? data.destination.toLowerCase().replace(/\s+/g, '-') : '';
               const links = data.destination ? [
@@ -814,9 +542,9 @@ export default function FriendsTripClient({ data }) {
                 { href: '/outstation-cabs', label: 'Outstation Cab Service' },
               ];
               return links.map((link, i) => (
-                <Link key={i} href={link.href} className="hover-lift group flex items-center gap-3 bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/[0.08] p-4 hover:bg-white/[0.08] hover:border-amber-500/30 transition-all duration-300">
-                  <ArrowRight className="w-4 h-4 text-amber-400 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
-                  <span className="text-amber-100/90 text-sm font-medium group-hover:text-white transition-colors">{link.label}</span>
+                <Link key={i} href={link.href} className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-colors hover:border-[#FACF2D]/30 hover:bg-white/10">
+                  <ArrowRight className="h-4 w-4 flex-shrink-0 text-[#FACF2D] transition-transform group-hover:translate-x-1" />
+                  <span className="text-sm font-medium text-orange-50/85 transition-colors group-hover:text-white">{link.label}</span>
                 </Link>
               ));
             })()}
@@ -824,76 +552,54 @@ export default function FriendsTripClient({ data }) {
         </div>
       </section>
 
-      {/* ============================================ */}
-      {/* FINAL CTA - Animated Gradient                */}
-      {/* ============================================ */}
-      <section className="relative py-20 overflow-hidden">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-600 via-orange-600 to-yellow-600 gradient-bg" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent" />
-
-        {/* Floating decorative elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[10%] left-[5%] text-white/10" style={{ animation: 'float 6s ease-in-out infinite' }}>
-            <Mountain className="w-16 h-16" />
-          </div>
-          <div className="absolute bottom-[15%] right-[8%] text-white/10" style={{ animation: 'float 7s ease-in-out infinite 1s' }}>
-            <Compass className="w-12 h-12" />
-          </div>
-          <div className="absolute top-[50%] right-[30%] text-white/8" style={{ animation: 'float 8s ease-in-out infinite 2s' }}>
-            <Tent className="w-10 h-10" />
-          </div>
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="relative inline-block mb-6">
-            <div className="absolute inset-0 bg-white/20 rounded-full blur-xl" style={{ animation: 'glow-pulse 3s ease-in-out infinite' }} />
-            <div className="relative w-20 h-20 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto border border-white/20">
-              <UsersRound className="w-10 h-10 text-white" />
-            </div>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 text-white leading-tight">
+      {/* ─── FINAL CTA — dark band with gold ─── */}
+      <section className="relative overflow-hidden bg-slate-950 py-16 md:py-24">
+        <div className="absolute inset-0 bg-aurora" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FACF2D]/60 to-transparent" />
+        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <span className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-[#FACF2D]/25 bg-[#FACF2D]/10">
+            <UsersRound className="h-8 w-8 text-[#FACF2D]" />
+          </span>
+          <h2 className="font-display-serif mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
             {isBachelor
-              ? 'Book the Ultimate Bachelor Trip!'
-              : <>Book Your Squad Trip to <span className="underline decoration-white/30 underline-offset-4">{data.destination}</span>!</>
+              ? 'Book the Ultimate Bachelor Trip'
+              : <>Book Your Squad Trip to {data.destination}</>
             }
           </h2>
-          <p className="text-lg sm:text-xl text-yellow-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-orange-100/70 sm:text-xl">
             Tempo Traveller with music system, AC, reclining seats. From Rs {(data.price.perPerson17 || data.price.perPerson27 || 815).toLocaleString()} per person.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col flex-wrap justify-center gap-4 sm:flex-row">
             <a
               onClick={() => trackPhoneCall('friends_trip_footer')} href={`tel:${phoneNumber}`}
-              className="group relative inline-flex items-center gap-3 bg-white text-amber-700 px-10 py-5 rounded-2xl font-black text-lg hover:bg-amber-50 transition-all duration-300 shadow-2xl hover:shadow-white/30 hover:scale-[1.03]"
+              className={GOLD_CTA}
             >
-              <div className="absolute inset-0 rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.3)] opacity-0 group-hover:opacity-100 transition-opacity" />
-              <Phone className="w-6 h-6 relative" />
-              <span className="relative">Call {phoneNumber}</span>
+              <Phone className="h-4 w-4" />
+              Call {phoneNumber}
             </a>
             <a
               onClick={() => trackWhatsAppClick('friends_trip_footer', stickyWhatsappText)}
               href={`${whatsappLink}?text=${encodeURIComponent(stickyWhatsappText)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white px-10 py-5 rounded-2xl font-black text-lg transition-all duration-300 shadow-2xl hover:shadow-green-500/30 hover:scale-[1.03] border border-green-500/30"
+              className={GHOST_CTA_DARK}
             >
               WhatsApp Group Booking
             </a>
           </div>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-yellow-100/80">
-            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10">
-              <Users className="w-4 h-4" />
+          <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-orange-100/70">
+            <span className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-xl">
+              <Users className="h-4 w-4" />
               Group discounts available
             </span>
-            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10">
-              <Shield className="w-4 h-4" />
+            <span className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-xl">
+              <Shield className="h-4 w-4" />
               Free cancellation up to 48 hours
             </span>
-            <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/10">
-              <Music className="w-4 h-4" />
+            <span className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-xl">
+              <Music className="h-4 w-4" />
               Music system included
             </span>
           </div>

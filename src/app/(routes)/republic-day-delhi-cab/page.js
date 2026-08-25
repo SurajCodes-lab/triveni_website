@@ -1,5 +1,6 @@
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import SeasonalPageClient from '@/components/seasonal/SeasonalPageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -8,7 +9,7 @@ const pageTitle = 'Republic Day 2026 Delhi Cab Service | Parade & Sightseeing â€
 const pageDesc = 'Book Republic Day 2026 cab in Delhi for Kartavya Path parade, India Gate, Red Fort sightseeing. Airport transfers, local taxi. No surge pricing. From â‚¹999. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['republic day delhi cab 2026', 'republic day parade cab booking', 'kartavya path cab service', '26 january delhi cab', 'republic day sightseeing delhi', 'india gate cab 26 jan', 'republic day airport transfer delhi', 'delhi local cab republic day', 'republic day travel delhi', '26 january taxi service'],
   authors: [{ name: 'Triveni Cabs' }],

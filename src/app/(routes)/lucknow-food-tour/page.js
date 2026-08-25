@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Lucknow Food Tour 2026 | Tunday Kebab & Awadhi Cuisine',
+  title: tightenTitle('Lucknow Food Tour 2026 | Tunday Kebab & Awadhi Cuisine'),
   description: 'Lucknow food & culinary tour. Famous Tunday Kebab, Lucknowi Biryani, Galawati Kebab, Basket Chaat, Makkhan Malai. Street food itinerary, best restaurants.',
   keywords: 'lucknow food tour, lucknow street food, tunday kebab, lucknowi biryani, galawati kebab, basket chaat, awadhi cuisine, lucknow food guide, chowk lucknow food',
   authors: [{ name: 'Triveni Cabs' }],

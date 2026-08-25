@@ -1,13 +1,14 @@
 import BlogClient from './BlogClient';
 import { blogPosts } from '@/utilis/blog';
 import { getTodayDate, getSpeakableSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // Static generation - no ISR
 export const revalidate = 3600;
 
 // SEO Metadata for Blog Page
 export const metadata = {
-  title: 'Travel Blog India 2026 | Tips & Guides | Triveni Cabs',
+  title: tightenTitle('Travel Blog India 2026 | Tips & Guides'),
   description: 'Expert India travel guides, destination tips, road trip itineraries & budget hacks. Delhi, Agra, Jaipur, Manali, Kashmir & more. Plan your perfect trip today!',
   keywords: 'travel blog India, India travel tips, destination guides, road trip India, budget travel India, Delhi travel guide, Agra travel tips, Jaipur tourism, North India travel, weekend getaways India, hill station travel, pilgrimage tours India, travel itinerary India, Triveni Cabs blog',
   authors: [{ name: 'Triveni Cabs Travel Experts' }],

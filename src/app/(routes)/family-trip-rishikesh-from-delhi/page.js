@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-rishikesh-from-delhi";
 const data = familyTripData["rishikesh"];
 
 export const metadata = {
-  title: 'Family Trip Rishikesh from Delhi | Innova ₹7,500 | 2026',
+  title: tightenTitle('Family Trip Rishikesh from Delhi | Innova ₹7,500 | 2026'),
   description: 'Book a family trip to Rishikesh from Delhi by car. Innova Rs 7,500, Sedan Rs 5,500. Ganga Aarti, Ram Jhula, river beach. Kid-friendly rafting. Call 7668570551.',
   keywords: 'family trip rishikesh from delhi, delhi to rishikesh family tour, rishikesh family vacation by car, rishikesh trip with kids, family holiday rishikesh',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

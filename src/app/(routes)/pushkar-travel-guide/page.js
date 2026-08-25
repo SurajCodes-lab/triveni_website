@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Sunrise, Camera, Coffee, ShoppingBag, Thermometer, Hotel, Landmark, Compass, BookOpen, Scroll } from '@/components/ui/icons';
 import { getArticleSchema, getSpeakableSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Pushkar Travel Guide 2026 | Brahma Temple, Lake, Fair & Tips',
+  title: tightenTitle('Pushkar Travel Guide 2026 | Brahma Temple, Lake, Fair & Tips'),
   description: 'Complete Pushkar travel guide 2026. Brahma Temple, Pushkar Lake ghats, Savitri ropeway, Camel Fair, best time, food, shopping. Call 7668570551.',
   keywords: 'pushkar travel guide, brahma temple pushkar, pushkar lake, pushkar camel fair, savitri temple ropeway, pushkar sightseeing, things to do in pushkar',
   authors: [{ name: 'Triveni Cabs' }],

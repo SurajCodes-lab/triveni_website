@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllHowToReachSlugs } from '@/utilis/howToReachRouteData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "How to Reach — Complete Route & Transport Guides";
+  const title = tightenTitle("How to Reach — Complete Route & Transport Guides");
   const description = "How to reach North India destinations by car, train, bus and air, with the best cab option. Triveni Cabs 7668570551.";
   return {
     title,

@@ -1,9 +1,10 @@
 import TermsClient from "./TermsClient";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: "Terms & Conditions | Triveni Cabs",
+  title: tightenTitle("Terms & Conditions"),
   description: "Read Triveni Cabs terms and conditions for taxi booking services. Clear policies on booking, payments, vehicle responsibilities, customer guidelines, and more.",
   keywords: "Triveni Cabs terms, taxi booking terms, cab service conditions, travel terms India, taxi service agreement, cab booking policy, customer responsibilities taxi",
   alternates: {

@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-agra-tour-from-jaipur');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Agra Tour from Jaipur | ₹5,500 AC Cab | 2026',
+  title: tightenTitle('Same Day Agra Tour from Jaipur | ₹5,500 AC Cab | 2026'),
   description: 'Book same day Agra tour from Jaipur by car. Visit Taj Mahal, Agra Fort, Baby Taj via NH21. AC sedan ₹5,500, SUV ₹7,500. Call 7668570551.',
   keywords: 'same day agra tour from jaipur, jaipur to agra one day trip, jaipur to agra cab, jaipur agra same day tour, taj mahal day trip from jaipur',
   authors: [{ name: 'Triveni Cabs' }],

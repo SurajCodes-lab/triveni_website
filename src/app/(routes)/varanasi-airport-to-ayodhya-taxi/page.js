@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Varanasi Airport to Ayodhya Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Varanasi Airport to Ayodhya Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Varanasi Airport to Ayodhya taxi at ₹${ROUTE.fare}. Direct to Ram Mandir. Flight tracking, meet & greet at Lal Bahadur Shastri Airport. 24/7 by Triveni Cabs.`,
   keywords: 'varanasi airport to ayodhya taxi, varanasi airport to ayodhya cab, varanasi to ayodhya airport taxi, taxi from varanasi airport to ayodhya, ayodhya airport pickup, flight tracked ayodhya taxi, fixed fare ayodhya cab, varanasi airport ayodhya transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

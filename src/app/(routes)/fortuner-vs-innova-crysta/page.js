@@ -2,6 +2,7 @@ import { getComparisonBySlug } from '@/utilis/comparisonData';
 import ComparisonClient from '@/components/content/ComparisonClient';
 import { generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema, combineSchemas } from '@/lib/seo/schema-generators';
 import SemanticComparison from '@/components/seo/SemanticComparison';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'fortuner-vs-innova-crysta';
 const data = getComparisonBySlug(SLUG);
@@ -22,7 +23,7 @@ const media = {
 export const revalidate = 3600;
 
 export const metadata = {
-  title: `${data.title} | Triveni Cabs`,
+  title: tightenTitle(`${data.title}`),
   description: data.metaDescription,
   keywords: 'fortuner vs innova crysta, fortuner or innova for outstation, premium suv rental comparison, toyota fortuner rental, innova crysta vs fortuner price, best suv for long drive',
   alternates: { canonical: `https://www.trivenicabs.in/${SLUG}` },

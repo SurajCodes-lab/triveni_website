@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Lucknow Airport to Varanasi Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Lucknow Airport to Varanasi Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Lucknow Airport to Varanasi taxi at ₹${ROUTE.fare}. Fixed fare, flight tracking, meet & greet. Via Purvanchal Expressway. 24/7 by Triveni Cabs.`,
   keywords: 'lucknow airport to varanasi taxi, lucknow airport to varanasi cab, lucknow to varanasi airport taxi, taxi from lucknow airport to varanasi, varanasi airport pickup, flight tracked varanasi taxi, fixed fare varanasi cab, lucknow airport varanasi transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

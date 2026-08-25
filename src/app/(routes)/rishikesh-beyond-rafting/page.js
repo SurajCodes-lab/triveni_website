@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Rishikesh Beyond Rafting | Hidden Gems & Secret Spots | 2026',
+  title: tightenTitle('Rishikesh Beyond Rafting | Hidden Gems & Secret Spots | 2026'),
   description: 'Discover Rishikesh beyond white water rafting. Neer Garh Waterfall, Beatles Ashram, Kunjapuri sunrise, Patna Waterfall, Rajaji Park + more. Call 7668570551.',
   keywords: 'rishikesh beyond rafting, rishikesh hidden gems, beatles ashram, kunjapuri temple, neer garh waterfall, rajaji national park, vashishta cave, neelkanth mahadev',
   authors: [{ name: 'Triveni Cabs' }],

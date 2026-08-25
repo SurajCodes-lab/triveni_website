@@ -1,6 +1,7 @@
 import TrustPageClient from '@/components/competitor/TrustPageClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -9,7 +10,7 @@ const pageTitle = 'Triveni Cabs Pricing Transparency | No Hidden Charges, No Sur
 const pageDesc = 'Triveni Cabs transparent pricing: no hidden charges, no surge pricing, all-inclusive quotes. Toll, parking, driver allowance included. Compare and save. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs pricing', 'no hidden charges cab', 'transparent cab pricing india', 'no surge pricing cab service', 'cab fare transparency', 'all inclusive cab pricing', 'fixed price cab india', 'honest cab pricing', 'cab booking no extra charges', 'affordable transparent cab service'],
   authors: [{ name: 'Triveni Cabs' }],

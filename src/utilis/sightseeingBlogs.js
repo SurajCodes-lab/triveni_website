@@ -7187,7 +7187,7 @@ export const sightseeingBlogPosts = [
             <li>✓ Seating: 17 reclining seats</li>
             <li>✓ Features: AC, LED TV option</li>
             <li>✓ Luggage: Extra-large carrier</li>
-            <li>✓ Rate: ₹24/km</li>
+            <li>✓ Rate: ₹25/km</li>
             <li>✓ Ideal trips: Multi-day tours</li>
           </ul>
         </div>
@@ -8663,7 +8663,7 @@ export const sightseeingBlogPosts = [
           <ul class="space-y-2 text-gray-700">
             <li><strong>Best For:</strong> Teams of 12-15 people</li>
             <li><strong>Features:</strong> AC, reclining seats, LED TV</li>
-            <li><strong>Rate:</strong> ₹24/km</li>
+            <li><strong>Rate:</strong> ₹25/km</li>
             <li><strong>Ideal:</strong> Department outings</li>
           </ul>
         </div>

@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllBestTimeSlugs } from '@/utilis/bestTimeToVisitData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Best Time to Visit — North India Destination Guides";
+  const title = tightenTitle("Best Time to Visit — North India Destination Guides");
   const description = "Best time to visit North India destinations — weather, seasons, festivals. Plan and book a cab. Triveni Cabs 7668570551.";
   return {
     title,

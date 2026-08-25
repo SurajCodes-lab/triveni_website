@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, ChevronRight, ArrowRight, Camera, Trees, Calendar, Users, Star } from '@/components/ui/icons';
 import { getArticleSchema, withSpeakableFAQ, getHowToSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Rock Garden Chandigarh Guide 2026 | Nek Chand\'s Outsider-Art Masterpiece',
+  title: tightenTitle('Rock Garden Chandigarh Guide 2026 | Nek Chand\'s Outsider-Art Masterpiece'),
   description: 'Complete Rock Garden Chandigarh guide. Nek Chand\'s 40-acre sculpture park from industrial waste. Tickets, timing, photography spots, history, how to reach.',
   keywords: 'rock garden chandigarh, nek chand rock garden, sector 1 chandigarh, rock garden timing, rock garden ticket price, things to do chandigarh, sculpture park chandigarh',
   authors: [{ name: 'Triveni Cabs Editorial' }],

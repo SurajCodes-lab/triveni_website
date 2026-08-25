@@ -1,8 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, XCircle, Clock, Sun, Award, Compass, Route, Bus, Fuel } from '@/components/ui/icons';
 import { registrationSteps, packingTips, seasonGuide, inclusions, exclusions, distanceMatrix } from '@/utilis/chardhamYatraData';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
@@ -80,10 +79,8 @@ const dhamColorMap = {
 };
 
 export default function ChardhamDhamClient({ data }) {
-  const [mounted, setMounted] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState(null);
   const [activeVehicleTab, setActiveVehicleTab] = useState('cars');
-  useEffect(() => { setMounted(true); }, []);
 
   const { title, vehicle, destination, destinationData, duration, distance, distanceKm, estimatedPrice, allCarPrices, allBusPrices, allBusOptions, tempoOptions, itinerary, whyChoose, faqs, images, relatedRoutes, destinationKey } = data;
 
@@ -100,6 +97,12 @@ export default function ChardhamDhamClient({ data }) {
   const colors = dhamColorMap[dhamKey];
   const whatsappMsg = encodeURIComponent(`Hello! I want to book a car for ${destination} Yatra 2026`);
 
+  // Split the title so the hero H1 carries exactly one gold-foil accent line
+  const dashIdx = title.indexOf(' — ');
+  const byIdx = dashIdx === -1 ? title.lastIndexOf(' by ') : -1;
+  const titleMain = dashIdx > -1 ? title.slice(0, dashIdx) : byIdx > -1 ? title.slice(0, byIdx) : title;
+  const titleAccent = dashIdx > -1 ? title.slice(dashIdx + 3) : byIdx > -1 ? title.slice(byIdx + 1) : `Darshan of ${destination}`;
+
   return (
     <div className="min-h-screen bg-indigo-950">
       {/* ===== HERO: Temple Sanctum ===== */}
@@ -109,22 +112,6 @@ export default function ChardhamDhamClient({ data }) {
           <div className="absolute inset-0 bg-gradient-to-t from-indigo-950 via-indigo-950/80 to-indigo-950/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-950/90 to-indigo-950/30" />
         </div>
-
-        {/* Decorative mandala pattern */}
-        {mounted && (
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <motion.div
-              className="absolute -right-48 top-1/4 w-96 h-96 rounded-full border border-white/[0.03]"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-            />
-            <motion.div
-              className="absolute -right-32 top-1/4 w-64 h-64 rounded-full border border-white/[0.05]"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
-            />
-          </div>
-        )}
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-24 w-full">
           <div className="max-w-3xl">
@@ -138,38 +125,28 @@ export default function ChardhamDhamClient({ data }) {
             </div>
 
             {/* Dham badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+            <div
               className={`inline-flex items-center gap-3 ${colors.bgLight} border ${colors.border} rounded-full px-5 py-2 mb-6`}
             >
               <span className="text-2xl">🙏</span>
               <span className={`${colors.text} text-sm font-bold tracking-wide`}>{destinationData?.type} Dham | {colors.deity}</span>
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white font-serif mb-4 leading-tight"
+            <h1
+              className="speakable-headline font-display-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-[1.05] tracking-tight"
             >
-              {title}
-            </motion.h1>
+              {titleMain}
+              <span className="mt-2 block text-gold-foil text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{titleAccent}</span>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 }}
+            <p
               className="speakable-lead text-indigo-200/70 text-base md:text-lg mb-8 max-w-2xl leading-relaxed"
             >
               {destination} Temple ({colors.deity}) sits at {destinationData?.altitude || 'high altitude'} in the Garhwal Himalayas. Reach it by car with Triveni Cabs from {estimatedPrice} — Sedan ₹12/km, Innova Crysta ₹18/km or Fortuner ₹25/km — with experienced hill drivers. Best season: {destinationData?.bestSeason || 'May-June & September-October'}.
-            </motion.p>
+            </p>
 
             {/* Key info badges */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+            <div
               className="flex flex-wrap gap-3 mb-8"
             >
               {[
@@ -182,28 +159,22 @@ export default function ChardhamDhamClient({ data }) {
                   <span className="text-white/80 text-sm">{item.label}</span>
                 </div>
               ))}
-            </motion.div>
+            </div>
 
             {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+            <div
               className="flex flex-wrap gap-4"
             >
-              <a href="tel:+917668570551" className={`inline-flex items-center gap-2 bg-gradient-to-r ${colors.gradient} text-white px-8 py-3.5 rounded-full font-bold text-lg hover:shadow-lg ${colors.shadow} transition-all hover:scale-105`}>
-                <Phone className="w-5 h-5" /> Book Now — 7668570551
+              <a href="tel:+917668570551" className="sheen inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-8 py-3.5 rounded-full font-black text-lg shadow-[0_12px_36px_-10px_rgba(250,207,45,0.55)] transition-all hover:bg-amber-300 hover:-translate-y-0.5 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
+                <Phone className="w-5 h-5 lg:w-4 lg:h-4" /> Book Now — 7668570551
               </a>
-              <a href={`https://wa.me/917668570551?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-emerald-500 transition-all hover:scale-105">
-                <MessageCircle className="w-5 h-5" /> WhatsApp
+              <a href={`https://wa.me/917668570551?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-white/20 bg-white/10 backdrop-blur-md text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-white/20 transition-all lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
+                <MessageCircle className="w-5 h-5 text-green-400 lg:w-4 lg:h-4" /> WhatsApp
               </a>
-            </motion.div>
+            </div>
 
             {/* Trust Row */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
+            <div
               className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-7 text-white/80 text-sm"
             >
               <span className="flex items-center gap-1.5"><Star className={`w-4 h-4 ${colors.text}`} /> 4.9&#9733; Rated</span>
@@ -213,16 +184,16 @@ export default function ChardhamDhamClient({ data }) {
               <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-cyan-400" /> Verified hill drivers</span>
               <span className="w-1 h-1 rounded-full bg-white/30" />
               <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-400" /> No advance payment</span>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ===== Quick Enquiry Form ===== */}
-      <section className="py-14">
+      <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-4">Plan Your {destination} Yatra</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mb-4">Plan Your {destination} Yatra</h2>
             <p className="text-indigo-200/70 leading-relaxed">Share your travel dates and group size — our team sends a transparent, all-inclusive quote within minutes. No advance payment needed to reserve your vehicle.</p>
           </div>
           <div className="flex lg:justify-end">
@@ -232,14 +203,14 @@ export default function ChardhamDhamClient({ data }) {
       </section>
 
       {/* ===== SECTION 2: Sacred Significance ===== */}
-      <section className="py-20">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
             {/* Main content */}
             <div className="lg:col-span-3">
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <div>
                 <span className={`${colors.text} text-sm font-bold tracking-widest uppercase`}>Sacred Significance</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3 mb-8">About {destination} Temple</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3 mb-8">About {destination} Temple</h2>
                 <p className="text-indigo-200/70 leading-relaxed text-lg mb-8">{destinationData?.significance}</p>
 
                 {/* Quick facts cards */}
@@ -257,32 +228,32 @@ export default function ChardhamDhamClient({ data }) {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Image gallery */}
             <div className="lg:col-span-2">
-              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="grid grid-cols-2 gap-3 h-full">
+              <div className="grid grid-cols-2 gap-3 h-full">
                 {images.gallery.map((img, i) => (
                   <div key={i} className={`relative overflow-hidden rounded-2xl ${i === 0 ? 'col-span-2 h-56' : 'h-40'} border border-white/10`}>
                     <Image src={img} alt={`${destination} gallery ${i + 1}`} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover hover:scale-110 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/40 to-transparent" />
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ===== SECTION 3: All Vehicle Comparison Matrix ===== */}
-      <section className="py-20 bg-indigo-950/80">
+      <section className="py-16 md:py-24 bg-indigo-950/80">
         <div className="max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <div className="text-center mb-14">
             <span className={`${colors.text} text-sm font-bold tracking-widest uppercase`}>Vehicle Options</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">How to Reach {destination} — All Vehicles</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">How to Reach {destination} — All Vehicles</h2>
             <p className="text-indigo-300/60 mt-3">Choose your ideal vehicle for the {destination} pilgrimage</p>
-          </motion.div>
+          </div>
 
           {/* Tab switcher */}
           <div className="flex justify-center gap-3 mb-10">
@@ -302,9 +273,9 @@ export default function ChardhamDhamClient({ data }) {
           </div>
 
           {/* Cars grid */}
-          <AnimatePresence mode="wait">
+          <>
             {activeVehicleTab === 'cars' && (
-              <motion.div key="cars" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div key="cars" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {allCarPrices.map((car, i) => (
                   <div key={i} className={`bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 ${colors.hoverBorder} transition-all overflow-hidden group`}>
                     <div className="relative h-36 bg-gradient-to-br from-white/5 to-white/[0.02]">
@@ -314,7 +285,7 @@ export default function ChardhamDhamClient({ data }) {
                       <h3 className="text-white font-bold">{car.name}</h3>
                       <p className="text-indigo-400/60 text-sm">{car.category} | {car.seats} Seater</p>
                       <div className="flex items-baseline gap-2 mt-3">
-                        <span className={`text-xl font-bold ${colors.text}`}>₹{car.perKm}/km</span>
+                        <span className="text-xl font-bold text-[#FACF2D]">₹{car.perKm}/km</span>
                       </div>
                       <p className="text-indigo-400/50 text-xs mt-1">Est. {car.estimatedPrice} for round trip</p>
                       <div className="mt-3 flex flex-wrap gap-1">
@@ -328,11 +299,11 @@ export default function ChardhamDhamClient({ data }) {
                     </div>
                   </div>
                 ))}
-              </motion.div>
+              </div>
             )}
 
             {activeVehicleTab === 'buses' && (
-              <motion.div key="buses" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+              <div key="buses">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {allBusPrices.map((bus, i) => (
                     <div key={i} className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-5 hover:border-indigo-500/30 transition-all">
@@ -341,7 +312,7 @@ export default function ChardhamDhamClient({ data }) {
                       </div>
                       <h3 className="text-white font-bold">{bus.name}</h3>
                       <p className="text-indigo-400/60 text-sm">{bus.seats} Seater | ₹{bus.perKm}/km</p>
-                      <p className={`${colors.text} font-bold text-lg mt-2`}>{bus.estimatedPrice}</p>
+                      <p className="text-[#FACF2D] font-bold text-lg mt-2">{bus.estimatedPrice}</p>
                       <a href="tel:+917668570551" className="mt-3 block text-center bg-white/10 hover:bg-white/20 text-white py-2.5 rounded-xl text-sm font-semibold transition-all">
                         Book Bus
                       </a>
@@ -354,34 +325,45 @@ export default function ChardhamDhamClient({ data }) {
                   <div className="p-5 border-b border-white/10">
                     <h3 className="text-white font-bold text-lg">All Bus Sizes Available</h3>
                   </div>
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr className="border-b border-white/10">
-                          <th className="text-left text-indigo-400/60 p-4 font-medium">Bus Type</th>
-                          <th className="text-center text-indigo-400/60 p-4 font-medium">Seats</th>
-                          <th className="text-center text-indigo-400/60 p-4 font-medium">Per Km</th>
-                          <th className="text-center text-indigo-400/60 p-4 font-medium">Min. Charge</th>
+                  {/* Desktop table */}
+                  <table className="hidden md:table w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-white/10">
+                        <th className="text-left text-indigo-400/60 p-4 font-medium">Bus Type</th>
+                        <th className="text-center text-indigo-400/60 p-4 font-medium">Seats</th>
+                        <th className="text-center text-indigo-400/60 p-4 font-medium">Per Km</th>
+                        <th className="text-center text-indigo-400/60 p-4 font-medium">Min. Charge</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {allBusOptions.map((bus, i) => (
+                        <tr key={i} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                          <td className="p-4 text-white font-medium">{bus.name}</td>
+                          <td className="p-4 text-center text-indigo-300/70">{bus.seats}</td>
+                          <td className="p-4 text-center text-[#FACF2D] font-semibold">₹{bus.perKm}</td>
+                          <td className="p-4 text-center text-indigo-300/70">{bus.minCharge}</td>
                         </tr>
-                      </thead>
-                      <tbody>
-                        {allBusOptions.map((bus, i) => (
-                          <tr key={i} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                            <td className="p-4 text-white font-medium">{bus.name}</td>
-                            <td className="p-4 text-center text-indigo-300/70">{bus.seats}</td>
-                            <td className={`p-4 text-center ${colors.text} font-semibold`}>₹{bus.perKm}</td>
-                            <td className="p-4 text-center text-indigo-300/70">{bus.minCharge}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                      ))}
+                    </tbody>
+                  </table>
+                  {/* Mobile stacked cards */}
+                  <div className="md:hidden divide-y divide-white/5">
+                    {allBusOptions.map((bus, i) => (
+                      <div key={i} className="p-4">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-white font-medium text-sm">{bus.name}</span>
+                          <span className="text-[#FACF2D] font-semibold text-sm">₹{bus.perKm}/km</span>
+                        </div>
+                        <p className="text-indigo-300/70 text-xs">{bus.seats} seats · Min. charge {bus.minCharge}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )}
 
             {activeVehicleTab === 'tempos' && (
-              <motion.div key="tempos" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+              <div key="tempos" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
                 {tempoOptions.map((tempo, i) => (
                   <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center hover:border-indigo-500/30 transition-all">
                     <div className="relative h-28 mb-3">
@@ -389,27 +371,27 @@ export default function ChardhamDhamClient({ data }) {
                     </div>
                     <h4 className="text-white font-semibold">{tempo.name}</h4>
                     <p className="text-indigo-400/60 text-sm">{tempo.seats} Seater</p>
-                    <p className={`${colors.text} font-bold mt-2`}>₹{tempo.perKm}/km</p>
+                    <p className="text-[#FACF2D] font-bold mt-2">₹{tempo.perKm}/km</p>
                     <a href="tel:+917668570551" className="mt-3 block text-center bg-white/10 hover:bg-white/20 text-white py-2 rounded-lg text-sm transition-all">
                       Enquire
                     </a>
                   </div>
                 ))}
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
+          </>
         </div>
       </section>
 
       {/* ===== SECTION 4: Itinerary ===== */}
       {itinerary.length > 0 && (
-        <section className="py-20">
+        <section className="py-16 md:py-24">
           <div className="max-w-4xl mx-auto px-4">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <div className="text-center mb-14">
               <span className="text-amber-400 text-sm font-bold tracking-widest uppercase">Sample Itinerary</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">{destination} Yatra — Day by Day</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">{destination} Yatra — Day by Day</h2>
               <p className="text-indigo-300/60 mt-3">{duration} | {distance}</p>
-            </motion.div>
+            </div>
 
             {/* Vertical timeline */}
             <div className="relative">
@@ -418,12 +400,8 @@ export default function ChardhamDhamClient({ data }) {
 
               <div className="space-y-6">
                 {itinerary.map((day, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.08 }}
                     className="relative flex gap-6 pl-2"
                   >
                     {/* Timeline dot */}
@@ -436,7 +414,7 @@ export default function ChardhamDhamClient({ data }) {
                       <h3 className="text-white font-bold text-lg mb-2">{day.title}</h3>
                       <p className="text-indigo-200/60 text-sm leading-relaxed">{day.desc}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -445,24 +423,20 @@ export default function ChardhamDhamClient({ data }) {
       )}
 
       {/* ===== SECTION 5: Why Choose Triveni ===== */}
-      <section className="py-20 bg-gradient-to-b from-indigo-950/50 to-indigo-950">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-indigo-950/50 to-indigo-950">
         <div className="max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <div className="text-center mb-14">
             <span className={`${colors.text} text-sm font-bold tracking-widest uppercase`}>Why Triveni Cabs</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">Trusted for {destination} Yatra Since 2015</h2>
-          </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">Trusted for {destination} Yatra Since 2015</h2>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {whyChoose.slice(0, 6).map((item, i) => {
               const icons = [Shield, Star, Award, Mountain, Compass, CheckCircle];
               const Icon = icons[i % icons.length];
               return (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
                   className={`bg-white/5 rounded-2xl border border-white/10 p-6 ${colors.hoverBorder} transition-all`}
                 >
                   <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${colors.gradientBg} flex items-center justify-center mb-4`}>
@@ -470,7 +444,7 @@ export default function ChardhamDhamClient({ data }) {
                   </div>
                   <h3 className="text-white font-bold mb-2">{item.title}</h3>
                   <p className="text-indigo-300/60 text-sm leading-relaxed">{item.desc}</p>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -478,10 +452,10 @@ export default function ChardhamDhamClient({ data }) {
       </section>
 
       {/* ===== SECTION 6: SEO Content ===== */}
-      <section className="py-20">
+      <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-8">{destination} Yatra by Car — Everything You Need to Know</h2>
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-display-serif mb-8">{destination} Yatra by Car — Everything You Need to Know</h2>
 
             <div className="prose prose-invert max-w-none space-y-6 text-indigo-200/70 leading-relaxed">
               <p>
@@ -502,54 +476,67 @@ export default function ChardhamDhamClient({ data }) {
                 <strong className="text-white">Best time to visit {destination}:</strong> {destinationData?.bestSeason}. The temple typically opens in late April/early May and closes in November. The monsoon months (July-August) should be avoided due to landslides.
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ===== SECTION: Distances & Driving Times ===== */}
-      <section className="py-20">
+      {/* ===== SECTION: Distances & Driving Times — warm-light ledger band ===== */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-[#FFF6DC] via-amber-50/70 to-white">
         <div className="max-w-5xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <span className={`${colors.text} text-sm font-bold tracking-widest uppercase`}>Route Distances</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">Char Dham Distances &amp; Driving Times</h2>
-            <p className="text-indigo-300/60 mt-3">Key legs of the circuit — plan your daytime-only mountain driving</p>
-          </motion.div>
-          <div className="overflow-x-auto rounded-2xl border border-white/10 bg-white/5">
+          <div className="text-center mb-12">
+            <span className="text-amber-700 text-sm font-bold tracking-widest uppercase">Route Distances</span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 font-display-serif mt-3">Char Dham Distances &amp; Driving Times</h2>
+            <p className="text-slate-600 mt-3">Key legs of the circuit — plan your daytime-only mountain driving</p>
+          </div>
+          {/* Desktop table */}
+          <div className="hidden md:block rounded-2xl border border-amber-300/60 bg-white overflow-hidden shadow-[0_20px_60px_-30px_rgba(184,134,11,0.35)]">
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-white/10">
-                  <th className="p-4 text-indigo-400/60 font-medium">Route Leg</th>
-                  <th className="p-4 text-indigo-400/60 font-medium text-center">Distance</th>
-                  <th className="p-4 text-indigo-400/60 font-medium text-center">Time</th>
-                  <th className="p-4 text-indigo-400/60 font-medium">Terrain</th>
+                <tr className="border-b border-amber-300/50 bg-amber-100/60">
+                  <th className="p-4 text-amber-900 font-bold">Route Leg</th>
+                  <th className="p-4 text-amber-900 font-bold text-center">Distance</th>
+                  <th className="p-4 text-amber-900 font-bold text-center">Time</th>
+                  <th className="p-4 text-amber-900 font-bold">Terrain</th>
                 </tr>
               </thead>
               <tbody>
                 {distanceMatrix.map((row, i) => (
-                  <tr key={i} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                    <td className="p-4 text-white font-medium">{row.leg}</td>
-                    <td className={`p-4 text-center ${colors.text} font-semibold`}>{row.km} km</td>
-                    <td className="p-4 text-center text-indigo-300/70">{row.hrs}</td>
-                    <td className="p-4 text-indigo-300/60">{row.terrain}</td>
+                  <tr key={i} className="border-b border-amber-100 hover:bg-amber-50/70 transition-colors">
+                    <td className="p-4 text-slate-900 font-medium">{row.leg}</td>
+                    <td className="p-4 text-center text-amber-700 font-bold tabular-nums">{row.km} km</td>
+                    <td className="p-4 text-center text-slate-600">{row.hrs}</td>
+                    <td className="p-4 text-slate-500">{row.terrain}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          {/* Mobile stacked cards */}
+          <div className="space-y-3 md:hidden">
+            {distanceMatrix.map((row, i) => (
+              <div key={i} className="rounded-2xl border border-amber-200/60 bg-white p-4 shadow-sm">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-sm font-bold text-slate-900">{row.leg}</span>
+                  <span className="text-sm font-black text-amber-700 tabular-nums">{row.km} km</span>
+                </div>
+                <p className="text-xs text-slate-500">{row.hrs} · {row.terrain}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ===== SECTION: Registration & Biometric ===== */}
-      <section className="py-20 bg-indigo-950/60">
+      <section className="py-16 md:py-24 bg-indigo-950/60">
         <div className="max-w-5xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <div className="text-center mb-12">
             <span className={`${colors.text} text-sm font-bold tracking-widest uppercase`}>Mandatory in 2026</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">{destination} Yatra Registration &amp; Biometric</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">{destination} Yatra Registration &amp; Biometric</h2>
             <p className="text-indigo-300/60 mt-3">Free online registration plus biometric verification is required for every pilgrim</p>
-          </motion.div>
+          </div>
           <div className="space-y-4">
             {registrationSteps.map((step, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+              <div key={i}
                 className={`flex gap-4 bg-white/5 border border-white/10 rounded-xl p-5 ${colors.hoverBorder} transition-all`}
               >
                 <div className={`flex-shrink-0 w-9 h-9 rounded-full bg-gradient-to-br ${colors.gradient} flex items-center justify-center text-white font-bold text-sm`}>{i + 1}</div>
@@ -557,37 +544,37 @@ export default function ChardhamDhamClient({ data }) {
                   <h3 className="text-white font-semibold mb-1">{step.name}</h3>
                   <p className="text-indigo-200/60 text-sm leading-relaxed">{step.text}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ===== SECTION: What to Pack & Altitude Tips ===== */}
-      <section className="py-20">
+      <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <div className="text-center mb-12">
             <span className={`${colors.text} text-sm font-bold tracking-widest uppercase`}>Be Prepared</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">What to Pack &amp; Altitude Tips</h2>
-          </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">What to Pack &amp; Altitude Tips</h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {packingTips.map((tip, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+              <div key={i}
                 className={`bg-white/5 border border-white/10 rounded-2xl p-6 ${colors.hoverBorder} transition-all`}
               >
                 <h3 className={`font-bold mb-2 ${colors.text}`}>{tip.title}</h3>
                 <p className="text-indigo-200/60 text-sm leading-relaxed">{tip.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ===== SECTION: Season & Weather + Inclusions ===== */}
-      <section className="py-20 bg-indigo-950/60">
+      <section className="py-16 md:py-24 bg-indigo-950/60">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-6">Best Time to Visit {destination}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-display-serif mb-6">Best Time to Visit {destination}</h2>
             <div className="space-y-3">
               {seasonGuide.map((s, i) => (
                 <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4">
@@ -601,7 +588,7 @@ export default function ChardhamDhamClient({ data }) {
             </div>
           </div>
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white font-serif mb-6">What&apos;s Included &amp; Not</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-display-serif mb-6">What’s Included &amp; Not</h2>
             <div className="bg-white/5 border border-emerald-500/20 rounded-xl p-5 mb-4">
               <h3 className="text-emerald-400 font-bold mb-3 flex items-center gap-2 text-sm"><CheckCircle className="w-4 h-4" /> Included</h3>
               <ul className="space-y-2">
@@ -623,52 +610,40 @@ export default function ChardhamDhamClient({ data }) {
       </section>
 
       {/* ===== SECTION 7: FAQs ===== */}
-      <section className="py-20 bg-indigo-950/80">
-        <div className="max-w-4xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+      <section className="py-16 md:py-24 bg-indigo-950/80">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-14">
             <span className="text-amber-400 text-sm font-bold tracking-widest uppercase">FAQs</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mt-3">{destination} Yatra — Common Questions</h2>
-          </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">{destination} Yatra — Common Questions</h2>
+          </div>
 
-          <div className="space-y-3">
+          <div className="grid gap-3 md:grid-cols-2 md:items-start">
             {faqs.map((faq, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className={`bg-white/5 border border-white/10 rounded-xl overflow-hidden ${colors.hoverBorder} transition-all`}
+                className={`bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden ${colors.hoverBorder} transition-all`}
               >
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
+                  aria-expanded={expandedFaq === i}
                   className="w-full flex items-center justify-between p-5 text-left"
                 >
                   <span className="text-white font-semibold pr-4">{faq.question}</span>
-                  <ChevronDown className={`w-5 h-5 ${colors.text} flex-shrink-0 transition-transform ${expandedFaq === i ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-5 h-5 text-[#FACF2D] flex-shrink-0 transition-transform ${expandedFaq === i ? 'rotate-180' : ''}`} />
                 </button>
-                <AnimatePresence>
-                  {expandedFaq === i && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <p className={`px-5 pb-5 text-indigo-200/70 leading-relaxed${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                {expandedFaq === i && (
+                  <p className={`px-5 pb-5 text-indigo-200/70 leading-relaxed${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
+                )}
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ===== SECTION 8: Cross-Navigation Between Dhams ===== */}
-      <section className="py-16">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-white font-serif mb-8 text-center">Explore Other Sacred Dhams</h2>
+          <h2 className="text-2xl font-bold text-white font-display-serif mb-8 text-center">Explore Other Sacred Dhams</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {relatedRoutes.slice(0, 3).map((slug, i) => {
               const dham = slug.split('-')[0];
@@ -696,23 +671,23 @@ export default function ChardhamDhamClient({ data }) {
       </section>
 
       {/* ===== FINAL CTA ===== */}
-      <section className={`py-20 bg-gradient-to-r ${colors.gradient} relative overflow-hidden`}>
+      <section className="py-16 md:py-24 bg-gradient-to-br from-orange-600 via-amber-600 to-[#FACF2D] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-serif mb-4">Begin Your {destination} Pilgrimage</h2>
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mb-4">Begin Your {destination} Pilgrimage</h2>
             <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
               Cars from ₹12/km. Buses from ₹32/km. Experienced mountain drivers. 24/7 on-trip support. Book your {destination} Yatra 2026 today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="tel:+917668570551" className="inline-flex items-center gap-2 bg-white text-indigo-900 px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all">
-                <Phone className="w-5 h-5" /> Call 7668570551
+              <a href="tel:+917668570551" className="inline-flex items-center gap-2 bg-[#1a1206] text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-black hover:-translate-y-0.5 transition-all lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
+                <Phone className="w-5 h-5 text-amber-300 lg:w-4 lg:h-4" /> Call 7668570551
               </a>
-              <a href={`https://wa.me/917668570551?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-green-500 hover:scale-105 transition-all">
-                <MessageCircle className="w-5 h-5" /> WhatsApp Us
+              <a href={`https://wa.me/917668570551?text=${whatsappMsg}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-[#1a1206] px-10 py-4 rounded-full font-bold text-lg hover:bg-amber-50 hover:-translate-y-0.5 transition-all lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
+                <MessageCircle className="w-5 h-5 text-green-600 lg:w-4 lg:h-4" /> WhatsApp Us
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

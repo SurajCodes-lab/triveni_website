@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jodhpur Beyond Mehrangarh | Hidden Gems & Blue City',
+  title: tightenTitle('Jodhpur Beyond Mehrangarh | Hidden Gems & Blue City'),
   description: 'Discover Jodhpur beyond Mehrangarh Fort. Mandore Gardens, Rao Jodha Desert Rock Park, Toorji Ka Jhalra stepwell, Bishnoi Village Safari.',
   keywords: 'jodhpur beyond mehrangarh, jodhpur hidden gems, mandore gardens jodhpur, rao jodha desert rock park, toorji ka jhalra, bishnoi village safari, jodhpur secret spots, blue city jodhpur',
   authors: [{ name: 'Triveni Cabs' }],

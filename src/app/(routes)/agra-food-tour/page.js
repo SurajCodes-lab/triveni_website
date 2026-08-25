@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Agra Food Tour 2026 | Petha, Mughlai & Street Food Guide',
+  title: tightenTitle('Agra Food Tour 2026 | Petha, Mughlai & Street Food Guide'),
   description: 'Agra food & culinary tour. Famous Petha, Dalmoth, Bedai-Jalebi, Mughlai cuisine. Street food itinerary, best restaurants. By Agra locals. Call 7668570551.',
   keywords: 'agra food tour, agra street food, agra famous food, petha agra, agra food guide, mughlai food agra, best restaurants agra',
   authors: [{ name: 'Triveni Cabs' }],

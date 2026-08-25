@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('kumbh-mela-prayagraj-transport');
 
 export const metadata = {
-  title: 'Kumbh Mela Prayagraj Cab Service 2026 | Holy Snan Transport',
+  title: tightenTitle('Kumbh Mela Prayagraj Cab Service 2026 | Holy Snan Transport'),
   description: 'Book cab from Delhi to Prayagraj for Kumbh Mela 2026. Sedan from ₹9,000, SUV ₹12,500. Shahi Snan at Triveni Sangam. Experienced drivers. Call 7668570551.',
   keywords: 'kumbh mela cab, prayagraj kumbh transport, delhi to prayagraj cab, kumbh mela 2026 cab, triveni sangam cab, shahi snan transport, allahabad kumbh cab',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

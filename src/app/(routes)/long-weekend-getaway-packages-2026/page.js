@@ -1,5 +1,6 @@
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import SeasonalPageClient from '@/components/seasonal/SeasonalPageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -8,7 +9,7 @@ const pageTitle = 'Long Weekend Getaway Cab Packages 2026 | Quick Trips — 4.9�
 const pageDesc = 'Book long weekend 2026 cab packages. 2-3 day getaways to Agra, Jaipur, Jim Corbett, Rishikesh, Mathura. AC cabs, verified drivers, no surge pricing. From ₹1,999. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['long weekend cab packages 2026', 'weekend getaway cab booking', 'short trip cab india', '2 day trip cab service', 'weekend road trip cab', 'long weekend travel 2026', 'quick getaway cab delhi', 'saturday sunday cab trip', 'weekend holiday cab packages', 'mini vacation cab booking'],
   authors: [{ name: 'Triveni Cabs' }],

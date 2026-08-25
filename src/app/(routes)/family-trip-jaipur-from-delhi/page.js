@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-jaipur-from-delhi";
 const data = familyTripData["jaipur"];
 
 export const metadata = {
-  title: 'Family Trip to Jaipur from Delhi by Car | Innova Rs 7,500 | 2026',
+  title: tightenTitle('Family Trip to Jaipur from Delhi by Car | Innova Rs 7,500 | 2026'),
   description: 'Book a family trip to Jaipur from Delhi by car. Innova Rs 7,500, Sedan Rs 5,500. Amber Fort, City Palace, Chokhi Dhani. Kid-friendly. Call 7668570551.',
   keywords: 'family trip jaipur from delhi, delhi to jaipur family tour, jaipur family vacation by car, jaipur trip with kids, family holiday jaipur',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

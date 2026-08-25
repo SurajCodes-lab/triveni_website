@@ -19,7 +19,7 @@ import {
   getArticleSchema,
   getTodayDate,
 } from "@/lib/seo/speakable-helpers";
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 const SITE_URL = "https://www.trivenicabs.in";
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -71,7 +71,7 @@ export async function generateMetadata({ params }) {
   if (!combo) return { title: "Corporate Transportation | Triveni Cabs" };
   const { city, item } = combo;
   const url = `${SITE_URL}/corporate-transportation-service/${citySlug}/${subSlug}`;
-  const title = `${item.name} Transport in ${city.name} — Corporate Cabs ₹11/km`;
+  const title = tightenTitle(`${item.name} Transport in ${city.name} — Corporate Cabs ₹11/km`);
   const description = `${item.name} corporate transportation in ${city.name}: employee pick-up & drop, shuttles, executive travel from ₹11/km. Account manager, GST invoice, MIS, GPS, 24/7. Call 7668570551.`;
   const ogTitle = `${item.name} Corporate Transport in ${city.name} — Triveni Cabs`;
 

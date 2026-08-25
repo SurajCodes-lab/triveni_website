@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Shimla Beyond Mall Road | Hidden Gems & Day Trips | 2026',
+  title: tightenTitle('Shimla Beyond Mall Road | Hidden Gems & Day Trips | 2026'),
   description: 'Discover Shimla beyond Mall Road. Mashobra, Naldehra, Tattapani hot springs, Chail, Fagu, Narkanda, Wildflower Hall, Jakhu Ropeway + more. Call 7668570551.',
   keywords: 'shimla beyond mall road, shimla hidden gems, mashobra, naldehra, tattapani, chail, narkanda, shimla offbeat places, shimla day trips, fagu',
   authors: [{ name: 'Triveni Cabs' }],

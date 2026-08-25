@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('new-year-road-trip-packages');
 
 export const metadata = {
-  title: 'New Year 2027 Road Trip Packages | Celebrate on the Road',
+  title: tightenTitle('New Year 2027 Road Trip Packages | Celebrate on the Road'),
   description: 'Book New Year road trip from Delhi to Jaipur, Rishikesh, Jim Corbett, Udaipur. From ₹5,000 sedan. Celebrate NYE at exciting destinations. Call 7668570551.',
   keywords: 'new year road trip, new year cab delhi, new year 2027 trip, delhi to jaipur new year, delhi to rishikesh new year, new year eve cab, nye road trip package',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

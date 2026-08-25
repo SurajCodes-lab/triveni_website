@@ -2,6 +2,7 @@ import { getComparisonBySlug } from '@/utilis/comparisonData';
 import ComparisonClient from '@/components/content/ComparisonClient';
 import { generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema, combineSchemas } from '@/lib/seo/schema-generators';
 import SemanticComparison from '@/components/seo/SemanticComparison';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'one-way-vs-round-trip-cab';
 const data = getComparisonBySlug(SLUG);
@@ -22,7 +23,7 @@ const media = {
 export const revalidate = 3600;
 
 export const metadata = {
-  title: `${data.title} | Triveni Cabs`,
+  title: tightenTitle(`${data.title}`),
   description: data.metaDescription,
   keywords: 'one way vs round trip cab, one way cab cheaper, round trip taxi cost, when to book one way, one way cab india, outstation one way vs round trip',
   alternates: { canonical: `https://www.trivenicabs.in/${SLUG}` },

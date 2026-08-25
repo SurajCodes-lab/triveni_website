@@ -785,7 +785,10 @@ export const blogPosts30 = [
     featured: false,
     views: 0,
     layoutType: "monument",
-    metaTitle: "Best Time to Visit Taj Mahal 2026: Month-by-Month Guide",
+    // 40 chars: the old 54-char metaTitle clamped to "Best Time to Visit Taj
+    // Mahal 2026", which is character-for-character the title of the separate
+    // /blog/best-time-to-visit-taj-mahal-2026 post. The two competed.
+    metaTitle: "Taj Mahal Month by Month: Best Time 2026",
     metaDescription: "Visit the Taj Mahal at the right time. Month-by-month verdict on weather, crowd, photography, and fog risk for 2026."
   },
   {
@@ -1797,7 +1800,7 @@ export const blogPosts30 = [
       <h2>The 12-Seater (Force Traveller 4020)</h2>
       <p>Seats 12 + driver. ~10 km/L diesel. ~₹19/km hire rate. Easier hill-road handling. Boot fits 12 medium suitcases bare.</p>
       <h2>The 17-Seater (Force Urbania)</h2>
-      <p>Seats 17 + driver. ~9 km/L. ~₹22/km. More luggage room. AC duct reaches all rows (12-seater AC weak in last row).</p>
+      <p>Seats 17 + driver. ~9 km/L. ~₹25/km. More luggage room. AC duct reaches all rows (12-seater AC weak in last row).</p>
       <h2>Per-Head Cost Math</h2>
       <table class="w-full border-collapse border border-gray-300 my-4">
         <thead class="bg-gray-100"><tr><th class="border p-2">Pax</th><th class="border p-2">12-Seater Best</th><th class="border p-2">17-Seater Best</th></tr></thead>
@@ -1826,7 +1829,7 @@ export const blogPosts30 = [
       <h3 class="speakable-headline">12-seater or 17-seater tempo for hill route?</h3><p>12-seater. Better switchback handling.</p>
       <h3>Mileage of 17-seater Force Urbania?</h3><p>~9 km/L diesel. 12-seater ~10 km/L.</p>
       <h3>Best tempo for 14 people?</h3><p>17-seater Force Urbania.</p>
-      <h3>Tempo traveller per km charge?</h3><p>12-seater ₹20/km. 17-seater ₹24/km. Plus driver allowance.</p>
+      <h3>Tempo traveller per km charge?</h3><p>12-seater ₹23/km. 17-seater ₹25/km. Plus driver allowance.</p>
       <h3>Are tempo travellers AC?</h3><p>Yes — both sizes. 17-seater has better duct reach to last row.</p>
       <h3>Can 17-seater fit in old Manali lanes?</h3><p>Tight. 12-seater easier.</p>
       <h3>Driver allowance for tempo?</h3><p>₹500-700/day. Bundled in our packages.</p>

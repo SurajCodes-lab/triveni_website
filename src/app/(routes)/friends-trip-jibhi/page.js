@@ -2,12 +2,13 @@ import { friendsTripData } from '@/utilis/friendsTripData';
 import FriendsTripClient from '@/components/audience/FriendsTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "friends-trip-jibhi";
 const data = friendsTripData["jibhi"];
 
 export const metadata = {
-  title: 'Friends Trip to Jibhi by Tempo Traveller | Rs 1,295/Person | 2026',
+  title: tightenTitle('Friends Trip to Jibhi by Tempo Traveller | Rs 1,295/Person | 2026'),
   description: 'Book Tempo Traveller for a friends trip to Jibhi from Delhi. Rs 1,295/person. Waterfalls, Jalori Pass, Serolsar Lake, forest cottages. 12-17 seater AC. Call 7668570551.',
   keywords: 'friends trip jibhi, jibhi group trip, jibhi tempo traveller, delhi to jibhi friends, jalori pass serolsar lake, jibhi camping package himachal',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

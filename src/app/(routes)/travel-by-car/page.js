@@ -1,6 +1,6 @@
 import CategoryHubClient from '@/components/hubs/CategoryHubClient';
 import { getAllTravelByCarSlugs } from '@/utilis/travelByCarData';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const BASE = 'https://www.trivenicabs.in';
@@ -19,7 +19,7 @@ function getItems() {
 }
 
 export async function generateMetadata() {
-  const title = "Travel by Car — Route Guides for North India";
+  const title = tightenTitle("Travel by Car — Route Guides for North India");
   const description = "Car travel route guides across North India: drive time, stops and chauffeur-driven cab options. Triveni Cabs 7668570551.";
   return {
     title,

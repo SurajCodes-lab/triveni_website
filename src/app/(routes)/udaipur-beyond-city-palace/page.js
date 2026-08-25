@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Udaipur Beyond City Palace | Hidden Gems & Day Trips | 2026',
+  title: tightenTitle('Udaipur Beyond City Palace | Hidden Gems & Day Trips | 2026'),
   description: 'Discover Udaipur beyond City Palace. Badi Lake, Shilpgram, Monsoon Palace, Haldighati, Kumbhalgarh, Nathdwara, Chittorgarh + more. By locals. Call 7668570551.',
   keywords: 'udaipur beyond city palace, udaipur hidden gems, badi lake, shilpgram, kumbhalgarh fort, chittorgarh fort, monsoon palace, nathdwara, udaipur offbeat',
   authors: [{ name: 'Triveni Cabs' }],

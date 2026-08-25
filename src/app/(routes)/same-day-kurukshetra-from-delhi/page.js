@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-kurukshetra-from-delhi');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Kurukshetra Tour from Delhi | ₹4,000 AC Cab | 2026',
+  title: tightenTitle('Same Day Kurukshetra Tour from Delhi | ₹4,000 AC Cab | 2026'),
   description: 'Book same day Kurukshetra tour from Delhi. Brahma Sarovar, Jyotisar (Bhagavad Gita site), Bhadrakali Temple. AC sedan ₹4,000. Call 7668570551.',
   keywords: 'same day kurukshetra tour from delhi, delhi to kurukshetra one day trip, kurukshetra mahabharata tour, jyotisar bhagavad gita tour',
   authors: [{ name: 'Triveni Cabs' }],

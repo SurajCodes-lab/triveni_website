@@ -1,9 +1,10 @@
 import TerminalPageClient from '@/components/airport/TerminalPageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Delhi T2 Airport Taxi ₹450 | Flight-Tracked · No Surge',
+  title: tightenTitle('Delhi T2 Airport Taxi ₹450 | Flight-Tracked · No Surge'),
   description: 'T2 Vistara/Air India terminal pickup at Arrival Forecourt. Connaught Place ₹450, Gurgaon ₹550. 60 min free wait. Call 7668570551.',
   alternates: { canonical: 'https://www.trivenicabs.in/airport-service/delhi/igi-terminal-2-domestic' },
   openGraph: {

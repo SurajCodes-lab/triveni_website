@@ -4,7 +4,7 @@ import { execSync } from "child_process";
 import { cities } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes } from "@/utilis/cityRoutesData";
 import { getAllTourSlugs } from "@/utilis/religiousTourData";
-import { tempoRoutes } from "@/utilis/tempoTravellerData";
+import { tempoRoutes, tempoCities } from "@/utilis/tempoTravellerData";
 import { chardhamRoutes } from "@/utilis/chardhamData";
 import { getAllSlugs as getAllChardhamYatraSlugs } from "@/utilis/chardhamYatraData";
 import { blogPosts } from "@/utilis/blog";
@@ -153,10 +153,32 @@ const CATEGORY_FILES = {
   'day-trip': ['src/app/(routes)/agra-day-trip-from-delhi', 'src/app/(routes)/agra-in-1-day-itinerary', 'src/app/(routes)/ayodhya-1-day-package'],
   'blog': ['src/utilis/blog'],
   'tempo': ['src/utilis/tempoTravellerData.js'],
+  'vehicle-type': ['src/utilis/vehicleTypeData.js', 'src/components/tempo'],
   'bus-routes': ['src/utilis/busRoutesData.js'],
   'religious-tour': ['src/utilis/religiousTourData.js'],
   'chardham': ['src/utilis/chardhamData.js', 'src/utilis/chardhamYatraData.js'],
   'tours-with-guide': ['src/utilis/toursWithGuideData.js', 'src/utilis/toursWithGuideEnrichment.js'],
+  // Aug/Sep 2026 in-window seasonal pages — own category so their lastmod
+  // tracks the real last edit to each seasonal page dir (honest freshness),
+  // and so they can be split out of the evergreen festival block for higher
+  // priority + weekly changeFrequency while the window is live.
+  'seasonal': [
+    'src/app/(routes)/janmashtami-mathura-vrindavan-cab',
+    'src/app/(routes)/raksha-bandhan-cab-service',
+    'src/app/(routes)/independence-day-weekend-packages-2026',
+    'src/app/(routes)/ganesh-chaturthi-transport',
+    'src/app/(routes)/hariyali-teej-jaipur-cab',
+    'src/app/(routes)/monsoon-road-trip-packages',
+    'src/app/(routes)/monsoon-hill-station-packages',
+    'src/app/(routes)/valley-of-flowers-trek-from-delhi',
+    'src/app/(routes)/spiti-valley-august-trip',
+    'src/app/(routes)/kashmir-in-september',
+    'src/app/(routes)/leh-ladakh-august-september-trip',
+    'src/app/(routes)/chardham-yatra-september-2026',
+    'src/app/(routes)/kedarnath-september-trip',
+    'src/app/(routes)/august-long-weekend-getaways-delhi',
+    'src/app/(routes)/september-long-weekend-trips-2026',
+  ],
 };
 
 function getCategoryLastmod(category, fallback) {
@@ -428,6 +450,51 @@ export default function sitemap() {
       priority: 0.8,
     })),
 
+    // ============= Week 42 — Vehicle-Type Hubs + Seater Pages (new design) =============
+    // 3 type hubs + 6 new seater pages (Tempo seater pages already listed above).
+    // Force Urbania + Maharaja Tempo Traveller are new vehicle lines; their seater
+    // variants each target a distinct "N-seater <vehicle>" head term.
+    ...['force-urbania', 'maharaja-tempo-traveller'].map((slug) => ({
+      url: `${baseUrl}/${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    })),
+    ...['10-seater-force-urbania', '12-seater-force-urbania', '13-seater-force-urbania', '17-seater-force-urbania'].map((slug) => ({
+      url: `${baseUrl}/${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    })),
+    ...['12-seater-maharaja-tempo-traveller', '17-seater-maharaja-tempo-traveller'].map((slug) => ({
+      url: `${baseUrl}/${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    })),
+
+    // ============= Week 42 — Keyword-Gap Landing Pages (17 pages) =============
+    // Near-me (one canonical per service — LocalBusiness schema), vehicle price/
+    // per-km intent (Service + Offer schema), pilgrimage, comparison, hourly.
+    // See docs/week-42-keyword-gaps.md for the gap rationale.
+    ...[
+      'cab-service-near-me', 'outstation-cabs-near-me', 'tempo-traveller-hire-near-me',
+      'innova-on-rent-near-me', 'one-way-taxi-near-me', 'wedding-car-rental-near-me',
+      'innova-crysta-rent-per-km', 'ertiga-cab-booking', 'force-urbania-rent-per-km',
+      'force-urbania-rent-price', 'maharaja-tempo-traveller-price',
+      'pilgrimage-cabs', 'char-dham-yatra-taxi-fare-from-haridwar',
+      'char-dham-yatra-by-tempo-traveller', 'maharaja-tempo-traveller-vs-urbania',
+      'self-drive-vs-driver-cab-delhi', '4hr-40km-local-cab',
+      // Week 42 follow-on batch (vehicle price + comparison gaps)
+      'sedan-cab-on-rent', 'luxury-car-rental-delhi-with-driver',
+      'mini-bus-rental-delhi', 'force-urbania-vs-tempo-traveller',
+    ].map((slug) => ({
+      url: `${baseUrl}/${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    })),
+
     // Policy Pages
     {
       url: `${baseUrl}/privacy-policy`,
@@ -696,6 +763,34 @@ export default function sitemap() {
         lastModified: lastContentUpdate,
         changeFrequency: 'weekly',
         priority: 0.8,
+      });
+    });
+  });
+
+  // Add Force Urbania + Maharaja Tempo Traveller city + route pages.
+  // Same geography as tempo (shared tempoCities / tempoRoutes datasets); one
+  // canonical city page per (vehicle × city) + all origin→destination routes,
+  // generated by the vehicleCityRoutePage factory. Mirrors the tempo block above.
+  const NEW_VEHICLE_SLUGS = ['force-urbania', 'maharaja-tempo-traveller'];
+  NEW_VEHICLE_SLUGS.forEach((vSlug) => {
+    // City pages — one per served city.
+    Object.values(tempoCities).forEach((c) => {
+      urls.push({
+        url: `${baseUrl}/${vSlug}/${c.slug}`,
+        lastModified: lastContentUpdate,
+        changeFrequency: 'weekly',
+        priority: 0.8,
+      });
+    });
+    // Origin→destination route pages.
+    Object.keys(tempoRoutes).forEach((originCity) => {
+      tempoRoutes[originCity].forEach((route) => {
+        urls.push({
+          url: `${baseUrl}/${vSlug}/${createTempoRouteSlug(originCity, route.name)}`,
+          lastModified: lastContentUpdate,
+          changeFrequency: 'weekly',
+          priority: 0.75,
+        });
       });
     });
   });
@@ -992,13 +1087,24 @@ export default function sitemap() {
   urls.push({ url: `${baseUrl}/romantic-trip-agra-taj-mahal`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
   urls.push({ url: `${baseUrl}/bachelor-trip-north-india`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
 
-  // Festival Pages
+  // Festival Pages — evergreen festivals (year-round relevance), monthly cadence.
   const festivalSlugs = [
     'holi-mathura-vrindavan-cab-service', 'diwali-ayodhya-transport', 'kumbh-mela-prayagraj-transport',
     'navratri-vaishno-devi-cab', 'pushkar-mela-transport', 'chhath-puja-varanasi-transport',
     'maha-shivratri-pilgrimage-cab', 'baisakhi-amritsar-cab', 'christmas-shimla-manali-package',
     'new-year-road-trip-packages', 'summer-hill-station-packages', 'winter-snow-trip-packages',
-    // ── August/September 2026 season expansion (15 pages) ──
+  ];
+  festivalSlugs.forEach(slug => {
+    urls.push({ url: `${baseUrl}/${slug}`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
+  });
+
+  // ── August/September 2026 in-window season pages (15) ──
+  // Split out of the evergreen festival block: while the Aug–Oct window is
+  // live these get higher priority (0.9) + weekly changeFrequency + honest
+  // per-page lastmod (git log of each seasonal route dir) — signals freshness
+  // for the active demand surge. After the window these can drop back to 0.85.
+  const seasonalLastmod = getCategoryLastmod('seasonal', lastContentUpdate);
+  const seasonSlugs = [
     'janmashtami-mathura-vrindavan-cab', 'raksha-bandhan-cab-service',
     'independence-day-weekend-packages-2026', 'ganesh-chaturthi-transport',
     'hariyali-teej-jaipur-cab', 'monsoon-road-trip-packages',
@@ -1008,8 +1114,8 @@ export default function sitemap() {
     'kedarnath-september-trip', 'august-long-weekend-getaways-delhi',
     'september-long-weekend-trips-2026',
   ];
-  festivalSlugs.forEach(slug => {
-    urls.push({ url: `${baseUrl}/${slug}`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
+  seasonSlugs.forEach(slug => {
+    urls.push({ url: `${baseUrl}/${slug}`, lastModified: seasonalLastmod, changeFrequency: 'weekly', priority: 0.9 });
   });
 
   // Rental Package Pages
@@ -1432,5 +1538,15 @@ export default function sitemap() {
     });
   });
 
-  return urls;
+  // Deduplicate by URL. tempoRoutes carries some duplicate destination entries
+  // per origin city, which produced duplicate <url> nodes (566 vs 546 unique).
+  // First occurrence wins — and because the chardham block (priority 0.95) runs
+  // before the tempo route block (0.8), any chardham slug that also appears as a
+  // generic tempo route keeps its higher priority.
+  const seen = new Set();
+  const deduped = [];
+  for (const u of urls) {
+    if (!seen.has(u.url)) { seen.add(u.url); deduped.push(u); }
+  }
+  return deduped;
 }

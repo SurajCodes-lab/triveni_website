@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Amritsar Food Tour 2026 | Kulcha, Lassi & Punjabi Street Food',
+  title: tightenTitle('Amritsar Food Tour 2026 | Kulcha, Lassi & Punjabi Street Food'),
   description: 'Amritsar food guide — Amritsari Kulcha, Lassi, Chole Bhature, Fish Fry. Street food itinerary, best restaurants, by locals. Call 7668570551.',
   keywords: 'amritsar food tour, amritsar street food, amritsari kulcha, amritsar lassi, chole bhature amritsar, amritsar fish fry, punjabi food amritsar, amritsar food guide',
   authors: [{ name: 'Triveni Cabs' }],

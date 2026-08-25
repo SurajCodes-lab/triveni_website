@@ -2,11 +2,12 @@ import AboutClient from "./AboutClient";
 import { FOUNDER_AUTHOR, EDITORIAL_TEAM, getAllEditorialPersons } from "@/lib/seo/authors";
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import { getSpeakableSchema, getArticleSchema } from "@/lib/seo/speakable-helpers";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: "About Us | Triveni Cabs - India's Most Trusted Cab Service",
+  title: tightenTitle("About Us — India's Most Trusted Cab Service Since 2015"),
   description: "Triveni Cabs — 500+ vehicles, 50+ cities, 10,000+ happy customers. Safe, reliable travel across India with transparent pricing & 24/7 support.",
   keywords: "Triveni Cabs about, Pankaj Singh Gaur, cab service founder, India travel company, trusted cab service, reliable taxi India, professional drivers, customer focused travel, transparent pricing cabs, safe travel India, premium cab service, 24/7 support taxi, airport transfer India, outstation cab booking, taxi company India, car rental company, travel agency India, transportation service",
   authors: [{ name: 'Triveni Cabs' }],

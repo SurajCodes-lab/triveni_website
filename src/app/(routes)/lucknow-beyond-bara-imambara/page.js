@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Camera, Landmark, Compass, Calendar, Bird, Binoculars, Map, Target } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Lucknow Beyond Bara Imambara | Hidden Gems & Heritage | 2026',
+  title: tightenTitle('Lucknow Beyond Bara Imambara | Hidden Gems & Heritage | 2026'),
   description: 'Discover Lucknow beyond Bara Imambara. La Martiniere, Ambedkar Park, Dilkusha Kothi, Constantia, Kukrail Reserve, Janeshwar Mishra Park + more. Call 7668570551.',
   keywords: 'lucknow beyond bara imambara, lucknow hidden gems, la martiniere, dilkusha kothi, ambedkar park, kukrail reserve, lucknow offbeat, lucknow heritage',
   authors: [{ name: 'Triveni Cabs' }],

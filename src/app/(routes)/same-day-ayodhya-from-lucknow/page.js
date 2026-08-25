@@ -1,12 +1,13 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const tour = getSameDayTourBySlug('same-day-ayodhya-from-lucknow');
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Ayodhya Tour from Lucknow | ₹3,500 AC Cab | 2026',
+  title: tightenTitle('Same Day Ayodhya Tour from Lucknow | ₹3,500 AC Cab | 2026'),
   description: 'Book same day Ayodhya tour from Lucknow. Visit Ram Mandir, Hanuman Garhi, Kanak Bhawan, Saryu River. AC sedan ₹3,500, SUV ₹5,000. Call 7668570551.',
   keywords: 'same day ayodhya tour from lucknow, lucknow to ayodhya one day trip, ram mandir day trip from lucknow, ayodhya cab from lucknow',
   authors: [{ name: 'Triveni Cabs' }],

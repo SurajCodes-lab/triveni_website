@@ -6,11 +6,12 @@ import FareCalculator from '@/components/calculator/FareCalculator';
 import { COMPANY_INFO } from '@/lib/seo/constants';
 import { generatePricingTableSchema, generateSpeakableSchema } from '@/lib/seo/aeo-generators';
 import { getArticleSchema, getHowToSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Taxi Rates 2026 — Sedan ₹11/km, SUV ₹15/km, Transparent',
+  title: tightenTitle('Taxi Rates 2026 — Sedan ₹11/km, SUV ₹15/km, Transparent'),
   description: 'Triveni Cabs pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹20-28/km, Bus ₹30-42/km. No hidden charges. Includes driver, fuel, toll.',
   keywords: 'taxi rates India, cab fare calculator, taxi price per km, sedan rental rates, SUV hire price, tempo traveller rates, bus rental cost, outstation taxi fare, airport taxi rates, transparent taxi pricing',
   openGraph: {
@@ -40,7 +41,7 @@ const vehiclePricing = [
     vehicles: [
       { name: 'Swift Dzire', seats: '4', pricePerKm: '11', minKm: '250', driverAllowance: '300' },
       { name: 'Toyota Etios', seats: '4', pricePerKm: '11', minKm: '250', driverAllowance: '300' },
-      { name: 'Honda Amaze', seats: '4', pricePerKm: '12', minKm: '250', driverAllowance: '300' },
+      { name: 'Honda Amaze', seats: '4', pricePerKm: '11', minKm: '250', driverAllowance: '300' },
       { name: 'Honda City', seats: '4', pricePerKm: '14', minKm: '250', driverAllowance: '350' },
       { name: 'Maruti Ciaz', seats: '4', pricePerKm: '14', minKm: '250', driverAllowance: '350' },
     ]
@@ -50,8 +51,8 @@ const vehiclePricing = [
     icon: Car,
     color: 'blue',
     vehicles: [
-      { name: 'Maruti Ertiga', seats: '6', pricePerKm: '14', minKm: '250', driverAllowance: '350' },
-      { name: 'Toyota Innova', seats: '7', pricePerKm: '15', minKm: '250', driverAllowance: '350' },
+      { name: 'Maruti Ertiga', seats: '6', pricePerKm: '15', minKm: '250', driverAllowance: '350' },
+      { name: 'Toyota Innova', seats: '7', pricePerKm: '18', minKm: '250', driverAllowance: '350' },
       { name: 'Innova Crysta', seats: '7', pricePerKm: '18', minKm: '250', driverAllowance: '400' },
       { name: 'Toyota Fortuner', seats: '7', pricePerKm: '25', minKm: '250', driverAllowance: '500' },
     ]
@@ -61,11 +62,11 @@ const vehiclePricing = [
     icon: Truck,
     color: 'green',
     vehicles: [
-      { name: '12-Seater Tempo', seats: '12', pricePerKm: '23', minKm: '250', driverAllowance: '400', localRate: '₹6,000-7,500/Day' },
-      { name: '16-Seater Tempo', seats: '16', pricePerKm: '25', minKm: '250', driverAllowance: '400', localRate: '₹7,500-8,500/Day' },
-      { name: '17-Seater Tempo', seats: '17', pricePerKm: '26', minKm: '250', driverAllowance: '450', localRate: '₹9,000-10,500/Day', popular: true },
-      { name: '20-Seater Tempo', seats: '20', pricePerKm: '27', minKm: '250', driverAllowance: '450', localRate: '₹9,000-10,000/Day' },
-      { name: '26-Seater Maharaja', seats: '26', pricePerKm: '26', minKm: '250', driverAllowance: '450', localRate: '₹10,000-11,000/Day', popular: true },
+      { name: '12-Seater Tempo', seats: '12', pricePerKm: '20', minKm: '250', driverAllowance: '400', localRate: '₹6,000-7,500/Day' },
+      { name: '16-Seater Tempo', seats: '16', pricePerKm: '22', minKm: '250', driverAllowance: '400', localRate: '₹7,500-8,500/Day' },
+      { name: '17-Seater Tempo', seats: '17', pricePerKm: '24', minKm: '250', driverAllowance: '450', localRate: '₹9,000-10,500/Day', popular: true },
+      { name: '20-Seater Tempo', seats: '20', pricePerKm: '26', minKm: '250', driverAllowance: '450', localRate: '₹9,000-10,000/Day' },
+      { name: '26-Seater Maharaja', seats: '26', pricePerKm: '28', minKm: '250', driverAllowance: '450', localRate: '₹10,000-11,000/Day', popular: true },
     ]
   },
   {
@@ -135,32 +136,35 @@ export default function PricingPage() {
 
   return (
     <main className="min-h-screen">
-      {/* Hero Section - Mobile Optimized */}
-      <section className="bg-gradient-to-br from-amber-500 via-orange-500 to-amber-600 text-white py-12 sm:py-16 md:py-24">
-        <div className="container mx-auto px-4">
+      {/* Hero Section - Ultra-Premium v2 dark */}
+      <section className="relative overflow-hidden bg-slate-950 text-white py-14 sm:py-20 md:py-24">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400" />
+        <div className="absolute -top-24 right-[10%] w-80 h-80 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-[5%] w-72 h-72 bg-[#FACF2D]/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-sm sm:text-base">
-              <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="font-medium">100% Transparent Pricing</span>
+            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-xl border border-white/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 text-sm sm:text-base">
+              <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-[#FACF2D]" />
+              <span className="font-medium text-white/80">100% Transparent Pricing</span>
             </div>
-            <h1 className="speakable-headline text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
-              Taxi Rates & Pricing
+            <h1 className="speakable-headline font-display-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
+              Taxi Rates &amp; <span className="text-gold-foil">Pricing</span>
             </h1>
-            <p className="speakable-lead text-base sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 px-4">
-              Sedan from <span className="font-bold">₹11/km</span> • SUV from <span className="font-bold">₹15/km</span> • No Hidden Charges
+            <p className="speakable-lead text-base sm:text-xl md:text-2xl text-white/70 mb-6 sm:mb-8 px-4">
+              Sedan from <span className="font-bold text-white">₹11/km</span> • SUV from <span className="font-bold text-white">₹15/km</span> • No Hidden Charges
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <a
                 href={`tel:+91${COMPANY_INFO.phone.display.replace(/\s/g, '')}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-amber-600 font-semibold px-6 py-3 sm:py-3.5 rounded-xl hover:bg-gray-100 transition-colors touch-manipulation active:scale-[0.98]"
+                className="w-full sm:w-auto lg:w-auto inline-flex items-center justify-center gap-2 bg-[#FACF2D] text-black font-semibold px-6 py-3 sm:py-3.5 lg:px-5 lg:py-2 lg:text-[13px] rounded-xl hover:bg-amber-300 transition-colors touch-manipulation active:scale-[0.98]"
               >
-                <Phone className="w-5 h-5" />
+                <Phone className="w-5 h-5 lg:w-4 lg:h-4" />
                 Call for Best Rates
               </a>
               <div className="flex items-center gap-1 text-white/90 text-sm sm:text-base">
-                <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
+                <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-[#FACF2D] text-[#FACF2D]" />
                 <span className="font-semibold">4.9</span>
-                <span className="text-white/70">• 10,000+ Happy Customers</span>
+                <span className="text-white/60">• 10,000+ Happy Customers</span>
               </div>
             </div>
           </div>
@@ -174,7 +178,7 @@ export default function PricingPage() {
       <section className="py-8 sm:py-12 md:py-16">
         <div className="container mx-auto px-3 sm:px-4">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+            <h2 className="font-display-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
               Complete Price List
             </h2>
             <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto px-4">
@@ -197,7 +201,7 @@ export default function PricingPage() {
                   </div>
 
                   {/* Mobile Card View */}
-                  <div className="block sm:hidden space-y-3">
+                  <div className="block md:hidden space-y-3">
                     {category.vehicles.map((vehicle, index) => (
                       <div key={index} className={`bg-white rounded-lg p-4 shadow-sm ${vehicle.popular ? 'ring-2 ring-amber-400' : ''}`}>
                         <div className="flex justify-between items-start mb-2">
@@ -228,7 +232,7 @@ export default function PricingPage() {
                   </div>
 
                   {/* Desktop Table View */}
-                  <div className="hidden sm:block overflow-x-auto">
+                  <div className="hidden md:block">
                     <table className="w-full">
                       <thead>
                         <tr className="text-left text-sm text-gray-600 border-b border-gray-200">
@@ -272,10 +276,10 @@ export default function PricingPage() {
       </section>
 
       {/* Popular Routes - Mobile Optimized */}
-      <section className="py-8 sm:py-12 md:py-16 bg-gray-50">
+      <section className="py-8 sm:py-12 md:py-16 bg-[#FFF6DC]">
         <div className="container mx-auto px-3 sm:px-4">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+            <h2 className="font-display-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
               Popular Route Prices
             </h2>
             <p className="text-gray-600 text-sm sm:text-base">One-way fares for popular routes (inclusive of all charges except toll)</p>
@@ -311,7 +315,7 @@ export default function PricingPage() {
       <section className="py-8 sm:py-12 md:py-16">
         <div className="container mx-auto px-3 sm:px-4">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+            <h2 className="font-display-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
               What&apos;s Included & Excluded
             </h2>
           </div>
@@ -355,8 +359,8 @@ export default function PricingPage() {
       {/* CTA Section - Mobile Optimized */}
       <section className="py-10 sm:py-12 md:py-16 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
-            Need a Custom Quote?
+          <h2 className="font-display-serif text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
+            Need a <span className="text-gold-foil">Custom Quote?</span>
           </h2>
           <p className="text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
             For multi-day trips, corporate bookings, or routes not listed above, contact us for the best rates.
@@ -364,16 +368,16 @@ export default function PricingPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <a
               href={`tel:+91${COMPANY_INFO.phone.display.replace(/\s/g, '')}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-colors touch-manipulation active:scale-[0.98]"
+              className="w-full sm:w-auto lg:w-auto inline-flex items-center justify-center gap-2 bg-[#FACF2D] hover:bg-amber-300 text-black font-semibold px-6 sm:px-8 py-3.5 sm:py-4 lg:px-5 lg:py-2 lg:text-[13px] rounded-xl transition-colors touch-manipulation active:scale-[0.98]"
             >
-              <Phone className="w-5 h-5" />
+              <Phone className="w-5 h-5 lg:w-4 lg:h-4" />
               Call: {COMPANY_INFO.phone.display}
             </a>
             <a
               href={`https://wa.me/91${COMPANY_INFO.phone.display.replace(/\s/g, '')}?text=Hi! I need a custom quote for my trip.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-colors touch-manipulation active:scale-[0.98]"
+              className="w-full sm:w-auto lg:w-auto inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 sm:px-8 py-3.5 sm:py-4 lg:px-5 lg:py-2 lg:text-[13px] rounded-xl transition-colors touch-manipulation active:scale-[0.98]"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -394,7 +398,7 @@ export default function PricingPage() {
             Triveni Cabs offers the most competitive and transparent taxi pricing across India. Our sedan cab
             rates start at just <strong>₹11 per kilometre</strong> for popular models like Swift Dzire, Toyota Etios, and Honda Amaze —
             ideal for couples, solo travellers, and small families. Need more space? Our SUV rentals including
-            Toyota Innova and Innova Crysta are available from <strong>₹15/km</strong>, perfect for family road trips and
+            Maruti Ertiga (from <strong>₹15/km</strong>) and Toyota Innova (from <strong>₹18/km</strong>) are perfect for family road trips and
             outstation travel across North India.
           </p>
           <p className="text-gray-700 leading-relaxed">
@@ -461,7 +465,7 @@ export default function PricingPage() {
             totalTime: 'PT5M',
             estimatedCost: { currency: 'INR', value: 2999 },
             steps: [
-              { name: 'Pick your vehicle', text: 'Choose a sedan (₹11/km), SUV (₹15/km), tempo traveller (₹20-28/km) or bus (₹30-42/km) based on group size.' },
+              { name: 'Pick your vehicle', text: 'Choose a sedan (₹11/km), SUV (₹15/km), tempo traveller (₹23-31/km) or bus (₹30-42/km) based on group size.' },
               { name: 'Multiply by distance', text: 'Per-km rate × trip distance, with a minimum of 250 km/day for outstation trips (300 km for Volvo coaches).' },
               { name: 'Add driver allowance', text: 'A fixed per-day driver allowance applies; fuel, AC and GST are already included in the rate.' },
               { name: 'Confirm your fixed quote', text: 'Call 7668570551 or WhatsApp for a fixed all-inclusive quote. Toll and parking are billed as actuals; there is no surge pricing.' }
@@ -480,7 +484,7 @@ export default function PricingPage() {
             "priceCurrency": "INR",
             "price": "11",
             "unitText": "per kilometer",
-            "description": "Sedan taxi rates starting from ₹11 per kilometer. SUV from ₹15/km, Tempo Traveller from ₹20/km.",
+            "description": "Sedan taxi rates starting from ₹11 per kilometer. SUV from ₹15/km, Tempo Traveller from ₹23/km.",
             "eligibleQuantity": {
               "@type": "QuantitativeValue",
               "minValue": 250,
@@ -520,7 +524,7 @@ export default function PricingPage() {
                 "name": "What is the taxi rate per km in India?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Taxi rates in India vary by vehicle type. With Triveni Cabs: Sedan costs ₹11-14/km, SUV costs ₹14-18/km, Tempo Traveller costs ₹20-28/km, and Bus costs ₹30-50/km. All rates include fuel and driver charges."
+                  "text": "Taxi rates in India vary by vehicle type. With Triveni Cabs: Sedan costs ₹11-14/km, SUV costs ₹15-18/km, Tempo Traveller costs ₹20-28/km, and Bus costs ₹30-50/km. All rates include fuel and driver charges."
                 }
               },
               {

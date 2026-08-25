@@ -4,6 +4,7 @@ import { Inter, Fraunces } from 'next/font/google';
 import Script from 'next/script';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SeasonalBanner from "@/components/layout/SeasonalBanner";
 import "@/styles/globals.css";
 // @vercel/analytics removed — site runs on Lightsail; the injected
 // /_vercel/insights/script.js 404'd on every page (console error sitewide).
@@ -15,6 +16,7 @@ const WhatsAppFloat = dynamic(() => import("@/components/layout/WhatsAppFloat"))
 const DesktopQuoteButton = dynamic(() => import("@/components/ui/DesktopQuoteButton"));
 const MobileStickyBar = dynamic(() => import("@/components/ui/MobileStickyBar"));
 const PageTracker = dynamic(() => import("@/components/analytics/PageTracker"));
+const WebVitalsReporter = dynamic(() => import("@/components/analytics/WebVitalsReporter"));
 const ServiceWorkerRegistration = dynamic(() => import("@/components/pwa/ServiceWorkerRegistration"));
 const AutoRelatedFooter = dynamic(() => import("@/components/seo/AutoRelatedFooter"));
 
@@ -33,8 +35,13 @@ const fraunces = Fraunces({
   display: 'swap',
   weight: ['600', '700', '900'],
   variable: '--font-display',
-  preload: false,
+  preload: true,
 });
+
+// ISR — keep the root layout (and therefore SeasonalBanner's date-checked strip)
+// fresh at most hourly. Mirrors the per-page `revalidate = 3600` already used on
+// the seasonal pages and aligns with the CDN s-maxage=3600 cache reality.
+export const revalidate = 3600;
 
 export const viewport = {
   width: 'device-width',
@@ -49,7 +56,7 @@ export const metadata = {
     default: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking India',
     template: '%s | Triveni Cabs'
   },
-  description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
+  description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
   keywords: 'taxi service India, car rental India, outstation cab booking, airport transfer Delhi, tempo traveller hire, wedding car rental, Delhi taxi 24/7, Agra tour packages, Jaipur cab booking, Triveni Cabs, one way taxi, round trip cab, cab service near me',
   authors: [{ name: 'Triveni Cabs - Car Rental & Tours' }],
   creator: 'Triveni Cabs Travel Services',
@@ -63,9 +70,18 @@ export const metadata = {
   alternates: {
     canonical: '/',
   },
+  // Search-engine site verification. Previously only in public/index.html;
+  // surfaced here so the Next.js-rendered pages (the canonical HTML Google
+  // actually fetches) carry the tokens too. Google + Bing (msvalidate.01).
+  verification: {
+    google: '0TyoHgbDMg6YyyLIrEu3ek6bkqmfjs9qKx7KxUR2NlQ',
+    other: {
+      'msvalidate.01': '20696359D0ED6AD28A7BA67EF19A58B7',
+    },
+  },
   openGraph: {
     title: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking India',
-    description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
+    description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
     url: 'https://www.trivenicabs.in',
     siteName: 'Triveni Cabs - Car Rental & Tour Services',
     images: [
@@ -82,7 +98,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking',
-    description: 'India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km. 10,000+ happy customers. Call 7668570551!',
+    description: 'India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km. 10,000+ happy customers. Call 7668570551!',
     images: ['/images/HERO_SECTION_MAIN_PAGE.jpg'],
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -142,7 +158,7 @@ const structuredData = {
       "height": 315
     },
     "image": "https://www.trivenicabs.in/images/logo/logo.webp",
-    "description": "India's trusted car rental & taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹20/km. 50+ cities, 24/7 booking.",
+    "description": "India's trusted car rental & taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km. 50+ cities, 24/7 booking.",
     "telephone": "+91-7668570551",
     "email": "cabstriveni@gmail.com",
     "address": {
@@ -227,7 +243,7 @@ const structuredData = {
       "https://www.trivenicabs.in/images/car/swift_dzire.jpg",
       "https://www.trivenicabs.in/images/car/premium_suv.jpg"
     ],
-    "description": "Best car rental, taxi service and tour packages in India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller from ₹20/km. Professional drivers, AC vehicles, 24/7 support.",
+    "description": "Best car rental, taxi service and tour packages in India. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller from ₹23/km. Professional drivers, AC vehicles, 24/7 support.",
     "url": "https://www.trivenicabs.in",
     "telephone": "+91-7668570551",
     "email": "cabstriveni@gmail.com",
@@ -300,7 +316,7 @@ const structuredData = {
       "itemListElement": [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sedan Car Rental", "description": "4 passenger sedan rental starting ₹11/km" }, "price": "11", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "11", "priceCurrency": "INR", "unitText": "per kilometer" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SUV Car Rental", "description": "6-7 passenger SUV rental starting ₹15/km" }, "price": "15", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "15", "priceCurrency": "INR", "unitText": "per kilometer" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tempo Traveller Rental", "description": "12-26 passenger tempo traveller starting ₹20/km" }, "price": "20", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "20", "priceCurrency": "INR", "unitText": "per kilometer" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tempo Traveller Rental", "description": "12-26 passenger tempo traveller starting ₹23/km" }, "price": "20", "priceCurrency": "INR", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "20", "priceCurrency": "INR", "unitText": "per kilometer" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Manali Tour Package", "description": "5 Days 4 Nights Manali tour from Mumbai" }, "price": "9999", "priceCurrency": "INR" },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kashmir Tour Package", "description": "5 Days 4 Nights Kashmir tour from Delhi" }, "price": "16999", "priceCurrency": "INR" },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rajasthan Tour Package", "description": "7 Days 6 Nights Rajasthan tour from Jaipur" }, "price": "19999", "priceCurrency": "INR" }
@@ -382,25 +398,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </>
         )}
 
-        {/* Google Ads - Lazy loaded */}
-        <Script
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17336319883"
-        />
+        {/* Google Ads conversion tag — config only.
+            The gtag.js library is already loaded once by the GA4
+            <Script src> above (afterInteractive); loading it a SECOND
+            time here pulled ~58 KB of duplicate JS on every page (Lighthouse
+            "unused-javascript" flagged AW-17336319883 twice — once via GTM, once
+            standalone). We keep the AW config call firing lazily (lazyOnload,
+            same timing as before) but reuse the already-loaded gtag instance,
+            so conversion tracking is unchanged while ~58 KB drops off every
+            page. If NEXT_PUBLIC_GA_ID is ever unset, gtag won't exist yet and
+            this call no-ops via the guard. */}
         <Script strategy="lazyOnload" id="gads-init">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-17336319883');
+            if (typeof window.gtag === 'function') {
+              window.gtag('config', 'AW-17336319883');
+            }
           `}
         </Script>
 
         <Suspense fallback={null}>
           <PageTracker />
+          <WebVitalsReporter />
         </Suspense>
         <div className="App min-h-screen flex flex-col">
           <StickyCtaProvider>
+            <SeasonalBanner />
             <Header />
             <main id="main-content" className="flex-grow pb-[64px] md:pb-0" role="main">
               {children}

@@ -1,5 +1,6 @@
 import { placesToVisitPages } from '@/utilis/placesToVisitData';
 import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = placesToVisitPages.amritsar;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
@@ -7,7 +8,7 @@ const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, sl
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '15+ Places to Visit Near Amritsar by Car | Punjab Heritage',
+  title: tightenTitle('15+ Places to Visit Near Amritsar by Car | Punjab Heritage'),
   description: `Best places to visit near Amritsar by car. Wagah Border (28 km), Dalhousie (190 km), Dharamshala (210 km), Chandigarh (230 km) & more. Sedan ₹11/km.`,
   keywords: 'places to visit near amritsar, places near amritsar, day trips from amritsar, weekend getaways from amritsar, amritsar nearby places, hill stations near amritsar, places around amritsar, tourist places near amritsar',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

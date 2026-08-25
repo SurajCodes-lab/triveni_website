@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2,
   ArrowRight, IndianRupee, ChevronDown, Route, Navigation, TrainFront,
@@ -9,6 +10,7 @@ import {
 } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { getNearbyStations } from '@/utilis/railwayStationData';
+import { getCityImage } from '@/utilis/imageUtils';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import StickyPriceBar from '@/components/shared/StickyPriceBar';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
@@ -17,69 +19,49 @@ import InclusionBadges from '@/components/shared/InclusionBadges';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import SectionDivider from '@/components/shared/SectionDivider';
 
-// Train-ticket style perforated divider component
-const TicketPerforation = () => (
-  <div className="flex items-center -mx-5 my-4">
-    <div className="w-4 h-8 bg-slate-950 rounded-r-full -ml-1" />
-    <div className="flex-1 border-t-2 border-dashed border-white/10 mx-1" />
-    <div className="w-4 h-8 bg-slate-950 rounded-l-full -mr-1" />
-  </div>
-);
+// ─── Ultra-Premium v2 vocabulary ────────────────────────────────────────────
+const FOIL =
+  'text-gold-foil bg-gradient-to-br from-[#FFE9A0] via-[#FACF2D] to-[#B8860B] bg-clip-text text-transparent drop-shadow-[0_2px_18px_rgba(250,207,45,0.35)]';
+const GOLD_BTN =
+  'sheen inline-flex items-center justify-center gap-2 rounded-full bg-[#FACF2D] font-black text-slate-950 shadow-[0_12px_36px_-10px_rgba(250,207,45,0.55)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-300 active:translate-y-0 active:scale-[0.98]';
+const GHOST_BTN =
+  'inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10';
+const CTA_SIZE = 'w-full px-7 py-4 text-sm lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]';
+const GLASS = 'bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10';
+
+// Deterministic ticket-barcode heights (stable hydration, no randomness)
+const BARCODE = [16, 21, 13, 19, 22, 14, 20, 12, 18, 15, 21, 17, 13, 22, 16, 19, 12, 20, 14, 18, 21, 15, 17, 22, 13, 19, 16, 20, 12, 18, 14, 21, 17, 15, 22, 13, 19, 16, 20, 14];
+
+function SerifHeading({ eyebrow, icon: EyebrowIcon, title, highlight, after, subtitle, tone = 'dark' }) {
+  const dark = tone === 'dark';
+  return (
+    <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
+      {eyebrow && (
+        <span className={`mb-4 inline-flex items-center gap-2 text-[0.68rem] font-bold uppercase tracking-[0.22em] sm:text-xs ${dark ? 'text-amber-300' : 'text-amber-600'}`}>
+          <span className={`h-px w-7 ${dark ? 'bg-amber-400/60' : 'bg-amber-500/60'}`} />
+          {EyebrowIcon && <EyebrowIcon className="h-3.5 w-3.5" />}
+          {eyebrow}
+          <span className={`h-px w-7 ${dark ? 'bg-amber-400/60' : 'bg-amber-500/60'}`} />
+        </span>
+      )}
+      <h2 className={`font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight sm:text-4xl lg:text-[2.75rem] ${dark ? 'text-white' : 'text-slate-900'}`}>
+        {title} {highlight && <span className={FOIL}>{highlight}</span>}{after ? <> {after}</> : null}
+      </h2>
+      {subtitle && (
+        <p className={`mx-auto mt-4 max-w-2xl text-sm leading-relaxed sm:text-base ${dark ? 'text-slate-300/80' : 'text-slate-600'}`}>{subtitle}</p>
+      )}
+    </div>
+  );
+}
 
 export default function RailwayStationClient({ station, slug }) {
   const [openFaq, setOpenFaq] = useState(null);
   const nearbyStations = getNearbyStations(slug);
   const lowestFare = station.destinations.reduce((min, d) => Math.min(min, d.sedanFare), Infinity);
+  const heroImage = getCityImage(station.city);
 
   return (
     <article className="min-h-screen bg-slate-950" itemScope itemType="https://schema.org/TaxiService">
-      {/* Inline CSS for custom animations */}
-      <style jsx global>{`
-        @keyframes shimmer-slide {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-        @keyframes float-gentle {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-        @keyframes pulse-glow-gold {
-          0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3), 0 0 60px rgba(245, 158, 11, 0.1); }
-          50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.5), 0 0 80px rgba(245, 158, 11, 0.2); }
-        }
-        @keyframes train-move {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(calc(100vw + 100%)); }
-        }
-        @keyframes track-scroll {
-          0% { background-position: 0 0; }
-          100% { background-position: 60px 0; }
-        }
-        .shimmer-text {
-          background-size: 200% 100%;
-          animation: shimmer-slide 3s linear infinite;
-        }
-        .float-element {
-          animation: float-gentle 4s ease-in-out infinite;
-        }
-        .float-element-delay {
-          animation: float-gentle 5s ease-in-out 1s infinite;
-        }
-        .glow-card {
-          animation: pulse-glow-gold 3s ease-in-out infinite;
-        }
-        .track-animate {
-          animation: track-scroll 2s linear infinite;
-        }
-        .ticket-card {
-          clip-path: polygon(
-            0% 10px, 10px 10px, 10px 0%, calc(100% - 10px) 0%, calc(100% - 10px) 10px, 100% 10px,
-            100% calc(100% - 10px), calc(100% - 10px) calc(100% - 10px), calc(100% - 10px) 100%,
-            10px 100%, 10px calc(100% - 10px), 0% calc(100% - 10px)
-          );
-        }
-      `}</style>
-
       <StickyPriceBar
         title={`${station.name} Taxi Service`}
         price={`₹${lowestFare}`}
@@ -91,160 +73,137 @@ export default function RailwayStationClient({ station, slug }) {
         whatsappText={`Hi, I need a taxi from ${station.name} (${station.stationCode}). Please share rates and availability.`}
       />
 
-      {/* === HERO SECTION - Dramatic Railway Terminal === */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-amber-950 to-yellow-950" />
-
-        {/* Animated railway tracks at bottom */}
-        <div className="absolute bottom-[8%] left-0 right-0 h-[2px] bg-yellow-500/20" />
-        <div className="absolute bottom-[8%] left-0 right-0 h-[2px] opacity-30"
-          style={{
-            backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(245,158,11,0.4) 20px, rgba(245,158,11,0.4) 40px)',
-            backgroundSize: '60px 2px',
-            animation: 'track-scroll 2s linear infinite'
-          }}
+      {/* === HERO — visible city photo, scrim on the text side only === */}
+      <section className="relative flex min-h-[88vh] flex-col justify-end overflow-hidden">
+        <Image
+          src={heroImage}
+          alt={`${station.city} — taxi from ${station.name}`}
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+          quality={85}
         />
-        <div className="absolute bottom-[9.5%] left-0 right-0 h-[2px] bg-yellow-500/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/10" />
+        <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-slate-950/80 via-slate-950/25 to-transparent lg:w-3/4" />
+        <div className="absolute inset-x-0 top-0 z-20 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-        {/* Grid Pattern with depth */}
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%23f59e0b\' stroke-width=\'0.5\'%3E%3Crect width=\'40\' height=\'40\'/%3E%3C/g%3E%3C/svg%3E")' }} />
-
-        {/* Animated Floating Orbs */}
-        <div className="absolute top-[15%] left-[15%] w-[400px] h-[400px] bg-amber-600/10 rounded-full blur-[120px] float-element" />
-        <div className="absolute top-[50%] right-[10%] w-[350px] h-[350px] bg-yellow-500/8 rounded-full blur-[100px] float-element-delay" />
-        <div className="absolute bottom-[20%] left-[40%] w-[300px] h-[300px] bg-orange-400/6 rounded-full blur-[130px] float-element" />
-
-        {/* Horizontal animated light streaks */}
-        <div className="absolute top-[30%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent" />
-        <div className="absolute top-[70%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-400/15 to-transparent" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 w-full py-20">
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-28 sm:px-6 lg:px-8">
+          <div className="grid items-end gap-10 lg:grid-cols-5 lg:gap-12">
             {/* Left: Content (3 cols) */}
             <div className="lg:col-span-3">
-              {/* Animated badge */}
-              <div className="inline-flex items-center gap-2.5 bg-yellow-500/10 backdrop-blur-2xl border border-yellow-400/20 rounded-full px-5 py-2.5 mb-8">
-                <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <TrainFront className="w-4 h-4 text-yellow-300" />
-                <span className="text-yellow-200 text-sm font-mono tracking-widest">{station.stationCode} STATION</span>
+              {/* Station route-board seal — honest data: code + platforms */}
+              <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-amber-400/30 bg-slate-950/60 py-2 pl-2 pr-5 backdrop-blur-md">
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-[#FACF2D]/70 bg-amber-400/15">
+                  <TrainFront className="h-4 w-4 text-[#FACF2D]" />
+                </span>
+                <span className="text-left">
+                  <span className="block font-mono text-[11px] font-black tracking-[0.22em] text-amber-200">{station.stationCode} STATION · {station.platforms} PLATFORMS</span>
+                  <span className="block text-[10px] text-white/55">Driver meets you at the platform exit, 24/7</span>
+                </span>
               </div>
 
-              <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[0.9] tracking-tight">
+              <h1 className="font-display-serif text-balance text-4xl font-black leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-7xl">
                 {station.city}
-                <span className="block text-transparent bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-300 bg-clip-text shimmer-text"
-                  style={{ backgroundImage: 'linear-gradient(90deg, #fbbf24, #fde68a, #f59e0b, #fbbf24)', backgroundSize: '200% 100%' }}>
-                  Station Taxi
-                </span>
+                <span className={`block ${FOIL}`}>Station Taxi</span>
               </h1>
 
-              <p className="text-slate-400 text-lg md:text-xl mb-10 max-w-xl leading-relaxed">
+              <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/70 sm:text-base md:text-lg">
                 {station.description.split('.').slice(0, 2).join('.')}.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link onClick={() => trackPhoneCall('railway_station')} href="tel:+917668570551" className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 text-white px-8 py-4.5 rounded-2xl font-bold text-lg shadow-2xl shadow-yellow-600/25 hover:shadow-yellow-500/40 hover:scale-105 transition-all duration-300">
-                  <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call: 7668570551
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link onClick={() => trackPhoneCall('railway_station')} href="tel:+917668570551" className={`${GOLD_BTN} ${CTA_SIZE}`}>
+                  <Phone className="h-4 w-4" /> Call: 7668570551
                 </Link>
-                <Link onClick={() => trackWhatsAppClick('railway_station')} href={`https://wa.me/917668570551?text=I need a taxi from ${station.name}`} className="inline-flex items-center justify-center gap-2.5 bg-white/[0.04] backdrop-blur-2xl text-white px-8 py-4.5 rounded-2xl font-bold border border-yellow-400/20 hover:bg-white/10 hover:border-yellow-400/40 transition-all duration-300">
-                  <WhatsAppIcon className="w-5 h-5" /> WhatsApp Booking
+                <Link onClick={() => trackWhatsAppClick('railway_station')} href={`https://wa.me/917668570551?text=I need a taxi from ${station.name}`} className={`${GHOST_BTN} ${CTA_SIZE}`}>
+                  <WhatsAppIcon className="h-4 w-4" /> WhatsApp Booking
                 </Link>
               </div>
 
               {/* Quick Enquiry Form */}
-              <QuickEnquiryForm fromCity={station.name} toCity={station.city} pageType="station_taxi" />
+              <div className="mt-8">
+                <QuickEnquiryForm fromCity={station.name} toCity={station.city} pageType="station_taxi" />
+              </div>
             </div>
 
             {/* Right: Train Ticket Style Info Card (2 cols) */}
             <div className="lg:col-span-2">
-              <div className="relative glow-card bg-white/[0.04] backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden shadow-2xl shadow-yellow-500/10">
-                {/* Ticket Header with perforated top */}
-                <div className="bg-gradient-to-r from-amber-600 via-yellow-600 to-orange-600 px-6 py-4 flex items-center justify-between">
+              <div className="border-gradient-gold relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70 shadow-2xl backdrop-blur-xl">
+                <div className="flex items-center justify-between border-b border-amber-400/25 bg-gradient-to-r from-amber-400/15 via-amber-300/5 to-transparent px-6 py-4">
                   <div className="flex items-center gap-2.5">
-                    <TrainFront className="w-5 h-5 text-white" />
-                    <span className="text-white font-black text-sm font-mono tracking-widest">PLATFORM TICKET</span>
+                    <TrainFront className="h-5 w-5 text-[#FACF2D]" />
+                    <span className="font-mono text-sm font-black tracking-widest text-amber-100">PLATFORM TICKET</span>
                   </div>
-                  <span className="text-white/60 font-mono text-xs">TRIVENI CABS</span>
+                  <span className="font-mono text-xs text-white/50">TRIVENI CABS</span>
                 </div>
 
-                {/* Ticket Body */}
                 <div className="p-6">
-                  {/* Station Name Large */}
-                  <div className="text-center mb-2">
-                    <div className="text-yellow-300 font-mono text-xs tracking-widest mb-1">STATION</div>
-                    <div className="text-white font-black text-xl leading-tight">{station.name}</div>
+                  <div className="mb-2 text-center">
+                    <div className="mb-1 font-mono text-xs tracking-widest text-amber-300/80">STATION</div>
+                    <div className="font-display-serif text-xl font-black leading-tight text-white">{station.name}</div>
                   </div>
 
-                  {/* Perforation */}
-                  <div className="flex items-center my-4 -mx-6">
-                    <div className="w-5 h-10 bg-slate-950 rounded-r-full" />
-                    <div className="flex-1 border-t-2 border-dashed border-white/10 mx-2" />
-                    <div className="w-5 h-10 bg-slate-950 rounded-l-full" />
+                  <div className="-mx-6 my-4 flex items-center">
+                    <div className="h-10 w-5 rounded-r-full bg-slate-950" />
+                    <div className="mx-2 flex-1 border-t-2 border-dashed border-white/10" />
+                    <div className="h-10 w-5 rounded-l-full bg-slate-950" />
                   </div>
 
-                  {/* Info Grid */}
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="mb-4 grid grid-cols-2 gap-4">
                     <div className="text-center">
-                      <div className="text-slate-500 text-[10px] font-mono tracking-widest mb-1">CODE</div>
-                      <div className="text-yellow-300 font-black text-2xl font-mono">{station.stationCode}</div>
+                      <div className="mb-1 font-mono text-[10px] tracking-widest text-white/45">CODE</div>
+                      <div className="font-mono text-2xl font-black text-[#FACF2D]">{station.stationCode}</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-slate-500 text-[10px] font-mono tracking-widest mb-1">PLATFORMS</div>
-                      <div className="text-yellow-300 font-black text-2xl font-mono">{station.platforms}</div>
+                      <div className="mb-1 font-mono text-[10px] tracking-widest text-white/45">PLATFORMS</div>
+                      <div className="font-mono text-2xl font-black text-[#FACF2D]">{station.platforms}</div>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center bg-yellow-500/10 rounded-xl py-3 border border-yellow-500/10">
-                      <div className="text-slate-500 text-[10px] font-mono tracking-widest mb-1">FARE FROM</div>
-                      <div className="text-emerald-400 font-black text-xl">{'\u20B9'}{lowestFare}</div>
+                    <div className="rounded-xl border border-amber-400/15 bg-amber-400/10 py-3 text-center">
+                      <div className="mb-1 font-mono text-[10px] tracking-widest text-white/45">FARE FROM</div>
+                      <div className="font-display-serif text-xl font-black text-white">{'₹'}{lowestFare}</div>
                     </div>
-                    <div className="text-center bg-yellow-500/10 rounded-xl py-3 border border-yellow-500/10">
-                      <div className="text-slate-500 text-[10px] font-mono tracking-widest mb-1">STATUS</div>
-                      <div className="text-emerald-400 font-black text-sm flex items-center justify-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <div className="rounded-xl border border-amber-400/15 bg-amber-400/10 py-3 text-center">
+                      <div className="mb-1 font-mono text-[10px] tracking-widest text-white/45">STATUS</div>
+                      <div className="flex items-center justify-center gap-1.5 text-sm font-black text-emerald-400">
+                        <span className="h-2 w-2 rounded-full bg-emerald-400" />
                         24/7 LIVE
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Barcode-style decoration */}
-                <div className="px-6 pb-4 flex justify-center gap-[2px]">
-                  {[...Array(40)].map((_, i) => (
-                    <div key={i} className="bg-white/10 rounded-full" style={{ width: `${Math.random() > 0.5 ? 2 : 3}px`, height: `${12 + Math.random() * 10}px` }} />
+                <div className="flex justify-center gap-[2px] px-6 pb-4" aria-hidden>
+                  {BARCODE.map((h, i) => (
+                    <div key={i} className="w-[2px] rounded-full bg-white/15" style={{ height: `${h}px` }} />
                   ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Diagonal Cut Bottom */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none" className="w-full h-16">
-            <path d="M0 80 L0 40 Q720 0 1440 40 L1440 80Z" fill="#020617" />
-          </svg>
-        </div>
       </section>
 
       <SocialProofStrip theme="dark" />
 
-      {/* === TRUST BAR - Departure Board Style === */}
-      <section className="py-10 px-4 border-b border-white/5">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      {/* === TRUST BAR === */}
+      <section className="border-b border-white/5 px-4 py-10">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 md:gap-8">
           {[
-            { icon: TrainFront, title: "Meet at Platform", desc: "Driver waits at exit", color: "from-amber-500 to-yellow-500" },
-            { icon: Shield, title: "Fixed Fares", desc: "Zero surge pricing", color: "from-emerald-500 to-teal-500" },
-            { icon: Clock, title: "24/7 Available", desc: "Any train, any time", color: "from-amber-500 to-orange-500" },
-            { icon: Star, title: "4.9 Rating", desc: "Trusted by thousands", color: "from-orange-500 to-pink-500" },
+            { icon: TrainFront, title: 'Meet at Platform', desc: 'Driver waits at exit' },
+            { icon: Shield, title: 'Fixed Fares', desc: 'Zero surge pricing' },
+            { icon: Clock, title: '24/7 Available', desc: 'Any train, any time' },
+            { icon: Star, title: '4.9 Rating', desc: 'Trusted by thousands' },
           ].map((item, i) => (
-            <div key={i} className="flex items-center gap-4 group">
-              <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                <item.icon className="w-5 h-5 text-white" />
+            <div key={i} className="group flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border-2 border-[#FACF2D]/40 bg-gradient-to-br from-amber-400/20 via-transparent to-transparent transition-transform duration-300 group-hover:scale-110">
+                <item.icon className="h-5 w-5 text-[#FACF2D]" />
               </div>
               <div>
-                <div className="font-bold text-white text-sm">{item.title}</div>
+                <div className="text-sm font-bold text-white">{item.title}</div>
                 <div className="text-xs text-slate-500">{item.desc}</div>
               </div>
             </div>
@@ -252,169 +211,185 @@ export default function RailwayStationClient({ station, slug }) {
         </div>
       </section>
 
-      {/* === FARE TABLE - Ticket Window Display === */}
-      <section className="py-14 md:py-20 lg:py-32 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-amber-500/20 tracking-widest uppercase">
-              <IndianRupee className="w-3.5 h-3.5" /> Fare Chart
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
-              Taxi Fares from <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.city}</span>
-            </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg">Transparent pricing. Tolls included. No hidden charges.</p>
-          </div>
+      {/* === FARE TABLE — stacked cards on mobile, full ledger on desktop === */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <SerifHeading
+            eyebrow="Fare Chart"
+            icon={IndianRupee}
+            title="Taxi Fares from"
+            highlight={station.city}
+            subtitle="Transparent pricing. Tolls included. No hidden charges."
+            tone="dark"
+          />
 
-          {/* Fare Display - Digital Board Style */}
-          <div className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden shadow-2xl shadow-yellow-500/5">
-            {/* Board Header */}
-            <div className="bg-gradient-to-r from-amber-600/30 via-yellow-600/30 to-orange-600/30 backdrop-blur-xl px-6 md:px-8 py-5 border-b border-white/10 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-white font-black text-sm font-mono tracking-widest">FARE DISPLAY</span>
-              </div>
-              <span className="text-slate-400 font-mono text-xs hidden md:block">{station.stationCode} &bull; {station.platforms} PLATFORMS</span>
-            </div>
-
-            {/* Table Header */}
-            <div className="hidden md:grid grid-cols-5 gap-4 px-8 py-4 bg-white/[0.02]">
-              <div className="text-yellow-300 text-xs font-black font-mono tracking-widest">DESTINATION</div>
-              <div className="text-yellow-300 text-xs font-black font-mono tracking-widest text-center">DISTANCE</div>
-              <div className="text-yellow-300 text-xs font-black font-mono tracking-widest text-center">SEDAN FARE</div>
-              <div className="text-yellow-300 text-xs font-black font-mono tracking-widest text-center">SUV FARE</div>
-              <div className="text-yellow-300 text-xs font-black font-mono tracking-widest text-center">EST. TIME</div>
-            </div>
-
-            {/* Rows */}
+          {/* Mobile — stacked label/value fare cards */}
+          <div className="space-y-4 md:hidden">
             {station.destinations.map((dest, i) => (
-              <div key={i} className={`grid md:grid-cols-5 gap-2 md:gap-4 px-6 md:px-8 py-4 md:py-5 items-center border-b border-white/[0.03] last:border-0 hover:bg-yellow-500/[0.04] transition-all duration-300 group`}>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center shrink-0 group-hover:bg-yellow-500/20 transition-colors">
-                    <ArrowRight className="w-3.5 h-3.5 text-yellow-400" />
+              <div key={i} className={`${GLASS} p-5`}>
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-amber-400/25 bg-amber-400/10">
+                    <ArrowRight className="h-3.5 w-3.5 text-[#FACF2D]" />
                   </div>
-                  <span className="text-white font-bold text-sm md:text-base">{dest.name}</span>
+                  <span className="font-display-serif text-base font-black text-white">{dest.name}</span>
                 </div>
-                <div className="text-slate-400 text-sm text-center hidden md:block font-mono">{dest.distance}</div>
-                <div className="text-center hidden md:block">
-                  <span className="text-yellow-300 font-black text-base font-mono">{'\u20B9'}{dest.sedanFare.toLocaleString()}</span>
-                </div>
-                <div className="text-center hidden md:block">
-                  <span className="text-amber-300 font-black text-base font-mono">{'\u20B9'}{dest.suvFare.toLocaleString()}</span>
-                </div>
-                <div className="text-slate-400 text-sm text-center hidden md:block font-mono">{dest.time}</div>
-                {/* Mobile layout */}
-                <div className="flex md:hidden items-center justify-between mt-1 pl-11">
-                  <span className="text-slate-500 text-xs">{dest.distance} &bull; {dest.time}</span>
-                  <div className="flex gap-3">
-                    <span className="text-yellow-300 font-bold text-sm">{'\u20B9'}{dest.sedanFare.toLocaleString()}</span>
-                    <span className="text-amber-300 font-bold text-sm">{'\u20B9'}{dest.suvFare.toLocaleString()}</span>
+                <dl className="space-y-2 text-xs">
+                  <div className="flex justify-between gap-3 border-b border-white/5 pb-2">
+                    <dt className="font-mono uppercase tracking-widest text-white/40">Distance</dt>
+                    <dd className="text-white/70">{dest.distance}</dd>
                   </div>
-                </div>
+                  <div className="flex justify-between gap-3 border-b border-white/5 pb-2">
+                    <dt className="font-mono uppercase tracking-widest text-white/40">Sedan Fare</dt>
+                    <dd className="font-bold text-amber-300">{'₹'}{dest.sedanFare.toLocaleString()}</dd>
+                  </div>
+                  <div className="flex justify-between gap-3 border-b border-white/5 pb-2">
+                    <dt className="font-mono uppercase tracking-widest text-white/40">SUV Fare</dt>
+                    <dd className="font-bold text-amber-200">{'₹'}{dest.suvFare.toLocaleString()}</dd>
+                  </div>
+                  <div className="flex justify-between gap-3">
+                    <dt className="font-mono uppercase tracking-widest text-white/40">Est. Time</dt>
+                    <dd className="text-white/70">{dest.time}</dd>
+                  </div>
+                </dl>
               </div>
             ))}
           </div>
-          <p className="text-slate-600 text-xs mt-5 text-center font-mono">* Fares include AC vehicle, driver, and fuel. Tolls and parking included.</p>
+
+          {/* Desktop — fare ledger table, no horizontal scroll wrapper */}
+          <div className={`hidden overflow-hidden md:block ${GLASS}`}>
+            <div className="flex items-center justify-between border-b border-amber-400/20 bg-gradient-to-r from-amber-400/15 via-amber-300/5 to-transparent px-8 py-5">
+              <div className="flex items-center gap-3">
+                <span className="h-3 w-3 rounded-full bg-emerald-400" />
+                <span className="font-mono text-sm font-black tracking-widest text-amber-100">FARE DISPLAY</span>
+              </div>
+              <span className="font-mono text-xs text-slate-400">{station.stationCode} &bull; {station.platforms} PLATFORMS</span>
+            </div>
+            <table className="w-full text-sm">
+              <thead className="bg-white/[0.02]">
+                <tr>
+                  <th className="p-5 pl-8 text-left font-mono text-xs font-black tracking-widest text-amber-300">DESTINATION</th>
+                  <th className="p-5 text-center font-mono text-xs font-black tracking-widest text-amber-300">DISTANCE</th>
+                  <th className="p-5 text-center font-mono text-xs font-black tracking-widest text-amber-300">SEDAN FARE</th>
+                  <th className="p-5 text-center font-mono text-xs font-black tracking-widest text-amber-300">SUV FARE</th>
+                  <th className="p-5 pr-8 text-center font-mono text-xs font-black tracking-widest text-amber-300">EST. TIME</th>
+                </tr>
+              </thead>
+              <tbody>
+                {station.destinations.map((dest, i) => (
+                  <tr key={i} className="group border-b border-white/[0.03] transition-all duration-300 last:border-0 hover:bg-amber-400/[0.05]">
+                    <td className="p-5 pl-8">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-amber-400/25 bg-amber-400/10 transition-colors group-hover:bg-amber-400/20">
+                          <ArrowRight className="h-3.5 w-3.5 text-[#FACF2D]" />
+                        </div>
+                        <span className="font-bold text-white">{dest.name}</span>
+                      </div>
+                    </td>
+                    <td className="p-5 text-center font-mono text-slate-400">{dest.distance}</td>
+                    <td className="p-5 text-center font-mono text-base font-black text-amber-300">{'₹'}{dest.sedanFare.toLocaleString()}</td>
+                    <td className="p-5 text-center font-mono text-base font-black text-amber-200">{'₹'}{dest.suvFare.toLocaleString()}</td>
+                    <td className="p-5 pr-8 text-center font-mono text-slate-400">{dest.time}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-5 text-center font-mono text-xs text-slate-600">* Fares include AC vehicle, driver, and fuel. Tolls and parking included.</p>
         </div>
       </section>
 
-      {/* === WHY BOOK - Feature Cards with Glow === */}
-      <section className="py-14 md:py-20 lg:py-32 px-4 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/20 to-transparent" />
-        <div className="relative max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-yellow-500/10 text-yellow-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-yellow-500/20 tracking-widest uppercase">
-              <Sparkles className="w-3.5 h-3.5" /> Premium Service
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
-              Why Book <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">With Us</span>
-            </h2>
-          </div>
+      {/* === WHY BOOK — warm-light band === */}
+      <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/70 to-white px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <SerifHeading
+            eyebrow="Premium Service"
+            icon={Sparkles}
+            title="Why Book"
+            highlight="With Us"
+            tone="light"
+          />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-              { icon: MapPinned, title: "Meet at Platform Exit", desc: "Our driver waits right at the station exit with your name board. No searching, no confusion.", hoverBorderClass: "hover:border-indigo-500/40", hoverShadowClass: "hover:shadow-indigo-500/10", glowClass: "bg-indigo-500/5", glowHoverClass: "group-hover:bg-indigo-500/10", iconBgClass: "bg-gradient-to-br from-indigo-600/20 to-indigo-400/10", iconBorderClass: "border-indigo-500/20", iconTextClass: "text-indigo-400" },
-              { icon: Clock, title: "24/7 Available", desc: "Whether your train arrives at 2 AM or noon, our taxi is ready and waiting for you.", hoverBorderClass: "hover:border-violet-500/40", hoverShadowClass: "hover:shadow-violet-500/10", glowClass: "bg-violet-500/5", glowHoverClass: "group-hover:bg-violet-500/10", iconBgClass: "bg-gradient-to-br from-violet-600/20 to-violet-400/10", iconBorderClass: "border-violet-500/20", iconTextClass: "text-violet-400" },
-              { icon: Shield, title: "No Surge Pricing", desc: "Fixed fares agreed before booking. No meters, no multipliers, no hidden charges.", hoverBorderClass: "hover:border-purple-500/40", hoverShadowClass: "hover:shadow-purple-500/10", glowClass: "bg-purple-500/5", glowHoverClass: "group-hover:bg-purple-500/10", iconBgClass: "bg-gradient-to-br from-purple-600/20 to-purple-400/10", iconBorderClass: "border-purple-500/20", iconTextClass: "text-purple-400" },
-              { icon: Navigation, title: "GPS Tracked Rides", desc: "All vehicles are GPS tracked. Share your live location with family for complete safety.", hoverBorderClass: "hover:border-indigo-500/40", hoverShadowClass: "hover:shadow-indigo-500/10", glowClass: "bg-indigo-500/5", glowHoverClass: "group-hover:bg-indigo-500/10", iconBgClass: "bg-gradient-to-br from-indigo-600/20 to-indigo-400/10", iconBorderClass: "border-indigo-500/20", iconTextClass: "text-indigo-400" },
-              { icon: Car, title: "Clean AC Vehicles", desc: "Well-maintained, sanitized AC cars. Sedan, SUV, and Tempo Traveller options available.", hoverBorderClass: "hover:border-violet-500/40", hoverShadowClass: "hover:shadow-violet-500/10", glowClass: "bg-violet-500/5", glowHoverClass: "group-hover:bg-violet-500/10", iconBgClass: "bg-gradient-to-br from-violet-600/20 to-violet-400/10", iconBorderClass: "border-violet-500/20", iconTextClass: "text-violet-400" },
-              { icon: BadgeCheck, title: "Verified Drivers", desc: "All drivers are background-verified, experienced, and know local routes perfectly.", hoverBorderClass: "hover:border-purple-500/40", hoverShadowClass: "hover:shadow-purple-500/10", glowClass: "bg-purple-500/5", glowHoverClass: "group-hover:bg-purple-500/10", iconBgClass: "bg-gradient-to-br from-purple-600/20 to-purple-400/10", iconBorderClass: "border-purple-500/20", iconTextClass: "text-purple-400" },
+              { icon: MapPinned, title: 'Meet at Platform Exit', desc: 'Our driver waits right at the station exit with your name board. No searching, no confusion.' },
+              { icon: Clock, title: '24/7 Available', desc: 'Whether your train arrives at 2 AM or noon, our taxi is ready and waiting for you.' },
+              { icon: Shield, title: 'No Surge Pricing', desc: 'Fixed fares agreed before booking. No meters, no multipliers, no hidden charges.' },
+              { icon: Navigation, title: 'GPS Tracked Rides', desc: 'All vehicles are GPS tracked. Share your live location with family for complete safety.' },
+              { icon: Car, title: 'Clean AC Vehicles', desc: 'Well-maintained, sanitized AC cars. Sedan, SUV, and Tempo Traveller options available.' },
+              { icon: BadgeCheck, title: 'Verified Drivers', desc: 'All drivers are background-verified, experienced, and know local routes perfectly.' },
             ].map((item, i) => (
-              <div key={i} className={`relative bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 p-7 ${item.hoverBorderClass} hover:bg-white/[0.06] hover:shadow-2xl ${item.hoverShadowClass} transition-all duration-500 group overflow-hidden`}>
-                {/* Subtle corner glow */}
-                <div className={`absolute top-0 right-0 w-32 h-32 ${item.glowClass} rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 ${item.glowHoverClass} transition-all duration-500`} />
-
-                <div className={`relative w-14 h-14 rounded-2xl ${item.iconBgClass} border ${item.iconBorderClass} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                  <item.icon className={`w-6 h-6 ${item.iconTextClass}`} />
+              <div key={i} className="group rounded-2xl border border-amber-200 bg-white p-7 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] transition-all duration-500 hover:border-amber-300 hover:shadow-[0_20px_60px_-28px_rgba(180,130,10,0.6)]">
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-[#FACF2D]/50 bg-gradient-to-br from-amber-100 via-amber-50 to-transparent transition-transform duration-300 group-hover:scale-110">
+                  <item.icon className="h-6 w-6 text-amber-600" />
                 </div>
-                <h3 className="relative text-white font-bold text-xl mb-2">{item.title}</h3>
-                <p className="relative text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="font-display-serif mb-2 text-xl font-black text-slate-900">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-600">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* === STATION INFO - Train-Ticket Split Cards === */}
-      <section className="py-14 md:py-20 lg:py-32 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-amber-500/20 tracking-widest uppercase">
-              <TrainFront className="w-3.5 h-3.5" /> Station Details
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
-              About <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.name}</span>
-            </h2>
-          </div>
+      {/* === STATION INFO — dark band === */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <SerifHeading
+            eyebrow="Station Details"
+            icon={TrainFront}
+            title="About"
+            highlight={station.name}
+            tone="dark"
+          />
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             {/* Platform Card */}
-            <div className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden hover:border-amber-500/30 transition-all duration-500 group">
-              <div className="bg-gradient-to-r from-amber-600/20 to-yellow-600/20 px-6 py-4 border-b border-white/5">
+            <div className={`overflow-hidden ${GLASS} transition-all duration-500 hover:border-amber-400/40`}>
+              <div className="border-b border-white/5 bg-gradient-to-r from-amber-400/15 to-transparent px-6 py-4">
                 <div className="flex items-center gap-3">
-                  <Milestone className="w-5 h-5 text-amber-400" />
-                  <h3 className="text-white font-bold">Platform Details</h3>
+                  <Milestone className="h-5 w-5 text-[#FACF2D]" />
+                  <h3 className="font-bold text-white">Platform Details</h3>
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-slate-400 text-sm mb-5">{station.platforms} platforms serving passengers daily</p>
-                <div className="flex items-center justify-between bg-amber-500/10 rounded-2xl p-4 border border-amber-500/10">
-                  <span className="text-slate-500 text-xs font-mono tracking-widest">STATION CODE</span>
-                  <span className="text-amber-300 font-black text-3xl font-mono">{station.stationCode}</span>
+                <p className="mb-5 text-sm text-slate-400">{station.platforms} platforms serving passengers daily</p>
+                <div className="flex items-center justify-between rounded-2xl border border-amber-400/15 bg-amber-400/10 p-4">
+                  <span className="font-mono text-xs tracking-widest text-slate-400">STATION CODE</span>
+                  <span className="font-mono text-3xl font-black text-[#FACF2D]">{station.stationCode}</span>
                 </div>
               </div>
             </div>
 
             {/* Cab Point Card */}
-            <div className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden hover:border-yellow-500/30 transition-all duration-500 group">
-              <div className="bg-gradient-to-r from-yellow-600/20 to-orange-600/20 px-6 py-4 border-b border-white/5">
+            <div className={`overflow-hidden ${GLASS} transition-all duration-500 hover:border-amber-400/40`}>
+              <div className="border-b border-white/5 bg-gradient-to-r from-amber-400/15 to-transparent px-6 py-4">
                 <div className="flex items-center gap-3">
-                  <MapPin className="w-5 h-5 text-yellow-400" />
-                  <h3 className="text-white font-bold">Cab Pickup Point</h3>
+                  <MapPin className="h-5 w-5 text-[#FACF2D]" />
+                  <h3 className="font-bold text-white">Cab Pickup Point</h3>
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-slate-400 text-sm leading-relaxed">{station.cabWaitingPoint}</p>
-                <div className="mt-5 flex items-center gap-2 text-emerald-400 text-xs font-bold">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <p className="text-sm leading-relaxed text-slate-400">{station.cabWaitingPoint}</p>
+                <div className="mt-5 flex items-center gap-2 text-xs font-bold text-emerald-400">
+                  <div className="h-2 w-2 rounded-full bg-emerald-400" />
                   Driver waiting at this location
                 </div>
               </div>
             </div>
 
             {/* Landmarks Card */}
-            <div className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden hover:border-orange-500/30 transition-all duration-500 group">
-              <div className="bg-gradient-to-r from-orange-600/20 to-pink-600/20 px-6 py-4 border-b border-white/5">
+            <div className={`overflow-hidden ${GLASS} transition-all duration-500 hover:border-amber-400/40`}>
+              <div className="border-b border-white/5 bg-gradient-to-r from-amber-400/15 to-transparent px-6 py-4">
                 <div className="flex items-center gap-3">
-                  <Luggage className="w-5 h-5 text-orange-400" />
-                  <h3 className="text-white font-bold">Nearby Landmarks</h3>
+                  <Luggage className="h-5 w-5 text-[#FACF2D]" />
+                  <h3 className="font-bold text-white">Nearby Landmarks</h3>
                 </div>
               </div>
               <div className="p-6">
                 <ul className="space-y-3">
                   {station.nearbyLandmarks.map((landmark, i) => (
-                    <li key={i} className="flex items-center gap-3 text-slate-300 text-sm">
-                      <div className="w-6 h-6 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0">
-                        <CheckCircle2 className="w-3 h-3 text-orange-400" />
+                    <li key={i} className="flex items-center gap-3 text-sm text-slate-300">
+                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-amber-400/25 bg-amber-400/10">
+                        <CheckCircle2 className="h-3 w-3 text-[#FACF2D]" />
                       </div>
                       {landmark}
                     </li>
@@ -424,17 +399,17 @@ export default function RailwayStationClient({ station, slug }) {
             </div>
           </div>
 
-          {/* Major Trains - Scrolling Ticker Style */}
-          <div className="mt-8 bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 p-6 md:p-8">
-            <h3 className="text-white font-black text-xl mb-6 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-600/20 to-amber-600/20 border border-yellow-500/20 flex items-center justify-center">
-                <TrainFront className="w-5 h-5 text-yellow-400" />
+          {/* Major Trains */}
+          <div className={`mt-8 ${GLASS} p-6 md:p-8`}>
+            <h3 className="font-display-serif mb-6 flex items-center gap-3 text-xl font-black text-white">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border-2 border-[#FACF2D]/40 bg-gradient-to-br from-amber-400/20 to-transparent">
+                <TrainFront className="h-5 w-5 text-[#FACF2D]" />
               </div>
               Major Trains at {station.name}
             </h3>
             <div className="flex flex-wrap gap-3">
               {station.majorTrains.map((train, i) => (
-                <span key={i} className="bg-gradient-to-r from-yellow-500/10 to-amber-500/10 text-yellow-300 border border-yellow-500/15 rounded-xl px-5 py-2.5 text-sm font-semibold hover:border-yellow-500/40 hover:bg-yellow-500/15 transition-all duration-300 cursor-default">
+                <span key={i} className="cursor-default rounded-xl border border-amber-400/20 bg-amber-400/10 px-5 py-2.5 text-sm font-semibold text-amber-200 transition-all duration-300 hover:border-amber-400/40 hover:bg-amber-400/15">
                   {train}
                 </span>
               ))}
@@ -443,102 +418,96 @@ export default function RailwayStationClient({ station, slug }) {
         </div>
       </section>
 
-      {/* === DIRECT ANSWER BOX (AEO/Featured Snippet Target) === */}
-      <section className="py-10 px-4 relative">
-        <div className="max-w-4xl mx-auto">
-          <div className="direct-answer bg-white/5 backdrop-blur-xl rounded-2xl p-6 md:p-8 border border-amber-500/20" data-snippet-type="direct-answer">
-            <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
-              {station.name} Taxi — Quick Info
+      {/* === DIRECT ANSWER BOX (AEO/Featured Snippet Target) — warm-light band === */}
+      <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-4xl">
+          <div className="direct-answer rounded-2xl border border-amber-200 bg-white p-6 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] md:p-8" data-snippet-type="direct-answer">
+            <h2 className="font-display-serif mb-4 text-2xl font-black text-slate-900 md:text-3xl">
+              {station.name} Taxi — <span className={FOIL}>Quick Info</span>
             </h2>
-            <div className="key-info grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Starting Fare</p>
-                <p className="text-xl font-black text-amber-400">₹{lowestFare}</p>
+            <div className="key-info mb-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
+                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Starting Fare</p>
+                <p className="font-display-serif text-xl font-black text-amber-600">₹{lowestFare}</p>
               </div>
-              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Destinations</p>
-                <p className="text-xl font-black text-white">{station.destinations.length}+</p>
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
+                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Destinations</p>
+                <p className="font-display-serif text-xl font-black text-slate-900">{station.destinations.length}+</p>
               </div>
-              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Available</p>
-                <p className="text-xl font-black text-white">24/7</p>
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
+                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Available</p>
+                <p className="font-display-serif text-xl font-black text-slate-900">24/7</p>
               </div>
-              <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                <p className="text-xs text-slate-400 uppercase font-semibold mb-1">Rating</p>
-                <p className="text-xl font-black text-amber-400">4.9★</p>
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
+                <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Rating</p>
+                <p className="font-display-serif text-xl font-black text-amber-600">4.9★</p>
               </div>
             </div>
-            <p className="faq-answer text-slate-300 leading-relaxed text-base md:text-lg">
-              Taxi from <strong className="text-white">{station.name} ({station.stationCode})</strong> starts at just <strong className="text-amber-400">₹{lowestFare}</strong> for AC sedan.
-              Our drivers meet you at the <strong className="text-white">platform exit gate</strong> with a name placard — no waiting, no searching.
+            <p className="faq-answer text-base leading-relaxed text-slate-700 md:text-lg">
+              Taxi from <strong className="text-slate-900">{station.name} ({station.stationCode})</strong> starts at just <strong className="text-amber-600">₹{lowestFare}</strong> for AC sedan.
+              Our drivers meet you at the <strong className="text-slate-900">platform exit gate</strong> with a name placard — no waiting, no searching.
               Fixed fares to {station.destinations.slice(0, 3).map(d => d.name).join(', ')} and {station.destinations.length - 3}+ more destinations.
               AC sedan and SUV options with verified professional drivers and GPS tracking.
-              Book by calling <strong className="text-white">+91-7668570551</strong> or WhatsApp. 4.9★ rated, 10,000+ station pickups completed.
+              Book by calling <strong className="text-slate-900">+91-7668570551</strong> or WhatsApp. 4.9★ rated, 10,000+ station pickups completed.
             </p>
           </div>
         </div>
       </section>
 
-      {/* === DESTINATIONS - Train Ticket Cards === */}
-      <section className="py-14 md:py-20 lg:py-32 px-4 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/20 to-transparent" />
-        <div className="relative max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-yellow-500/10 text-yellow-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-yellow-500/20 tracking-widest uppercase">
-              <Route className="w-3.5 h-3.5" /> Popular Routes
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
-              Popular Destinations from <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.city}</span>
-            </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg">Book a taxi to any destination. Fixed fares, AC vehicles, professional drivers.</p>
-          </div>
+      {/* === DESTINATIONS — train-ticket cards, dark band === */}
+      <section className="relative px-4 py-16 md:py-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/15 to-transparent" />
+        <div className="relative mx-auto max-w-7xl">
+          <SerifHeading
+            eyebrow="Popular Routes"
+            icon={Route}
+            title="Popular Destinations from"
+            highlight={station.city}
+            subtitle="Book a taxi to any destination. Fixed fares, AC vehicles, professional drivers."
+            tone="dark"
+          />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {station.destinations.map((dest, i) => (
-              <div key={i} className="relative bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 overflow-hidden hover:border-yellow-500/30 hover:shadow-2xl hover:shadow-yellow-500/10 transition-all duration-500 group">
-                {/* Top accent */}
-                <div className="h-1 bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500" />
+              <div key={i} className={`group relative overflow-hidden ${GLASS} transition-all duration-500 hover:border-amber-400/40 hover:shadow-2xl hover:shadow-amber-500/10`}>
+                <div className="h-1 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" />
 
                 <div className="p-5">
-                  {/* Destination Header */}
-                  <div className="flex items-center justify-between mb-1">
-                    <div className="text-slate-500 text-[10px] font-mono tracking-widest">{station.stationCode} &rarr;</div>
-                    <ArrowRight className="w-4 h-4 text-slate-700 group-hover:text-yellow-400 group-hover:translate-x-1 transition-all duration-300" />
+                  <div className="mb-1 flex items-center justify-between">
+                    <div className="font-mono text-[10px] tracking-widest text-slate-500">{station.stationCode} &rarr;</div>
+                    <ArrowRight className="h-4 w-4 text-slate-700 transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-400" />
                   </div>
-                  <h3 className="text-white font-black text-lg mb-3">{dest.name}</h3>
+                  <h3 className="font-display-serif mb-3 text-lg font-black text-white">{dest.name}</h3>
 
-                  {/* Route Info */}
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-slate-400 text-sm">
-                      <Route className="w-3.5 h-3.5 text-slate-600" /> {dest.distance}
+                  <div className="mb-4 space-y-2">
+                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                      <Route className="h-3.5 w-3.5 text-slate-600" /> {dest.distance}
                     </div>
-                    <div className="flex items-center gap-2 text-slate-400 text-sm">
-                      <Clock className="w-3.5 h-3.5 text-slate-600" /> {dest.time}
+                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                      <Clock className="h-3.5 w-3.5 text-slate-600" /> {dest.time}
                     </div>
                   </div>
 
-                  {/* Ticket Perforation */}
-                  <div className="flex items-center -mx-5 my-4">
-                    <div className="w-4 h-7 bg-slate-950 rounded-r-full" />
-                    <div className="flex-1 border-t-2 border-dashed border-white/10 mx-1" />
-                    <div className="w-4 h-7 bg-slate-950 rounded-l-full" />
+                  <div className="-mx-5 my-4 flex items-center">
+                    <div className="h-7 w-4 rounded-r-full bg-slate-950" />
+                    <div className="mx-1 flex-1 border-t-2 border-dashed border-white/10" />
+                    <div className="h-7 w-4 rounded-l-full bg-slate-950" />
                   </div>
 
-                  {/* Fares */}
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="mb-4 flex items-center justify-between">
                     <div className="text-center">
-                      <div className="text-slate-500 text-[10px] font-mono tracking-widest">SEDAN</div>
-                      <div className="text-yellow-300 font-black text-lg">{'\u20B9'}{dest.sedanFare.toLocaleString()}</div>
+                      <div className="font-mono text-[10px] tracking-widest text-slate-500">SEDAN</div>
+                      <div className="font-display-serif text-lg font-black text-amber-300">{'₹'}{dest.sedanFare.toLocaleString()}</div>
                     </div>
-                    <div className="w-px h-8 bg-white/10" />
+                    <div className="h-8 w-px bg-white/10" />
                     <div className="text-center">
-                      <div className="text-slate-500 text-[10px] font-mono tracking-widest">SUV</div>
-                      <div className="text-amber-300 font-black text-lg">{'\u20B9'}{dest.suvFare.toLocaleString()}</div>
+                      <div className="font-mono text-[10px] tracking-widest text-slate-500">SUV</div>
+                      <div className="font-display-serif text-lg font-black text-amber-200">{'₹'}{dest.suvFare.toLocaleString()}</div>
                     </div>
                   </div>
 
-                  <Link onClick={() => trackPhoneCall('railway_station')} href="tel:+917668570551" className="block text-center py-3 rounded-xl bg-gradient-to-r from-amber-600/20 to-yellow-600/20 text-yellow-300 border border-yellow-500/20 text-sm font-bold hover:from-amber-600/30 hover:to-yellow-600/30 hover:border-yellow-500/40 transition-all duration-300">
-                    <Phone className="w-3.5 h-3.5 inline mr-1.5" /> Book Now
+                  <Link onClick={() => trackPhoneCall('railway_station')} href="tel:+917668570551" className={`${GOLD_BTN} w-full px-5 py-3 text-sm lg:px-5 lg:py-2 lg:text-[13px]`}>
+                    <Phone className="h-3.5 w-3.5" /> Book Now
                   </Link>
                 </div>
               </div>
@@ -547,50 +516,48 @@ export default function RailwayStationClient({ station, slug }) {
         </div>
       </section>
 
-      {/* === HOW TO BOOK - Connected Timeline === */}
-      <section className="py-14 md:py-20 lg:py-32 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-yellow-500/10 text-yellow-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-yellow-500/20 tracking-widest uppercase">
-              <Zap className="w-3.5 h-3.5" /> Simple Process
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
-              How to <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">Book</span>
-            </h2>
-          </div>
+      {/* === HOW TO BOOK — warm-light band === */}
+      <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-5xl">
+          <SerifHeading
+            eyebrow="Simple Process"
+            icon={Zap}
+            title="How to"
+            highlight="Book"
+            tone="light"
+          />
 
-          <div className="grid md:grid-cols-4 gap-6 relative">
-            {/* Connecting line (desktop) */}
-            <div className="hidden md:block absolute top-7 left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-amber-600/30 via-yellow-500/30 to-orange-600/30" />
+          <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+            <div className="absolute left-[12.5%] right-[12.5%] top-7 hidden h-[2px] bg-gradient-to-r from-amber-300/50 via-[#FACF2D]/50 to-amber-300/50 md:block" />
 
             {[
-              { step: "01", title: "Arrive", desc: `Your train pulls into ${station.city}. Collect your luggage and head to the station exit.`, icon: TrainFront },
-              { step: "02", title: "Contact Us", desc: "Call 7668570551 or WhatsApp with your location and destination for instant booking.", icon: Phone },
-              { step: "03", title: "Driver Arrives", desc: "Our verified driver reaches the station exit within 10 minutes with your name board.", icon: MapPinned },
-              { step: "04", title: "Enjoy Ride", desc: "Sit back in a clean AC vehicle. Fixed fare, no hassle, comfortable and safe journey.", icon: Car },
+              { step: '01', title: 'Arrive', desc: `Your train pulls into ${station.city}. Collect your luggage and head to the station exit.`, icon: TrainFront },
+              { step: '02', title: 'Contact Us', desc: 'Call 7668570551 or WhatsApp with your location and destination for instant booking.', icon: Phone },
+              { step: '03', title: 'Driver Arrives', desc: 'Our verified driver reaches the station exit within 10 minutes with your name board.', icon: MapPinned },
+              { step: '04', title: 'Enjoy Ride', desc: 'Sit back in a clean AC vehicle. Fixed fare, no hassle, comfortable and safe journey.', icon: Car },
             ].map((s, i) => (
-              <div key={i} className="text-center relative group">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-600 via-yellow-600 to-orange-600 flex items-center justify-center mx-auto mb-5 shadow-xl shadow-yellow-600/20 group-hover:scale-110 group-hover:shadow-yellow-500/40 transition-all duration-300 relative z-10">
-                  <s.icon className="w-6 h-6 text-white" />
+              <div key={i} className="group relative text-center">
+                <div className="relative z-10 mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FACF2D] shadow-[0_12px_36px_-10px_rgba(250,207,45,0.55)] transition-transform duration-300 group-hover:scale-110">
+                  <s.icon className="h-6 w-6 text-slate-950" />
                 </div>
-                <div className="text-yellow-400 font-mono text-xs tracking-widest mb-2">{s.step}</div>
-                <h3 className="text-white font-bold text-xl mb-2">{s.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
+                <div className="mb-2 font-mono text-xs tracking-widest text-amber-600">{s.step}</div>
+                <h3 className="font-display-serif mb-2 text-xl font-black text-slate-900">{s.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-600">{s.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* === SEO CONTENT - About This Station === */}
+      {/* === SEO CONTENT — About This Station === */}
       {station.seoContent && station.seoContent.length > 0 && (
-        <section className="py-14 md:py-20 lg:py-32 px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 p-8 md:p-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-8">
-                Complete Guide to Taxi from <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.name}</span>
+        <section className="px-4 py-16 md:py-24">
+          <div className="mx-auto max-w-4xl">
+            <div className={`${GLASS} p-8 md:p-12`}>
+              <h2 className="font-display-serif mb-8 text-2xl font-black text-white md:text-3xl">
+                Complete Guide to Taxi from <span className={FOIL}>{station.name}</span>
               </h2>
-              <div className="space-y-5 text-slate-300 leading-relaxed">
+              <div className="space-y-5 leading-relaxed text-slate-300">
                 {station.seoContent.map((paragraph, i) => (
                   <p key={i}>{paragraph}</p>
                 ))}
@@ -600,26 +567,23 @@ export default function RailwayStationClient({ station, slug }) {
         </section>
       )}
 
-      {/* === TRAVEL TIPS - Card Grid === */}
-      <section className="py-14 md:py-20 lg:py-32 px-4 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-950/15 to-transparent" />
-        <div className="relative max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-orange-500/10 text-orange-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-orange-500/20 tracking-widest uppercase">
-              Pro Tips
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
-              Tips for <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.city} Station</span>
-            </h2>
-          </div>
+      {/* === TRAVEL TIPS — warm-light band === */}
+      <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-5xl">
+          <SerifHeading
+            eyebrow="Pro Tips"
+            title="Tips for"
+            highlight={`${station.city} Station`}
+            tone="light"
+          />
 
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid gap-5 sm:grid-cols-2">
             {station.tips.map((tip, i) => (
-              <div key={i} className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 p-6 hover:border-orange-500/30 hover:bg-white/[0.05] transition-all duration-500 flex gap-5">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-600/20 to-yellow-600/20 border border-orange-500/20 flex items-center justify-center shrink-0">
-                  <span className="text-orange-300 font-black text-sm">{String(i + 1).padStart(2, '0')}</span>
+              <div key={i} className="flex gap-5 rounded-2xl border border-amber-200 bg-white p-6 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] transition-all duration-500 hover:border-amber-300">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#FACF2D]">
+                  <span className="text-sm font-black text-slate-950">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed">{tip}</p>
+                <p className="text-sm leading-relaxed text-slate-700">{tip}</p>
               </div>
             ))}
           </div>
@@ -629,38 +593,36 @@ export default function RailwayStationClient({ station, slug }) {
       <InclusionBadges preset="outstation" theme="dark" />
       <SectionDivider color="violet" className="my-8" />
 
-      {/* === FAQ - Expandable Accordion === */}
-      <section className="py-14 md:py-20 lg:py-32 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 text-xs font-bold px-5 py-2 rounded-full mb-5 border border-amber-500/20 tracking-widest uppercase">
-              FAQs
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
-              Common <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">Questions</span>
-            </h2>
-          </div>
+      {/* === FAQ — two-column accordion grid === */}
+      <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SerifHeading
+            eyebrow="FAQs"
+            title="Common"
+            highlight="Questions"
+            tone="dark"
+          />
 
-          <div className="space-y-3">
+          <div className="grid gap-3 md:grid-cols-2 md:items-start">
             {station.faqs.map((faq, i) => (
-              <div key={i} className={`bg-white/[0.03] backdrop-blur-2xl rounded-2xl border overflow-hidden transition-all duration-500 ${openFaq === i ? 'border-yellow-500/30 shadow-lg shadow-yellow-500/5' : 'border-white/10 hover:border-white/20'}`}>
+              <div key={i} className={`overflow-hidden rounded-2xl border bg-white/5 backdrop-blur-xl transition-all duration-500 ${openFaq === i ? 'border-amber-400/40 shadow-lg shadow-amber-500/5' : 'border-white/10 hover:border-white/20'}`}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   aria-expanded={openFaq === i}
                   aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'}
-                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-2 focus:ring-yellow-500/50 rounded-2xl"
+                  className="flex w-full items-center justify-between rounded-2xl p-5 text-left focus:outline-none focus:ring-2 focus:ring-amber-500/50 md:p-6"
                 >
                   <div className="flex items-center gap-4 pr-4">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-300 ${openFaq === i ? 'bg-yellow-500/20' : 'bg-white/5'}`}>
-                      <span className={`text-xs font-black font-mono transition-colors ${openFaq === i ? 'text-yellow-300' : 'text-slate-500'}`}>{String(i + 1).padStart(2, '0')}</span>
+                    <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors duration-300 ${openFaq === i ? 'bg-[#FACF2D]' : 'bg-white/5'}`}>
+                      <span className={`font-mono text-xs font-black transition-colors ${openFaq === i ? 'text-slate-950' : 'text-slate-500'}`}>{String(i + 1).padStart(2, '0')}</span>
                     </div>
-                    <h3 className="text-white font-semibold text-sm md:text-base">{faq.question}</h3>
+                    <h3 className="text-sm font-semibold text-white md:text-base">{faq.question}</h3>
                   </div>
-                  <ChevronDown className={`w-5 h-5 text-yellow-400 shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`h-5 w-5 shrink-0 text-[#FACF2D] transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="px-6 pb-6 pt-0">
-                    <p className="text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 ml-12">{faq.answer}</p>
+                    <p className="ml-12 border-t border-white/5 pt-4 text-sm leading-relaxed text-slate-400">{faq.answer}</p>
                   </div>
                 </div>
               </div>
@@ -669,18 +631,17 @@ export default function RailwayStationClient({ station, slug }) {
         </div>
       </section>
 
-      {/* === CROSS-SERVICE LINKS === */}
-      <section className="py-14 md:py-20 lg:py-32 px-4 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-950/15 to-transparent" />
-        <div className="relative max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
-              Other Travel Options from <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">{station.city}</span>
-            </h2>
-            <p className="text-slate-400 text-lg">Explore more ways to travel from {station.city}</p>
-          </div>
+      {/* === CROSS-SERVICE LINKS — warm-light band === */}
+      <section className="bg-gradient-to-b from-[#FFF6DC] via-amber-50/60 to-white px-4 py-16 text-slate-900 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <SerifHeading
+            title="Other Travel Options from"
+            highlight={station.city}
+            subtitle={`Explore more ways to travel from ${station.city}`}
+            tone="light"
+          />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { title: `${station.city} Bus Stand Taxi`, href: '/bus-stand-taxi', icon: Route, desc: 'Taxi from bus terminals' },
               { title: `${station.city} Sightseeing`, href: `/sightseeing/${station.city.toLowerCase().replace(/\s+/g, '-')}`, icon: MapPin, desc: 'Explore tourist attractions' },
@@ -690,98 +651,102 @@ export default function RailwayStationClient({ station, slug }) {
               <Link
                 key={i}
                 href={link.href}
-                className="group bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 hover:border-yellow-500/30 p-6 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-yellow-500/5 transition-all duration-500"
+                className="group rounded-2xl border border-amber-200 bg-white p-6 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.45)] transition-all duration-500 hover:border-amber-300 hover:shadow-[0_20px_60px_-28px_rgba(180,130,10,0.6)]"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-600/20 to-yellow-600/20 border border-yellow-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <link.icon className="w-6 h-6 text-yellow-400" />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border-2 border-[#FACF2D]/50 bg-gradient-to-br from-amber-100 to-transparent transition-transform duration-300 group-hover:scale-110">
+                  <link.icon className="h-6 w-6 text-amber-600" />
                 </div>
-                <h3 className="text-white font-bold group-hover:text-yellow-300 transition-colors mb-1">{link.title}</h3>
-                <p className="text-sm text-slate-400">{link.desc}</p>
+                <h3 className="mb-1 font-bold text-slate-900 transition-colors group-hover:text-amber-700">{link.title}</h3>
+                <p className="text-sm text-slate-600">{link.desc}</p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* === CROSS LINKS - Station Network Map === */}
-      <section className="py-14 md:py-20 lg:py-32 px-4 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
-              Nearby <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">Railway Stations</span>
-            </h2>
-            <p className="text-slate-400 text-lg">Explore taxi services at nearby railway stations</p>
-          </div>
+      {/* === CROSS LINKS — Station Network === */}
+      <section className="border-t border-white/5 px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <SerifHeading
+            title="Nearby"
+            highlight="Railway Stations"
+            subtitle="Explore taxi services at nearby railway stations"
+            tone="dark"
+          />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
             {nearbyStations.map((s, i) => (
               <Link
                 key={i}
                 href={`/railway-station-taxi/${s.slug}`}
-                className="bg-white/[0.03] backdrop-blur-2xl rounded-3xl border border-white/10 p-6 hover:border-yellow-500/30 hover:bg-white/[0.06] hover:shadow-xl hover:shadow-yellow-500/5 transition-all duration-500 group text-center"
+                className={`group ${GLASS} p-6 text-center transition-all duration-500 hover:border-amber-400/40 hover:bg-white/[0.07]`}
               >
-                <div className="text-yellow-400 font-mono text-xs tracking-widest mb-2">{s.stationCode}</div>
-                <h3 className="text-white font-bold text-base group-hover:text-yellow-300 transition-colors mb-1">{s.city}</h3>
-                <p className="text-slate-500 text-xs mb-3">Station Taxi</p>
-                <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-yellow-400 group-hover:translate-x-1 mx-auto transition-all duration-300" />
+                <div className="mb-2 font-mono text-xs tracking-widest text-[#FACF2D]">{s.stationCode}</div>
+                <h3 className="mb-1 text-base font-bold text-white transition-colors group-hover:text-amber-300">{s.city}</h3>
+                <p className="mb-3 text-xs text-slate-500">Station Taxi</p>
+                <ArrowRight className="mx-auto h-4 w-4 text-slate-600 transition-all duration-300 group-hover:translate-x-1 group-hover:text-amber-400" />
               </Link>
             ))}
           </div>
 
           {/* Related Services */}
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
             {[
-              { title: "Delhi Airport Taxi", href: "/airport-service/delhi" },
-              { title: "Agra Sightseeing", href: "/sightseeing/agra" },
-              { title: "Wedding Car Rental", href: "/wedding" },
-              { title: "Tour Packages", href: "/tour-package" },
+              { title: 'Delhi Airport Taxi', href: '/airport-service/delhi' },
+              { title: 'Agra Sightseeing', href: '/sightseeing/agra' },
+              { title: 'Wedding Car Rental', href: '/wedding' },
+              { title: 'Tour Packages', href: '/tour-package' },
             ].map((link, i) => (
-              <Link key={i} href={link.href} className="bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-white/10 p-4 hover:border-yellow-500/20 transition-all duration-300 text-center group">
-                <h3 className="text-slate-300 text-sm font-semibold group-hover:text-yellow-300 transition-colors">{link.title}</h3>
-                <ArrowRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-yellow-400 mx-auto mt-1.5 transition-colors" />
+              <Link key={i} href={link.href} className={`group ${GLASS} p-4 text-center transition-all duration-300 hover:border-amber-400/30`}>
+                <h3 className="text-sm font-semibold text-slate-300 transition-colors group-hover:text-amber-300">{link.title}</h3>
+                <ArrowRight className="mx-auto mt-1.5 h-3.5 w-3.5 text-slate-600 transition-colors group-hover:text-amber-400" />
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* === FINAL CTA - Full Width Dramatic === */}
-      <section className="relative py-28 md:py-36 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-600 via-yellow-600 to-purple-700" />
-        {/* Animated grid */}
-        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%23fff\' stroke-width=\'0.5\'%3E%3Crect width=\'40\' height=\'40\'/%3E%3C/g%3E%3C/svg%3E")' }} />
-        {/* Floating orbs */}
-        <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-white/5 rounded-full blur-[100px] float-element" />
-        <div className="absolute bottom-[20%] right-[10%] w-[250px] h-[250px] bg-white/5 rounded-full blur-[80px] float-element-delay" />
+      {/* === FINAL CTA — city photo banner with gold === */}
+      <section className="relative overflow-hidden px-4 py-24 md:py-32">
+        <Image
+          src={heroImage}
+          alt={`${station.city} — book your station taxi`}
+          fill
+          className="object-cover"
+          sizes="100vw"
+          quality={80}
+        />
+        <div className="absolute inset-0 bg-slate-950/80" />
+        <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 mb-8 float-element">
-            <TrainFront className="w-10 h-10 text-white" />
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <div className="mb-8 inline-flex h-20 w-20 items-center justify-center rounded-full border-2 border-[#FACF2D]/70 bg-gradient-to-br from-amber-400/25 via-transparent to-transparent backdrop-blur-xl">
+            <TrainFront className="h-9 w-9 text-[#FACF2D]" />
           </div>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-5 tracking-tight">
-            Arriving at {station.city}?
+          <h2 className="font-display-serif mb-5 text-4xl font-black tracking-tight text-white md:text-6xl">
+            Arriving at <span className={FOIL}>{station.city}?</span>
           </h2>
-          <p className="text-2xl md:text-3xl text-amber-100 font-bold mb-3">Your taxi is waiting at the station.</p>
-          <p className="text-amber-100/60 text-lg mb-10 max-w-xl mx-auto">Fixed fares from {'\u20B9'}{lowestFare}. 24/7 service. Meet at platform exit. Clean AC vehicles.</p>
-          <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <Link onClick={() => trackPhoneCall('railway_station')} href="tel:+917668570551" className="group inline-flex items-center justify-center gap-2.5 bg-white text-yellow-600 px-10 py-5 rounded-2xl font-black text-lg shadow-2xl shadow-black/20 hover:bg-violet-50 hover:scale-105 transition-all duration-300">
-              <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call: 7668570551
+          <p className="mb-3 text-xl font-bold text-amber-100 md:text-2xl">Your taxi is waiting at the station.</p>
+          <p className="mx-auto mb-10 max-w-xl text-base text-white/60 md:text-lg">Fixed fares from {'₹'}{lowestFare}. 24/7 service. Meet at platform exit. Clean AC vehicles.</p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <Link onClick={() => trackPhoneCall('railway_station')} href="tel:+917668570551" className={`${GOLD_BTN} ${CTA_SIZE}`}>
+              <Phone className="h-4 w-4" /> Call: 7668570551
             </Link>
-            <Link onClick={() => trackWhatsAppClick('railway_station')} href={`https://wa.me/917668570551?text=I need a taxi from ${station.name}`} className="inline-flex items-center justify-center gap-2.5 bg-white/10 backdrop-blur-2xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300">
-              <WhatsAppIcon className="w-5 h-5" /> WhatsApp Booking
+            <Link onClick={() => trackWhatsAppClick('railway_station')} href={`https://wa.me/917668570551?text=I need a taxi from ${station.name}`} className={`${GHOST_BTN} ${CTA_SIZE}`}>
+              <WhatsAppIcon className="h-4 w-4" /> WhatsApp Booking
             </Link>
           </div>
         </div>
       </section>
 
       {/* === BREADCRUMB === */}
-      <nav className="py-4 px-4 border-t border-white/5">
-        <div className="max-w-7xl mx-auto flex items-center gap-2 text-sm text-slate-500">
-          <Link href="/" className="hover:text-yellow-400 transition-colors">Home</Link>
-          <ChevronRight className="w-3 h-3" />
-          <Link href="/railway-station-taxi" className="hover:text-yellow-400 transition-colors">Railway Station Taxi</Link>
-          <ChevronRight className="w-3 h-3" />
-          <span className="text-slate-300 font-medium">{station.name}</span>
+      <nav className="border-t border-white/5 px-4 py-4" aria-label="Breadcrumb">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 text-sm text-slate-500">
+          <Link href="/" className="transition-colors hover:text-amber-300">Home</Link>
+          <ChevronRight className="h-3 w-3" />
+          <Link href="/railway-station-taxi" className="transition-colors hover:text-amber-300">Railway Station Taxi</Link>
+          <ChevronRight className="h-3 w-3" />
+          <span className="font-medium text-slate-300">{station.name}</span>
         </div>
       </nav>
     </article>

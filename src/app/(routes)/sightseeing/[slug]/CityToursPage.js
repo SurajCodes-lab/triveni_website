@@ -29,6 +29,7 @@ import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { CrossServiceLinks, NearbyDestinations } from '@/components/seo/RelatedContent';
 import { generateCityFAQs } from '@/lib/seo/faq-generator';
 import { getNearbyDestinations, getRelatedContent } from '@/utilis/linkingHelper';
+import CityToursTable from '@/components/seo/CityToursTable';
 
 /* Emerald lane motif — a quiet road-lane divider, this family's signature. */
 function EmeraldLane({ className = '' }) {
@@ -326,6 +327,13 @@ export default function CityToursPage({ city }) {
           />
         </div>
       </section>
+
+      {/* === TOURS COMPARISON TABLE (AEO/GEO) ================================
+           "Sightseeing tours in X" is a comparison query. A real table pairs
+           each tour name with its own duration and fare, which is precisely
+           what an assistant gets wrong when it has to read that off a grid
+           of cards. ============================================================ */}
+      <CityToursTable city={cityName} tours={tours} />
 
       {/* Social Proof Strip */}
       <SocialProofStrip theme="dark" />

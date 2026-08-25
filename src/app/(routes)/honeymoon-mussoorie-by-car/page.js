@@ -1,12 +1,13 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "honeymoon-mussoorie-by-car";
 const data = honeymoonTripData["mussoorie"];
 
 export const metadata = {
-  title: 'Mussoorie Honeymoon by Car | Romantic Road Trip Rs 9,000 | 2026',
+  title: tightenTitle('Mussoorie Honeymoon by Car | Romantic Road Trip Rs 9,000 | 2026'),
   description: 'Book Mussoorie honeymoon by car from Delhi. Sedan Rs 9,000, Innova Rs 12,000. Camel Back Road, Gun Hill, Landour cafes. Decorated car option. Call 7668570551.',
   keywords: 'mussoorie honeymoon by car, honeymoon mussoorie road trip, mussoorie couple trip, romantic trip mussoorie, honeymoon package mussoorie',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

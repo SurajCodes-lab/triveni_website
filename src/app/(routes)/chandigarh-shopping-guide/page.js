@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, ShoppingBag, ArrowRight, Tag, IndianRupee } from '@/components/ui/icons';
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Chandigarh Shopping Guide 2026 | Sector 17, Elante Mall, Phulkari',
+  title: tightenTitle('Chandigarh Shopping Guide 2026 | Sector 17, Elante Mall, Phulkari'),
   description: 'Complete Chandigarh shopping guide. Sector 17 Plaza, Sector 22 Bazaar, Elante Mall, Sector 19 Fancy Bazaar. Phulkari, Punjabi jutti, paranda. Bargaining tips.',
   keywords: 'chandigarh shopping guide, sector 17 chandigarh, elante mall, sector 22 bazaar, phulkari embroidery, punjabi jutti, what to buy in chandigarh, chandigarh markets',
   authors: [{ name: 'Triveni Cabs Editorial' }],

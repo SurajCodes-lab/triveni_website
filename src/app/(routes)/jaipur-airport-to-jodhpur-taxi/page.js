@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Jaipur Airport to Jodhpur Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Jaipur Airport to Jodhpur Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Jaipur Airport to Jodhpur taxi at ₹${ROUTE.fare}. Fixed fare, flight tracking, meet & greet. Via Ajmer. 24/7 service by Triveni Cabs.`,
   keywords: 'jaipur airport to jodhpur taxi, jaipur airport to jodhpur cab, jaipur to jodhpur airport taxi, taxi from jaipur airport to jodhpur, jodhpur airport pickup, flight tracked jodhpur taxi, fixed fare jodhpur cab, jaipur airport jodhpur transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

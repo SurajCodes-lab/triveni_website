@@ -7,7 +7,13 @@
 
 set -uo pipefail
 
-KEY="C:/Users/bolis/Desktop/triveni_website/LightsailDefaultKey-ap-south-1 (1).pem"
+# Resolve the Lightsail key relative to this script so the deploy works on any
+# machine (the key lives at the repo root, one level up from scripts/).
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+KEY="$SCRIPT_DIR/../LightsailDefaultKey-ap-south-1 (1).pem"
+if [ ! -f "$KEY" ]; then
+  echo "ERROR: SSH key not found at $KEY" >&2; exit 1
+fi
 HOST="ubuntu@13.201.84.132"
 APP_DIR="/home/ubuntu/triveni"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)

@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Jaipur Airport to Jaisalmer Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Jaipur Airport to Jaisalmer Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Jaipur Airport to Jaisalmer taxi at ₹${ROUTE.fare}. Fixed fare, flight tracking, meet & greet. Via Jodhpur. 24/7 service by Triveni Cabs.`,
   keywords: 'jaipur airport to jaisalmer taxi, jaipur airport to jaisalmer cab, jaipur to jaisalmer airport taxi, taxi from jaipur airport to jaisalmer, jaisalmer airport pickup, flight tracked jaisalmer taxi, fixed fare jaisalmer cab, jaipur airport jaisalmer transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

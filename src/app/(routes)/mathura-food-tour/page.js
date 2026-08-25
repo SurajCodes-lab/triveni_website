@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Mathura Food Tour 2026 | Peda, Rabri, Lassi & Temple Prasad Guide',
+  title: tightenTitle('Mathura Food Tour 2026 | Peda, Rabri, Lassi & Temple Prasad Guide'),
   description: 'Mathura food & culinary tour. Famous Mathura Peda, Rabri, Lassi, Kachori Sabzi, Temple Prasad. Street food itinerary, best restaurants. By Mathura locals.',
   keywords: 'mathura food tour, mathura street food, mathura peda, mathura famous food, rabri mathura, lassi mathura, vishram ghat food, mathura food guide, vrindavan food',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

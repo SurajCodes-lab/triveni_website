@@ -3,10 +3,11 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Udaipur Travel Guide 2026 | City of Lakes, Palaces & Romance',
+  title: tightenTitle('Udaipur Travel Guide 2026 | City of Lakes, Palaces & Romance'),
   description: 'Complete Udaipur travel guide 2026. City Palace, Lake Pichola, Jag Mandir, Saheliyon Ki Bari, best time to visit, food, tips. Call 7668570551.',
   keywords: 'udaipur travel guide, udaipur tourist guide, city of lakes, udaipur sightseeing, udaipur tourism, things to do in udaipur, udaipur attractions',
   authors: [{ name: 'Triveni Cabs' }],

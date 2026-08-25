@@ -1,9 +1,10 @@
 import TerminalPageClient from '@/components/airport/TerminalPageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Delhi T3 International Airport Taxi ₹550 | No Surge',
+  title: tightenTitle('Delhi T3 International Airport Taxi ₹550 | No Surge'),
   description: 'T3 international arrivals — 90 min free wait. Verified driver, nameboard. Connaught Place ₹550, Gurgaon ₹650, Agra ₹3,800. Call 7668570551.',
   alternates: { canonical: 'https://www.trivenicabs.in/airport-service/delhi/igi-terminal-3-international' },
   openGraph: {

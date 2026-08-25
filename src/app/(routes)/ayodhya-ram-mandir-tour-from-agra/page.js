@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, Calendar, Heart, Sparkles, Award, Route } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Ayodhya Ram Mandir Tour from Agra | Sedan ₹7,000 | 2-3 Day',
+  title: tightenTitle('Ayodhya Ram Mandir Tour from Agra | Sedan ₹7,000 | 2-3 Day'),
   description: 'Book Ayodhya Ram Mandir tour from Agra. 400km, 7-8 hrs drive. Sedan ₹7,000, SUV ₹10,000. Ram Mandir darshan, Hanuman Garhi, Saryu Ghat. Call 7668570551.',
   keywords: 'ayodhya ram mandir tour from agra, tour package india, sightseeing tour, triveni cabs',
   authors: [{ name: 'Triveni Cabs' }],

@@ -2,6 +2,7 @@ import { getComparisonBySlug } from '@/utilis/comparisonData';
 import ComparisonClient from '@/components/content/ComparisonClient';
 import { generateFAQSchema, generateBreadcrumbSchema, generateWebPageSchema, combineSchemas } from '@/lib/seo/schema-generators';
 import SemanticComparison from '@/components/seo/SemanticComparison';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'innova-vs-ertiga-for-outstation';
 const data = getComparisonBySlug(SLUG);
@@ -22,7 +23,7 @@ const media = {
 export const revalidate = 3600;
 
 export const metadata = {
-  title: `${data.title} | Triveni Cabs`,
+  title: tightenTitle(`${data.title}`),
   description: data.metaDescription,
   keywords: 'innova vs ertiga, innova crysta vs ertiga outstation, best car for family trip, innova or ertiga for long drive, outstation cab comparison, innova ertiga price difference',
   alternates: { canonical: `https://www.trivenicabs.in/${SLUG}` },

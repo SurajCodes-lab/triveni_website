@@ -408,7 +408,7 @@ export default function BlogPostPageClient({ post, tripCTA = null }) {
           <InlineCTA
             theme="blog"
             headline="Planning This Trip? We Drive It Daily."
-            sub="Sedan ₹11/km · SUV ₹15/km · Tempo Traveller from ₹20/km. Fixed all-inclusive fares, no advance deposit."
+            sub="Sedan ₹11/km · SUV ₹15/km · Tempo Traveller from ₹23/km. Fixed all-inclusive fares, no advance deposit."
             context={`blog_${post.slug}`}
             waMessage={`Hi Triveni Cabs, I read "${post.title}" on your blog and want to book a cab. Please share fares and availability.`}
           />
@@ -443,7 +443,7 @@ export default function BlogPostPageClient({ post, tripCTA = null }) {
                 <Bus className="h-5 w-5 text-amber-600" />
               </span>
               <p className="text-sm font-semibold text-slate-900">Tempo Traveller</p>
-              <p className="text-xs text-slate-500 mt-1">12–26 seater from ₹20/km</p>
+              <p className="text-xs text-slate-500 mt-1">12–26 seater from ₹23/km</p>
             </Link>
             <Link
               href="/pricing"

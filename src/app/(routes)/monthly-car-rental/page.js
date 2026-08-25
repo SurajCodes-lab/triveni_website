@@ -1,5 +1,6 @@
 import { getRentalBySlug } from '@/utilis/rentalPackageData';
 import RentalPackageClient from '@/components/rental/RentalPackageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const rental = getRentalBySlug('monthly-car-rental');
 
@@ -15,7 +16,7 @@ const fleetImages = [
 ];
 
 export const metadata = {
-  title: 'Monthly Car Rental with Driver | Sedan Rs 35,000/Month',
+  title: tightenTitle('Monthly Car Rental with Driver | Sedan Rs 35,000/Month'),
   description: 'Book monthly car rental with driver. Sedan Rs 35,000/month, SUV Rs 50,000, Innova Rs 60,000. 2,500 km included. Corporate, film shoots, long-term.',
   keywords: 'monthly car rental, car on monthly rent, monthly cab hire, long term car rental, corporate car rental, monthly driver hire, car lease with driver',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

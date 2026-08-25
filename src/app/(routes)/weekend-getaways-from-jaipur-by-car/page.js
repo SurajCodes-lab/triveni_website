@@ -2,13 +2,14 @@ import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
 import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema, getComparisonSchema } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'weekend-getaways-from-jaipur-by-car';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Top 20 Weekend Getaways from Jaipur by Car 2026 | Triveni Cabs',
+  title: tightenTitle('Top 20 Weekend Getaways from Jaipur by Car 2026'),
   description: 'Best weekend trips from Jaipur by car in 2026. Udaipur, Pushkar, Ranthambore, Mount Abu & more. Distance, drive time, costs. AC cab from ₹9/km. Call 7668570551.',
   keywords: 'weekend trips from jaipur by car, weekend getaways from jaipur, short trips from jaipur, road trips from jaipur, places to visit near jaipur by car',
   authors: [{ name: 'Triveni Cabs' }],

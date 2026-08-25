@@ -1,12 +1,13 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "honeymoon-shimla-manali-by-car";
 const data = honeymoonTripData["shimla-manali"];
 
 export const metadata = {
-  title: 'Shimla Manali Honeymoon by Car | Romantic Road Trip ₹14,500',
+  title: tightenTitle('Shimla Manali Honeymoon by Car | Romantic Road Trip ₹14,500'),
   description: 'Book Shimla Manali honeymoon by car from Delhi. Sedan Rs 14,500, Innova Rs 18,000. Decorated car Rs 2,000 extra. Snow, valleys, romance. Call 7668570551.',
   keywords: 'shimla manali honeymoon by car, honeymoon shimla manali road trip, shimla manali couple trip, romantic trip shimla manali, honeymoon package shimla manali by car',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

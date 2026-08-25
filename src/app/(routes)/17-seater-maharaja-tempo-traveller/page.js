@@ -1,0 +1,21 @@
+// app/(routes)/17-seater-maharaja-tempo-traveller/page.js
+// 17 Seater Maharaja Tempo Traveller — new design system.
+import VehicleSeaterClient from "@/components/tempo/VehicleSeaterClient";
+import { getVehicleSeaterData } from "@/utilis/vehicleTypeData";
+import { getRatingAndReviews } from "@/lib/seo/review-helpers";
+import {
+  buildVehicleSeaterMetadata,
+  buildVehicleSeaterJsonLd,
+} from "@/components/tempo/vehicleSeaterPageBuilder";
+
+const TYPE = "maharaja-tempo-traveller";
+const SEATS = "17";
+export const revalidate = 3600;
+export const metadata = buildVehicleSeaterMetadata(TYPE, SEATS);
+
+export default function Page() {
+  const data = getVehicleSeaterData(TYPE, SEATS);
+  const { aggregateRating, review } = getRatingAndReviews(data.slug, data.vertical);
+  const jsonLd = buildVehicleSeaterJsonLd(TYPE, SEATS, { aggregateRating, review });
+  return <VehicleSeaterClient data={data} jsonLd={jsonLd} />;
+}

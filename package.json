@@ -6,7 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seo:check": "node scripts/seo-check.mjs",
+    "verify": "npm run build && npm run seo:check",
+    "lh:home": "lighthouse https://www.trivenicabs.in --only-categories=performance,seo --budget-path=./lighthouse-budget.json --output=html --output=json --output-path=./reports/home --quiet --chrome-flags=\"--headless=new --no-sandbox --disable-gpu\"",
+    "lh:city": "lighthouse https://www.trivenicabs.in/delhi --only-categories=performance,seo --budget-path=./lighthouse-budget.json --output=html --output=json --output-path=./reports/city --quiet --chrome-flags=\"--headless=new --no-sandbox --disable-gpu\"",
+    "lh:vehicle": "lighthouse https://www.trivenicabs.in/12-seater-tempo-traveller --only-categories=performance,seo --budget-path=./lighthouse-budget.json --output=html --output=json --output-path=./reports/vehicle --quiet --chrome-flags=\"--headless=new --no-sandbox --disable-gpu\"",
+    "lh:local": "lighthouse http://localhost:3000 --only-categories=performance,seo --budget-path=./lighthouse-budget.json --output=html --output=json --output-path=./reports/local-home --quiet --chrome-flags=\"--headless=new --no-sandbox --disable-gpu\"",
+    "lh:all": "npm run lh:home && npm run lh:city && npm run lh:vehicle"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -17,13 +24,15 @@
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "react-intersection-observer": "^10.0.0",
-    "react-type-animation": "^3.2.0"
+    "react-type-animation": "^3.2.0",
+    "web-vitals": "^6.1.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.3.6",
+    "lighthouse": "^13.4.1",
     "tailwindcss": "^3.4.15"
   }
 }

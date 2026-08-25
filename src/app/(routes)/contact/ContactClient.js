@@ -106,7 +106,7 @@ const FLEET = [
     name: "Tempo Traveller",
     models: "12 to 26 seater",
     seats: "up to 26 passengers",
-    rate: "from Rs 20/km",
+    rate: "from Rs 23/km",
     img: "/images/tempo/12_seater.jpg",
     icon: Users,
   },

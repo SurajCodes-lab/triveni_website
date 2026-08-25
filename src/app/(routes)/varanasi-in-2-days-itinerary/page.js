@@ -1,6 +1,7 @@
 import { getItinerary, getRelatedItineraries } from '@/utilis/cityItineraryData';
 import CityItineraryClient from '@/components/itinerary/CityItineraryClient';
 import { notFound } from 'next/navigation';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = getItinerary('varanasi-in-2-days-itinerary');
 
@@ -9,7 +10,7 @@ if (!data) notFound();
 export const revalidate = 3600;
 
 export const metadata = {
-  title: data.metaTitle,
+  title: tightenTitle(data.metaTitle),
   description: data.metaDescription,
   keywords: data.metaKeywords,
   authors: [{ name: 'Triveni Cabs' }],

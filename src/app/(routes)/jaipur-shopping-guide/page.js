@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jaipur Shopping Guide 2026 | Jewelry, Block Print & Handicrafts',
+  title: tightenTitle('Jaipur Shopping Guide 2026 | Jewelry, Block Print & Handicrafts'),
   description: 'Jaipur shopping guide. Kundan jewelry, block print, Blue Pottery, Bandhani textiles, gemstones. Johari Bazaar, Bapu Bazaar, Tripolia Bazaar. Prices & tips.',
   keywords: 'jaipur shopping guide, shopping in jaipur, johari bazaar jaipur, jaipur jewelry market, jaipur block print, blue pottery jaipur, bandhani jaipur, jaipur handicrafts',
   authors: [{ name: 'Triveni Cabs' }],

@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Calendar, Route, Coffee } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Agra Day Trip from Delhi | Complete Guide & Cost ₹4,500',
+  title: tightenTitle('Agra Day Trip from Delhi | Complete Guide & Cost ₹4,500'),
   description: 'Complete Agra day trip guide from Delhi. Budget breakdown: cab ₹4,500 + entries ₹200 + food ₹500. 3 itinerary options. Money-saving tips. Call 7668570551.',
   keywords: 'agra day trip from delhi, agra one day trip cost, delhi to agra day trip budget, agra trip cost from delhi, one day agra tour cost',
   authors: [{ name: 'Triveni Cabs' }],

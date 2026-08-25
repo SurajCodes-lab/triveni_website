@@ -4,7 +4,7 @@ import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import CityTaxiFareClient from '@/components/taxi-fare/CityTaxiFareClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
     return { title: 'Taxi Fare Not Found' };
   }
 
-  const title = `Taxi Fare in ${cityData.city} | ₹${cityData.baseFare.sedan}/km | Fare Calculator 2026`;
+  const title = tightenTitle(`Taxi Fare in ${cityData.city} | ₹${cityData.baseFare.sedan}/km | Fare Calculator 2026`);
   const description = `${cityData.city} taxi fare starts at ₹${cityData.baseFare.sedan}/km for Sedan, ₹${cityData.baseFare.suv}/km for SUV. Compare with Ola/Uber — save ${cityData.comparisonWithOla.savings}. No surge pricing. Popular route fares, surcharges & fare calculator. Call 7668570551.`;
   const ogTitle = `${cityData.city} Taxi Fare Guide 2026 — ₹${cityData.baseFare.sedan}/km Sedan | Save ${cityData.comparisonWithOla.savings} vs Ola/Uber | Triveni Cabs`;
 

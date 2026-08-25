@@ -17,6 +17,7 @@ import { getArticleSchema, getSpeakableSchema, getTodayDate, getCityPlaceSchema 
 import AEOHead from '@/components/seo/AEOHead';
 // Server-only: pulls in the large blog dataset, never import from a client component.
 import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 // Keep only the numeric part of a distance / duration so a long-form value
 // cannot eat the whole snippet.
@@ -77,7 +78,7 @@ export async function generateMetadata({ params }) {
   // Add null check
   if (!route) {
     return {
-      title: 'Bus Routes Service | Premium Group Travel',
+      title: tightenTitle('Bus Routes Service | Premium Group Travel'),
       description: 'Book premium buses for comfortable group travel across India.'
     };
   }

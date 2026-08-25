@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
 import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "10-day-north-india-road-trip";
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '10 Day North India Road Trip 2026 | Delhi to Jaisalmer Circuit',
+  title: tightenTitle('10 Day North India Road Trip 2026 | Delhi to Jaisalmer Circuit'),
   description: '10-day Delhi → Agra → Jaipur → Udaipur → Jodhpur → Jaisalmer road trip. Day-wise plan, costs from ₹55K. Call 7668570551.',
   keywords: 'north india road trip 10 day itinerary, 10 day north india trip, delhi to jaisalmer road trip, rajasthan road trip plan, north india by car',
   authors: [{ name: 'Triveni Cabs' }],

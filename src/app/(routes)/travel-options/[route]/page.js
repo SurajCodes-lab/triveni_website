@@ -3,7 +3,7 @@ import { getTravelOptionsRoute, getAllTravelOptionsSlugs, getRelatedTravelRoutes
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import TravelOptionsClient from '@/components/travel-options/TravelOptionsClient';
 import AEOHead from '@/components/seo/AEOHead';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
   }
 
   const carMode = route.modes.find(m => m.mode === 'Car');
-  const title = `${route.origin} to ${route.destination}: Car vs Train vs Bus vs Flight | Cab ${carMode?.cost || ''} — 4.9★`;
+  const title = tightenTitle(`${route.origin} to ${route.destination}: Car vs Train vs Bus vs Flight | Cab ${carMode?.cost || ''} — 4.9★`);
   const description = `Compare travel options from ${route.origin} to ${route.destination}. Car (${carMode?.duration}), Train, Bus, Flight — cost, time, comfort compared. Book cab from ${carMode?.cost}. Call 7668570551.`;
   const ogTitle = `${route.origin} to ${route.destination} — Best Way to Travel | Car vs Train vs Bus | Triveni Cabs`;
 

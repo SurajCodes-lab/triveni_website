@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Lucknow Shopping Guide 2026 | Chikankari, Zardozi & Ittar',
+  title: tightenTitle('Lucknow Shopping Guide 2026 | Chikankari, Zardozi & Ittar'),
   description: 'Lucknow shopping guide. Chikankari embroidery, Zardozi, Ittar perfumes, Nawabi jewelry, Lucknowi kurtas. Aminabad, Hazratganj, Chowk. Prices & tips.',
   keywords: 'lucknow shopping guide, shopping in lucknow, chikankari lucknow, aminabad market, hazratganj shopping, lucknow ittar, zardozi lucknow, lucknowi kurta',
   authors: [{ name: 'Triveni Cabs' }],

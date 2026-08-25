@@ -1,11 +1,12 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('kashmir-in-september');
 
 export const metadata = {
-  title: 'Kashmir in September 2026 | Post-Monsoon Trip from Delhi',
+  title: tightenTitle('Kashmir in September 2026 | Post-Monsoon Trip from Delhi'),
   description: 'Kashmir in September 2026 — clear post-monsoon skies, 20-27°C, shoulder rates. Srinagar, Gulmarg, Pahalgam, Sonamarg. From ₹19,800. Call 7668570551.',
   keywords: 'kashmir in september, kashmir september weather, srinagar in september, kashmir trip september 2026, delhi to kashmir cab, gulmarg pahalgam september, kashmir post monsoon',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

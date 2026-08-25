@@ -1,6 +1,7 @@
 import CompetitorCompareClient from '@/components/competitor/CompetitorCompareClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getComparisonSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -9,7 +10,7 @@ const pageTitle = 'Triveni Cabs vs Savaari: Honest Comparison 2026 | Who Wins? â
 const pageDesc = 'Triveni Cabs vs Savaari comparison 2026. Compare outstation pricing, fleet quality, driver verification, customer support. Transparent billing, 24/7 support. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs vs savaari', 'savaari alternative', 'better than savaari cabs', 'savaari vs triveni pricing', 'savaari cab comparison', 'outstation cab comparison india', 'savaari competitor', 'best outstation cab service', 'savaari review alternative', 'reliable outstation cab india'],
   authors: [{ name: 'Triveni Cabs' }],

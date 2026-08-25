@@ -147,6 +147,52 @@ export const SERVICE_AREAS = [
   'Panipat', 'Kurukshetra', 'Karnal', 'Rohtak', 'Hisar'
 ];
 
+/**
+ * City geo-coordinates + ISO 3166-2 region codes for local-SEO geo meta
+ * (geo.region / geo.placename / geo.position / ICBM) and LocalBusiness geo.
+ *
+ * Single source of truth — consumed by metadata-factory (geo meta) and by
+ * the city page (LocalBusiness GeoCoordinates). Adding a city here automatically
+ * gives it accurate geo meta tags + schema coordinates across every template
+ * that resolves a city name through this map.
+ *
+ * region: ISO 3166-2 subdivision code (e.g. 'IN-UP' = Uttar Pradesh).
+ * Only emitted when present; cities without a known region still get
+ * placename + coordinates.
+ */
+export const CITY_GEO_COORDS = {
+  'Delhi':       { lat: 28.6139, lng: 77.2090, region: 'IN-DL' },
+  'Jaipur':      { lat: 26.9124, lng: 75.7873, region: 'IN-RJ' },
+  'Agra':        { lat: 27.1767, lng: 78.0081, region: 'IN-UP' },
+  'Chandigarh':  { lat: 30.7333, lng: 76.7794, region: 'IN-CH' },
+  'Shimla':      { lat: 31.1048, lng: 77.1734, region: 'IN-HP' },
+  'Manali':      { lat: 32.2396, lng: 77.1887, region: 'IN-HP' },
+  'Amritsar':    { lat: 31.6340, lng: 74.8723, region: 'IN-PB' },
+  'Haridwar':    { lat: 29.9457, lng: 78.1642, region: 'IN-UT' },
+  'Rishikesh':   { lat: 30.0869, lng: 78.2676, region: 'IN-UT' },
+  'Dehradun':    { lat: 30.3165, lng: 78.0322, region: 'IN-UT' },
+  'Udaipur':     { lat: 24.5854, lng: 73.7125, region: 'IN-RJ' },
+  'Jodhpur':     { lat: 26.2389, lng: 73.0243, region: 'IN-RJ' },
+  'Varanasi':    { lat: 25.3176, lng: 82.9739, region: 'IN-UP' },
+  'Lucknow':     { lat: 26.8467, lng: 80.9462, region: 'IN-UP' },
+  'Ayodhya':     { lat: 26.7922, lng: 82.1998, region: 'IN-UP' },
+  'Ahmedabad':   { lat: 23.0225, lng: 72.5714, region: 'IN-GJ' },
+  'Mathura':     { lat: 27.4924, lng: 77.6737, region: 'IN-UP' },
+  'Nainital':    { lat: 29.3803, lng: 79.4636, region: 'IN-UT' },
+  'Mussoorie':   { lat: 30.4598, lng: 78.0644, region: 'IN-UT' },
+  'Jim Corbett': { lat: 29.5300, lng: 78.7747, region: 'IN-UT' },
+  'Pushkar':     { lat: 26.4899, lng: 74.5511, region: 'IN-RJ' },
+  'Ajmer':       { lat: 26.4499, lng: 74.6399, region: 'IN-RJ' },
+  'Mount Abu':   { lat: 24.5926, lng: 72.7156, region: 'IN-RJ' },
+  'Bikaner':     { lat: 28.0229, lng: 73.3119, region: 'IN-RJ' },
+  'Jaisalmer':   { lat: 26.9157, lng: 70.9083, region: 'IN-RJ' },
+  'Ranthambore': { lat: 26.0173, lng: 76.5026, region: 'IN-RJ' },
+  'Dharamshala': { lat: 32.2190, lng: 76.3234, region: 'IN-HP' },
+  'Noida':       { lat: 28.5355, lng: 77.3910, region: 'IN-UP' },
+  'Gurgaon':     { lat: 28.4595, lng: 77.0266, region: 'IN-HR' },
+  'Ghaziabad':   { lat: 28.6692, lng: 77.4538, region: 'IN-UP' },
+};
+
 // Available vehicle types
 export const VEHICLE_TYPES = [
   { type: 'Sedan', seats: 4, examples: 'Dzire, Etios, Honda City' },

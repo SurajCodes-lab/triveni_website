@@ -1,5 +1,6 @@
 import { placesToVisitPages } from '@/utilis/placesToVisitData';
 import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = placesToVisitPages.haridwar;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
@@ -7,7 +8,7 @@ const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, sl
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '15+ Places to Visit Near Haridwar by Car | Spiritual & Adventure',
+  title: tightenTitle('15+ Places to Visit Near Haridwar by Car | Spiritual & Adventure'),
   description: `Best places to visit near Haridwar by car. Rishikesh (20 km), Mussoorie (80 km), Jim Corbett (130 km), Kedarnath (245 km) & more. Sedan ₹11/km. Call 7668570551.`,
   keywords: 'places to visit near haridwar, places near haridwar, day trips from haridwar, weekend getaways from haridwar, haridwar nearby places, char dham from haridwar, places around haridwar, tourist places near haridwar',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

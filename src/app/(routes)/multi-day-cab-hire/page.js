@@ -1,5 +1,6 @@
 import { getRentalBySlug } from '@/utilis/rentalPackageData';
 import RentalPackageClient from '@/components/rental/RentalPackageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const rental = getRentalBySlug('multi-day-cab-hire');
 
@@ -15,7 +16,7 @@ const fleetImages = [
 ];
 
 export const metadata = {
-  title: 'Multi-Day Cab Hire | 2-7 Day Packages | Rs 2,750/Day',
+  title: tightenTitle('Multi-Day Cab Hire | 2-7 Day Packages | Rs 2,750/Day'),
   description: 'Book multi-day cab hire for 2-7 days. Sedan from Rs 2,750/day, 250 km/day included. Golden Triangle, Rajasthan, Char Dham packages. Call 7668570551.',
   keywords: 'multi day cab hire, outstation cab for days, multi day taxi, cab for multiple days, road trip cab, golden triangle cab, rajasthan cab hire, multi day car rental',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

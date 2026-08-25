@@ -2,13 +2,14 @@ import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Heart } from '@/components/ui/icons';
 import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
 import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema, getComparisonSchema } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'weekend-getaways-from-delhi-by-car';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Top 20 Weekend Getaways from Delhi by Car 2026 | Triveni Cabs',
+  title: tightenTitle('Top 20 Weekend Getaways from Delhi by Car 2026'),
   description: 'Best weekend trips from Delhi by car in 2026. Distance, drive time, costs & itineraries for Agra, Jaipur, Rishikesh, Mussoorie & 16 more.',
   keywords: 'weekend trips from delhi by car 2026, weekend getaways from delhi, short trips from delhi, road trips from delhi, weekend destinations near delhi, places to visit near delhi by car',
   authors: [{ name: 'Triveni Cabs' }],

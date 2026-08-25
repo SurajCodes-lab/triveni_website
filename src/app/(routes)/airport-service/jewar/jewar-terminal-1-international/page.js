@@ -1,9 +1,10 @@
 import TerminalPageClient from '@/components/airport/TerminalPageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Jewar Airport T1 Taxi | Noida International Airport Cab',
+  title: tightenTitle('Jewar Airport T1 Taxi | Noida International Airport Cab'),
   description: 'Noida International Airport (Jewar) T1 taxi — domestic & international flights. Cabs to Noida, Delhi, Agra from ₹11/km. Call 7668570551.',
   alternates: { canonical: 'https://www.trivenicabs.in/airport-service/jewar/jewar-terminal-1-international' },
   openGraph: {

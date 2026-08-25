@@ -2,12 +2,13 @@ import { friendsTripData } from '@/utilis/friendsTripData';
 import FriendsTripClient from '@/components/audience/FriendsTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "friends-trip-rishikesh";
 const data = friendsTripData["rishikesh"];
 
 export const metadata = {
-  title: 'Friends Trip Rishikesh by Tempo Traveller | ₹920/Person',
+  title: tightenTitle('Friends Trip Rishikesh by Tempo Traveller | ₹920/Person'),
   description: 'Book Tempo Traveller for friends trip to Rishikesh from Delhi. Rs 920/person. Rafting, bungee, camping, bonfire. 12-17 seater AC. Call 7668570551.',
   keywords: 'friends trip rishikesh, rishikesh group trip, rishikesh tempo traveller, delhi to rishikesh friends, rishikesh rafting group, friends trip package rishikesh',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

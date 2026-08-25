@@ -1,12 +1,13 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "honeymoon-nainital-by-car";
 const data = honeymoonTripData["nainital"];
 
 export const metadata = {
-  title: 'Nainital Honeymoon by Car | Lakeside Romance Rs 10,000 | 2026',
+  title: tightenTitle('Nainital Honeymoon by Car | Lakeside Romance Rs 10,000 | 2026'),
   description: 'Book Nainital honeymoon by car from Delhi. Sedan Rs 10,000, Innova Rs 13,000. Naini Lake boating, Snow View, Sattal. Decorated car option. Call 7668570551.',
   keywords: 'nainital honeymoon by car, honeymoon nainital road trip, nainital couple trip, romantic trip nainital, honeymoon package nainital',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

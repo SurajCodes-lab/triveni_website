@@ -13,7 +13,7 @@ function createCity({ slug, city, tagline, serviceOverrides, fleetOverrides, pop
     { type: 'Sedan', model: 'Swift Dzire / Etios', perKm: 11, seats: 4, img: '/images/car/swift_dzire.jpg' },
     { type: 'SUV', model: 'Innova Crysta / Ertiga', perKm: 14, seats: 6, img: '/images/car/innova_crysta.jpg' },
     { type: 'Luxury', model: 'BMW / Mercedes', perKm: 35, seats: 4, img: '/images/wedding/luxury_car.jpg' },
-    { type: 'Tempo Traveller', model: 'Force Traveller 12-Seater', perKm: 20, seats: 12, img: '/images/tempo/12_seater.jpg' },
+    { type: 'Tempo Traveller', model: 'Force Traveller 12-Seater', perKm: 23, seats: 12, img: '/images/tempo/12_seater.jpg' },
   ];
 
   const services = serviceOverrides || defaultServices;

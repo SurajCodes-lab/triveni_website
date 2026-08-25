@@ -58,15 +58,17 @@ export default function PrivacyClient() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
-      <section className="bg-gradient-to-b from-gray-900 to-gray-800 py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="relative bg-slate-950 py-16 overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400" />
+        <div className="absolute -top-16 right-[15%] w-64 h-64 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Privacy Policy
+            <h1 className="font-display-serif text-3xl md:text-4xl font-bold text-white mb-4">
+              Privacy <span className="text-gold-foil">Policy</span>
             </h1>
 
             <p className="text-gray-400 text-sm">

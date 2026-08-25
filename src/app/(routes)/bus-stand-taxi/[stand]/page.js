@@ -6,7 +6,7 @@ import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getCityPlaceSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import AEOHead from '@/components/seo/AEOHead';
-
+import { tightenTitle, tightenDescription, DESC_BUDGET } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -25,8 +25,10 @@ export async function generateMetadata({ params }) {
   }, Infinity);
   const fareDisplay = lowestFare < Infinity ? `\u20B9${lowestFare}` : 'Lowest Fare';
   const topDest = stand.destinations.slice(0, 3).map(d => d.name).join(', ');
-  const title = `${stand.name} Taxi from ${fareDisplay} | Fixed Fare | 24/7`;
-  const description = `Taxi from ${stand.name}, ${stand.city} starting ${fareDisplay}. AC sedan/SUV to ${topDest} & more. Fixed fares, no surge, meet at bus stand exit. Call 7668570551.`;
+  const title = tightenTitle(`${stand.name} Taxi from ${fareDisplay} | Fixed Fare | 24/7`);
+  const standTail = `Fixed fares, no surge, meet at the bus stand exit. Call 7668570551.`;
+  const standHead = `Taxi from ${stand.name}, ${stand.city} starting ${fareDisplay}. AC sedan/SUV to ${topDest} & more.`;
+  const description = `${tightenDescription(standHead, DESC_BUDGET - standTail.length - 1)} ${standTail}`;
 
   return {
     title,

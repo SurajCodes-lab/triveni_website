@@ -8,6 +8,7 @@ import {
   getSpeakableSchema, getArticleSchema, getHowToSchema,
   getComparisonSchema, getCityPlaceSchema,
 } from '@/lib/seo/speakable-helpers';
+import { buildTravelByCarMeta } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -27,12 +28,17 @@ export async function generateMetadata({ params }) {
 
   const originLower = route.origin.toLowerCase();
   const destLower = route.destination.toLowerCase();
-  const title = `${route.origin} to ${route.destination} by Car | Road Trip Guide 2026 — Triveni Cabs`;
-  const description = `${route.origin} to ${route.destination} by car: ${route.totalDistance} km, ${route.drivingTime} drive. Complete road map, driving tips, fuel stops, seasonal warnings, and cab fares from ${route.cabFares.sedan}. Book AC cab — Call 7668570551.`;
+  // Week 43 — answer-box defence: lead with the end-to-end cost of the drive
+  // (toll + fuel), which no SERP feature supplies. See src/lib/seo/serp-ctr.js.
+  const { title, description } = buildTravelByCarMeta(route, slug);
   const ogTitle = `${route.origin} to ${route.destination} Road Trip Guide — ${route.totalDistance} km Drive | Cab from ${route.cabFares.sedan} | Triveni Cabs`;
 
   return {
-    title,
+    // Title carries no brand suffix of its own: the root layout appends
+    // '%s | Triveni Cabs'. serp-ctr budgets the content half at 45 chars
+    // (TITLE_BUDGET) so the rendered title lands inside Google's ~60-char
+    // truncation instead of being cut mid-phrase.
+    title: title,
     description,
     keywords: [
       `${originLower} to ${destLower} by car`,

@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Varanasi Shopping Guide 2026 | Banarasi Silk, Brassware & Crafts',
+  title: tightenTitle('Varanasi Shopping Guide 2026 | Banarasi Silk, Brassware & Crafts'),
   description: 'Varanasi shopping guide. Banarasi silk sarees, brassware, wooden toys, Rudraksha beads, gulabi minakari. Vishwanath Gali, Thatheri Bazaar, Chowk.',
   keywords: 'varanasi shopping guide, shopping in varanasi, banarasi silk saree, varanasi brassware, thatheri bazaar, vishwanath gali shopping, rudraksha beads varanasi',
   authors: [{ name: 'Triveni Cabs' }],

@@ -140,7 +140,6 @@ const Header = () => {
                   width={80}
                   height={80}
                   quality={100}
-                  priority
                   placeholder="blur"
                   blurDataURL={blurDataURL}
                   className="h-20 w-auto max-w-none hover:opacity-90 transition-opacity"
@@ -205,6 +204,19 @@ const Header = () => {
                     { href: '/bus-routes', label: 'Bus Routes' },
                     { href: '/corporate-transportation-service', label: 'Corporate Transport' },
                     { href: '/event-transportation-service', label: 'Event Transport' },
+                  ],
+                },
+                {
+                  // Seasonal (Aug–Sep 2026) — gives the in-window money pages
+                  // header-nav equity (previously footer-only).
+                  label: 'Yatra & Season',
+                  items: [
+                    { href: '/chardham-yatra-september-2026', label: 'Char Dham — Sep 2026' },
+                    { href: '/kedarnath-september-trip', label: 'Kedarnath in September' },
+                    { href: '/janmashtami-mathura-vrindavan-cab', label: 'Janmashtami Mathura' },
+                    { href: '/leh-ladakh-august-september-trip', label: 'Leh–Ladakh Aug/Sep' },
+                    { href: '/september-long-weekend-trips-2026', label: 'Sep Long Weekends' },
+                    { href: '/pilgrimage-cabs', label: 'All Pilgrimage Cabs' },
                   ],
                 },
               ].map((group) => (
@@ -324,6 +336,11 @@ const Header = () => {
                 { href: '/airport-service', label: 'Airport Transfer' },
                 { href: '/sightseeing', label: 'Sightseeing Tours' },
                 { href: '/chardham-yatra', label: 'Chardham Yatra' },
+                { href: '/chardham-yatra-september-2026', label: 'Char Dham — Sep 2026' },
+                { href: '/kedarnath-september-trip', label: 'Kedarnath in September' },
+                { href: '/leh-ladakh-august-september-trip', label: 'Leh–Ladakh Aug/Sep' },
+                { href: '/september-long-weekend-trips-2026', label: 'Sep Long Weekends' },
+                { href: '/pilgrimage-cabs', label: 'Pilgrimage Cabs' },
                 { href: '/wedding', label: 'Wedding Cars' },
                 { href: '/tempo-traveller', label: 'Tempo Traveller' },
                 { href: '/bus-routes', label: 'Bus Routes' },

@@ -7,6 +7,7 @@ import {
   getComparisonSchema,
   getTodayDate,
 } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -94,7 +95,7 @@ export const TOUR_GUIDE_FAQS = [
 ];
 
 export const metadata = {
-  title: 'Tour Guide India 2026 | Licensed Guides ₹1,200/Day',
+  title: tightenTitle('Tour Guide India 2026 | Licensed Guides ₹1,200/Day'),
   description: 'Hire certified tour guides in Delhi, Agra, Jaipur & 14+ cities. Multi-language (EN/FR/ES/DE). Ministry licensed. ₹1,200-3,000/day. 100+ guides.',
   keywords: [
     // Primary Keywords - High Volume

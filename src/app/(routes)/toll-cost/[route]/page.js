@@ -9,7 +9,7 @@ import {
   getSpeakableSchema, getArticleSchema, getHowToSchema,
   getComparisonSchema, getCityPlaceSchema, getTodayDate,
 } from '@/lib/seo/speakable-helpers';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
 
   const o = route.origin.toLowerCase();
   const d = route.destination.toLowerCase();
-  const title = `${route.origin} to ${route.destination} Toll Cost ₹${route.totalTollCost.car} | Toll Plaza List 2026`;
+  const title = tightenTitle(`${route.origin} to ${route.destination} Toll Cost ₹${route.totalTollCost.car} | Toll Plaza List 2026`);
   const description = `${route.origin} to ${route.destination} toll cost is ₹${route.totalTollCost.car} for car & ₹${route.totalTollCost.suv} for SUV. ${route.tollPlazas.length} toll plaza(s) on ${route.totalDistance} km route. FASTag info, plaza-wise rates, cab fare ₹${route.cabFare.toLocaleString('en-IN')}. Call 7668570551.`;
   const ogTitle = `${route.origin} to ${route.destination} Toll Cost ₹${route.totalTollCost.car} — ${route.tollPlazas.length} Toll Plazas | Book Cab from ₹${route.cabFare.toLocaleString('en-IN')} | Triveni Cabs`;
 

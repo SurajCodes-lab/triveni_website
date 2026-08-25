@@ -23,11 +23,11 @@ const PHONE = '+917668570551';
 const wa = (text) => `https://wa.me/917668570551?text=${encodeURIComponent(text)}`;
 const routeSlug = (a, b) => `/${a.toLowerCase().replace(/\s+/g, '-')}-to-${b.toLowerCase().replace(/\s+/g, '-')}`;
 
-// Canonical airport fleet-card rates: Sedan ₹11/km · SUV ₹15/km · Tempo ₹20/km.
+// Canonical airport fleet-card rates: Sedan ₹11/km · SUV ₹15/km · Tempo ₹23/km.
 const FLEET = [
   { name: 'Sedan', cars: 'Dzire · Etios', seats: '1–4', bags: '2–3', rate: '₹11/km', tag: null, img: '/images/car/swift_dzire.jpg' },
   { name: 'SUV', cars: 'Innova · Ertiga', seats: '1–6', bags: '4', rate: '₹15/km', tag: 'Most Booked', img: '/images/car/innova_crysta.jpg' },
-  { name: 'Tempo', cars: '12–16 Seater', seats: '7–16', bags: '12+', rate: '₹20/km', tag: null, img: '/images/tempo/16_seater.jpg' },
+  { name: 'Tempo', cars: '12–16 Seater', seats: '7–16', bags: '12+', rate: '₹23/km', tag: null, img: '/images/tempo/16_seater.jpg' },
 ];
 
 const INCLUDES = [

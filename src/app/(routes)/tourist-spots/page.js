@@ -4,11 +4,12 @@ import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import { MapPin, ChevronRight, Phone, Shield, Clock, Users, Star, Car, Compass, Camera, Heart, Landmark } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Tourist Spots India 2026 | Forts, Palaces, Lakes & Heritage',
+  title: tightenTitle('Tourist Spots India 2026 | Forts, Palaces, Lakes & Heritage'),
   description: 'Explore top tourist spots across Jaipur, Udaipur, Jodhpur. Amber Fort, Hawa Mahal, Lake Pichola, Mehrangarh Fort & more. Cab from Rs 11/km. Call 7668570551.',
   keywords: 'tourist spots india, jaipur tourist places, udaipur tourist spots, jodhpur sightseeing, rajasthan tourism, famous places india, heritage sites india, forts palaces india',
   authors: [{ name: 'Triveni Cabs' }],
@@ -160,7 +161,7 @@ export default function TouristSpotsPage() {
   const vehicleOptions = [
     { name: "Sedan", price: "Rs 11/km", capacity: "4 Passengers", features: ["AC", "Music System", "GPS Tracked"], link: "/vehicles/sedan", gradient: "from-amber-500 to-yellow-500" },
     { name: "SUV / Innova", price: "Rs 15/km", capacity: "6-7 Passengers", features: ["Full AC", "Spacious", "Push-back Seats"], link: "/vehicles/suv", gradient: "from-emerald-500 to-teal-500" },
-    { name: "Tempo Traveller", price: "Rs 24/km", capacity: "12-17 Passengers", features: ["AC", "Push-back Seats", "Music System"], link: "/vehicles/tempo-traveller", gradient: "from-blue-500 to-indigo-500" },
+    { name: "Tempo Traveller", price: "Rs 25/km", capacity: "12-17 Passengers", features: ["AC", "Push-back Seats", "Music System"], link: "/vehicles/tempo-traveller", gradient: "from-blue-500 to-indigo-500" },
   ];
 
   return (

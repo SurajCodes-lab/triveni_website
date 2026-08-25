@@ -2905,7 +2905,7 @@ export const travelBlogPosts = [
       text: "Book Tempo Traveller",
       url: "/tempo-traveller",
       description: "Comfortable 12-26 seater tempo travellers for your group trip",
-      price: "Starting from ₹20/km"
+      price: "Starting from ₹23/km"
     },
 
     content: `

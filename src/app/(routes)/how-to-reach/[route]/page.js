@@ -4,7 +4,7 @@ import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import HowToReachClient from '@/components/how-to-reach/HowToReachClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
   }
 
   const cabMode = route.travelModes.find(m => m.mode === 'By Car/Cab');
-  const title = `How to Reach ${route.destination} from ${route.origin} | 4 Ways Compared \u2014 Triveni Cabs`;
+  const title = tightenTitle(`How to Reach ${route.destination} from ${route.origin} | 4 Ways Compared`);
   const description = `Compare 4 ways to reach ${route.destination} from ${route.origin}: Car/Cab (${cabMode?.duration || ''}), Bus, Train, Flight. Best route, cost, duration & tips. Book cab from ${cabMode?.costRange || ''}. Call 7668570551.`;
 
   return {

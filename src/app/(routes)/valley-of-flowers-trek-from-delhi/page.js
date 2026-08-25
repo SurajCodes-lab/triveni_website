@@ -1,11 +1,12 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('valley-of-flowers-trek-from-delhi');
 
 export const metadata = {
-  title: 'Valley of Flowers Trek from Delhi 2026 | Cab to Govindghat',
+  title: tightenTitle('Valley of Flowers Trek from Delhi 2026 | Cab to Govindghat'),
   description: 'Delhi to Govindghat cab for the Valley of Flowers trek 2026. 500 km, sedan from ₹11,000, Innova ₹18,000. Bloom mid-Jul to mid-Sep. Call 7668570551.',
   keywords: 'valley of flowers trek from delhi, delhi to valley of flowers, valley of flowers cab, govindghat taxi from delhi, valley of flowers 2026, delhi to govindghat cab, hemkund sahib cab',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

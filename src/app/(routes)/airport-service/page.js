@@ -2,11 +2,12 @@ import { Metadata } from "next";
 import AirportServiceClient from "@/components/airport/AirportServiceClient";
 import AEOHead from '@/components/seo/AEOHead';
 import { getAllAirportPlaces } from '@/utilis/airportOutstationData';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Airport Taxi 2026 | Delhi IGI ₹1,500 | Flight Tracking',
+  title: tightenTitle('Airport Taxi 2026 | Delhi IGI ₹1,500 | Flight Tracking'),
   description: 'Airport taxi — Delhi IGI ₹1,500, Jaipur ₹1,200, Chandigarh ₹1,000. Flight tracking, meet & greet, 24/7. Call 7668570551.',
   keywords: "airport taxi service, airport cab booking, flight tracking taxi, meet and greet airport, fixed fare airport cab, 24x7 airport transfer, Delhi IGI airport taxi, Jaipur airport cab, Chandigarh airport transfer, late night airport pickup, no surge airport taxi, Triveni Cabs",
   alternates: {
@@ -229,7 +230,7 @@ export default function AirportServicePage() {
     },
     {
       question: "What vehicles are available for airport transfer?",
-      answer: "We offer Sedan (Swift Dzire, Etios) from ₹11/km, SUV (Innova, Ertiga) from ₹15/km, and Tempo Traveller (12-26 seater) from ₹20/km for group airport transfers."
+      answer: "We offer Sedan (Swift Dzire, Etios) from ₹11/km, SUV (Innova, Ertiga) from ₹15/km, and Tempo Traveller (12-26 seater) from ₹23/km for group airport transfers."
     },
     {
       question: "How much in advance should I book airport taxi?",

@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Private Taj Mahal Tour from Delhi 2026 | Skip-the-Line Tips',
+  title: tightenTitle('Private Taj Mahal Tour from Delhi 2026 | Skip-the-Line Tips'),
   description: 'Private Taj Mahal tour from Delhi for tourists. Sunrise visit, skip-the-line tips, photography guide. AC car with English-speaking driver from $40.',
   keywords: 'private taj mahal tour from delhi for tourists, taj mahal day tour from delhi, taj mahal private driver, taj mahal sunrise tour, taj mahal guide for foreigners',
   authors: [{ name: 'Triveni Cabs' }],

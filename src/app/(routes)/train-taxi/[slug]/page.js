@@ -3,7 +3,7 @@ import { getTrainTaxiRoute, getAllTrainTaxiSlugs, getRelatedTrainTaxi } from '@/
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import TrainTaxiClient from '@/components/train-taxi/TrainTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
   }
 
   const cheapest = Math.min(...route.taxiPackages.map(p => p.sedan));
-  const title = `${route.train.name} + ${route.city} Taxi: Station Pickup ₹${cheapest} | Train+Cab Combo — 4.9★`;
+  const title = tightenTitle(`${route.train.name} + ${route.city} Taxi: Station Pickup ₹${cheapest} | Train+Cab Combo — 4.9★`);
   const description = `${route.train.name} (${route.train.number}) to ${route.city} + pre-booked taxi from ₹${cheapest}. ${route.train.duration} train + station pickup. Total: ${route.totalTripCost}. Call 7668570551.`;
   const ogTitle = `${route.train.name} + ${route.city} Taxi Combo — Station Pickup from ₹${cheapest} | Triveni Cabs`;
 

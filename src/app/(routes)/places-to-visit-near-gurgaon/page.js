@@ -1,5 +1,6 @@
 import { placesToVisitPages } from '@/utilis/placesToVisitData';
 import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const data = placesToVisitPages.gurgaon;
 const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
@@ -7,7 +8,7 @@ const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, sl
 export const revalidate = 3600;
 
 export const metadata = {
-  title: '15 Best Places to Visit Near Gurgaon (2026) | Road Trips',
+  title: tightenTitle('15 Best Places to Visit Near Gurgaon (2026) | Road Trips'),
   description: 'Top places to visit near Gurgaon by car — Neemrana (100 km), Jaipur (260 km), Alwar (140 km), Rishikesh (245 km). Distances, drive time & travel tips.',
   keywords: 'places to visit near gurgaon, places near gurgaon, weekend getaways from gurgaon, day trips from gurgaon, gurgaon nearby places, places around gurgaon, tourist places near gurgaon, places to visit near gurugram',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

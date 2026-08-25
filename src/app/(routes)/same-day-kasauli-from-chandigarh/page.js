@@ -1,5 +1,6 @@
 import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'same-day-kasauli-from-chandigarh';
 const tour = getSameDayTourBySlug(SLUG);
@@ -7,7 +8,7 @@ export const revalidate = 3600;
 
 const _desc = (tour.description || '').split('\n\n')[0].slice(0, 160) || `${tour.title} by AC cab with Triveni Cabs.`;
 export const metadata = {
-  title: `${tour.title} | AC Cab | 2026`,
+  title: tightenTitle(`${tour.title} | AC Cab | 2026`),
   description: _desc,
   keywords: `${tour.title.toLowerCase()}, chandigarh to ${tour.destination.toLowerCase()} day trip, chandigarh to ${tour.destination.toLowerCase()} cab`,
   authors: [{ name: 'Triveni Cabs' }],

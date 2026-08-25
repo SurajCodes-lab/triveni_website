@@ -2,12 +2,13 @@ import { friendsTripData } from '@/utilis/friendsTripData';
 import FriendsTripClient from '@/components/audience/FriendsTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "friends-trip-kasol";
 const data = friendsTripData["kasol"];
 
 export const metadata = {
-  title: 'Friends Trip to Kasol by Tempo Traveller | Rs 1,175/Person | 2026',
+  title: tightenTitle('Friends Trip to Kasol by Tempo Traveller | Rs 1,175/Person | 2026'),
   description: 'Book Tempo Traveller for friends trip to Kasol from Delhi. Rs 1,175/person. Kheerganga trek, riverside camping, Manikaran. 12-17 seater AC. Call 7668570551.',
   keywords: 'friends trip kasol, kasol group trip, kasol tempo traveller, delhi to kasol friends, kheerganga trek group, friends trip package kasol parvati valley',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

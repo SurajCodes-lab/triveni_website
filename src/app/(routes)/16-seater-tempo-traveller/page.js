@@ -1,23 +1,21 @@
-import SeaterTempoClient from "@/components/tempo/SeaterTempoClient";
-import { seaterTempoData, getOtherSeaters } from "@/utilis/seaterTempoData";
+// app/(routes)/16-seater-tempo-traveller/page.js
+// 16 Seater Tempo Traveller — new design system.
+import VehicleSeaterClient from "@/components/tempo/VehicleSeaterClient";
+import { getVehicleSeaterData } from "@/utilis/vehicleTypeData";
 import { getRatingAndReviews } from "@/lib/seo/review-helpers";
 import {
-  buildSeaterMetadata,
-  buildSeaterJsonLd,
-} from "@/components/tempo/seaterPageBuilder";
+  buildVehicleSeaterMetadata,
+  buildVehicleSeaterJsonLd,
+} from "@/components/tempo/vehicleSeaterPageBuilder";
 
-const KEY = "16";
+const TYPE = "tempo-traveller";
+const SEATS = "16";
 export const revalidate = 3600;
-export const metadata = buildSeaterMetadata(KEY);
+export const metadata = buildVehicleSeaterMetadata(TYPE, SEATS);
 
 export default function Page() {
-  const data = seaterTempoData[KEY];
-  const { aggregateRating, review } = getRatingAndReviews(data.slug, "tempo");
-  const jsonLd = buildSeaterJsonLd(KEY, { aggregateRating, review });
-  return (
-    <SeaterTempoClient
-      data={{ ...data, otherSeaters: getOtherSeaters(data.slug) }}
-      jsonLd={jsonLd}
-    />
-  );
+  const data = getVehicleSeaterData(TYPE, SEATS);
+  const { aggregateRating, review } = getRatingAndReviews(data.slug, data.vertical);
+  const jsonLd = buildVehicleSeaterJsonLd(TYPE, SEATS, { aggregateRating, review });
+  return <VehicleSeaterClient data={data} jsonLd={jsonLd} />;
 }

@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-nainital-from-delhi";
 const data = familyTripData["nainital"];
 
 export const metadata = {
-  title: 'Family Trip Nainital from Delhi | Innova ₹10,000 | 2026',
+  title: tightenTitle('Family Trip Nainital from Delhi | Innova ₹10,000 | 2026'),
   description: 'Book a family trip to Nainital from Delhi by car. Innova Rs 10,000, Sedan Rs 7,500. Naini Lake boating, Zoo, Cable Car. Kid-friendly. Call 7668570551.',
   keywords: 'family trip nainital from delhi, delhi to nainital family tour, nainital family vacation by car, nainital trip with kids, family holiday nainital',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

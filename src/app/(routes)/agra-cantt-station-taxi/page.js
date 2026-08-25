@@ -3,6 +3,7 @@ import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getStationReviews, getStationHowToSchema } from '@/utilis/stationTaxiEnrichment';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -51,7 +52,7 @@ const STATION = {
 };
 
 export const metadata = {
-  title: 'Agra Cantt Station Taxi Service | Pickup from ₹249 — 4.9★ Rated',
+  title: tightenTitle('Agra Cantt Station Taxi Service | Pickup from ₹249 — 4.9★ Rated'),
   description: 'Book taxi from Agra Cantt Railway Station (AGC). Fixed fares from ₹249 to Taj Mahal, Agra Fort, Fatehpur Sikri. AC sedan & SUV, 24/7, meet at platform exit.',
   keywords: 'agra cantt taxi, agra cantt station cab, agra railway station taxi, taxi from agra cantt to taj mahal, agra cantt cab booking, agra station pickup, agra cantt to fatehpur sikri taxi, AGC station taxi, agra cantt prepaid taxi, agra cantt to agra fort cab',
   alternates: { canonical: '/agra-cantt-station-taxi' },

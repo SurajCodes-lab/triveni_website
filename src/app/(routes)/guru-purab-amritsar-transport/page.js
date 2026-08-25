@@ -1,5 +1,6 @@
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import SeasonalPageClient from '@/components/seasonal/SeasonalPageClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -8,7 +9,7 @@ const pageTitle = 'Guru Purab 2026 Amritsar Cab Service | Golden Temple Transpor
 const pageDesc = 'Book Guru Purab 2026 cab to Amritsar & Golden Temple. Delhi to Amritsar cabs, local darshan transport, Wagah Border trips. Verified drivers, no surge. From ₹5,999. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['guru purab amritsar cab 2026', 'guru nanak jayanti cab service', 'golden temple cab booking', 'delhi to amritsar cab guru purab', 'amritsar darshan cab', 'wagah border cab', 'gurudwara visit cab service', 'guru purab travel package', 'amritsar transport service', 'sikh pilgrimage cab'],
   authors: [{ name: 'Triveni Cabs' }],

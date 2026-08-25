@@ -1,12 +1,13 @@
 import { honeymoonTripData } from '@/utilis/honeymoonTripData';
 import HoneymoonTripClient from '@/components/audience/HoneymoonTripClient';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "honeymoon-trip-by-car";
 const data = honeymoonTripData["hub"];
 
 export const metadata = {
-  title: 'Honeymoon Trip by Car from Delhi | Decorated Car Rs 2,000 | 2026',
+  title: tightenTitle('Honeymoon Trip by Car from Delhi | Decorated Car Rs 2,000 | 2026'),
   description: 'Book honeymoon road trip from Delhi by private car. Shimla, Manali, Kashmir, Udaipur, Mussoorie. Decorated car option. Sedan from Rs 4,500. Call 7668570551.',
   keywords: 'honeymoon trip by car, honeymoon road trip from delhi, romantic car trip, honeymoon package by car, decorated car honeymoon',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

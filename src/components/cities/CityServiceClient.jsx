@@ -232,7 +232,7 @@ const vehicleTypes = [
   { type: 'Sedan', seats: '4', price: '₹12/km', image: '/images/car/swift_dzire.jpg', rating: '4.9' },
   { type: 'SUV Ertiga', seats: '6', price: '₹15/km', image: '/images/car/ertiga.jpg', rating: '4.8' },
   { type: 'SUV Innova', seats: '7', price: '₹18/km', image: '/images/car/innova_crysta.jpg', rating: '4.9' },
-  { type: 'Tempo Traveller', seats: '12-17', price: '₹20/km', image: '/images/tempo/17_seater.jpg', rating: '4.8' },
+  { type: 'Tempo Traveller', seats: '12-17', price: '₹23/km', image: '/images/tempo/17_seater.jpg', rating: '4.8' },
   { type: 'Mini Bus', seats: '22-27', price: '₹28/km', image: '/images/bus/25_SEATER_BUS.jpg', rating: '4.7' },
   { type: 'Luxury Bus', seats: '35-56', price: '₹35/km', image: '/images/bus/45_SEATER_BUS.jpg', rating: '4.8' }
 ];
@@ -327,6 +327,7 @@ export default function CityServiceClient({
             fill
             priority
             fetchPriority="high"
+            quality={70}
             className="object-cover opacity-40"
             sizes="100vw"
             placeholder="blur"
@@ -351,7 +352,7 @@ export default function CityServiceClient({
 
           {/* Breadcrumb */}
           <motion.nav
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             className="mb-8"
           >
@@ -369,7 +370,7 @@ export default function CityServiceClient({
 
             {/* Main Content - Left */}
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
               className="lg:col-span-7 xl:col-span-8"
@@ -446,7 +447,7 @@ export default function CityServiceClient({
 
             {/* Right Side Cards */}
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 md:gap-6"
@@ -518,7 +519,7 @@ export default function CityServiceClient({
 
           {/* Trust Badges */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10"
@@ -1182,7 +1183,7 @@ export default function CityServiceClient({
                 Why Travellers Prefer Our Cabs in {formattedCityName}
               </h3>
               <ul className="list-disc pl-6 space-y-2 text-slate-700">
-                <li><strong>Lowest fares</strong> &mdash; Sedan from &#8377;11/km, SUV from &#8377;14/km, Tempo Traveller from &#8377;20/km</li>
+                <li><strong>Lowest fares</strong> &mdash; Sedan from &#8377;11/km, SUV from &#8377;14/km, Tempo Traveller from &#8377;23/km</li>
                 <li><strong>No hidden charges</strong> &mdash; Toll, parking, and driver allowance clearly stated upfront</li>
                 <li><strong>24/7 availability</strong> &mdash; Early morning flights, late-night arrivals &mdash; we never say no</li>
                 <li><strong>GPS-tracked rides</strong> &mdash; Real-time vehicle tracking shared with you and your family</li>

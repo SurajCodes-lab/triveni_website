@@ -13,7 +13,7 @@ import { getArticleSchema, getSpeakableSchema, getCityPlaceSchema, getComparison
 // client component or blog.js lands in the browser bundle.
 import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
 import { BookOpen, Clock, ArrowRight } from '@/components/ui/icons';
-
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -41,11 +41,12 @@ export async function generateMetadata({ params }) {
   const titleVariants = [
     `${route.from} to ${route.to} One Way Cab from ${route.oneWayFares.sedan} — Save ${route.savingsPercent}`,
     `One Way Cab ${route.from} to ${route.to} | ${route.time} · ${route.oneWayFares.sedan} Sedan`,
-    `${route.from} ${route.to} One Way Taxi | ${route.distance} · ₹11/km Sedan | Triveni Cabs`,
+    `${route.from} ${route.to} One Way Taxi | ${route.distance} · ₹11/km Sedan`,
     `Book ${route.from} to ${route.to} One Way Cab @ ${route.oneWayFares.sedan} | 24×7`,
   ];
   const h = [...slug].reduce((a, c) => (a * 31 + c.charCodeAt(0)) | 0, 0);
-  const title = titleVariants[Math.abs(h) % titleVariants.length];
+  // 45-char budget: the root layout appends ' | Triveni Cabs' after this.
+  const title = tightenTitle(titleVariants[Math.abs(h) % titleVariants.length]);
 
   // Fare-first snippet: the concrete numbers lead so the SERP result answers
   // "how much / how far / how long" before the click. Parentheticals are

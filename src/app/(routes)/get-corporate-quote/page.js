@@ -1,9 +1,10 @@
 import GetCorporateQuoteClient from './GetCorporateQuoteClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Get Corporate Quote | Employee Transport from ₹8/km',
+  title: tightenTitle('Get Corporate Quote | Employee Transport from ₹8/km'),
   description:
     'Request a customized corporate transportation quote. Employee pickup-drop, office shuttles, executive car rental, airport transfers.',
   keywords:

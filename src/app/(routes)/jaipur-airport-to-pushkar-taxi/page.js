@@ -1,5 +1,6 @@
 import { airportRoutes, getRelatedRoutes } from '@/utilis/airportOutstationData';
 import AirportOutstationClient from '@/components/airport/AirportOutstationClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = 'jaipur-airport-to-pushkar-taxi';
 const data = airportRoutes[SLUG];
@@ -7,7 +8,7 @@ const data = airportRoutes[SLUG];
 export const revalidate = 3600;
 
 export const metadata = {
-  title: `Jaipur Airport to Pushkar Taxi | Fixed \u20B9${data.fares.sedan.price} | Ajmer Stop`,
+  title: tightenTitle(`Jaipur Airport to Pushkar Taxi | Fixed \u20B9${data.fares.sedan.price} | Ajmer Stop`),
   description: `Jaipur Airport to Pushkar taxi. Fixed fare sedan \u20B9${data.fares.sedan.price}, SUV \u20B9${data.fares.suv.price}. Via Ajmer, Dargah stop available. ${data.time}. Call 7668570551.`,
   keywords: 'jaipur airport to pushkar taxi, jaipur airport pushkar cab, jaipur to pushkar transfer, pushkar camel fair taxi',
   authors: [{ name: 'Triveni Cabs' }],

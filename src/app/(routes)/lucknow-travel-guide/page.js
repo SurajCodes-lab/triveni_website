@@ -3,10 +3,11 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Lucknow Travel Guide 2026 | City of Nawabs, Kebabs & Heritage',
+  title: tightenTitle('Lucknow Travel Guide 2026 | City of Nawabs, Kebabs & Heritage'),
   description: 'Complete Lucknow travel guide 2026. Bara Imambara, Rumi Darwaza, British Residency, Hazratganj, food, Awadhi cuisine. Call 7668570551.',
   keywords: 'lucknow travel guide, lucknow tourist guide, city of nawabs, lucknow sightseeing, lucknow tourism, things to do in lucknow',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

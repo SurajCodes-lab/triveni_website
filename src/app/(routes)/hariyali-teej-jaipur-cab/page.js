@@ -2,11 +2,12 @@ import { notFound } from 'next/navigation';
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
 import { Hourglass } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('hariyali-teej-jaipur-cab');
 
 export const metadata = {
-  title: 'Hariyali Teej Jaipur Cab 2026 | Delhi to Jaipur',
+  title: tightenTitle('Hariyali Teej Jaipur Cab 2026 | Delhi to Jaipur'),
   description: 'Delhi to Jaipur cab for the Teej procession, August 2026. 280 km on NH-48. Sedan ₹11/km, Innova ₹18/km, no surge. Call 7668570551.',
   keywords: 'hariyali teej jaipur cab, teej jaipur 2026, delhi to jaipur teej cab, jaipur teej procession, teej festival rajasthan cab, jaipur cab august 2026, tripolia bazaar teej',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

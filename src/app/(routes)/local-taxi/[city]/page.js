@@ -4,7 +4,7 @@ import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import LocalTaxiCityClient from '@/components/local-taxi/LocalTaxiCityClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
-
+import { tightenTitle, tightenDescription, DESC_BUDGET } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -22,8 +22,10 @@ export async function generateMetadata({ params }) {
   }
 
   const lowestSedan = Math.min(...city.packages.map((p) => p.sedan));
-  const title = `Local Taxi in ${city.city} | Hourly from Rs ${lowestSedan.toLocaleString('en-IN')} — 4.9★ Rated`;
-  const description = `Book local taxi in ${city.city} starting Rs ${lowestSedan.toLocaleString('en-IN')} for 4 hrs. AC sedan & SUV hourly packages. ${city.coverageAreas.slice(0, 3).join(', ')} coverage. 4.9★ rated, GPS-tracked cabs. Call 7668570551.`;
+  const title = tightenTitle(`Local Taxi in ${city.city} | Hourly from Rs ${lowestSedan.toLocaleString('en-IN')} — 4.9★ Rated`);
+  const localTail = `4.9★ rated, GPS-tracked cabs. Call 7668570551.`;
+  const localHead = `Book local taxi in ${city.city} starting Rs ${lowestSedan.toLocaleString('en-IN')} for 4 hrs. AC sedan & SUV hourly packages. ${city.coverageAreas.slice(0, 3).join(', ')} coverage.`;
+  const description = `${tightenDescription(localHead, DESC_BUDGET - localTail.length - 1)} ${localTail}`;
 
   return {
     title,

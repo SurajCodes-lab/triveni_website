@@ -50,11 +50,12 @@ import {
   Car,
   HelpCircle
 } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Event Transportation Service — Wedding & Corporate | Triveni',
+  title: tightenTitle('Event Transportation Service — Wedding & Corporate | Triveni'),
   description: 'Event transportation for weddings, corporate events & festivals. 500+ vehicles across 12 cities, dedicated coordinator, GST invoice, 24/7 support. Free quote.',
   keywords: [
     'event transportation services',
@@ -124,9 +125,6 @@ export const metadata = {
       'max-snippet': -1,
       'max-video-preview': -1,
     },
-  },
-  verification: {
-    google: 'your-google-verification-code',
   },
   category: 'Transportation Services',
 };
@@ -468,25 +466,9 @@ export default function EventTransportationPage() {
           </div>
 
           {/* Floating Gradient Orbs */}
-          <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-cyan-500/30 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-20 left-10 w-[500px] h-[500px] bg-blue-600/25 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
-
-          {/* Floating Particles */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-cyan-400/40 rounded-full animate-pulse"
-                style={{
-                  left: `${5 + Math.random() * 90}%`,
-                  top: `${5 + Math.random() * 90}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 3}s`
-                }}
-              />
-            ))}
-          </div>
+          <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-cyan-500/30 rounded-full blur-[150px]" />
+          <div className="absolute bottom-20 left-10 w-[500px] h-[500px] bg-blue-600/25 rounded-full blur-[150px]" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px]" style={{ animationDelay: '2s' }} />
 
           {/* Content */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
@@ -494,16 +476,16 @@ export default function EventTransportationPage() {
               {/* Left Content */}
               <div className="space-y-8">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50 animate-pulse" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <Calendar className="w-6 h-6 text-cyan-300" />
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Event Transportation</span>
                   </div>
                 </div>
 
-                <h1 className="speakable-headline text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
+                <h1 className="speakable-headline font-display-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]">
                   Event Transportation
-                  <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                  <span className="block mt-2 text-gold-foil">
                     Service
                   </span>
                 </h1>
@@ -537,9 +519,9 @@ export default function EventTransportationPage() {
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Link
                     href="tel:+917668570551"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] transition-all duration-300"
+                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-b from-[#FFE9A0] via-[#FACF2D] to-[#E6B800] text-black px-8 py-5 rounded-2xl font-bold text-lg shadow-[0_10px_30px_-10px_rgba(250,207,45,0.55)] hover:brightness-105 transition-all duration-300 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]"
                   >
-                    <Phone className="w-5 h-5 group-hover:animate-pulse" />
+                    <Phone className="w-5 h-5" />
                     Get Event Quote
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -582,7 +564,7 @@ export default function EventTransportationPage() {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
             <span className="text-white/60 text-xs tracking-widest uppercase">Scroll</span>
             <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
               <div className="w-1 h-3 bg-white/60 rounded-full" />
@@ -613,9 +595,9 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Direct Answer / Overview — AEO/GEO entity-dense lead */}
-        <section className="py-16 px-4 bg-white border-b border-slate-100">
+        <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] border-b border-amber-900/10">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-5 text-center">
+            <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-slate-900 mb-5 text-center">
               What Is Event Transportation Service?
             </h2>
             <p className="speakable-lead text-lg text-slate-600 leading-relaxed text-center max-w-4xl mx-auto">
@@ -628,14 +610,14 @@ export default function EventTransportationPage() {
                 { value: '500+', label: 'Events Handled' },
                 { value: '24/7', label: 'Event-Day Ops' }
               ].map((s, i) => (
-                <div key={i} className="rounded-2xl bg-slate-50 border border-slate-100 p-5 text-center">
-                  <div className="text-2xl md:text-3xl font-black text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">{s.value}</div>
+                <div key={i} className="rounded-2xl bg-white/70 ring-1 ring-amber-900/10 p-5 text-center">
+                  <div className="text-2xl md:text-3xl font-black text-gold-foil">{s.value}</div>
                   <div className="text-sm text-slate-500 mt-1">{s.label}</div>
                 </div>
               ))}
             </div>
             <div className="mt-8 text-center">
-              <Link href="tel:+917668570551" className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-7 py-3.5 rounded-2xl font-bold shadow-lg shadow-cyan-500/30 hover:scale-[1.02] transition-all">
+              <Link href="tel:+917668570551" className="inline-flex items-center gap-2 bg-gradient-to-b from-[#FFE9A0] via-[#FACF2D] to-[#E6B800] text-black px-7 py-3.5 rounded-2xl font-bold shadow-[0_10px_30px_-10px_rgba(250,207,45,0.55)] hover:brightness-105 transition-all lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]">
                 Get a Free Event Quote
                 <ArrowRight className="w-5 h-5" />
               </Link>
@@ -644,7 +626,7 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Quick Enquiry Form — desktop lead path */}
-        <section className="py-16 px-4 bg-slate-950">
+        <section className="py-16 md:py-24 px-4 bg-slate-950">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Get a Free Event Transport Quote</h2>
@@ -657,7 +639,7 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Event Categories Section - All from PPT */}
-        <section className="py-32 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-100/50 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
 
@@ -748,39 +730,25 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Event Services Section - From PPT Slide 6 */}
-        <section className="py-32 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-cyan-500/20 via-transparent to-transparent" />
             <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent" />
           </div>
 
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-cyan-400/30 rounded-full animate-pulse"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`
-                }}
-              />
-            ))}
-          </div>
-
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-20">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                 <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                   <Sparkles className="w-6 h-6 text-cyan-300" />
                   <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Our Services</span>
                 </div>
               </div>
 
-              <h2 className="text-5xl md:text-7xl font-black text-white mt-10 mb-6 leading-tight">
+              <h2 className="font-display-serif text-5xl md:text-7xl font-bold text-white mt-10 mb-6 leading-tight">
                 Event Transport
-                <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                <span className="block mt-2 text-gold-foil">
                   Services
                 </span>
               </h2>
@@ -827,7 +795,7 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Fleet Section - Similar to Corporate */}
-        <section className="py-32 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-100/50 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
 
@@ -927,9 +895,9 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Event Types Section - Dynamic Pages */}
-        <section className="py-32 px-4 bg-slate-900 relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-slate-900 relative overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[200px] animate-pulse" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[200px]" />
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
@@ -983,7 +951,7 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Cities Section */}
-        <section className="py-32 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-100/50 rounded-full blur-[120px]" />
 
@@ -1058,39 +1026,25 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Benefits Section - Premium Design */}
-        <section className="py-32 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-cyan-500/20 via-transparent to-transparent" />
             <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent" />
           </div>
 
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-cyan-400/30 rounded-full animate-pulse"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`
-                }}
-              />
-            ))}
-          </div>
-
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-20">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                 <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                   <Sparkles className="w-6 h-6 text-cyan-300" />
                   <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Why Choose Us</span>
                 </div>
               </div>
 
-              <h2 className="text-5xl md:text-7xl font-black text-white mt-10 mb-6 leading-tight">
+              <h2 className="font-display-serif text-5xl md:text-7xl font-bold text-white mt-10 mb-6 leading-tight">
                 Event Transport
-                <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                <span className="block mt-2 text-gold-foil">
                   Specialists
                 </span>
               </h2>
@@ -1129,7 +1083,7 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Fleet & Capacity Table (visible, fact-dense for AEO) */}
-        <section className="py-24 px-4 bg-white">
+        <section className="py-16 md:py-24 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 bg-cyan-100 px-5 py-2 rounded-full mb-6">
@@ -1144,8 +1098,23 @@ export default function EventTransportationPage() {
               </p>
             </div>
 
-            <div className="overflow-x-auto rounded-3xl border border-slate-200 shadow-xl">
-              <table className="w-full text-left border-collapse min-w-[760px]">
+            {/* Mobile: stacked fleet cards */}
+            <div className="space-y-3 md:hidden">
+              {eventFleetTable.map((v) => (
+                <div key={v.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-bold text-slate-900">{v.icon} {v.name}</span>
+                    <span className="font-black text-gold-foil whitespace-nowrap">{v.priceRange}</span>
+                  </div>
+                  <div className="mt-2 text-sm text-slate-600">{v.capacity} · {v.ideal}</div>
+                  <div className="mt-1 text-xs text-slate-500">{v.vehicles.join(', ')}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: full table */}
+            <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200 shadow-xl">
+              <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-slate-900 text-white">
                     <th scope="col" className="px-6 py-4 font-semibold">Vehicle Type</th>
@@ -1162,7 +1131,7 @@ export default function EventTransportationPage() {
                       <td className="px-6 py-4 text-slate-600">{v.capacity}</td>
                       <td className="px-6 py-4 text-slate-600">{v.ideal}</td>
                       <td className="px-6 py-4 text-slate-600">{v.vehicles.join(', ')}</td>
-                      <td className="px-6 py-4 font-semibold text-cyan-600 whitespace-nowrap">{v.priceRange}</td>
+                      <td className="px-6 py-4 font-semibold text-gold-foil whitespace-nowrap">{v.priceRange}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1175,7 +1144,7 @@ export default function EventTransportationPage() {
         </section>
 
         {/* How to Book — HowTo steps (visible <ol>) */}
-        <section className="py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 bg-blue-100 px-5 py-2 rounded-full mb-6">
@@ -1206,7 +1175,7 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Transparent Pricing Guidance (visible table) */}
-        <section className="py-24 px-4 bg-white">
+        <section className="py-16 md:py-24 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 bg-indigo-100 px-5 py-2 rounded-full mb-6">
@@ -1220,8 +1189,22 @@ export default function EventTransportationPage() {
                 Indicative ranges so you can budget with confidence. Every quote is fixed at booking — no surge pricing, no hidden charges.
               </p>
             </div>
-            <div className="overflow-x-auto rounded-3xl border border-slate-200 shadow-xl">
-              <table className="w-full text-left border-collapse min-w-[640px]">
+            {/* Mobile: stacked pricing cards */}
+            <div className="space-y-3 md:hidden">
+              {eventPricingGuidance.map((row, idx) => (
+                <div key={idx} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-semibold text-slate-800">{row.useCase}</span>
+                    <span className="font-black text-gold-foil whitespace-nowrap">{row.indicative}</span>
+                  </div>
+                  <div className="mt-2 text-sm text-slate-600">{row.vehicle}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: full table */}
+            <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200 shadow-xl">
+              <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-slate-900 text-white">
                     <th scope="col" className="px-6 py-4 font-semibold">Use Case</th>
@@ -1234,7 +1217,7 @@ export default function EventTransportationPage() {
                     <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
                       <td className="px-6 py-4 font-semibold text-slate-800">{row.useCase}</td>
                       <td className="px-6 py-4 text-slate-600">{row.vehicle}</td>
-                      <td className="px-6 py-4 font-semibold text-cyan-600 whitespace-nowrap">{row.indicative}</td>
+                      <td className="px-6 py-4 font-semibold text-gold-foil whitespace-nowrap">{row.indicative}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -1247,7 +1230,7 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Event Planning Checklist (visible list) */}
-        <section className="py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
@@ -1277,7 +1260,7 @@ export default function EventTransportationPage() {
         <SectionDivider color="gray" className="my-4" />
 
         {/* Comparison Section — Triveni vs Typical Event Vendors (AEO target) */}
-        <section className="py-24 px-4 bg-white relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-white relative overflow-hidden">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-cyan-50 text-cyan-700 px-5 py-2.5 rounded-full mb-5 border border-cyan-100">
@@ -1291,7 +1274,24 @@ export default function EventTransportationPage() {
                 See how Triveni Cabs differs from typical local event vendors across the 9 dimensions that matter most for event success.
               </p>
             </div>
-            <div className="overflow-x-auto rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100">
+            {/* Mobile: stacked comparison cards */}
+            <div className="space-y-3 md:hidden">
+              {comparisonRows.map((row, idx) => (
+                <div key={idx} className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+                  <div className="font-semibold text-slate-800 text-sm">{row.feature}</div>
+                  <div className="mt-2 flex items-start gap-2 text-sm text-cyan-700 font-semibold">
+                    <CheckCircle2 className="w-4 h-4 text-cyan-600 flex-shrink-0 mt-0.5" />
+                    <span><span className="text-slate-800">Triveni:</span> {row.triveni}</span>
+                  </div>
+                  <div className="mt-1.5 text-sm text-slate-500">
+                    <span className="font-semibold">Typical vendor:</span> {row.typicalVendor}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: full table */}
+            <div className="hidden md:block overflow-hidden rounded-2xl shadow-lg shadow-slate-200/50 border border-slate-100">
               <table className="w-full text-left">
                 <thead className="bg-gradient-to-r from-slate-900 to-slate-800 text-white">
                   <tr>
@@ -1321,23 +1321,20 @@ export default function EventTransportationPage() {
         <SectionDivider color="gray" className="my-4" />
 
         {/* FAQ Section */}
-        <section className="py-32 px-4 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-100/50 rounded-full blur-[120px]" />
-
+        <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] relative overflow-hidden">
           <div className="max-w-5xl mx-auto relative z-10">
             <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-blue-100 px-6 py-3 rounded-full mb-6">
+              <div className="inline-flex items-center gap-2 bg-white/70 ring-1 ring-amber-900/10 px-6 py-3 rounded-full mb-6">
                 <HelpCircle className="w-5 h-5 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Got Questions?</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6">
+              <h2 className="font-display-serif text-4xl md:text-6xl font-bold text-slate-900 mb-6">
                 Frequently Asked
                 <span className="block text-transparent bg-gradient-to-r from-indigo-500 to-blue-600 bg-clip-text">Questions</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 md:items-start gap-6">
               {eventFAQs.map((faq, idx) => (
                 <div
                   key={idx}
@@ -1430,8 +1427,8 @@ export default function EventTransportationPage() {
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
 
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px]" style={{ animationDelay: '1s' }} />
 
           <div className="absolute inset-0 opacity-5" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
@@ -1446,9 +1443,9 @@ export default function EventTransportationPage() {
                   <span className="text-cyan-300 font-semibold text-sm tracking-wider uppercase">Plan Your Event</span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                <h2 className="font-display-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                   Ready to Make Your
-                  <span className="block text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                  <span className="block text-gold-foil">
                     Event Memorable?
                   </span>
                 </h2>

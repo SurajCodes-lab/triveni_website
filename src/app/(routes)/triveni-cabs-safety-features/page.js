@@ -1,6 +1,7 @@
 import TrustPageClient from '@/components/competitor/TrustPageClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -9,7 +10,7 @@ const pageTitle = 'Triveni Cabs Safety Features | GPS Tracking, Verified Drivers
 const pageDesc = 'Triveni Cabs safety: real-time GPS tracking, verified drivers, SOS emergency support, live trip sharing, sanitized vehicles. Safe travel for families & solo travelers. Call 7668570551.';
 
 export const metadata = {
-  title: pageTitle,
+  title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs safety features', 'safe cab service india', 'gps tracked cab india', 'cab safety features', 'safe travel for women', 'verified driver cab service', 'sos emergency cab support', 'family safe cab service', 'live trip sharing cab', 'sanitized cab service'],
   authors: [{ name: 'Triveni Cabs' }],

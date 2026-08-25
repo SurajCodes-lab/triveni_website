@@ -1,10 +1,11 @@
 import { getFestivalBySlug } from '@/utilis/festivalData';
 import FestivalTripClient from '@/components/festival/FestivalTripClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const festival = getFestivalBySlug('navratri-vaishno-devi-cab');
 
 export const metadata = {
-  title: 'Navratri Vaishno Devi Cab Service 2026 | Mata Darshan Special',
+  title: tightenTitle('Navratri Vaishno Devi Cab Service 2026 | Mata Darshan Special'),
   description: 'Book Navratri cab from Delhi to Vaishno Devi Katra 2026. Sedan from ₹9,500, SUV ₹13,500. Mata darshan during Navratri. Experienced drivers. Call 7668570551.',
   keywords: 'navratri vaishno devi cab, delhi to katra cab navratri, vaishno devi cab service, navratri 2026 cab, mata vaishno devi transport, katra taxi navratri',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

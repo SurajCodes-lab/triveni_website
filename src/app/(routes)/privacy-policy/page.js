@@ -1,9 +1,10 @@
 import PrivacyClient from "./PrivacyClient";
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: "Privacy Policy | Triveni Cabs - Data Protection",
+  title: tightenTitle("Privacy Policy — How We Protect Your Data"),
   description: "Read Triveni Cabs privacy policy. Learn how we collect, use, and protect your personal information when you use our taxi and car rental services across India.",
   keywords: "Triveni Cabs privacy policy, taxi service privacy, cab booking data protection, customer data policy, taxi booking privacy India, car rental privacy policy",
   alternates: {

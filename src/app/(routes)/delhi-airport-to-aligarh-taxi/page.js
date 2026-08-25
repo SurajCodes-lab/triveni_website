@@ -1,4 +1,5 @@
 import AirportToCityClient from '@/components/airport/AirportToCityClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ const ROUTE = {
 };
 
 export const metadata = {
-  title: `Delhi Airport to Aligarh Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`,
+  title: tightenTitle(`Delhi Airport to Aligarh Taxi ₹${ROUTE.fare} | Meet & Greet — 4.9★`),
   description: `Book Delhi Airport to Aligarh taxi at ₹${ROUTE.fare}. Fixed fare, flight tracking, meet & greet at IGI. Via Yamuna Expressway. 24/7 by Triveni Cabs.`,
   keywords: 'delhi airport to aligarh taxi, delhi airport to aligarh cab, delhi to aligarh airport taxi, taxi from delhi airport to aligarh, aligarh airport pickup, flight tracked aligarh taxi, fixed fare aligarh cab, delhi airport aligarh transfer, book cab online, taxi service india, airport transfer, airport pickup drop, triveni cabs',
   alternates: { canonical: `https://www.trivenicabs.in/${ROUTE.slug}` },

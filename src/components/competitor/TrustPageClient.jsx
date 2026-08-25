@@ -37,11 +37,11 @@ export default function TrustPageClient({ title, subtitle, description, sections
               <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">Trust & Safety</span>
             </div>
             {subtitle && <p className="text-white/40 text-sm font-medium uppercase tracking-widest mb-2">{subtitle}</p>}
-            <h1 className="speakable-headline text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight">{title}</h1>
+            <h1 className="speakable-headline font-display-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[0.95] tracking-tight">{title}</h1>
             {description && <p className="speakable-lead text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">{description}</p>}
 
             <div className="flex flex-wrap gap-3 mt-6">
-              <Link onClick={() => trackPhoneCall('trust_hero')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-[#FACF2D] text-slate-900 px-6 py-3.5 rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
+              <Link onClick={() => trackPhoneCall('trust_hero')} href="tel:+917668570551" className="inline-flex items-center gap-2 bg-[#FACF2D] text-black px-6 py-3.5 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px] rounded-full font-bold text-sm hover:bg-amber-300 transition-all active:scale-[0.97] shadow-lg shadow-amber-500/20">
                 <Phone className="w-4 h-4" /> Call 7668570551
               </Link>
               <Link onClick={() => trackWhatsAppClick('trust_hero')} href={`https://wa.me/917668570551?text=${encodeURIComponent(whatsappMsg)}`} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3.5 rounded-full font-bold text-sm border border-white/15 hover:bg-white/15 transition-all">
@@ -98,7 +98,7 @@ export default function TrustPageClient({ title, subtitle, description, sections
                   {section.badge && (
                     <p className={`text-[10px] font-bold uppercase tracking-widest mb-1 ${isDark ? 'text-[#FACF2D]' : 'text-amber-600'}`}>{section.badge}</p>
                   )}
-                  <h2 className={`text-2xl sm:text-3xl font-black mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>{section.title}</h2>
+                  <h2 className={`font-display-serif text-2xl sm:text-3xl font-black mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>{section.title}</h2>
                   {section.description && <p className={`max-w-2xl leading-relaxed text-sm ${isDark ? 'text-white/40' : 'text-slate-500'}`}>{section.description}</p>}
                 </div>
               </ScrollReveal>

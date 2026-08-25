@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera } from '@/components/ui/icons';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Same Day Taj Mahal Tour | Sunrise Visit ₹4,500 | 2026',
+  title: tightenTitle('Same Day Taj Mahal Tour | Sunrise Visit ₹4,500 | 2026'),
   description: 'Same day Taj Mahal tour by private car. Sunrise visit, golden hour photography. From Delhi ₹4,500, Jaipur ₹5,500. Entry details & tips. Call 7668570551.',
   keywords: 'same day taj mahal tour, taj mahal day trip, taj mahal visit by car, taj mahal sunrise tour, taj mahal one day tour',
   authors: [{ name: 'Triveni Cabs' }],

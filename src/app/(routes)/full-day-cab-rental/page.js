@@ -2,11 +2,12 @@ import { getRentalBySlug } from '@/utilis/rentalPackageData';
 import RentalPackageClient from '@/components/rental/RentalPackageClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const rental = getRentalBySlug('full-day-cab-rental');
 
 export const metadata = {
-  title: 'Full Day Cab Rental | 8 Hours 80 km from Rs 2,500 | Triveni Cabs',
+  title: tightenTitle('Full Day Cab Rental | 8 Hours 80 km from Rs 2,500'),
   description: 'Book full day cab rental for 8 hours 80 km. Sedan Rs 2,500, SUV Rs 3,500, Innova Rs 4,500. Sightseeing, business, weddings. Call 7668570551.',
   keywords: 'full day cab rental, 8 hour cab rental, cab for full day, full day taxi hire, day cab with driver, sightseeing cab rental, full day car hire',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

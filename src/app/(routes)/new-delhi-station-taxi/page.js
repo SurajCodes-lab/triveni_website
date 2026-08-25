@@ -3,6 +3,7 @@ import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getStationReviews, getStationHowToSchema } from '@/utilis/stationTaxiEnrichment';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
@@ -51,7 +52,7 @@ const STATION = {
 };
 
 export const metadata = {
-  title: 'New Delhi Station Taxi Service | Pickup from ₹199 — 4.9★ Rated',
+  title: tightenTitle('New Delhi Station Taxi Service | Pickup from ₹199 — 4.9★ Rated'),
   description: 'Book taxi from New Delhi Railway Station (NDLS). Fixed fares from ₹199 to CP, India Gate, Airport. AC sedan & SUV, 24/7, meet at platform exit. Call 7668570551.',
   keywords: 'new delhi station taxi, NDLS taxi, new delhi railway station cab, taxi from NDLS to airport, new delhi station to connaught place taxi, NDLS cab booking, new delhi station pickup, delhi railway station taxi fare, new delhi station prepaid taxi, NDLS to noida cab',
   alternates: { canonical: '/new-delhi-station-taxi' },

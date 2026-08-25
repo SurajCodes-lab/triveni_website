@@ -2,12 +2,13 @@ import { familyTripData } from '@/utilis/familyTripData';
 import FamilyTripClient from '@/components/audience/FamilyTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const SLUG = "family-trip-jim-corbett-from-delhi";
 const data = familyTripData["jim-corbett"];
 
 export const metadata = {
-  title: 'Family Trip Jim Corbett from Delhi | Innova ₹8,500 | 2026',
+  title: tightenTitle('Family Trip Jim Corbett from Delhi | Innova ₹8,500 | 2026'),
   description: 'Book a family trip to Jim Corbett from Delhi by car. Innova Rs 8,500, Sedan Rs 6,000. Jungle safari, tiger spotting, nature walks. Kid-friendly.',
   keywords: 'family trip jim corbett from delhi, delhi to corbett family tour, jim corbett family vacation, corbett safari with kids, family holiday jim corbett',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

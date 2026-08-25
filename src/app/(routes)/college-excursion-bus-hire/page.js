@@ -1,6 +1,7 @@
 import { getSpecialTransportBySlug } from '@/utilis/specialTransportData';
 import SpecialTransportClient from '@/components/special/SpecialTransportClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 const service = getSpecialTransportBySlug('college-excursion-bus-hire');
 
@@ -17,7 +18,7 @@ const fleetImages = [
 ];
 
 export const metadata = {
-  title: 'College Excursion Bus Hire | Student Group Transport',
+  title: tightenTitle('College Excursion Bus Hire | Student Group Transport'),
   description: 'Book college excursion bus and Tempo Traveller. 12-seater from Rs 18/km, 45-seater Volvo Rs 48/km. Budget-friendly group trips. Music system. Call 7668570551.',
   keywords: 'college excursion bus, college trip bus hire, student group transport, tempo traveller for college, college annual trip bus, college fest transport, budget group trip bus',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

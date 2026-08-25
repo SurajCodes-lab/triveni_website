@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, Coffee, ShoppingBag, Utensils, Flame, Bookmark, Tag } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: 'Pushkar Food Tour 2026 | Malpua, Dal Bati & Holy Lake',
+  title: tightenTitle('Pushkar Food Tour 2026 | Malpua, Dal Bati & Holy Lake'),
   description: 'Pushkar food & culinary tour. Pure vegetarian holy city. Famous Malpua, Dal Bati Churma, Poha, Malai Lassi, Aloo Tikki.',
   keywords: 'pushkar food tour, pushkar street food, pushkar food guide, pure vegetarian pushkar, malpua pushkar, dal bati churma pushkar, pushkar cafes, pushkar lake food',
   authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',

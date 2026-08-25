@@ -183,25 +183,9 @@ export default async function EventTypePage({ params }) {
           </div>
 
           {/* Floating Gradient Orbs */}
-          <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-cyan-500/30 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-20 left-10 w-[500px] h-[500px] bg-blue-600/25 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
-
-          {/* Floating Particles */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-cyan-400/40 rounded-full animate-pulse"
-                style={{
-                  left: `${10 + Math.random() * 80}%`,
-                  top: `${10 + Math.random() * 80}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 3}s`
-                }}
-              />
-            ))}
-          </div>
+          <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-cyan-500/30 rounded-full blur-[150px]" />
+          <div className="absolute bottom-20 left-10 w-[500px] h-[500px] bg-blue-600/25 rounded-full blur-[150px]" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px]" style={{ animationDelay: '2s' }} />
 
           {/* Content */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
@@ -218,16 +202,16 @@ export default async function EventTypePage({ params }) {
               {/* Left Content */}
               <div className="space-y-8">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50 animate-pulse" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <span className="text-4xl">{eventType.icon}</span>
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">{eventType.name}</span>
                   </div>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
+                <h1 className="font-display-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]">
                   {eventType.title.split(' ').slice(0, 2).join(' ')}
-                  <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                  <span className="block mt-2 text-gold-foil">
                     {eventType.title.split(' ').slice(2).join(' ') || 'Services'}
                   </span>
                 </h1>
@@ -265,9 +249,9 @@ export default async function EventTypePage({ params }) {
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Link
                     href="tel:+917668570551"
-                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] transition-all duration-300"
+                    className="group inline-flex items-center justify-center gap-3 bg-gradient-to-b from-[#FFE9A0] via-[#FACF2D] to-[#E6B800] text-black px-8 py-5 rounded-2xl font-bold text-lg shadow-[0_10px_30px_-10px_rgba(250,207,45,0.55)] hover:brightness-105 transition-all duration-300 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px]"
                   >
-                    <Phone className="w-5 h-5 group-hover:animate-pulse" />
+                    <Phone className="w-5 h-5" />
                     Get Event Quote
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -307,7 +291,7 @@ export default async function EventTypePage({ params }) {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
             <span className="text-white/60 text-xs tracking-widest uppercase">Scroll</span>
             <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
               <div className="w-1 h-3 bg-white/60 rounded-full" />
@@ -335,7 +319,7 @@ export default async function EventTypePage({ params }) {
         </section>
 
         {/* Services/Features Section - Beautiful Grid Design */}
-        <section className="py-32 px-4 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
@@ -350,9 +334,9 @@ export default async function EventTypePage({ params }) {
             {/* Section Header */}
             <div className="text-center mb-20">
               <div className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full mb-8 shadow-lg shadow-slate-200/50 border border-slate-100">
-                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-cyan-500 rounded-full" />
                 <span className="text-slate-600 font-semibold text-sm tracking-wider uppercase">What We Offer</span>
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-blue-500 rounded-full" />
               </div>
 
               <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
@@ -441,43 +425,27 @@ export default async function EventTypePage({ params }) {
         </section>
 
         {/* Service Cities Section - Premium Dark Design */}
-        <section className="py-32 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+        <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
           {/* Animated Mesh Gradient Background */}
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-cyan-500/20 via-transparent to-transparent" />
             <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[200px] animate-pulse" />
-          </div>
-
-          {/* Floating Particles */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-cyan-400/30 rounded-full animate-pulse"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 3}s`
-                }}
-              />
-            ))}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[200px]" />
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-20">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                 <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                   <MapPin className="w-6 h-6 text-cyan-300" />
                   <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Service Coverage</span>
                 </div>
               </div>
 
-              <h2 className="text-5xl md:text-7xl font-black text-white mt-10 mb-6 leading-tight">
+              <h2 className="font-display-serif text-5xl md:text-7xl font-bold text-white mt-10 mb-6 leading-tight">
                 Serving
-                <span className="block mt-2 text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                <span className="block mt-2 text-gold-foil">
                   All 12 Cities
                 </span>
               </h2>
@@ -539,18 +507,14 @@ export default async function EventTypePage({ params }) {
         </section>
 
         {/* FAQ Section - Premium Cards Design */}
-        <section className="py-32 px-4 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
-          {/* Background Decorations */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[150px]" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-100/50 rounded-full blur-[120px]" />
-
+        <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] relative overflow-hidden">
           <div className="max-w-5xl mx-auto relative z-10">
             <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-blue-100 px-6 py-3 rounded-full mb-6">
+              <div className="inline-flex items-center gap-2 bg-white/70 ring-1 ring-amber-900/10 px-6 py-3 rounded-full mb-6">
                 <HelpCircle className="w-5 h-5 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Got Questions?</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-6">
+              <h2 className="font-display-serif text-4xl md:text-6xl font-bold text-slate-900 mb-6">
                 Frequently Asked
                 <span className="block text-transparent bg-gradient-to-r from-indigo-500 to-blue-600 bg-clip-text">Questions</span>
               </h2>
@@ -560,7 +524,7 @@ export default async function EventTypePage({ params }) {
             </div>
 
             {/* FAQ Cards Grid */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 md:items-start gap-6">
               {eventType.faqs.map((faq, idx) => (
                 <div
                   key={idx}
@@ -603,7 +567,7 @@ export default async function EventTypePage({ params }) {
         </section>
 
         {/* Other Event Types */}
-        <section className="py-24 px-4 bg-slate-50">
+        <section className="py-16 md:py-24 px-4 bg-slate-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
@@ -641,9 +605,9 @@ export default async function EventTypePage({ params }) {
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
 
           {/* Animated Gradient Orbs */}
-          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px]" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/20 rounded-full blur-[100px]" style={{ animationDelay: '2s' }} />
 
           {/* Grid Pattern */}
           <div className="absolute inset-0 opacity-5" style={{
@@ -660,9 +624,9 @@ export default async function EventTypePage({ params }) {
                   <span className="text-cyan-300 font-semibold text-sm tracking-wider uppercase">Get Started Today</span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+                <h2 className="font-display-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                   Ready to Make Your
-                  <span className="block text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text">
+                  <span className="block text-gold-foil">
                     {eventType.name} Memorable?
                   </span>
                 </h2>
