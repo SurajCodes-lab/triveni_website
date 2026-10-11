@@ -1,5 +1,7 @@
-'use client';
-
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 import Image from 'next/image';
 import Link from 'next/link';
 // Centralized icon imports for better bundle optimization
@@ -9,6 +11,7 @@ import {
 } from '@/components/ui/icons';
 import DynamicSidebar from '../DynamicSidebar';
 import WhatsAppCTA from '../WhatsAppCTA';
+import { rupeeText } from '@/utilis/pricing';
 
 export default function MonumentLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -37,7 +40,7 @@ export default function MonumentLayout({ post, relatedLinks }) {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 pb-16">
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 pb-10 sm:pb-16">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full">
             <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
@@ -125,13 +128,7 @@ export default function MonumentLayout({ post, relatedLinks }) {
             {/* Content */}
             <article className="bg-white rounded-2xl p-8 shadow-xl">
               <div
-                className="blog-prose prose prose-lg max-w-[70ch] mx-auto
-                  prose-headings:text-slate-900 prose-headings:font-bold
-                  prose-h2:text-3xl prose-h2:border-b-2 prose-h2:border-[#FACF2D]/40 prose-h2:pb-3
-                  prose-h3:text-2xl prose-h3:text-slate-900
-                  prose-p:text-gray-700 prose-p:leading-relaxed
-                  prose-a:text-amber-700 prose-a:font-semibold
-                  prose-strong:text-slate-900"
+                className="blog-prose prose prose-lg max-w-[70ch] mx-auto prose-headings:text-slate-900 prose-headings:font-bold prose-h2:text-3xl prose-h2:border-b-2 prose-h2:border-[#FACF2D]/40 prose-h2:pb-3 prose-h3:text-2xl prose-h3:text-slate-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-amber-700 prose-a:font-semibold prose-strong:text-slate-900"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
@@ -162,7 +159,7 @@ export default function MonumentLayout({ post, relatedLinks }) {
                       className="bg-white/10 hover:bg-white/20 rounded-xl p-4 transition-all"
                     >
                       <h4 className="font-bold">{tour.name}</h4>
-                      <p className="text-[#FACF2D] text-sm">{tour.price}</p>
+                      <p className="text-[#FACF2D] text-sm">{rupeeText(tour.price)}</p>
                     </Link>
                   ))}
                 </div>

@@ -17,7 +17,7 @@ export const eventVehicles = {
     priceFrom: "₹35/km",
     tagline: "AC coaches for large-scale event guest movement",
     intro:
-      "A luxury bus is the most efficient way to move large groups for events — wedding baraat and guest shuttles, corporate conference delegates, concert and festival crowds, or school and college groups. Triveni Cabs operates 27 to 49 seater AC buses and coaches with pushback seats, ample luggage space and experienced drivers, coordinated by a dedicated event manager so hundreds of guests reach the venue together and on time.",
+      "A luxury bus is the most efficient way to move large groups for events — wedding baraat and guest shuttles, corporate conference delegates, concert and festival crowds, or school and college groups. Triveni Cabs™ operates 27 to 49 seater AC buses and coaches with pushback seats, ample luggage space and experienced drivers, coordinated by a dedicated event manager so hundreds of guests reach the venue together and on time.",
     bestFor: [
       "Wedding guest shuttles between hotels & venue",
       "Corporate conference & MICE delegate transport",
@@ -134,7 +134,7 @@ export const eventVehicles = {
     priceFrom: "₹15/km",
     tagline: "Premium sedans & SUVs for VIPs, bride & groom and speakers",
     intro:
-      "When an event needs a touch of class, a luxury car delivers it — the decorated bridal car for the couple's grand entry, premium sedans for VIP speakers and chief guests at corporate events, or comfortable SUVs for immediate family. Triveni Cabs offers well-maintained premium sedans and SUVs (Innova Crysta, Dzire, Ertiga and luxury options) with professional, well-presented chauffeurs for the people who matter most at your event.",
+      "When an event needs a touch of class, a luxury car delivers it — the decorated bridal car for the couple's grand entry, premium sedans for VIP speakers and chief guests at corporate events, or comfortable SUVs for immediate family. Triveni Cabs™ offers well-maintained premium sedans and SUVs (Innova Crysta, Dzire, Ertiga and luxury options) with professional, well-presented chauffeurs for the people who matter most at your event.",
     bestFor: [
       "Decorated bridal & groom cars",
       "VIP speakers & chief guests at corporate events",

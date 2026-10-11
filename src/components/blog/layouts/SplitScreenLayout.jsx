@@ -1,13 +1,16 @@
-'use client';
-
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 // Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, ChevronRight, Phone,
   Star, Camera, Navigation, ArrowRight
 } from '@/components/ui/icons';
 import WhatsAppCTA from '../WhatsAppCTA';
+import { rupeeText } from '@/utilis/pricing';
 
 export default function SplitScreenLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -117,15 +120,7 @@ export default function SplitScreenLayout({ post, relatedLinks }) {
             {/* Article Content */}
             <article className="content-section">
               <div
-                className="blog-prose prose prose-lg prose-invert max-w-[70ch]
-                  prose-p:text-slate-300 prose-p:leading-relaxed
-                  prose-headings:text-white prose-headings:font-bold
-                  prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-4
-                  prose-h3:text-xl prose-h3:text-[#FACF2D]
-                  prose-a:text-[#FACF2D] prose-a:no-underline hover:prose-a:underline
-                  prose-strong:text-white
-                  prose-li:text-slate-300
-                  prose-blockquote:border-l-[#FACF2D] prose-blockquote:bg-white/5 prose-blockquote:rounded-r-xl prose-blockquote:py-4 prose-blockquote:text-slate-300"
+                className="blog-prose prose prose-lg prose-invert max-w-[70ch] prose-p:text-slate-300 prose-p:leading-relaxed prose-headings:text-white prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-4 prose-h3:text-xl prose-h3:text-[#FACF2D] prose-a:text-[#FACF2D] prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-li:text-slate-300 prose-blockquote:border-l-[#FACF2D] prose-blockquote:bg-white/5 prose-blockquote:rounded-r-xl prose-blockquote:py-4 prose-blockquote:text-slate-300"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
@@ -169,7 +164,7 @@ export default function SplitScreenLayout({ post, relatedLinks }) {
                     >
                       <div>
                         <h4 className="font-bold group-hover:text-[#FACF2D]">{tour.name}</h4>
-                        <p className="text-slate-400 text-sm">{tour.price}</p>
+                        <p className="text-slate-400 text-sm">{rupeeText(tour.price)}</p>
                       </div>
                       <ArrowRight className="w-5 h-5 text-[#FACF2D] group-hover:translate-x-1 transition-transform" />
                     </Link>
@@ -218,9 +213,13 @@ export default function SplitScreenLayout({ post, relatedLinks }) {
             <span className="inline-block px-4 py-1.5 bg-[#FACF2D] text-black text-xs font-bold uppercase tracking-wider rounded-full mb-4">
               {post.category}
             </span>
-            <h1 className="font-display-serif text-3xl font-bold text-white leading-tight mb-4">
+            {/* A p, not a second h1. The desktop layout above already renders
+                post.title as the page h1, and both variants sit in the DOM at
+                once — CSS only hides one visually, so a crawler saw two. Same
+                text, same styling, no heading semantics. */}
+            <p className="font-display-serif text-3xl font-bold text-white leading-tight mb-4">
               {post.title}
-            </h1>
+            </p>
             <div className="flex flex-wrap gap-4 text-white/60 text-sm">
               <span className="flex items-center gap-1">
                 <Calendar className="w-4 h-4 text-[#FACF2D]" />
@@ -252,11 +251,7 @@ export default function SplitScreenLayout({ post, relatedLinks }) {
 
           <article>
             <div
-              className="blog-prose prose prose-invert max-w-none
-                prose-p:text-slate-300
-                prose-headings:text-white
-                prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-                prose-a:text-[#FACF2D]"
+              className="blog-prose prose prose-invert max-w-none prose-p:text-slate-300 prose-headings:text-white prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-a:text-[#FACF2D]"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </article>
@@ -312,7 +307,7 @@ export default function SplitScreenLayout({ post, relatedLinks }) {
       </div>
 
       {/* Internal Links Section - Full Width */}
-      <div className="relative overflow-hidden bg-slate-900 py-16">
+      <div className="relative overflow-hidden bg-slate-900 py-10 sm:py-16">
         <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-center text-white/60 text-xs uppercase tracking-widest mb-10">Explore More</h2>

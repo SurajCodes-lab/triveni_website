@@ -8,7 +8,7 @@ import { Star, ArrowRight, Phone, Shield, Clock, CheckCircle, Car, Bus, Users, M
 import { WhatsAppIcon } from '@/components/ui/icons';
 import CabSearchWidget from './CabSearchWidget';
 import { getPopularRoutes } from '@/lib/searchUtils';
-import { phoneNumber } from '@/utilis/data';
+import { phoneNumber } from '@/utilis/contact';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import LiveActivityBadge from '@/components/shared/LiveActivityBadge';
 import GoogleReviewsBadge from '@/components/shared/GoogleReviewsBadge';
@@ -349,7 +349,7 @@ function TrustSection() {
     <section className="py-10 sm:py-16 bg-gradient-to-br from-gray-50 via-white to-amber-50/20">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-8">
-          <p className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-1">Why Triveni Cabs</p>
+          <p className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-1">Why Triveni Cabs™</p>
           <h2 className="text-2xl sm:text-3xl font-black text-gray-900">Why 10,000+ Travelers Choose Us</h2>
         </div>
 
@@ -519,13 +519,13 @@ function FinalSection() {
 
         {/* SEO Content — trimmed to 2 paragraphs */}
         <div className="border-t border-gray-100 pt-8">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">Triveni Cabs — India&apos;s Premium Outstation Cab Service</h2>
+          <h2 className="text-lg font-bold text-gray-900 mb-4">Triveni Cabs™ — India&apos;s Premium Outstation Cab Service</h2>
           <div className="prose prose-sm prose-gray max-w-none text-gray-500 leading-relaxed">
             <p>
-              Triveni Cabs is India&apos;s leading <Link href="/outstation-cabs" className="text-amber-600 font-medium hover:underline">outstation cab booking service</Link>, connecting 37+ cities with 500+ routes. Whether you need a one-way cab from <Link href="/search?from=delhi&to=agra&type=oneway" className="text-amber-600 font-medium hover:underline">Delhi to Agra</Link>, a <Link href="/wedding" className="text-amber-600 font-medium hover:underline">luxury wedding car rental</Link> (Fortuner, Innova, Mercedes), or a reliable <Link href="/airport-service" className="text-amber-600 font-medium hover:underline">airport transfer service</Link>, we deliver transparent pricing from just {'\u20B9'}11/km with no hidden charges.
+              Triveni Cabs™ is India&apos;s leading <Link href="/outstation-cabs" className="text-amber-600 font-medium hover:underline">outstation cab booking service</Link>, connecting 37+ cities with 500+ routes. Whether you need a one-way cab from <Link href="/search?from=delhi&to=agra&type=oneway" className="text-amber-600 font-medium hover:underline">Delhi to Agra</Link>, a <Link href="/wedding" className="text-amber-600 font-medium hover:underline">luxury wedding car rental</Link> (Fortuner, Innova, Mercedes), or a reliable <Link href="/airport-service" className="text-amber-600 font-medium hover:underline">airport transfer service</Link>, we deliver transparent pricing from just {'\u20B9'}11/km with no hidden charges.
             </p>
             <p>
-              Our fleet includes <strong>Sedans</strong> (Dzire, Etios), <strong>SUVs</strong> (Innova Crysta, Ertiga), <Link href="/tempo-traveller" className="text-amber-600 font-medium hover:underline">12-26 seater tempo travellers</Link>, and <Link href="/bus-routes" className="text-amber-600 font-medium hover:underline">22-56 seater buses</Link>. Rated <strong>4.9 stars by 10,000+ customers</strong>, we provide 24/7 support, instant WhatsApp booking, and complete pricing transparency. Popular routes: <Link href="/search?from=delhi&to=agra&type=oneway" className="text-amber-600 font-medium hover:underline">Delhi to Agra</Link> ({'\u20B9'}2,760), <Link href="/search?from=delhi&to=jaipur&type=oneway" className="text-amber-600 font-medium hover:underline">Delhi to Jaipur</Link> ({'\u20B9'}3,360), <Link href="/search?from=delhi&to=shimla&type=oneway" className="text-amber-600 font-medium hover:underline">Delhi to Shimla</Link> ({'\u20B9'}4,200). We also offer <Link href="/sightseeing" className="text-amber-600 font-medium hover:underline">sightseeing tours</Link> and <Link href="/tour-guide" className="text-amber-600 font-medium hover:underline">certified tour guides</Link>.
+              Our fleet includes <strong>Sedans</strong> (Dzire, Etios), <strong>SUVs</strong> (Innova Crysta, Ertiga), <Link href="/tempo-traveller" className="text-amber-600 font-medium hover:underline">12-26 seater tempo travellers</Link>, and <Link href="/bus-routes" className="text-amber-600 font-medium hover:underline">22-56 seater buses</Link>. Rated <strong>4.9 stars by 10,000+ customers</strong>, we provide 24/7 support, instant WhatsApp booking, and complete pricing transparency. Popular routes: <Link href="/search?from=delhi&to=agra&type=oneway" className="text-amber-600 font-medium hover:underline">Delhi to Agra</Link> ({'\u20B9'}3,300), <Link href="/search?from=delhi&to=jaipur&type=oneway" className="text-amber-600 font-medium hover:underline">Delhi to Jaipur</Link> ({'\u20B9'}3,360), <Link href="/search?from=delhi&to=shimla&type=oneway" className="text-amber-600 font-medium hover:underline">Delhi to Shimla</Link> ({'\u20B9'}4,200). We also offer <Link href="/sightseeing" className="text-amber-600 font-medium hover:underline">sightseeing tours</Link> and <Link href="/tour-guide" className="text-amber-600 font-medium hover:underline">certified tour guides</Link>.
             </p>
           </div>
         </div>
@@ -626,7 +626,7 @@ function TrendingSearchesSection() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center gap-2 mb-5">
           <Search className="w-5 h-5 text-amber-500" />
-          <h2 className="text-xl sm:text-2xl font-black text-gray-900">Trending on Triveni Cabs</h2>
+          <h2 className="text-xl sm:text-2xl font-black text-gray-900">Trending on Triveni Cabs™</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {TRENDING_LINKS.map((link, i) => (
@@ -647,7 +647,7 @@ function TrendingSearchesSection() {
 
 // ─── Airport Transfer Hero Banner — photo backdrop entry point ───────────────
 function AirportHeroBanner() {
-  const waText = 'Hi Triveni Cabs, I need an airport taxi with flight tracking & meet-and-greet. Please share availability and fare.';
+  const waText = 'Hi Triveni Cabs™, I need an airport taxi with flight tracking & meet-and-greet. Please share availability and fare.';
   const waUrl = `https://wa.me/917668570551?text=${encodeURIComponent(waText)}`;
   return (
     <section className="relative overflow-hidden min-h-[380px] sm:min-h-[440px] flex items-center">

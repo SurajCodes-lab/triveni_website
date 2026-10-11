@@ -6,25 +6,25 @@ import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const slug = 'triveni-cabs-driver-verification';
-const pageTitle = 'Triveni Cabs Driver Verification Process | Background-Checked Drivers — 4.9★';
-const pageDesc = 'Triveni Cabs driver verification: police background check, driving test, customer service training, medical fitness. 100% verified drivers for safe travel. Call 7668570551.';
+const pageTitle = 'Triveni Cabs™ Driver Verification Process | Background-Checked Drivers — 4.9★';
+const pageDesc = 'Triveni Cabs™ driver verification: police background check, driving test, customer service training, medical fitness. 100% verified drivers for safe travel. Call 7668570551.';
 
 export const metadata = {
   title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs driver verification', 'verified cab drivers india', 'background checked cab drivers', 'safe cab drivers', 'driver verification process', 'cab driver training india', 'safe travel verified driver', 'police verified cab driver', 'trusted cab driver service', 'driver safety standards'],
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
-    title: 'How Triveni Cabs Verifies Every Driver — 7-Step Safety Process',
+    title: 'How Triveni Cabs™ Verifies Every Driver — 7-Step Safety Process',
     description: pageDesc,
     type: 'website',
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${slug}`,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Driver Verification Process' }],
   },
   twitter: { card: 'summary_large_image', title: pageTitle, description: pageDesc, creator: '@trivenicabs', site: '@trivenicabs' },
@@ -32,8 +32,8 @@ export const metadata = {
 };
 
 const faqs = [
-  { question: 'How does Triveni Cabs verify its drivers?', answer: 'Our 7-step process includes: document verification, police background check, driving skill assessment, medical fitness test, customer service training, probation period with monitored trips, and ongoing performance reviews.' },
-  { question: 'Are Triveni Cabs drivers police verified?', answer: 'Yes, every Triveni Cabs driver undergoes police background verification before being assigned any trip. This includes criminal record checks, address verification, and identity confirmation.' },
+  { question: 'How does Triveni Cabs™ verify its drivers?', answer: 'Our 7-step process includes: document verification, police background check, driving skill assessment, medical fitness test, customer service training, probation period with monitored trips, and ongoing performance reviews.' },
+  { question: 'Are Triveni Cabs™ drivers police verified?', answer: 'Yes, every Triveni Cabs™ driver undergoes police background verification before being assigned any trip. This includes criminal record checks, address verification, and identity confirmation.' },
   { question: 'Do your drivers undergo training?', answer: 'Yes, all drivers complete mandatory training covering safe driving practices, customer etiquette, navigation skills, emergency handling, and basic first aid. Refresher training is conducted quarterly.' },
   { question: 'Can I see my driver details before the trip?', answer: 'Yes, we share your driver\'s name, photo, phone number, vehicle number, and verification status before the trip. You can also request to speak with the driver before departure.' },
   { question: 'What happens if I have a complaint about a driver?', answer: 'Call our 24/7 support line (7668570551) immediately. All complaints are investigated within 24 hours. Serious issues lead to immediate suspension pending investigation. We take driver quality very seriously.' },
@@ -50,7 +50,7 @@ export default function DriverVerificationPage() {
   };
   const articleSchema = getArticleSchema({
     slug,
-    headline: 'Triveni Cabs Driver Verification: 7-Step Background Check Process',
+    headline: 'Triveni Cabs™ Driver Verification: 7-Step Background Check Process',
     description: pageDesc,
     image: '/images/citypage_hero_section_image.jpg',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
@@ -58,7 +58,7 @@ export default function DriverVerificationPage() {
   const speakableSchema = { "@context": "https://schema.org", "@type": "WebPage", "@id": `https://www.trivenicabs.in/${slug}#webpage`, "speakable": getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']) };
   const howToSchema = getHowToSchema({
     name: 'How Triveni Cabs Verifies Every Driver',
-    description: 'The 7-step process every Triveni Cabs driver completes before being assigned a trip.',
+    description: 'The 7-step process every Triveni Cabs™ driver completes before being assigned a trip.',
     totalTime: 'P30D',
     steps: [
       { name: 'Document Verification', text: 'Driving licence, Aadhaar, PAN and address proof are verified against government databases.' },
@@ -93,7 +93,7 @@ export default function DriverVerificationPage() {
       <TrustPageClient
         title="Our 7-Step Driver Verification Process"
         subtitle="100% Background-Checked Drivers"
-        description="Your safety is our top priority. Every Triveni Cabs driver goes through a rigorous 7-step verification and training process before being assigned a single trip."
+        description="Your safety is our top priority. Every Triveni Cabs™ driver goes through a rigorous 7-step verification and training process before being assigned a single trip."
         sections={[
           {
             title: 'The 7-Step Verification Process',

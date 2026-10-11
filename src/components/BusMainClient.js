@@ -128,7 +128,7 @@ export default function BusMainClient({ data }) {
     },
     {
       question: 'Can I get a GST invoice for a corporate bus booking?',
-      answer: 'Yes, we provide a proper GST invoice for all corporate and business bus bookings, along with a single point of contact for multi-vehicle coordination. This makes Triveni Cabs ideal for company offsites, conferences, and employee transportation that require compliant billing and reimbursement.'
+      answer: 'Yes, we provide a proper GST invoice for all corporate and business bus bookings, along with a single point of contact for multi-vehicle coordination. This makes Triveni Cabs™ ideal for company offsites, conferences, and employee transportation that require compliant billing and reimbursement.'
     }
   ];
 
@@ -213,13 +213,13 @@ export default function BusMainClient({ data }) {
           {/* Direct-answer lead box — voice/AI answer target (.speakable-lead) */}
           <div className="speakable-lead rounded-2xl border border-[#FACF2D]/40 bg-gradient-to-br from-[#FFF9E6] to-orange-50 p-6 shadow-sm md:p-8">
             <p className="text-base leading-relaxed text-gray-800 md:text-lg">
-              <strong>Bus on rent in India</strong> starts at <strong>₹30/km</strong> for a 22-seater AC mini bus and goes up to <strong>₹65/km</strong> for a 56-seater luxury Volvo coach. Triveni Cabs offers <strong>22, 25, 27, 32, 35, 41, 45, 49, 52 and 56 seater AC buses</strong> for hire, all with pushback recliner seats, entertainment systems, GPS tracking and professional drivers. The per-km rate includes the bus, fuel and driver; tolls, state permits, parking and driver night allowance (₹800-1200/day) are extra at actuals. Buses are available across <strong>Delhi, Mumbai, Jaipur, Agra, Chandigarh, Haridwar, Udaipur</strong> and 100+ routes for <strong>weddings, corporate offsites, pilgrimage groups, school trips and tours</strong>. Book in 2 minutes by calling <strong>+91 76685 70551</strong> or on WhatsApp — 4.9★ rated.
+              <strong>Bus on rent in India</strong> starts at <strong>₹30/km</strong> for a 22-seater AC mini bus and goes up to <strong>₹65/km</strong> for a 56-seater luxury Volvo coach. Triveni Cabs™ offers <strong>22, 25, 27, 32, 35, 41, 45, 49, 52 and 56 seater AC buses</strong> for hire, all with pushback recliner seats, entertainment systems, GPS tracking and professional drivers. The per-km rate includes the bus, fuel and driver; tolls, state permits, parking and driver night allowance (₹800-1200/day) are extra at actuals. Buses are available across <strong>Delhi, Mumbai, Jaipur, Agra, Chandigarh, Haridwar, Udaipur</strong> and 100+ routes for <strong>weddings, corporate offsites, pilgrimage groups, school trips and tours</strong>. Book in 2 minutes by calling <strong>+91 76685 70551</strong> or on WhatsApp — 4.9★ rated.
             </p>
           </div>
 
           <div className="mt-10 text-center">
             <p className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl">
-              Looking for reliable <strong>bus rental services in India</strong>? Triveni Cabs offers premium <strong>luxury bus hire</strong> from <strong>22 seater mini buses</strong> to <strong>56 seater Volvo coaches</strong>. Perfect for corporate events, weddings, pilgrimage tours, and group travel.
+              Looking for reliable <strong>bus rental services in India</strong>? Triveni Cabs™ offers premium <strong>luxury bus hire</strong> from <strong>22 seater mini buses</strong> to <strong>56 seater Volvo coaches</strong>. Perfect for corporate events, weddings, pilgrimage tours, and group travel.
             </p>
             <p className="text-lg leading-relaxed text-gray-700 md:text-xl">
               Book <strong>AC buses</strong> with <strong>professional drivers</strong> for <strong>Delhi, Mumbai, Jaipur</strong>, and all major routes across India. All vehicles feature pushback seats, entertainment systems, GPS tracking, and spacious luggage storage for comfortable long-distance travel.
@@ -382,7 +382,7 @@ export default function BusMainClient({ data }) {
         )}
         {/* Honest cross-sell — smaller groups ride cheaper per seat in a tempo */}
         <p className="mt-5 text-center text-sm text-slate-400">
-          For groups of 12-26, a <Link href="/tempo-traveller" className="font-semibold text-amber-400 underline underline-offset-2 hover:text-amber-300">tempo traveller</Link> at ₹20–28/km may be more economical. Call <a href="tel:+917668570551" onClick={() => trackPhoneCall('bus_hub_comparison')} className="font-semibold text-amber-400 hover:text-amber-300">{PHONE}</a> for a tailored quote.
+          For a group of twelve or fewer, a <Link href="/tempo-traveller" className="font-semibold text-amber-400 underline underline-offset-2 hover:text-amber-300">12-seater Tempo Traveller</Link> at ₹23/km may be more economical. Call <a href="tel:+917668570551" onClick={() => trackPhoneCall('bus_hub_comparison')} className="font-semibold text-amber-400 hover:text-amber-300">{PHONE}</a> for a tailored quote.
         </p>
       </Section>
 

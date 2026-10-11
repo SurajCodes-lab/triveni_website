@@ -8,9 +8,9 @@ export const metadata = {
   title: tightenTitle('Ayodhya Ram Mandir Tour from Delhi | Sedan ₹8,500 | 2-3 Day'),
   description: 'Book Ayodhya Ram Mandir tour from Delhi. 530km, 9-10 hrs drive. Sedan ₹8,500, SUV ₹12,000. Ram Mandir darshan, Hanuman Garhi, Saryu Ghat. Call 7668570551.',
   keywords: 'ayodhya ram mandir tour from delhi, tour package india, sightseeing tour, triveni cabs',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/ayodhya-ram-mandir-tour-from-delhi' },
   openGraph: {
@@ -18,7 +18,7 @@ export const metadata = {
     description: 'Book Delhi to Ayodhya Ram Mandir cab. 530km drive, 2-3 day packages. Sedan ₹8,500, SUV ₹12,000. Darshan assistance included. Call 7668570551.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/ayodhya-ram-mandir-tour-from-delhi',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{
       url: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg',
       width: 1200, height: 630,
@@ -42,7 +42,7 @@ export default function AyodhyaRamMandirTourFromDelhi() {
     "serviceType": "Delhi to Ayodhya Ram Mandir Tour",
     "name": "Ayodhya Ram Mandir Tour from Delhi",
     "description": "Comfortable cab service from Delhi to Ayodhya for Ram Mandir darshan. 530km drive, 2-3 day packages with AC vehicles.",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
+    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
     "areaServed": { "@type": "City", "name": "Delhi" },
     "offers": [
       { "@type": "Offer", "name": "Sedan Package", "price": "8500", "priceCurrency": "INR" },
@@ -64,7 +64,7 @@ export default function AyodhyaRamMandirTourFromDelhi() {
     { question: "Is there a dress code for Ram Mandir?", answer: "While there is no strict dress code, modest and traditional Indian attire is recommended. Avoid sleeveless tops, shorts, and revealing clothing. Many devotees prefer wearing traditional clothes in saffron or white." },
     { question: "Can I do a same-day Delhi to Ayodhya trip?", answer: "A same-day return is not recommended as the 530 km drive takes 9-10 hours one way. We recommend at least a 2-day package (overnight stay in Ayodhya) or ideally a 3-day package for a relaxed darshan experience." },
     { question: "What other temples can I visit in Ayodhya?", answer: "Besides Ram Mandir, visit Hanuman Garhi (hilltop temple), Kanak Bhawan (golden temple), Dashrath Mahal, Nageshwarnath Temple, Treta Ke Thakur, Ram Ki Paidi Ghat, and Saryu Ghat for evening aarti." },
-    { question: "Do you provide hotel booking in Ayodhya?", answer: "Yes, Triveni Cabs assists with hotel booking in Ayodhya. We recommend staying in hotels near Ram Mandir for convenience. Options range from budget dharamshalas to premium hotels. Book in advance during peak season." }
+    { question: "Do you provide hotel booking in Ayodhya?", answer: "Yes, Triveni Cabs™ assists with hotel booking in Ayodhya. We recommend staying in hotels near Ram Mandir for convenience. Options range from budget dharamshalas to premium hotels. Book in advance during peak season." }
   ];
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
 
@@ -214,9 +214,9 @@ export default function AyodhyaRamMandirTourFromDelhi() {
         </div>
 
         {/* === BENTO GRID: Packages + Route === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-5 py-2 rounded-full mb-4 text-sm font-semibold">
                 <IndianRupee className="w-4 h-4" /> Tour Packages & Pricing
               </div>
@@ -266,12 +266,12 @@ export default function AyodhyaRamMandirTourFromDelhi() {
         </section>
 
         {/* === RAM MANDIR DARSHAN GUIDE — Arch-shaped cards === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-amber-50/30 via-orange-50/50 to-amber-50/30 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-amber-50/30 via-orange-50/50 to-amber-50/30 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-orange-300/20 rounded-full blur-[80px]" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-300/20 rounded-full blur-[100px]" />
 
           <div className="max-w-6xl mx-auto relative">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-amber-100 text-orange-800 px-5 py-2 rounded-full mb-4 text-sm font-semibold">
                 <Sparkles className="w-4 h-4" /> Darshan Guide
               </div>
@@ -283,7 +283,6 @@ export default function AyodhyaRamMandirTourFromDelhi() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Darshan Timings Card */}
               <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-orange-200/50 hover:border-orange-400 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-orange-200/40 to-amber-200/40 rounded-full blur-2xl" />
                 <div className="relative">
                   <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                     <Clock className="w-7 h-7 text-white" />
@@ -312,7 +311,6 @@ export default function AyodhyaRamMandirTourFromDelhi() {
 
               {/* Dress Code & Guidelines Card */}
               <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-orange-200/50 hover:border-orange-400 hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-yellow-200/40 rounded-full blur-2xl" />
                 <div className="relative">
                   <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-amber-500/25">
                     <Shield className="w-7 h-7 text-white" />
@@ -339,10 +337,10 @@ export default function AyodhyaRamMandirTourFromDelhi() {
         </section>
 
         {/* === TEMPLES: Sacred Bento Grid === */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-amber-50/30 to-white" />
           <div className="max-w-7xl mx-auto relative">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl md:text-5xl font-black text-stone-900 mb-4">
                 Sacred Sites of <span className="text-transparent bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text">Ayodhya</span>
               </h2>
@@ -378,10 +376,10 @@ export default function AyodhyaRamMandirTourFromDelhi() {
         </section>
 
         {/* === ITINERARY: Timeline Design === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-white via-orange-50/30 to-amber-50/30 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-white via-orange-50/30 to-amber-50/30 relative overflow-hidden">
           <div className="absolute top-20 right-10 w-40 h-40 bg-orange-300/15 rounded-full blur-[80px]" />
           <div className="max-w-4xl mx-auto relative">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-5 py-2 rounded-full mb-4 text-sm font-semibold">
                 <Navigation className="w-4 h-4" /> Day-by-Day
               </div>
@@ -418,14 +416,14 @@ export default function AyodhyaRamMandirTourFromDelhi() {
         </section>
 
         {/* === SEO PROSE: E-E-A-T Rich Content Section === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-white to-orange-50/30">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-white to-orange-50/30">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-stone-900 mb-8">
-              Why Choose Triveni Cabs for Your <span className="text-transparent bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text">Delhi to Ayodhya Cab Service</span>
+              Why Choose Triveni Cabs™ for Your <span className="text-transparent bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text">Delhi to Ayodhya Cab Service</span>
             </h2>
             <div className="prose prose-lg max-w-none text-stone-600 space-y-4">
               <p>
-                Triveni Cabs has been operating <Link href="/outstation-cabs" className="text-orange-600 hover:text-amber-600 underline underline-offset-2">outstation cab services</Link> across North India since 2015, and our Delhi to Ayodhya Ram Mandir tour is among the most booked pilgrimage routes in our fleet. With <strong>500+ Ayodhya trips completed</strong> in the last year alone, our drivers know every kilometer of the 530 km Delhi-Ayodhya highway — from the best dhaba stops near Kanpur to the fastest route through Lucknow to avoid city traffic.
+                Triveni Cabs™ has been operating <Link href="/outstation-cabs" className="text-orange-600 hover:text-amber-600 underline underline-offset-2">outstation cab services</Link> across North India since 2015, and our Delhi to Ayodhya Ram Mandir tour is among the most booked pilgrimage routes in our fleet. With <strong>500+ Ayodhya trips completed</strong> in the last year alone, our drivers know every kilometer of the 530 km Delhi-Ayodhya highway — from the best dhaba stops near Kanpur to the fastest route through Lucknow to avoid city traffic.
               </p>
               <p>
                 What makes booking a <strong>Delhi to Ayodhya cab</strong> with us different? First, every vehicle in our Ayodhya tour fleet is <Link href="/safety" className="text-orange-600 hover:text-amber-600 underline underline-offset-2">GPS-tracked with real-time monitoring</Link> from our dispatch center at 366 Dandupura, Agra. Second, our drivers are not just drivers — they are experienced yatra guides who help you navigate the Ram Mandir darshan queue, suggest the best time for Hanuman Garhi visit, and know exactly where to park near Saryu Ghat for the evening aarti.
@@ -459,9 +457,9 @@ export default function AyodhyaRamMandirTourFromDelhi() {
         </section>
 
         {/* === FAQ: Accordion with sacred styling === */}
-        <section className="py-20 px-4 bg-white relative">
+        <section className="py-12 sm:py-20 px-4 bg-white relative">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl md:text-5xl font-black text-stone-900 mb-4">
                 Frequently Asked <span className="text-transparent bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text">Questions</span>
               </h2>
@@ -483,10 +481,10 @@ export default function AyodhyaRamMandirTourFromDelhi() {
         </section>
 
         {/* === INTERLINKS: Ayodhya Tours + Cross-Category === */}
-        <section className="py-16 px-4 bg-gradient-to-b from-white to-orange-50/30">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-white to-orange-50/30">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-8 text-center">Explore More Ayodhya Tours</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours/ayodhya-ram-mandir-yatra", title: "Ayodhya Ram Mandir Yatra", sub: "5-6 day complete pilgrimage", price: "₹12,000" },
                 { href: "/ayodhya-ram-mandir-tour-from-agra", title: "Ayodhya Tour from Agra", sub: "400 km via expressway", price: "₹7,000" },
@@ -508,7 +506,7 @@ export default function AyodhyaRamMandirTourFromDelhi() {
 
             {/* Cross-Category: Related Services */}
             <h3 className="text-xl font-bold text-stone-800 mb-6 text-center">Related Services You May Need</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours", title: "All Religious Tours", desc: "Char Dham, Vaishno Devi, Kashi & 10+ pilgrimages" },
                 { href: "/prayagraj-sangam-tour", title: "Prayagraj Sangam Tour", desc: "Combine Ayodhya with Triveni Sangam (160 km away)" },
@@ -530,7 +528,7 @@ export default function AyodhyaRamMandirTourFromDelhi() {
 
             {/* Geographic Cluster: Nearby Pilgrimages */}
             <h3 className="text-xl font-bold text-stone-800 mb-6 text-center">Nearby Pilgrimage Destinations</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours/mathura-vrindavan-barsana-tour", label: "Mathura Vrindavan Tour" },
                 { href: "/kanwar-yatra-cab-haridwar", label: "Kanwar Yatra to Haridwar" },
@@ -558,8 +556,8 @@ export default function AyodhyaRamMandirTourFromDelhi() {
                       { href: "/delhi-to-agra", label: "Delhi to Agra Cab" },
                       { href: "/delhi-to-jaipur", label: "Delhi to Jaipur Cab" },
                       { href: "/delhi-to-chandigarh", label: "Delhi to Chandigarh" },
-                      { href: "/delhi-to-manali", label: "Delhi to Manali Cab" },
-                      { href: "/delhi-to-haridwar", label: "Delhi to Haridwar" },
+                      { href: "/one-way-cab/delhi-to-manali", label: "Delhi to Manali Cab" },
+                      { href: "/one-way-cab/delhi-to-haridwar", label: "Delhi to Haridwar" },
                       { href: "/delhi-to-lucknow", label: "Delhi to Lucknow Cab" },
                       { href: "/delhi-to-varanasi", label: "Delhi to Varanasi" },
                       { href: "/delhi-to-shimla", label: "Delhi to Shimla Cab" },
@@ -623,7 +621,7 @@ export default function AyodhyaRamMandirTourFromDelhi() {
         </section>
 
         {/* === CTA: Grand sacred design === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-orange-700 via-amber-600 to-orange-600" />
           <div className="absolute top-0 left-0 w-full h-full">
             <div className="absolute top-10 left-[20%] w-60 h-60 bg-orange-400/20 rounded-full blur-[80px]" />

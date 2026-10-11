@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
+import { NOINDEX_ROBOTS, isNoindexPath } from '@/lib/seo/noindex-families.mjs';
 import CorporateComboClient from "@/components/corporate/CorporateComboClient";
+import CorporateFleetTable from "@/components/seo/CorporateFleetTable";
 import {
   getCorporateComboParams,
   getCorporateCombo,
@@ -20,6 +22,7 @@ import {
   getTodayDate,
 } from "@/lib/seo/speakable-helpers";
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 const SITE_URL = "https://www.trivenicabs.in";
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -40,7 +43,7 @@ function buildIntro(city, item) {
     .slice(0, 3)
     .map((a) => a.name || a)
     .join(", ");
-  return `Triveni Cabs runs ${item.name} corporate transport in ${city.name} — employee pick-up & drop, shift shuttles, executive travel and airport transfers, billed from ₹11/km. ${areas ? `We cover ${city.name} hubs like ${areas}, ` : ""}with a dedicated account manager, GST invoicing, MIS reports, GPS-tracked vehicles, verified drivers and a 30-minute backup guarantee on 24/7 operations.`;
+  return `Triveni Cabs™ runs ${item.name} corporate transport in ${city.name} — employee pick-up & drop, shift shuttles, executive travel and airport transfers, billed from ₹11/km. ${areas ? `We cover ${city.name} hubs like ${areas}, ` : ""}with a dedicated account manager, GST invoicing, MIS reports, GPS-tracked vehicles, verified drivers and a 30-minute backup guarantee on 24/7 operations.`;
 }
 
 function buildComboFaqs(city, item, kind) {
@@ -68,12 +71,12 @@ function buildComboFaqs(city, item, kind) {
 export async function generateMetadata({ params }) {
   const { city: citySlug, sub: subSlug } = await params;
   const combo = getCorporateCombo(citySlug, subSlug);
-  if (!combo) return { title: "Corporate Transportation | Triveni Cabs" };
+  if (!combo) return { title: "Corporate Transportation | Triveni Cabs™" };
   const { city, item } = combo;
   const url = `${SITE_URL}/corporate-transportation-service/${citySlug}/${subSlug}`;
   const title = tightenTitle(`${item.name} Transport in ${city.name} — Corporate Cabs ₹11/km`);
   const description = `${item.name} corporate transportation in ${city.name}: employee pick-up & drop, shuttles, executive travel from ₹11/km. Account manager, GST invoice, MIS, GPS, 24/7. Call 7668570551.`;
-  const ogTitle = `${item.name} Corporate Transport in ${city.name} — Triveni Cabs`;
+  const ogTitle = `${item.name} Corporate Transport in ${city.name} — Triveni Cabs™`;
 
   return {
     title,
@@ -94,11 +97,11 @@ export async function generateMetadata({ params }) {
       type: "website",
       locale: "en_IN",
       url,
-      siteName: "Triveni Cabs",
+      siteName: "Triveni Cabs™",
       images: [{ url: `${SITE_URL}${city.heroImage}`, width: 1200, height: 630, alt: `${item.name} transport in ${city.name}` }],
     },
     twitter: { card: "summary_large_image", title: ogTitle, description, site: "@trivenicabs", creator: "@trivenicabs", images: [`${SITE_URL}${city.heroImage}`] },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
+    robots: isNoindexPath(`/corporate-transportation-service/${citySlug}/${subSlug}`) ? NOINDEX_ROBOTS : { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
   };
 }
 
@@ -109,7 +112,7 @@ export default async function CorporateComboPage({ params }) {
 
   const { city, item, kind } = combo;
   const url = `${SITE_URL}/corporate-transportation-service/${citySlug}/${subSlug}`;
-  const today = getTodayDate();
+  const today = (getContentUpdatedOn(`/corporate-transportation-service/${citySlug}/${subSlug}`) || getTodayDate());
 
   const intro = buildIntro(city, item);
   const faqs = buildComboFaqs(city, item, kind);
@@ -127,7 +130,7 @@ export default async function CorporateComboPage({ params }) {
 
   const howTo = getHowToSchema({
     name: `How to Set Up ${item.name} Transport in ${city.name}`,
-    description: `Set up ${item.name} corporate transport in ${city.name} with Triveni Cabs in four steps.`,
+    description: `Set up ${item.name} corporate transport in ${city.name} with Triveni Cabs™ in four steps.`,
     totalTime: "PT5M",
     steps: [
       { name: "Share your roster", text: `Send headcount, employee addresses and shift timings for your ${city.name} office by call, WhatsApp or the online form.` },
@@ -205,9 +208,13 @@ export default async function CorporateComboPage({ params }) {
   };
 
   return (
-    <CorporateComboClient
-      data={{ city, item, kind, citySlug, subSlug, intro, faqs, otherSubs, sameSubOtherCities }}
-      jsonLd={jsonLd}
-    />
+    <>
+      <CorporateComboClient
+        data={{ city, item, kind, citySlug, subSlug, intro, faqs, otherSubs, sameSubOtherCities }}
+        jsonLd={jsonLd}
+      />
+      {/* Week 49: the fleet-and-rate table, from the corporate fleet records, on every combination page. */}
+      <CorporateFleetTable city={city && city.name} context={item && item.name ? item.name.toLowerCase() : 'corporate travel'} />
+    </>
   );
 }

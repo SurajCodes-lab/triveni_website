@@ -41,6 +41,12 @@ import QuickAnswer from '@/components/seo/QuickAnswer';
 import Section from '@/components/ui/Section';
 import AuroraHeading from '@/components/ui/AuroraHeading';
 import RouteLine from '@/components/ui/RouteLine';
+// Week 48: the tempo / one-way sibling hrefs now come from `corridorLinks`
+// (server-side, membership-checked, already passed through canonicalLink) —
+// see the comment above `tempoHref` in the component. The build manifest's
+// client slice is only used for the origin-hub fallback.
+import clientSlugs from '@/generated/client-slugs.json';
+import { groupDigits } from '@/utilis/pricing';
 
 const TRUST_ROW = '4.9★ · Since 2015 · No hidden charges · Pay after trip';
 
@@ -66,6 +72,21 @@ const realValue = (v) => {
 
 export default function DynamicBusRoutesClient({ data }) {
   const { routeSlug, origin, destination, routeData, localSightseeing, fleet, routeDescription, relatedRoutes, corridorLinks = [] } = data;
+
+  // Week 48: the "tempo traveller" and "one-way cab" cross-links further down
+  // were synthesised from the corridor name for every bus route, but 35 of the
+  // 80 bus corridors have no tempo page and 31 have no one-way page, so the
+  // cards linked to URLs that were never built (/tempo-traveller/jaipur-to-
+  // bharatpur and the like — Googlebot followed them). corridorLinks is built
+  // server-side from the same slug sets the generateStaticParams use, so a
+  // sibling link is only used when its page exists; otherwise the card points
+  // at the origin's tempo / outstation hub, both real pages.
+  const originSlug = origin.toLowerCase().replace(/\s+/g, '-');
+  const corridorHref = (category) => (corridorLinks.find((l) => l.category === category) || {}).href;
+  const tempoHref = corridorHref('tempo-traveller')
+    || ((clientSlugs['tempo-traveller'] || []).includes(originSlug) ? `/tempo-traveller/${originSlug}` : '/tempo-traveller');
+  const oneWayHref = corridorHref('one-way-cab')
+    || ((clientSlugs['outstation-cabs'] || []).includes(originSlug) ? `/outstation-cabs/${originSlug}` : '/one-way-cab');
 
   const fleetList = useMemo(() => (Array.isArray(fleet) ? fleet : []), [fleet]);
 
@@ -146,7 +167,7 @@ export default function DynamicBusRoutesClient({ data }) {
     },
     {
       question: `How much does it cost to rent a bus from ${origin} to ${destination}?`,
-      answer: `Bus rental rates from ${origin} to ${destination} start from ₹${minRate}/km for a ${minSeats} seater mini bus and go up to ₹${maxRate}/km for a ${maxSeats} seater luxury Volvo. A one-way drop is billed at the same rate as a round trip, since the coach returns to base either way. Final cost depends on bus size, season and booking duration. Contact us at +91-7668570551 for exact quotes.`
+      answer: `Bus rental rates from ${origin} to ${destination} start from ₹${groupDigits(minRate)}/km for a ${minSeats} seater mini bus and go up to ₹${groupDigits(maxRate)}/km for a ${maxSeats} seater luxury Volvo. A one-way drop is billed at the same rate as a round trip, since the coach returns to base either way. Final cost depends on bus size, season and booking duration. Contact us at +91-7668570551 for exact quotes.`
     },
     {
       question: `Can I book a bus online for ${origin} to ${destination}?`,
@@ -169,7 +190,7 @@ export default function DynamicBusRoutesClient({ data }) {
   return (
     <article className="min-h-screen bg-slate-950 text-white" itemScope itemType="https://schema.org/TravelAction">
       <SetStickyCta
-        price={`From ₹${minRate}/km`}
+        price={`From ₹${groupDigits(minRate)}/km`}
         label={`${data.city || 'Bus'} Bus Hire`}
         whatsappText={`Hi, I want to book a bus from ${origin} to ${destination}. Please share availability and fare.`}
       />
@@ -215,8 +236,12 @@ export default function DynamicBusRoutesClient({ data }) {
               {/* Giant route title */}
               <h1 className="speakable-headline font-display-serif text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
                 <span className="text-gradient-gold">{origin}</span>
-                <span className="mx-2 text-white/40 sm:mx-3">→</span>
-                <span className="text-gradient-gold">{destination}</span>
+                {/* sr-only restores the word "to" — the arrow is decorative, so the
+                    heading text previously read "AgraDelhi" with no separator. */}
+                <span className="sr-only"> to </span>
+                <span className="mx-2 text-white/40 sm:mx-3" aria-hidden="true">→</span>
+                <span className="sr-only"> </span>
+                <span className="text-gradient-gold">{destination}</span>{' '}
                 <span className="mt-2 block text-lg font-bold text-white/75 sm:text-2xl">
                   Bus on Hire · {minSeats}–{maxSeats} Seater AC Coaches
                 </span>
@@ -224,7 +249,7 @@ export default function DynamicBusRoutesClient({ data }) {
 
               {/* Fare-first subline */}
               <p className="mt-4 text-base leading-relaxed text-slate-300/90 sm:text-lg">
-                From <strong className="text-amber-400">₹{minRate}/km</strong> for a {minSeats} seater AC mini bus
+                From <strong className="text-amber-400">₹{groupDigits(minRate)}/km</strong> for a {minSeats} seater AC mini bus
                 — fuel, driver and AC included. One-way is billed as a round trip, since the coach
                 returns to base either way. Private charter for your group, not seat booking.
               </p>
@@ -320,7 +345,7 @@ export default function DynamicBusRoutesClient({ data }) {
           eyebrow="Choose your coach"
           title={`Which bus size should I book for ${origin} to`}
           highlight={`${destination}?`}
-          subtitle={`Tap a coach to see its rate for this route. Every bus is AC with pushback seats and a professional driver — from a ${minSeats} seater mini bus at ₹${minRate}/km up to a ${maxSeats} seater luxury Volvo.`}
+          subtitle={`Tap a coach to see its rate for this route. Every bus is AC with pushback seats and a professional driver — from a ${minSeats} seater mini bus at ₹${groupDigits(minRate)}/km up to a ${maxSeats} seater luxury Volvo.`}
         />
 
         {/* Photo cards — one per coach size the fleet actually has */}
@@ -572,9 +597,9 @@ export default function DynamicBusRoutesClient({ data }) {
               </table>
             </div>
             <p className="mt-3 text-xs text-slate-400">
-              Rates include fuel, driver and AC. Tolls, parking, state permits and interstate taxes are extra. A bus charter costs the same for a one-way drop as for a round trip. For a group under 26, a{' '}
-              <Link href={`/tempo-traveller/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`} className="font-semibold text-amber-400 hover:text-amber-300">
-                tempo traveller at ₹20–28/km
+              Rates include fuel, driver and AC. Tolls, parking, state permits and interstate taxes are extra. A bus charter costs the same for a one-way drop as for a round trip. For a group of twelve or fewer, a, a{' '}
+              <Link href={tempoHref} className="font-semibold text-amber-400 hover:text-amber-300">
+                12-seater Tempo Traveller at ₹23/km
               </Link>{' '}
               usually works out cheaper per seat.
             </p>
@@ -596,11 +621,11 @@ export default function DynamicBusRoutesClient({ data }) {
           <div className="border-gradient-gold glass-dark rounded-3xl p-2 sm:p-3">
             <QuickAnswer
               tone="dark"
-              answer={`${origin} to ${destination} bus hire: ${minSeats}–${maxSeats} seater AC coaches from ₹${minRate}/km, rising to about ₹${maxRate}/km for the largest luxury Volvo${routeDistance ? `, covering roughly ${routeDistance}` : ''}${routeDuration ? ` in around ${routeDuration}` : ''}. One-way is billed as a round trip, since the coach returns to base either way — there is no one-way discount on bus charter. For groups under 26, a tempo traveller (₹20–28/km depending on seater) usually works out cheaper per seat. Every coach is AC with pushback seats and the rate covers fuel and driver; tolls, parking, state permits and the driver night allowance are billed extra. This is a private charter for your group, not a scheduled seat-booking service.`}
+              answer={`${origin} to ${destination} bus hire: ${minSeats}–${maxSeats} seater AC coaches from ₹${groupDigits(minRate)}/km, rising to about ₹${groupDigits(maxRate)}/km for the largest luxury Volvo${routeDistance ? `, covering roughly ${routeDistance}` : ''}${routeDuration ? ` in around ${routeDuration}` : ''}. One-way is billed as a round trip, since the coach returns to base either way — there is no one-way discount on bus charter. For groups under 26, a tempo traveller (₹23/km depending on seater) usually works out cheaper per seat. Every coach is AC with pushback seats and the rate covers fuel and driver; tolls, parking, state permits and the driver night allowance are billed extra. This is a private charter for your group, not a scheduled seat-booking service.`}
               facts={[
                 { label: 'Distance', value: routeDistance },
                 { label: 'Drive time', value: routeDuration },
-                { label: `From (${minSeats} seater)`, value: `₹${minRate}/km` },
+                { label: `From (${minSeats} seater)`, value: `₹${groupDigits(minRate)}/km` },
                 { label: 'Seating', value: `${minSeats} to ${maxSeats} seats` },
               ].filter((f) => realValue(f.value))}
             />
@@ -640,7 +665,7 @@ export default function DynamicBusRoutesClient({ data }) {
               {[
                 { label: 'Distance', value: routeDistance },
                 { label: 'Duration', value: routeDuration },
-                { label: 'Starting Rate', value: `₹${minRate}/km`, accent: true },
+                { label: 'Starting Rate', value: `₹${groupDigits(minRate)}/km`, accent: true },
                 { label: 'Bus Sizes', value: `${minSeats}-${maxSeats} Seat` },
               ].filter((f) => realValue(f.value)).map((f) => (
                 <div key={f.label} className="rounded-xl border border-amber-100 bg-white p-4 text-center">
@@ -650,13 +675,13 @@ export default function DynamicBusRoutesClient({ data }) {
               ))}
             </div>
             <p className="faq-answer speakable-lead text-base leading-relaxed text-slate-700 md:text-lg">
-              <strong>{origin} to {destination} bus hire</strong> starts at <strong>₹{minRate}/km</strong> for a {minSeats} seater AC mini bus and
-              runs to about <strong>₹{maxRate}/km</strong> for a {maxSeats} seater luxury Volvo.
+              <strong>{origin} to {destination} bus hire</strong> starts at <strong>₹{groupDigits(minRate)}/km</strong> for a {minSeats} seater AC mini bus and
+              runs to about <strong>₹{groupDigits(maxRate)}/km</strong> for a {maxSeats} seater luxury Volvo.
               {routeDistance && ` The route covers approximately ${routeDistance}`}{routeDuration && ` and takes around ${routeDuration}`}.
               A one-way drop is billed as a round trip, because the coach returns to base either way.
-              Triveni Cabs runs {minSeats} to {maxSeats} seater AC coaches with pushback seats,
+              Triveni Cabs™ runs {minSeats} to {maxSeats} seater AC coaches with pushback seats,
               entertainment systems, GPS tracking and professional drivers — ideal for corporate outings, wedding groups,
-              pilgrimages and school trips. For a group under 26, a <strong>tempo traveller at ₹20–28/km</strong> depending on seater
+              pilgrimages and school trips. For a group of twelve or fewer, a <strong>12-seater Tempo Traveller at ₹23/km</strong>
               usually costs less per seat. Book by calling <strong>+91-7668570551</strong> or WhatsApp for instant confirmation.
               4.9★ rated with 10,000+ group trips completed.
             </p>
@@ -846,7 +871,7 @@ export default function DynamicBusRoutesClient({ data }) {
       <Section tone="dark">
         <AuroraHeading
           tone="dark"
-          eyebrow="Why Triveni Cabs"
+          eyebrow="Why Triveni Cabs™"
           title={`Why choose our ${origin} to ${destination}`}
           highlight="bus service?"
           subtitle="Your trusted travel partner for safe and comfortable bus journeys."
@@ -892,6 +917,7 @@ export default function DynamicBusRoutesClient({ data }) {
               key={index}
               className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-amber-300 hover:shadow-lg"
             >
+              <h3 className="m-0">
               <button
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
                 aria-expanded={openFaq === index}
@@ -904,6 +930,7 @@ export default function DynamicBusRoutesClient({ data }) {
                   <span className="text-lg font-bold leading-none">+</span>
                 </span>
               </button>
+              </h3>
               {openFaq === index && (
                 <div className="px-5 pb-4 md:px-6 md:pb-5">
                   <p className={`text-sm leading-relaxed text-slate-600 md:text-base${index === 0 ? ' speakable-faq-first' : ''}`}>
@@ -1016,7 +1043,7 @@ export default function DynamicBusRoutesClient({ data }) {
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Link
-              href={`/tempo-traveller/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`}
+              href={tempoHref}
               className="group rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-all hover:border-amber-400 hover:shadow-lg"
             >
               <div className="mb-2 text-2xl">🚐</div>
@@ -1024,7 +1051,7 @@ export default function DynamicBusRoutesClient({ data }) {
               <p className="mt-1 text-sm text-slate-500">12-26 seater AC tempo from ₹23/km</p>
             </Link>
             <Link
-              href={`/one-way-cab/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`}
+              href={oneWayHref}
               className="group rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-all hover:border-amber-400 hover:shadow-lg"
             >
               <div className="mb-2 text-2xl">🚕</div>
@@ -1119,7 +1146,7 @@ function BusRouteRichBlock({ origin, destination, routeData }) {
         </section>
       )}
 
-      <section className="py-16 px-4 sm:px-6">
+      <section className="py-10 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-cyan-400 font-semibold text-sm tracking-widest uppercase">Bus Charter Q&amp;A</span>

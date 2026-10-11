@@ -1,11 +1,13 @@
 // src/utilis/travelByCarData.js - Complete data for 40 travel-by-car driving guide pages
 // Pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km (min 300km billing)
 
+import { PER_KM } from './pricing';
+
 function calcFares(distanceKm) {
   const billableKm = Math.max(distanceKm, 300);
   const sedan = billableKm * 11;
   const suv = billableKm * 15;
-  const tempo = billableKm * 20;
+  const tempo = billableKm * PER_KM.tempo;
   return {
     cabFares: {
       sedan: `₹${sedan.toLocaleString('en-IN')}`,
@@ -20,7 +22,7 @@ function calcFares(distanceKm) {
 
 function generateFaqs(origin, dest, distKm, drivingTime, bestCarType, sedanFare) {
   const suvFare = Math.max(distKm, 300) * 15;
-  const tempoFare = Math.max(distKm, 300) * 20;
+  const tempoFare = Math.max(distKm, 300) * PER_KM.tempo;
   return [
     { question: `How far is ${dest} from ${origin} by car?`, answer: `${dest} is approximately ${distKm} km from ${origin} by road. The drive takes around ${drivingTime} depending on traffic, road conditions, and stops. Starting early (5-6 AM) is recommended for the best experience.` },
     { question: `How long does it take to drive from ${origin} to ${dest}?`, answer: `The ${origin} to ${dest} drive takes about ${drivingTime} for the ${distKm} km journey, including short breaks. Early-morning departures avoid city traffic and, on hill routes, let you cover the mountain stretches in daylight.` },
@@ -32,7 +34,7 @@ function generateFaqs(origin, dest, distKm, drivingTime, bestCarType, sedanFare)
     { question: `When is the best time to drive from ${origin} to ${dest}?`, answer: `October to March is generally the most comfortable window for the ${origin} to ${dest} drive, with pleasant weather and clear roads. Avoid peak monsoon on hill routes due to landslide risk, and start at 5-6 AM year-round to beat traffic and heat.` },
     { question: `Should I book a one-way or round-trip cab from ${origin} to ${dest}?`, answer: `A one-way cab from ${origin} to ${dest} is cheapest if you are not returning, saving up to 50% versus round-trip. Choose round-trip if you plan to come back within a day or two and want the same driver and vehicle waiting for you.` },
     { question: `How many fuel and rest stops are there from ${origin} to ${dest}?`, answer: `There are several fuel stations and rest stops spaced along the ${origin} to ${dest} highway. On remote or hill stretches, pumps thin out, so our drivers top up the tank in advance and plan rest breaks every 2-3 hours.` },
-    { question: `Can I book a one-way cab from ${origin} to ${dest}?`, answer: `Yes, Triveni Cabs offers both one-way and round-trip cab service from ${origin} to ${dest}. One-way booking saves up to 50% compared to round-trip. Call 7668570551 or WhatsApp for instant quotes.` },
+    { question: `Can I book a one-way cab from ${origin} to ${dest}?`, answer: `Yes, Triveni Cabs™ offers both one-way and round-trip cab service from ${origin} to ${dest}. One-way booking saves up to 50% compared to round-trip. Call 7668570551 or WhatsApp for instant quotes.` },
     { question: `Is it better to drive or take a train/flight from ${origin} to ${dest}?`, answer: `Driving from ${origin} to ${dest} gives door-to-door convenience, luggage freedom, and the ability to stop at sights and dhabas en route — ideal for families and groups. A train or flight may be faster for very long distances, but loses the flexibility and scenic experience of a road trip. A chauffeur cab removes driving fatigue while keeping all the road-trip benefits.` },
   ];
 }
@@ -406,7 +408,7 @@ export const travelByCarRoutes = {
       "Jammu-Srinagar highway has one-way traffic on some sections — check schedule before starting",
       "Carry extra fuel, food, and water for the Jammu-Srinagar stretch — services are sparse",
       "Jawahar Tunnel can have long queues — be patient and keep engine running for ventilation",
-      "Winter driving requires snow chains and experience — hire a local driver through Triveni Cabs",
+      "Winter driving requires snow chains and experience — hire a local driver through Triveni Cabs™",
     ],
     petrolStops: 10,
     foodStops: ["Karnal (130 km)", "Ludhiana (320 km)", "Jammu (580 km)", "Patnitop (650 km)"],

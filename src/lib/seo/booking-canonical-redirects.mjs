@@ -31,7 +31,11 @@
  * Total consolidated: 26887 impressions across 21 redirects.
  */
 
-export const bookingCanonicalRedirects = [
+// The 86 one-way duplicate redirects generated in Week 47 were reverted the same
+// day at the client's instruction (every page stays live and indexed); the
+// generated file is kept for the record but is no longer merged here.
+
+const manualRedirects = [
   // Week 43 - content duplicate found by scripts/seo-check.mjs, not by the URL
   // audit: two blog posts written for the same query, rendering the identical
   // title. /best-time-to-visit-taj-mahal-2026 earns 45 clicks on 10,186
@@ -82,6 +86,23 @@ export const bookingCanonicalRedirects = [
   { source: '/round-trip/delhi-to-manali', destination: '/one-way-cab/delhi-to-manali', permanent: true },
   // /round-trip/delhi-to-dharamshala              318 impr, pos  59.9  ->  /delhi-to-dharamshala (pos 22.1)
   { source: '/round-trip/delhi-to-dharamshala', destination: '/delhi-to-dharamshala', permanent: true },
+
+  // 16 Sep 2026 GSC recovery pass — the current export shows these corridors
+  // on the edge of page one for their commercial queries, while three booking
+  // templates still compete for the same intent. Keep the root corridor page
+  // for Chandigarh routes (the URL already earning the visibility) and the
+  // previously selected canonical for Delhi routes. This also removes the
+  // duplicate sources from sitemap/site-directory generation and makes
+  // canonicalLink resolve every internal booking CTA directly.
+  { source: '/one-way-cab/chandigarh-to-amritsar', destination: '/chandigarh-to-amritsar', permanent: true },
+  { source: '/round-trip/chandigarh-to-amritsar', destination: '/chandigarh-to-amritsar', permanent: true },
+  { source: '/one-way-cab/chandigarh-to-kasauli', destination: '/chandigarh-to-kasauli', permanent: true },
+  { source: '/round-trip/chandigarh-to-kasauli', destination: '/chandigarh-to-kasauli', permanent: true },
+  { source: '/round-trip/delhi-to-dehradun', destination: '/one-way-cab/delhi-to-dehradun', permanent: true },
+  { source: '/round-trip/delhi-to-jaipur', destination: '/delhi-to-jaipur', permanent: true },
 ];
+
+// Week 43 hand-picked consolidations + Week 47 generated one-way duplicates.
+export const bookingCanonicalRedirects = [...manualRedirects];
 
 export default bookingCanonicalRedirects;

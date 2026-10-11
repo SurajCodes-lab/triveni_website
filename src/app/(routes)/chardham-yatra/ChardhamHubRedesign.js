@@ -39,6 +39,7 @@ import { yatraTypeComparison, peopleAlsoAsk, inclusions, exclusions } from '@/ut
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import { trackPhoneCall, trackWhatsAppClick } from '@/utilis/analytics';
+import { groupDigits } from '@/utilis/pricing';
 
 const PHONE = '7668570551';
 const TEL = 'tel:+917668570551';
@@ -159,7 +160,7 @@ export default function ChardhamHubRedesign({
         />
 
         {/* Hero content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center py-28">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center py-16 sm:py-28">
           <div
             className="inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-amber-400/10 px-5 py-2 backdrop-blur-md mb-7"
           >
@@ -287,7 +288,7 @@ export default function ChardhamHubRedesign({
                     </div>
                     <div className="p-5">
                       <div className="mb-3 flex flex-wrap items-center gap-2">
-                        <span className="rounded-full border border-amber-300/25 bg-amber-400/10 px-3 py-1 text-xs font-bold text-[#FACF2D]">₹{hub.vehicle.perKm}/km</span>
+                        <span className="rounded-full border border-amber-300/25 bg-amber-400/10 px-3 py-1 text-xs font-bold text-[#FACF2D]">₹{groupDigits(hub.vehicle.perKm)}/km</span>
                         <span className="text-xs text-indigo-300/70">{hub.vehicle.bestFor}</span>
                       </div>
                       <div className="mb-4 flex flex-wrap gap-1.5">
@@ -307,7 +308,7 @@ export default function ChardhamHubRedesign({
                   </Link>
                   {/* Per-card prefilled WhatsApp */}
                   <a
-                    href={wa(`Hi! I am interested in Char Dham Yatra 2026 by ${hub.vehicle.name} (₹${hub.vehicle.perKm}/km). Please share the package details.`)}
+                    href={wa(`Hi! I am interested in Char Dham Yatra 2026 by ${hub.vehicle.name} (₹${groupDigits(hub.vehicle.perKm)}/km). Please share the package details.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => onWa('chardham_vehicle_card', hub.vehicle.name)}
@@ -437,7 +438,7 @@ export default function ChardhamHubRedesign({
       <section className="relative px-4 py-16 md:py-24 bg-[#0e1428]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-14">
-            <SacredDivider label="॥ Why Triveni Cabs ॥" />
+            <SacredDivider label="॥ Why Triveni Cabs™ ॥" />
             <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-white mb-3">A Yatra in Safe, Experienced Hands</h2>
           </div>
 
@@ -495,7 +496,7 @@ export default function ChardhamHubRedesign({
                       {row.popular && <span className="ml-2 rounded-full bg-[#FACF2D] px-2 py-0.5 text-[10px] font-bold uppercase text-slate-900">Most Popular</span>}
                     </td>
                     <td className="px-5 py-4 text-sm text-slate-600">{row.seats}</td>
-                    <td className="px-5 py-4 text-sm font-bold text-amber-700">₹{row.perKm}</td>
+                    <td className="px-5 py-4 text-sm font-bold text-amber-700">₹{groupDigits(row.perKm)}</td>
                     <td className="px-5 py-4 text-sm font-black text-slate-900 tabular-nums">{row.est12Day}</td>
                     <td className="px-5 py-4 text-sm text-slate-500">{row.bestFor}</td>
                   </tr>
@@ -517,7 +518,7 @@ export default function ChardhamHubRedesign({
                   {row.popular && <span className="rounded-full bg-[#FACF2D] px-2 py-0.5 text-[10px] font-bold text-slate-900">POPULAR</span>}
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-500">{row.seats} seats · ₹{row.perKm}/km · {row.bestFor}</span>
+                  <span className="text-slate-500">{row.seats} seats · ₹{groupDigits(row.perKm)}/km · {row.bestFor}</span>
                   <span className="font-black text-amber-700 tabular-nums">{row.est12Day}</span>
                 </div>
               </Link>
@@ -744,7 +745,7 @@ export default function ChardhamHubRedesign({
           <h2 className="mb-6 font-display-serif text-3xl font-bold text-white">Complete Guide to Char Dham Yatra by Car, SUV &amp; Bus 2026</h2>
           <div className="space-y-5 text-indigo-100/70 leading-relaxed">
             <p>
-              The Char Dham Yatra — <strong className="text-white">Yamunotri, Gangotri, Kedarnath and Badrinath</strong> — is the holiest pilgrimage circuit in Hinduism. Established by Adi Shankaracharya in the 8th century, these four sacred temples in the Garhwal Himalayas of Uttarakhand draw over 30 lakh devotees each year. Triveni Cabs offers the most comprehensive range of vehicles for this divine journey, from budget sedans to luxury SUVs and large group buses.
+              The Char Dham Yatra — <strong className="text-white">Yamunotri, Gangotri, Kedarnath and Badrinath</strong> — is the holiest pilgrimage circuit in Hinduism. Established by Adi Shankaracharya in the 8th century, these four sacred temples in the Garhwal Himalayas of Uttarakhand draw over 30 lakh devotees each year. Triveni Cabs™ offers the most comprehensive range of vehicles for this divine journey, from budget sedans to luxury SUVs and large group buses.
             </p>
             <p>
               Choosing the right vehicle is crucial. The mountainous terrain of Uttarakhand demands powerful engines, reliable braking and experienced drivers. Our fleet includes the <Link href="/chardham-yatra/by-sedan" className="text-[#FACF2D] underline underline-offset-2">Swift Dzire (₹12/km)</Link> for budget-conscious couples, the <Link href="/chardham-yatra/by-ertiga" className="text-[#FACF2D] underline underline-offset-2">Maruti Ertiga (₹15/km)</Link> for small families, the legendary <Link href="/chardham-yatra/by-innova-crysta" className="text-[#FACF2D] underline underline-offset-2">Toyota Innova Crysta (₹18/km)</Link> as the gold standard, and the premium <Link href="/chardham-yatra/by-fortuner" className="text-[#FACF2D] underline underline-offset-2">Toyota Fortuner (₹25/km)</Link> with 4x4 capability.
@@ -792,7 +793,7 @@ export default function ChardhamHubRedesign({
       {/* ============================================================= */}
       {/* FINAL CTA                                                      */}
       {/* ============================================================= */}
-      <section className="relative overflow-hidden px-4 py-24">
+      <section className="relative overflow-hidden px-4 py-14 sm:py-24">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-600 via-amber-600 to-[#FACF2D]" />
         <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'radial-gradient(circle at 30% 40%, #fff 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
         <div className="relative z-10 mx-auto max-w-4xl text-center">

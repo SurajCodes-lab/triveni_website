@@ -3,6 +3,7 @@ import { Phone, MapPin, Shield, Clock, Users, Star, Car, ArrowRight, Sunrise, Ca
 
 import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const metadata = { title: 'Kashmir Travel Guide 2026: Best Time, Cost & Itinerary', description: 'Best time to visit Kashmir: Mar-Oct for valleys & tulips, Dec-Feb for snow. Plan 5-7 days across Srinagar, Gulmarg & Pahalgam. Dal Lake, houseboats, Wazwan + cab tips. Call 7668570551.', keywords: 'kashmir travel guide, paradise on earth, dal lake srinagar, gulmarg skiing, pahalgam travel, mughal gardens kashmir, kashmir houseboat, wazwan cuisine, srinagar tourism 2026, kashmir cab service', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/kashmir-travel-guide' }, openGraph: { title: 'Kashmir Travel Guide 2026 | Paradise on Earth - Dal Lake, Gulmarg & Pahalgam', description: 'Everything about visiting Kashmir. Dal Lake, Gulmarg, Pahalgam, houseboats, Wazwan, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/kashmir-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Kashmir_Valley/Kashmir_Valley_hero_section.jpg', width: 1200, height: 630, alt: 'Kashmir Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Kashmir Travel Guide 2026 | Paradise on Earth', description: 'Complete Kashmir guide. Dal Lake, Gulmarg, Pahalgam, houseboats, food.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Kashmir_Valley/Kashmir_Valley_hero_section.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
 export const revalidate = 3600;
 
@@ -154,7 +155,7 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* TABLE OF CONTENTS */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10"><h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3">Table of Contents</h2><p className="text-stone-500">Your chapter-by-chapter guide to Paradise on Earth</p></div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -172,7 +173,7 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* WELCOME */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="relative glass-card-light rounded-3xl p-8 md:p-12">
             <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full rounded-tl-3xl" />
@@ -193,7 +194,7 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* BEST TIME */}
-      <section className="py-16 px-4 bg-white/70">
+      <section className="py-10 sm:py-16 px-4 bg-white/70">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 1</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-2">Best Time to Visit Kashmir</h2>
@@ -215,7 +216,7 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* ATTRACTIONS */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 2</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-10">Top Attractions in Kashmir</h2>
@@ -250,13 +251,13 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* BOOK / SELL */}
-      <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+      <section className="py-10 sm:py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
         <div className="max-w-6xl mx-auto relative">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
               <Car className="w-4 h-4 text-amber-300" />
-              <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs™</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
             <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
@@ -297,7 +298,7 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* FOOD */}
-      <section className="py-16 px-4 bg-gradient-to-br from-orange-50 to-amber-50">
+      <section className="py-10 sm:py-16 px-4 bg-gradient-to-br from-orange-50 to-amber-50">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 3</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-2">Kashmir Food Guide</h2>
@@ -315,7 +316,7 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* SHOPPING */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 4</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-10">Shopping in Kashmir</h2>
@@ -334,12 +335,12 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* TRANSPORT */}
-      <section className="py-16 px-4 bg-white/70">
+      <section className="py-10 sm:py-16 px-4 bg-white/70">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 5</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-8">Getting Around Kashmir</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[{ mode: "Triveni Cabs (Private Taxi)", price: "&#8377;2,500-4,000/day", desc: "AC car with experienced local Kashmiri driver who knows every route. Essential for Gulmarg (50 km), Pahalgam (95 km), and Sonamarg (80 km) day trips from Srinagar. Airport pickup available. Call 7668570551.", highlight: true }, { mode: "Shikara (Dal Lake Boat)", price: "&#8377;500-2,000/hour", desc: "Traditional wooden boats for Dal Lake exploration. Essential for reaching houseboats, the floating vegetable market, and Mughal Gardens via water routes. Negotiate the rate before boarding. Sunset rides are magical.", highlight: false }, { mode: "Auto-rickshaw", price: "&#8377;30-200/trip", desc: "Available in Srinagar city for short trips. Good for old city exploration, local market visits, and restaurant hopping. Not available in Gulmarg or Pahalgam hill areas.", highlight: false }, { mode: "Pony / Horse Ride", price: "&#8377;500-2,000/trip", desc: "Essential for the Thajiwas Glacier trek in Sonamarg and some Pahalgam valley excursions. Fixed government rates are displayed at starting points. Also available for meadow rides in Gulmarg.", highlight: false }].map((t, idx) => (
+            {[{ mode: "Triveni Cabs™ (Private Taxi)", price: "&#8377;2,500-4,000/day", desc: "AC car with experienced local Kashmiri driver who knows every route. Essential for Gulmarg (50 km), Pahalgam (95 km), and Sonamarg (80 km) day trips from Srinagar. Airport pickup available. Call 7668570551.", highlight: true }, { mode: "Shikara (Dal Lake Boat)", price: "&#8377;500-2,000/hour", desc: "Traditional wooden boats for Dal Lake exploration. Essential for reaching houseboats, the floating vegetable market, and Mughal Gardens via water routes. Negotiate the rate before boarding. Sunset rides are magical.", highlight: false }, { mode: "Auto-rickshaw", price: "&#8377;30-200/trip", desc: "Available in Srinagar city for short trips. Good for old city exploration, local market visits, and restaurant hopping. Not available in Gulmarg or Pahalgam hill areas.", highlight: false }, { mode: "Pony / Horse Ride", price: "&#8377;500-2,000/trip", desc: "Essential for the Thajiwas Glacier trek in Sonamarg and some Pahalgam valley excursions. Fixed government rates are displayed at starting points. Also available for meadow rides in Gulmarg.", highlight: false }].map((t, idx) => (
               <div key={idx} className={`rounded-2xl p-5 transition-all duration-500 ${t.highlight ? 'glass-card-light border-2 border-amber-400 shadow-lg relative overflow-hidden' : 'glass-card-light hover:border-amber-300/50'}`} style={t.highlight ? { animation: 'pulse-gold 3s ease-in-out infinite' } : {}}>
                 {t.highlight && <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500" style={{ backgroundSize: '200% auto', animation: 'shimmer 3s linear infinite' }} />}
                 <div className="flex items-start justify-between mb-2">
@@ -355,7 +356,7 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* STAY */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 6</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-10">Where to Stay in Kashmir</h2>
@@ -373,8 +374,13 @@ export default function KashmirTravelGuidePage() {
         </div>
       </section>
 
+      {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+      <HowToReachTable city="Kashmir" citySlug="srinagar" />
+
+
       {/* FAQ */}
-      <section className="py-16 px-4 bg-white/70">
+      <section className="py-10 sm:py-16 px-4 bg-white/70">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">APPENDIX</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-10">Frequently Asked Questions</h2>
@@ -393,7 +399,7 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* LINKS */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-stone-800 mb-2 text-center">Explore More Destinations</h2>
           <p className="text-stone-500 text-center mb-8 text-sm">Related guides and tour pages</p>
@@ -409,7 +415,7 @@ export default function KashmirTravelGuidePage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-amber-700 via-amber-600 to-yellow-600" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
         <div className="absolute top-[20%] left-[10%] w-3 h-3 bg-white/20 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />
         <div className="absolute top-[60%] right-[15%] w-2 h-2 bg-white/15 rounded-full" style={{ animation: 'float 8s ease-in-out infinite 2s' }} />

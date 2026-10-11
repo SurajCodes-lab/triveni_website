@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import AEOHead from '@/components/seo/AEOHead';
+import CorporateFleetTable from '@/components/seo/CorporateFleetTable';
 import {
   getAllEventSlugs,
   getEventCityBySlug,
@@ -48,16 +50,16 @@ export async function generateMetadata({ params }) {
   const city = getEventCityBySlug(slug);
 
   if (!city) {
-    return { title: 'Event Transportation Services | Triveni Cabs' };
+    return { title: 'Event Transportation Services | Triveni Cabs™' };
   }
 
   return {
     title: city.metaTitle,
     description: city.metaDescription,
     keywords: city.keywords.join(', '),
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: {
       canonical: `/event-transportation-service/city/${slug}`,
@@ -68,7 +70,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/event-transportation-service/city/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [
         {
           url: city.heroImage,
@@ -86,16 +88,7 @@ export async function generateMetadata({ params }) {
       site: '@trivenicabs',
       images: [city.heroImage]
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -209,7 +202,7 @@ export default async function EventCityPage({ params }) {
           <div className="absolute bottom-20 left-10 w-[500px] h-[500px] bg-blue-600/25 rounded-full blur-[150px]" style={{ animationDelay: '1s' }} />
 
           {/* Content */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12 sm:py-20">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -223,7 +216,6 @@ export default async function EventCityPage({ params }) {
               {/* Left Content */}
               <div className="space-y-8">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <MapPin className="w-6 h-6 text-cyan-300" />
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">{city.tagline}</span>
@@ -231,7 +223,7 @@ export default async function EventCityPage({ params }) {
                 </div>
 
                 <h1 className="speakable-headline font-display-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]">
-                  Event Transport
+                  Event Transport{' '}
                   <span className="block mt-2 text-gold-foil">
                     in {city.name}
                   </span>
@@ -334,6 +326,8 @@ export default async function EventCityPage({ params }) {
         </section>
 
         {/* Trust Bar */}
+        <CorporateFleetTable city={city.name} context="event transport" />
+
         <section className="py-6 bg-slate-900 border-y border-slate-800">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
@@ -355,7 +349,7 @@ export default async function EventCityPage({ params }) {
         {/* Popular Venues Section — warm band */}
         <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] relative overflow-hidden">
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-cyan-500/30">
                 <Building2 className="w-5 h-5 text-white" />
                 <span className="text-white font-semibold text-sm tracking-wider uppercase">Popular Venues</span>
@@ -394,7 +388,7 @@ export default async function EventCityPage({ params }) {
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-cyan-500/20 backdrop-blur-xl px-6 py-3 rounded-full mb-6 border border-cyan-400/30">
                 <Calendar className="w-5 h-5 text-cyan-400" />
                 <span className="text-cyan-300 font-semibold text-sm tracking-wider uppercase">Event Services in {city.name}</span>
@@ -445,7 +439,7 @@ export default async function EventCityPage({ params }) {
             </div>
 
             {/* Event Categories Summary */}
-            <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="mt-10 sm:mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {eventCategories.map((category, idx) => (
                 <div key={category.id} className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10">
                   <div className="flex items-center gap-3 mb-4">
@@ -472,7 +466,7 @@ export default async function EventCityPage({ params }) {
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-cyan-500/30">
                 <Car className="w-5 h-5 text-white" />
                 <span className="text-white font-semibold text-sm tracking-wider uppercase">Fleet in {city.name}</span>
@@ -530,7 +524,7 @@ export default async function EventCityPage({ params }) {
         {/* FAQ Section — warm band */}
         <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] relative overflow-hidden">
           <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-white/70 ring-1 ring-amber-900/10 px-6 py-3 rounded-full mb-6">
                 <HelpCircle className="w-5 h-5 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">FAQ</span>
@@ -587,7 +581,7 @@ export default async function EventCityPage({ params }) {
             backgroundSize: '40px 40px'
           }} />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 py-14 sm:py-24">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-xl px-5 py-2.5 rounded-full mb-8 border border-cyan-400/30">

@@ -6,7 +6,7 @@ export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Self-Drive vs Driver Cab in Delhi — Which Is Better?'),
-  description: 'Self-drive car rental vs chauffeur-driven cab in Delhi: compare cost, convenience, safety, fatigue and parking. Triveni Cabs is driver-only — see why a chauffeur wins for most trips. Call 7668570551.',
+  description: 'Self-drive car rental vs chauffeur-driven cab in Delhi: compare cost, convenience, safety, fatigue and parking. Triveni Cabs™ is driver-only — see why a chauffeur wins for most trips. Call 7668570551.',
   keywords: ['self drive vs driver cab delhi', 'self drive car vs with driver', 'self drive car rental delhi', 'chauffeur driven vs self drive', 'rent car with driver delhi', 'self drive or driver cab', 'is self drive cheaper than cab'],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
@@ -31,7 +31,7 @@ export default function Page() {
       slug="self-drive-vs-driver-cab-delhi"
       title="Self-Drive vs Driver Cab in Delhi"
       h1="Self-Drive vs Driver Cab in Delhi — Which Should You Choose?"
-      intro="Searching for car rental in Delhi, you'll see two options: rent a self-drive car and drive yourself, or book a chauffeur-driven cab. Triveni Cabs is a chauffeur-only service — we don't offer self-drive — so here is an honest, side-by-side look at how the two compare on cost, convenience, safety and fatigue, to help you decide which fits your trip."
+      intro="Searching for car rental in Delhi, you'll see two options: rent a self-drive car and drive yourself, or book a chauffeur-driven cab. Triveni Cabs™ is a chauffeur-only service — we don't offer self-drive — so here is an honest, side-by-side look at how the two compare on cost, convenience, safety and fatigue, to help you decide which fits your trip."
       leftName="Self-Drive Car"
       rightName="Driver Cab (Triveni)"
       rows={[
@@ -47,17 +47,17 @@ export default function Page() {
         { label: 'Best for quick errands', left: '✓', right: '—' },
         { label: 'Best for outstation/tours', left: '—', right: '✓' },
       ]}
-      verdict="Self-drive makes sense only for short, familiar in-city errands where you enjoy driving and want total privacy. For almost everything else — outstation trips, tours, airport transfers, family travel, or any driving at night or on unfamiliar roads — a chauffeur-driven cab is safer, less tiring and often cheaper once you add fuel, parking and your own time. Triveni Cabs offers chauffeur-driven cabs only, with an upfront all-inclusive fare, so call us with your trip details and we'll match you to the right vehicle."
+      verdict="Self-drive makes sense only for short, familiar in-city errands where you enjoy driving and want total privacy. For almost everything else — outstation trips, tours, airport transfers, family travel, or any driving at night or on unfamiliar roads — a chauffeur-driven cab is safer, less tiring and often cheaper once you add fuel, parking and your own time. Triveni Cabs™ offers chauffeur-driven cabs only, with an upfront all-inclusive fare, so call us with your trip details and we'll match you to the right vehicle."
       faqs={[
-        { question: 'Does Triveni Cabs offer self-drive cars in Delhi?', answer: 'No. Triveni Cabs is a chauffeur-driven service only — every rental comes with a verified professional driver. We do not rent self-drive cars, which is why we recommend a driver for most trips.' },
+        { question: 'Does Triveni Cabs™ offer self-drive cars in Delhi?', answer: 'No. Triveni Cabs™ is a chauffeur-driven service only — every rental comes with a verified professional driver. We do not rent self-drive cars, which is why we recommend a driver for most trips.' },
         { question: 'Is a driver cab more expensive than self-drive?', answer: 'On paper self-drive looks cheaper, but once you add fuel, parking and your own driving effort, a chauffeur-driven cab is comparable — and on outstation and long trips it is often better value because fuel and the driver are already in the per-km fare.' },
         { question: 'Is it safer to take a driver cab at night?', answer: 'Yes. A professional, background-verified driver knows the roads, handles fatigue and avoids the risks of night driving on unfamiliar routes. This is a key reason travellers choose a chauffeur for outstation and late-night trips.' },
         { question: 'Can I still stop wherever I want with a driver cab?', answer: 'Absolutely. The driver waits while you sightsee, eat or shop. With self-drive you would have to find parking and then not fully enjoy the stop. See our [outstation cabs](/outstation-cabs-near-me) and [Delhi cab service](/delhi).' },
-        { question: 'What documents do I need for a driver cab?', answer: 'Just confirm your pickup and drop. No license, no security deposit — the driver and vehicle are fully managed by Triveni Cabs.' },
+        { question: 'What documents do I need for a driver cab?', answer: 'Just confirm your pickup and drop. No license, no security deposit — the driver and vehicle are fully managed by Triveni Cabs™.' },
       ]}
       relatedLinks={[
         { href: '/delhi', anchor: 'Cab service in Delhi' },
-        { href: '/one-way-cab/delhi-to-agra', anchor: 'Delhi to Agra one-way cab' },
+        { href: '/delhi-to-agra', anchor: 'Delhi to Agra one-way cab' },
         { href: '/outstation-cabs-near-me', anchor: 'Outstation cabs near me' },
         { href: '/innova-crysta-rent-per-km', anchor: 'Innova Crysta rent per km' },
         { href: '/cab-service-near-me', anchor: 'Cab service near me' },

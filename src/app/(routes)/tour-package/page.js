@@ -28,13 +28,13 @@ function getItems() {
 export async function generateMetadata() {
   const title = tightenTitle('Tour Packages by Car — Curated North India Trips');
   const description =
-    'Browse curated multi-day tour packages across North India — Golden Triangle, Rajasthan, Himachal, Kashmir, Char Dham and more — with chauffeur-driven cabs. Triveni Cabs 7668570551.';
+    'Browse curated multi-day tour packages across North India — Golden Triangle, Rajasthan, Himachal, Kashmir, Char Dham and more — with chauffeur-driven cabs. Triveni Cabs™ 7668570551.';
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

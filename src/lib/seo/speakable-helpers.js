@@ -99,7 +99,7 @@ export function getArticleSchema({
       "name": "Triveni Cabs",
       "logo": {
         "@type": "ImageObject",
-        "url": `${baseUrl}/images/logo/logo2.webp`,
+        "url": `${baseUrl}/images/logo/logo2-tm.webp`,
         "width": 200,
         "height": 60
       }
@@ -273,7 +273,16 @@ export function getCityPlaceSchema(citySlug, opts = {}) {
   return {
     "@context": "https://schema.org",
     "@type": c.type,
-    "@id": `${baseUrl}/${opts.idSlug || slug}#place`,
+    // Week 47: callers pass idSlug like "distance/delhi-to-agra/origin" to keep
+    // the origin and destination Place ids distinct. Google strips the fragment
+    // and crawls the path, and "/origin" and "/destination" paths do not exist —
+    // the access log showed Googlebot 404-ing on hundreds of them. The
+    // distinction now lives in the fragment, so the crawled URL is the real page.
+    "@id": (() => {
+      const raw = String(opts.idSlug || slug);
+      const m = raw.match(/^(.*)\/(origin|destination)$/);
+      return m ? `${baseUrl}/${m[1]}#place-${m[2]}` : `${baseUrl}/${raw}#place`;
+    })(),
     "name": c.name,
     ...(c.alt ? { "alternateName": c.alt } : {}),
     "description": opts.description || `${c.name}, ${c.state}, India.`,

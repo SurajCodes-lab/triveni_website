@@ -23,6 +23,8 @@ import { getAllDistanceRouteSlugs } from './distanceData';
 import { getAllTollCostSlugs } from './tollCostData';
 import { busRoutes } from './busRoutesData';
 import { tempoRoutes } from './tempoTravellerData';
+import { canonicalLink } from '../lib/seo/canonical-link';
+import { routeExists } from '../lib/seo/route-exists';
 
 // Replicate the exact slug construction used by bus-routes / tempo-traveller
 // generateStaticParams so membership matches the pages that actually build.
@@ -58,6 +60,13 @@ function sets() {
 
 // Display metadata + ordering for each category (booking formats first).
 const CATEGORY_META = {
+  // The corridor's general booking page, which lives at the bare slug rather
+  // than under a category folder. It was missing from this map, so no page on
+  // the site ever linked to it through the corridor block -- including the
+  // distance pages, which are the highest-appearance pages the site has.
+  // Nine corridors had a booking page and no path to it from their distance
+  // page at all; Haridwar to Dehradun is shown 43,555 times a quarter.
+  'root': { label: 'Cab Booking', sub: 'Fares & vehicles', kind: 'book' },
   'one-way-cab': { label: 'One-Way Cab', sub: 'Pay one side only', kind: 'book' },
   'round-trip': { label: 'Round Trip', sub: 'Return fare included', kind: 'book' },
   'tempo-traveller': { label: 'Tempo Traveller', sub: '9–26 seater group', kind: 'book' },
@@ -66,7 +75,11 @@ const CATEGORY_META = {
   'toll-cost': { label: 'Toll & FASTag Cost', sub: 'Exact toll charges', kind: 'info' },
 };
 
+// 'round-trip' was removed from the cluster while the family was noindexed
+// (Week 47) and restored the same day when the client chose to keep every
+// page in the index.
 const ORDER = [
+  'root',
   'one-way-cab',
   'round-trip',
   'tempo-traveller',
@@ -74,6 +87,34 @@ const ORDER = [
   'distance',
   'toll-cost',
 ];
+
+// Week 49: the anchor text a crawler reads. A link that says "Distance & Route"
+// tells it nothing about which distance; one that says "Delhi to Agra distance"
+// says exactly what the page answers, in the words people type. The corridor's
+// own names are taken from the slug, which is where every other family gets
+// them, so nothing new has to be maintained.
+const TITLE_CASE = (w) => w.charAt(0).toUpperCase() + w.slice(1);
+function pairFromSlug(slug) {
+  const m = /^(.+)-to-(.+)$/.exec(String(slug || ''));
+  if (!m) return null;
+  const nice = (x) => x.split('-').map(TITLE_CASE).join(' ');
+  return { from: nice(m[1]), to: nice(m[2]) };
+}
+function labelFor(cat, slug, meta) {
+  const p = pairFromSlug(slug);
+  if (!p) return meta.label;
+  const pair = `${p.from} to ${p.to}`;
+  switch (cat) {
+    case 'root': return `${pair} cab`;
+    case 'distance': return `${pair} distance`;
+    case 'toll-cost': return `${pair} toll`;
+    case 'one-way-cab': return `${pair} one-way cab`;
+    case 'round-trip': return `${pair} round trip`;
+    case 'tempo-traveller': return `${pair} tempo traveller`;
+    case 'bus-routes': return `${pair} bus hire`;
+    default: return meta.label;
+  }
+}
 
 /**
  * getCorridorLinks(slug, currentCategory)
@@ -87,16 +128,24 @@ export function getCorridorLinks(slug, currentCategory) {
   const links = [];
   for (const cat of ORDER) {
     if (cat === currentCategory) continue;
-    if (s[cat] && s[cat].has(slug)) {
-      const meta = CATEGORY_META[cat];
-      links.push({
-        category: cat,
-        label: meta.label,
-        sub: meta.sub,
-        kind: meta.kind,
-        href: `/${cat}/${slug}`,
-      });
-    }
+    const isRoot = cat === 'root';
+    const path = isRoot ? `/${slug}` : `/${cat}/${slug}`;
+    // The booking page has no slug set of its own — ask the build manifest.
+    const exists = isRoot ? routeExists(path) : Boolean(s[cat] && s[cat].has(slug));
+    if (!exists) continue;
+    const href = canonicalLink(path);
+    // A corridor whose booking URL is consolidated onto one of the other
+    // formats would otherwise be listed twice under two names.
+    if (links.some((l) => l.href === href)) continue;
+    const meta = CATEGORY_META[cat];
+    links.push({
+      category: cat,
+      label: labelFor(cat, slug, meta),
+      shortLabel: meta.label,
+      sub: meta.sub,
+      kind: meta.kind,
+      href,
+    });
   }
   return links;
 }

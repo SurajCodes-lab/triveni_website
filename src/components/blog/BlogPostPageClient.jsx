@@ -1,20 +1,24 @@
 'use client';
 
 import { useMemo } from 'react';
+import SeasonalCorridorCallout from '@/components/seasonal/SeasonalCorridorCallout';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import { getRelatedLinks, getRelatedRoutes, getMoneyPageLinks } from '@/utilis/linkingHelper';
-import { getLayoutComponent } from './layouts';
+import Link from '@/components/ui/JourneyLink';
+// Imported from the selector module, NOT the barrel: layouts/index.js re-exports
+// all twelve layout components, so importing from it pulled every one of them
+// into the bundle and defeated the dynamic imports below.
+import { getLayoutComponent } from './layouts/selectLayout';
 import RelatedPosts from './RelatedPosts';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { generateBlogFAQs } from '@/lib/seo/faq-generator';
-import { PopularRoutes, QuickLinksGrid } from '@/components/seo/RelatedContent';
+import { PopularRoutes } from '@/components/seo/RelatedContent';
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import InlineCTA from '@/components/seo/InlineCTA';
 import {
   Car, MapPin, Clock, Phone, ArrowRight, WhatsAppIcon,
   Zap, Landmark, Bus, IndianRupee, Plane, Church, Heart,
 } from '@/components/ui/icons';
+import { canonicalClientHref } from '@/lib/seo/client-route-exists';
 
 const PHONE = '7668570551';
 const WA_NUMBER = '917668570551';
@@ -134,7 +138,7 @@ function BookThisTripBox({ trip }) {
           <div className="relative grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
             <div className="md:col-span-3">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FACF2D] mb-3">
-                Triveni Cabs · Since 2015
+                Triveni Cabs™ · Since 2015
               </p>
               <h2 className="font-display-serif text-2xl sm:text-3xl font-bold leading-tight m-0">
                 {trip.heading}
@@ -180,7 +184,7 @@ function BookThisTripBox({ trip }) {
 
             <div className="md:col-span-2 flex flex-col gap-3">
               <Link
-                href={trip.ctaHref}
+                href={canonicalClientHref(trip.ctaHref)}
                 className="sheen inline-flex items-center justify-center gap-2 rounded-xl bg-[#FACF2D] px-6 py-3.5 text-base font-extrabold text-black shadow-[0_10px_30px_-8px_rgba(250,207,45,0.6)] transition hover:bg-[#ffdb4d] active:scale-[0.99]"
               >
                 {trip.ctaText}
@@ -204,7 +208,7 @@ function BookThisTripBox({ trip }) {
               </a>
               {showRouteLink && (
                 <Link
-                  href={trip.routeHref}
+                  href={canonicalClientHref(trip.routeHref)}
                   className="text-center text-xs font-semibold text-slate-400 underline underline-offset-4 transition hover:text-[#FACF2D]"
                 >
                   See the full Delhi to {trip.destination} fare breakdown
@@ -218,7 +222,7 @@ function BookThisTripBox({ trip }) {
   );
 }
 
-export default function BlogPostPageClient({ post, tripCTA = null }) {
+export default function BlogPostPageClient({ post, tripCTA = null, relatedLinks = [], routes = [], moneyLinks = [], relatedPosts = [], seasonalCallout = null, glance = null, planningGuide = null }) {
   // Safety check
   if (!post) {
     return (
@@ -228,15 +232,12 @@ export default function BlogPostPageClient({ post, tripCTA = null }) {
     );
   }
 
-  // Get related links based on city
-  const relatedLinks = useMemo(() => {
-    return getRelatedLinks(post);
-  }, [post]);
+  // relatedLinks, routes and moneyLinks now arrive as props, computed on the
+  // server. They used to be derived here, which pulled sightseeingData.js
+  // (1.3 MB) into the browser bundle for every blog page.
 
   // SEO: Generate FAQ, routes, and money page links
   const blogFAQs = useMemo(() => generateBlogFAQs({ city: post?.city, title: post?.title, tags: post?.tags, category: post?.category }), [post?.city, post?.title, post?.tags, post?.category]);
-  const routes = useMemo(() => post?.city ? getRelatedRoutes(post.city) : [], [post?.city]);
-  const moneyLinks = useMemo(() => post?.city ? getMoneyPageLinks(post.city) : [], [post?.city]);
 
   // Determine which layout to use - 12 unique designs
   const layoutName = useMemo(() => {
@@ -396,7 +397,44 @@ export default function BlogPostPageClient({ post, tripCTA = null }) {
         </div>
       )}
 
+      {/* Week 48: at-a-glance rows for the monument guides: hours, closed day,
+          ticket, read from the post's own attractionData (see
+          src/lib/seo/monument-glance.js). Server-rendered, above the fold. */}
+      {glance && (
+        <div className="max-w-5xl mx-auto px-4 mt-4">
+          <section aria-labelledby="glance-heading" className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
+            <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-[3px] ${LANE}`} />
+            <div className="flex items-center gap-2.5 mb-3">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#FACF2D]/20">
+                <Landmark className="h-4 w-4 text-amber-600" />
+              </span>
+              <h2 id="glance-heading" className="font-display-serif text-lg sm:text-xl font-bold text-slate-900 m-0">{glance.name} at a glance</h2>
+            </div>
+            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 m-0">
+              {glance.rows.map((r) => (
+                <div key={r.label} className="flex items-baseline justify-between gap-3 border-b border-dashed border-slate-200 py-1.5">
+                  <dt className="text-[13px] font-semibold uppercase tracking-wide text-slate-500 m-0">{r.label}</dt>
+                  <dd className="text-right text-[15px] font-medium text-slate-900 m-0">{r.value}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-3 text-xs text-slate-500 m-0">
+              As printed in this guide{glance.publishedLabel ? `, published ${glance.publishedLabel}` : ''}. Hours and fees change on festival days; the driver checks the day&apos;s timing before you leave.
+            </p>
+          </section>
+        </div>
+      )}
+
+      {/* The planning guide used to render here, above the article. Measured at
+          360px it was 1,119px tall, which pushed the post's own h1 down to
+          2,355px — nearly three phone screens before the reader reached the
+          title of the page they had just opened. It is a "plan your visit"
+          section, so it belongs after the guide it supports, not in front of
+          it. The Quick Answer and at-a-glance cards above stay where they are:
+          they are short, and they are the direct answer for someone who
+          searched for timings or an entry fee. */}
       <LayoutComponent post={post} relatedLinks={relatedLinks} />
+      {planningGuide}
 
       {/* Conversion unit, prime slot — the reader has just finished the article.
           Route-aware box when we resolved a destination, generic InlineCTA
@@ -410,7 +448,7 @@ export default function BlogPostPageClient({ post, tripCTA = null }) {
             headline="Planning This Trip? We Drive It Daily."
             sub="Sedan ₹11/km · SUV ₹15/km · Tempo Traveller from ₹23/km. Fixed all-inclusive fares, no advance deposit."
             context={`blog_${post.slug}`}
-            waMessage={`Hi Triveni Cabs, I read "${post.title}" on your blog and want to book a cab. Please share fares and availability.`}
+            waMessage={`Hi Triveni Cabs™, I read "${post.title}" on your blog and want to book a cab. Please share fares and availability.`}
           />
         </div>
       )}
@@ -507,8 +545,9 @@ export default function BlogPostPageClient({ post, tripCTA = null }) {
       {/* SEO: Popular Routes */}
       {routes.length > 0 && <PopularRoutes city={post.city} routes={routes} />}
 
-      {/* SEO: Quick Links Grid */}
-      {moneyLinks.length > 0 && <QuickLinksGrid title="Quick Links" links={moneyLinks} />}
+      {/* In-window festival / yatra call-out for the post's destination (server-resolved). */}
+      <SeasonalCorridorCallout callout={seasonalCallout} />
+
 
       {/* Second conversion unit — catches readers who scrolled past the box
           above into the FAQ and route links. Skipped when the box above was
@@ -531,7 +570,7 @@ export default function BlogPostPageClient({ post, tripCTA = null }) {
 
       {/* Related Posts */}
       <div className="max-w-5xl mx-auto px-4">
-        <RelatedPosts currentPostId={post.id} currentCategory={post.category} currentTags={post.tags} />
+        <RelatedPosts posts={relatedPosts} />
       </div>
     </>
   );

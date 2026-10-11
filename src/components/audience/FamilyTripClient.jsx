@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 import { Phone, MapPin, Shield, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, IndianRupee, Baby, Hotel, Route, Compass, HelpCircle } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
@@ -87,7 +87,7 @@ export default function FamilyTripClient({ data }) {
             <span className="mt-2 block text-xl font-semibold text-white/85 sm:text-2xl lg:text-3xl">from Delhi by Car</span>
           </h1>
           <p className="speakable-lead mb-5 max-w-3xl text-lg leading-relaxed text-amber-50/85 sm:text-xl">
-            A family trip to {data.destination} from Delhi by car covers {data.distance} in about {data.duration}. Triveni Cabs offers a private {data.vehicle.name} from Rs {data.price.sedan.toLocaleString()} (sedan) to Rs {data.price.suv.toLocaleString()} (SUV), all-inclusive of toll, parking and driver allowance, with kid-friendly stops, child seats on request and verified drivers.
+            A family trip to {data.destination} from Delhi by car covers {data.distance} in about {data.duration}. Triveni Cabs™ offers a private {data.vehicle.name} from Rs {data.price.sedan.toLocaleString()} (sedan) to Rs {data.price.suv.toLocaleString()} (SUV), all-inclusive of toll, parking and driver allowance, with kid-friendly stops, child seats on request and verified drivers.
           </p>
           <p className="mb-10 max-w-3xl text-base leading-relaxed text-amber-50/65">
             {data.tagline}. Safe, comfortable {data.vehicle.name} ride with experienced drivers who know family-friendly routes and rest breaks.
@@ -258,7 +258,7 @@ export default function FamilyTripClient({ data }) {
             ))}
           </div>
 
-          <h2 className="font-display-serif mb-3 mt-16 text-2xl font-bold text-white sm:text-3xl md:text-4xl">Family Safety Features</h2>
+          <h2 className="font-display-serif mb-3 mt-10 sm:mt-16 text-2xl font-bold text-white sm:text-3xl md:text-4xl">Family Safety Features</h2>
           <p className="mb-10 text-lg text-amber-100/55">Your family’s safety is our highest priority</p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {data.safetyFeatures.map((feature, i) => (
@@ -272,7 +272,7 @@ export default function FamilyTripClient({ data }) {
           </div>
 
           {/* Mid-page CTA strip */}
-          <div className="mt-16 flex flex-col items-center justify-between gap-5 rounded-2xl border border-[#FACF2D]/25 bg-white/5 p-6 backdrop-blur-xl sm:flex-row sm:p-8">
+          <div className="mt-10 sm:mt-16 flex flex-col items-center justify-between gap-5 rounded-2xl border border-[#FACF2D]/25 bg-white/5 p-6 backdrop-blur-xl sm:flex-row sm:p-8">
             <div>
               <h3 className="text-xl font-bold text-white">Ready to plan your family trip to {data.destination}?</h3>
               <p className="mt-1 text-sm text-amber-100/60">Free quote in ~2 minutes &middot; No advance payment</p>
@@ -318,7 +318,7 @@ export default function FamilyTripClient({ data }) {
             ))}
           </div>
 
-          <h2 className="font-display-serif mb-10 mt-16 flex items-center gap-3 text-2xl font-bold sm:text-3xl md:text-4xl">
+          <h2 className="font-display-serif mb-10 mt-10 sm:mt-16 flex items-center gap-3 text-2xl font-bold sm:text-3xl md:text-4xl">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900">
               <Compass className="h-5 w-5 text-[#FACF2D]" />
             </span>

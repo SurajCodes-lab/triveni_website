@@ -8,9 +8,9 @@ export const metadata = {
   title: tightenTitle('Ayodhya Ram Mandir Tour from Agra | Sedan ₹7,000 | 2-3 Day'),
   description: 'Book Ayodhya Ram Mandir tour from Agra. 400km, 7-8 hrs drive. Sedan ₹7,000, SUV ₹10,000. Ram Mandir darshan, Hanuman Garhi, Saryu Ghat. Call 7668570551.',
   keywords: 'ayodhya ram mandir tour from agra, tour package india, sightseeing tour, triveni cabs',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/ayodhya-ram-mandir-tour-from-agra' },
   openGraph: {
@@ -18,7 +18,7 @@ export const metadata = {
     description: 'Book Agra to Ayodhya Ram Mandir cab. 400km drive, 2-3 day packages. Sedan ₹7,000, SUV ₹10,000. Darshan assistance included.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/ayodhya-ram-mandir-tour-from-agra',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{
       url: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg',
       width: 1200, height: 630,
@@ -37,7 +37,7 @@ export const metadata = {
 };
 
 export default function AyodhyaRamMandirTourFromAgra() {
-  const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Agra to Ayodhya Ram Mandir Tour", "name": "Ayodhya Ram Mandir Tour from Agra", "description": "Comfortable cab service from Agra to Ayodhya for Ram Mandir darshan. 400km drive, 2-3 day packages.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": { "@type": "City", "name": "Agra" }, "offers": [{ "@type": "Offer", "name": "Sedan Package", "price": "7000", "priceCurrency": "INR" }, { "@type": "Offer", "name": "SUV Package", "price": "10000", "priceCurrency": "INR" }] };
+  const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Agra to Ayodhya Ram Mandir Tour", "name": "Ayodhya Ram Mandir Tour from Agra", "description": "Comfortable cab service from Agra to Ayodhya for Ram Mandir darshan. 400km drive, 2-3 day packages.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": { "@type": "City", "name": "Agra" }, "offers": [{ "@type": "Offer", "name": "Sedan Package", "price": "7000", "priceCurrency": "INR" }, { "@type": "Offer", "name": "SUV Package", "price": "10000", "priceCurrency": "INR" }] };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Religious Tours", "item": "https://www.trivenicabs.in/religious-tours" }, { "@type": "ListItem", "position": 3, "name": "Ayodhya Ram Mandir Tour from Agra", "item": "https://www.trivenicabs.in/ayodhya-ram-mandir-tour-from-agra" }] };
   const touristTripSchema = { "@context": "https://schema.org", "@type": "TouristTrip", "name": "Agra to Ayodhya Ram Mandir Tour", "description": "Sacred pilgrimage from Agra to Ayodhya Ram Mandir. 400km drive covering Ram Janmabhoomi, Hanuman Garhi, Kanak Bhawan.", "touristType": "Religious Pilgrimage" };
 
@@ -45,7 +45,7 @@ export default function AyodhyaRamMandirTourFromAgra() {
     { question: "How far is Ayodhya from Agra by road?", answer: "Ayodhya is approximately 400 km from Agra by road. The drive takes 7-8 hours via the Agra-Lucknow Expressway and NH27. The expressway makes the first half of the journey very smooth and fast." },
     { question: "What is the cab fare from Agra to Ayodhya?", answer: "Sedan cab from Agra to Ayodhya starts at ₹7,000 and SUV starts at ₹10,000. This includes AC vehicle, experienced driver, fuel, and tolls. Round-trip packages for 2-3 days are available at discounted rates." },
     { question: "What is the best route from Agra to Ayodhya?", answer: "The best route is Agra to Lucknow via Agra-Lucknow Expressway, then Lucknow to Ayodhya (400 km, 7-8 hours). The Agra-Lucknow Expressway covers about 300 km in just 3-4 hours." },
-    { question: "Can I combine Taj Mahal and Ayodhya in one trip?", answer: "Yes! Since Triveni Cabs is based in Agra, we can arrange a combined Taj Mahal + Ayodhya tour. Visit Taj Mahal and Agra Fort on Day 1, drive to Ayodhya on Day 2, Ram Mandir darshan on Day 3, and return to Agra on Day 4." },
+    { question: "Can I combine Taj Mahal and Ayodhya in one trip?", answer: "Yes! Since Triveni Cabs™ is based in Agra, we can arrange a combined Taj Mahal + Ayodhya tour. Visit Taj Mahal and Agra Fort on Day 1, drive to Ayodhya on Day 2, Ram Mandir darshan on Day 3, and return to Agra on Day 4." },
     { question: "What are the Ram Mandir darshan timings?", answer: "Shri Ram Mandir is open from 7:00 AM to 11:30 AM and 2:00 PM to 7:00 PM. Aarti timings are 6:00 AM, 12:00 PM, and 7:30 PM. Arrive early for shorter queues." },
     { question: "Is Agra-Lucknow Expressway safe for night travel?", answer: "The Agra-Lucknow Expressway is well-lit and patrolled, making it safer than most highways. However, we recommend starting early morning rather than night travel for the best experience." },
     { question: "What other temples can I visit in Ayodhya?", answer: "Besides Ram Mandir, visit Hanuman Garhi, Kanak Bhawan, Dashrath Mahal, Nageshwarnath Temple, Treta Ke Thakur, Ram Ki Paidi Ghat, and Saryu Ghat for evening aarti." },
@@ -102,7 +102,7 @@ export default function AyodhyaRamMandirTourFromAgra() {
               Agra <span className="text-transparent bg-gradient-to-r from-amber-300 to-yellow-300 bg-clip-text">to</span> Ayodhya
             </h1>
             <p className="text-2xl md:text-3xl font-bold text-amber-200/80 mb-6">Ram Mandir Tour</p>
-            <p className="text-lg text-amber-100/60 mb-10 max-w-2xl mx-auto">400 km via Agra-Lucknow Expressway. Fast, comfortable, and blessed. Direct from Triveni Cabs HQ in Agra.</p>
+            <p className="text-lg text-amber-100/60 mb-10 max-w-2xl mx-auto">400 km via Agra-Lucknow Expressway. Fast, comfortable, and blessed. Direct from Triveni Cabs™ HQ in Agra.</p>
 
             {/* Stats strip */}
             <div className="inline-flex flex-wrap justify-center gap-4 mb-10">
@@ -139,13 +139,13 @@ export default function AyodhyaRamMandirTourFromAgra() {
         </section>
 
         {/* === WHY FROM AGRA: Ornamental Grid === */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl md:text-5xl font-black text-stone-900 mb-4">
                 Why Book from <span className="text-transparent bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text">Agra?</span>
               </h2>
-              <p className="text-stone-500 text-lg">Triveni Cabs headquarters — fastest pickup, best rates, no middlemen</p>
+              <p className="text-stone-500 text-lg">Triveni Cabs™ headquarters — fastest pickup, best rates, no middlemen</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -171,12 +171,12 @@ export default function AyodhyaRamMandirTourFromAgra() {
         </section>
 
         {/* === PRICING: Mughal Arch-Inspired Cards === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-stone-50 via-amber-50/40 to-stone-50 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-stone-50 via-amber-50/40 to-stone-50 relative overflow-hidden">
           <div className="absolute top-10 left-10 w-60 h-60 bg-amber-300/15 rounded-full blur-[80px]" />
           <div className="absolute bottom-10 right-10 w-80 h-80 bg-orange-300/10 rounded-full blur-[100px]" />
 
           <div className="max-w-6xl mx-auto relative">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-5 py-2 rounded-full mb-4 text-sm font-semibold border border-amber-200">
                 <Star className="w-4 h-4" /> Transparent Pricing
               </div>
@@ -219,9 +219,9 @@ export default function AyodhyaRamMandirTourFromAgra() {
         </section>
 
         {/* === ROUTE JOURNEY MAP === */}
-        <section className="py-20 px-4 bg-white relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-white relative overflow-hidden">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-5 py-2 rounded-full mb-4 text-sm font-semibold border border-amber-200">
                 <Route className="w-4 h-4" /> Route Overview
               </div>
@@ -258,9 +258,9 @@ export default function AyodhyaRamMandirTourFromAgra() {
         </section>
 
         {/* === ITINERARY === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-white to-amber-50/30 relative">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-white to-amber-50/30 relative">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl md:text-5xl font-black text-stone-900">
                 3-Day <span className="text-transparent bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text">Itinerary</span>
               </h2>
@@ -290,14 +290,14 @@ export default function AyodhyaRamMandirTourFromAgra() {
         </section>
 
         {/* === SEO PROSE: E-E-A-T Rich Content Section === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-white to-amber-50/30">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-white to-amber-50/30">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-stone-900 mb-8">
-              Why Book Your <span className="text-transparent bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text">Agra to Ayodhya Cab</span> with Triveni Cabs
+              Why Book Your <span className="text-transparent bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text">Agra to Ayodhya Cab</span> with Triveni Cabs™
             </h2>
             <div className="prose prose-lg max-w-none text-stone-600 space-y-4">
               <p>
-                Triveni Cabs is <strong>headquartered in Agra</strong> at 366 Dandupura, near Tajganj — making us the most responsive and affordable option for booking an <Link href="/outstation-cabs" className="text-amber-600 hover:text-orange-600 underline underline-offset-2">Agra to Ayodhya outstation cab</Link>. Unlike aggregator apps where drivers may cancel or arrive late, our vehicles are dispatched from our own garage within 30 minutes. We have been operating pilgrimage tours since 2015 and have completed <strong>800+ Ayodhya trips from Agra</strong> alone.
+                Triveni Cabs™ is <strong>headquartered in Agra</strong> at 366 Dandupura, near Tajganj — making us the most responsive and affordable option for booking an <Link href="/outstation-cabs" className="text-amber-600 hover:text-orange-600 underline underline-offset-2">Agra to Ayodhya outstation cab</Link>. Unlike aggregator apps where drivers may cancel or arrive late, our vehicles are dispatched from our own garage within 30 minutes. We have been operating pilgrimage tours since 2015 and have completed <strong>800+ Ayodhya trips from Agra</strong> alone.
               </p>
               <p>
                 The 400 km journey from Agra to Ayodhya is significantly shorter than the Delhi route, thanks to the Agra-Lucknow Expressway covering 300 km in just 3-4 hours. Once you exit the expressway near Lucknow, it is another 135 km to Ayodhya via the well-maintained NH27. Our drivers take this route daily and know the best fuel stops, clean washroom facilities, and budget-friendly dhabas along the way.
@@ -328,9 +328,9 @@ export default function AyodhyaRamMandirTourFromAgra() {
         </section>
 
         {/* === FAQ === */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl md:text-5xl font-black text-stone-900 mb-4">
                 Common <span className="text-transparent bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text">Questions</span>
               </h2>
@@ -350,10 +350,10 @@ export default function AyodhyaRamMandirTourFromAgra() {
         </section>
 
         {/* === INTERLINKS: Deep Interlinking === */}
-        <section className="py-16 px-4 bg-amber-50/30">
+        <section className="py-10 sm:py-16 px-4 bg-amber-50/30">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-8 text-center">Explore More Ayodhya Tours</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 sm:mb-16">
               {[
                 { href: "/ayodhya-ram-mandir-tour-from-delhi", title: "Ayodhya Tour from Delhi", sub: "530 km highway route", price: "₹8,500" },
                 { href: "/ayodhya-ram-mandir-tour-from-lucknow", title: "Ayodhya Tour from Lucknow", sub: "135 km — same-day possible", price: "₹3,500" },
@@ -372,7 +372,7 @@ export default function AyodhyaRamMandirTourFromAgra() {
 
             {/* Cross-Category Related Services */}
             <h3 className="text-xl font-bold text-stone-800 mb-6 text-center">Related Services & Agra Tours</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours", title: "All Religious Tours", desc: "13+ pilgrimage packages across India" },
                 { href: "/same-day-taj-mahal-tour", title: "Same-Day Taj Mahal Tour", desc: "Add a Taj Mahal visit to your Ayodhya trip" },
@@ -393,7 +393,7 @@ export default function AyodhyaRamMandirTourFromAgra() {
 
             {/* Geographic Cluster: Nearby Pilgrimages */}
             <h3 className="text-xl font-bold text-stone-800 mb-6 text-center">Nearby Pilgrimage Destinations from Agra</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours/mathura-vrindavan-barsana-tour", label: "Mathura Vrindavan (60 km)" },
                 { href: "/religious-tours/braj-84-kos-yatra", label: "Braj 84 Kos Yatra" },
@@ -419,7 +419,7 @@ export default function AyodhyaRamMandirTourFromAgra() {
                   <ul className="space-y-1.5">
                     {[
                       { href: "/agra-to-delhi", label: "Agra to Delhi Cab" },
-                      { href: "/agra-to-jaipur", label: "Agra to Jaipur Cab" },
+                      { href: "/one-way-cab/agra-to-jaipur", label: "Agra to Jaipur Cab" },
                       { href: "/delhi-to-agra", label: "Delhi to Agra Cab" },
                       { href: "/agra-to-lucknow", label: "Agra to Lucknow" },
                       { href: "/agra-to-mathura", label: "Agra to Mathura" },
@@ -472,7 +472,7 @@ export default function AyodhyaRamMandirTourFromAgra() {
         </section>
 
         {/* === CTA: Mughal-inspired golden === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-900 via-amber-800 to-orange-900" />
           <div className="absolute top-0 left-0 w-full h-full">
             <div className="absolute top-10 right-[20%] w-80 h-80 bg-amber-500/15 rounded-full blur-[100px]" />

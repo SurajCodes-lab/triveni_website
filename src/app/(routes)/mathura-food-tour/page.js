@@ -3,13 +3,14 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Mathura Food Tour 2026 | Peda, Rabri, Lassi & Temple Prasad Guide'),
   description: 'Mathura food & culinary tour. Famous Mathura Peda, Rabri, Lassi, Kachori Sabzi, Temple Prasad. Street food itinerary, best restaurants. By Mathura locals.',
   keywords: 'mathura food tour, mathura street food, mathura peda, mathura famous food, rabri mathura, lassi mathura, vishram ghat food, mathura food guide, vrindavan food',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/mathura-food-tour' },
   openGraph: { title: 'Mathura Food Tour 2026 | Holy City Culinary Guide by Locals', description: 'Complete Mathura food guide. Famous Peda, Rabri, Lassi, Temple Prasad, best restaurants and sweet shops.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/mathura-food-tour', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Mathura_Vrindavan/mathura_vrindvan_hero_image.png', width: 1200, height: 630, alt: 'Mathura Food Tour Guide' }] },
@@ -185,19 +186,19 @@ export default function MathuraFoodTourPage() {
         </section>
 
         {/* SEO Prose */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-stone-800">
               Mathura Food Tour — Sacred Flavours of Krishna&apos;s Birthplace
             </h2>
             <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
-              <p>Mathura, the <strong className="text-stone-800">birthplace of Lord Krishna</strong>, is a city where food and devotion are inseparable. The entire city is pure vegetarian — a living expression of the Braj region&apos;s deep connection to Krishna&apos;s pastoral heritage. The dairy traditions here are legendary, producing some of India&apos;s finest milk, curd, and ghee, which form the foundation of Mathura&apos;s distinctive sweet cuisine.</p><p>Our <strong className="text-stone-800">Mathura food tour by car</strong> takes you through the aromatic lanes of Holi Gate for Peda shopping at the century-old Brijwasi Mithai Wala, to Vishram Ghat for creamy Lassi and Rabri, through temple areas for sacred prasad, and across to Vrindavan for its own unique food specialties including ISKCON&apos;s famous sattvic cuisine. Your Triveni Cabs driver knows every sweet shop and temple food stop.</p><p>The <strong className="text-stone-800">best time for a Mathura food tour</strong> is during festivals — especially Holi (February-March) when the entire city erupts in colour and special festival sweets appear, and Janmashtami (August-September) when midnight celebrations bring unique food preparations. But Mathura&apos;s Peda, Rabri, and Lassi are extraordinary year-round, making any day perfect for a culinary pilgrimage.</p>
+              <p>Mathura, the <strong className="text-stone-800">birthplace of Lord Krishna</strong>, is a city where food and devotion are inseparable. The entire city is pure vegetarian — a living expression of the Braj region&apos;s deep connection to Krishna&apos;s pastoral heritage. The dairy traditions here are legendary, producing some of India&apos;s finest milk, curd, and ghee, which form the foundation of Mathura&apos;s distinctive sweet cuisine.</p><p>Our <strong className="text-stone-800">Mathura food tour by car</strong> takes you through the aromatic lanes of Holi Gate for Peda shopping at the century-old Brijwasi Mithai Wala, to Vishram Ghat for creamy Lassi and Rabri, through temple areas for sacred prasad, and across to Vrindavan for its own unique food specialties including ISKCON&apos;s famous sattvic cuisine. Your Triveni Cabs™ driver knows every sweet shop and temple food stop.</p><p>The <strong className="text-stone-800">best time for a Mathura food tour</strong> is during festivals — especially Holi (February-March) when the entire city erupts in colour and special festival sweets appear, and Janmashtami (August-September) when midnight celebrations bring unique food preparations. But Mathura&apos;s Peda, Rabri, and Lassi are extraordinary year-round, making any day perfect for a culinary pilgrimage.</p>
             </div>
           </div>
         </section>
 
         {/* Famous Foods - Glassmorphism Cards */}
-        <section className="py-16 px-4 bg-orange-50/80">
+        <section className="py-10 sm:py-16 px-4 bg-orange-50/80">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3">Famous Foods of Mathura</h2>
@@ -228,7 +229,7 @@ export default function MathuraFoodTourPage() {
         </section>
 
         {/* Street Food Itinerary - Premium Timeline */}
-        <section className="py-16 px-4 bg-gradient-to-b from-red-950 via-orange-950 to-red-950">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-red-950 via-orange-950 to-red-950">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-3">Street Food Tour Itinerary</h2>
@@ -267,7 +268,7 @@ export default function MathuraFoodTourPage() {
         </section>
 
         {/* Best Restaurants - Premium Card Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Best Restaurants in Mathura</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -296,7 +297,7 @@ export default function MathuraFoodTourPage() {
         </section>
 
         {/* Markets - Glass Map Cards */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Food Markets to Visit</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -319,7 +320,7 @@ export default function MathuraFoodTourPage() {
         </section>
 
         {/* Combine with Sightseeing */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-2xl overflow-hidden shadow-xl">
               <div className="bg-gradient-to-r from-red-600 to-orange-600 p-6" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }}>
@@ -342,8 +343,13 @@ export default function MathuraFoodTourPage() {
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Mathura" citySlug="mathura" />
+
+
         {/* FAQ - Expandable-looking Cards */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -361,7 +367,7 @@ export default function MathuraFoodTourPage() {
         </section>
 
         {/* Interlinks - Interactive Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-8 text-center">More Mathura Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -383,7 +389,7 @@ export default function MathuraFoodTourPage() {
         </section>
 
         {/* CTA - Animated Gradient */}
-        <section className="relative py-20 px-4 overflow-hidden">
+        <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-red-700 via-orange-600 to-amber-600" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[10%] w-3 h-3 bg-white/20 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />
           <div className="absolute top-[60%] right-[15%] w-2 h-2 bg-white/15 rounded-full" style={{ animation: 'float 8s ease-in-out infinite 2s' }} />

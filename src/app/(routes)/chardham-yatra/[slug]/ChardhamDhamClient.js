@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, XCircle, Clock, Sun, Award, Compass, Route, Bus, Fuel } from '@/components/ui/icons';
 import { registrationSteps, packingTips, seasonGuide, inclusions, exclusions, distanceMatrix } from '@/utilis/chardhamYatraData';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { groupDigits } from '@/utilis/pricing';
 
 // ============================================================================
 // CHARDHAM DHAM CLIENT — "Temple Sanctum" Design
@@ -113,7 +114,7 @@ export default function ChardhamDhamClient({ data }) {
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-950/90 to-indigo-950/30" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-24 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-14 sm:py-24 w-full">
           <div className="max-w-3xl">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-indigo-400/60 text-sm mb-6">
@@ -135,14 +136,14 @@ export default function ChardhamDhamClient({ data }) {
             <h1
               className="speakable-headline font-display-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-[1.05] tracking-tight"
             >
-              {titleMain}
+              {titleMain}{' '}
               <span className="mt-2 block text-gold-foil text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{titleAccent}</span>
             </h1>
 
             <p
               className="speakable-lead text-indigo-200/70 text-base md:text-lg mb-8 max-w-2xl leading-relaxed"
             >
-              {destination} Temple ({colors.deity}) sits at {destinationData?.altitude || 'high altitude'} in the Garhwal Himalayas. Reach it by car with Triveni Cabs from {estimatedPrice} — Sedan ₹12/km, Innova Crysta ₹18/km or Fortuner ₹25/km — with experienced hill drivers. Best season: {destinationData?.bestSeason || 'May-June & September-October'}.
+              {destination} Temple ({colors.deity}) sits at {destinationData?.altitude || 'high altitude'} in the Garhwal Himalayas. Reach it by car with Triveni Cabs™ from {estimatedPrice} — Sedan ₹12/km, Innova Crysta ₹18/km or Fortuner ₹25/km — with experienced hill drivers. Best season: {destinationData?.bestSeason || 'May-June & September-October'}.
             </p>
 
             {/* Key info badges */}
@@ -285,7 +286,7 @@ export default function ChardhamDhamClient({ data }) {
                       <h3 className="text-white font-bold">{car.name}</h3>
                       <p className="text-indigo-400/60 text-sm">{car.category} | {car.seats} Seater</p>
                       <div className="flex items-baseline gap-2 mt-3">
-                        <span className="text-xl font-bold text-[#FACF2D]">₹{car.perKm}/km</span>
+                        <span className="text-xl font-bold text-[#FACF2D]">₹{groupDigits(car.perKm)}/km</span>
                       </div>
                       <p className="text-indigo-400/50 text-xs mt-1">Est. {car.estimatedPrice} for round trip</p>
                       <div className="mt-3 flex flex-wrap gap-1">
@@ -311,7 +312,7 @@ export default function ChardhamDhamClient({ data }) {
                         <Image src={bus.image} alt={bus.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain" />
                       </div>
                       <h3 className="text-white font-bold">{bus.name}</h3>
-                      <p className="text-indigo-400/60 text-sm">{bus.seats} Seater | ₹{bus.perKm}/km</p>
+                      <p className="text-indigo-400/60 text-sm">{bus.seats} Seater | ₹{groupDigits(bus.perKm)}/km</p>
                       <p className="text-[#FACF2D] font-bold text-lg mt-2">{bus.estimatedPrice}</p>
                       <a href="tel:+917668570551" className="mt-3 block text-center bg-white/10 hover:bg-white/20 text-white py-2.5 rounded-xl text-sm font-semibold transition-all">
                         Book Bus
@@ -340,7 +341,7 @@ export default function ChardhamDhamClient({ data }) {
                         <tr key={i} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                           <td className="p-4 text-white font-medium">{bus.name}</td>
                           <td className="p-4 text-center text-indigo-300/70">{bus.seats}</td>
-                          <td className="p-4 text-center text-[#FACF2D] font-semibold">₹{bus.perKm}</td>
+                          <td className="p-4 text-center text-[#FACF2D] font-semibold">₹{groupDigits(bus.perKm)}</td>
                           <td className="p-4 text-center text-indigo-300/70">{bus.minCharge}</td>
                         </tr>
                       ))}
@@ -352,7 +353,7 @@ export default function ChardhamDhamClient({ data }) {
                       <div key={i} className="p-4">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-white font-medium text-sm">{bus.name}</span>
-                          <span className="text-[#FACF2D] font-semibold text-sm">₹{bus.perKm}/km</span>
+                          <span className="text-[#FACF2D] font-semibold text-sm">₹{groupDigits(bus.perKm)}/km</span>
                         </div>
                         <p className="text-indigo-300/70 text-xs">{bus.seats} seats · Min. charge {bus.minCharge}</p>
                       </div>
@@ -371,7 +372,7 @@ export default function ChardhamDhamClient({ data }) {
                     </div>
                     <h4 className="text-white font-semibold">{tempo.name}</h4>
                     <p className="text-indigo-400/60 text-sm">{tempo.seats} Seater</p>
-                    <p className="text-[#FACF2D] font-bold mt-2">₹{tempo.perKm}/km</p>
+                    <p className="text-[#FACF2D] font-bold mt-2">₹{groupDigits(tempo.perKm)}/km</p>
                     <a href="tel:+917668570551" className="mt-3 block text-center bg-white/10 hover:bg-white/20 text-white py-2 rounded-lg text-sm transition-all">
                       Enquire
                     </a>
@@ -426,7 +427,7 @@ export default function ChardhamDhamClient({ data }) {
       <section className="py-16 md:py-24 bg-gradient-to-b from-indigo-950/50 to-indigo-950">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
-            <span className={`${colors.text} text-sm font-bold tracking-widest uppercase`}>Why Triveni Cabs</span>
+            <span className={`${colors.text} text-sm font-bold tracking-widest uppercase`}>Why Triveni Cabs™</span>
             <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">Trusted for {destination} Yatra Since 2015</h2>
           </div>
 
@@ -623,6 +624,7 @@ export default function ChardhamDhamClient({ data }) {
                 key={i}
                 className={`bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden ${colors.hoverBorder} transition-all`}
               >
+                <h3 className="m-0">
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
                   aria-expanded={expandedFaq === i}
@@ -631,6 +633,7 @@ export default function ChardhamDhamClient({ data }) {
                   <span className="text-white font-semibold pr-4">{faq.question}</span>
                   <ChevronDown className={`w-5 h-5 text-[#FACF2D] flex-shrink-0 transition-transform ${expandedFaq === i ? 'rotate-180' : ''}`} />
                 </button>
+                </h3>
                 {expandedFaq === i && (
                   <p className={`px-5 pb-5 text-indigo-200/70 leading-relaxed${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
                 )}

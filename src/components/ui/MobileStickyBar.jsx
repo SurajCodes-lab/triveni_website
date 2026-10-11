@@ -9,6 +9,20 @@ export default function MobileStickyBar() {
   const hasPrice = Boolean(config?.price);
 
   return (
+    // The 62px minimum on all three children is a layout-shift fix, not a style
+    // choice. This bar is server-rendered with config === null, so it ships as a
+    // single-line "FREE QUOTE". After hydration the page calls setConfig() with a
+    // price and the middle button becomes two lines — "Book Urbania" over
+    // "from ₹23" — which made the bar taller and registered as a shift.
+    //
+    // Lighthouse measured that at CLS 0.090 on the Force Urbania route pages,
+    // reproducibly across runs and against a 0.1 failing threshold. It only became
+    // visible once the rest of this work pulled first paint forward: previously the
+    // bar settled before anything was on screen, so the shift went uncounted.
+    //
+    // Reserving the taller state's height in both states removes it. The price
+    // itself cannot be server-rendered without threading it through every template
+    // that sets it.
     <div
       className="fixed bottom-0 left-0 right-0 z-40 md:hidden"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
@@ -19,7 +33,7 @@ export default function MobileStickyBar() {
           href="tel:+917668570551"
           onClick={() => trackPhoneCall('mobile_sticky_bar')}
           aria-label="Call Triveni Cabs"
-          className="flex min-w-0 items-center justify-center gap-1 px-1 bg-[#FACF2D] text-black font-bold py-3.5 min-h-[52px] text-[11px] sm:text-xs"
+          className="flex min-w-0 items-center justify-center gap-1 px-1 bg-[#FACF2D] text-black font-bold py-3.5 min-h-[62px] text-[11px] sm:text-xs"
           style={{ flex: '0 0 25%' }}
         >
           <Phone className="w-4 h-4 flex-shrink-0" />
@@ -31,20 +45,29 @@ export default function MobileStickyBar() {
           type="button"
           onClick={() => openQuote()}
           aria-label={hasPrice ? `Book ${config.label || 'cab'}` : 'Get a free cab quote'}
-          className="flex min-w-0 items-center justify-center gap-1.5 px-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-extrabold py-3.5 min-h-[52px] text-xs sm:text-sm shadow-[0_-2px_12px_rgba(245,158,11,0.3)]"
+          className="flex min-w-0 items-center justify-center gap-1.5 px-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-extrabold py-3.5 min-h-[62px] text-xs sm:text-sm shadow-[0_-2px_12px_rgba(245,158,11,0.3)]"
           style={{ flex: '0 0 50%' }}
         >
           <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
-          {hasPrice ? (
-            <span className="flex min-w-0 flex-col items-center leading-tight">
-              <span className="truncate max-w-full">{`Book ${config.label || 'Now'}`}</span>
-              <span className="text-[10px] font-semibold opacity-90 truncate max-w-full">{`from ${String(config.price).replace(/^from\s+/i, '')}`}</span>
+          {/* Always two lines, whether or not there is a price.
+
+              The server renders this with config === null, and a page-level effect
+              supplies the price after hydration. Rendering one line in the first
+              state and two in the second changed the button's height mid-load, which
+              Lighthouse scored as a 0.090 layout shift on the Force Urbania routes.
+              Reserving the height alone got that to 0.055; keeping the element
+              structure identical across both states removes the swap itself. The
+              second line is present but empty until the price arrives. */}
+          <span className="flex min-w-0 flex-col items-center leading-tight">
+            <span className="truncate max-w-full">
+              {hasPrice ? `Book ${config.label || 'Now'}` : 'FREE QUOTE'}
             </span>
-          ) : (
-            <span className="truncate">FREE QUOTE</span>
-          )}
+            <span aria-hidden={!hasPrice} className="text-[10px] font-semibold opacity-90 truncate max-w-full">
+              {hasPrice ? `from ${String(config.price).replace(/^from\s+/i, '')}` : ' '}
+            </span>
+          </span>
         </button>
 
         {/* WhatsApp — 25% width */}
@@ -54,7 +77,7 @@ export default function MobileStickyBar() {
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick('mobile_sticky_bar_whatsapp')}
           aria-label="Chat on WhatsApp"
-          className="flex min-w-0 items-center justify-center gap-1 px-1 bg-[#25D366] text-white font-bold py-3.5 min-h-[52px] text-[11px] sm:text-xs"
+          className="flex min-w-0 items-center justify-center gap-1 px-1 bg-[#0B6B38] text-white font-bold py-3.5 min-h-[62px] text-[11px] sm:text-xs"
           style={{ flex: '0 0 25%' }}
         >
           <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">

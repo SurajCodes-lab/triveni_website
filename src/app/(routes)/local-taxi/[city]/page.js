@@ -5,6 +5,7 @@ import LocalTaxiCityClient from '@/components/local-taxi/LocalTaxiCityClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { tightenTitle, tightenDescription, DESC_BUDGET } from '@/lib/seo/serp-ctr';
+import { BASE_URL } from '@/lib/seo/constants';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -47,18 +48,18 @@ export async function generateMetadata({ params }) {
       `${city.city.toLowerCase()} taxi near me`,
       `local cab service ${city.city.toLowerCase()}`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/local-taxi/${slug}` },
     openGraph: {
-      title: `Local Taxi in ${city.city} — Hourly Cab from Rs ${lowestSedan.toLocaleString('en-IN')} | Triveni Cabs`,
+      title: `Local Taxi in ${city.city} — Hourly Cab from Rs ${lowestSedan.toLocaleString('en-IN')} | Triveni Cabs™`,
       description,
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/local-taxi/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `Local Taxi in ${city.city}` }],
     },
     twitter: {
@@ -100,9 +101,9 @@ export default async function LocalTaxiCityPage({ params }) {
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
+        "streetAddress": "366, Dandupura, near Tajganj",
         "addressLocality": "Agra",
-        "addressRegion": "UP",
+        "addressRegion": "Uttar Pradesh",
         "postalCode": "282006",
         "addressCountry": "IN"
       }
@@ -117,12 +118,6 @@ export default async function LocalTaxiCityPage({ params }) {
       "highPrice": Math.max(...city.packages.map((p) => p.suv)).toString(),
       "priceCurrency": "INR",
       "offerCount": city.packages.length.toString()
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount(slug)),
-      "bestRating": "5"
     }
   };
 
@@ -152,6 +147,10 @@ export default async function LocalTaxiCityPage({ params }) {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Google's Merchant listings report treats a missing `image`
+    // as a critical error. This is an asset the page already uses.
+
+    "image": `${BASE_URL}/images/car/swift_dzire.jpg`,
     "name": `Local Taxi in ${city.city}`,
     "description": `Hourly local taxi service in ${city.city}. Sedan from Rs ${lowestSedan}, SUV from Rs ${Math.min(...city.packages.map((p) => p.suv))}. Covers ${city.coverageAreas.join(', ')}.`,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
@@ -162,12 +161,7 @@ export default async function LocalTaxiCityPage({ params }) {
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
       "url": `https://www.trivenicabs.in/local-taxi/${slug}`
-    })),
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount(slug))
-    }
+    }))
   };
 
   return (

@@ -12,9 +12,9 @@ export const metadata = {
   title: tightenTitle('Pilgrimage Tours 2026 | Char Dham ₹45,000 | AC Transport'),
   description: 'Book pilgrimage tours from Delhi with AC transport. Char Dham Yatra ₹45K, Vaishno Devi ₹8K, Haridwar ₹4K. 3000+ pilgrims served. Expert guides + 24/7 support.',
   keywords: 'religious tours, tour package india, sightseeing tour, triveni cabs',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/religious-tours',
@@ -25,7 +25,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/religious-tours',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: '/images/sightseeing/Char_Dham/Chardham_hero_section.jpg',
@@ -70,13 +70,7 @@ export default function ReligiousToursPage() {
       "email": "cabstriveni@gmail.com",
       "url": "https://www.trivenicabs.in"
     },
-    "areaServed": { "@type": "Country", "name": "India" },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount('religious-tours')),
-      "bestRating": "5"
-    }
+    "areaServed": { "@type": "Country", "name": "India" }
   };
 
   const breadcrumbSchema = {
@@ -166,8 +160,6 @@ export default function ReligiousToursPage() {
           </div>
 
           {/* Decorative Elements */}
-          <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl" />
 
           {/* Hero Content */}
           <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
@@ -221,7 +213,7 @@ export default function ReligiousToursPage() {
         </section>
 
         {/* Section Header */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-4">
               Popular Pilgrimage Packages
@@ -233,7 +225,7 @@ export default function ReligiousToursPage() {
         </section>
 
         {/* Tours Grid - Premium Cards */}
-        <section className="pb-20 px-4">
+        <section className="pb-12 sm:pb-20 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {religiousTours.map((tour) => (
@@ -322,11 +314,11 @@ export default function ReligiousToursPage() {
         </section>
 
         {/* Why Choose Us Section */}
-        <section className="py-20 px-4 bg-gradient-to-br from-orange-600 to-amber-600">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-orange-600 to-amber-600">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Why Travel With Triveni Cabs?
+                Why Travel With Triveni Cabs™?
               </h2>
               <p className="text-orange-100 text-lg max-w-2xl mx-auto">
                 Your comfort and spiritual experience is our priority
@@ -351,7 +343,7 @@ export default function ReligiousToursPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 bg-stone-900">
+        <section className="py-12 sm:py-20 px-4 bg-stone-900">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Need a Custom Pilgrimage Package?

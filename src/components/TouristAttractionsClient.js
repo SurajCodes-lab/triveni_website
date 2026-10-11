@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import Link from 'next/link';
+import clientSlugs from '@/generated/client-slugs.json';
 // Centralized icon imports for better bundle optimization
 import { ArrowRight, MapPin, Clock, Camera, Star, Building, Mountain, Waves, TreePine, Coffee, Eye, Phone, MessageCircle, Car, Users, Route as RouteIcon, ExternalLink, ArrowLeft, CheckCircle, ChevronRight, Shield, WhatsAppIcon } from '@/components/ui/icons';
 
@@ -18,6 +20,14 @@ const TouristAttractionsClient = ({ data }) => {
   const [expandedCard, setExpandedCard] = useState(null);
 
   const { city, citySlug, attractions } = data;
+
+  // Week 48: the "Book Tempo to {city}" CTA linked /tempo-traveller/delhi-to-<city>
+  // for every attractions page, but that corridor is not built for Ahmedabad or
+  // Lucknow, and the Delhi page linked delhi-to-delhi. Use the corridor page
+  // when the manifest has it, else the city's own tempo page, else the hub.
+  const tempoSlugs = clientSlugs['tempo-traveller'] || [];
+  const tempoHref = tempoSlugs.includes(`delhi-to-${citySlug}`) ? `/tempo-traveller/delhi-to-${citySlug}`
+    : tempoSlugs.includes(citySlug) ? `/tempo-traveller/${citySlug}` : '/tempo-traveller';
 
   const getTypeColor = (type) => {
     const colors = {
@@ -70,7 +80,7 @@ const TouristAttractionsClient = ({ data }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 py-20 overflow-hidden">
+      <div className="relative bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 py-12 sm:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="absolute inset-0 bg-[url('/images/tourist-bg.jpg')] bg-cover bg-center opacity-20"></div>
         
@@ -102,6 +112,11 @@ const TouristAttractionsClient = ({ data }) => {
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
                 Tourist Attractions in <span className="text-yellow-400">{city}</span>
               </h1>
+            </div>
+
+            {/* Week 48: the direct answer built from this city's own list (FamilyFacts, attractions). */}
+            <div className="text-left max-w-3xl mx-auto">
+              <FamilyFacts family="attractions" data={data} />
             </div>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
               Discover the most beautiful and historic places to visit in {city}. From ancient monuments to spiritual sites, 
@@ -186,7 +201,7 @@ const TouristAttractionsClient = ({ data }) => {
         </div>
 
         {/* Attractions Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10 sm:mb-16">
           {getFilteredAttractions().map((attraction, index) => {
             const IconComponent = getTypeIcon(attraction.type);
             
@@ -251,7 +266,7 @@ const TouristAttractionsClient = ({ data }) => {
         </div>
 
         {/* Book Tempo CTA */}
-        <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 md:p-12 text-center text-white mb-16">
+        <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 md:p-12 text-center text-white mb-10 sm:mb-16">
           <div className="flex items-center justify-center gap-3 md:gap-4 mb-6">
             <Car className="w-8 h-8 md:w-12 md:h-12 flex-shrink-0" />
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -265,7 +280,7 @@ const TouristAttractionsClient = ({ data }) => {
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
-              href={`/tempo-traveller/delhi-to-${citySlug}`}
+              href={tempoHref}
               className="bg-white hover:bg-gray-100 text-green-600 font-bold py-4 px-8 rounded-lg flex items-center justify-center transition-all transform hover:scale-105"
             >
               <RouteIcon className="w-5 h-5 mr-3" />
@@ -283,7 +298,7 @@ const TouristAttractionsClient = ({ data }) => {
         </div>
 
         {/* SEO: FAQ Section */}
-        <div className="mb-16">
+        <div className="mb-10 sm:mb-16">
           <FAQSection
             faqs={generateCityFAQs({
               city: city,
@@ -297,7 +312,7 @@ const TouristAttractionsClient = ({ data }) => {
         </div>
 
         {/* SEO: Cross Service Links */}
-        <div className="mb-16">
+        <div className="mb-10 sm:mb-16">
           <CrossServiceLinks
             city={city}
             services={['sightseeing', 'airport', 'wedding', 'corporate']}
@@ -306,7 +321,7 @@ const TouristAttractionsClient = ({ data }) => {
         </div>
 
         {/* Quick Contact + Lead Capture */}
-        <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 rounded-2xl shadow-lg p-8 mb-16">
+        <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 rounded-2xl shadow-lg p-8 mb-10 sm:mb-16">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-center md:text-left">
               <h3 className="text-2xl font-bold text-white mb-4">Need Help Planning Your Trip?</h3>
@@ -342,6 +357,11 @@ const TouristAttractionsClient = ({ data }) => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Week 48: every listed place with its type and what it is known for (FamilyFacts, attractions). */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <FamilyFacts family="attractions" data={data} details />
       </div>
 
       <SetStickyCta

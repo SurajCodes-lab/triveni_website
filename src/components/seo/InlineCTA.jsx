@@ -64,9 +64,9 @@ const INTL_PHONE = '917668570551';
 export default function InlineCTA({
   theme = 'default',
   headline = 'Ready to Book?',
-  sub = 'Call Triveni Cabs — ₹11/km Sedan, 4.9★ rated, 24/7 booking.',
+  sub = 'Call Triveni Cabs™ — ₹11/km Sedan, 4.9★ rated, 24/7 booking.',
   context = 'inline_cta',
-  waMessage = 'Hi Triveni Cabs, I want to book a cab.',
+  waMessage = 'Hi Triveni Cabs™, I want to book a cab.',
   variant = 'full',           // 'full' | 'compact' | 'banner'
   showPrice = true,
   priceFrom = '₹11/km',
@@ -118,7 +118,7 @@ export default function InlineCTA({
         itemScope
         itemType="https://schema.org/LocalBusiness"
       >
-        <meta itemProp="name" content="Triveni Cabs" />
+        <meta itemProp="name" content="Triveni Cabs™" />
         <div className="flex-1 min-w-0">
           <p className="font-bold text-base">{headline}</p>
           <p className={`text-sm ${subText}`}>{sub}</p>
@@ -143,7 +143,7 @@ export default function InlineCTA({
         itemScope
         itemType="https://schema.org/LocalBusiness"
       >
-        <meta itemProp="name" content="Triveni Cabs" />
+        <meta itemProp="name" content="Triveni Cabs™" />
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex-1 min-w-0">
             <p className="font-extrabold text-xl md:text-2xl leading-tight">{headline}</p>
@@ -171,7 +171,7 @@ export default function InlineCTA({
       itemType="https://schema.org/LocalBusiness"
       aria-label="Book a cab with Triveni Cabs"
     >
-      <meta itemProp="name" content="Triveni Cabs" />
+      <meta itemProp="name" content="Triveni Cabs™" />
       <meta itemProp="priceRange" content="₹₹" />
       <meta itemProp="telephone" content={`+91-${PHONE}`} />
       <meta itemProp="url" content="https://www.trivenicabs.in" />
@@ -181,7 +181,7 @@ export default function InlineCTA({
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
         <div className="md:col-span-3">
           <p className="text-xs font-bold tracking-widest uppercase opacity-60 mb-2">
-            Triveni Cabs · India's Trusted Taxi
+            Triveni Cabs™ · India's Trusted Taxi
           </p>
           <h2 className="text-2xl md:text-3xl font-black leading-tight mb-2">
             {headline}

@@ -33,7 +33,7 @@ export const airportCityData = {
     keywords: "jaipur airport taxi, sanganer airport cab, jaipur airport to city taxi, jaipur airport pickup, jaipur airport drop, jaipur airport transfer, airport taxi jaipur, jaipur airport cab booking, cheap airport taxi jaipur, jaipur airport cab service, jaipur to airport taxi, 24x7 airport cab jaipur, jaipur airport shuttle, jaipur international airport taxi, pink city airport taxi, best jaipur airport taxi, jaipur airport taxi service near me, pre book jaipur airport taxi, jaipur airport cab fare, jaipur airport to city palace taxi, jaipur airport to hawa mahal cab, reliable airport taxi jaipur, jaipur airport pickup and drop, sanganer airport cab service, jaipur airport outstation taxi, jaipur airport to delhi cab, jaipur airport to agra taxi, jaipur airport private cab",
     routes: ["Jaipur to Delhi", "Jaipur to Agra", "Jaipur to Udaipur", "Jaipur to Jodhpur", "Jaipur to Pushkar"],
     distance: "13 km from city center",
-    terminals: "1 Terminal",
+    terminals: "2 Terminals (T1 International, T2 Domestic)",
     popularDestinations: [
       { name: "City Palace", distance: "15 km", time: "30 mins" },
       { name: "Hawa Mahal", distance: "14 km", time: "25 mins" },
@@ -56,7 +56,7 @@ export const airportCityData = {
     keywords: "chandigarh airport taxi, mohali airport cab, chandigarh airport pickup, chandigarh airport drop, chandigarh airport transfer, airport taxi chandigarh, chandigarh airport cab booking, chandigarh to shimla airport taxi, chandigarh international airport taxi, chandigarh airport shuttle, IXC airport taxi, mohali to chandigarh airport, panchkula airport taxi, best chandigarh airport taxi, chandigarh airport taxi service near me, pre book chandigarh airport cab, chandigarh airport cab fare, chandigarh airport to shimla taxi, chandigarh airport to manali cab, reliable airport taxi chandigarh, chandigarh airport to zirakpur taxi, chandigarh airport outstation cab, mohali airport taxi booking, chandigarh airport private taxi, chandigarh airport to delhi cab",
     routes: ["Chandigarh to Shimla", "Chandigarh to Manali", "Chandigarh to Delhi", "Chandigarh to Amritsar"],
     distance: "11 km from city center",
-    terminals: "1 Terminal",
+    terminals: "1 Integrated Terminal (Domestic + International)",
     popularDestinations: [
       { name: "Sector 17", distance: "12 km", time: "25 mins" },
       { name: "Rock Garden", distance: "13 km", time: "30 mins" },
@@ -79,7 +79,7 @@ export const airportCityData = {
     keywords: "agra airport taxi, kheria airport cab, agra airport pickup, agra to delhi airport taxi, agra airport transfer, taj mahal to airport taxi, agra airport cab booking, agra to jaipur airport, agra to delhi airport cab, agra airport shuttle, best agra airport taxi, agra airport taxi service near me, pre book agra airport cab, agra airport cab fare, agra taj mahal airport taxi, reliable airport taxi agra, agra airport to taj mahal taxi, agra airport outstation cab, agra airport private taxi, agra to delhi airport drop service",
     routes: ["Agra to Delhi", "Agra to Jaipur", "Agra to Gwalior", "Agra to Mathura"],
     distance: "13 km from city center",
-    terminals: "1 Terminal",
+    terminals: "1 Civil Terminal (Domestic)",
     popularDestinations: [
       { name: "Taj Mahal", distance: "15 km", time: "30 mins" },
       { name: "Agra Fort", distance: "12 km", time: "25 mins" },
@@ -278,6 +278,32 @@ export const airportCityData = {
       "Ram Ki Paidi"
     ]
   },
+  // Ahmedabad completes the fifteen cities in the client SEO proposal. It was
+  // the only one with vehicle landing pages but no airport page, which read as
+  // an oversight rather than a decision.
+  ahmedabad: {
+    name: "Ahmedabad",
+    airport: "Sardar Vallabhbhai Patel International Airport",
+    airportCode: "AMD",
+    description: "Ahmedabad airport taxi service from Sardar Vallabhbhai Patel International Airport. Cab booking to Sabarmati Ashram, Gandhinagar, city hotels and the Statue of Unity. Fixed fares, flight tracking and 60 minutes free waiting.",
+    keywords: "ahmedabad airport taxi, ahmedabad airport cab, AMD airport taxi, ahmedabad airport pickup, ahmedabad airport drop, ahmedabad airport transfer, sardar vallabhbhai patel airport taxi, ahmedabad airport cab booking, ahmedabad airport to gandhinagar taxi, ahmedabad airport to statue of unity cab, ahmedabad airport shuttle, best ahmedabad airport taxi, ahmedabad airport taxi service near me, pre book ahmedabad airport cab, ahmedabad airport cab fare, ahmedabad airport to sabarmati ashram taxi, reliable airport taxi ahmedabad, ahmedabad airport outstation taxi, ahmedabad airport private cab, ahmedabad airport to udaipur taxi, ahmedabad airport to mount abu cab, ahmedabad airport terminal 1 taxi, ahmedabad airport terminal 2 taxi",
+    routes: ["Ahmedabad to Udaipur", "Ahmedabad to Mount Abu", "Ahmedabad to Statue of Unity", "Ahmedabad to Jaipur"],
+    distance: "9 km from city center",
+    terminals: "2 Terminals (T1 Domestic, T2 International)",
+    popularDestinations: [
+      { name: "Sabarmati Ashram", distance: "12 km", time: "25 mins" },
+      { name: "Gandhinagar", distance: "25 km", time: "40 mins" },
+      { name: "Statue of Unity", distance: "200 km", time: "3-4 hours" },
+      { name: "Udaipur", distance: "260 km", time: "4-5 hours" }
+    ],
+    nearbyAttractions: [
+      "Sabarmati Ashram",
+      "Adalaj Stepwell",
+      "Sidi Saiyyed Mosque",
+      "Kankaria Lake",
+      "Sabarmati Riverfront"
+    ]
+  },
   jodhpur: {
     name: "Jodhpur",
     airport: "Jodhpur Airport",
@@ -312,7 +338,7 @@ export const airportCityData = {
     terminals: "1 Terminal (International & Domestic)",
     popularDestinations: [
       { name: "Noida Sector 18", distance: "35 km", time: "40 mins" },
-      { name: "Greater Noida", distance: "25 km", time: "30 mins" },
+      { name: "Greater Noida (Pari Chowk)", distance: "25 km", time: "30 mins" },
       { name: "Delhi Connaught Place", distance: "72 km", time: "1.5 hours" },
       { name: "Agra (Taj Mahal)", distance: "130 km", time: "2 hours" },
       { name: "Mathura", distance: "90 km", time: "1.5 hours" },
@@ -325,6 +351,30 @@ export const airportCityData = {
       "ISKCON Noida",
       "Okhla Bird Sanctuary",
       "Taj Mahal (Agra)"
+    ]
+  },
+  hindon: {
+    name: "Hindon (Ghaziabad)",
+    airport: "Hindon Airport Civil Terminal",
+    airportCode: "HDO",
+    description: "Taxi service from Hindon Airport (Ghaziabad), Delhi NCR's third commercial airport. 24/7 cab booking from Hindon civil terminal to Ghaziabad, Noida, Delhi, Meerut, Greater Noida and outstation destinations. Flight-tracked pickup for all RCS-UDAN domestic flights.",
+    keywords: "hindon airport taxi, hindon airport cab, ghaziabad airport taxi, HDO airport taxi, hindon civil terminal cab, hindon airport pickup, hindon airport drop, hindon airport to delhi taxi, hindon airport to noida cab, hindon airport to ghaziabad taxi, hindon airport to meerut taxi, hindon airport transfer, hindon airport cab booking, hindon airport taxi service near me, pre book hindon airport cab, hindon airport cab fare, hindon domestic terminal taxi, hindon airport outstation cab, hindon airport to gurgaon cab, hindon airport to haridwar taxi, ghaziabad hindon terminal taxi, hindon airport 24x7 taxi, reliable airport taxi hindon",
+    routes: ["Hindon to Delhi", "Hindon to Noida", "Hindon to Meerut", "Hindon to Greater Noida", "Hindon to Haridwar", "Hindon to Agra"],
+    distance: "8 km from Ghaziabad city, 30 km from Central Delhi",
+    terminals: "1 Civil Terminal (Domestic)",
+    popularDestinations: [
+      { name: "Ghaziabad City", distance: "8 km", time: "20 mins" },
+      { name: "Noida Sector 18", distance: "25 km", time: "45 mins" },
+      { name: "Delhi Connaught Place", distance: "30 km", time: "1 hour" },
+      { name: "Meerut", distance: "55 km", time: "1.5 hours" },
+      { name: "Gurgaon", distance: "50 km", time: "1.5 hours" }
+    ],
+    nearbyAttractions: [
+      "Akshardham Temple",
+      "Red Fort",
+      "ISKCON Noida",
+      "Swarn Jayanti Park",
+      "Drizzling Land Water Park"
     ]
   },
   srinagar: {

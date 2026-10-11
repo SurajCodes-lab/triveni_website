@@ -33,7 +33,7 @@ export const goldenTriangleTours = {
     tagline:
       "Delhi · Agra · Jaipur — India's most iconic circuit, private car with driver",
     intro:
-      "The Golden Triangle is India's most popular tourist circuit — Delhi, Agra and Jaipur — covering the Taj Mahal, Agra Fort, Amber Fort, City Palace, Hawa Mahal, Qutub Minar and India Gate in one seamless private road trip. Triveni Cabs runs the Golden Triangle as a chauffeur-driven car tour: you get a clean AC vehicle, an experienced English-speaking driver who knows every monument and the best photo timings, and a flexible day-wise plan you control. Packages start at ₹13,999 for a 3-day private tour, all-inclusive of fuel, tolls and driver — no surge, no hidden charges.",
+      "The Golden Triangle is India's most popular tourist circuit — Delhi, Agra and Jaipur — covering the Taj Mahal, Agra Fort, Amber Fort, City Palace, Hawa Mahal, Qutub Minar and India Gate in one seamless private road trip. Triveni Cabs™ runs the Golden Triangle as a chauffeur-driven car tour: you get a clean AC vehicle, an experienced English-speaking driver who knows every monument and the best photo timings, and a flexible day-wise plan you control. Packages start at ₹13,999 for a 3-day private tour, all-inclusive of fuel, tolls and driver — no surge, no hidden charges.",
     landmarks: [
       "Taj Mahal & Agra Fort (Agra)",
       "Amber Fort, City Palace, Hawa Mahal, Jantar Mantar (Jaipur)",
@@ -53,7 +53,7 @@ export const goldenTriangleTours = {
     ],
     faqs: [
       { q: "What is the Golden Triangle tour?", a: "The Golden Triangle is a tourist circuit connecting Delhi, Agra and Jaipur — three cities forming a triangle on the map, roughly 220–240 km apart. It covers the Taj Mahal, Mughal forts and Rajasthan's royal palaces, and is India's most popular short tour, usually done in 3 to 6 days." },
-      { q: "How much does a Golden Triangle tour by car cost?", a: "A private Golden Triangle car tour with Triveni Cabs starts at ₹13,999 for 3 days in a sedan (all-inclusive of fuel, tolls and driver). An Ertiga 4-day package is ₹22,999 and an Innova Crysta 5–6 day package is ₹32,999+. Hotel and monument tickets are separate and can be arranged on request." },
+      { q: "How much does a Golden Triangle tour by car cost?", a: "A private Golden Triangle car tour with Triveni Cabs™ starts at ₹13,999 for 3 days in a sedan (all-inclusive of fuel, tolls and driver). An Ertiga 4-day package is ₹22,999 and an Innova Crysta 5–6 day package is ₹32,999+. Hotel and monument tickets are separate and can be arranged on request." },
       { q: "How many days do you need for the Golden Triangle?", a: "3 days is the minimum comfortable duration (1 day each loosely in Delhi, Agra and Jaipur). 4–5 days is ideal to enjoy the Taj Mahal at sunrise, Fatehpur Sikri en route, and Jaipur's forts without rushing. 6 days allows add-ons like Ranthambore or Vrindavan." },
       { q: "Is the Taj Mahal closed on any day?", a: "Yes — the Taj Mahal is closed every Friday. We plan the Golden Triangle itinerary so your Agra day never falls on a Friday, ensuring you don't miss the Taj." },
       { q: "Do you provide an English-speaking driver?", a: "Yes. Our Golden Triangle drivers speak English and Hindi, know each monument and the best visiting times, and double as your road guide. Multilingual and certified local guides at monuments can be arranged on request." },
@@ -75,7 +75,7 @@ export const goldenTriangleTours = {
     tagline:
       "Chandigarh → Delhi → Agra → Jaipur",
     intro:
-      "Start the Golden Triangle right from Chandigarh. Triveni Cabs runs a chauffeur-driven Chandigarh–Delhi–Agra–Jaipur tour that adds the 250 km Chandigarh-to-Delhi leg to the classic Taj Mahal and Pink City circuit — ideal for travellers based in the tricity (Chandigarh, Mohali, Panchkula) or flying into Chandigarh airport (IXC). You get a clean AC vehicle, an experienced English-speaking driver, and a flexible 4–6 day plan covering the Taj Mahal, Agra Fort, Amber Fort, City Palace and Delhi's landmarks. From ₹19,999 all-inclusive of fuel, tolls and driver.",
+      "Start the Golden Triangle right from Chandigarh. Triveni Cabs™ runs a chauffeur-driven Chandigarh–Delhi–Agra–Jaipur tour that adds the 250 km Chandigarh-to-Delhi leg to the classic Taj Mahal and Pink City circuit — ideal for travellers based in the tricity (Chandigarh, Mohali, Panchkula) or flying into Chandigarh airport (IXC). You get a clean AC vehicle, an experienced English-speaking driver, and a flexible 4–6 day plan covering the Taj Mahal, Agra Fort, Amber Fort, City Palace and Delhi's landmarks. From ₹19,999 all-inclusive of fuel, tolls and driver.",
     landmarks: [
       "Taj Mahal & Agra Fort (Agra)",
       "Amber Fort, City Palace, Hawa Mahal (Jaipur)",
@@ -94,7 +94,7 @@ export const goldenTriangleTours = {
       { name: "6-Day (Innova Crysta)", price: "₹38,999+", ideal: "Premium & larger groups" },
     ],
     faqs: [
-      { q: "How much is a Golden Triangle tour from Chandigarh?", a: "A private Chandigarh Golden Triangle car tour with Triveni Cabs starts at ₹19,999 for 4 days in a sedan, all-inclusive of fuel, tolls and driver. An Ertiga 5-day package is ₹28,999 and an Innova Crysta 6-day package is ₹38,999+. Hotels and monument tickets are separate." },
+      { q: "How much is a Golden Triangle tour from Chandigarh?", a: "A private Chandigarh Golden Triangle car tour with Triveni Cabs™ starts at ₹19,999 for 4 days in a sedan, all-inclusive of fuel, tolls and driver. An Ertiga 5-day package is ₹28,999 and an Innova Crysta 6-day package is ₹38,999+. Hotels and monument tickets are separate." },
       { q: "How many days for the Golden Triangle from Chandigarh?", a: "4 days is the comfortable minimum because the Chandigarh–Delhi leg (250 km) adds about half a day each way. 5–6 days is ideal to enjoy Agra, Jaipur and Delhi without rushing." },
       { q: "Do you pick up from Chandigarh airport?", a: "Yes. We pick up from Chandigarh airport (IXC) as well as any address in Chandigarh, Mohali or Panchkula, and we track your flight for airport starts." },
       { q: "Is the Taj Mahal open every day?", a: "The Taj Mahal is closed on Fridays. We schedule your Agra day to avoid Friday so you never miss the Taj on the Chandigarh Golden Triangle tour." },

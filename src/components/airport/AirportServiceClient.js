@@ -64,7 +64,7 @@ const wa = (text) => `https://wa.me/917668570551?text=${encodeURIComponent(text)
 
 export default function AirportServiceClient({ faqData }) {
   const [openFaq, setOpenFaq] = useState(0);
-  const heroWa = 'Hi Triveni Cabs, I need an airport taxi with flight tracking & meet-and-greet. Please share availability and fare.';
+  const heroWa = 'Hi Triveni Cabs™, I need an airport taxi with flight tracking & meet-and-greet. Please share availability and fare.';
 
   return (
     <AirportShell accent={getAccent('default')}>
@@ -72,7 +72,7 @@ export default function AirportServiceClient({ faqData }) {
         whatsappText={heroWa} />
 
       {/* ══ HERO — cinematic photo, serif + gold-foil title ══ */}
-      <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pb-24">
+      <section className="relative overflow-hidden px-4 pt-14 sm:pt-24 pb-16 md:pb-24">
         <HeroPhoto src="/images/airport_section.jpg" />
         <LaneStrip />
         <div className="relative z-10 mx-auto max-w-7xl">

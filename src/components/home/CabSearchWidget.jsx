@@ -2,13 +2,16 @@
 
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { Calendar, Search, ArrowRight } from '@/components/ui/icons';
+import { Search, ArrowRight } from '@/components/ui/icons';
 import CityAutocomplete from './CityAutocomplete';
-import { getAllCities } from '@/lib/searchUtils';
+// searchUtils is NOT imported here. It reads cityRoutesData.js, 470 KiB, and
+// this widget sits in the homepage hero — so the entire route dataset was being
+// downloaded before the hero could become interactive, to populate a dropdown.
+// The city list is the same on every render, so it is resolved on the server.
 
-export default function CabSearchWidget({ compact = false, initialFrom = '', initialTo = '', initialType = 'oneway', initialDate = '' }) {
+export default function CabSearchWidget({ compact = false, initialFrom = '', initialTo = '', initialType = 'oneway', initialDate = '', cities = [] }) {
   const router = useRouter();
-  const cities = useMemo(() => getAllCities(), []);
+  // cities arrives as a prop. See the note on the import above.
 
   const [tripType, setTripType] = useState(initialType);
   const [from, setFrom] = useState(initialFrom);
@@ -64,7 +67,7 @@ export default function CabSearchWidget({ compact = false, initialFrom = '', ini
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
               tripType === 'oneway'
                 ? 'bg-white text-gray-900 shadow-sm'
-                : 'text-gray-500 hover:text-gray-700'
+                : 'text-gray-700 hover:text-gray-900'
             }`}
           >
             One Way
@@ -75,7 +78,7 @@ export default function CabSearchWidget({ compact = false, initialFrom = '', ini
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
               tripType === 'roundtrip'
                 ? 'bg-white text-gray-900 shadow-sm'
-                : 'text-gray-500 hover:text-gray-700'
+                : 'text-gray-700 hover:text-gray-900'
             }`}
           >
             Round Trip
@@ -85,7 +88,10 @@ export default function CabSearchWidget({ compact = false, initialFrom = '', ini
         {/* Search Fields */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
           {/* From City */}
-          <div className={`${compact ? 'md:col-span-3' : 'md:col-span-3'}`}>
+          {/* Round trip adds a Return field, so From and To narrow to keep the
+              row at twelve columns. Previously the spans totalled thirteen in
+              round-trip mode, which is what cropped the date fields. */}
+          <div className={tripType === 'roundtrip' ? 'md:col-span-2' : 'md:col-span-3'}>
             <CityAutocomplete
               label="From"
               value={from}
@@ -111,7 +117,7 @@ export default function CabSearchWidget({ compact = false, initialFrom = '', ini
           </div>
 
           {/* To City */}
-          <div className="md:col-span-3">
+          <div className={tripType === 'roundtrip' ? 'md:col-span-2' : 'md:col-span-3'}>
             <CityAutocomplete
               label="To"
               value={to}
@@ -128,13 +134,13 @@ export default function CabSearchWidget({ compact = false, initialFrom = '', ini
               {tripType === 'roundtrip' ? 'Pickup' : 'Date'}
             </label>
             <div className="relative">
-              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
               <input
                 type="date"
+                aria-label={tripType === 'roundtrip' ? 'Pickup date' : 'Travel date'}
                 value={date}
                 onChange={(e) => { setDate(e.target.value); setErrors(prev => ({ ...prev, date: '' })); }}
                 min={today}
-                className="w-full pl-10 pr-3 py-3 bg-white border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-[#FACF2D] focus:ring-2 focus:ring-[#FACF2D]/20 transition-all"
+                className="w-full px-3 py-3 bg-white border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-[#FACF2D] focus:ring-2 focus:ring-[#FACF2D]/20 transition-all"
               />
             </div>
             {errors.date && <p className="text-red-500 text-xs mt-1">{errors.date}</p>}
@@ -145,13 +151,13 @@ export default function CabSearchWidget({ compact = false, initialFrom = '', ini
             <div className="md:col-span-2">
               <label className="block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wider">Return</label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                 <input
                   type="date"
+                  aria-label="Return date"
                   value={returnDate}
                   onChange={(e) => { setReturnDate(e.target.value); setErrors(prev => ({ ...prev, returnDate: '' })); }}
                   min={date || today}
-                  className="w-full pl-10 pr-3 py-3 bg-white border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-[#FACF2D] focus:ring-2 focus:ring-[#FACF2D]/20 transition-all"
+                  className="w-full px-3 py-3 bg-white border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-[#FACF2D] focus:ring-2 focus:ring-[#FACF2D]/20 transition-all"
                 />
               </div>
               {errors.returnDate && <p className="text-red-500 text-xs mt-1">{errors.returnDate}</p>}
@@ -159,7 +165,7 @@ export default function CabSearchWidget({ compact = false, initialFrom = '', ini
           )}
 
           {/* Search Button */}
-          <div className="md:col-span-2 flex items-end">
+          <div className={`flex items-end ${tripType === 'roundtrip' ? 'md:col-span-3' : 'md:col-span-2'}`}>
             <button
               type="submit"
               className="w-full bg-[#FACF2D] hover:bg-[#f0c420] text-black font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-[0.98]"

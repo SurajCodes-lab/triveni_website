@@ -11,7 +11,7 @@ export const metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://www.trivenicabs.in/tourist-spots",
-    siteName: "Triveni Cabs",
+    siteName: "Triveni Cabs™",
   },
   twitter: {
     card: "summary_large_image",

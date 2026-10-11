@@ -22,7 +22,7 @@ export const metadata = {
     url: 'https://www.trivenicabs.in/routes',
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: 'https://www.trivenicabs.in/images/citypage_hero_section_image.jpg',
@@ -34,7 +34,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Explore 500+ Taxi Routes Across India | Triveni Cabs',
+    title: 'Explore 500+ Taxi Routes Across India | Triveni Cabs™',
     description: '🚗 Professional outstation cab service. Delhi • Jaipur • Agra • Shimla • Manali. Book online now!',
     images: ['https://www.trivenicabs.in/images/citypage_hero_section_image.jpg']
   },
@@ -51,9 +51,9 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  authors: [{ name: 'Triveni Cabs - Outstation Taxi Services' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs India',
+  authors: [{ name: 'Triveni Cabs™ - Outstation Taxi Services' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™ India',
 };
 
 export default function RoutesPage() {
@@ -285,7 +285,7 @@ export default function RoutesPage() {
         "name": "What types of vehicles are available for outstation trips?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We offer Sedan (4 passengers) at ₹12/km, SUV Ertiga (6 passengers) at ₹15/km, SUV Innova (7 passengers) at ₹18/km, and Tempo Traveller (12-17 passengers) at ₹20-24/km. All vehicles are AC equipped with GPS tracking and professional drivers."
+          "text": "We offer Sedan (4 passengers) at ₹11/km, SUV Ertiga (6 passengers) at ₹15/km, SUV Innova (7 passengers) at ₹18/km, and Tempo Traveller (12-17 passengers) at ₹20-24/km. All vehicles are AC equipped with GPS tracking and professional drivers."
         }
       },
       {
@@ -301,7 +301,7 @@ export default function RoutesPage() {
         "name": "What are the taxi charges for outstation trips?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Outstation taxi charges vary by vehicle type: Sedan ₹12/km, SUV Ertiga ₹15/km, SUV Innova ₹18/km, Tempo Traveller ₹20-24/km. Additional charges include driver allowance ₹400-500/day, toll taxes, parking fees, and state permit charges. Night charges (10pm-6am) may apply."
+          "text": "Outstation taxi charges vary by vehicle type: Sedan ₹11/km, SUV Ertiga ₹15/km, SUV Innova ₹18/km, Tempo Traveller ₹20-24/km. Additional charges include driver allowance ₹400-500/day, toll taxes, parking fees, and state permit charges. Night charges (10pm-6am) may apply."
         }
       },
       {

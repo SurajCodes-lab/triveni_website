@@ -13,8 +13,10 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
-import { phoneNumber } from "@/utilis/data";
-import { bestTimeToVisitData } from "@/utilis/bestTimeToVisitData";
+import { phoneNumber } from '@/utilis/contact';
+// bestTimeToVisitData is NOT imported here. It is a 69 KB seasonal table for
+// every destination, and this component displays one city's row. The row is
+// selected on the server and arrives as a prop.
 import { motion } from "framer-motion";
 import dynamic from 'next/dynamic';
 
@@ -30,7 +32,9 @@ import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks, NearbyDestinations, PopularRoutes } from '@/components/seo/RelatedContent';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import InclusionBadges from '@/components/shared/InclusionBadges';
-import { getNearbyDestinations, getRelatedRoutes, getPopularCities, getRelatedContent } from '@/utilis/linkingHelper';
+// linkingHelper is NOT imported here. It pulls in sightseeingData.js (1.24 MB)
+// and this is a client component, so the whole dataset shipped to the browser.
+// These values are computed on the server and arrive as props.
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 
@@ -205,7 +209,7 @@ const cityHeroData = {
     highlights: ['Jaisalmer', 'Jodhpur', 'Jaipur', 'Delhi']
   },
   'Jaisalmer': {
-    image: '/images/sightseeing/Jaisalmer/jaisalmer_hero_section.jpg',
+    image: '/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg',
     tagline: 'The Golden City',
     icon: '🏰',
     gradient: 'from-yellow-500 to-amber-600',
@@ -229,7 +233,7 @@ const cityHeroData = {
 
 // Vehicle data
 const vehicleTypes = [
-  { type: 'Sedan', seats: '4', price: '₹12/km', image: '/images/car/swift_dzire.jpg', rating: '4.9' },
+  { type: 'Sedan', seats: '4', price: '₹11/km', image: '/images/car/swift_dzire.jpg', rating: '4.9' },
   { type: 'SUV Ertiga', seats: '6', price: '₹15/km', image: '/images/car/ertiga.jpg', rating: '4.8' },
   { type: 'SUV Innova', seats: '7', price: '₹18/km', image: '/images/car/innova_crysta.jpg', rating: '4.9' },
   { type: 'Tempo Traveller', seats: '12-17', price: '₹23/km', image: '/images/tempo/17_seater.jpg', rating: '4.8' },
@@ -242,8 +246,8 @@ export default function CityServiceClient({
   citySpots,
   details,
   vehiclesServices,
-  cityLocalInfo
-}) {
+  cityLocalInfo, nearbyDestinations = [], relatedRoutes = [], relatedContent = [], cityRoutes = [], bestTimeInfo = null,
+  builtCorridorSlugs = null }) {
   const [mounted, setMounted] = useState(false);
   const [activeVehicleTab, setActiveVehicleTab] = useState('all');
   const [expandedFaq, setExpandedFaq] = useState(0);
@@ -255,6 +259,21 @@ export default function CityServiceClient({
     gradient: 'from-slate-600 to-slate-700',
     highlights: ['Delhi', 'Jaipur', 'Agra']
   };
+
+  // Week 48: the hero "Popular Routes" card used to link /<city>-to-<dest> for
+  // every highlight above, and 23 of those corridors were never built (Shimla to
+  // Kufri, Ahmedabad to Dwarka, Nainital to Bhimtal …). page.js now passes the
+  // corridor slugs that exist for this city from the build manifest; a highlight
+  // is only linked when its page is in that list. If nothing survives, the card
+  // falls back to the city's real route dataset, and hides itself if that is
+  // empty too. When the prop is absent (older caller) the list is left as-is.
+  const citySlug = formattedCityName.toLowerCase().replace(/\s+/g, '-');
+  const corridorExists = (dest) => !builtCorridorSlugs
+    || builtCorridorSlugs.includes(`${citySlug}-to-${dest.toLowerCase().replace(/\s+/g, '-')}`);
+  let popularRouteDests = cityData.highlights.filter(corridorExists);
+  if (popularRouteDests.length === 0) {
+    popularRouteDests = cityRoutes.map((r) => r && r.destination).filter((d) => d && corridorExists(d)).slice(0, 4);
+  }
 
   const handleWhatsAppClick = useCallback(() => {
     trackWhatsAppClick('city_service');
@@ -287,14 +306,79 @@ export default function CityServiceClient({
     return vehicleTypes;
   }, [activeVehicleTab]);
 
+  // Week 50. Every one of the 227 city hubs asked the same twelve questions with
+  // only the city name substituted — measured at 100% identical across the hubs
+  // sampled, once the name was replaced by a placeholder. A family of pages that
+  // differs only by a proper noun is read as one page repeated, which is why this
+  // family sits at an average position of 13.7 while the toll pages, whose every
+  // page carries figures true only of it, sit at 5.1.
+  //
+  // These three questions are built from the city's OWN route records — the
+  // corridors actually run from it, their real distances and drive times — so no
+  // two hubs ask the same thing. Nothing is invented: every figure here is
+  // already displayed further down the same page.
+  //
+  // Deliberately no fares. The route records carry pre-rate-card prices on some
+  // corridors, and quoting one here would put a figure on the hub that contradicts
+  // the corridor page for the same journey. Distance and drive time are facts the
+  // rate card does not govern.
+  const cityFacts = (cityRoutes || []).filter((r) => r && r.destination && r.distance);
+  // The phrasing is varied by city as well as the facts. Many cities share the
+  // same busiest destination — a dozen hubs across the north all run to Delhi
+  // first — so asking "How far is Delhi from <city>?" on every one of them
+  // reproduces the identical-heading problem in a new form: different page, same
+  // sentence. Seeding the wording from the city's name gives the same fact a
+  // different question on each hub, which is also how people actually search:
+  // "how far is", "distance from ... to", "how many km" are three different
+  // queries for one fact.
+  const citySeed = formattedCityName.split('').reduce((a, c) => (a * 31 + c.charCodeAt(0)) | 0, 7);
+  // Salted per question. Without the salt every question on a hub draws the
+  // same variant index, so a city gets phrasing 0 three times and three
+  // variants yield only three distinct hubs. Salting gives 27 combinations,
+  // which matters because the busiest destination is Delhi for a dozen of
+  // these cities and the destination alone does not separate them.
+  const pick = (variants, salt = 0) => variants[Math.abs(citySeed + salt * 7) % variants.length];
+  const localFaqs = [];
+  if (cityFacts[0]) {
+    localFaqs.push({
+      q: pick([
+        `How far is ${cityFacts[0].destination} from ${formattedCityName}?`,
+        `What is the distance from ${formattedCityName} to ${cityFacts[0].destination}?`,
+        `How many km is ${formattedCityName} to ${cityFacts[0].destination} by road?`,
+      ], 0),
+      a: `${formattedCityName} to ${cityFacts[0].destination} is ${cityFacts[0].distance} by road${cityFacts[0].time ? `, about ${cityFacts[0].time} of driving` : ''}. It is the most booked route from ${formattedCityName}, and the fare for every vehicle is on the ${formattedCityName} to ${cityFacts[0].destination} page.`
+    });
+  }
+  if (cityFacts[1]) {
+    localFaqs.push({
+      q: pick([
+        `How long does the drive from ${formattedCityName} to ${cityFacts[1].destination} take?`,
+        `${formattedCityName} to ${cityFacts[1].destination} — how many hours by cab?`,
+        `What is the travel time from ${formattedCityName} to ${cityFacts[1].destination}?`,
+      ], 1),
+      a: `${cityFacts[1].time || 'The drive'} for the ${cityFacts[1].distance} run${cityFacts[1].time ? '' : ' from ' + formattedCityName + ' to ' + cityFacts[1].destination}. Leaving early avoids the worst of the traffic at the city exit.`
+    });
+  }
+  if (cityFacts.length >= 3) {
+    localFaqs.push({
+      q: pick([
+        `Which routes can I book from ${formattedCityName}?`,
+        `Where can I travel by cab from ${formattedCityName}?`,
+        `Which outstation routes run from ${formattedCityName}?`,
+      ], 2),
+      a: `The routes run most often from ${formattedCityName} are ${cityFacts.slice(0, 4).map((r) => `${r.destination} (${r.distance})`).join(', ')}. Outstation cabs run from ${formattedCityName} to any city in North India on request.`
+    });
+  }
+
   const faqs = [
+    ...localFaqs,
     {
       q: `How to book a taxi in ${formattedCityName}?`,
       a: `Simply call us at ${phoneNumber} or WhatsApp for instant booking. Share your pickup location, destination, date, time, and number of passengers. You'll receive immediate confirmation with driver details.`
     },
     {
       q: `What are the taxi rates in ${formattedCityName}?`,
-      a: `Our rates start from Rs.12/km for sedans. Price includes fuel, driver, and basic charges. Toll and parking extra. No hidden charges. Get instant fare estimate on call.`
+      a: `Our rates start from Rs.11/km for sedans. Price includes fuel, driver, and basic charges. Toll and parking extra. No hidden charges. Get instant fare estimate on call.`
     },
     {
       q: `Is one-way taxi available from ${formattedCityName}?`,
@@ -310,7 +394,7 @@ export default function CityServiceClient({
     },
     {
       q: `Which is the best cab service in ${formattedCityName}?`,
-      a: `Triveni Cabs is rated 4.9★ with 10,000+ completed trips in ${formattedCityName}. We offer the lowest fares starting ₹11/km with AC vehicles, GPS tracking, and verified professional drivers for local, outstation, and airport taxi service.`
+      a: `Triveni Cabs™ is rated 4.9★ with 10,000+ completed trips in ${formattedCityName}. We offer the lowest fares starting ₹11/km with AC vehicles, GPS tracking, and verified professional drivers for local, outstation, and airport taxi service.`
     }
   ];
 
@@ -318,7 +402,7 @@ export default function CityServiceClient({
     <article className="min-h-screen bg-[#FAFAFA]" itemScope itemType="https://schema.org/TaxiService">
 
       {/* ==================== HERO SECTION ==================== */}
-      <section className="relative min-h-[60svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+      <section className="relative min-h-[48svh] sm:min-h-[60svh] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -354,7 +438,7 @@ export default function CityServiceClient({
           <motion.nav
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
-            className="mb-8"
+            className="mb-4 sm:mb-8"
           >
             <ol className="flex items-center gap-2 text-sm">
               <li>
@@ -378,7 +462,7 @@ export default function CityServiceClient({
               <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 md:p-10 border border-white/10 h-full">
 
                 {/* Badge */}
-                <div className="inline-flex items-center gap-3 mb-6">
+                <div className="inline-flex items-center gap-3 mb-4 sm:mb-6">
                   <span className="text-4xl">{cityData.icon}</span>
                   <div className="bg-[#FACF2D] px-4 py-2 rounded-full">
                     <span className="text-black font-bold text-sm">{cityData.tagline.toUpperCase()}</span>
@@ -386,23 +470,23 @@ export default function CityServiceClient({
                 </div>
 
                 {/* Main Title */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
-                  Taxi Service in
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-3 sm:mb-4 leading-[1.1]">
+                  Taxi Service in{' '}
                   <span className="block text-[#FACF2D]">{formattedCityName}</span>
                 </h1>
 
-                <p className="text-white/70 text-lg md:text-xl mb-8 max-w-xl">
+                <p className="text-white/70 text-lg md:text-xl mb-5 sm:mb-8 max-w-xl">
                   Best cab service in {formattedCityName} for local, outstation &amp; airport trips. AC sedan, SUV &amp; tempo with verified drivers.
                 </p>
 
                 {/* Quick Stats */}
-                <div className="flex flex-wrap gap-3 mb-8">
+                <div className="flex flex-wrap gap-2 sm:gap-3 mb-5 sm:mb-8">
                   {[
                     { icon: MapPin, value: '500+', label: 'Routes' },
                     { icon: Star, value: '4.9', label: 'Rating' },
                     { icon: Users, value: '50K+', label: 'Trips' }
                   ].map((stat, i) => (
-                    <div key={i} className="bg-white/10 backdrop-blur-xl px-5 py-3 rounded-2xl border border-white/10">
+                    <div key={i} className="bg-white/10 backdrop-blur-xl px-4 py-2 sm:px-5 sm:py-3 rounded-2xl border border-white/10">
                       <div className="flex items-center gap-3">
                         <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${
                           i === 0 ? 'from-blue-500 to-blue-600' :
@@ -452,17 +536,22 @@ export default function CityServiceClient({
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 md:gap-6"
             >
-              {/* Popular Routes Card */}
-              <div className="bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 border border-white/10">
+              {/* Popular Routes Card — only corridors that exist (Week 48).
+                  Hidden below lg: the same routes are listed in full, with
+                  fares, in the Routes from <city> section further down this
+                  page, so on a phone this card was 390px of repetition between
+                  the headline and the first real content. */}
+              {popularRouteDests.length > 0 && (
+              <div className="hidden lg:block bg-white/5 backdrop-blur-2xl rounded-[2rem] p-6 border border-white/10">
                 <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
                   <Route className="w-5 h-5 text-[#FACF2D]" />
                   Popular Routes
                 </h3>
                 <div className="space-y-3">
-                  {cityData.highlights.map((dest, i) => (
+                  {popularRouteDests.map((dest, i) => (
                     <Link
                       key={i}
-                      href={`/${formattedCityName.toLowerCase().replace(/\s+/g, '-')}-to-${dest.toLowerCase().replace(/\s+/g, '-')}`}
+                      href={`/${citySlug}-to-${dest.toLowerCase().replace(/\s+/g, '-')}`}
                       className="flex items-center justify-between bg-white/5 hover:bg-white/10 rounded-xl p-3 transition-colors group"
                     >
                       <div className="flex items-center gap-3">
@@ -483,10 +572,12 @@ export default function CityServiceClient({
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
+              )}
 
-              {/* Quick Booking Card */}
-              <div className="bg-gradient-to-br from-[#FACF2D] to-amber-400 rounded-[2rem] p-6 relative overflow-hidden flex-1">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2" />
+              {/* Quick Booking Card — hidden below lg. It introduces the quote
+                  form that follows it, which on a phone sits directly beneath
+                  and needs no introduction. */}
+              <div className="hidden lg:block bg-gradient-to-br from-[#FACF2D] to-amber-400 rounded-[2rem] p-6 relative overflow-hidden flex-1">
 
                 <div className="relative z-10">
                   <h3 className="text-black font-bold text-lg mb-2">Quick Booking</h3>
@@ -588,7 +679,7 @@ export default function CityServiceClient({
               </div>
             </div>
             <p className="faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
-              Triveni Cabs is the <strong>best-rated taxi service in {formattedCityName}</strong> with a 4.9-star rating and 10,000+ completed trips.
+              Triveni Cabs™ is the <strong>best-rated taxi service in {formattedCityName}</strong> with a 4.9-star rating and 10,000+ completed trips.
               Our {formattedCityName} cab service starts from just <strong>₹11 per km</strong> for AC sedans (Swift Dzire, Toyota Etios).
               We offer local taxi, outstation cabs, airport transfers, sightseeing tours, wedding car rental, and corporate transportation in {formattedCityName}.
               All vehicles are AC, GPS-tracked, and driven by police-verified professional drivers.
@@ -601,7 +692,7 @@ export default function CityServiceClient({
       {/* ==================== ROUTES SECTION ==================== */}
       <section id="routes" className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <CityRoutes cityName={formattedCityName} />
+          <CityRoutes cityName={formattedCityName} routesForCity={cityRoutes} />
         </div>
       </section>
 
@@ -760,7 +851,6 @@ export default function CityServiceClient({
               viewport={{ once: true }}
               className="lg:col-span-2 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
               <div className="relative z-10">
                 <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
                   <Shield className="w-7 h-7 text-white" />
@@ -914,7 +1004,7 @@ export default function CityServiceClient({
                     <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">{spot.name}</h3>
                   </div>
                   <div className="p-5">
-                    <p className="text-slate-600 text-sm line-clamp-2 mb-4">{spot.description}</p>
+                    <p className="mb-4 break-words text-sm leading-relaxed text-slate-600">{spot.description}</p>
                     <button
                       onClick={handleWhatsAppClick}
                       className="text-[#FACF2D] font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all"
@@ -943,7 +1033,7 @@ export default function CityServiceClient({
 
       {/* ==================== BEST TIME TO VISIT SECTION ==================== */}
       {(() => {
-        const visitData = bestTimeToVisitData[formattedCityName];
+        const visitData = bestTimeInfo;
         if (!visitData) return null;
 
         const crowdColor = (crowd) => {
@@ -967,8 +1057,6 @@ export default function CityServiceClient({
         return (
           <section className="py-16 md:py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
             {/* Background decoration */}
-            <div className="absolute top-20 right-0 w-72 h-72 bg-[#FACF2D]/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 left-0 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               {/* Section Header */}
@@ -1137,7 +1225,7 @@ export default function CityServiceClient({
 
             <div className="prose prose-lg max-w-none text-slate-700 space-y-6">
               <p>
-                Looking for a reliable <strong>taxi service in {formattedCityName}</strong>? Triveni Cabs is the
+                Looking for a reliable <strong>taxi service in {formattedCityName}</strong>? Triveni Cabs™ is the
                 highest-rated <strong>cab service in {formattedCityName}</strong> with 4.9&#9733; ratings from
                 10,000+ travellers. Whether you need a <strong>{formattedCityName} local taxi</strong> for
                 sightseeing, an airport transfer, or outstation travel, we provide AC sedan, SUV, and tempo
@@ -1149,7 +1237,7 @@ export default function CityServiceClient({
                 Best {formattedCityName} Cab Booking &mdash; Online &amp; Instant
               </h3>
               <p>
-                <strong>{formattedCityName} cab booking</strong> takes just 2 minutes with Triveni Cabs. Call
+                <strong>{formattedCityName} cab booking</strong> takes just 2 minutes with Triveni Cabs™. Call
                 us at <strong>{phoneNumber}</strong>, WhatsApp us, or fill our quick online enquiry form. We
                 believe in complete transparency &mdash; no surge pricing, no hidden charges, GPS-tracked
                 vehicles, and verified drivers available 24/7. We serve 50+ routes from {formattedCityName} with
@@ -1196,7 +1284,7 @@ export default function CityServiceClient({
                 Whether you&apos;re searching for the <strong>best taxi service in {formattedCityName}</strong>,
                 need a quick <strong>{formattedCityName} cab booking</strong> for an outstation trip, or want
                 a reliable <strong>cab service in {formattedCityName}</strong> for local sightseeing &mdash;
-                Triveni Cabs has you covered. Join 50,000+ happy travellers who trust us for safe, affordable,
+                Triveni Cabs™ has you covered. Join 50,000+ happy travellers who trust us for safe, affordable,
                 and comfortable <strong>cabs in {formattedCityName}</strong> every day.
               </p>
             </div>
@@ -1207,8 +1295,6 @@ export default function CityServiceClient({
       {/* ==================== FAQ SECTION ==================== */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
         {/* Background decoration */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#FACF2D]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -1304,7 +1390,7 @@ export default function CityServiceClient({
 
       {/* ==================== TRAVEL GUIDES & TOURS ==================== */}
       {(() => {
-        const relatedContent = getRelatedContent(formattedCityName);
+        // arrives as a prop (see the note on the import above).
         return relatedContent && relatedContent.length > 0 && (
           <section className="py-12 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4">
@@ -1339,7 +1425,7 @@ export default function CityServiceClient({
             {/* Nearby Destinations */}
             <NearbyDestinations
               currentCity={formattedCityName}
-              destinations={getNearbyDestinations(formattedCityName, 6)}
+              destinations={nearbyDestinations}
               title="Explore Nearby Cities"
               limit={6}
             />
@@ -1349,7 +1435,7 @@ export default function CityServiceClient({
           <div className="mt-12">
             <PopularRoutes
               city={formattedCityName}
-              routes={getRelatedRoutes(formattedCityName, null, 8)}
+              routes={relatedRoutes}
               title={`Popular Routes from ${formattedCityName}`}
               limit={8}
             />
@@ -1401,7 +1487,7 @@ export default function CityServiceClient({
 
       {/* Feed the GLOBAL mobile sticky bar with city context (no duplicate bar) */}
       <SetStickyCta
-        price="₹12/km"
+        price="₹11/km"
         label={`Taxi in ${formattedCityName}`}
         whatsappText={`Hi, I need taxi service in ${formattedCityName}. Please share rates and availability.`}
       />

@@ -11,16 +11,16 @@ export const metadata = {
   title: tightenTitle('Family Trip to Manali from Delhi by Car | Innova Rs 14,500 | 2026'),
   description: 'Book a family trip to Manali from Delhi by car. Innova Crysta Rs 14,500, Sedan Rs 11,000. Solang Valley, Rohtang Pass, snow activities. Call 7668570551.',
   keywords: 'family trip manali from delhi, delhi to manali family tour, manali family vacation by car, manali trip with kids, family holiday manali',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/family-trip-manali-from-delhi' },
   openGraph: {
     title: 'Family Trip to Manali from Delhi by Car | Innova Rs 14,500',
     description: 'Safe family trip to Manali. Solang Valley snow, Rohtang Pass, Hadimba Temple. Innova Crysta with child seat.',
     type: 'website', locale: 'en_IN',
-    url: 'https://www.trivenicabs.in/family-trip-manali-from-delhi', siteName: 'Triveni Cabs',
+    url: 'https://www.trivenicabs.in/family-trip-manali-from-delhi', siteName: 'Triveni Cabs™',
   },
   twitter: { card: 'summary_large_image', title: 'Family Trip to Manali from Delhi | Innova Rs 14,500', description: 'Manali family trip by car. Snow, adventure & mountain magic. From Rs 11,000.' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
@@ -41,7 +41,7 @@ export default function FamilyTripPage() {
     highPrice: data.price.tempo,
     tripName: 'Family Trip to Manali from Delhi by Car',
     howToName: 'How to Plan a Family Trip to Manali from Delhi by Car',
-    howToDesc: 'Step-by-step guide to booking a comfortable, kid-friendly family road trip to Manali from Delhi with Triveni Cabs.',
+    howToDesc: 'Step-by-step guide to booking a comfortable, kid-friendly family road trip to Manali from Delhi with Triveni Cabs™.',
   });
 
   return (
@@ -54,7 +54,7 @@ export default function FamilyTripPage() {
           tone="dark"
           className="mx-auto max-w-4xl"
           question={'How much does a family trip to Manali from Delhi cost?'}
-          answer={'A family trip to Manali runs 4-5 days and covers 540 km from Delhi. Triveni Cabs prices it from Rs 11,000 in a sedan, Rs 14,500 in a Toyota Innova Crysta, and Rs 20,000 in a Tempo Traveller, sized for a family of 4-6 members. The best season to go is April to June, October to December.'}
+          answer={'A family trip to Manali runs 4-5 days and covers 540 km from Delhi. Triveni Cabs™ prices it from Rs 11,000 in a sedan, Rs 14,500 in a Toyota Innova Crysta, and Rs 20,000 in a Tempo Traveller, sized for a family of 4-6 members. The best season to go is April to June, October to December.'}
           facts={[
             { label: 'Distance', value: '540 km' },
             { label: 'Duration', value: '4-5 Days' },

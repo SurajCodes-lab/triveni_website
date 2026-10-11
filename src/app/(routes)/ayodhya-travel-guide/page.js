@@ -3,6 +3,7 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 import { getArticleSchema, getSpeakableSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 
 export const revalidate = 3600;
 
@@ -10,9 +11,9 @@ export const metadata = {
   title: tightenTitle('Ayodhya Travel Guide 2026 | Ram Mandir, Temples, Food & Tips'),
   description: 'Complete Ayodhya travel guide 2026. Ram Mandir, Hanuman Garhi, Saryu aarti, Deepotsav, best time, food, darshan tips. Call 7668570551.',
   keywords: 'ayodhya travel guide, ram mandir guide, ayodhya tourist guide, ayodhya sightseeing, ram janmabhoomi, hanuman garhi, saryu ghat, deepotsav, things to do in ayodhya',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/ayodhya-travel-guide' },
   openGraph: {
@@ -21,7 +22,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/ayodhya-travel-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg', width: 1200, height: 630, alt: 'Ayodhya Travel Guide 2026' }],
   },
   twitter: {
@@ -151,7 +152,7 @@ export default function AyodhyaTravelGuidePage() {
   const foodSubtitle = "Satvik Awadhi vegetarian food and famous local sweets";
   const bestTimeLegend = [{ color: "bg-emerald-500", label: "Best (Oct-Mar)" }, { color: "bg-amber-400", label: "Okay (Jul-Sep)" }, { color: "bg-red-400", label: "Avoid (May-Jun)" }];
   const transportOptions = [
-    { mode: "Triveni Cabs (Private Taxi)", price: "₹2,500-4,000/day", desc: "AC car with driver — the easiest way to cover Ayodhya's temples and combine nearby Lucknow, Varanasi or Prayagraj. Delhi to Ayodhya one-way available. Call 7668570551.", highlight: true },
+    { mode: "Triveni Cabs™ (Private Taxi)", price: "₹2,500-4,000/day", desc: "AC car with driver — the easiest way to cover Ayodhya's temples and combine nearby Lucknow, Varanasi or Prayagraj. Delhi to Ayodhya one-way available. Call 7668570551.", highlight: true },
     { mode: "E-Rickshaw (Battery Auto)", price: "₹20-100/trip", desc: "The most common local transport within the temple town, ideal for short hops between Ram Mandir, Hanuman Garhi and the ghats.", highlight: false },
     { mode: "Auto-rickshaw", price: "₹50-200/trip", desc: "Available for slightly longer trips and to reach Faizabad. Agree on the fare before starting your ride.", highlight: false },
     { mode: "Cycle Rickshaw", price: "₹30-80/trip", desc: "Great for the narrow old-town lanes near the temples and for soaking in the atmosphere at a slow pace.", highlight: false },
@@ -263,7 +264,7 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* TABLE OF CONTENTS */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3">Table of Contents</h2>
@@ -284,7 +285,7 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* WELCOME */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-3xl p-8 md:p-12 relative">
               <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full rounded-tl-3xl" />
@@ -308,7 +309,7 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* BEST TIME */}
-        <section className="py-16 px-4 bg-white/80">
+        <section className="py-10 sm:py-16 px-4 bg-white/80">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 1</div>
@@ -339,7 +340,7 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* ATTRACTIONS */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 2</div>
@@ -378,13 +379,13 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* BOOK / SELL */}
-        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
           <div className="max-w-6xl mx-auto relative">
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
                 <Car className="w-4 h-4 text-amber-300" />
-                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs™</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
               <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
@@ -425,7 +426,7 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* FOOD */}
-        <section className="py-16 px-4 bg-gradient-to-br from-orange-50/80 to-amber-50/80">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-br from-orange-50/80 to-amber-50/80">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 3</div>
@@ -447,7 +448,7 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* SHOPPING */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 4</div>
@@ -468,7 +469,7 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* TRANSPORT */}
-        <section className="py-16 px-4 bg-white/80">
+        <section className="py-10 sm:py-16 px-4 bg-white/80">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 5</div>
@@ -493,7 +494,7 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* STAY */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 6</div>
@@ -514,8 +515,13 @@ export default function AyodhyaTravelGuidePage() {
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Ayodhya" citySlug="ayodhya" />
+
+
         {/* FAQ */}
-        <section className="py-16 px-4 bg-white/80">
+        <section className="py-10 sm:py-16 px-4 bg-white/80">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">APPENDIX</div>
@@ -536,7 +542,7 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* LINKS */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-2 text-center">Explore More About {cityName}</h2>
             <p className="text-stone-500 text-center mb-8 text-sm">Related guides and tour pages from our collection</p>
@@ -557,7 +563,7 @@ export default function AyodhyaTravelGuidePage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-20 px-4 overflow-hidden">
+        <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-700 via-orange-600 to-yellow-700" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[10%] w-3 h-3 bg-white/20 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />
           <div className="absolute top-[60%] right-[15%] w-2 h-2 bg-white/15 rounded-full" style={{ animation: 'float 8s ease-in-out infinite 2s' }} />

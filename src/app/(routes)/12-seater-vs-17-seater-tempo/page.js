@@ -6,6 +6,7 @@ import SemanticComparison from '@/components/seo/SemanticComparison';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getComparisonSchema, getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 const SLUG = '12-seater-vs-17-seater-tempo';
 const SITE = 'https://www.trivenicabs.in';
@@ -21,7 +22,7 @@ export const metadata = {
     '12 vs 17 seater tempo traveller compared: capacity, price per km, comfort & best-for. Verdict: 12-seater for 8-12, 17-seater for 13-17. Book on 7668570551.',
   keywords:
     '12 seater vs 17 seater tempo, 12 seater vs 17 seater tempo traveller, 17 seater tempo traveller price, 12 seater tempo traveller price per km, which tempo traveller is better, tempo traveller capacity comparison, 12 vs 17 seater tempo cost, best tempo traveller for group, tempo traveller 12 seater, tempo traveller 17 seater, maharaja tempo traveller, tempo for char dham yatra, group travel tempo, tempo traveller for wedding, tempo traveller for pilgrimage, tempo traveller rental rate',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL(SITE),
   alternates: { canonical: PAGE_URL, languages: { 'en-IN': `/${SLUG}` } },
   openGraph: {
@@ -31,7 +32,7 @@ export const metadata = {
     type: 'article',
     locale: 'en_IN',
     url: PAGE_URL,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: '12 Seater vs 17 Seater Tempo Traveller — side-by-side comparison' }],
   },
   twitter: {
@@ -88,7 +89,7 @@ export default function TwelveVsSeventeenSeaterPage() {
       { name: 'Add a comfort buffer', text: 'For long journeys leave 1-2 seats spare for legroom and luggage. A group of 12 is often more comfortable in a 17 seater.' },
       { name: 'Factor in luggage', text: 'Pilgrimage and multi-day trips with heavy bags favour the 17 seater for its larger boot.' },
       { name: 'Compare per-head cost', text: 'Divide the per-km rate by occupancy. A near-full 17 seater is usually the lowest cost per person.' },
-      { name: 'Book with Triveni Cabs', text: 'Call 7668570551 or WhatsApp to confirm vehicle, AC option and driver for your dates.' },
+      { name: 'Book with Triveni Cabs™', text: 'Call 7668570551 or WhatsApp to confirm vehicle, AC option and driver for your dates.' },
     ],
   });
 
@@ -99,7 +100,7 @@ export default function TwelveVsSeventeenSeaterPage() {
       'An experience-based comparison of 12 and 17 seater tempo travellers covering capacity, per-km price, luggage, comfort and the right pick for your group size.',
     image: OG_IMAGE,
     datePublished: '2024-06-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/${SLUG}`) || getTodayDate()),
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'],
   });
 
@@ -115,8 +116,7 @@ export default function TwelveVsSeventeenSeaterPage() {
     areaServed: { '@type': 'Country', name: 'India' },
     brand: { '@type': 'Brand', name: 'Triveni Cabs' },
     provider: { '@type': 'TravelAgency', '@id': `${SITE}/#organization`, name: 'Triveni Cabs', telephone: '+91-7668570551' },
-    aggregateRating: rr.aggregateRating,
-    review: rr.review,
+
   };
 
   const speakableSchema = {
@@ -125,7 +125,7 @@ export default function TwelveVsSeventeenSeaterPage() {
     '@id': `${PAGE_URL}#webpage`,
     name: '12 Seater vs 17 Seater Tempo Traveller',
     url: PAGE_URL,
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/${SLUG}`) || getTodayDate()),
     speakable: getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
   };
 
@@ -144,9 +144,9 @@ export default function TwelveVsSeventeenSeaterPage() {
       {/* AEO/GEO supplemental content — direct-answer verdict, attribute table, decision guide */}
       <section className="bg-slate-50 py-14 px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="speakable-headline text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="speakable-headline text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             12 Seater vs 17 Seater Tempo Traveller: Which Should You Book?
-          </h1>
+          </h2>
           <p className="speakable-lead text-lg text-slate-700 bg-blue-50 border border-blue-100 rounded-xl px-5 py-4 mb-8">
             Short answer: book a <strong>12 seater tempo traveller</strong> for groups of 8-12 to save money and enjoy more
             legroom per person. Book a <strong>17 seater</strong> for groups of 13-17 — the cost difference is only about

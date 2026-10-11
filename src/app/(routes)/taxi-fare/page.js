@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("Taxi Fare Guides — Transparent City & Route Pricing");
-  const description = "Transparent taxi fares for North India cities and routes — sedan/SUV/tempo per-km rates and totals. Triveni Cabs 7668570551.";
+  const description = "Transparent taxi fares for North India cities and routes — sedan/SUV/tempo per-km rates and totals. Triveni Cabs™ 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

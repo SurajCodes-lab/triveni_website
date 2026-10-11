@@ -33,9 +33,12 @@ export default function SemanticComparison({ data }) {
   return (
     <section className="bg-white py-10" aria-label="At-a-glance comparison">
       <div className="container mx-auto px-4 max-w-5xl">
-        <h1 className="speakable-headline text-3xl md:text-4xl font-bold text-slate-900 mb-2">
+        {/* h2, not h1: this is a section inside the page, and the page already has
+            its own h1 in the hero. Two h1 elements split the clearest signal a
+            page gives about what it is about. */}
+        <h2 className="speakable-headline text-3xl md:text-4xl font-bold text-slate-900 mb-2">
           {data.title}
-        </h1>
+        </h2>
         <p className="speakable-lead text-slate-700 mb-6 leading-relaxed">{data.metaDescription}</p>
 
         <ComparisonTable

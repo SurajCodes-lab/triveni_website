@@ -17,12 +17,12 @@ export const metadata = {
     canonical: "https://www.trivenicabs.in/vehicles"
   },
   openGraph: {
-    title: "Vehicle Fleet | Car Rental India | Triveni Cabs",
+    title: "Vehicle Fleet | Car Rental India | Triveni Cabs™",
     description: "Choose from our wide range of vehicles - Sedans, SUVs, Tempo Travellers, and Buses for your travel needs across India.",
     type: "website",
     locale: "en_IN",
     url: "https://www.trivenicabs.in/vehicles",
-    siteName: "Triveni Cabs",
+    siteName: "Triveni Cabs™",
     images: [
       {
         url: "https://www.trivenicabs.in/images/car/innova_crysta.jpg",
@@ -34,7 +34,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vehicle Fleet | Triveni Cabs",
+    title: "Vehicle Fleet | Triveni Cabs™",
     description: "Sedan, SUV, Tempo Traveller & Bus rentals across India. Book now!",
     images: ["https://www.trivenicabs.in/images/car/innova_crysta.jpg"]
   },
@@ -146,11 +146,11 @@ function generateStructuredData() {
 
 // FAQ data for the fleet page (AEO/featured snippet capture)
 const vehicleFaqs = [
-  { q: "Which vehicle types can I rent from Triveni Cabs?", a: "Triveni Cabs offers sedans (from ₹11/km), SUVs (from ₹15/km), 12-26 seater tempo travellers (from ₹23/km), and 22-56 seater buses (from ₹30/km). All vehicles are AC, well-maintained, and come with a professional driver." },
+  { q: "Which vehicle types can I rent from Triveni Cabs™?", a: "Triveni Cabs™ offers sedans (from ₹11/km), SUVs (from ₹15/km), 12-26 seater tempo travellers (from ₹23/km), and 22-56 seater buses (from ₹30/km). All vehicles are AC, well-maintained, and come with a professional driver." },
   { q: "Which car is best for a family trip?", a: "For a family of 4 a sedan like the Swift Dzire is comfortable and economical. For families of 5-7 or those with heavy luggage, a Toyota Innova or Ertiga SUV offers more space. Groups of 8 or more should choose a tempo traveller." },
-  { q: "Do all Triveni Cabs vehicles have AC and a driver?", a: "Yes. Every vehicle in the Triveni Cabs fleet is air-conditioned, regularly sanitized, GPS-tracked, and comes with an experienced, background-verified driver included in the fare." },
+  { q: "Do all Triveni Cabs™ vehicles have AC and a driver?", a: "Yes. Every vehicle in the Triveni Cabs™ fleet is air-conditioned, regularly sanitized, GPS-tracked, and comes with an experienced, background-verified driver included in the fare." },
   { q: "How much does a tempo traveller or bus cost?", a: "Tempo travellers (12-26 seater) start at ₹23/km and buses (22-56 seater) start at ₹30/km. Exact pricing depends on the route, duration, and vehicle. Call 7668570551 or WhatsApp for an all-inclusive quote." },
-  { q: "Can I book a luxury vehicle for a wedding or VIP travel?", a: "Yes, Triveni Cabs offers premium and luxury vehicles including Innova Crysta, premium sedans, and decorated wedding cars for weddings, corporate VIP travel, and special occasions across 50+ cities." },
+  { q: "Can I book a luxury vehicle for a wedding or VIP travel?", a: "Yes, Triveni Cabs™ offers premium and luxury vehicles including Innova Crysta, premium sedans, and decorated wedding cars for weddings, corporate VIP travel, and special occasions across 50+ cities." },
 ];
 
 // BreadcrumbList schema for SERP display
@@ -178,7 +178,7 @@ export default function VehiclesPage() {
 
   const articleSchema = getArticleSchema({
     slug: 'vehicles',
-    headline: 'Triveni Cabs Vehicle Fleet — Sedan, SUV, Tempo Traveller & Bus Hire',
+    headline: 'Triveni Cabs™ Vehicle Fleet — Sedan, SUV, Tempo Traveller & Bus Hire',
     description: 'Complete vehicle fleet for hire across India: sedan from ₹11/km, SUV from ₹15/km, tempo traveller from ₹23/km, bus from ₹30/km.',
     image: '/images/car/innova_crysta.jpg',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
@@ -220,7 +220,7 @@ export default function VehiclesPage() {
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         {/* Hero Section */}
-        <section className="relative py-20 bg-slate-950 overflow-hidden">
+        <section className="relative py-12 sm:py-20 bg-slate-950 overflow-hidden">
           {/* Photo hero */}
           <Image
             src="/images/car/innova_crysta.jpg"
@@ -234,8 +234,6 @@ export default function VehiclesPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-950/70 to-slate-950/90" />
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400" />
           <div className="absolute inset-0 opacity-20 pointer-events-none">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-yellow-400/40 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-yellow-500/30 rounded-full blur-3xl" />
           </div>
 
           <div className="relative max-w-7xl mx-auto px-4 text-center">
@@ -281,7 +279,7 @@ export default function VehiclesPage() {
         </section>
 
         {/* Vehicle Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -405,10 +403,10 @@ export default function VehiclesPage() {
         </section>
 
         {/* Why Choose Us */}
-        <section className="py-16 px-4 bg-[#FFF6DC]">
+        <section className="py-10 sm:py-16 px-4 bg-[#FFF6DC]">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-display-serif text-3xl font-bold text-center text-gray-900 mb-12">
-              Why Choose Triveni Cabs?
+              Why Choose Triveni Cabs™?
             </h2>
             <div className="grid md:grid-cols-4 gap-8">
               {[
@@ -446,7 +444,7 @@ export default function VehiclesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-16 px-4 bg-slate-950 overflow-hidden">
+        <section className="relative py-10 sm:py-16 px-4 bg-slate-950 overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400" />
           <div className="absolute -top-20 right-[15%] w-72 h-72 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
           <div className="relative max-w-4xl mx-auto text-center">
@@ -477,7 +475,7 @@ export default function VehiclesPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="faq-section py-16 px-4 bg-white">
+        <section className="faq-section py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="font-display-serif text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8">
               Vehicle Fleet — Frequently Asked Questions

@@ -1,9 +1,13 @@
+import { airportLegacyRoutes } from './airportLegacyRoutes';
+import { airportFareOffers } from '@/lib/seo/airport-offers';
+import { groupDigits } from '@/utilis/pricing';
 /**
  * Airport-to-Outstation Route Data
- * 23 routes covering Delhi, Jaipur, Chandigarh, Dehradun, Srinagar, and Amritsar airports
+ * 46 routes covering Delhi, Jaipur, Chandigarh, Dehradun, Srinagar, and Amritsar airports
  */
 
 export const airportRoutes = {
+  ...airportLegacyRoutes,
 "udaipur-airport-to-city-taxi": {
     slug: "udaipur-airport-to-city-taxi",
     airport: "Maharana Pratap Airport",
@@ -49,8 +53,8 @@ export const airportRoutes = {
     airportCode: "JAI",
     airportCity: "Jaipur",
     terminals: [
-      { name: "Terminal 1", type: "Domestic", airlines: "IndiGo, SpiceJet, Air India, Vistara", pickup: "Arrival hall exit, taxi pickup zone", driveTime: "25-35 min to city" },
-      { name: "Terminal 2", type: "International", airlines: "International charter and scheduled flights", pickup: "International arrival exit", driveTime: "25-35 min to city" },
+      { name: "Terminal 1", type: "International", airlines: "IndiGo, Air India Express, Thai AirAsia, SpiceJet (Dubai, Sharjah, Muscat, Bangkok, Kuala Lumpur)", pickup: "International arrival exit, taxi pickup zone", driveTime: "25-35 min to city" },
+      { name: "Terminal 2", type: "Domestic", airlines: "IndiGo, Air India, SpiceJet, Akasa Air", pickup: "Domestic arrival hall exit, taxi pickup zone", driveTime: "25-35 min to city" },
     ],
     destination: "Jaipur City",
     destinationState: "Rajasthan",
@@ -64,7 +68,7 @@ export const airportRoutes = {
     },
     meetAndGreet: true,
     flightTracking: true,
-    pickupPoints: ["Terminal 1 Arrival", "Terminal 2 Arrival", "Airport Exit Gate"],
+    pickupPoints: ["Terminal 1 International Arrival", "Terminal 2 Domestic Arrival", "Airport Exit Gate"],
     highlights: ["Flight tracking included", "Meet & greet at arrival", "Fixed fare, no surge", "Pink City hotel drop", "Golden Triangle start point"],
     destinationAttractions: ["Hawa Mahal", "Amber Fort", "City Palace", "Jantar Mantar", "Nahargarh Fort", "Jal Mahal"],
     description: [
@@ -76,7 +80,7 @@ export const airportRoutes = {
       { question: "How much is a taxi from Jaipur Airport to the city?", answer: "Fixed fare: Sedan (Swift Dzire) Rs 700, SUV (Innova/Ertiga) Rs 1,100, Tempo Traveller Rs 2,400. All fares include tolls, parking, and meet & greet. No surge pricing." },
       { question: "How long does it take from Jaipur Airport to the city?", answer: "The drive takes just 25-35 minutes for the 13 km from the airport into Jaipur city via Tonk Road and JLN Marg." },
       { question: "Can you drop me directly at my hotel?", answer: "Yes, we drop you at any hotel, City Palace, Hawa Mahal, MI Road, or anywhere in Jaipur. Just specify your destination at booking." },
-      { question: "Which terminal will my driver be at?", answer: "Your driver waits at whichever terminal your flight arrives -- Terminal 1 (domestic) or Terminal 2 (international). We confirm the terminal before your arrival." },
+      { question: "Which terminal will my driver be at?", answer: "Your driver waits at whichever terminal your flight arrives -- Terminal 1 (international) or Terminal 2 (domestic). We confirm the terminal before your arrival." },
       { question: "Is the taxi available for late night flights?", answer: "Yes, we operate 24/7. Your driver will be waiting regardless of your flight time. Night charges are already included in the quoted fare." },
       { question: "What if my flight is delayed?", answer: "We track your flight in real-time and adjust pickup accordingly. No extra waiting charges for flight delays up to 3 hours." },
     ],
@@ -1223,10 +1227,10 @@ export function getAirportRouteReviewCount(slug) {
  * citable, structured, AI-friendly content blocks.
  */
 const _AIRPORT_REVIEW_POOL = [
-  { name: "Rajesh Kumar", body: "Triveni Cabs driver tracked my flight and was waiting at the arrival gate with a name board. Smooth ride, fixed fare honoured, no surge. Better than prepaid taxi." },
-  { name: "Sneha Pillai", body: "Booked a late-night airport pickup. AC sedan was clean, driver helped with luggage, and the journey was comfortable. Would recommend Triveni Cabs for any airport transfer." },
+  { name: "Rajesh Kumar", body: "Triveni Cabs™ driver tracked my flight and was waiting at the arrival gate with a name board. Smooth ride, fixed fare honoured, no surge. Better than prepaid taxi." },
+  { name: "Sneha Pillai", body: "Booked a late-night airport pickup. AC sedan was clean, driver helped with luggage, and the journey was comfortable. Would recommend Triveni Cabs™ for any airport transfer." },
   { name: "Imran Qureshi", body: "Fixed price was honoured even when my flight landed at 3 AM. No surge pricing, no hidden charges. Driver was professional throughout the long drive." },
-  { name: "Kavita Reddy", body: "Used Triveni Cabs for a family transfer with kids. SUV had room for everyone plus luggage, driver was patient with stops, and the price was unbeatable." },
+  { name: "Kavita Reddy", body: "Used Triveni Cabs™ for a family transfer with kids. SUV had room for everyone plus luggage, driver was patient with stops, and the price was unbeatable." },
   { name: "Arjun Nair", body: "International arrival pickup at IGI T3 went perfectly. Driver had nameboard, helped with currency exchange directions, and got us to our hotel without delay." },
   { name: "Pooja Verma", body: "Booked for my parents who don't speak English well. The driver spoke Hindi, helped them with luggage, and called me on arrival. Truly hassle-free service." },
 ];
@@ -1351,6 +1355,16 @@ export const AIRPORT_PLACES = {
     "address": { "@type": "PostalAddress", "addressLocality": "Jewar", "addressRegion": "Uttar Pradesh", "postalCode": "203135", "addressCountry": "IN" },
     "geo": { "@type": "GeoCoordinates", "latitude": "28.1166", "longitude": "77.5550" }
   },
+  hindon: {
+    "@type": "Airport",
+    "@id": "https://www.trivenicabs.in/airport-service/hindon/#airport",
+    "name": "Hindon Airport",
+    "alternateName": "Ghaziabad Hindon Civil Terminal",
+    "iataCode": "HDO",
+    "icaoCode": "VIDX",
+    "address": { "@type": "PostalAddress", "addressLocality": "Ghaziabad", "addressRegion": "Uttar Pradesh", "postalCode": "201004", "addressCountry": "IN" },
+    "geo": { "@type": "GeoCoordinates", "latitude": "28.7076", "longitude": "77.3590" }
+  },
   srinagar: {
     "@type": "Airport",
     "@id": "https://www.trivenicabs.in/airport-service/srinagar/#airport",
@@ -1396,8 +1410,8 @@ export function getAirportRouteServiceSchema(slug) {
     "@type": "Service",
     "serviceType": "Airport Transfer",
     "name": `${route.airportCity} Airport to ${route.destination} Taxi by Triveni Cabs`,
-    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
-    "description": `Reliable airport transfer from ${route.airport} to ${route.destination} by Triveni Cabs. Fixed fare from Rs ${route.fares.sedan.price}, flight tracking, meet & greet at arrival gate.`,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs™" },
+    "description": `Reliable airport transfer from ${route.airport} to ${route.destination} by Triveni Cabs™. Fixed fare from Rs ${route.fares.sedan.price}, flight tracking, meet & greet at arrival gate.`,
     "provider": {
       "@type": "LocalBusiness",
       "@id": "https://www.trivenicabs.in/#organization",
@@ -1406,27 +1420,8 @@ export function getAirportRouteServiceSchema(slug) {
       "url": "https://www.trivenicabs.in",
       "address": { "@type": "PostalAddress", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" }
     },
-    "offers": {
-      "@type": "AggregateOffer",
-      "lowPrice": route.fares.sedan.price.replace(',', ''),
-      "highPrice": route.fares.tempo.price.replace(',', ''),
-      "priceCurrency": "INR",
-      "availability": "https://schema.org/InStock"
-    },
-    "areaServed": { "@type": "Place", "name": `${route.airport} to ${route.destination}` },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(reviewCount),
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": reviews.map(r => ({
-      "@type": "Review",
-      "author": { "@type": "Person", "name": r.name },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": r.body
-    }))
+    "offers": airportFareOffers(route),
+    "areaServed": { "@type": "Place", "name": `${route.airport} to ${route.destination}` }
   };
 }
 
@@ -1459,7 +1454,7 @@ export function getAirportRouteServiceSchema(slug) {
  */
 export function getAirportRouteMetadata(slug) {
   const route = airportRoutes[slug];
-  if (!route) return { title: 'Airport Taxi — Triveni Cabs' };
+  if (!route) return { title: 'Airport Taxi — Triveni Cabs™' };
 
   const sedanPrice = route.fares?.sedan?.price || '0';
   const suvPrice = route.fares?.suv?.price || '0';
@@ -1480,22 +1475,22 @@ export function getAirportRouteMetadata(slug) {
     'amritsar': '/images/sightseeing/Amritsar/Golden_Temple.jpg',
     'haridwar': '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg',
     'chandigarh': '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg',
-    'shimla': '/images/sightseeing/Shimla/Shimla_Hero_section.jpg',
-    'manali': '/images/sightseeing/Manali/Manali_Hero_section.jpg',
-    'rishikesh': '/images/sightseeing/Rishikesh/Rishikesh_Hero_section.jpg',
+    'shimla': '/images/sightseeing/Shimla/shimla_hero_section.jpg',
+    'manali': '/images/sightseeing/Manali/Manali_hero_section.jpg',
+    'rishikesh': '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg',
     'dehradun': '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg',
-    'lucknow': '/images/sightseeing/Lucknow/lucknow_hero_section.jpg',
+    'lucknow': '/images/sightseeing/Lucknow/Lucknow_hero_section.jpg',
     'mathura': '/images/sightseeing/Mathura_Vrindavan/Krishna_Janmabhoomi.jpg',
     'mussoorie': '/images/sightseeing/Mussoorie/Mussoorie_Hero_section.jpg',
-    'udaipur': '/images/sightseeing/Udaipur/Udaipur_Hero_section.jpg',
+    'udaipur': '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg',
     'pushkar': '/images/sightseeing/Ajmer_Pushkar/Ajmer_shariff_hero_section.jpg',
   };
   const ogImage = ogImageMap[dest.toLowerCase()] || '/images/airport_section.jpg';
 
-  const title = `${airportShort} Airport to ${dest} Taxi ₹${sedanPrice} | No Surge`;
-  const description = `${airportShort} airport to ${dest} taxi — Sedan ₹${sedanPrice}, SUV ₹${suvPrice}. ${distance} in ${time}. ${freeWait} free wait, fixed fare. Call 7668570551.`;
-  const ogTitle = `${airportShort} Airport to ${dest} Taxi from ₹${sedanPrice} | ${freeWait} Free Wait, Flight-Tracked`;
-  const ogDescription = `Landing at ${airportShort}? Verified cab waiting at Arrival with your name. Fixed ₹${sedanPrice} Sedan / ₹${suvPrice} SUV to ${dest}. ${time} drive. No surge pricing.`;
+  const title = `${airportShort} Airport to ${dest} Taxi ₹${groupDigits(sedanPrice)} | No Surge`;
+  const description = `${airportShort} airport to ${dest} taxi — Sedan ₹${groupDigits(sedanPrice)}, SUV ₹${groupDigits(suvPrice)}. ${distance} in ${time}. ${freeWait} free wait, fixed fare. Call 7668570551.`;
+  const ogTitle = `${airportShort} Airport to ${dest} Taxi from ₹${groupDigits(sedanPrice)} | ${freeWait} Free Wait, Flight-Tracked`;
+  const ogDescription = `Landing at ${airportShort}? Verified cab waiting at Arrival with your name. Fixed ₹${groupDigits(sedanPrice)} Sedan / ₹${groupDigits(suvPrice)} SUV to ${dest}. ${time} drive. No surge pricing.`;
 
   return {
     title,
@@ -1512,9 +1507,9 @@ export function getAirportRouteMetadata(slug) {
       `${dest.toLowerCase()} fixed fare taxi`,
       `no surge ${airportShort.toLowerCase()} cab`,
     ].join(', '),
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/${slug}` },
     openGraph: {
@@ -1523,7 +1518,7 @@ export function getAirportRouteMetadata(slug) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{
         url: ogImage,
         width: 1200, height: 630,
@@ -1532,7 +1527,7 @@ export function getAirportRouteMetadata(slug) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${airportShort} → ${dest} Taxi ₹${sedanPrice} | ${freeWait} Free Wait`,
+      title: `${airportShort} → ${dest} Taxi ₹${groupDigits(sedanPrice)} | ${freeWait} Free Wait`,
       description: ogDescription,
       creator: '@trivenicabs',
       site: '@trivenicabs',

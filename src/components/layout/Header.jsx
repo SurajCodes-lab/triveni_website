@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Phone, ChevronDown, Menu, X } from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { vehiclesServices } from "@/utilis/data";
+import { vehiclesServices } from '@/utilis/vehiclesServices';
 import { trackNavigation, trackButtonClick, trackPhoneCall, trackModal } from "@/utilis/analytics";
 import { cn } from "@/utilis/cn";
 import { blurDataURL } from "@/utilis/imageUtils";
@@ -13,7 +13,7 @@ import { blurDataURL } from "@/utilis/imageUtils";
 // You'll need to import the AuthModal component
 // import AuthModal from "@/components/Auth/AuthModal";
 
-const Header = () => {
+const Header = ({ seasonalNav = [] }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const mobileMenuRef = useRef(null);
@@ -135,14 +135,14 @@ const Header = () => {
                 aria-label="Triveni Cabs - Go to homepage"
               >
                 <Image
-                  src="/images/logo/logo2.webp"
-                  alt="Triveni Cabs Logo"
-                  width={80}
-                  height={80}
+                  src="/images/logo/logo2-tm.webp"
+                  alt="Triveni Cabs™ Logo"
+                  width={103}
+                  height={36}
                   quality={100}
                   placeholder="blur"
                   blurDataURL={blurDataURL}
-                  className="h-20 w-auto max-w-none hover:opacity-90 transition-opacity"
+                  className="h-9 w-auto max-w-none hover:opacity-90 transition-opacity"
                 />
               </Link>
             </div>
@@ -207,15 +207,12 @@ const Header = () => {
                   ],
                 },
                 {
-                  // Seasonal (Aug–Sep 2026) — gives the in-window money pages
-                  // header-nav equity (previously footer-only).
+                  // Seasonal — resolved by date on the server (src/utilis/seasonalNav.js)
+                  // and passed in as a prop, so the in-window money pages always
+                  // have header-nav equity and stale campaigns drop out on their own.
                   label: 'Yatra & Season',
                   items: [
-                    { href: '/chardham-yatra-september-2026', label: 'Char Dham — Sep 2026' },
-                    { href: '/kedarnath-september-trip', label: 'Kedarnath in September' },
-                    { href: '/janmashtami-mathura-vrindavan-cab', label: 'Janmashtami Mathura' },
-                    { href: '/leh-ladakh-august-september-trip', label: 'Leh–Ladakh Aug/Sep' },
-                    { href: '/september-long-weekend-trips-2026', label: 'Sep Long Weekends' },
+                    ...seasonalNav,
                     { href: '/pilgrimage-cabs', label: 'All Pilgrimage Cabs' },
                   ],
                 },
@@ -311,18 +308,18 @@ const Header = () => {
 
             {/* Menu Header with Logo */}
             <div className="mb-8 mt-2">
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex flex-col items-start gap-2 mb-4">
                 <Image
-                  src="/images/logo/logo2.webp"
-                  alt="Triveni Cabs"
-                  width={60}
-                  height={60}
+                  src="/images/logo/logo2-tm.webp"
+                  alt="Triveni Cabs™"
+                  width={103}
+                  height={36}
                   placeholder="blur"
                   blurDataURL={blurDataURL}
-                  className="rounded-card"
+                  className="h-9 w-auto"
                 />
                 <div>
-                  <h2 className="text-heading-sm text-white">Triveni Cabs</h2>
+                  <h2 className="text-heading-sm text-white">Triveni Cabs™</h2>
                   <p className="text-body-xs text-primary">Your Travel Partner</p>
                 </div>
               </div>
@@ -336,10 +333,7 @@ const Header = () => {
                 { href: '/airport-service', label: 'Airport Transfer' },
                 { href: '/sightseeing', label: 'Sightseeing Tours' },
                 { href: '/chardham-yatra', label: 'Chardham Yatra' },
-                { href: '/chardham-yatra-september-2026', label: 'Char Dham — Sep 2026' },
-                { href: '/kedarnath-september-trip', label: 'Kedarnath in September' },
-                { href: '/leh-ladakh-august-september-trip', label: 'Leh–Ladakh Aug/Sep' },
-                { href: '/september-long-weekend-trips-2026', label: 'Sep Long Weekends' },
+                ...seasonalNav,
                 { href: '/pilgrimage-cabs', label: 'Pilgrimage Cabs' },
                 { href: '/wedding', label: 'Wedding Cars' },
                 { href: '/tempo-traveller', label: 'Tempo Traveller' },

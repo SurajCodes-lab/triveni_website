@@ -30,7 +30,7 @@ export default function Page() {
     <NearMePage
       slug="innova-on-rent-near-me"
       h1="Innova on Rent Near You — Crysta & Hycross with Verified Driver"
-      intro="Need a spacious, comfortable SUV for a family trip, airport transfer or outstation tour? Triveni Cabs rents Toyota Innova, Innova Crysta and the new Hycross — 6+1 seating, premium AC, ample boot space and a professional driver. One upfront per-km fare covers fuel, driver and AC for your entire journey."
+      intro="Need a spacious, comfortable SUV for a family trip, airport transfer or outstation tour? Triveni Cabs™ rents Toyota Innova, Innova Crysta and the new Hycross — 6+1 seating, premium AC, ample boot space and a professional driver. One upfront per-km fare covers fuel, driver and AC for your entire journey."
       fareChips={[
         { label: 'Innova Crysta', value: '₹18/km' },
         { label: 'Innova Hycross', value: '₹20/km' },

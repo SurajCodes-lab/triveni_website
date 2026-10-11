@@ -1,5 +1,7 @@
-'use client';
-
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 import React from 'react';
 import { cn } from '@/utilis/cn';
 

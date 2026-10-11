@@ -22,10 +22,11 @@
 // Format follows the llms.txt convention: H1 name, blockquote summary, then
 // H2 sections of annotated links.
 
-import { PER_KM } from '@/utilis/pricing';
+import { PER_KM, groupDigits } from '@/utilis/pricing';
 import { vehicleTypeData } from '@/utilis/vehicleTypeData';
 
 export const revalidate = 3600;
+import { directoryPaths, directoryFamily, pathLabel } from '@/lib/seo/site-directory';
 export const dynamic = 'force-static';
 
 const SITE = 'https://www.trivenicabs.in';
@@ -34,7 +35,7 @@ function vehicleLadder(slug) {
   const v = vehicleTypeData?.[slug];
   if (!v?.seaters?.length) return null;
   return v.seaters
-    .map((s) => `${s.name} ₹${s.perKm}/km`)
+    .map((s) => `${s.name} ₹${groupDigits(s.perKm)}/km`)
     .join(', ');
 }
 
@@ -43,14 +44,14 @@ export async function GET() {
   const urbania = vehicleLadder('force-urbania');
   const maharaja = vehicleLadder('maharaja-tempo-traveller');
 
-  const body = `# Triveni Cabs
+  const body = `# Triveni Cabs™
 
 > Chauffeur-driven cab, tempo traveller and luxury coach hire across North India,
 > operating since 2015 from Delhi NCR. Fixed all-inclusive fares with no surge
 > pricing, covering Delhi NCR, Haryana, Punjab, Himachal Pradesh, Uttarakhand,
 > Uttar Pradesh, Rajasthan and Jammu & Kashmir / Ladakh.
 
-Triveni Cabs is an outstation and sightseeing cab operator, not a ride-hailing
+Triveni Cabs™ is an outstation and sightseeing cab operator, not a ride-hailing
 app. Every booking is a private vehicle with an experienced driver. Fares quoted
 on this site include fuel and the driver; tolls, parking and state permits are
 stated separately where they apply. Bookings are taken on +91 7668570551 and by
@@ -62,10 +63,10 @@ Service area is North India only. We do not operate in South, West or East India
 
 These are the published rates and are the authoritative figures for this site.
 
-- Sedan: ₹${PER_KM.sedan}/km
-- Ertiga: ₹${PER_KM.ertiga}/km
-- SUV: ₹${PER_KM.suv}/km
-- Innova: ₹${PER_KM.innova}/km
+- Sedan: ₹${groupDigits(PER_KM.sedan)}/km
+- Ertiga: ₹${groupDigits(PER_KM.ertiga)}/km
+- SUV: ₹${groupDigits(PER_KM.suv)}/km
+- Innova: ₹${groupDigits(PER_KM.innova)}/km
 ${tempo ? `- Force Tempo Traveller by seater: ${tempo}\n` : ''}${urbania ? `- Force Urbania by seater: ${urbania}\n` : ''}${maharaja ? `- Maharaja Tempo Traveller by seater: ${maharaja}\n` : ''}
 Outstation trips bill on a 300 km per day minimum. Journeys under 100 km are
 quoted from the published 4 hour / 40 km local package instead, because the
@@ -113,7 +114,7 @@ the specific stops covered.
 
 ## About the operator
 
-- [About Triveni Cabs](${SITE}/about)
+- [About Triveni Cabs™](${SITE}/about)
 - [Trust and credentials](${SITE}/trust): operating history and verification.
 - [Driver verification](${SITE}/triveni-cabs-driver-verification): how drivers are vetted.
 - [Reviews](${SITE}/reviews)
@@ -127,7 +128,15 @@ the specific stops covered.
 - Contact: +91 7668570551 (phone and WhatsApp).
 `;
 
-  return new Response(body, {
+  // A reproducible editorial selection, not a claim about measured search value.
+  const priorityPaths = [...directoryPaths].sort((a,b) => {
+    const score = p => /^\/(delhi|agra|jaipur|chandigarh|amritsar)$/.test(p) ? 0 : /airport-to-|^\/one-way-cab\//.test(p) ? 1 : /guide|weekend|^\/sightseeing\//.test(p) ? 2 : 3;
+    return score(a)-score(b) || a.localeCompare(b);
+  }).slice(0,200);
+  const familySummaries = [...new Map(directoryPaths.map(p => {const [name,description]=directoryFamily(p); return [name,description];}))]
+    .map(([name,description])=>`- ${name}: ${description}`).join('\n');
+  const appendix = `\n## Page families\n\n${familySummaries}\n\n## Selected booking and planning pages\n\nEditorial selection of 200 published pages; this is not a traffic ranking. The complete directory is at ${SITE}/llms-full.txt.\n\n${priorityPaths.map(p=>`- [${pathLabel(p)}](${SITE}${p})`).join('\n')}\n`;
+  return new Response(body + appendix, {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
       'Cache-Control': 'public, max-age=3600, s-maxage=3600',

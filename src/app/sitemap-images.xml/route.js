@@ -3,6 +3,7 @@
 
 import { getAllTours, sightseeingTours } from '@/utilis/sightseeingData';
 import { cities } from '@/utilis/data';
+import { routeExists } from '@/lib/seo/route-exists';
 
 const BASE_URL = 'https://www.trivenicabs.in';
 
@@ -29,7 +30,7 @@ function generateImageSitemap() {
     <loc>${BASE_URL}</loc>
     <image:image>
       <image:loc>${BASE_URL}/images/about/about_banner.webp</image:loc>
-      <image:title>Triveni Cabs - Premium Taxi Service in India</image:title>
+      <image:title>Triveni Cabs™ - Premium Taxi Service in India</image:title>
       <image:caption>Reliable outstation and local taxi service with professional drivers</image:caption>
     </image:image>
   </url>
@@ -43,7 +44,7 @@ function generateImageSitemap() {
     <image:image>
       <image:loc>${BASE_URL}${escapeXml(tour.heroImage)}</image:loc>
       <image:title>${escapeXml(tour.name || tour.slug)} - Sightseeing Tour</image:title>
-      <image:caption>${escapeXml(tour.shortDescription || `Book ${tour.name} sightseeing tour with Triveni Cabs`)}</image:caption>
+      <image:caption>${escapeXml(tour.shortDescription || `Book ${tour.name} sightseeing tour with Triveni Cabs™`)}</image:caption>
     </image:image>
 `;
       // Add additional images from the tour
@@ -70,16 +71,16 @@ function generateImageSitemap() {
     'Chandigarh': '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg',
     'Agra': '/images/sightseeing/Agra/Agra_Hero_section.jpg',
     'Dehradun': '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg',
-    'Udaipur': '/images/sightseeing/Udaipur/Udaipur_Hero_section.jpg',
+    'Udaipur': '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg',
     'Haridwar': '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg',
-    'Rishikesh': '/images/sightseeing/Rishikesh/Rishikesh_Hero_section.jpg',
-    'Shimla': '/images/sightseeing/Shimla/Shimla_Hero_section.jpg',
-    'Manali': '/images/sightseeing/Manali/Manali_Hero_section.jpg',
+    'Rishikesh': '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg',
+    'Shimla': '/images/sightseeing/Shimla/shimla_hero_section.jpg',
+    'Manali': '/images/sightseeing/Manali/Manali_hero_section.jpg',
     'Amritsar': '/images/sightseeing/Amritsar/Amristar_hero_section.jpg',
-    'Lucknow': '/images/sightseeing/Lucknow/lucknow_hero_section.jpg',
-    'Varanasi': '/images/sightseeing/Varanasi/Varanasi_Hero_section.jpg',
+    'Lucknow': '/images/sightseeing/Lucknow/Lucknow_hero_section.jpg',
+    'Varanasi': '/images/sightseeing/Varanasi/varanasi_hero_section.jpg',
     'Jodhpur': '/images/sightseeing/Jodhpur/Jodhpur_Hero_section.jpg',
-    'Ahmedabad': '/images/sightseeing/Ahmedabad/Ahmedabad_Hero_section.jpg',
+    'Ahmedabad': '/images/sightseeing/Ahmedabad/Ahmedabad_hero_section.jpg',
     'Ayodhya': '/images/sightseeing/Ayodhya/Ayodhya_Hero_section.jpg'
   };
 
@@ -94,8 +95,8 @@ function generateImageSitemap() {
     <loc>${BASE_URL}/${escapeXml(citySlug)}</loc>
     <image:image>
       <image:loc>${BASE_URL}${escapeXml(heroImage)}</image:loc>
-      <image:title>Taxi Service in ${escapeXml(cityName)} - Triveni Cabs</image:title>
-      <image:caption>Book reliable taxi and cab services in ${escapeXml(cityName)} with Triveni Cabs</image:caption>
+      <image:title>Taxi Service in ${escapeXml(cityName)} - Triveni Cabs™</image:title>
+      <image:caption>Book reliable taxi and cab services in ${escapeXml(cityName)} with Triveni Cabs™</image:caption>
     </image:image>
   </url>
 `;
@@ -108,7 +109,7 @@ function generateImageSitemap() {
     <loc>${BASE_URL}/airport-service</loc>
     <image:image>
       <image:loc>${BASE_URL}/images/airport_section.jpg</image:loc>
-      <image:title>Airport Taxi Service - Triveni Cabs</image:title>
+      <image:title>Airport Taxi Service - Triveni Cabs™</image:title>
       <image:caption>24/7 airport transfer service with flight tracking and meet-and-greet</image:caption>
     </image:image>
   </url>
@@ -119,7 +120,7 @@ function generateImageSitemap() {
     <loc>${BASE_URL}/wedding</loc>
     <image:image>
       <image:loc>${BASE_URL}/images/wedding/luxury_car.jpg</image:loc>
-      <image:title>Wedding Car Rental - Triveni Cabs</image:title>
+      <image:title>Wedding Car Rental - Triveni Cabs™</image:title>
       <image:caption>Luxury wedding car rental including BMW, Audi, Mercedes, and decorated vehicles</image:caption>
     </image:image>
   </url>
@@ -130,7 +131,7 @@ function generateImageSitemap() {
     <loc>${BASE_URL}/corporate-transportation-service</loc>
     <image:image>
       <image:loc>${BASE_URL}/images/car/innova_crysta.jpg</image:loc>
-      <image:title>Corporate Transportation Service - Triveni Cabs</image:title>
+      <image:title>Corporate Transportation Service - Triveni Cabs™</image:title>
       <image:caption>Professional corporate cab and employee transportation services</image:caption>
     </image:image>
   </url>
@@ -150,7 +151,7 @@ function generateImageSitemap() {
     <loc>${BASE_URL}/vehicles/${escapeXml(vehicle.slug)}</loc>
     <image:image>
       <image:loc>${BASE_URL}${escapeXml(vehicle.image)}</image:loc>
-      <image:title>${escapeXml(vehicle.title)} - Triveni Cabs</image:title>
+      <image:title>${escapeXml(vehicle.title)} - Triveni Cabs™</image:title>
       <image:caption>Rent ${escapeXml(vehicle.title.toLowerCase())} for outstation and local trips</image:caption>
     </image:image>
   </url>
@@ -162,9 +163,9 @@ function generateImageSitemap() {
   // actually ship and credit the destination page for the image rank.
   const week27Additions = [
     // Road trips (Week 26 OG-image fixes)
-    { loc: `${BASE_URL}/10-day-north-india-road-trip`, img: '/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg', title: '10 Day North India Road Trip', caption: 'Delhi, Agra, Jaipur, Udaipur, Jodhpur, Jaisalmer circuit with Triveni Cabs' },
-    { loc: `${BASE_URL}/7-day-himachal-tour-by-car`, img: '/images/sightseeing/Manali/Manali_Hero_section.jpg', title: '7 Day Himachal Tour by Car', caption: 'Shimla, Manali, Dharamshala, Dalhousie 7-day itinerary with Triveni Cabs' },
-    { loc: `${BASE_URL}/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur`, img: '/images/sightseeing/Udaipur/Udaipur_Hero_section.jpg', title: '5 Day Rajasthan Road Trip', caption: 'Jaipur Udaipur Jodhpur circuit — heritage hotels and forts' },
+    { loc: `${BASE_URL}/10-day-north-india-road-trip`, img: '/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg', title: '10 Day North India Road Trip', caption: 'Delhi, Agra, Jaipur, Udaipur, Jodhpur, Jaisalmer circuit with Triveni Cabs™' },
+    { loc: `${BASE_URL}/7-day-himachal-tour-by-car`, img: '/images/sightseeing/Manali/Manali_hero_section.jpg', title: '7 Day Himachal Tour by Car', caption: 'Shimla, Manali, Dharamshala, Dalhousie 7-day itinerary with Triveni Cabs™' },
+    { loc: `${BASE_URL}/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur`, img: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg', title: '5 Day Rajasthan Road Trip', caption: 'Jaipur Udaipur Jodhpur circuit — heritage hotels and forts' },
 
     // Ayodhya ecosystem
     { loc: `${BASE_URL}/ayodhya-1-day-package`, img: '/images/sightseeing/Ayodhya/Ayodhya_Hero_section.jpg', title: 'Ayodhya 1-Day Package', caption: 'Same-day Ram Mandir darshan from Lucknow / Prayagraj' },
@@ -178,6 +179,12 @@ function generateImageSitemap() {
     { loc: `${BASE_URL}/airport-service/delhi/igi-terminal-2-domestic`, img: '/images/airport_section.jpg', title: 'Delhi IGI Airport Terminal 2 Taxi', caption: 'T2 Vistara/Air India terminal pickup with flight-tracked cab' },
     { loc: `${BASE_URL}/airport-service/delhi/igi-terminal-3-international`, img: '/images/airport_section.jpg', title: 'Delhi IGI T3 International Airport Taxi', caption: 'T3 international arrivals pickup with 90-min free wait' },
     { loc: `${BASE_URL}/airport-service/jewar/jewar-terminal-1-international`, img: '/images/airport_section.jpg', title: 'Jewar International Airport Taxi', caption: 'Noida International Airport (Jewar) T1 pickup service' },
+    // Week 47 terminal pages — city-specific hero imagery
+    { loc: `${BASE_URL}/airport-service/jaipur/jai-terminal-1-international`, img: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg', title: 'Jaipur Airport Terminal 1 International Taxi', caption: 'JAI T1 international arrivals pickup with nameboard meet and greet' },
+    { loc: `${BASE_URL}/airport-service/jaipur/jai-terminal-2-domestic`, img: '/images/sightseeing/Jaipur/Hawa_Mahal.jpg', title: 'Jaipur Airport Terminal 2 Domestic Taxi', caption: 'JAI T2 domestic terminal pickup, fixed Rs 700 Pink City transfer' },
+    { loc: `${BASE_URL}/airport-service/agra/kheria-civil-terminal-domestic`, img: '/images/sightseeing/Agra/Taj_mahal.jpg', title: 'Agra Kheria Airport Taxi', caption: 'Agra civil terminal pickup with Taj Mahal transfer in 30 minutes' },
+    { loc: `${BASE_URL}/airport-service/chandigarh/ixc-integrated-terminal`, img: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg', title: 'Chandigarh IXC Integrated Terminal Taxi', caption: 'Chandigarh airport pickup with experienced hill drivers to Shimla and Manali' },
+    { loc: `${BASE_URL}/airport-service/hindon/hindon-civil-terminal-domestic`, img: '/images/airport_section.jpg', title: 'Hindon Airport Ghaziabad Taxi', caption: 'Hindon civil terminal pickup for Ghaziabad, Noida, Delhi and Meerut' },
 
     // Agra guides (high-traffic head-term content)
     { loc: `${BASE_URL}/agra-travel-guide`, img: '/images/sightseeing/Agra/Taj_mahal.jpg', title: 'Agra Travel Guide', caption: 'Complete Agra travel guide — Taj Mahal, Fort, Fatehpur Sikri, food & shopping' },
@@ -192,13 +199,42 @@ function generateImageSitemap() {
     { loc: `${BASE_URL}/12-seater-vs-17-seater-tempo`, img: '/images/tempo/17_seater.jpg', title: '12 Seater vs 17 Seater Tempo', caption: 'Side-by-side tempo traveller comparison for group bookings' },
   ];
 
-  // Best-time-to-visit pages — each top destination gets one entry
-  const bestTimeDestinations = ['manali', 'shimla', 'jaipur', 'udaipur', 'rishikesh', 'kashmir', 'ladakh', 'agra', 'varanasi', 'nainital', 'mussoorie', 'dharamshala', 'amritsar', 'jodhpur', 'jaisalmer', 'pushkar', 'mcleodganj', 'dalhousie', 'mount-abu', 'haridwar'];
-  bestTimeDestinations.forEach(slug => {
+  // Best-time-to-visit pages — each top destination gets one entry.
+  // Week 48: the image used to be synthesised from the slug as
+  // `/images/sightseeing/<City>/<City>_Hero_section.jpg`, which matches the file
+  // on disk for Agra alone. Linux is case-sensitive, so Googlebot fetched
+  // Mount_Abu_Hero_section.jpg, Amritsar_Hero_section.jpg, Kashmir/…, Pushkar/…,
+  // Mcleodganj/… and got 404s — 75 Googlebot requests in the last two weeks.
+  // Each entry now names the exact file. pushkar and dalhousie are gone: those
+  // two pages were never built (they 301 to the city hubs), and the manifest
+  // check below keeps any future entry honest the same way sitemap.js is.
+  const bestTimeDestinations = {
+    'manali': '/images/sightseeing/Manali/Manali_hero_section.jpg',
+    'shimla': '/images/sightseeing/Shimla/shimla_hero_section.jpg',
+    'jaipur': '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
+    'udaipur': '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg',
+    'rishikesh': '/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg',
+    'kashmir': '/images/sightseeing/Kashmir_Valley/Kashmir_Valley_hero_section.jpg',
+    'ladakh': '/images/sightseeing/Ladakh/Ladakh_hero_section.jpg',
+    'agra': '/images/sightseeing/Agra/Agra_Hero_section.jpg',
+    'varanasi': '/images/sightseeing/Varanasi/varanasi_hero_section.jpg',
+    'nainital': '/images/sightseeing/Nainital/Nainital_hero_section.jpg',
+    'mussoorie': '/images/sightseeing/Mussoorie/Mussoorie_Hero_section.jpg',
+    'dharamshala': '/images/sightseeing/Dharamshala/Dharamshala_hero_section.jpg',
+    'amritsar': '/images/sightseeing/Amritsar/Amristar_hero_section.jpg',
+    'jodhpur': '/images/sightseeing/Jodhpur/Jodhpur_Hero_section.jpg',
+    'jaisalmer': '/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg',
+    'mcleodganj': '/images/sightseeing/Dharamshala/McLeod_Ganj.jpg',
+    'mount-abu': '/images/sightseeing/Mount_Abu/mount_abu_hero_section.jpg',
+    'haridwar': '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg',
+  };
+  Object.entries(bestTimeDestinations).forEach(([slug, img]) => {
+    const loc = `/best-time-to-visit/${slug}`;
+    if (!routeExists(loc)) return; // never list a page the build did not write
     const city = slug.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
     week27Additions.push({
-      loc: `${BASE_URL}/best-time-to-visit/${slug}`,
-      img: `/images/sightseeing/${city.replace(/ /g, '_')}/${city.replace(/ /g, '_')}_Hero_section.jpg`,
+      loc: `${BASE_URL}${loc}`,
+      img,
       title: `Best Time to Visit ${city}`,
       caption: `Month-by-month guide: when to visit ${city}, weather, festivals, budget, cab booking`,
     });
@@ -209,7 +245,7 @@ function generateImageSitemap() {
     <loc>${entry.loc}</loc>
     <image:image>
       <image:loc>${BASE_URL}${escapeXml(entry.img)}</image:loc>
-      <image:title>${escapeXml(entry.title)} - Triveni Cabs</image:title>
+      <image:title>${escapeXml(entry.title)} - Triveni Cabs™</image:title>
       <image:caption>${escapeXml(entry.caption)}</image:caption>
     </image:image>
   </url>

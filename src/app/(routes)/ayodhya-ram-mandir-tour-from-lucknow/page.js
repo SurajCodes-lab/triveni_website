@@ -8,9 +8,9 @@ export const metadata = {
   title: tightenTitle('Ayodhya Ram Mandir Tour from Lucknow | Sedan ₹3,500 Same-Day'),
   description: 'Book Ayodhya Ram Mandir tour from Lucknow. Just 135km, 2.5-3 hrs drive. Sedan ₹3,500, SUV ₹5,000. Same-day return or overnight. Call 7668570551.',
   keywords: 'ayodhya ram mandir tour from lucknow, tour package india, sightseeing tour, triveni cabs',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/ayodhya-ram-mandir-tour-from-lucknow' },
   openGraph: {
@@ -18,7 +18,7 @@ export const metadata = {
     description: 'Lucknow to Ayodhya cab. Just 135km, 2.5 hrs. Sedan ₹3,500, SUV ₹5,000. Same-day return feasible. Darshan assistance included.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/ayodhya-ram-mandir-tour-from-lucknow',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{
       url: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg',
       width: 1200, height: 630,
@@ -42,7 +42,7 @@ export default function AyodhyaRamMandirTourFromLucknow() {
     "serviceType": "Lucknow to Ayodhya Ram Mandir Tour",
     "name": "Ayodhya Ram Mandir Tour from Lucknow",
     "description": "Cab service from Lucknow to Ayodhya for Ram Mandir darshan. Just 135km, same-day return feasible.",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
+    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
     "areaServed": { "@type": "City", "name": "Lucknow" },
     "offers": [
       { "@type": "Offer", "name": "Sedan Same-Day", "price": "3500", "priceCurrency": "INR" },
@@ -95,11 +95,8 @@ export default function AyodhyaRamMandirTourFromLucknow() {
           {/* Diagonal speed lines decorative background */}
           <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'repeating-linear-gradient(135deg, transparent, transparent 40px, white 40px, white 41px)' }} />
           {/* Floating gradient orbs */}
-          <div className="absolute top-10 right-1/4 w-80 h-80 bg-emerald-500/15 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-10 w-64 h-64 bg-teal-400/15 rounded-full blur-3xl" />
-          <div className="absolute top-1/3 left-1/3 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl" />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 pt-24 pb-32">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 pt-14 sm:pt-24 pb-16 sm:pb-32">
             <nav className="mb-8" aria-label="Breadcrumb">
               <ol className="inline-flex items-center space-x-2 text-sm">
                 <li><Link href="/" className="text-white/60 hover:text-white transition-colors">Home</Link></li>
@@ -192,7 +189,7 @@ export default function AyodhyaRamMandirTourFromLucknow() {
         </div>
 
         {/* Same-Day Journey Timeline — Horizontal speed-style */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full text-sm font-bold mb-4 border border-emerald-200">
@@ -231,7 +228,7 @@ export default function AyodhyaRamMandirTourFromLucknow() {
         </section>
 
         {/* Neumorphic Route Info Cards */}
-        <section className="py-16 px-4 bg-gradient-to-b from-stone-50 to-emerald-50/30">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-stone-50 to-emerald-50/30">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-stone-800">Why Lucknow is the Best Starting Point</h2>
@@ -263,7 +260,7 @@ export default function AyodhyaRamMandirTourFromLucknow() {
         </section>
 
         {/* Pricing — Stacked card layout with green accent on popular */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-stone-800">Tour Packages & Pricing</h2>
@@ -315,7 +312,7 @@ export default function AyodhyaRamMandirTourFromLucknow() {
         </section>
 
         {/* Temples: Bento-inspired grid with varied card sizes */}
-        <section className="py-16 px-4 bg-gradient-to-b from-white to-stone-50">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-white to-stone-50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-stone-800">What to Visit in Ayodhya</h2>
@@ -368,14 +365,14 @@ export default function AyodhyaRamMandirTourFromLucknow() {
         </section>
 
         {/* === SEO PROSE: E-E-A-T Rich Content Section === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-white to-emerald-50/30">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-white to-emerald-50/30">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-stone-900 mb-8">
-              Why Triveni Cabs for Your <span className="text-transparent bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text">Lucknow to Ayodhya Cab Booking</span>
+              Why Triveni Cabs™ for Your <span className="text-transparent bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text">Lucknow to Ayodhya Cab Booking</span>
             </h2>
             <div className="prose prose-lg max-w-none text-stone-600 space-y-4">
               <p>
-                Lucknow to Ayodhya is the <strong>shortest and most affordable route</strong> to the Ram Mandir — just 135 km via the direct NH27 highway. Triveni Cabs has completed <strong>1,200+ Lucknow to Ayodhya trips</strong> since the temple inauguration, making us the most experienced <Link href="/outstation-cabs" className="text-emerald-600 hover:text-teal-600 underline underline-offset-2">outstation cab provider</Link> on this route. Our drivers navigate this highway daily and can get you to Ayodhya in under 2.5 hours — even accounting for the Faizabad town traffic.
+                Lucknow to Ayodhya is the <strong>shortest and most affordable route</strong> to the Ram Mandir — just 135 km via the direct NH27 highway. Triveni Cabs™ has completed <strong>1,200+ Lucknow to Ayodhya trips</strong> since the temple inauguration, making us the most experienced <Link href="/outstation-cabs" className="text-emerald-600 hover:text-teal-600 underline underline-offset-2">outstation cab provider</Link> on this route. Our drivers navigate this highway daily and can get you to Ayodhya in under 2.5 hours — even accounting for the Faizabad town traffic.
               </p>
               <p>
                 Unlike ride-hailing apps that charge surge pricing during festival seasons, our <Link href="/pricing" className="text-emerald-600 hover:text-teal-600 underline underline-offset-2">Lucknow to Ayodhya cab fare</Link> stays fixed year-round. The ₹3,500 sedan fare includes fuel, tolls, and driver charges. No hidden costs, no surge, no negotiation. We have been operating since 2015 from our headquarters at 366 Dandupura, Agra, with a dedicated Lucknow dispatch team for this popular route.
@@ -399,14 +396,14 @@ export default function AyodhyaRamMandirTourFromLucknow() {
                 Our Lucknow-Ayodhya drivers know insider tips that save hours. They know which parking area near Ram Mandir fills up last, the shortcut through Faizabad town that avoids the main bazaar congestion, and which entry gate has the shortest darshan queue at different times. They also recommend the best authentic Ayodhya peda shops and local <Link href="/religious-tours" className="text-emerald-600 hover:text-teal-600 underline underline-offset-2">pilgrimage stops</Link> that most tourists miss.
               </p>
               <p>
-                Ready to book? Call <strong>7668570551</strong> or WhatsApp us anytime. Read our <Link href="/reviews" className="text-emerald-600 hover:text-teal-600 underline underline-offset-2">4.8-star customer reviews</Link> from 2,800+ verified pilgrims. Free cancellation up to 24 hours before pickup. Triveni Cabs — trusted by thousands for their most sacred journeys.
+                Ready to book? Call <strong>7668570551</strong> or WhatsApp us anytime. Read our <Link href="/reviews" className="text-emerald-600 hover:text-teal-600 underline underline-offset-2">4.8-star customer reviews</Link> from 2,800+ verified pilgrims. Free cancellation up to 24 hours before pickup. Triveni Cabs™ — trusted by thousands for their most sacred journeys.
               </p>
             </div>
           </div>
         </section>
 
         {/* FAQ with emerald accent */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-stone-800">Frequently Asked Questions</h2>
@@ -431,10 +428,10 @@ export default function AyodhyaRamMandirTourFromLucknow() {
         </section>
 
         {/* === INTERLINKS: Ayodhya Tours + Cross-Category === */}
-        <section className="py-16 px-4 bg-gradient-to-b from-stone-50 to-emerald-50/20">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-stone-50 to-emerald-50/20">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-8 text-center">Explore More Ayodhya Tours</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 sm:mb-16">
               {[
                 { href: "/ayodhya-ram-mandir-tour-from-delhi", title: "Ayodhya Tour from Delhi", sub: "530 km via expressway", price: "₹8,500" },
                 { href: "/ayodhya-ram-mandir-tour-from-agra", title: "Ayodhya Tour from Agra", sub: "400 km, one-day possible", price: "₹7,000" },
@@ -456,7 +453,7 @@ export default function AyodhyaRamMandirTourFromLucknow() {
 
             {/* Cross-Category: Related Services */}
             <h3 className="text-xl font-bold text-stone-800 mb-6 text-center">Related Services You May Need</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours", title: "All Religious Tours", desc: "Char Dham, Vaishno Devi, Kashi & 10+ pilgrimages" },
                 { href: "/prayagraj-sangam-tour", title: "Prayagraj Sangam Tour", desc: "160 km from Ayodhya — combine both sacred sites" },
@@ -477,7 +474,7 @@ export default function AyodhyaRamMandirTourFromLucknow() {
 
             {/* Geographic Cluster: Nearby Pilgrimages */}
             <h3 className="text-xl font-bold text-stone-800 mb-6 text-center">Nearby Pilgrimage Destinations</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 sm:mb-16">
               {[
                 { href: "/prayagraj-sangam-tour", label: "Prayagraj Sangam (160 km)" },
                 { href: "/religious-tours/kashi-vishwanath-darshan", label: "Kashi Vishwanath (270 km)" },
@@ -507,7 +504,7 @@ export default function AyodhyaRamMandirTourFromLucknow() {
                       { href: "/delhi-to-lucknow", label: "Delhi to Lucknow Cab" },
                       { href: "/delhi-to-agra", label: "Delhi to Agra Cab" },
                       { href: "/delhi-to-varanasi", label: "Delhi to Varanasi" },
-                      { href: "/delhi-to-haridwar", label: "Delhi to Haridwar" },
+                      { href: "/one-way-cab/delhi-to-haridwar", label: "Delhi to Haridwar" },
                       { href: "/agra-to-lucknow", label: "Agra to Lucknow Cab" },
                       { href: "/delhi-to-jaipur", label: "Delhi to Jaipur Cab" },
                     ].map((r, i) => (
@@ -570,11 +567,10 @@ export default function AyodhyaRamMandirTourFromLucknow() {
         </section>
 
         {/* CTA: Emerald-to-teal gradient with neumorphic price circle */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-br from-emerald-700 via-teal-700 to-emerald-800">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden bg-gradient-to-br from-emerald-700 via-teal-700 to-emerald-800">
           {/* Decorative rings */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-white/10 rounded-full" />
-          <div className="absolute top-10 right-10 w-60 h-60 bg-teal-400/10 rounded-full blur-3xl" />
 
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-black text-white mb-4">Book Lucknow to Ayodhya Express</h2>

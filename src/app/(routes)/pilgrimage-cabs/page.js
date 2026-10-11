@@ -51,7 +51,7 @@ export default function Page() {
     areaServed: DESTINATIONS.map((d) => ({ "@type": "Place", name: d.name })),
     url,
     description: "Chauffeur-driven pilgrimage cabs and darshan taxi service across North India — Char Dham, Vaishno Devi, Mathura-Vrindavan, Ayodhya and Amritsar.",
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "10240" },
+    
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -106,7 +106,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display-serif text-3xl font-bold text-slate-900 text-center mb-2">Popular pilgrimage destinations</h2>
           <p className="text-center text-slate-500 max-w-2xl mx-auto mb-10">Tap any destination for routes, fares and darshan itineraries. Don&apos;t see yours? Call us — we go anywhere there&apos;s a road.</p>
@@ -126,7 +126,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-slate-50">
+      <section className="py-10 sm:py-16 px-4 bg-slate-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-display-serif text-3xl font-bold text-slate-900 text-center mb-12">Why pilgrims book with Triveni</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -171,7 +171,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-3xl mx-auto">
           <FAQSection faqs={[
             { question: 'Which pilgrimage destinations do you cover?', answer: 'Char Dham (Yamunotri, Gangotri, Kedarnath, Badrinath), Vaishno Devi (Katra), Mathura-Vrindavan, Ayodhya Ram Mandir, Amritsar Golden Temple, Kedarnath, Hemkund Sahib, Kanwar Yatra and many more. See our [Char Dham yatra](/chardham-yatra) hub, or call us for any destination.' },
@@ -183,7 +183,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="px-4 pb-16">
+      <section className="px-4 pb-10 sm:pb-16">
         <div className="max-w-5xl mx-auto">
           <RelatedLinks heading="Related yatra pages" links={[
             { href: '/chardham-yatra', anchor: 'Char Dham yatra hub' },
@@ -198,7 +198,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h2 className="font-display-serif text-3xl md:text-5xl font-bold text-slate-950 mb-4">Start your yatra with us</h2>

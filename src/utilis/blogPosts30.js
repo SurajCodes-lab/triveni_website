@@ -22,19 +22,19 @@ export const blogPosts30 = [
     ],
     primaryCTA: {
       text: "Book Delhi to Agra Cab",
-      url: "/one-way-cab/delhi-to-agra",
-      description: "Sedan from ₹2,760, Innova ₹4,200, Tempo for groups",
-      price: "Starting ₹2,760"
+      url: "/delhi-to-agra",
+      description: "Sedan from ₹3,300, Innova ₹4,200, Tempo for groups",
+      price: "Starting ₹3,300"
     },
     content: `
-      <p class="speakable-lead">The Delhi to Agra route is the single most-asked-about journey in north Indian travel. Whether you've already <a href="/one-way-cab/delhi-to-agra" class="text-blue-600 hover:underline font-semibold">booked our Delhi-Agra cab</a> or you're still weighing options, this playbook covers every transport mode, every smart stop, every traffic window, and every rupee — built from 14 years of running this 230-km route ourselves.</p>
+      <p class="speakable-lead">The Delhi to Agra route is the single most-asked-about journey in north Indian travel. Whether you've already <a href="/delhi-to-agra" class="text-blue-600 hover:underline font-semibold">booked our Delhi-Agra cab</a> or you're still weighing options, this playbook covers every transport mode, every smart stop, every traffic window, and every rupee — built from 14 years of running this 230-km route ourselves.</p>
 
       <h2 class="speakable-headline">Five Real Options Compared at a Glance</h2>
       <p>You have five viable choices. We rank them by total comfort, time efficiency, and value:</p>
       <table class="w-full border-collapse border border-gray-300 my-4">
         <thead class="bg-gray-100"><tr><th class="border p-2">Mode</th><th class="border p-2">Time</th><th class="border p-2">Cost (2 pax)</th><th class="border p-2">Best for</th></tr></thead>
         <tbody>
-          <tr><td class="border p-2">Private Cab (Sedan)</td><td class="border p-2">3.5–4 hrs</td><td class="border p-2">₹2,760</td><td class="border p-2">Door-to-door, flexible stops</td></tr>
+          <tr><td class="border p-2">Private Cab (Sedan)</td><td class="border p-2">3.5–4 hrs</td><td class="border p-2">₹3,300</td><td class="border p-2">Door-to-door, flexible stops</td></tr>
           <tr><td class="border p-2">Private Cab (Innova)</td><td class="border p-2">3.5–4 hrs</td><td class="border p-2">₹4,200</td><td class="border p-2">Family of 4, comfort</td></tr>
           <tr><td class="border p-2">Gatimaan Express</td><td class="border p-2">100 min</td><td class="border p-2">₹1,500/pax</td><td class="border p-2">Solo, time-precious</td></tr>
           <tr><td class="border p-2">Vande Bharat</td><td class="border p-2">100 min</td><td class="border p-2">₹1,800/pax</td><td class="border p-2">Modern AC, solo/pair</td></tr>
@@ -105,8 +105,8 @@ export const blogPosts30 = [
 
       <div class="my-8 p-6 bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-500 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">Ready to Book Your Delhi-Agra Cab?</h3>
-        <p class="mb-4 text-gray-700">Sedan ₹2,760 • Innova ₹4,200 • Tempo Traveller ₹6,000 • Same-day or overnight • Driver English/Hindi.</p>
-        <a href="/one-way-cab/delhi-to-agra" class="inline-block bg-yellow-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-yellow-600 transition-colors">Get Quote →</a>
+        <p class="mb-4 text-gray-700">Sedan ₹3,300 • Innova ₹4,200 • Tempo Traveller ₹6,000 • Same-day or overnight • Driver English/Hindi.</p>
+        <a href="/delhi-to-agra" class="inline-block bg-yellow-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-yellow-600 transition-colors">Get Quote →</a>
         <a href="https://wa.me/917668570551?text=Hi%20I%20want%20Delhi-Agra%20cab%20quote" class="ml-3 inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition-colors">WhatsApp</a>
       </div>
     `,
@@ -1077,9 +1077,9 @@ export const blogPosts30 = [
     excerpt: "8 hours, 7 stops, 1 mountain town. Turn the boring Delhi-Shimla grind into a memorable scenic drive with these stops.",
     relatedTours: [{ id: "shimla", name: "Delhi to Shimla Tour", slug: "delhi-to-shimla-2-days", city: "delhi", price: "₹9,000" }],
     relatedDestinations: [{ name: "Shimla", slug: "shimla", type: "city" }, { name: "Kasauli", slug: "kasauli", type: "city" }, { name: "Delhi", slug: "delhi", type: "city" }],
-    primaryCTA: { text: "Book Delhi-Shimla Cab", url: "/one-way-cab/delhi-to-shimla", description: "Sedan ₹3,120, Innova ₹6,500", price: "From ₹3,120" },
+    primaryCTA: { text: "Book Delhi-Shimla Cab", url: "/delhi-to-shimla", description: "Sedan ₹3,850, Innova ₹6,500", price: "From ₹3,850" },
     content: `
-      <p class="speakable-lead">Most travellers default to the boring NH-44 + NH-5 grind to <a href="/one-way-cab/delhi-to-shimla" class="text-blue-600 hover:underline font-semibold">Shimla</a>. Add these 7 stops and 8 hours becomes a scenic day. For full hill-station context see our <a href="/blog/delhi-to-agra-complete-travel-playbook-2026" class="text-blue-600 hover:underline">Delhi to Agra Playbook</a> (similar route principles).</p>
+      <p class="speakable-lead">Most travellers default to the boring NH-44 + NH-5 grind to <a href="/delhi-to-shimla" class="text-blue-600 hover:underline font-semibold">Shimla</a>. Add these 7 stops and 8 hours becomes a scenic day. For full hill-station context see our <a href="/blog/delhi-to-agra-complete-travel-playbook-2026" class="text-blue-600 hover:underline">Delhi to Agra Playbook</a> (similar route principles).</p>
       <h2 class="speakable-headline">Why the Boring Route Is a Missed Opportunity</h2>
       <p>The 350 km Delhi-Shimla route via NH-44 is paved, fast, signal-light. Most travellers just go for it. But adding 4 hours of stops turns the journey into half the holiday.</p>
       <h2>Stop 1: Murthal Parathas (Km 50, 30 min)</h2>
@@ -1105,14 +1105,14 @@ export const blogPosts30 = [
       <h3>Best time for Delhi-Shimla road trip?</h3><p>March-June and September-November. Avoid July-August monsoon (landslide risk past Solan).</p>
       <h3>Is Murthal worth a stop?</h3><p>Yes — 30 minutes for parathas at Sukhdev/Amrik Sukhdev is the iconic Delhi-departure breakfast.</p>
       <h3>Should I take the Kasauli detour?</h3><p>Yes if you have time + couples' trip. Skip if family with kids or tight schedule.</p>
-      <h3>Cab cost Delhi to Shimla?</h3><p>Sedan ₹3,120 one-way, Innova ₹6,500, tempo ₹9,800.</p>
+      <h3>Cab cost Delhi to Shimla?</h3><p>Sedan ₹3,850 one-way, Innova ₹6,500, tempo ₹9,800.</p>
       <h3>Can I drive Delhi-Shimla in winter?</h3><p>Yes, snow chains available at Solan if heavy. See <a href="/blog/delhi-to-manali-winter-snow-chains-fuel-route-conditions" class="text-blue-600 hover:underline">winter driving guide</a>.</p>
       <h3>Best stop for kids?</h3><p>Parwanoo cable car. 1 km over a gorge — kids love it.</p>
       <h3>Are there clean restrooms en route?</h3><p>Sukhdev Dhaba (Murthal), Hotel Pegasus (Parwanoo), Solan-area Reliance Trends mall.</p>
       <div class="my-8 p-6 bg-gradient-to-r from-emerald-50 to-teal-50 border-l-4 border-emerald-500 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">Book Delhi-Shimla Cab</h3>
-        <p class="mb-4 text-gray-700">Sedan ₹3,120 • Innova ₹6,500 • Driver familiar with all 7 stops.</p>
-        <a href="/one-way-cab/delhi-to-shimla" class="inline-block bg-emerald-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-emerald-600 transition-colors">Get Quote →</a>
+        <p class="mb-4 text-gray-700">Sedan ₹3,850 • Innova ₹6,500 • Driver familiar with all 7 stops.</p>
+        <a href="/delhi-to-shimla" class="inline-block bg-emerald-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-emerald-600 transition-colors">Get Quote →</a>
       </div>
     `,
     date: "2026-05-04",
@@ -1134,45 +1134,92 @@ export const blogPosts30 = [
     relatedDestinations: [{ name: "Manali", slug: "manali", type: "city" }],
     primaryCTA: { text: "Winter-Vetted Manali Cab", url: "/one-way-cab/delhi-to-manali", description: "Innova/Scorpio with chains, drivers experienced on the route", price: "From ₹6,480" },
     content: `
-      <p class="speakable-lead">If you're driving to <a href="/one-way-cab/delhi-to-manali" class="text-blue-600 hover:underline font-semibold">Manali</a> in December-February, read this first. Most blogs gloss over the risk; we cover what actually matters.</p>
-      <h2 class="speakable-headline">The Honest Answer: Should You Drive in Winter</h2>
-      <p>December (mild snow): Innova fine. January (heavy snow): Scorpio + chains. February: Scorpio, check Atal Tunnel daily. If you're inexperienced on hill roads in snow, hire our pre-vetted winter drivers — don't self-drive.</p>
-      <h2>Route Options</h2>
-      <p><strong>NH-3 Kullu route</strong> (default): 540 km, 12 hrs. <strong>Mandi-Kullu detour</strong> during landslides: same distance but adds 2-3 hours.</p>
-      <h2>Snow Chains: Where to Buy, How to Fit, When Mandatory</h2>
-      <p><strong>Buy:</strong> Aut tunnel exit shops (₹2,000-3,500 rental + deposit, ₹4,500 buy). <strong>Fit:</strong> driver-side rear wheels first (FWD vehicles); both rear wheels (RWD/4WD). <strong>Mandatory:</strong> post-Bilaspur in heavy-snow forecasts; police checkpoint enforces.</p>
-      <h2>Fuel-Station Gaps</h2>
-      <p>Last reliable BPCL/IOCL pump is at Sundernagar. Mandi-Manali stretch has small pumps but unreliable in heavy snow. Carry 5L spare jerrycan — non-negotiable.</p>
-      <h2>Closures Protocol</h2>
-      <p>Atal Tunnel closes for snow clearing 6-9 AM in heavy snowfall periods. Rohtang Pass: closed Dec-Apr. Detour via Atal Tunnel only.</p>
-      <h2>Vehicle Requirement</h2>
-      <p>4WD highly recommended. Minimum: Innova Crysta. Better: Scorpio. Best: XUV 7-O or Fortuner. Sedan: skip in heavy snow.</p>
-      <h2>Pack List</h2>
-      <ul><li>Snow chains (rental at Aut)</li><li>Towrope</li><li>Blanket × 2</li><li>1L water + energy bars</li><li>First-aid + headlamp</li><li>Jerrycan (5L diesel/petrol)</li><li>Mobile chargers + power bank</li></ul>
-      <h2>Stuck-in-Snow Protocol</h2>
-      <p>Don't run engine indefinitely (CO risk). Don't sleep with engine on. Open window 2 cm. Call driver/operator emergency line. Helicopter rescue available in extreme cases via NDRF.</p>
-      <h2>Reality Check: Abandon-Plan</h2>
-      <p>If you reach Mandi/Kullu and weather is severe, stay overnight at Hotel Mandi Heights or HPTDC Kullu. Don't push through. Lives matter more than itinerary.</p>
-      <h2>Cab Booking Checklist</h2>
-      <ul><li>Driver's previous Manali-winter experience (10+ trips minimum)</li><li>Vehicle service date (within 60 days)</li><li>Tyre tread depth (4mm+)</li><li>Snow chains included or rental at Aut</li></ul>
+      <p class="speakable-lead">Delhi to <a href="/one-way-cab/delhi-to-manali" class="text-blue-600 hover:underline font-semibold">Manali</a> in December, January or February is 530 km and twelve to thirteen hours on NH-44 and NH-21, and the road is open the whole way. What changes in those months is not the route but the vehicle and the conditions it has to handle. This page is about that half of it: tyres and chains, what a driver checks before the climb, where the fuel stops are, and how the Atal Tunnel fits into a winter day. What the corridor itself is like stretch by stretch is covered in <a href="/blog/manali-in-winter-by-road-december-to-february-drive" class="text-blue-600 hover:underline font-semibold">Manali in winter by road</a>.</p>
+
+      <h2 class="speakable-headline">Which Vehicle Actually Goes</h2>
+      <p>An SUV or an Innova Crysta. Every Manali page on this site recommends one for the hill road in any season, and in winter our drivers prefer it without argument - for the ground clearance on a bend that has snow pushed to the side of it, and for the grip on the climb above the town to Solang. On the published rate card the 530 km bills its distance: a sedan is ₹5,830 at ₹11/km, an Ertiga or SUV ₹7,950 at ₹15/km, an Innova Crysta ₹9,540 at ₹18/km and a 12-seater Tempo Traveller ₹12,190 at ₹23/km, on a 300 km per day minimum, with tolls, parking and the driver's night halt at actual.</p>
+      <p>A sedan will reach Manali perfectly well on a clear winter day, and thousands do. The case for the larger car is the day that is not clear: a fresh fall on the last stretch, a bend where the cleared width has narrowed to one lane, the run up to Solang where the snow starts below the road-head. That is also why we do not put self-drive customers on this route in these months. Every winter booking here is chauffeur-driven, with a driver who has done the corridor before.</p>
+
+      <h2>Tyres, and Then Chains</h2>
+      <p>Tyres do most of the work and chains do the last few kilometres of it. In that order:</p>
+      <ul>
+        <li><strong>Tread.</strong> A worn tyre on a wet hill road is the problem before snow is even involved. Depth is checked against the wear indicators moulded into the tread, not by eye, and a tyre near them does not leave the yard in December.</li>
+        <li><strong>Pressure.</strong> Cold air is denser, so a tyre inflated on a Delhi afternoon reads lower at Mandi on a January morning. Drivers check it on the way up rather than only before departure, because an underinflated tyre steers badly on exactly the surface you want it to steer well on.</li>
+        <li><strong>Chains.</strong> They are a tool for a stretch, not for the journey. The car carries them from December; the driver fits them where fresh snow is actually lying on the road - usually the last climb into Manali after a fall, or the road up to Solang - and takes them off as soon as tarmac shows again, because running chains on bare road ruins both the chain and the surface.</li>
+        <li><strong>What chains do not do.</strong> They buy traction, not permission. Everything still happens slowly, in a low gear, with long gaps to the vehicle in front. A car with chains on ice is a car that is going to arrive, not a car that can be driven normally.</li>
+      </ul>
+      <p>If you are booking rather than driving, the only thing to confirm is that the vehicle carries chains for a December to February trip and that the driver has fitted them before. That question, asked once, is worth more than any specification.</p>
+
+      <h2>What a Driver Checks Before the Climb</h2>
+      <p>The hill road starts after Bilaspur, and the sensible place to run through the car is Mandi or Kullu, over the lunch halt, before the last stretch. Our drivers work down a short list:</p>
+      <ul>
+        <li><strong>Coolant and antifreeze</strong> - the one that matters most overnight, because a car parked in Manali at minus five needs the coolant mix to be right before morning, not after</li>
+        <li><strong>Battery</strong> - cold is what finds a tired battery, and it finds it at six in the morning in a hotel car park</li>
+        <li><strong>Tyre pressure and tread</strong>, rechecked in the hills rather than assumed from Delhi</li>
+        <li><strong>Wipers and washer fluid</strong> - road spray in the gorge is constant and a smeared screen at dusk is a real hazard</li>
+        <li><strong>Lights, front and rear fog lamps</strong> - the plains section is where these earn their keep, not the hills</li>
+        <li><strong>Brakes</strong>, after the long descents through the Beas gorge and the Pandoh stretch</li>
+        <li><strong>Fuel</strong>, topped up at the last convenient town rather than the last possible one</li>
+        <li><strong>Chains on board</strong>, and a working torch, a blanket and drinking water in the car</li>
+      </ul>
+
+      <h2>Fuel and the Stops</h2>
+      <p>Fuel is inside the fare on a chauffeur-driven booking, so this is about where the car stops rather than what it costs you - for reference, our Delhi to Manali route page estimates roughly ₹3,786 of fuel one-way for a self-driven car at about 14 km to the litre, which is the number people compare against.</p>
+      <p>The route runs Delhi to Karnal to Chandigarh to Bilaspur to Mandi to Kullu to Manali, and those towns are the stops. Murthal, 40 km out of Delhi, is the traditional breakfast halt on our route notes. Chandigarh at 250 km is where the plains end. Bilaspur, where the last toll plaza on the corridor sits at about 340 km, is the point by which the road has climbed clear of the fog. Sundernagar and Mandi come next - Mandi is the lunch halt and the last substantial town before the Beas gorge - and Kullu is the last one before the orchard road up to Manali. Filling at Mandi or Kullu rather than pushing on is the winter habit, because a queue at a pump in the dark at the end of a thirteen-hour day is avoidable and a detour back down the valley is not.</p>
+      <p>The four toll plazas on the corridor take ₹455 from a car and ₹735 from an SUV in total - ₹165 at Panipat, ₹130 at Karnal, ₹95 at Ambala and ₹65 at Bilaspur - all on FASTag, and there are no tolls after Bilaspur. Our driver pays them and they appear at actual on the bill.</p>
+
+      <h2>The Atal Tunnel, as a Sequence</h2>
+      <p>The tunnel is what makes a winter Manali trip work, and it is worth understanding as an order of events rather than a fact:</p>
+      <ul>
+        <li><strong>1. The road leaves Manali</strong> and climbs past Solang towards the south portal, under the Rohtang ridge.</li>
+        <li><strong>2. The tunnel takes the road under the mountain into Lahaul.</strong> It is open in every month and needs no permit - which is the whole difference from the pass it replaced.</li>
+        <li><strong>3. You come out at Sissu</strong>, on the Lahaul side, which is often under snow when Manali town is clear. This is the winter snow run that Rohtang used to be.</li>
+        <li><strong>4. In heavy snowfall it shuts for clearing</strong> - a few hours at a time, usually early in the morning. That is why drivers plan the tunnel run for the middle of the day rather than at first light.</li>
+        <li><strong>5. There is no timetable to quote.</strong> Closures follow the snow, not a calendar. Ask the driver on the morning; the tunnel's status is local news in Manali and everyone at the hotel desk knows it.</li>
+      </ul>
+      <p>Rohtang Pass itself is closed by snow from December to April in a normal year - our route data gives it a May to October season - so it is not part of a winter plan and nothing is lost by that. Solang and the tunnel are the snow day.</p>
+
+      <h2>When the Conditions Say Stop</h2>
+      <p>A fresh fall can hold the last stretch into Manali for a morning until it is cleared, and the shaded bends between Mandi and Kullu ice over early and thaw by midday. Neither is an emergency; both are reasons to have a spare day and a driver who is allowed to use it. The rule our drivers work to is simple: the hill road is driven in daylight, and if the weather has turned, the night is spent at Mandi or Kullu and the climb is done the next morning. An itinerary that cannot absorb one night in the wrong town is an itinerary that will push a car onto a road it should not be on.</p>
+      <p>On the plains the equivalent is fog. From December into January the Haryana and Punjab stretch of NH-44 fogs over in the early hours, and the response is to slow down, not to stop on the shoulder. A later departure that crosses the plain as the fog thins is very often the quicker journey overall.</p>
+
+      <h2>What to Ask When You Book a Winter Manali Cab</h2>
+      <ul>
+        <li>Has this driver done Delhi to Manali in winter before?</li>
+        <li>Does the vehicle carry chains for a December to February trip?</li>
+        <li>When was the car last serviced, and has the coolant mix been checked for the cold?</li>
+        <li>Is the plan built around daylight on the hill road, and what happens if a fall holds it?</li>
+        <li>Is the fare the rate card on 530 km, with tolls, parking and the night halt at actual?</li>
+      </ul>
+      <p>We answer all five the same way every time, and the <a href="/delhi-to-manali" class="text-blue-600 hover:underline font-semibold">Delhi to Manali cab page</a> carries the current fares for each vehicle.</p>
+
       <h2>Frequently Asked Questions</h2>
-      <h3 class="speakable-headline">Is Delhi to Manali safe in December?</h3><p>Yes with Innova + experienced driver. Heavy-snow days require Scorpio + chains.</p>
-      <h3>When are snow chains mandatory on Delhi-Manali?</h3><p>Post-Bilaspur in forecasted heavy snow. Police check.</p>
-      <h3>Is Atal Tunnel open in winter?</h3><p>Yes year-round, but closes 6-9 AM during heavy snow for clearing.</p>
-      <h3>Best vehicle for Delhi-Manali in January?</h3><p>Scorpio + chains. Innova borderline.</p>
-      <h3>Where to buy snow chains?</h3><p>Aut tunnel exit shops (rental ₹2,000-3,500).</p>
-      <h3>Is Rohtang Pass open in winter?</h3><p>No — closed Dec-Apr. Atal Tunnel is the alternate.</p>
-      <h3>Should I self-drive Delhi-Manali in winter?</h3><p>Only if you've done the route 5+ times. Otherwise hire a vetted driver.</p>
-      <h3>What if I get stuck in snow?</h3><p>Don't run engine indefinitely; call emergency; stay warm with blankets.</p>
+      <h3 class="speakable-headline">Is Delhi to Manali safe by cab in December?</h3>
+      <p>Yes. The highway is open all winter. The plain fogs in the early morning, the hill bends between Mandi and Kullu ice until midday, and a fresh fall can hold the last stretch for a morning. The car carries chains from December and the driver keeps the hill road to daylight.</p>
+      <h3>Which vehicle should I book for Manali in winter?</h3>
+      <p>An SUV or an Innova Crysta. Our Manali pages recommend one for the hill road in any season, and in winter it is the clearance and the grip on the Solang climb that make the difference. A 12-seater Tempo Traveller carries groups of eight to twelve.</p>
+      <h3>When are snow chains actually fitted?</h3>
+      <p>Where fresh snow is lying on the road - usually the last climb into Manali after a fall, or the road up to Solang. They come off as soon as tarmac shows. They are a tool for a few kilometres, not for the drive.</p>
+      <h3>Is the Atal Tunnel open in winter?</h3>
+      <p>Yes, in every month, and no permit is needed. In heavy snowfall it closes for clearing a few hours at a time, usually early in the morning, so drivers plan the run through it for the middle of the day. Check on the morning rather than assuming a schedule.</p>
+      <h3>Is Rohtang Pass open in winter?</h3>
+      <p>No - it is closed by snow from December to April in a normal year. Solang Valley above Manali and Sissu through the Atal Tunnel are the winter snow runs, and neither needs a permit.</p>
+      <h3>How much is a cab from Delhi to Manali in winter?</h3>
+      <p>The same as any season: ₹5,830 for a sedan over 530 km, ₹7,950 for an Ertiga or SUV, ₹9,540 for an Innova Crysta and ₹12,190 for a 12-seater Tempo Traveller, plus ₹455 in tolls for a car and parking and the driver's night halt at actual.</p>
+      <h3>Where are the fuel stops on the Delhi to Manali road?</h3>
+      <p>The towns the route runs through - Karnal, Chandigarh, Bilaspur, Sundernagar, Mandi and Kullu. Drivers fill at Mandi or Kullu before the last climb rather than leaving it to the end of a thirteen-hour day.</p>
+      <h3>Can I self-drive Delhi to Manali in winter?</h3>
+      <p>We only run this route chauffeur-driven in December to February, with a driver who has done the corridor before. The skills that matter on a snowed bend are the ones built by repetition on that specific road.</p>
       <div class="my-8 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 border-l-4 border-blue-500 rounded-r-lg">
-        <h3 class="text-2xl font-bold mb-3 text-gray-800">Winter-Vetted Manali Driver</h3>
-        <p class="mb-4 text-gray-700">Drivers with 10+ winter Manali trips • Snow chains included • 24/7 emergency support.</p>
-        <a href="/one-way-cab/delhi-to-manali" class="inline-block bg-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-600 transition-colors">Book Winter Cab →</a>
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">Winter-Ready Manali Cab</h3>
+        <p class="mb-4 text-gray-700">Chauffeur-driven SUV or Innova Crysta, chains carried from December, the hill road planned for daylight.</p>
+        <a href="/one-way-cab/delhi-to-manali" class="inline-block bg-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-600 transition-colors">Book Winter Cab</a>
       </div>
+      <p class="text-gray-700 leading-relaxed mb-4"><strong>Read next:</strong> <a href="/blog/manali-in-winter-by-road-december-to-february-drive">Manali in Winter by Road: What the Drive Is Like from December to February</a></p>
     `,
     date: "2026-05-04",
     readTime: "9 min read",
-    image: "/images/sightseeing/Manali/manali_hero_section.jpg",
+    image: "/images/sightseeing/Manali/Manali_hero_section.jpg",
     category: "Adventure",
     tags: ["Delhi to Manali", "Winter Driving", "Snow Chains", "Atal Tunnel"],
     keywords: ["delhi to manali in winter", "manali snow chains", "delhi manali road conditions", "is delhi to manali safe in december", "atal tunnel snow"],
@@ -1187,7 +1234,7 @@ export const blogPosts30 = [
     excerpt: "Three wildly different hill towns travellers keep confusing. Backpacker Kasol vs colonial Kasauli vs family-friendly Kufri.",
     relatedTours: [{ id: "shimla", name: "Delhi-Shimla Tour", slug: "delhi-to-shimla-2-days", city: "delhi", price: "₹9,000" }, { id: "manali", name: "Delhi-Manali Tour", slug: "manali", city: "delhi", price: "₹18,000" }],
     relatedDestinations: [{ name: "Manali", slug: "manali", type: "city" }, { name: "Shimla", slug: "shimla", type: "city" }],
-    primaryCTA: { text: "Plan Your Hill Trip", url: "/one-way-cab/delhi-to-shimla", description: "Cab + driver familiar with all 3 destinations", price: "From ₹3,120" },
+    primaryCTA: { text: "Plan Your Hill Trip", url: "/delhi-to-shimla", description: "Cab + driver familiar with all 3 destinations", price: "From ₹3,850" },
     content: `
       <p class="speakable-lead">Three hill towns. Three different vibes. The 30-second answer: <strong>Kasauli for couples, Kasol for college groups, Kufri for families with kids</strong>. Detail below.</p>
       <h2 class="speakable-headline">Kasol — Backpacker Capital</h2>
@@ -1225,12 +1272,12 @@ export const blogPosts30 = [
       <div class="my-8 p-6 bg-gradient-to-r from-emerald-50 to-cyan-50 border-l-4 border-emerald-500 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">Pick Your Hill Town</h3>
         <p class="mb-4 text-gray-700">Cabs to all 3. Driver familiar with route nuances.</p>
-        <a href="/one-way-cab/delhi-to-shimla" class="inline-block bg-emerald-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-emerald-600 transition-colors">Book Cab →</a>
+        <a href="/delhi-to-shimla" class="inline-block bg-emerald-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-emerald-600 transition-colors">Book Cab →</a>
       </div>
     `,
     date: "2026-05-04",
     readTime: "8 min read",
-    image: "/images/sightseeing/Kasauli/kasauli_hero_section.jpg",
+    image: "/images/sightseeing/Kasauli/Kasauli_Hero_Section.jpg",
     category: "Hill Station",
     tags: ["Kasol", "Kasauli", "Kufri", "Hill Stations Comparison"],
     keywords: ["kasol vs kasauli", "kasol or kasauli", "kasauli vs shimla", "kufri vs kasauli", "weekend getaway kasol kasauli", "best hill station near delhi for couples"],
@@ -1293,7 +1340,7 @@ export const blogPosts30 = [
     `,
     date: "2026-05-04",
     readTime: "8 min read",
-    image: "/images/sightseeing/Manali/manali_hero_section.jpg",
+    image: "/images/sightseeing/Manali/Manali_hero_section.jpg",
     category: "Travel Tips",
     tags: ["Volvo vs Cab", "Manali", "Bus Comparison", "Cost"],
     keywords: ["volvo vs cab to manali", "delhi manali bus vs cab", "manali by bus or car", "is volvo to manali safe"],
@@ -1358,7 +1405,7 @@ export const blogPosts30 = [
     `,
     date: "2026-05-04",
     readTime: "8 min read",
-    image: "/images/sightseeing/Haridwar/haridwar_hero_section.jpg",
+    image: "/images/sightseeing/Haridwar/Haridwar_hero_section.jpg",
     category: "Pilgrimage",
     tags: ["Haridwar", "Ganga Aarti", "Har Ki Pauri", "Pilgrimage"],
     keywords: ["haridwar ganga aarti timings", "har ki pauri aarti", "haridwar aarti time", "ganga aarti haridwar season", "haridwar aarti in monsoon"],
@@ -1412,7 +1459,7 @@ export const blogPosts30 = [
     `,
     date: "2026-05-04",
     readTime: "7 min read",
-    image: "/images/sightseeing/Rishikesh/rishikesh_hero_section.jpg",
+    image: "/images/sightseeing/Rishikesh/Rishikesh_hero_section.jpg",
     category: "Travel Tips",
     tags: ["Rishikesh", "Yoga Retreat", "Airport Transfer", "Ashram"],
     keywords: ["rishikesh airport pickup", "delhi airport to rishikesh taxi", "rishikesh ashram transfer", "international yoga retreat rishikesh transport"],
@@ -1436,7 +1483,7 @@ export const blogPosts30 = [
       <p>Tuesday lowest. Wednesday-Thursday moderate. Saturday-Sunday + Monday peak. Avoid: Hanuman Jayanti, Ram Navami, Diwali week.</p>
       <h2>Best Time of Day</h2>
       <p>Sanctum opens 6:30 AM. Arrive by 5 AM at temple gates for first-batch entry. Mid-day 11 AM-2 PM is the worst — combination of heat + peak-arrival.</p>
-      <h2>Two Darshan Queues</h2>
+      <h2>Two Darshan Queues</h2><p class="text-sm text-gray-600 italic my-4">Darshan and aarti times at the Ram Mandir, and the queue and pass arrangements, move with the season, the festival calendar and the crowd on the day. Treat the timings on this page as the usual pattern rather than a timetable, and confirm the day's position with the Shri Ram Janmabhoomi Teerth Kshetra Trust before you travel; our drivers check it on the morning of every Ayodhya booking.</p>
       <ul><li><strong>General darshan</strong> — free, 30 min to 4 hrs depending on day</li><li><strong>Sugam darshan ticket (₹100)</strong> — separate lane, 15-30 min wait. Worth it on weekends.</li></ul>
       <h2>Pre-2024 vs Post-2024 Layout</h2>
       <p>The 2024 consecration added a new wing with separate entry/exit flows. Garbha griha access strict. Photography banned in inner sanctum (signage clear).</p>
@@ -1468,10 +1515,12 @@ export const blogPosts30 = [
         <p class="mb-4 text-gray-700">Cab + parking + Hanuman Garhi add-on • Driver familiar with sugam-darshan logistics.</p>
         <a href="/ayodhya-1-day-package" class="inline-block bg-orange-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-600 transition-colors">Book Package →</a>
       </div>
+
+      <p class="text-gray-700 leading-relaxed mb-4"><strong>Read next:</strong> <a href="/blog/ayodhya-ram-mandir-complete-travel-guide-2026">Ayodhya Ram Mandir Darshan Timings &amp; Booking (2026)</a> for the darshan hours and aarti passes, or <a href="/blog/ayodhya-ram-mandir-complete-guide-2026">Ayodhya Ram Mandir: Pilgrimage &amp; Sightseeing Guide</a> for the wider trip plan.</p>
     `,
     date: "2026-05-04",
     readTime: "8 min read",
-    image: "/images/sightseeing/Ayodhya/ayodhya_hero_section.jpg",
+    image: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
     category: "Pilgrimage",
     tags: ["Ayodhya", "Ram Mandir", "Pilgrimage", "Etiquette"],
     keywords: ["ayodhya ram mandir visit", "ram mandir darshan timings", "ayodhya dress code", "ram mandir crowd", "best time to visit ram mandir 2026", "sugam darshan ayodhya"],
@@ -1586,7 +1635,7 @@ export const blogPosts30 = [
     `,
     date: "2026-05-04",
     readTime: "8 min read",
-    image: "/images/sightseeing/Udaipur/udaipur_hero_section.jpg",
+    image: "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg",
     category: "Destinations",
     tags: ["Udaipur", "Monsoon", "Lake Pichola", "Wet Weather"],
     keywords: ["udaipur in monsoon", "udaipur in rains", "udaipur rainy season", "udaipur in july", "is udaipur good in monsoon"],
@@ -1650,7 +1699,7 @@ export const blogPosts30 = [
     `,
     date: "2026-05-04",
     readTime: "8 min read",
-    image: "/images/sightseeing/Jaisalmer/jaisalmer_hero_section.jpg",
+    image: "/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg",
     category: "Adventure",
     tags: ["Jaisalmer", "Desert Camp", "Camel Safari", "Thar Desert"],
     keywords: ["jaisalmer desert camp from jaipur", "jaisalmer camel safari cost", "sam sand dunes vs khuri", "jaisalmer luxury camp"],
@@ -1790,25 +1839,25 @@ export const blogPosts30 = [
     slug: "tempo-traveller-12-seater-vs-17-seater-mileage-comfort-booking-math",
     title: "Tempo Traveller 12-Seater vs 17-Seater: Mileage, Comfort, Booking Math",
     excerpt: "Per-pax cost math + hill-road performance + AC duct reach + luggage space. Pick the right tempo size for your group.",
-    relatedTours: [{ id: "tempo", name: "Tempo Traveller", slug: "tempo-traveller", city: "delhi", price: "₹15/km" }],
+    relatedTours: [{ id: "tempo", name: "Tempo Traveller", slug: "tempo-traveller", city: "delhi", price: "₹23/km" }],
     relatedDestinations: [{ name: "Delhi", slug: "delhi", type: "city" }],
-    primaryCTA: { text: "Book Tempo Traveller", url: "/tempo-traveller", description: "12-seater from ₹15/km, 17-seater from ₹18/km", price: "From ₹15/km" },
+    primaryCTA: { text: "Book Tempo Traveller", url: "/tempo-traveller", description: "12-seater ₹23/km on the rate card; 17-seater and larger quoted on request per seater", price: "From ₹23/km" },
     content: `
       <p class="speakable-lead">For broader vehicle decisions see our <a href="/blog/premium-suv-vs-sedan-delhi-to-manali-mountain-road-test" class="text-blue-600 hover:underline">SUV vs sedan guide</a>.</p>
       <h2 class="speakable-headline">30-Second Answer Per Group Size</h2>
       <ul><li><strong>8-12 pax + hill route:</strong> 12-seater (better switchback handling)</li><li><strong>12-15 pax + plains:</strong> 17-seater</li><li><strong>16-17 pax:</strong> 17-seater (no choice)</li><li><strong>Mixed AC needs:</strong> 17-seater (better duct reach)</li></ul>
       <h2>The 12-Seater (Force Traveller 4020)</h2>
-      <p>Seats 12 + driver. ~10 km/L diesel. ~₹19/km hire rate. Easier hill-road handling. Boot fits 12 medium suitcases bare.</p>
+      <p>Seats 12 + driver. ~10 km/L diesel. ₹23/km on the rate card, so ₹6,900 for a 300 km day. Easier hill-road handling. Boot fits 12 medium suitcases bare.</p>
       <h2>The 17-Seater (Force Urbania)</h2>
-      <p>Seats 17 + driver. ~9 km/L. ~₹25/km. More luggage room. AC duct reaches all rows (12-seater AC weak in last row).</p>
+      <p>Seats 17 + driver. ~9 km/L. Quoted on request per seater; the rate card publishes the 12-seater only. More luggage room. AC duct reaches all rows (12-seater AC weak in last row).</p>
       <h2>Per-Head Cost Math</h2>
       <table class="w-full border-collapse border border-gray-300 my-4">
         <thead class="bg-gray-100"><tr><th class="border p-2">Pax</th><th class="border p-2">12-Seater Best</th><th class="border p-2">17-Seater Best</th></tr></thead>
         <tbody>
-          <tr><td class="border p-2">8</td><td class="border p-2">₹2.4/km/head</td><td class="border p-2">₹2.75/km/head</td></tr>
-          <tr><td class="border p-2">12</td><td class="border p-2">₹1.6/km/head</td><td class="border p-2">₹1.83/km/head</td></tr>
-          <tr><td class="border p-2">15</td><td class="border p-2">N/A</td><td class="border p-2">₹1.47/km/head</td></tr>
-          <tr><td class="border p-2">17</td><td class="border p-2">N/A</td><td class="border p-2">₹1.29/km/head</td></tr>
+          <tr><td class="border p-2">8</td><td class="border p-2">₹2.88/km/head</td><td class="border p-2">On request</td></tr>
+          <tr><td class="border p-2">12</td><td class="border p-2">₹1.92/km/head</td><td class="border p-2">On request</td></tr>
+          <tr><td class="border p-2">15</td><td class="border p-2">N/A</td><td class="border p-2">On request</td></tr>
+          <tr><td class="border p-2">17</td><td class="border p-2">N/A</td><td class="border p-2">On request</td></tr>
         </tbody>
       </table>
       <h2>Comfort: Bench Length, Legroom, AC Vents</h2>
@@ -1829,7 +1878,7 @@ export const blogPosts30 = [
       <h3 class="speakable-headline">12-seater or 17-seater tempo for hill route?</h3><p>12-seater. Better switchback handling.</p>
       <h3>Mileage of 17-seater Force Urbania?</h3><p>~9 km/L diesel. 12-seater ~10 km/L.</p>
       <h3>Best tempo for 14 people?</h3><p>17-seater Force Urbania.</p>
-      <h3>Tempo traveller per km charge?</h3><p>12-seater ₹23/km. 17-seater ₹25/km. Plus driver allowance.</p>
+      <h3>Tempo traveller per km charge?</h3><p>12-seater ₹23/km on the rate card, ₹6,900 for a 300 km day. 17-seater and larger quoted on request per seater. Plus driver allowance.</p>
       <h3>Are tempo travellers AC?</h3><p>Yes — both sizes. 17-seater has better duct reach to last row.</p>
       <h3>Can 17-seater fit in old Manali lanes?</h3><p>Tight. 12-seater easier.</p>
       <h3>Driver allowance for tempo?</h3><p>₹500-700/day. Bundled in our packages.</p>
@@ -1913,9 +1962,9 @@ export const blogPosts30 = [
     slug: "train-vs-cab-vs-bus-delhi-to-agra-cost-time-comfort-breakdown",
     title: "Train vs Cab vs Bus: Delhi to Agra Cost-Time-Comfort Breakdown",
     excerpt: "Three modes, hard numbers. Per-pax cost matrix + verdict by traveller type. Train fastest, cab most flexible.",
-    relatedTours: [{ id: "agra", name: "Delhi-Agra Cab", slug: "agra-same-day-tour", city: "agra", price: "₹2,760" }],
+    relatedTours: [{ id: "agra", name: "Delhi-Agra Cab", slug: "agra-same-day-tour", city: "agra", price: "₹3,300" }],
     relatedDestinations: [{ name: "Agra", slug: "agra", type: "city" }],
-    primaryCTA: { text: "Delhi-Agra Cab", url: "/one-way-cab/delhi-to-agra", description: "Best for 4+ pax + flexibility", price: "From ₹2,760" },
+    primaryCTA: { text: "Delhi-Agra Cab", url: "/delhi-to-agra", description: "Best for 4+ pax + flexibility", price: "From ₹3,300" },
     content: `
       <p class="speakable-lead">For broader Delhi-Agra logistics see our <a href="/blog/delhi-to-agra-complete-travel-playbook-2026" class="text-blue-600 hover:underline font-semibold">Delhi to Agra Playbook</a>.</p>
       <h2 class="speakable-headline">30-Second Answer Per Traveller Type</h2>
@@ -1923,15 +1972,15 @@ export const blogPosts30 = [
       <h2>Train: Gatimaan + Vande Bharat + Shatabdi</h2>
       <p>Gatimaan Express: 100 min, ₹315-1,500. Vande Bharat: 100 min, ₹350-1,800. Shatabdi: 115 min, ₹350-1,200. All AC + meal included.</p>
       <h2>Private Cab: Door-to-Door</h2>
-      <p>Sedan ₹2,760. Innova ₹4,200. Tempo ₹6,000-9,000. 3.5-4 hrs. Stops anywhere. Full luggage capacity.</p>
+      <p>Sedan ₹3,300. Innova ₹4,200. Tempo ₹6,000-9,000. 3.5-4 hrs. Stops anywhere. Full luggage capacity.</p>
       <h2>Volvo Bus: Cheapest</h2>
       <p>₹600-1,200/pax. 4-5 hrs (more than cab). 2 stops only. Drops at bus stand.</p>
       <h2>Cost Per Head Matrix</h2>
       <table class="w-full border-collapse border border-gray-300 my-4">
         <thead class="bg-gray-100"><tr><th class="border p-2">Pax</th><th class="border p-2">Train (₹/head)</th><th class="border p-2">Cab (₹/head)</th><th class="border p-2">Bus (₹/head)</th></tr></thead>
         <tbody>
-          <tr><td class="border p-2">1</td><td class="border p-2">₹315</td><td class="border p-2">₹2,760</td><td class="border p-2">₹600</td></tr>
-          <tr><td class="border p-2">2</td><td class="border p-2">₹315</td><td class="border p-2">₹1,380</td><td class="border p-2">₹600</td></tr>
+          <tr><td class="border p-2">1</td><td class="border p-2">₹315</td><td class="border p-2">₹3,300</td><td class="border p-2">₹600</td></tr>
+          <tr><td class="border p-2">2</td><td class="border p-2">₹315</td><td class="border p-2">₹1,650</td><td class="border p-2">₹600</td></tr>
           <tr><td class="border p-2">4</td><td class="border p-2">₹315</td><td class="border p-2">₹1,050 (Innova)</td><td class="border p-2">₹600</td></tr>
           <tr><td class="border p-2">6</td><td class="border p-2">₹315</td><td class="border p-2">₹950 (tempo)</td><td class="border p-2">₹600</td></tr>
           <tr><td class="border p-2">12</td><td class="border p-2">₹315</td><td class="border p-2">₹720 (17-tempo)</td><td class="border p-2">₹600</td></tr>
@@ -1959,7 +2008,7 @@ export const blogPosts30 = [
       <div class="my-8 p-6 bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-500 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">Delhi-Agra Cab</h3>
         <p class="mb-4 text-gray-700">For 4+ pax or full-day Agra: cab decisively wins on time + flexibility.</p>
-        <a href="/one-way-cab/delhi-to-agra" class="inline-block bg-yellow-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-yellow-600 transition-colors">Book Cab →</a>
+        <a href="/delhi-to-agra" class="inline-block bg-yellow-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-yellow-600 transition-colors">Book Cab →</a>
       </div>
     `,
     date: "2026-05-04",
@@ -2072,7 +2121,7 @@ export const blogPosts30 = [
     `,
     date: "2026-05-04",
     readTime: "8 min read",
-    image: "/images/sightseeing/Manali/manali_hero_section.jpg",
+    image: "/images/sightseeing/Manali/Manali_hero_section.jpg",
     category: "Travel Tips",
     tags: ["Delhi to Manali", "SUV vs Sedan", "Vehicle Choice"],
     keywords: ["best car for delhi to manali", "innova vs scorpio for hills", "sedan or suv for manali"],

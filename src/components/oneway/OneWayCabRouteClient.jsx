@@ -1,13 +1,15 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import SeasonalCorridorCallout from '@/components/seasonal/SeasonalCorridorCallout';
+import { getRegionTheme } from '@/utilis/regionThemes';
+import RegionNotesStrip from '@/components/seo/RegionNotesStrip';
+import RoadParagraph from '@/components/seo/RoadParagraph';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, ArrowRight, ChevronDown, Shield, Clock, Car, CheckCircle2, IndianRupee, Route, Zap, MapPin, Navigation, Star, Users } from '@/components/ui/icons';
+import { Phone, ArrowRight, Shield, Clock, Car, CheckCircle2, IndianRupee, Route, Zap, MapPin, Navigation, Star, Users } from '@/components/ui/icons';
 import { getCityImage, getVehicleImage } from '@/utilis/imageUtils';
 import { generateUniqueIntro } from '@/utilis/uniqueIntroGenerator';
 import LeadQuoteSection from '@/components/shared/LeadQuoteSection';
-import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import TrackedLink from '@/components/ui/TrackedLink';
+import FaqAccordion from '@/components/shared/FaqAccordion';
 import StickyPriceBar from '@/components/shared/StickyPriceBar';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
@@ -32,16 +34,28 @@ import InfographicPanel from '@/components/seo/InfographicPanel';
 import PriceCalculator from '@/components/seo/PriceCalculator';
 import OutboundCitations from '@/components/seo/OutboundCitations';
 import ExpertQuote from '@/components/seo/ExpertQuote';
-import LongTailFAQ from '@/components/seo/LongTailFAQ';
 import CorridorLinks from '@/components/seo/CorridorLinks';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { getCitationsForRoute } from '@/utilis/outboundCitations';
 import { getFounderQuoteForContext } from '@/utilis/expertQuotes';
-import { generateLongTailFaqs } from '@/utilis/longTailFaqGenerator';
+// canonicalLink keeps these internal links off the Week 43 redirects — see
+// src/lib/seo/canonical-link.js for why a prefix rule cannot do this.
+import { canonicalLink } from '@/lib/seo/canonical-link';
+import { clientRouteExists } from '@/lib/seo/client-route-exists';
 
-export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLinks = [] }) {
-  const [openFaq, setOpenFaq] = useState(null);
-
+export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLinks = [], seasonalCallout = null, roadParagraph = null, planningGuide = null }) {
+  const region = getRegionTheme(route.to);
+  // Week 48: the "Plan Your Trip" cards below were synthesised from route.to for
+  // every route — including the 190-odd destinations (Chitkul, Sarnath, Patiala,
+  // Kumbhalgarh …) that have no guide page at all. Googlebot followed
+  // /chitkul-travel-guide, /cab-service/sarnath, /best-time-to-visit/patiala and
+  // friends straight into 404s. A card is offered only when its page was built.
+  const toSlug = route.to.toLowerCase().replace(/\s+/g, '-');
+  const relatedGuides = [
+    { href: `/best-time-to-visit/${toSlug}`, Icon: Clock, title: `Best Time to Visit ${route.to}`, desc: 'Month-by-month weather, festivals, and peak-season guide.', cta: 'Read guide' },
+    { href: `/cab-service/${toSlug}`, Icon: Car, title: `${route.to} Cab Service`, desc: `Local taxi, airport transfer, station pickup, outstation from ${route.to}.`, cta: 'Explore' },
+    { href: `/${toSlug}-travel-guide`, Icon: MapPin, title: `${route.to} Travel Guide`, desc: `Attractions, itineraries, food, shopping tips for ${route.to}.`, cta: 'View guide' },
+  ].filter((g) => clientRouteExists(g.href));
   // Rich content — use custom if provided on route object, else programmatic defaults
   const pickupPoints = route.pickupPoints || getPickupPoints(route.from);
   const tollDetails = route.tollDetails || getTollDetails(route);
@@ -58,19 +72,6 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
   const toCityImage = getCityImage(route.to);
   const heroWhatsappMessage = `Hi, I want to book a one-way cab from ${route.from} to ${route.to} (${route.distance}). Sedan is quoted at ${route.oneWayFares.sedan} — please confirm availability.`;
 
-  // Route memory: remember the trip this visitor is planning so /contact can
-  // greet them with it and pre-fill WhatsApp (localStorage, no backend).
-  useEffect(() => {
-    try {
-      localStorage.setItem(
-        'tc_last_route',
-        JSON.stringify({ from: route.from, to: route.to, ts: Date.now() })
-      );
-    } catch {
-      /* storage unavailable — feature silently off */
-    }
-  }, [route.from, route.to]);
-
   // Rich UI + ranking-lift derived data (May 2026 sprint)
   const distanceKm = parseInt((route.distance || '').replace(/[^0-9]/g, ''), 10) || 233;
   const sedanFareNum = parseInt((route.oneWayFares?.sedan || '').replace(/[^0-9]/g, ''), 10) || 3800;
@@ -81,18 +82,6 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
     { value: sedanFareNum, prefix: '₹', label: 'Sedan fare', sublabel: 'all-inclusive' },
     { value: savingsAbs, prefix: '₹', label: 'You save', sublabel: 'vs round-trip', format: 'compact' },
   ];
-  const longTailFaqs = generateLongTailFaqs({
-    mode: 'one-way',
-    origin: route.from,
-    destination: route.to,
-    distanceKm,
-    durationText: route.time,
-    sedanFare: route.oneWayFares?.sedan,
-    suvFare: route.oneWayFares?.ertiga,
-    tempoFare: route.oneWayFares?.innova,
-    highway: route.highway,
-    savingsPct: route.savingsPercent,
-  });
   const founderQuote = getFounderQuoteForContext('one-way');
   const citations = getCitationsForRoute({ from: route.from, to: route.to, context: 'outstation' });
   // Phase 3: unique, entity-rich, slug-seeded intro so each one-way route page reads differently.
@@ -116,7 +105,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white overflow-hidden">
+    <div className="min-h-screen overflow-x-clip bg-slate-950 text-white">
       <StickyPriceBar
         title={`${route.from} to ${route.to} One-Way Cab`}
         price={route.oneWayFares?.sedan || ''}
@@ -124,51 +113,34 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
         whatsappMessage={`Hi, I want to book a one-way cab from ${route.from} to ${route.to}`}
       />
 
-      {/* CSS Animations */}
-      <style jsx global>{`
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-        @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
-        @keyframes pulse-glow { 0%,100% { box-shadow: 0 0 20px rgba(245,158,11,0.3); } 50% { box-shadow: 0 0 50px rgba(245,158,11,0.6); } }
-        @keyframes dash-flow { 0% { stroke-dashoffset: 100; } 100% { stroke-dashoffset: 0; } }
-        @keyframes arrow-slide { 0% { transform: translateX(-8px); opacity:0.4; } 50% { transform: translateX(8px); opacity:1; } 100% { transform: translateX(-8px); opacity:0.4; } }
-        @keyframes gradient-x { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .animate-shimmer { background-size: 200% 100%; animation: shimmer 3s linear infinite; }
-        .animate-float { animation: float 4s ease-in-out infinite; }
-        .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-        .animate-arrow-slide { animation: arrow-slide 2s ease-in-out infinite; }
-        .animate-gradient-x { background-size: 200% 200%; animation: gradient-x 6s ease infinite; }
-      `}</style>
-
       {/* ═══════════════════════════════════════════════════════════════
           HERO: Dramatic amber/gold gradient with destination bg image + animated flow
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative flex min-h-0 items-center overflow-hidden bg-[radial-gradient(circle_at_85%_12%,rgba(245,158,11,0.20),transparent_32%),linear-gradient(145deg,#020617_0%,#0f172a_58%,#29200b_100%)] py-4 md:min-h-[82vh] md:py-16">
         {/* Destination city background image — dimmed, adds visual richness */}
         <Image
           src={toCityImage}
           alt={`One-way cab from ${route.from} to ${route.to} — ${route.to} city view`}
           fill
-          priority
-          className="object-cover opacity-60"
-          sizes="100vw"
-          quality={85}
+          sizes="(max-width: 767px) 1px, 100vw"
+          quality={80}
+          className="hidden object-cover opacity-60 md:block"
         />
         {/* Animated gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-amber-950/55 to-yellow-950/35 animate-gradient-x" />
+        <div className={`absolute inset-0 hidden ${region.scrim} md:block `} />
 
         {/* Dot grid pattern */}
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.4) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
 
         {/* Glowing orbs */}
-        <div className="absolute top-1/4 left-[10%] w-64 h-64 bg-amber-600/15 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-[10%] w-80 h-80 bg-yellow-500/10 rounded-full blur-[140px]" />
-        <div className="absolute top-[60%] left-[40%] w-40 h-40 bg-orange-500/10 rounded-full blur-[80px]" />
+        <div className="absolute top-1/4 left-[10%] hidden w-64 h-64 bg-amber-600/15 rounded-full blur-[120px] md:block" />
+        <div className="absolute bottom-1/4 right-[10%] hidden w-80 h-80 bg-yellow-500/10 rounded-full blur-[140px] md:block" />
+        <div className="absolute top-[60%] left-[40%] hidden w-40 h-40 bg-orange-500/10 rounded-full blur-[80px] md:block" />
 
         {/* Animated floating savings badge */}
-        <div className="absolute top-24 right-[12%] hidden lg:block animate-float">
+        <div className="absolute top-24 right-[12%] hidden lg:block">
           <div className="relative">
-            <div className="absolute -inset-8 bg-amber-500/20 rounded-full blur-3xl animate-pulse" />
-            <div className="relative bg-gradient-to-br from-amber-500 via-yellow-500 to-orange-600 rounded-full w-36 h-36 flex items-center justify-center shadow-2xl animate-pulse-glow">
+            <div className="relative bg-gradient-to-br from-amber-500 via-yellow-500 to-orange-600 rounded-full w-36 h-36 flex items-center justify-center shadow-2xl">
               <div className="text-center">
                 <div className="text-3xl font-black text-white">{route.savingsPercent}</div>
                 <div className="text-[10px] font-bold text-white/80 uppercase tracking-widest">Savings</div>
@@ -185,29 +157,35 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
         </div>
 
         {/* Bottom edge */}
-        <div className="absolute -bottom-1 left-0 right-0 h-32 bg-slate-950" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0, 0 60%)' }} />
+        <div className="absolute -bottom-1 left-0 right-0 hidden h-32 bg-slate-950 md:block" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0, 0 60%)' }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-28">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-4 sm:px-6 md:py-28">
           {/* Top badge */}
-          <div className="inline-flex items-center gap-2 bg-amber-500/15 backdrop-blur-xl px-5 py-2.5 rounded-full mb-8 border border-amber-500/25">
-            <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-2 bg-amber-500/15 px-4 py-2 rounded-full mb-4 border border-amber-500/25 md:px-5 md:py-2.5 md:mb-8 md:backdrop-blur-xl">
+            <div className="w-2 h-2 bg-amber-400 rounded-full" />
             <span className="text-yellow-300 font-semibold text-sm tracking-wide">One-Way Cab &mdash; Pay Single Direction Only</span>
+          </div>
+          {/* region eyebrow — the destination's regional identity (src/utilis/regionThemes.js) */}
+          <div className={`-mt-1 mb-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] md:-mt-4 md:mb-6 md:backdrop-blur-md ${region.chip}`}>
+            <span className={`h-1.5 w-1.5 rounded-full ${region.chipDot}`} aria-hidden="true" />
+            {region.eyebrow}
           </div>
 
           {/* H1 — single primary heading for the route (was previously on the subtitle below — fixed for SEO).
               Visually the route name remains the largest element on the page; semantically it is now the H1. */}
-          <h1 className="speakable-headline flex items-center gap-4 sm:gap-6 mb-6 flex-wrap text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white tracking-tight">
-            <span>{route.from}</span>
-            <span className="flex items-center gap-1.5" aria-hidden="true">
-              <span className="w-10 sm:w-20 h-0.5 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full" />
-              <span className="animate-arrow-slide inline-flex">
-                <ArrowRight className="w-8 h-8 sm:w-10 sm:h-10 text-amber-400" />
-              </span>
-              <span className="w-10 sm:w-20 h-0.5 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full" />
+          <h1 className="speakable-headline mb-4 text-balance text-4xl font-black leading-[1.02] tracking-tight text-white sm:text-5xl md:mb-6 md:text-6xl lg:text-7xl">
+            {route.from} to{' '}
+            <span className="text-gradient-gold">{route.to}</span>
+            <span className="mt-2 block text-xl font-extrabold leading-tight text-slate-100 sm:text-3xl">
+              One-Way Cab from <span className="text-amber-300">{route.oneWayFares.sedan}</span>
             </span>
-            <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{route.to}</span>
-            <span className="sr-only"> One Way Cab — book from {route.oneWayFares.sedan}</span>
           </h1>
+
+          {/* Answer first: short on mobile so the heading stays the LCP element;
+              the detailed version remains visible on larger screens. */}
+          <p className="speakable-lead sr-only mb-5 max-w-3xl text-sm font-semibold leading-snug text-slate-200 md:not-sr-only md:block">
+            Sedan <span className="font-black text-amber-300">{route.oneWayFares.sedan}</span> · {route.distance} · {route.time} · via {route.highway}
+          </p>
 
           {/* Mobile-only conversion row. The full CTA block further down this hero
               lands past the fold on a 360px screen, so the fare and both tap
@@ -225,27 +203,29 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
               <span aria-hidden="true">&middot;</span><span>Pay after trip</span>
             </p>
             <div className="mt-3 grid grid-cols-2 gap-2">
-              <a
-                onClick={() => trackWhatsAppClick('oneway_hero_mobile', heroWhatsappMessage)}
+              <TrackedLink
+                track="whatsapp"
+                args={['oneway_hero_mobile', heroWhatsappMessage]}
                 href={`https://wa.me/917668570551?text=${encodeURIComponent(heroWhatsappMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 font-bold text-white shadow-lg shadow-amber-500/20 active:scale-[0.97] transition-transform"
               >
                 WhatsApp <ArrowRight className="w-4 h-4" />
-              </a>
-              <a
-                onClick={() => trackPhoneCall('oneway_hero_mobile')}
+              </TrackedLink>
+              <TrackedLink
+                track="phone"
+                args={['oneway_hero_mobile']}
                 href="tel:+917668570551"
                 className="flex h-12 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/10 font-bold text-white active:scale-[0.97] transition-transform"
               >
                 <Phone className="w-4 h-4" /> Call Now
-              </a>
+              </TrackedLink>
             </div>
           </div>
 
           {/* Subtitle / lead — direct-answer paragraph (voice/AI answer target) */}
-          <p className="speakable-lead text-xl md:text-2xl lg:text-3xl text-white/70 mb-6 max-w-3xl font-medium">
+          <p className="speakable-lead mb-6 hidden max-w-3xl font-medium text-white/70 md:block md:text-2xl lg:text-3xl">
             A one-way cab from {route.from} to {route.to} costs <span className="text-amber-400 font-black">{route.oneWayFares.sedan}</span> for a Sedan ({route.distance} in {route.time} via {route.highway}), saving {route.savingsPercent} versus a round trip — you pay only the one-way distance, with FASTag and a verified driver included.
           </p>
 
@@ -276,15 +256,25 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link onClick={() => trackPhoneCall('oneway_cab')} href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-8 py-4.5 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/25 hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
-              <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call: 7668570551
-            </Link>
-            <Link onClick={() => trackWhatsAppClick('oneway_cab')} href={`https://wa.me/917668570551?text=I want to book a one-way cab from ${route.from} to ${route.to}`} className="inline-flex items-center gap-2.5 bg-white/5 backdrop-blur-xl text-white px-8 py-4.5 rounded-2xl font-bold text-lg border border-white/15 hover:bg-white/10 hover:border-amber-500/40 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300">
+            <TrackedLink track="phone" args={['oneway_cab']} href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-8 py-4.5 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/25 hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
+              <Phone className="w-5 h-5 group-hover:" /> Call: 7668570551
+            </TrackedLink>
+            <TrackedLink track="whatsapp" args={['oneway_cab']} href={`https://wa.me/917668570551?text=I want to book a one-way cab from ${route.from} to ${route.to}`} className="inline-flex items-center gap-2.5 bg-white/5 backdrop-blur-xl text-white px-8 py-4.5 rounded-2xl font-bold text-lg border border-white/15 hover:bg-white/10 hover:border-amber-500/40 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-300">
               WhatsApp Quote <ArrowRight className="w-5 h-5" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>
+
+      {/* In-window festival / yatra call-out for this destination (server-resolved, null on most routes). */}
+      <SeasonalCorridorCallout callout={seasonalCallout} tone="dark" />
+
+      {/* Region-specific driving notes — palette and copy differ by destination region. */}
+      <RegionNotesStrip theme={region} origin={route.from} destination={route.to} />
+      {/* Week 48 A3: the road paragraph for the fifty highest-traffic journeys, resolved on the server */}
+      <RoadParagraph paragraph={roadParagraph} theme={region} />
+      {planningGuide}
+
       <LeadQuoteSection fromCity={route.from} toCity={route.to} pageType="route" />
 
       {/* ═══════════════════════════════════════════════════════════════
@@ -362,7 +352,6 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
                     quality={90}
                   />
                   {/* Floor shadow effect */}
-                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-2 bg-black/40 blur-xl rounded-full" />
                 </div>
 
                 <div className="p-6 md:p-7 flex-1 flex flex-col">
@@ -410,20 +399,22 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
 
                   {/* CTAs — side by side */}
                   <div className="grid grid-cols-2 gap-2 mt-auto">
-                    <Link
-                      onClick={() => trackPhoneCall('oneway_cab')}
+                    <TrackedLink
+                      track="phone"
+                      args={['oneway_cab']}
                       href="tel:+917668570551"
                       className={`inline-flex items-center justify-center gap-1.5 bg-gradient-to-r ${v.gradient} text-white px-4 py-3 rounded-xl font-bold text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.03] hover:shadow-amber-500/40 transition-all`}
                     >
                       <Phone className="w-4 h-4" /> Book
-                    </Link>
-                    <Link
-                      onClick={() => trackWhatsAppClick('oneway_cab')}
+                    </TrackedLink>
+                    <TrackedLink
+                      track="whatsapp"
+                      args={['oneway_cab']}
                       href={`https://wa.me/917668570551?text=I want ${v.name} one-way cab from ${route.from} to ${route.to}`}
                       className="inline-flex items-center justify-center gap-1.5 bg-white/5 text-white px-4 py-3 rounded-xl font-bold text-sm border border-white/15 hover:bg-white/10 hover:border-amber-500/40 transition-all"
                     >
                       WhatsApp
-                    </Link>
+                    </TrackedLink>
                   </div>
                 </div>
               </div>
@@ -559,7 +550,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
          ═══════════════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Route Details</span>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">What route does the {route.from} to {route.to} taxi take?</h2>
           </div>
@@ -656,7 +647,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
       {/* ═══════════════════════════════════════════════════════════════
           SEO DESCRIPTION: Rich content section
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-20 px-4 sm:px-6 relative">
+      <section className="py-12 sm:py-20 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/5 to-slate-950" />
         <div className="relative max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-10 text-center tracking-tight">
@@ -725,7 +716,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
          ═══════════════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Easy Process</span>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">How do I book a {route.from} to {route.to} one-way cab?</h2>
           </div>
@@ -764,7 +755,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
       <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/10 to-slate-950" />
         <div className="relative max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Why Choose One-Way</span>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">How much do you save with one-way vs round-trip?</h2>
             <p className="text-white/40 mt-4 text-lg max-w-xl mx-auto">Why pay for a return trip you will never take?</p>
@@ -774,8 +765,6 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
             {/* Left: Big savings hero stat (spans 2 cols) */}
             <div className="lg:col-span-2 relative bg-gradient-to-br from-amber-500/15 via-yellow-500/10 to-orange-500/15 backdrop-blur-xl rounded-3xl border border-amber-500/25 p-8 md:p-10 overflow-hidden flex flex-col justify-between min-h-[320px]">
-              <div className="absolute -top-20 -right-20 w-80 h-80 bg-amber-500/20 rounded-full blur-3xl" />
-              <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-orange-500/15 rounded-full blur-3xl" />
               <div className="relative">
                 <span className="inline-flex items-center gap-1.5 bg-green-500/20 text-green-300 text-[10px] font-black px-3 py-1.5 rounded-full border border-green-500/30 uppercase tracking-wider mb-6">
                   <Zap className="w-3 h-3" /> The big number
@@ -864,7 +853,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
                 </dl>
               </div>
             ))}
-            <p className="text-white/40 text-xs pt-2 text-center">Prices are approximate market rates as of 2026. Triveni Cabs one-way fare is guaranteed at the time of booking.</p>
+            <p className="text-white/40 text-xs pt-2 text-center">Prices are approximate market rates as of 2026. Triveni Cabs™ one-way fare is guaranteed at the time of booking.</p>
           </div>
 
           {/* Desktop: true semantic table, fits its container */}
@@ -894,7 +883,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
                   ))}
                 </tbody>
             </table>
-            <p className="text-white/40 text-xs p-5 text-center border-t border-white/5">Prices are approximate market rates as of 2026. Triveni Cabs one-way fare is guaranteed at the time of booking.</p>
+            <p className="text-white/40 text-xs p-5 text-center border-t border-white/5">Prices are approximate market rates as of 2026. Triveni Cabs™ one-way fare is guaranteed at the time of booking.</p>
           </div>
         </div>
       </section>
@@ -1112,21 +1101,6 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
       <InclusionBadges preset="outstation" theme="dark" />
       <SectionDivider color="amber" className="my-8" />
 
-      {/* ━━━ DESTINATION BANNER IMAGE ━━━ */}
-      <section className="relative h-72 sm:h-96 overflow-hidden">
-        <Image src={toCityImage} alt={`Arrive in ${route.to} with Triveni Cabs`} fill className="object-cover" sizes="100vw" quality={85} />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
-        <div className="absolute inset-0 flex items-end">
-          <div className="max-w-7xl mx-auto w-full px-6 sm:px-8 pb-8 sm:pb-12">
-            <span className="inline-flex items-center gap-1.5 bg-amber-500/20 backdrop-blur-sm text-amber-300 text-[11px] font-bold px-3 py-1.5 rounded-full border border-amber-500/30 mb-3 uppercase tracking-wider">
-              <MapPin className="w-3 h-3" /> Your Destination
-            </span>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white drop-shadow-lg">{route.to}</h2>
-            <p className="text-white/80 mt-2 text-sm sm:text-base max-w-xl">Drop you right at your hotel, station, or doorstep &mdash; {route.distance} covered in {route.time}.</p>
-          </div>
-        </div>
-      </section>
-
       <FleetShowcase
         theme="light"
         accentColor="amber"
@@ -1189,54 +1163,10 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
         </section>
       )}
 
-      {/* ═══════════════════════════════════════════════════════════════
-          FAQ: Expandable accordion with glow effects
-         ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Common Questions</span>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">Frequently asked questions about {route.from} to {route.to} taxi</h2>
-          </div>
-          <div className="space-y-3">
-            {allFaqs.map((faq, i) => (
-              <div key={i} className={`bg-white/[0.04] backdrop-blur-2xl rounded-2xl border transition-all duration-300 overflow-hidden ${openFaq === i ? 'border-amber-500/30 shadow-lg shadow-amber-500/10' : 'border-white/10 hover:border-white/20'}`}>
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  aria-expanded={openFaq === i}
-                  aria-label={openFaq === i ? 'Collapse answer' : 'Expand answer'}
-                  className="w-full text-left p-6 flex items-start justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-amber-500/50 rounded-2xl"
-                >
-                  <h3 className="font-bold text-white pr-4 flex items-start gap-3">
-                    <span className="flex-shrink-0 w-7 h-7 bg-amber-500/20 text-amber-400 rounded-lg flex items-center justify-center text-xs font-black mt-0.5">{i + 1}</span>
-                    <span>{faq.question}</span>
-                  </h3>
-                  <ChevronDown className={`w-5 h-5 text-amber-400 flex-shrink-0 mt-1 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />
-                </button>
-                <div className={`overflow-hidden transition-all duration-500 ${openFaq === i ? 'max-h-[40rem] pb-6' : 'max-h-0'}`}>
-                  <p className={`text-white/55 text-sm leading-relaxed px-4 md:px-6 pl-4 md:pl-16${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════
-          LONG-TAIL FAQ — 15+ additional questions targeting long-tail
-          query patterns. Each section is a People Also Ask box candidate.
-         ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-16 md:py-20 px-4 sm:px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
-        <div className="relative max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">More Questions</span>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">More about booking {route.from} to {route.to} one-way taxi</h2>
-            <p className="text-white/50 mt-4 max-w-2xl mx-auto">15 additional answers covering pricing edge cases, payments, schedule changes, vehicle options, and trip add-ons.</p>
-          </div>
-          <LongTailFAQ faqs={longTailFaqs} tone="dark" />
-        </div>
-      </section>
+      <FaqAccordion
+        heading={`Frequently asked questions about ${route.from} to ${route.to} taxi`}
+        faqs={allFaqs}
+      />
 
       {/* ═══════════════════════════════════════════════════════════════
           OUTBOUND CITATIONS — authority signal (+30% AI citation lift)
@@ -1272,7 +1202,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
         <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/5 to-slate-950" />
           <div className="relative max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">More Routes</span>
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mt-3 tracking-tight">Which other one-way routes can we book from {route.from}?</h2>
             </div>
@@ -1280,7 +1210,7 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
               {relatedRoutes.map((r, i) => (
                 <Link
                   key={i}
-                  href={`/one-way-cab/${r.slug}`}
+                  href={canonicalLink(`/one-way-cab/${r.slug}`)}
                   className="group relative bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-5 transition-all duration-300 hover:bg-white/[0.08] hover:shadow-lg hover:shadow-amber-500/10 hover:scale-[1.02]"
                 >
                   <div className="flex items-center gap-2 mb-3">
@@ -1309,7 +1239,10 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
 
       {/* ═══════════════════════════════════════════════════════════════
           RELATED GUIDES — cross-links to destination's best-time / cab-service / travel guide
+          (Week 48: only the guide pages that exist for this destination; the whole
+          section is skipped when there are none — see relatedGuides above)
          ═══════════════════════════════════════════════════════════════ */}
+      {relatedGuides.length > 0 && (
       <section className="py-14 md:py-20 px-4 sm:px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/5 to-slate-950" />
         <div className="relative max-w-6xl mx-auto">
@@ -1318,27 +1251,18 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mt-3 tracking-tight">Want more on {route.to}? Travel guides &amp; tours</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href={`/best-time-to-visit/${route.to.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-5 transition-all duration-300 hover:bg-white/[0.07]">
-              <Clock className="w-6 h-6 text-amber-400 mb-3" />
-              <h3 className="font-bold text-white text-base mb-1">Best Time to Visit {route.to}</h3>
-              <p className="text-white/50 text-xs leading-relaxed">Month-by-month weather, festivals, and peak-season guide.</p>
-              <span className="mt-3 inline-flex items-center text-amber-400 text-xs font-bold gap-1 group-hover:translate-x-1 transition-transform">Read guide <ArrowRight className="w-3 h-3" /></span>
+            {relatedGuides.map((g) => (
+            <Link key={g.href} href={g.href} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-5 transition-all duration-300 hover:bg-white/[0.07]">
+              <g.Icon className="w-6 h-6 text-amber-400 mb-3" />
+              <h3 className="font-bold text-white text-base mb-1">{g.title}</h3>
+              <p className="text-white/50 text-xs leading-relaxed">{g.desc}</p>
+              <span className="mt-3 inline-flex items-center text-amber-400 text-xs font-bold gap-1 group-hover:translate-x-1 transition-transform">{g.cta} <ArrowRight className="w-3 h-3" /></span>
             </Link>
-            <Link href={`/cab-service/${route.to.toLowerCase().replace(/\s+/g, '-')}`} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-5 transition-all duration-300 hover:bg-white/[0.07]">
-              <Car className="w-6 h-6 text-amber-400 mb-3" />
-              <h3 className="font-bold text-white text-base mb-1">{route.to} Cab Service</h3>
-              <p className="text-white/50 text-xs leading-relaxed">Local taxi, airport transfer, station pickup, outstation from {route.to}.</p>
-              <span className="mt-3 inline-flex items-center text-amber-400 text-xs font-bold gap-1 group-hover:translate-x-1 transition-transform">Explore <ArrowRight className="w-3 h-3" /></span>
-            </Link>
-            <Link href={`/${route.to.toLowerCase().replace(/\s+/g, '-')}-travel-guide`} className="group bg-white/[0.04] backdrop-blur-xl rounded-2xl border border-white/10 hover:border-amber-500/30 p-5 transition-all duration-300 hover:bg-white/[0.07]">
-              <MapPin className="w-6 h-6 text-amber-400 mb-3" />
-              <h3 className="font-bold text-white text-base mb-1">{route.to} Travel Guide</h3>
-              <p className="text-white/50 text-xs leading-relaxed">Attractions, itineraries, food, shopping tips for {route.to}.</p>
-              <span className="mt-3 inline-flex items-center text-amber-400 text-xs font-bold gap-1 group-hover:translate-x-1 transition-transform">View guide <ArrowRight className="w-3 h-3" /></span>
-            </Link>
+            ))}
           </div>
         </div>
       </section>
+      )}
 
       {/* ═══════════════════════════════════════════════════════════════
           FINAL CTA: Bold savings banner with animated glow
@@ -1347,8 +1271,8 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
         <div className="max-w-5xl mx-auto">
           <div className="relative bg-gradient-to-br from-amber-900/60 via-yellow-900/40 to-orange-900/50 rounded-2xl sm:rounded-[2.5rem] p-6 sm:p-10 md:p-16 lg:p-20 text-center overflow-hidden border border-amber-500/20">
             {/* Animated glowing orbs */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/15 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-500/15 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1.5s' }} />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/15 rounded-full blur-[120px]" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-500/15 rounded-full blur-[120px]" style={{ animationDelay: '1.5s' }} />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-yellow-500/10 rounded-full blur-[100px]" />
 
             <div className="relative z-10">
@@ -1368,12 +1292,12 @@ export default function OneWayCabRouteClient({ route, relatedRoutes, corridorLin
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link onClick={() => trackPhoneCall('oneway_cab')} href="tel:+917668570551" className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
-                  <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call: 7668570551
-                </Link>
-                <Link onClick={() => trackWhatsAppClick('oneway_cab')} href={`https://wa.me/917668570551?text=I want to book a one-way cab from ${route.from} to ${route.to}`} className="inline-flex items-center justify-center gap-2.5 bg-white/10 backdrop-blur-sm text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 hover:border-amber-500/40 transition-all duration-300">
+                <TrackedLink track="phone" args={['oneway_cab']} href="tel:+917668570551" className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-10 py-5 rounded-2xl font-bold text-lg shadow-2xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-105 transition-all duration-300">
+                  <Phone className="w-5 h-5 group-hover:" /> Call: 7668570551
+                </TrackedLink>
+                <TrackedLink track="whatsapp" args={['oneway_cab']} href={`https://wa.me/917668570551?text=I want to book a one-way cab from ${route.from} to ${route.to}`} className="inline-flex items-center justify-center gap-2.5 bg-white/10 backdrop-blur-sm text-white px-10 py-5 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 hover:border-amber-500/40 transition-all duration-300">
                   WhatsApp <ArrowRight className="w-5 h-5" />
-                </Link>
+                </TrackedLink>
               </div>
             </div>
           </div>

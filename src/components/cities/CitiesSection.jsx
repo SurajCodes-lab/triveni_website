@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
-import { phoneNumber } from "@/utilis/data";
+import { phoneNumber } from '@/utilis/contact';
 import CityRoutes from "@/components/cities/CityRoutes";
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
@@ -166,7 +166,7 @@ const VehicleCard = ({ vehicle, onBookNow, index, cityName }) => {
           />
           {!imageLoaded && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <Car className="w-8 h-8 text-gray-400 animate-pulse" />
+              <Car className="w-8 h-8 text-gray-400" />
             </div>
           )}
           
@@ -195,7 +195,7 @@ const VehicleCard = ({ vehicle, onBookNow, index, cityName }) => {
           <div className="grid grid-cols-2 gap-2 mb-4 text-sm" itemProp="offers" itemScope itemType="https://schema.org/Offer">
             <div className="bg-gray-50 p-2 rounded">
               <p className="text-gray-500 text-xs">Per KM Rate</p>
-              <p className="font-semibold" itemProp="price">{vehicle.perKm || "₹12/km"}</p>
+              <p className="font-semibold" itemProp="price">{vehicle.perKm || "₹11/km"}</p>
               <meta itemProp="priceCurrency" content="INR" />
             </div>
             <div className="bg-gray-50 p-2 rounded">
@@ -580,7 +580,7 @@ export default function CityServiceClient({
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <h3 className="font-semibold mb-2">What are taxi rates in {formattedCityName}?</h3>
                     <p className="text-sm text-gray-600">
-                      Our taxi rates start from ₹12/km with transparent pricing. 
+                      Our taxi rates start from ₹11/km with transparent pricing. 
                       No hidden charges for outstation trips from {formattedCityName}.
                     </p>
                   </div>

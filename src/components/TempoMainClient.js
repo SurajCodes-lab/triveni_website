@@ -31,6 +31,7 @@ import Section from "@/components/ui/Section";
 import AuroraHeading from "@/components/ui/AuroraHeading";
 import DataTable from "@/components/ui/DataTable";
 import { trackPhoneCall, trackWhatsAppClick } from "@/utilis/analytics";
+import { groupDigits } from '@/utilis/pricing';
 
 const PHONE = "7668570551";
 const WHATSAPP = "917668570551";
@@ -409,7 +410,7 @@ export default function TempoMainClient({ faqData = [], jsonLd }) {
                 className="glass-dark inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-amber-400/50 hover:text-amber-400"
               >
                 {s} Seater
-                <span className="text-amber-400">₹{p}/km</span>
+                <span className="text-amber-400">₹{groupDigits(p)}/km</span>
               </Link>
             ))}
           </div>
@@ -585,9 +586,9 @@ export default function TempoMainClient({ faqData = [], jsonLd }) {
       <Section tone="aurora">
         <AuroraHeading
           tone="dark"
-          eyebrow="Why Triveni Cabs"
+          eyebrow="Why Triveni Cabs™"
           title="Why book your tempo traveller"
-          highlight="with Triveni Cabs"
+          highlight="with Triveni Cabs™"
           subtitle="Trusted by 10,000+ travellers for group trips, weddings, and pilgrimages across North India."
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

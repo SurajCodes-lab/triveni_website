@@ -6,6 +6,7 @@ import SemanticComparison from '@/components/seo/SemanticComparison';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getComparisonSchema, getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 const SLUG = 'tempo-traveller-vs-mini-bus';
 const SITE = 'https://www.trivenicabs.in';
@@ -21,7 +22,7 @@ export const metadata = {
     'Tempo traveller vs mini bus compared: capacity, price per km, hill access & comfort. Verdict: tempo for 12-17 & hills, mini bus for 20-27. Call 7668570551.',
   keywords:
     'tempo traveller vs mini bus, tempo traveller vs mini bus price, 17 seater vs 22 seater, 17 seater tempo vs 27 seater mini bus, tempo or mini bus for group, mini bus rental vs tempo traveller, which is better tempo or mini bus, best vehicle for group tour, tempo traveller for hill station, mini bus for wedding, group travel vehicle comparison, tempo traveller capacity, mini bus capacity, tempo traveller price per km, mini bus price per km',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL(SITE),
   alternates: { canonical: PAGE_URL, languages: { 'en-IN': `/${SLUG}` } },
   openGraph: {
@@ -31,7 +32,7 @@ export const metadata = {
     type: 'article',
     locale: 'en_IN',
     url: PAGE_URL,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Tempo Traveller vs Mini Bus — side-by-side comparison' }],
   },
   twitter: {
@@ -88,7 +89,7 @@ export default function TempoVsMiniBusPage() {
       { name: 'Check the terrain', text: 'Hill stations and narrow roads rule out a mini bus — choose a tempo traveller (or two).' },
       { name: 'Weigh luggage needs', text: 'Heavy luggage for weddings or long tours favours the mini bus underfloor storage.' },
       { name: 'Compare per-head cost', text: 'A near-full mini bus is cheaper per person for 20+ travellers; a tempo wins for smaller groups.' },
-      { name: 'Book with Triveni Cabs', text: 'Call 7668570551 or WhatsApp to confirm vehicle, AC and driver for your dates.' },
+      { name: 'Book with Triveni Cabs™', text: 'Call 7668570551 or WhatsApp to confirm vehicle, AC and driver for your dates.' },
     ],
   });
 
@@ -99,7 +100,7 @@ export default function TempoVsMiniBusPage() {
       'An experience-based comparison of tempo travellers and mini buses covering capacity, per-km price, hill-road access, luggage and comfort for group trips.',
     image: OG_IMAGE,
     datePublished: '2024-06-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/${SLUG}`) || getTodayDate()),
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'],
   });
 
@@ -115,8 +116,7 @@ export default function TempoVsMiniBusPage() {
     areaServed: { '@type': 'Country', name: 'India' },
     brand: { '@type': 'Brand', name: 'Triveni Cabs' },
     provider: { '@type': 'TravelAgency', '@id': `${SITE}/#organization`, name: 'Triveni Cabs', telephone: '+91-7668570551' },
-    aggregateRating: rr.aggregateRating,
-    review: rr.review,
+
   };
 
   const speakableSchema = {
@@ -125,7 +125,7 @@ export default function TempoVsMiniBusPage() {
     '@id': `${PAGE_URL}#webpage`,
     name: 'Tempo Traveller vs Mini Bus',
     url: PAGE_URL,
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/${SLUG}`) || getTodayDate()),
     speakable: getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
   };
 
@@ -144,9 +144,9 @@ export default function TempoVsMiniBusPage() {
       {/* AEO/GEO supplemental content — direct-answer verdict, attribute table, decision guide */}
       <section className="bg-slate-50 py-14 px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="speakable-headline text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="speakable-headline text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Tempo Traveller vs Mini Bus: Which Is Better for Group Travel?
-          </h1>
+          </h2>
           <p className="speakable-lead text-lg text-slate-700 bg-blue-50 border border-blue-100 rounded-xl px-5 py-4 mb-8">
             Short answer: choose a <strong>tempo traveller</strong> (12-17 seater) for hill stations, pilgrimages and any
             route with narrow roads — its push-back seats and easy handling make it the comfort pick. Choose a{' '}

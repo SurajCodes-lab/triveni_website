@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getRoadTrip, getAllRoadTripSlugs, getRelatedRoadTrips, stopNameToGeoSlug } from '@/utilis/roadTripData';
 import RoadTripCircuitClient from '@/components/road-trip/RoadTripCircuitClient';
+import DataTable from '@/components/seo/DataTable';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }) {
   const tripTail = `Book AC cab from ₹${trip.totalCost.sedan.toLocaleString('en-IN')}. Call 7668570551.`;
   const tripHead = `${trip.name} road trip covering ${trip.totalDistance} km in ${trip.totalDays} days. ${trip.stops.map(s => s.city).join(' → ')}.`;
   const description = `${tightenDescription(tripHead, DESC_BUDGET - tripTail.length - 1)} ${tripTail}`;
-  const ogTitle = `${trip.name} — ${trip.totalDistance} km Road Trip | Cab from ₹${trip.totalCost.sedan.toLocaleString('en-IN')} | Triveni Cabs`;
+  const ogTitle = `${trip.name} — ${trip.totalDistance} km Road Trip | Cab from ₹${trip.totalCost.sedan.toLocaleString('en-IN')} | Triveni Cabs™`;
 
   return {
     title,
@@ -50,9 +51,9 @@ export async function generateMetadata({ params }) {
       `${trip.name.toLowerCase()} travel guide`,
       `best road trips india`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/road-trip/${slug}` },
     openGraph: {
@@ -61,7 +62,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/road-trip/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `${trip.name} Road Trip Guide` }],
     },
     twitter: {
@@ -123,9 +124,9 @@ export default async function RoadTripPage({ params }) {
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
+        "streetAddress": "366, Dandupura, near Tajganj",
         "addressLocality": "Agra",
-        "addressRegion": "UP",
+        "addressRegion": "Uttar Pradesh",
         "postalCode": "282006",
         "addressCountry": "IN"
       }
@@ -240,6 +241,26 @@ export default async function RoadTripPage({ params }) {
       ))}
       <AEOHead pageType="tour" data={{ url: `/road-trip/${slug}`, title: trip.name, city: trip.stops[0]?.city }} />
       <RoadTripCircuitClient trip={trip} relatedTrips={relatedTrips} />
+      {Array.isArray(trip.stops) && trip.stops.length > 0 && (
+        <div className="container mx-auto px-4 pb-10">
+          <DataTable
+            title={`Where the ${trip.name} stops, and for how long`}
+            caption={`Stops, nights and highlights of the ${trip.name} road trip circuit: ${trip.totalDistance} km over ${trip.totalDays} days`}
+            intro={`The circuit covers ${trip.totalDistance} km in ${trip.totalDays} days with the same car and driver throughout. Nights are the plan the page describes; the highlights are what the car reaches at each stop.`}
+            columns={[
+              { key: 'stop', label: 'Stop' },
+              { key: 'nights', label: 'Nights' },
+              { key: 'sees', label: 'What the stop covers' },
+            ]}
+            rows={trip.stops.map((st, i) => ({
+              stop: `${i + 1}. ${st.city}`,
+              nights: st.nights ? `${st.nights} night${st.nights > 1 ? 's' : ''}` : 'Pass through',
+              sees: Array.isArray(st.highlights) ? st.highlights.join(', ') : '',
+            }))}
+            footnote="Tolls, parking, state permits and the driver's night halts are at actuals and itemised on the invoice."
+          />
+        </div>
+      )}
     </>
   );
 }

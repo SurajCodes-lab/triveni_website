@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
@@ -47,7 +46,7 @@ const STATION = {
     { question: 'Can I book a taxi from NDLS to Agra or Jaipur?', answer: 'Absolutely! We offer one-way outstation cabs from New Delhi station to Agra (₹2,499+), Jaipur (₹3,999+), Chandigarh (₹3,499+) and 50+ cities. Call 7668570551 for quotes.' },
     { question: 'Which exit gate should I use at New Delhi Railway Station?', answer: 'NDLS has two main exits — Gate 1 (Ajmeri Gate Side, towards Connaught Place) and Gate 2 (Paharganj Side). Tell us your gate when booking and our driver will be right there with your name board.' },
     { question: 'Do you provide taxi for Delhi sightseeing from New Delhi station?', answer: 'Yes! Our 4hr/40km package (₹1,599) covers India Gate, Qutub Minar, and Lotus Temple. The 8hr/80km package (₹2,699) covers full Old and New Delhi sightseeing. Driver stays with you all day.' },
-    { question: 'Is it safe to take a taxi from New Delhi Railway Station late at night?', answer: 'With Triveni Cabs, absolutely. All our vehicles are GPS tracked, drivers are background-verified, and you receive driver details (name, phone, vehicle number) before pickup. We handle hundreds of late-night NDLS pickups monthly.' },
+    { question: 'Is it safe to take a taxi from New Delhi Railway Station late at night?', answer: 'With Triveni Cabs™, absolutely. All our vehicles are GPS tracked, drivers are background-verified, and you receive driver details (name, phone, vehicle number) before pickup. We handle hundreds of late-night NDLS pickups monthly.' },
   ],
 };
 
@@ -59,7 +58,7 @@ export const metadata = {
   openGraph: {
     title: 'New Delhi Railway Station Taxi — Fixed Fare from ₹199',
     description: '24/7 taxi from NDLS. CP ₹199, India Gate ₹249, Airport ₹599. AC vehicles, fixed fares, platform pickup.',
-    type: 'website', url: `${BASE_URL}/new-delhi-station-taxi`, siteName: 'Triveni Cabs', locale: 'en_IN',
+    type: 'website', url: `${BASE_URL}/new-delhi-station-taxi`, siteName: 'Triveni Cabs™', locale: 'en_IN',
     images: [{ url: '/images/sightseeing/Delhi/India_Gate.jpg', width: 1200, height: 630, alt: 'New Delhi Railway Station Taxi — India Gate — Triveni Cabs' }],
   },
   twitter: { card: 'summary_large_image', title: 'New Delhi NDLS Taxi — from ₹199', description: 'Fixed-fare taxi from NDLS. CP ₹199, Airport ₹599.', images: ['/images/sightseeing/Delhi/India_Gate.jpg'], creator: '@trivenicabs' },
@@ -71,7 +70,7 @@ export default function NewDelhiStationTaxiPage() {
   const reviewCount = stationReviewCount(STATION.slug);
   const reviews = getStationReviews(STATION.stationName, cheapest);
   const schemas = [
-    { "@context": "https://schema.org", "@type": "TaxiService", "@id": `${BASE_URL}/${STATION.slug}#taxi-service`, "name": `Triveni Cabs - ${STATION.stationName} Taxi`, "description": STATION.description, "provider": { "@id": `${BASE_URL}/#localbusiness` }, "areaServed": { "@type": "Place", "name": STATION.city }, "offers": { "@type": "AggregateOffer", "lowPrice": cheapest, "highPrice": highest, "priceCurrency": "INR", "offerCount": STATION.destinations.length.toString() }, "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": reviewCount.toString(), "bestRating": "5" }, "review": reviews.slice(0, 3).map(r => ({ "@type": "Review", "author": { "@type": "Person", "name": r.name }, "datePublished": r.date, "reviewRating": { "@type": "Rating", "ratingValue": r.rating.toString(), "bestRating": "5" }, "reviewBody": r.text })) },
+    { "@context": "https://schema.org", "@type": "TaxiService", "@id": `${BASE_URL}/${STATION.slug}#taxi-service`, "name": `Triveni Cabs™ - ${STATION.stationName} Taxi`, "description": STATION.description, "provider": { "@id": `${BASE_URL}/#localbusiness` }, "areaServed": { "@type": "Place", "name": STATION.city }, "offers": { "@type": "AggregateOffer", "lowPrice": cheapest, "highPrice": highest, "priceCurrency": "INR", "offerCount": STATION.destinations.length.toString() } },
     { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
       { "@type": "ListItem", "position": 2, "name": "Railway Station Taxi", "item": `${BASE_URL}/railway-station-taxi` },
@@ -83,7 +82,7 @@ export default function NewDelhiStationTaxiPage() {
   ];
   return (
     <>
-      {schemas.map((s, i) => <Script key={i} id={`schema-${STATION.slug}-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} strategy="afterInteractive" />)}
+      {schemas.map((s, i) => <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} strategy="afterInteractive" />)}
       <AEOHead pageType="station" data={{ url: `/${STATION.slug}`, title: `${STATION.stationName} Taxi Service`, city: STATION.city }} />
       <StationTaxiClient data={STATION} />
     </>

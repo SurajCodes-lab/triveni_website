@@ -39,6 +39,8 @@ import { SetStickyCta } from "@/components/ui/StickyCtaContext";
 import { trackPhoneCall, trackWhatsAppClick } from "@/utilis/analytics";
 import { cn } from "@/utilis/cn";
 import { PopularRoutes, Testimonials } from "./vehicleDemoShared";
+import { canonicalClientHref } from '@/lib/seo/client-route-exists';
+import { groupDigits } from '@/utilis/pricing';
 
 const PHONE = "7668570551";
 const WHATSAPP = "917668570551";
@@ -84,7 +86,7 @@ function Stars({ className = "" }) {
 }
 
 function CtaButtons({ variant = "light", label }) {
-  const waText = encodeURIComponent(`Hi Triveni Cabs, I'd like to book the ${label || "vehicle"}. Please share the quote.`);
+  const waText = encodeURIComponent(`Hi Triveni Cabs™, I'd like to book the ${label || "vehicle"}. Please share the quote.`);
   return (
     <div className="flex flex-col sm:flex-row gap-3">
       <a
@@ -140,9 +142,9 @@ export default function VehicleSeaterClient({ data, jsonLd }) {
   return (
     <div className="relative bg-[#070B16] text-white selection:bg-amber-400 selection:text-[#070B16] overflow-hidden">
       <SetStickyCta
-        price={`₹${data.perKm}/km`}
+        price={`₹${groupDigits(data.perKm)}/km`}
         label={`Book ${data.name}`}
-        whatsappText={`Hi Triveni Cabs, I'd like to book the ${data.name}. Please share the quote.`}
+        whatsappText={`Hi Triveni Cabs™, I'd like to book the ${data.name}. Please share the quote.`}
       />
 
       {/* ============================ HERO ============================ */}
@@ -171,7 +173,7 @@ export default function VehicleSeaterClient({ data, jsonLd }) {
             <motion.div initial={{ opacity: 1, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease }}>
               <span className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold text-amber-200 backdrop-blur">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-60" />
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-400" />
                 </span>
                 {data.kicker}
@@ -183,7 +185,7 @@ export default function VehicleSeaterClient({ data, jsonLd }) {
 
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <div className="flex items-baseline gap-1.5 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-2.5">
-                  <span className="text-3xl font-bold bg-gradient-to-br from-amber-300 to-orange-500 bg-clip-text text-transparent">₹{data.perKm}</span>
+                  <span className="text-3xl font-bold bg-gradient-to-br from-amber-300 to-orange-500 bg-clip-text text-transparent">₹{groupDigits(data.perKm)}</span>
                   <span className="text-sm text-white/55">/km onwards</span>
                 </div>
                 <div className="flex items-center gap-2"><Stars /><span className="text-sm text-white/65">4.9 · 10,000+ trips</span></div>
@@ -224,7 +226,7 @@ export default function VehicleSeaterClient({ data, jsonLd }) {
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: -14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease, delay: 0.6 }} className="absolute -top-4 -right-3 sm:-right-5 z-10 rounded-full border border-amber-400/30 bg-[#070B16]/80 px-4 py-2 shadow-2xl backdrop-blur-xl">
-                <span className="text-xs text-white/55">from </span><span className="text-sm font-bold text-amber-300">₹{data.perKm}/km</span>
+                <span className="text-xs text-white/55">from </span><span className="text-sm font-bold text-amber-300">₹{groupDigits(data.perKm)}/km</span>
               </motion.div>
             </motion.div>
           </div>
@@ -411,7 +413,7 @@ export default function VehicleSeaterClient({ data, jsonLd }) {
             </div>
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-3">
               {data.routes.map((r) => (
-                <Link key={r} href={`/${r}`} className="group inline-flex items-center gap-1.5 text-sm text-white/65 transition-colors hover:text-amber-300">
+                <Link key={r} href={canonicalClientHref(`/${r}`)} className="group inline-flex items-center gap-1.5 text-sm text-white/65 transition-colors hover:text-amber-300">
                   <span className="capitalize">{r.split("-to-").map((p) => p.charAt(0).toUpperCase() + p.slice(1)).join(" → ")}</span>
                   <FaArrowRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
                 </Link>
@@ -447,12 +449,14 @@ export default function VehicleSeaterClient({ data, jsonLd }) {
               const open = openFaq === i;
               return (
                 <div key={i} className={cn("rounded-3xl ring-1 ring-inset transition-all duration-300", open ? "ring-amber-400/40 bg-gradient-to-b from-amber-400/[0.06] to-white/[0.02]" : "ring-white/10 bg-white/[0.03] hover:ring-white/20")}>
+                  <h3 className="m-0">
                   <button onClick={() => setOpenFaq(open ? -1 : i)} className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded={open}>
                     <span className={cn("text-base font-semibold", i === 0 && "speakable-faq-first")}>{f.question}</span>
                     <span className={cn("flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300", open ? "bg-amber-400 text-[#070B16] rotate-180" : "bg-white/5 text-amber-400 ring-1 ring-white/10")}>
                       <FaChevronDown className="h-4 w-4" />
                     </span>
                   </button>
+                  </h3>
                   <div className={cn("grid transition-all duration-300", open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0")}>
                     <div className="overflow-hidden"><p className="px-6 pb-6 text-[15px] leading-relaxed text-white/65">{f.answer}</p></div>
                   </div>
@@ -480,7 +484,7 @@ export default function VehicleSeaterClient({ data, jsonLd }) {
                       <div className="font-display-serif text-lg font-bold">{s.name}</div>
                       <div className="mt-1 text-xs text-white/50">{s.capacity}</div>
                       <div className="mt-4 flex items-center justify-between">
-                        <span className="text-sm text-white/55">From <span className="bg-gradient-to-br from-amber-300 to-orange-500 bg-clip-text font-bold text-transparent">₹{s.perKm}/km</span></span>
+                        <span className="text-sm text-white/55">From <span className="bg-gradient-to-br from-amber-300 to-orange-500 bg-clip-text font-bold text-transparent">₹{groupDigits(s.perKm)}/km</span></span>
                         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10 text-white/60 transition-all duration-300 group-hover:bg-amber-400 group-hover:text-[#070B16]"><FaArrowRight className="h-4 w-4" /></span>
                       </div>
                     </div>
@@ -491,7 +495,7 @@ export default function VehicleSeaterClient({ data, jsonLd }) {
           )}
 
           {data.otherTypes?.length > 0 && (
-            <div className="mt-16">
+            <div className="mt-10 sm:mt-16">
               <SectionHeading kicker="Compare vehicle types" title="Looking at a different group size or budget?" />
               <div className="mt-14 grid sm:grid-cols-2 gap-5">
                 {data.otherTypes.map((t) => (
@@ -508,7 +512,7 @@ export default function VehicleSeaterClient({ data, jsonLd }) {
                       </div>
                     </div>
                     <div className="mt-6 flex items-center justify-between">
-                      <span className="text-sm text-white/55">From <span className="bg-gradient-to-br from-amber-300 to-orange-500 bg-clip-text font-bold text-transparent">₹{t.perKm}/km</span></span>
+                      <span className="text-sm text-white/55">From <span className="bg-gradient-to-br from-amber-300 to-orange-500 bg-clip-text font-bold text-transparent">₹{groupDigits(t.perKm)}/km</span></span>
                       <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-white group-hover:text-amber-300">Explore <FaArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" /></span>
                     </div>
                   </Link>

@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("Train + Taxi — Station Transfers & Last-Mile Cabs");
-  const description = "Train + taxi guides: railway station pickups and onward cabs across North India. Triveni Cabs 7668570551.";
+  const description = "Train + taxi guides: railway station pickups and onward cabs across North India. Triveni Cabs™ 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

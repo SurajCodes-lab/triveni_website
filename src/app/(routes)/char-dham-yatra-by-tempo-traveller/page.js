@@ -44,7 +44,7 @@ export default function Page() {
     provider: { "@type": "TaxiService", name: COMPANY_INFO.name, telephone: COMPANY_INFO.phone.primary },
     areaServed: [{ "@type": "Place", name: "Char Dham" }],
     offers: { "@type": "Offer", priceCurrency: "INR", price: "22", priceSpecification: { "@type": "UnitPriceSpecification", price: "22", priceCurrency: "INR", referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "KMT" } } },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "10240" },
+    
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -79,7 +79,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display-serif text-3xl font-bold text-slate-900 text-center mb-2">Tempo traveller options & per-km fare</h2>
           <p className="text-center text-slate-500 max-w-2xl mx-auto mb-8">Fuel, driver allowance and AC included. Toll, parking and driver night allowance (₹300/night) extra at actual. Minimum 300 km/day. Full circuit ≈ 1,700 km.</p>
@@ -97,7 +97,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-slate-50">
+      <section className="py-10 sm:py-16 px-4 bg-slate-50">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           <div>
             <h2 className="font-display-serif text-2xl font-bold text-slate-900 mb-6">Why a tempo traveller for Char Dham</h2>
@@ -123,7 +123,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-3xl mx-auto">
           <FAQSection faqs={[
             { question: 'How much does Char Dham yatra cost by tempo traveller?', answer: 'For the ~1,700 km circuit from Haridwar: a 12-seater Force Urbania is about ₹66,000, a 12-seater Maharaja about ₹84,000, and a 17-seater about ₹90,000 — including fuel, driver and AC. Toll, parking and stays are extra. See our full [Char Dham taxi fare from Haridwar](/char-dham-yatra-taxi-fare-from-haridwar) breakdown.' },
@@ -135,7 +135,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="px-4 pb-16">
+      <section className="px-4 pb-10 sm:pb-16">
         <div className="max-w-5xl mx-auto">
           <RelatedLinks heading="Related pages" links={[
             { href: '/pilgrimage-cabs', anchor: 'Pilgrimage cabs hub' },
@@ -147,7 +147,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h2 className="font-display-serif text-3xl md:text-5xl font-bold text-slate-950 mb-4">Book your group Char Dham yatra</h2>

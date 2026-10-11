@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("How to Reach — Complete Route & Transport Guides");
-  const description = "How to reach North India destinations by car, train, bus and air, with the best cab option. Triveni Cabs 7668570551.";
+  const description = "How to reach North India destinations by car, train, bus and air, with the best cab option. Triveni Cabs™ 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

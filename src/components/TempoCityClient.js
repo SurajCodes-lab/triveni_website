@@ -11,6 +11,7 @@ import {
 import { motion, MotionConfig } from 'framer-motion';
 import { useShouldReduceMotion } from '@/hooks/useIsMobile';
 import { getTypeColor, getTypeBadgeColor, getTypeIcon, formatDestinationForDisplay } from '@/utilis/tempoColors';
+import { trackWhatsAppClick } from '@/utilis/analytics';
 // Rich UI + ranking-lift components — wired May 23 2026
 import InfographicPanel from '@/components/seo/InfographicPanel';
 import PriceCalculator from '@/components/seo/PriceCalculator';
@@ -23,7 +24,9 @@ import { generateLongTailFaqs } from '@/utilis/longTailFaqGenerator';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 
-export default function TempoCityClient({ data }) {
+import OtherVehicleStrip from '@/components/tempo/OtherVehicleStrip';
+
+export default function TempoCityClient({ data, planningGuide = null }) {
   const [mounted, setMounted] = useState(false);
   const [hoveredRoute, setHoveredRoute] = useState(null);
   const [showAllVehicles, setShowAllVehicles] = useState(false);
@@ -38,7 +41,7 @@ export default function TempoCityClient({ data }) {
 
   return (
     <MotionConfig reducedMotion={shouldReduceMotion ? "always" : "never"}>
-    <div className="min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen overflow-x-clip bg-white">
       <SetStickyCta price="From ₹23/km" label={`${data.city} Tempo Traveller`} whatsappText={`Hi, I want to book a Tempo Traveller in ${data.city}. Please share availability and fare.`} />
       {/* ============================================ */}
       {/* HERO SECTION - City Specific */}
@@ -101,7 +104,7 @@ export default function TempoCityClient({ data }) {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24 pb-16">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-14 sm:pt-24 pb-10 sm:pb-16">
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 1, x: -20 }}
@@ -147,7 +150,7 @@ export default function TempoCityClient({ data }) {
             className="speakable-headline text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 tracking-tight"
             style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}
           >
-            Tempo Traveller in
+            Tempo Traveller in{' '}
             <br />
             <span className="inline-block text-amber-400" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
               {cityData.name}
@@ -230,7 +233,7 @@ export default function TempoCityClient({ data }) {
               href={`https://wa.me/917668570551?text=Hi, I need tempo traveller from ${cityData.name}. Please share options.`}
               target="_blank"
               rel="noopener noreferrer"
-              
+              onPointerDown={() => trackWhatsAppClick('tempo_city_hero', `tempo traveller from ${cityData.name}`, cityData.name)}
               whileTap={{ scale: 0.95 }}
               className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all shadow-2xl"
             >
@@ -251,14 +254,17 @@ export default function TempoCityClient({ data }) {
         >
           <div className="flex flex-col items-center text-white/50">
             <span className="text-xs font-medium mb-2">View Destinations</span>
-            <ChevronDown className="w-5 h-5 animate-bounce" />
+            <ChevronDown className="w-5 h-5" />
           </div>
         </motion.div>
       </section>
+      {planningGuide}
 
       {/* ============================================ */}
       {/* DIRECT ANSWER + SEATER TABLE (AEO / Featured Snippet target) */}
       {/* ============================================ */}
+      {/* Week 49: the Force Urbania and Maharaja pages for this city, where they exist. */}
+      <OtherVehicleStrip slug={cityData.slug} current="tempo-traveller" place="city" />
       <section className="py-12 md:py-16 bg-white border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="direct-answer bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 md:p-8 border border-amber-200/60" data-snippet-type="direct-answer">
@@ -268,7 +274,7 @@ export default function TempoCityClient({ data }) {
             <p className="speakable-lead text-slate-700 leading-relaxed text-base md:text-lg">
               A <strong>tempo traveller in {cityData.name}</strong> starts at <strong>₹23/km</strong> for a 12-seater AC tempo and
               goes up to <strong>₹31/km</strong> for a 26-seater Maharaja edition, with local 8-hour/80-km day packages from
-              <strong> ₹6,000</strong>. Triveni Cabs offers 12, 16, 17, 20 and 26 seater AC tempo travellers in {cityData.name} with
+              <strong> ₹6,000</strong>. Triveni Cabs™ offers 12, 16, 17, 20 and 26 seater AC tempo travellers in {cityData.name} with
               pushback seats, music system, charging points and GPS tracking — ideal for family trips, pilgrimages, weddings and
               corporate outings to {cityData.popularDestinations?.slice(0, 3).join(', ')} and {routes.length}+ destinations. Book by
               calling <strong>+91-7668570551</strong> or WhatsApp.
@@ -547,6 +553,7 @@ export default function TempoCityClient({ data }) {
                       href={`https://wa.me/917668570551?text=Hi, I want to book ${vehicle.name} from ${cityData.name}. Please share quote.`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onPointerDown={() => trackWhatsAppClick(`tempo_city_vehicle_${String(vehicle.name).toLowerCase().replace(/[^a-z0-9]+/g, '_').slice(0, 30)}`, `${vehicle.name} from ${cityData.name}`, cityData.name)}
                       className={`w-full bg-gradient-to-r ${cityData.color} text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-amber-500/30 transition-all`}
                     >
                       Book Now
@@ -655,8 +662,6 @@ export default function TempoCityClient({ data }) {
       {/* ============================================ */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
         {/* Decorative background elements */}
-        <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-amber-100 to-orange-100 rounded-full blur-3xl opacity-40 -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full blur-3xl opacity-40 translate-x-1/2 translate-y-1/2" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
@@ -729,7 +734,7 @@ export default function TempoCityClient({ data }) {
                           <h3 className="text-lg md:text-xl font-bold text-white mb-1" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
                             {city.name}
                           </h3>
-                          <p className="text-xs md:text-sm text-white/80 mb-3 line-clamp-1" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>
+                          <p className="mb-3 break-words text-xs leading-relaxed text-white/90 md:text-sm" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>
                             {city.tagline || city.state}
                           </p>
                           <div className="flex items-center gap-1.5 text-white font-semibold text-sm group-hover:gap-2.5 transition-all">
@@ -823,7 +828,7 @@ export default function TempoCityClient({ data }) {
               </span>?
             </h2>
             <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
-              Book your tempo traveller today and experience comfortable group travel with Triveni Cabs!
+              Book your tempo traveller today and experience comfortable group travel with Triveni Cabs™!
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -841,7 +846,7 @@ export default function TempoCityClient({ data }) {
                 href={`https://wa.me/917668570551?text=Hi, I need tempo traveller from ${cityData.name}. Please share options.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                
+                onPointerDown={() => trackWhatsAppClick('tempo_city_final_cta', `tempo traveller from ${cityData.name}`, cityData.name)}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all shadow-2xl flex items-center justify-center gap-3"
               >
@@ -938,6 +943,7 @@ export default function TempoCityClient({ data }) {
                   key={index}
                   className="bg-white rounded-2xl border border-gray-200 overflow-hidden"
                 >
+                  <h3 className="m-0">
                   <button
                     type="button"
                     onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
@@ -947,6 +953,7 @@ export default function TempoCityClient({ data }) {
                     <span className="font-bold text-gray-900">{faq.question}</span>
                     <ChevronDown className={`w-5 h-5 flex-shrink-0 text-amber-500 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
                   </button>
+                  </h3>
                   {openFaq === index && (
                     <div className="px-5 md:px-6 pb-5">
                       <p className={`text-gray-600 leading-relaxed${index === 0 ? ' speakable-faq-first' : ''}`}>
@@ -962,13 +969,13 @@ export default function TempoCityClient({ data }) {
       )}
 
       {/* SEO Content Section */}
-      <section className="py-16 px-4 bg-white border-t border-gray-100">
+      <section className="py-10 sm:py-16 px-4 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
             Tempo Traveller on Rent in {cityData.name} — Outstation & Local Group Travel
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            Looking for a tempo traveller in {cityData.name}? Triveni Cabs offers 12 to 26 seater AC tempo travellers
+            Looking for a tempo traveller in {cityData.name}? Triveni Cabs™ offers 12 to 26 seater AC tempo travellers
             with professional drivers for outstation trips, local sightseeing, pilgrimages, corporate events, and weddings
             from {cityData.name}. {cityData.description} Our outstation rates start from <strong>₹23/km</strong> and local
             day packages from <strong>₹6,000/day</strong>.
@@ -980,7 +987,7 @@ export default function TempoCityClient({ data }) {
             verified backgrounds.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            With 2500+ completed group trips, a 4.9-star rating, and 24/7 availability, Triveni Cabs is {cityData.name}&apos;s
+            With 2500+ completed group trips, a 4.9-star rating, and 24/7 availability, Triveni Cabs™ is {cityData.name}&apos;s
             trusted tempo traveller rental service. View all{' '}
             <Link href="/tempo-traveller" className="text-blue-600 hover:underline">tempo traveller options and routes</Link>,
             check our <Link href="/pricing" className="text-blue-600 hover:underline">transparent pricing</Link>, or{' '}
@@ -1055,7 +1062,7 @@ function TempoCityRichBlock({ cityData }) {
         </section>
       )}
 
-      <section className="py-16 px-4 sm:px-6">
+      <section className="py-10 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Tempo in {city}</span>

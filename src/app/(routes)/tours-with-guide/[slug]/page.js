@@ -2,6 +2,7 @@
 // Dynamic route for the 80 production Tours-With-Guide pages.
 
 import { notFound } from 'next/navigation';
+import { NOINDEX_ROBOTS, isNoindexPath } from '@/lib/seo/noindex-families.mjs';
 import {
   toursWithGuideData,
   getAllTourSlugs,
@@ -62,8 +63,18 @@ import {
 } from '@/lib/seo/speakable-helpers';
 import { generateTourWithGuideMetadata } from '@/lib/seo/metadata-factory';
 import ToursWithGuideClient from './ToursWithGuideClient';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
+import { groupDigits } from '@/utilis/pricing';
+import TourGuideLogistics from '@/components/seo/TourGuideLogistics';
+// Week 53: this family is the least distinguishable on the site -- 82 pages,
+// 3,045 median words, 4.5% unique share -- because it is a city x vehicle grid
+// where only the vehicle name and the fare differ. These are the facts that
+// actually differ at each intersection: where that class of vehicle may stop,
+// the walk from there, how the group paces, and what the guide can do.
+import { getTourLogistics } from '@/utilis/toursGuideLogistics';
 
 export const revalidate = 3600;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getAllTourSlugs().map((slug) => ({ slug }));
@@ -73,7 +84,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const record = getTourBySlug(slug);
   if (!record) return {};
-  return generateTourWithGuideMetadata({
+  const md = generateTourWithGuideMetadata({
     slug: record.slug,
     city: record.city,
     vehicle: record.vehicle,
@@ -89,6 +100,7 @@ export async function generateMetadata({ params }) {
     heroImage: record.heroImage,
     intro: record.intro,
   });
+  return isNoindexPath(`/tours-with-guide/${slug}`) ? { ...md, robots: NOINDEX_ROBOTS } : md;
 }
 
 export default async function ToursWithGuideSlugPage({ params }) {
@@ -117,7 +129,7 @@ export default async function ToursWithGuideSlugPage({ params }) {
     ? record.heroImage
     : `${baseUrl}${record.heroImage}`;
 
-  const today = getTodayDate();
+  const today = (getContentUpdatedOn(`/tours-with-guide/${record.slug}`) || getTodayDate());
 
   // ===== GEO ENTITY GRAPH: resolve this tour's monuments to real Places =====
   // Each matched landmark becomes a TouristAttraction node with GeoCoordinates +
@@ -279,7 +291,7 @@ export default async function ToursWithGuideSlugPage({ params }) {
             '@type': 'PriceSpecification',
             priceCurrency: 'INR',
             price: record.bundledFare,
-            description: `Bundled fare: ${record.vehicle} (₹${record.vehicleFare}) + licensed ${record.guideLanguage || 'English'}-speaking guide (₹${record.guideFee})`,
+            description: `Bundled fare: ${record.vehicle} (₹${groupDigits(record.vehicleFare)}) + licensed ${record.guideLanguage || 'English'}-speaking guide (₹${groupDigits(record.guideFee)})`,
           },
           validFrom: new Date().toISOString(),
         },
@@ -319,7 +331,7 @@ export default async function ToursWithGuideSlugPage({ params }) {
         name: record.headline,
         description: record.intro,
         image: heroImageAbs,
-        brand: { '@type': 'Brand', name: 'Triveni Cabs' },
+        brand: { '@type': 'Brand', name: 'Triveni Cabs™' },
         // SKU: short deterministic identifier under Google's 40-char limit
         // (was record.slug — 65 chars on long URLs — triggered GSC warning)
         sku: generateSku(record.slug),
@@ -332,20 +344,7 @@ export default async function ToursWithGuideSlugPage({ params }) {
           availability: 'https://schema.org/InStock',
           url,
         },
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.9',
-          reviewCount: String(reviewCount),
-          bestRating: '5',
-          worstRating: '1',
-        },
-        review: reviews.map((r) => ({
-          '@type': 'Review',
-          author: { '@type': 'Person', name: r.author },
-          reviewRating: { '@type': 'Rating', ratingValue: r.stars, bestRating: 5 },
-          reviewBody: r.body,
-          datePublished: r.date,
-        })),
+
       },
       {
         '@type': 'FAQPage',
@@ -426,6 +425,7 @@ export default async function ToursWithGuideSlugPage({ params }) {
         languageAvailability={languageAvailability}
         bookingSteps={bookingSteps}
       />
+      <TourGuideLogistics tour={record} logistics={getTourLogistics(record)} />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getWeddingSpecialService } from '@/utilis/weddingCarModels';
+import DataTable from '@/components/seo/DataTable';
 import { getWeddingPages } from '@/utilis/linkingHelper';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import {
@@ -14,13 +15,13 @@ export const revalidate = 3600;
 const service = getWeddingSpecialService('car-decoration-packages');
 
 export const metadata = {
-  title: tightenTitle(service?.metaTitle || 'Wedding Car Decoration Packages | Triveni Cabs'),
+  title: tightenTitle(service?.metaTitle || 'Wedding Car Decoration Packages | Triveni Cabs™'),
   description: service?.metaDescription || 'Wedding car decoration packages with fresh flowers.',
   alternates: { canonical: 'https://www.trivenicabs.in/wedding/car-decoration-packages' },
   openGraph: {
-    title: 'Wedding Car Decoration Packages | Triveni Cabs',
+    title: 'Wedding Car Decoration Packages | Triveni Cabs™',
     description: 'Professional wedding car decoration with fresh flowers, ribbons, LED. Starting Rs 2,000.',
-    type: 'website', locale: 'en_IN', siteName: 'Triveni Cabs',
+    type: 'website', locale: 'en_IN', siteName: 'Triveni Cabs™',
     images: [{ url: '/images/wedding/luxury_car.jpg', width: 1200, height: 630, alt: 'Wedding Car Decoration' }]
   },
   keywords: service?.keywords || '',
@@ -28,7 +29,7 @@ export const metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: "Wedding Car Decoration Packages | Triveni Cabs",
+    title: "Wedding Car Decoration Packages | Triveni Cabs™",
     description: "Professional wedding car decoration with fresh flowers, ribbons, LED. Starting Rs 2,000.",
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -42,6 +43,8 @@ export default function CarDecorationPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Merchant listings treats a missing `image` as critical.
+    "image": "https://www.trivenicabs.in/images/wedding/luxury_car.jpg",
     "name": `${data.title} | Triveni Cabs`,
     "description": data.description,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
@@ -105,7 +108,7 @@ export default function CarDecorationPage() {
             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#FFFBF5] to-transparent" />
           </div>
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12 sm:py-20">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-stone-400 mb-10">
               <Link href="/" className="hover:text-rose-500 transition-colors">Home</Link>
@@ -159,13 +162,33 @@ export default function CarDecorationPage() {
         </section>
 
         {/* === SECTION: Description + Professional Touch === */}
-        <section className="relative py-24 px-4">
+        {Array.isArray(service.packages) && service.packages.length > 1 && (
+          <div className="container mx-auto px-4 py-10">
+            <DataTable
+              title="Which wedding car decoration package, and what does it cost?"
+              caption="Wedding car decoration packages: name, price range and what each includes"
+              intro="Prices are per car per event; fresh flowers are sourced on the day. The car hire is separate and is on the wedding car pages."
+              columns={[
+                { key: 'name', label: 'Option' },
+                { key: 'price', label: 'Price range' },
+                { key: 'includes', label: 'What it includes' },
+              ]}
+              rows={service.packages.map((o) => ({
+                name: o.car ? `${o.name} (${o.car})` : o.name,
+                price: o.price,
+                includes: (o.features || o.includes || []).join(', '),
+              }))}
+            />
+          </div>
+        )}
+
+        <section className="relative py-14 sm:py-24 px-4">
           <div className="absolute inset-0 bg-white" />
           {/* Decorative top border */}
           <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-rose-200 to-transparent" />
 
           <div className="relative z-10 max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="inline-block text-emerald-600 text-sm font-bold tracking-widest uppercase mb-4">Our Craft</span>
               <h2 className="text-4xl md:text-5xl font-black text-stone-900 mb-6">
                 Professional <span className="text-transparent bg-gradient-to-r from-rose-500 to-emerald-500 bg-clip-text">Car Decoration</span> Services
@@ -199,12 +222,12 @@ export default function CarDecorationPage() {
         </section>
 
         {/* === SECTION: Packages - Tiered Boutique Cards === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-white via-[#FFFBF5] to-white" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(244,114,182,0.05),transparent_60%)]" />
 
           <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="inline-block text-rose-500 text-sm font-bold tracking-widest uppercase mb-4">Decoration Tiers</span>
               <h2 className="text-4xl md:text-5xl font-black text-stone-900">
                 Choose Your <span className="text-transparent bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 bg-clip-text">Package</span>
@@ -260,7 +283,7 @@ export default function CarDecorationPage() {
         </section>
 
         {/* === SECTION: FAQ - Garden Card Style === */}
-        <section className="relative py-24 px-4">
+        <section className="relative py-14 sm:py-24 px-4">
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 via-white to-rose-50/50" />
 
           <div className="relative z-10 max-w-5xl mx-auto">
@@ -290,7 +313,7 @@ export default function CarDecorationPage() {
         </section>
 
         {/* === SECTION: Interlinks === */}
-        <section className="relative py-16 px-4">
+        <section className="relative py-10 sm:py-16 px-4">
           <div className="absolute inset-0 bg-white" />
           <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-stone-200 to-transparent" />
 
@@ -314,7 +337,7 @@ export default function CarDecorationPage() {
         </section>
 
         {/* === SECTION: Related Services Cards === */}
-        <section className="relative py-24 px-4">
+        <section className="relative py-14 sm:py-24 px-4">
           <div className="absolute inset-0 bg-gradient-to-b from-white via-rose-50/30 to-white" />
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="text-center mb-14">
@@ -351,7 +374,7 @@ export default function CarDecorationPage() {
         </section>
 
         {/* === SECTION: Popular Links Footer Grid === */}
-        <section className="relative py-16 px-4">
+        <section className="relative py-10 sm:py-16 px-4">
           <div className="absolute inset-0 bg-[#FFFBF5]" />
           <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-stone-200 to-transparent" />
 

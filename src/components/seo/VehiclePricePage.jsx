@@ -66,7 +66,7 @@ export default function VehiclePricePage({
           availability: "https://schema.org/InStock",
         }
       : undefined,
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "10240" },
+    
   };
 
   const breadcrumbSchema = {
@@ -120,7 +120,7 @@ export default function VehiclePricePage({
 
       {/* FARE TABLE */}
       {fareRows.length > 0 && (
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-display-serif text-3xl font-bold text-slate-900 text-center mb-2">
               {vehicleName} fare — per km, all-inclusive
@@ -155,7 +155,7 @@ export default function VehiclePricePage({
       )}
 
       {/* FEATURES + USE CASES */}
-      <section className="py-16 px-4 bg-slate-50">
+      <section className="py-10 sm:py-16 px-4 bg-slate-50">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
           <div>
             <h2 className="font-display-serif text-2xl font-bold text-slate-900 mb-6">What you get</h2>
@@ -196,14 +196,14 @@ export default function VehiclePricePage({
       </section>
 
       {/* FAQ + RELATED */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-3xl mx-auto">
           <FAQSection faqs={faqs} title={`${vehicleName} — frequently asked questions`} />
         </div>
       </section>
 
       {relatedLinks.length > 0 && (
-        <section className="px-4 pb-16">
+        <section className="px-4 pb-10 sm:pb-16">
           <div className="max-w-5xl mx-auto">
             <RelatedLinks heading="Related vehicles & services" links={relatedLinks} tone="slate" />
           </div>
@@ -211,7 +211,7 @@ export default function VehiclePricePage({
       )}
 
       {/* CTA */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <Star className="h-10 w-10 text-slate-900/80 mx-auto mb-5" />

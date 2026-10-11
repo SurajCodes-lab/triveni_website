@@ -4,6 +4,7 @@
  */
 
 import { COMPANY_INFO, PRICING, VEHICLE_TYPES } from './constants';
+import { groupDigits } from '@/utilis/pricing';
 
 /**
  * Generate FAQs for route pages (A to B taxi)
@@ -16,7 +17,7 @@ export function generateRouteFAQs({ origin, destination, distance, duration, pri
   return [
     {
       question: `How much does a cab from ${origin} to ${destination} cost?`,
-      answer: `The cab fare from ${origin} to ${destination} starts at ₹${price} for a sedan. Prices vary based on vehicle type - SUVs cost approximately ₹${Math.round(price * 1.3)} and Tempo Travellers cost around ₹${Math.round(price * 1.8)}. The fare includes driver allowance, toll charges, and all taxes. Book with ${COMPANY_INFO.name} for the best rates.`
+      answer: `The cab fare from ${origin} to ${destination} starts at ₹${groupDigits(price)} for a sedan. Prices vary based on vehicle type - SUVs cost approximately ₹${groupDigits(Math.round(price * 1.3))} and Tempo Travellers cost around ₹${groupDigits(Math.round(price * 1.8))}. The fare includes driver allowance, toll charges, and all taxes. Book with ${COMPANY_INFO.name} for the best rates.`
     },
     {
       question: `What is the distance from ${origin} to ${destination} by road?`,
@@ -64,7 +65,7 @@ export function generateTourFAQs({ tourName, city, duration, price, highlights =
   return [
     {
       question: `How much does the ${tourName} cost?`,
-      answer: `The ${tourName} starts at ₹${price}. This includes ${inclusionText}. Prices may vary based on vehicle type and group size. Contact ${COMPANY_INFO.name} at ${COMPANY_INFO.phone.display} for exact quotes and group discounts.`
+      answer: `The ${tourName} starts at ₹${groupDigits(price)}. This includes ${inclusionText}. Prices may vary based on vehicle type and group size. Contact ${COMPANY_INFO.name} at ${COMPANY_INFO.phone.display} for exact quotes and group discounts.`
     },
     {
       question: `What is included in the ${tourName}?`,
@@ -112,7 +113,7 @@ export function generateCityFAQs({ city, services = [], tours = [] }) {
   return [
     {
       question: `What are the taxi rates in ${city}?`,
-      answer: `Taxi rates in ${city} start from ₹${PRICING.sedan.minPrice}/km for sedans and ₹${PRICING.suv.minPrice}/km for SUVs. Local packages start from ₹1,500 for 4 hours/40 km. Airport transfers have fixed pricing. ${COMPANY_INFO.name} offers transparent pricing with no hidden charges. Call ${COMPANY_INFO.phone.display} for exact quotes.`
+      answer: `Taxi rates in ${city} start from ₹${groupDigits(PRICING.sedan.minPrice)}/km for sedans and ₹${groupDigits(PRICING.suv.minPrice)}/km for SUVs. Local packages start from ₹1,500 for 4 hours/40 km. Airport transfers have fixed pricing. ${COMPANY_INFO.name} offers transparent pricing with no hidden charges. Call ${COMPANY_INFO.phone.display} for exact quotes.`
     },
     {
       question: `What tours and sightseeing packages are available in ${city}?`,
@@ -148,7 +149,7 @@ export function generateAirportFAQs({ city, airportName, price, distance }) {
   return [
     {
       question: `How much does airport taxi cost in ${city}?`,
-      answer: `${city} airport taxi rates start from ₹${price} for sedan and ₹${Math.round(price * 1.3)} for SUV. Prices are fixed based on distance and vehicle type. ${COMPANY_INFO.name} offers transparent pricing with no surge charges. The fare includes tolls and parking.`
+      answer: `${city} airport taxi rates start from ₹${groupDigits(price)} for sedan and ₹${groupDigits(Math.round(price * 1.3))} for SUV. Prices are fixed based on distance and vehicle type. ${COMPANY_INFO.name} offers transparent pricing with no surge charges. The fare includes tolls and parking.`
     },
     {
       question: `How do I book airport pickup in ${city}?`,
@@ -288,7 +289,7 @@ export function generateReligiousTourFAQs({ tourName, duration, price, temples =
   return [
     {
       question: `What is the cost of ${tourName}?`,
-      answer: `The ${tourName} starts from ₹${price}. This includes AC vehicle, experienced driver, all permits, tolls, and parking. The package can be customized based on your requirements. Contact ${COMPANY_INFO.name} at ${COMPANY_INFO.phone.display} for exact pricing and available dates.`
+      answer: `The ${tourName} starts from ₹${groupDigits(price)}. This includes AC vehicle, experienced driver, all permits, tolls, and parking. The package can be customized based on your requirements. Contact ${COMPANY_INFO.name} at ${COMPANY_INFO.phone.display} for exact pricing and available dates.`
     },
     {
       question: `How many days is the ${tourName}?`,
@@ -320,7 +321,7 @@ export function generateTempoTravellerFAQs({ origin, destination, seats, price, 
   return [
     {
       question: `What is the fare for ${seats}-seater tempo traveller from ${origin} to ${destination}?`,
-      answer: `The ${seats}-seater tempo traveller fare from ${origin} to ${destination} is approximately ₹${price}. This includes driver allowance, tolls, and permits. Prices may vary based on AC/Non-AC type and travel season. Contact us for exact quotes and best rates.`
+      answer: `The ${seats}-seater tempo traveller fare from ${origin} to ${destination} is approximately ₹${groupDigits(price)}. This includes driver allowance, tolls, and permits. Prices may vary based on AC/Non-AC type and travel season. Contact us for exact quotes and best rates.`
     },
     {
       question: `How many people can travel in a tempo traveller?`,
@@ -352,7 +353,7 @@ export function generateBusFAQs({ origin, destination, seats, price }) {
   return [
     {
       question: `How much does a ${seats}-seater bus from ${origin} to ${destination} cost?`,
-      answer: `A ${seats}-seater bus from ${origin} to ${destination} costs approximately ₹${price}. This includes driver charges, fuel, tolls, and permits. Prices vary based on bus type (AC/Non-AC, Luxury/Standard). Contact ${COMPANY_INFO.name} for best rates and package deals.`
+      answer: `A ${seats}-seater bus from ${origin} to ${destination} costs approximately ₹${groupDigits(price)}. This includes driver charges, fuel, tolls, and permits. Prices vary based on bus type (AC/Non-AC, Luxury/Standard). Contact ${COMPANY_INFO.name} for best rates and package deals.`
     },
     {
       question: `What types of buses are available for hire?`,
@@ -450,7 +451,7 @@ export function generateBlogFAQs({ city, title, tags = [], category }) {
   if (city) {
     faqs.push({
       question: `How can I book a cab in ${city}?`,
-      answer: `You can book a cab in ${city} with ${COMPANY_INFO.name} by calling ${COMPANY_INFO.phone.display}, WhatsApp at ${COMPANY_INFO.phone.whatsapp}, or using our website booking form. We offer AC sedan, SUV, and tempo traveller options starting at ₹${PRICING.sedan.minPrice}/km. All bookings confirmed within 2 minutes.`
+      answer: `You can book a cab in ${city} with ${COMPANY_INFO.name} by calling ${COMPANY_INFO.phone.display}, WhatsApp at ${COMPANY_INFO.phone.whatsapp}, or using our website booking form. We offer AC sedan, SUV, and tempo traveller options starting at ₹${groupDigits(PRICING.sedan.minPrice)}/km. All bookings confirmed within 2 minutes.`
     });
     faqs.push({
       question: `What are the best tourist places to visit in ${city}?`,
@@ -465,7 +466,7 @@ export function generateBlogFAQs({ city, title, tags = [], category }) {
   if (tags.includes('food') || tags.includes('restaurant') || category === 'food') {
     faqs.push({
       question: `Can I hire a cab for a food tour${city ? ` in ${city}` : ''}?`,
-      answer: `Absolutely! ${COMPANY_INFO.name} offers customizable food tour packages${city ? ` in ${city}` : ''}. Our drivers know the best local eateries and street food spots. Book an AC sedan from ₹${PRICING.sedan.minPrice}/km for a comfortable food exploration.`
+      answer: `Absolutely! ${COMPANY_INFO.name} offers customizable food tour packages${city ? ` in ${city}` : ''}. Our drivers know the best local eateries and street food spots. Book an AC sedan from ₹${groupDigits(PRICING.sedan.minPrice)}/km for a comfortable food exploration.`
     });
   }
 

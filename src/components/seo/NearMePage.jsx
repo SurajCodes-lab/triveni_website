@@ -72,7 +72,7 @@ export default function NearMePage({
       addressCountry: "IN",
     },
     areaServed: cities.map((c) => ({ "@type": "City", name: c.name })),
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "10240" },
+    
   };
 
   const breadcrumbSchema = {
@@ -145,7 +145,7 @@ export default function NearMePage({
       </section>
 
       {/* CITIES WE SERVE */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-display-serif text-3xl font-bold text-slate-900 text-center mb-2">
             Cabs near you — cities we serve
@@ -170,7 +170,7 @@ export default function NearMePage({
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-16 px-4 bg-slate-50">
+      <section className="py-10 sm:py-16 px-4 bg-slate-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-display-serif text-3xl font-bold text-slate-900 text-center mb-12">Book in 3 simple steps</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -190,14 +190,14 @@ export default function NearMePage({
       </section>
 
       {/* FAQ + RELATED */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-3xl mx-auto">
           <FAQSection faqs={faqs} title={`${h1} — FAQs`} />
         </div>
       </section>
 
       {relatedLinks.length > 0 && (
-        <section className="px-4 pb-16">
+        <section className="px-4 pb-10 sm:pb-16">
           <div className="max-w-5xl mx-auto">
             <RelatedLinks heading="Related services" links={relatedLinks} tone="slate" />
           </div>
@@ -205,7 +205,7 @@ export default function NearMePage({
       )}
 
       {/* CTA */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <Car className="h-12 w-12 text-slate-900/80 mx-auto mb-6" />

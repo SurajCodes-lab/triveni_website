@@ -6,7 +6,7 @@ export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Cab Service Near Me — Book Verified AC Cabs 24/7'),
-  description: 'Searching "cab service near me"? Triveni Cabs offers verified, air-conditioned cabs with doorstep pickup in 18+ cities. Upfront fare, no surge pricing. Call 7668570551 to book now.',
+  description: 'Searching "cab service near me"? Triveni Cabs™ offers verified, air-conditioned cabs with doorstep pickup in 18+ cities. Upfront fare, no surge pricing. Call 7668570551 to book now.',
   keywords: ['cab service near me', 'taxi service near me', 'cab near me', 'book cab near me', 'local cab service', 'nearby taxi service', 'cheapest cab near me'],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
@@ -34,7 +34,7 @@ export default function Page() {
     <NearMePage
       slug="cab-service-near-me"
       h1="Cab Service Near You — Verified AC Cabs, Doorstep Pickup"
-      intro="Whatever city you're in, Triveni Cabs brings a clean, air-conditioned cab and a background-verified driver straight to your doorstep. Tell us your pickup point and drop — you get a confirmed, all-inclusive fare in two minutes. No surge pricing, no meter surprises, no waiting on a street corner."
+      intro="Whatever city you're in, Triveni Cabs™ brings a clean, air-conditioned cab and a background-verified driver straight to your doorstep. Tell us your pickup point and drop — you get a confirmed, all-inclusive fare in two minutes. No surge pricing, no meter surprises, no waiting on a street corner."
       fareChips={[
         { label: 'Sedan (Dzire/Etios)', value: '₹11/km' },
         { label: 'SUV (Ertiga/Innova)', value: '₹14–18/km' },

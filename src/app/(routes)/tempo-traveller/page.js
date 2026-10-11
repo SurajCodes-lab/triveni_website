@@ -9,6 +9,7 @@ import {
   getTodayDate,
 } from "@/lib/seo/speakable-helpers";
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 export const revalidate = 3600;
 
@@ -26,7 +27,7 @@ export const metadata = {
     description:
       "North India's trusted tempo traveller rental. 12-26 seater AC vehicles, experienced drivers, transparent pricing. Outstation, wedding, group tours.",
     url: `${SITE_URL}/tempo-traveller`,
-    siteName: "Triveni Cabs",
+    siteName: "Triveni Cabs™",
     type: "website",
     images: [
       {
@@ -52,7 +53,7 @@ export default function TempoTravellerPage() {
     "tempo"
   );
 
-  const today = getTodayDate();
+  const today = (getContentUpdatedOn('/tempo-traveller') || getTodayDate());
 
   const faqData = [
     {

@@ -1,5 +1,6 @@
 'use client';
 
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -71,9 +72,10 @@ export default function HowToReachClient({ route, relatedRoutes }) {
               </div>
               <p className="text-white/40 text-sm font-medium uppercase tracking-widest mb-2">How to Reach</p>
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
-                {route.destination}<br />
+                {route.destination}{' '}<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-sky-400">from {route.origin}</span>
               </h1>
+              <FamilyFacts family="how-to-reach" data={route} />
               <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">
                 {route.travelModes.length} travel modes compared. Cab from {cabMode?.costRange || 'best price'}.
               </p>
@@ -115,6 +117,7 @@ export default function HowToReachClient({ route, relatedRoutes }) {
           </div>
         </div>
       </section>
+      <FamilyFacts family="how-to-reach" data={route} details />
 
       {/* ━━━ MODE SELECTOR STRIP: Departure board ━━━ */}
       <section className="bg-slate-900 py-6 sm:py-8 px-4 sm:px-6">

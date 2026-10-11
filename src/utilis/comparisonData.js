@@ -3,8 +3,8 @@
 
 export const comparisonData = {
   'innova-vs-ertiga-for-outstation': {
-    title: 'Innova vs Ertiga for Outstation Trips - Which is Better?',
-    metaDescription: 'Detailed comparison of Toyota Innova Crysta vs Maruti Ertiga for outstation trips. Compare comfort, space, pricing, mileage.',
+    title: 'Innova vs Ertiga for Outstation: Fare, Space & Mileage Compared',
+    metaDescription: 'Innova Crysta ₹18/km vs Ertiga ₹15/km for outstation trips: seats, boot space, mileage, hill comfort and which to book for 4–6 people. Verdict inside.',
     slug: 'innova-vs-ertiga-for-outstation',
     category: 'Family Car Decision',
     vehicle1: {
@@ -54,7 +54,7 @@ export const comparisonData = {
       { question: 'What is the cost difference for a Delhi-Jaipur round trip?', answer: 'For a Delhi-Jaipur round trip (560km): Ertiga costs approximately ₹6,720-7,280 while Innova Crysta costs ₹8,400-9,520. The difference is roughly ₹1,700-2,200. For a family of 4 sharing the cost, that is ₹400-550 more per person for the Innova upgrade.' },
       { question: 'Which car is better for Rajasthan outstation trips?', answer: 'For Rajasthan trips on flat highways (Delhi-Jaipur, Jaipur-Udaipur), Ertiga works well and saves money. For longer Rajasthan circuits covering 1000+ km over multiple days, Innova Crysta offers better comfort for extended travel. The diesel engine also handles desert heat more efficiently.' },
       { question: 'Is Innova Crysta available in both diesel and petrol?', answer: 'In our fleet, Innova Crysta is primarily diesel, which is ideal for outstation trips due to better torque and mileage on highways. Ertiga is available in petrol. The diesel Innova delivers 10-12 km/l on highways while the petrol Ertiga gives 15-19 km/l, but diesel costs less per litre.' },
-      { question: 'Can I request a specific car model when booking?', answer: 'Yes, when you book with Triveni Cabs you can request either Innova Crysta or Ertiga specifically. Call us at 7668570551 or WhatsApp to discuss which vehicle suits your trip best. We can also suggest the right vehicle based on your route, group size, and luggage.' },
+      { question: 'Can I request a specific car model when booking?', answer: 'Yes, when you book with Triveni Cabs™ you can request either Innova Crysta or Ertiga specifically. Call us at 7668570551 or WhatsApp to discuss which vehicle suits your trip best. We can also suggest the right vehicle based on your route, group size, and luggage.' },
     ],
   },
 
@@ -70,7 +70,7 @@ export const comparisonData = {
       seating: '12-17 passengers',
       bootSpace: 'Moderate boot area',
       acType: 'Roof-mounted AC',
-      ratePerKm: '₹20-28/km',
+      ratePerKm: '₹23/km',
       minimumCharge: '₹6,000 (250km/day)',
       fuelType: 'Diesel',
       mileage: '8-10 km/l',
@@ -310,7 +310,7 @@ export const comparisonData = {
       seating: '12-26 passengers',
       bootSpace: 'Moderate boot area',
       acType: 'Roof-mounted AC',
-      ratePerKm: '₹20-28/km',
+      ratePerKm: '₹23/km',
       minimumCharge: '₹5,500-7,000 (250km/day)',
       fuelType: 'Diesel',
       mileage: '7-10 km/l',
@@ -386,7 +386,7 @@ export const comparisonData = {
     ],
     faqs: [
       { question: 'When should I book one-way vs round trip?', answer: 'Book one-way when: going to airport/station, relocating cities, or not returning same route. Book round trip when: taking a holiday trip, doing sightseeing at destination, multi-day travel, or returning to the same city within 1-3 days. Rule of thumb: if you are returning within 48 hours, round trip is usually cheaper.' },
-      { question: 'How much do I save with one-way cab for Delhi to Agra?', answer: 'Delhi-Agra one-way sedan costs approximately ₹2,760 (230km x ₹12/km). Round trip costs ₹5,520 (460km). If you only need to go to Agra (catching a train back, for example), one-way saves you ₹2,760 -- exactly 50%. But if you are returning by car, round trip is the same total price with added flexibility.' },
+      { question: 'How much do I save with one-way cab for Delhi to Agra?', answer: 'Delhi-Agra one-way sedan costs approximately ₹3,300 (the 300 km minimum at ₹11/km). Round trip costs ₹5,060 (460km). If you only need to go to Agra (catching a train back, for example), one-way saves you ₹1,760 -- about 35%. But if you are returning by car, round trip is the same total price with added flexibility.' },
       { question: 'Do one-way cabs have higher per-km rates?', answer: 'Generally yes, one-way rates are 0-15% higher per km because the driver must return empty. However, you pay for only half the distance, so the total cost is still much lower. Some popular routes (Delhi-Agra, Delhi-Jaipur) have the same per-km rate for both one-way and round trip.' },
       { question: 'Can I do sightseeing with a one-way cab?', answer: 'One-way cabs are designed for point-to-point transfers. If you want to stop at attractions along the way, you will need to pre-arrange this with extra waiting charges (₹200/hour). For sightseeing, round trip is always better as the driver stays with you throughout.' },
       { question: 'What is the minimum charge for one-way booking?', answer: 'Minimum charges vary by vehicle: Sedan ₹2,500, SUV Ertiga ₹3,200, Innova ₹3,800. These are base fares for the minimum distance (typically 200-250km). For shorter distances like Delhi Airport to Noida (25km), a flat fare package applies instead of per-km rates.' },

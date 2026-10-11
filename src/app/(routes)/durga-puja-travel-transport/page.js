@@ -12,9 +12,9 @@ export const metadata = {
   title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['durga puja cab service 2026', 'durga puja transport', 'pandal hopping cab booking', 'navratri cab service', 'durga puja travel package', 'navratri taxi booking', 'dussehra cab service', 'festive season cab north india', 'durga puja outstation cab', 'navratri pandal cab'],
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${slug}`,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Durga Puja Cab Service' }],
   },
   twitter: { card: 'summary_large_image', title: pageTitle, description: pageDesc, creator: '@trivenicabs', site: '@trivenicabs' },
@@ -31,8 +31,9 @@ export const metadata = {
 };
 
 const faqs = [
+  { question: 'When is Durga Puja 2026?', answer: 'Durga Puja 2026 runs from Maha Shashthi on Saturday 17 October to Vijaya Dashami (Dussehra) on Tuesday 20 October 2026, with Maha Ashtami on Monday 19 October. It falls inside Sharad Navratri (11–20 October), so Delhi pandals, Garba venues and the outstation highways are all at their busiest in the same ten days — book cabs and tempo travellers early.' },
   { question: 'Do you provide pandal hopping cab service during Durga Puja?', answer: 'Yes! We offer dedicated pandal hopping cab packages during Durga Puja. Book an 8-hour or 12-hour local package with AC sedan or SUV. The driver will take you to multiple pandals across the city.' },
-  { question: 'Is there surge pricing during Durga Puja and Navratri?', answer: 'No, Triveni Cabs does not charge surge pricing during any festival including Durga Puja and Navratri. Our rates are fixed and transparent. Book in advance for guaranteed availability.' },
+  { question: 'Is there surge pricing during Durga Puja and Navratri?', answer: 'No, Triveni Cabs™ does not charge surge pricing during any festival including Durga Puja and Navratri. Our rates are fixed and transparent. Book in advance for guaranteed availability.' },
   { question: 'Can I book a cab for Navratri Garba venue transport?', answer: 'Yes, we provide hourly and daily rental cabs for Navratri events. Perfect for Garba venues, temple visits, and late-night returns. Available in Delhi, Jaipur, Agra, and other cities.' },
   { question: 'Do you offer outstation cabs during Durga Puja for family visits?', answer: 'Absolutely! Many families travel to their hometowns during Durga Puja. We offer one-way and round-trip outstation cabs to all major cities. Airport pickup/drop also available.' },
   { question: 'Are night cabs available during Durga Puja festivities?', answer: 'Yes, our cabs are available 24/7 during Durga Puja, including late-night pandal hopping and immersion procession transport. All drivers are verified for your safety.' },
@@ -45,8 +46,7 @@ export default function DurgaPujaPage() {
     "name": "Durga Puja Travel & Transport 2026 — Triveni Cabs",
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
-    "areaServed": { "@type": "Country", "name": "India" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('durga-puja-travel-transport')), "bestRating": "5" }
+    "areaServed": { "@type": "Country", "name": "India" }
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -67,7 +67,7 @@ export default function DurgaPujaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <SeasonalPageClient
         title="Durga Puja & Navratri Transport 2026"
-        subtitle="Festive Season Special Cab Service"
+        subtitle="Festive Season Special Cab Service · 17–20 October 2026"
         description="Celebrate Durga Puja and Navratri without transport worries. Pandal hopping packages, Garba venue transfers, outstation trips to family, and airport pickups. No surge pricing."
         theme="durga"
         destinations={[

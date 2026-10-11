@@ -5,6 +5,7 @@ import HotelCabPackageClient from '@/components/packages/HotelCabPackageClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { tightenTitle, tightenDescription, DESC_BUDGET } from '@/lib/seo/serp-ctr';
+import DataTable from '@/components/seo/DataTable';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }) {
   const priceTail = `from ₹${pkg.startingPrice.toLocaleString('en-IN')} per person. Call 7668570551.`;
   const descHead = `${pkg.destination} ${pkg.duration} tour package with hotel & cab. Includes ${pkg.includes.slice(0, 3).join(', ')}.`;
   const description = `${tightenDescription(descHead, DESC_BUDGET - priceTail.length - 1)} ${priceTail}`;
-  const ogTitle = `${pkg.destination} Tour Package — ${pkg.duration} | Hotel + Cab from ₹${pkg.startingPrice.toLocaleString('en-IN')} | Triveni Cabs`;
+  const ogTitle = `${pkg.destination} Tour Package — ${pkg.duration} | Hotel + Cab from ₹${pkg.startingPrice.toLocaleString('en-IN')} | Triveni Cabs™`;
 
   return {
     title,
@@ -49,9 +50,9 @@ export async function generateMetadata({ params }) {
       `${pkg.destination.toLowerCase()} honeymoon package`,
       `${pkg.destination.toLowerCase()} budget trip`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/packages/${slug}` },
     openGraph: {
@@ -60,7 +61,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/packages/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `${pkg.destination} Tour Package` }],
     },
     twitter: {
@@ -116,18 +117,12 @@ export default async function PackagePage({ params }) {
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
+        "streetAddress": "366, Dandupura, near Tajganj",
         "addressLocality": "Agra",
-        "addressRegion": "UP",
+        "addressRegion": "Uttar Pradesh",
         "postalCode": "282006",
         "addressCountry": "IN"
       }
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount(slug)),
-      "bestRating": "5"
     }
   };
 
@@ -157,6 +152,26 @@ export default async function PackagePage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <AEOHead pageType="tour" data={{ url: `/packages/${slug}`, title: `${pkg.destination} Tour Package`, city: pkg.destination }} />
+      {/* Day-by-day itinerary table — see the religious-tours page for the
+          reasoning. Activities are joined into one cell so the day stays one row. */}
+      <DataTable
+        title={`${pkg.destination} ${pkg.duration} — day-by-day itinerary`}
+        caption={`Day-by-day itinerary for the ${pkg.destination} package, listing the activities included on each day.`}
+        intro="Hotel, cab and all listed transfers are included. Monument entry and meals are extra unless stated."
+        columns={[
+          { key: 'dayLabel', label: 'Day' },
+          { key: 'title', label: 'Where' },
+          { key: 'activityList', label: 'Included that day' },
+        ]}
+        rows={(pkg.itinerary || []).map((d) => ({
+          ...d,
+          dayLabel: `Day ${d.day}`,
+          activityList: Array.isArray(d.activities) ? d.activities.join(' · ') : (d.description || ''),
+        }))}
+        tone="light"
+        className="bg-slate-50"
+      />
+
       <HotelCabPackageClient pkg={pkg} relatedPackages={relatedPackages} />
     </>
   );

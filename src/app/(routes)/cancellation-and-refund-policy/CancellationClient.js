@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { phoneNumber } from "@/utilis/data";
+import { phoneNumber } from '@/utilis/contact';
 
 // Animation variants
 const fadeInUp = {
@@ -174,8 +174,6 @@ export default function CancellationClient() {
         </div>
 
         {/* Background Orbs */}
-        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-yellow-400/30 to-amber-500/30 rounded-full blur-3xl opacity-60" />
-        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/20 to-pink-400/20 rounded-full blur-3xl opacity-50" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
@@ -262,13 +260,13 @@ export default function CancellationClient() {
       </section>
 
       {/* CANCELLATION TIERS SECTION */}
-      <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute top-20 right-0 w-96 h-96 bg-gradient-to-br from-yellow-200/30 to-amber-200/30 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-0 w-80 h-80 bg-gradient-to-br from-orange-200/30 to-pink-200/30 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 px-6 py-2 rounded-full mb-6 shadow-sm">
               <Calendar className="w-5 h-5" />
               <span className="font-semibold">Cancellation Timeline</span>
@@ -328,7 +326,7 @@ export default function CancellationClient() {
       </section>
 
       {/* NO SHOW POLICY */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4">
           <AnimatedSection>
             <div className="bg-gradient-to-br from-red-500 to-rose-600 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
@@ -358,16 +356,16 @@ export default function CancellationClient() {
       </section>
 
       {/* COMPANY CANCELLATION */}
-      <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-800 px-6 py-2 rounded-full mb-6 shadow-sm">
               <Shield className="w-5 h-5" />
               <span className="font-semibold">Our Commitment</span>
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display-serif font-bold mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
-              Cancellation by Triveni Cabs
+              Cancellation by Triveni Cabs™
             </h2>
 
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -413,9 +411,9 @@ export default function CancellationClient() {
       </section>
 
       {/* REFUND PROCESS SECTION */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 px-6 py-2 rounded-full mb-6 shadow-sm">
               <Zap className="w-5 h-5" />
               <span className="font-semibold">Simple Process</span>
@@ -483,12 +481,12 @@ export default function CancellationClient() {
       </section>
 
       {/* STATS SECTION */}
-      <section className="py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
         {/* Static background wash (infinite animation removed for INP) */}
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-amber-600/10 via-transparent to-orange-600/10 opacity-40" />
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <h2 className="font-display-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
               Our Commitment <span className="text-gold-foil">to You</span>
             </h2>
@@ -530,7 +528,7 @@ export default function CancellationClient() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative overflow-hidden">
         {/* Background Decoration */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-yellow-200/50 to-amber-200/50 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-br from-orange-200/50 to-pink-200/50 rounded-full blur-3xl"></div>

@@ -52,7 +52,7 @@ export const destinationCompareData = [
       { q: "Is Shimla or Manali better for honeymoon?", a: "Both are excellent! Shimla offers romantic colonial walks and peaceful evenings. Manali offers adventure activities and cozy cafe culture. Most couples prefer the Shimla + Manali combo for a 6-7 day honeymoon." },
       { q: "Which is cheaper — Shimla or Manali?", a: "Shimla is generally cheaper due to shorter distance from Delhi (₹7,700 vs ₹11,880 for cab), slightly lower hotel rates, and fewer paid activities. Overall, Shimla saves ₹3,000-5,000 compared to Manali." },
       { q: "Which has better snowfall — Shimla or Manali?", a: "Manali gets significantly more snow, especially at Solang Valley and Rohtang Pass. Shimla gets light snowfall mainly in Kufri. For a snow holiday, Manali is the clear winner." },
-      { q: "Can I visit both Shimla and Manali in one trip?", a: "Yes! The Shimla-Manali-Delhi circuit takes 6-7 days. Drive Delhi → Shimla (2 nights) → Manali (3 nights) → Delhi. Triveni Cabs offers the full circuit at ₹11/km." },
+      { q: "Can I visit both Shimla and Manali in one trip?", a: "Yes! The Shimla-Manali-Delhi circuit takes 6-7 days. Drive Delhi → Shimla (2 nights) → Manali (3 nights) → Delhi. Triveni Cabs™ offers the full circuit at ₹11/km." },
       { q: "Which is better for adventure activities?", a: "Manali wins hands down. It offers paragliding (₹1,500-3,000), river rafting (₹600-1,200), skiing (winter), Rohtang snow activities, zorbing, and more. Shimla is limited to Kufri horse riding." },
       { q: "How many days should I spend in Shimla vs Manali?", a: "Shimla needs 2-3 days to cover Mall Road, Ridge, Kufri, and Jakhoo. Manali needs 3-4 days for Solang Valley, Rohtang, Old Manali, and Hadimba Temple. For a combo trip, allocate 6-7 days total." }
     ]
@@ -60,7 +60,7 @@ export const destinationCompareData = [
   {
     slug: "mussoorie-vs-nainital",
     title: "Mussoorie vs Nainital — Which Hill Station to Visit By Car?",
-    metaDescription: "Mussoorie vs Nainital comparison — cost, distance, activities, and best time. Book cab from Delhi at ₹11/km with Triveni Cabs. Call 7668570551.",
+    metaDescription: "Mussoorie vs Nainital comparison — cost, distance, activities, and best time. Book cab from Delhi at ₹11/km with Triveni Cabs™. Call 7668570551.",
     keywords: "mussoorie vs nainital, mussoorie or nainital which is better, mussoorie nainital comparison, mussoorie vs nainital for couples, mussoorie vs nainital cost",
     dest1: {
       name: "Mussoorie",
@@ -169,13 +169,13 @@ export const destinationCompareData = [
       { q: "Can I do both Rishikesh and Manali in one trip?", a: "They are in different directions from Delhi (Rishikesh northeast, Manali north). Combining them means a very long trip (8-10 days). Better to do them as separate trips unless you have extended leave." },
       { q: "Which is better for a group of friends?", a: "For a weekend — Rishikesh (rafting + camping + bungee). For a week — Manali (more activities, cafe culture, snow). Budget groups prefer Rishikesh; groups wanting Instagram content prefer Manali." },
       { q: "Which has better weather year-round?", a: "Manali has pleasant weather March-June and snow charm in winter. Rishikesh gets very hot in summer (40°C+). September-November is ideal for both destinations." },
-      { q: "Is river rafting in Rishikesh safe?", a: "Yes, with registered operators and certified guides. Triveni Cabs can recommend trusted rafting operators. The 16 km Shivpuri stretch is safe for beginners. Always wear the provided life jacket and helmet." }
+      { q: "Is river rafting in Rishikesh safe?", a: "Yes, with registered operators and certified guides. Triveni Cabs™ can recommend trusted rafting operators. The 16 km Shivpuri stretch is safe for beginners. Always wear the provided life jacket and helmet." }
     ]
   },
   {
     slug: "jaipur-vs-udaipur",
     title: "Jaipur vs Udaipur — Which Rajasthan City to Visit By Car?",
-    metaDescription: "Jaipur vs Udaipur comparison — forts, lakes, cost, culture. Book cab from Delhi at ₹11/km. Complete guide by Triveni Cabs. Call 7668570551.",
+    metaDescription: "Jaipur vs Udaipur comparison — forts, lakes, cost, culture. Book cab from Delhi at ₹11/km. Complete guide by Triveni Cabs™. Call 7668570551.",
     keywords: "jaipur vs udaipur, jaipur or udaipur which is better, jaipur udaipur comparison, pink city vs city of lakes, jaipur vs udaipur for couples",
     dest1: {
       name: "Jaipur",
@@ -284,13 +284,13 @@ export const destinationCompareData = [
       { q: "Can I ski in Manali?", a: "Basic skiing is available at Solang Valley in winter, but facilities are limited. For serious skiing, Gulmarg is the only option in India with international-standard slopes, lifts, and ski equipment rental." },
       { q: "Is Gulmarg worth the extra travel time and cost?", a: "If snow and skiing are your primary goal — absolutely yes. Gulmarg's gondola to 3,979m and powder snow slopes are unmatched in India. If you want an all-round mountain holiday, Manali offers better value." },
       { q: "What is the best month for snow in both?", a: "December-February for both. Gulmarg peaks in January-February with heavy snowfall. Manali's Solang Valley gets best snow in January. Rohtang Pass is often closed December-April." },
-      { q: "Can I drive from Delhi to Gulmarg?", a: "Yes, but it takes 2 days via Jammu (overnight stop). The route is Delhi → Jammu → Srinagar → Gulmarg (860 km). Triveni Cabs experienced drivers handle this route safely." }
+      { q: "Can I drive from Delhi to Gulmarg?", a: "Yes, but it takes 2 days via Jammu (overnight stop). The route is Delhi → Jammu → Srinagar → Gulmarg (860 km). Triveni Cabs™ experienced drivers handle this route safely." }
     ]
   },
   {
     slug: "varanasi-vs-haridwar",
     title: "Varanasi vs Haridwar — Which Spiritual City to Visit By Car?",
-    metaDescription: "Varanasi vs Haridwar for spiritual travel — ghats, temples, Ganga Aarti, cost comparison. Book cab from Delhi at ₹11/km. Call Triveni Cabs 7668570551.",
+    metaDescription: "Varanasi vs Haridwar for spiritual travel — ghats, temples, Ganga Aarti, cost comparison. Book cab from Delhi at ₹11/km. Call Triveni Cabs™ 7668570551.",
     keywords: "varanasi vs haridwar, varanasi or haridwar which is better, varanasi haridwar comparison, best spiritual city india, varanasi vs haridwar aarti",
     dest1: {
       name: "Varanasi",
@@ -405,7 +405,7 @@ export const destinationCompareData = [
   {
     slug: "jaisalmer-vs-jodhpur",
     title: "Jaisalmer vs Jodhpur — Which Rajasthan City to Visit By Car?",
-    metaDescription: "Jaisalmer vs Jodhpur — desert forts, culture, cost, activities comparison. Book cab from Delhi at ₹11/km. Call Triveni Cabs 7668570551.",
+    metaDescription: "Jaisalmer vs Jodhpur — desert forts, culture, cost, activities comparison. Book cab from Delhi at ₹11/km. Call Triveni Cabs™ 7668570551.",
     keywords: "jaisalmer vs jodhpur, jaisalmer or jodhpur which is better, jaisalmer jodhpur comparison, golden city vs blue city, rajasthan desert cities",
     dest1: {
       name: "Jaisalmer",
@@ -566,7 +566,7 @@ export const destinationCompareData = [
     ],
     verdict: "Choose Nainital for a relaxing lake holiday with boating, mountain walks, and Mall Road charm — perfect for couples, families, and elderly travelers. Choose Jim Corbett for a thrilling jungle safari with the chance to spot tigers in their natural habitat. For the ultimate trip, combine both — they are just 65 km apart!",
     faqs: [
-      { q: "Can I visit both Nainital and Jim Corbett in one trip?", a: "Absolutely! They are only 65 km apart (2 hours drive). A perfect 4-day trip: 2 days Nainital + 1-2 days Jim Corbett safari. Use your Triveni Cabs vehicle for seamless travel between them." },
+      { q: "Can I visit both Nainital and Jim Corbett in one trip?", a: "Absolutely! They are only 65 km apart (2 hours drive). A perfect 4-day trip: 2 days Nainital + 1-2 days Jim Corbett safari. Use your Triveni Cabs™ vehicle for seamless travel between them." },
       { q: "How much does a Jim Corbett safari cost?", a: "A jeep safari costs ₹5,000-8,000 per jeep (6 persons) depending on the zone. Bijrani and Jhirna are most popular. Dhikala zone (overnight) costs ₹10,000-15,000 per vehicle. Book online in advance." },
       { q: "Will I definitely see a tiger at Jim Corbett?", a: "Tiger sightings are not guaranteed — it is a wild forest. Bijrani and Dhikala zones have the best chances. Visit between February-May when animals come to water sources. Multiple safaris increase your odds." },
       { q: "Which is better for a weekend trip from Delhi?", a: "Both work well for weekends. Nainital is better for a relaxing weekend with boating and Mall Road. Jim Corbett is better if you specifically want a jungle safari experience." },

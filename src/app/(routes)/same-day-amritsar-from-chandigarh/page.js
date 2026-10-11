@@ -1,4 +1,4 @@
-import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
+import { getSameDayTourBySlug, getRelatedTours } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
 
@@ -10,13 +10,13 @@ export const metadata = {
   title: tightenTitle('Same Day Amritsar Tour from Chandigarh | ₹5,000 AC Cab | 2026'),
   description: 'Book same day Amritsar tour from Chandigarh. Golden Temple, Jallianwala Bagh, Wagah Border ceremony. AC sedan ₹5,000, SUV ₹7,000. Call 7668570551.',
   keywords: 'same day amritsar tour from chandigarh, chandigarh to amritsar one day trip, golden temple day trip from chandigarh, wagah border tour',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/same-day-amritsar-from-chandigarh' },
   openGraph: {
     title: 'Same Day Amritsar Tour from Chandigarh | Golden Temple ₹5,000',
     description: 'Chandigarh to Amritsar day trip. Golden Temple, Wagah Border ceremony. AC sedan ₹5,000.',
-    type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/same-day-amritsar-from-chandigarh', siteName: 'Triveni Cabs',
+    type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/same-day-amritsar-from-chandigarh', siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Amritsar/Golden_Temple.jpg', width: 1200, height: 630, alt: 'Same-Day Amritsar Tour from Chandigarh — Triveni Cabs' }],
   },
   twitter: { card: 'summary_large_image', title: 'Amritsar Day Trip from Chandigarh | ₹5,000', description: 'Golden Temple & Wagah Border in one day. Book now!', images: ['/images/sightseeing/Amritsar/Golden_Temple.jpg'], creator: '@trivenicabs' },
@@ -25,7 +25,7 @@ export const metadata = {
 
 export default function Page() {
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": tour.title, "item": `https://www.trivenicabs.in/${tour.slug}` }] };
-  const tourSchema = { "@context": "https://schema.org", "@type": "TouristTrip", "name": tour.title, "description": tour.description.split('\n\n')[0], "touristType": "Cultural Tourist", "itinerary": { "@type": "ItemList", "itemListElement": tour.itinerary.map((item, idx) => ({ "@type": "ListItem", "position": idx + 1, "name": `${item.time} - ${item.activity}` })) }, "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "offers": { "@type": "AggregateOffer", "lowPrice": "5000", "highPrice": "13000", "priceCurrency": "INR" } };
+  const tourSchema = { "@context": "https://schema.org", "@type": "TouristTrip", "name": tour.title, "description": tour.description.split('\n\n')[0], "touristType": "Cultural Tourist", "itinerary": { "@type": "ItemList", "itemListElement": tour.itinerary.map((item, idx) => ({ "@type": "ListItem", "position": idx + 1, "name": `${item.time} - ${item.activity}` })) }, "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "offers": { "@type": "AggregateOffer", "lowPrice": "5000", "highPrice": "13000", "priceCurrency": "INR" } };
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": tour.faqs.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
 
   return (
@@ -33,7 +33,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tourSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <SameDayTourClient tour={tour} />
+      <SameDayTourClient tour={tour} related={getRelatedTours(tour.slug, 6)} />
     </>
   );
 }

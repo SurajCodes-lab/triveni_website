@@ -11,10 +11,10 @@ export const metadata = {
   title: tightenTitle('Delhi to Kashmir Road Trip Plan 2026 | 7-8 Day Itinerary'),
   description: 'Delhi to Kashmir road trip plan covering Srinagar, Gulmarg, Pahalgam & Sonmarg. 7-8 day itinerary, road conditions, permits. Sedan ₹45,000, SUV ₹65,000.',
   keywords: 'delhi to kashmir road trip plan, kashmir road trip from delhi, srinagar gulmarg pahalgam tour by car, kashmir by car from delhi, kashmir tour itinerary',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/kashmir-road-trip-from-delhi' },
-  openGraph: { title: 'Delhi to Kashmir Road Trip 2026 | Complete Itinerary', description: 'Srinagar, Gulmarg, Pahalgam, Sonmarg — complete 7-8 day road trip plan.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/kashmir-road-trip-from-delhi', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Delhi to Kashmir Road Trip 2026 | Complete Itinerary', description: 'Srinagar, Gulmarg, Pahalgam, Sonmarg — complete 7-8 day road trip plan.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/kashmir-road-trip-from-delhi', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Delhi to Kashmir Road Trip 2026' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -62,7 +62,7 @@ export default function KashmirRoadTripPage() {
     ]
   };
   const serviceSchema = buildStaticService({ slug: SLUG, name: "Kashmir Road Trip Cab Service from Delhi", description: "Kashmir Road Trip from Delhi with an experienced driver, all-inclusive of fuel, tolls, permits and driver allowance.", lowPrice: 45000, highPrice: 90000, serviceType: 'Multi-Day Road Trip Cab Service' });
-  const articleSchema = getArticleSchema({ slug: SLUG, headline: "Kashmir Road Trip from Delhi 2026", description: "Kashmir Road Trip from Delhi itinerary, day-wise plan, costs and tips from Triveni Cabs.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
+  const articleSchema = getArticleSchema({ slug: SLUG, headline: "Kashmir Road Trip from Delhi 2026", description: "Kashmir Road Trip from Delhi itinerary, day-wise plan, costs and tips from Triveni Cabs™.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
   const howToSchema = getHowToSchema({ name: "How to Plan a Kashmir Road Trip from Delhi", description: "Step-by-step day-wise plan for the Kashmir Road Trip from Delhi by car.", totalTime: 'PT10M', estimatedCost: { currency: 'INR', value: 45000 }, steps: itinerary.map((d) => ({ name: d.title || d.day || 'Day', text: d.description || d.desc || d.detail || (Array.isArray(d.activities) ? d.activities.join('. ') : '') })) });
   const placeSchemas = buildPlaceSchemas(["delhi"], SLUG, '/images/triveni-cabs-og.jpg');
 
@@ -91,10 +91,10 @@ export default function KashmirRoadTripPage() {
           <div className="absolute bottom-0 right-10 w-[500px] h-[400px] bg-indigo-400/8 rounded-full blur-[140px]" />
           <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-sky-300/8 rounded-full blur-[100px]" />
 
-          <div className="max-w-7xl mx-auto px-4 relative z-10 py-20 w-full">
+          <div className="max-w-7xl mx-auto px-4 relative z-10 py-12 sm:py-20 w-full">
             <div className="max-w-3xl mx-auto text-center">
               <div className="inline-flex items-center gap-3 bg-blue-500/10 border border-blue-400/20 backdrop-blur-sm px-6 py-3 rounded-full mb-10">
-                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-blue-400 rounded-full" />
                 <span className="text-blue-300 text-sm font-medium tracking-widest uppercase">8 Days | 2,200 km | Paradise on Earth</span>
               </div>
 
@@ -107,7 +107,7 @@ export default function KashmirRoadTripPage() {
               </h1>
 
               <p className="speakable-lead text-blue-200/40 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-                A Kashmir road trip from Delhi costs from Rs 45,000 (sedan) to Rs 90,000 (premium SUV) with Triveni Cabs, all-inclusive of fuel, tolls and an experienced mountain driver. Experience Dal Lake houseboats, Gulmarg gondola rides, Pahalgam meadows and Sonmarg glaciers — Paradise on Earth by road.
+                A Kashmir road trip from Delhi costs from Rs 45,000 (sedan) to Rs 90,000 (premium SUV) with Triveni Cabs™, all-inclusive of fuel, tolls and an experienced mountain driver. Experience Dal Lake houseboats, Gulmarg gondola rides, Pahalgam meadows and Sonmarg glaciers — Paradise on Earth by road.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -135,10 +135,10 @@ export default function KashmirRoadTripPage() {
         </section>
 
         {/* Itinerary - Horizontal numbered cards */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-blue-950 to-indigo-950" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="text-blue-400 text-sm font-medium tracking-widest uppercase">Your Journey</span>
               <h2 className="text-4xl md:text-5xl font-black mt-3">Day-by-Day Kashmir Plan</h2>
             </div>
@@ -183,7 +183,7 @@ export default function KashmirRoadTripPage() {
         </section>
 
         {/* Important Info - Glass Panels */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-indigo-950" />
           <div className="absolute top-10 right-10 w-80 h-80 bg-blue-500/8 rounded-full blur-[130px]" />
           <div className="max-w-6xl mx-auto relative z-10">
@@ -203,7 +203,7 @@ export default function KashmirRoadTripPage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-blue-950" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-10">More Road Trip Ideas</h2>
@@ -232,7 +232,7 @@ export default function KashmirRoadTripPage() {
         </section>
 
         {/* Related Pages */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-blue-950" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-3">Travel Guides & Resources</h2>
@@ -255,7 +255,7 @@ export default function KashmirRoadTripPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-indigo-950" />
           <div className="max-w-3xl mx-auto relative z-10">
             <div className="text-center mb-14">
@@ -279,7 +279,7 @@ export default function KashmirRoadTripPage() {
         </section>
 
         {/* CTA - Frozen Paradise */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-blue-800 via-indigo-800 to-sky-900" />
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-blue-300/10 to-transparent" />
           <div className="absolute bottom-10 left-1/3 w-96 h-96 bg-blue-400/10 rounded-full blur-[130px]" />

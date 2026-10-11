@@ -11,7 +11,7 @@ export const metadata = {
   title: tightenTitle('5 Day Rajasthan Road Trip 2026 | Jaipur Udaipur Jodhpur'),
   description: '5-day Jaipur → Udaipur → Jodhpur circuit. Day-wise plan, hotel areas, costs from ₹28K Sedan / ₹40K SUV. Call 7668570551.',
   keywords: '5 day rajasthan road trip itinerary, jaipur udaipur jodhpur road trip, rajasthan 5 day tour by car, rajasthan road trip plan, rajasthan circuit tour',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur' },
   openGraph: {
@@ -19,9 +19,9 @@ export const metadata = {
     description: 'The perfect 5-day Rajasthan circuit with forts, palaces, and lake views.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/5-day-rajasthan-road-trip-jaipur-udaipur-jodhpur',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{
-      url: '/images/sightseeing/Udaipur/Udaipur_Hero_section.jpg',
+      url: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg',
       width: 1200, height: 630,
       alt: '5 Day Rajasthan Road Trip — Jaipur, Udaipur, Jodhpur circuit',
     }],
@@ -32,7 +32,7 @@ export const metadata = {
     description: 'Jaipur → Udaipur → Jodhpur circuit. Day-wise plan, heritage hotels, stops. From ₹28,000 Sedan / ₹40,000 SUV.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/sightseeing/Udaipur/Udaipur_Hero_section.jpg'],
+    images: ['/images/sightseeing/Udaipur/Udaipur_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -91,7 +91,7 @@ export default function RajasthanRoadTripPage() {
     ]
   };
   const serviceSchema = buildStaticService({ slug: SLUG, name: "Rajasthan Road Trip Cab Service from Delhi", description: "5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur) with an experienced driver, all-inclusive of fuel, tolls, permits and driver allowance.", lowPrice: 28000, highPrice: 65000, serviceType: 'Multi-Day Road Trip Cab Service' });
-  const articleSchema = getArticleSchema({ slug: SLUG, headline: "5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur) 2026", description: "5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur) itinerary, day-wise plan, costs and tips from Triveni Cabs.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
+  const articleSchema = getArticleSchema({ slug: SLUG, headline: "5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur) 2026", description: "5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur) itinerary, day-wise plan, costs and tips from Triveni Cabs™.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
   const howToSchema = getHowToSchema({ name: "How to Plan a 5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur)", description: "Step-by-step day-wise plan for the 5-Day Rajasthan Road Trip (Jaipur Udaipur Jodhpur) by car.", totalTime: 'PT10M', estimatedCost: { currency: 'INR', value: 28000 }, steps: itinerary.map((d) => ({ name: d.title || d.day || 'Day', text: d.description || d.desc || d.detail || (Array.isArray(d.activities) ? d.activities.join('. ') : '') })) });
   const placeSchemas = buildPlaceSchemas(["jaipur","udaipur","jodhpur","pushkar","ajmer"], SLUG, '/images/triveni-cabs-og.jpg');
 
@@ -110,13 +110,13 @@ export default function RajasthanRoadTripPage() {
       ))}
 
       <div className="min-h-screen bg-gradient-to-b from-rose-50 to-amber-50">
-        <section className="relative bg-gradient-to-br from-rose-800 via-pink-700 to-amber-800 text-white py-20 px-4">
+        <section className="relative bg-gradient-to-br from-rose-800 via-pink-700 to-amber-800 text-white py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto text-center relative z-10">
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-4 py-2 rounded-full mb-6">
               <Calendar className="w-4 h-4" /><span className="text-sm font-medium">5 Days | 3 Royal Cities | 1 Unforgettable Trip</span>
             </div>
             <h1 className="speakable-headline text-4xl md:text-6xl font-bold mb-6 leading-tight">5-Day Rajasthan Road Trip<br />Jaipur &bull; Udaipur &bull; Jodhpur</h1>
-            <p className="speakable-lead text-xl text-rose-100 mb-4 max-w-3xl mx-auto">A 5-day Rajasthan road trip covering Jaipur, Udaipur and Jodhpur runs about 1,100 km and costs from Rs 28,000 (sedan) to Rs 40,000 (SUV) with Triveni Cabs, all-inclusive of fuel, tolls and driver allowance. Explore the Pink City, the City of Lakes and the Blue City — three of India&apos;s most iconic destinations in one perfect road trip.</p>
+            <p className="speakable-lead text-xl text-rose-100 mb-4 max-w-3xl mx-auto">A 5-day Rajasthan road trip covering Jaipur, Udaipur and Jodhpur runs about 1,100 km and costs from Rs 28,000 (sedan) to Rs 40,000 (SUV) with Triveni Cabs™, all-inclusive of fuel, tolls and driver allowance. Explore the Pink City, the City of Lakes and the Blue City — three of India&apos;s most iconic destinations in one perfect road trip.</p>
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               <span className="bg-white/10 px-4 py-2 rounded-full text-sm">Sedan ₹28,000</span>
               <span className="bg-white/10 px-4 py-2 rounded-full text-sm">SUV ₹40,000</span>
@@ -142,7 +142,7 @@ export default function RajasthanRoadTripPage() {
           </div>
         </section>
 
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Day-by-Day Itinerary</h2>
             <div className="space-y-6">
@@ -173,7 +173,7 @@ export default function RajasthanRoadTripPage() {
           </div>
         </section>
 
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-10 text-gray-900">5-Day Rajasthan Trip Pricing</h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -233,7 +233,7 @@ export default function RajasthanRoadTripPage() {
           </div>
         </section>
 
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -247,7 +247,7 @@ export default function RajasthanRoadTripPage() {
           </div>
         </section>
 
-        <section className="py-16 px-4 bg-gradient-to-r from-rose-800 to-pink-800 text-white">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-r from-rose-800 to-pink-800 text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Book Your Rajasthan Adventure</h2>
             <p className="text-rose-100 text-lg mb-8">Sedan from ₹28,000 | SUV from ₹40,000 | 5 days of royal splendor</p>

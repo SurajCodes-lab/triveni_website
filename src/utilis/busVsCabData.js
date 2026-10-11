@@ -1,14 +1,21 @@
 // src/utilis/busVsCabData.js - Complete data for 20 bus vs cab comparison pages
 // Cab Pricing: Sedan ₹11/km, SUV ₹15/km
+import { rupees } from './pricing';
+
+// The sedan/SUV fares below were already formatted with Indian grouping, but the
+// FAQ and scenario strings interpolated the raw numbers, so one page could read
+// "₹8,250 for Sedan" in a table and "₹3,300" in the answer below it. inr() keeps
+// every amount identical and only adds the separators. rupees() already rounds.
+const inr = (n) => rupees(n);
 
 function generateFaqs(origin, dest, distKm, busCost, sedanFare, timeSaved) {
   return [
-    { question: `Is it cheaper to take a bus or cab from ${origin} to ${dest}?`, answer: `A bus from ${origin} to ${dest} costs ₹${busCost} (non-AC) to ₹${Math.round(busCost * 1.6)} (Volvo). A cab costs ₹${sedanFare} for Sedan. For solo travelers, bus is cheaper. For 2+ passengers sharing a cab, the per-person cab cost becomes comparable or cheaper than Volvo bus, with added comfort and door-to-door service.` },
+    { question: `Is it cheaper to take a bus or cab from ${origin} to ${dest}?`, answer: `A bus from ${origin} to ${dest} costs ${inr(busCost)} (non-AC) to ${inr(busCost * 1.6)} (Volvo). A cab costs ${inr(sedanFare)} for Sedan. For solo travelers, bus is cheaper. For 2+ passengers sharing a cab, the per-person cab cost becomes comparable or cheaper than Volvo bus, with added comfort and door-to-door service.` },
     { question: `How much time does a cab save vs bus from ${origin} to ${dest}?`, answer: `A cab saves approximately ${timeSaved} compared to bus. Cabs take the fastest route without stops, while buses stop at multiple points. Plus, no waiting time at bus stands — you get picked up from your doorstep.` },
-    { question: `Can I book a one-way cab from ${origin} to ${dest}?`, answer: `Yes, Triveni Cabs offers affordable one-way cab service from ${origin} to ${dest}. Starting at ₹${sedanFare} for AC Sedan. Call 7668570551 or WhatsApp for instant booking. No return fare charged for one-way trips.` },
-    { question: `Is cab safe at night from ${origin} to ${dest}?`, answer: `Yes, Triveni Cabs provides GPS-tracked vehicles with verified drivers for the ${origin} to ${dest} route. All rides are monitored 24/7. We recommend daytime travel for the best experience, but our night service is fully safe with experienced drivers.` },
-    { question: `What is the best way to travel from ${origin} to ${dest} with family?`, answer: `For families (3-4 members), a cab is the best option. Per-person cost in a Sedan becomes just ₹${Math.round(sedanFare / 4)} each, which is cheaper than Volvo bus tickets. Plus you get door-to-door service, AC comfort, flexible stops, and luggage space.` },
-    { question: `How do I book the cheapest cab from ${origin} to ${dest}?`, answer: `Book directly with Triveni Cabs at 7668570551 to get the cheapest rate of ₹${sedanFare} (Sedan). Direct booking avoids app commissions. We offer flat rates with no surge pricing. WhatsApp us for an instant quote.` },
+    { question: `Can I book a one-way cab from ${origin} to ${dest}?`, answer: `Yes, Triveni Cabs™ offers affordable one-way cab service from ${origin} to ${dest}. Starting at ${inr(sedanFare)} for AC Sedan. Call 7668570551 or WhatsApp for instant booking. No return fare charged for one-way trips.` },
+    { question: `Is cab safe at night from ${origin} to ${dest}?`, answer: `Yes, Triveni Cabs™ provides GPS-tracked vehicles with verified drivers for the ${origin} to ${dest} route. All rides are monitored 24/7. We recommend daytime travel for the best experience, but our night service is fully safe with experienced drivers.` },
+    { question: `What is the best way to travel from ${origin} to ${dest} with family?`, answer: `For families (3-4 members), a cab is the best option. Per-person cost in a Sedan becomes just ${inr(sedanFare / 4)} each, which is cheaper than Volvo bus tickets. Plus you get door-to-door service, AC comfort, flexible stops, and luggage space.` },
+    { question: `How do I book the cheapest cab from ${origin} to ${dest}?`, answer: `Book directly with Triveni Cabs™ at 7668570551 to get the cheapest rate of ${inr(sedanFare)} (Sedan). Direct booking avoids app commissions. We offer flat rates with no surge pricing. WhatsApp us for an instant quote.` },
   ];
 }
 
@@ -19,9 +26,9 @@ function createRoute({ slug, origin, destination, distanceKm, busOptions, cabOpt
   const timeSavedHrs = busOptions[0] ? (parseFloat(busOptions[0].duration) - parseFloat(cabOptions.sedan.duration)).toFixed(1) : '1-2';
 
   const comparison = {
-    costSolo: { bus: `₹${avgBusCost}`, cab: `₹${sedanFare}`, winner: avgBusCost < sedanFare ? 'Bus' : 'Cab' },
-    costCouple: { bus: `₹${avgBusCost * 2}`, cab: `₹${sedanFare}`, winner: (avgBusCost * 2) < sedanFare ? 'Bus' : 'Cab', perPerson: `₹${Math.round(sedanFare / 2)}` },
-    costFamily: { bus: `₹${avgBusCost * 4}`, cab: `₹${sedanFare}`, winner: (avgBusCost * 4) < sedanFare ? 'Bus' : 'Cab', perPerson: `₹${Math.round(sedanFare / 4)}` },
+    costSolo: { bus: `${inr(avgBusCost)}`, cab: `${inr(sedanFare)}`, winner: avgBusCost < sedanFare ? 'Bus' : 'Cab' },
+    costCouple: { bus: `${inr(avgBusCost * 2)}`, cab: `${inr(sedanFare)}`, winner: (avgBusCost * 2) < sedanFare ? 'Bus' : 'Cab', perPerson: `${inr(sedanFare / 2)}` },
+    costFamily: { bus: `${inr(avgBusCost * 4)}`, cab: `${inr(sedanFare)}`, winner: (avgBusCost * 4) < sedanFare ? 'Bus' : 'Cab', perPerson: `${inr(sedanFare / 4)}` },
     timeSaved: `${timeSavedHrs} hours`,
     comfortRating: { bus: 3, cab: 5 },
   };

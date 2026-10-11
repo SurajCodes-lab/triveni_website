@@ -8,9 +8,9 @@ export const metadata = {
   title: tightenTitle('Sunrise Taj Mahal Tour from Delhi | 2-3 AM Start | 2026'),
   description: 'Sunrise Taj Mahal tour from Delhi. Depart 2-3 AM, witness golden sunrise at Taj. Seasonal timing chart, photography tips. Sedan ₹4,500. Call 7668570551.',
   keywords: 'sunrise taj mahal tour from delhi, taj mahal sunrise tour, early morning taj mahal visit, taj mahal golden hour, sunrise at taj mahal',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/sunrise-taj-mahal-tour-from-delhi' },
   openGraph: {
@@ -19,7 +19,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/sunrise-taj-mahal-tour-from-delhi',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Sunrise at Taj Mahal Tour from Delhi' }],
   },
   twitter: {
@@ -53,7 +53,7 @@ export default function SunriseTajMahalTourPage() {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
     },
     "offers": { "@type": "AggregateOffer", "lowPrice": "4500", "highPrice": "6500", "priceCurrency": "INR" },
   };
@@ -213,7 +213,7 @@ export default function SunriseTajMahalTourPage() {
         </section>
 
         {/* === SUNRISE TIMING CHART === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Monthly Schedule</div>
@@ -253,7 +253,7 @@ export default function SunriseTajMahalTourPage() {
         </section>
 
         {/* === OVERVIEW === */}
-        <section className="py-20 px-4 bg-gradient-to-br from-amber-50 via-orange-50/30 to-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-amber-50 via-orange-50/30 to-stone-50">
           <div className="max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-3 gap-10">
               <div className="lg:col-span-2">
@@ -309,7 +309,7 @@ export default function SunriseTajMahalTourPage() {
         </section>
 
         {/* === PHOTOGRAPHY GUIDE: Golden Hour Sequence === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Photography Guide</div>
@@ -339,7 +339,7 @@ export default function SunriseTajMahalTourPage() {
         </section>
 
         {/* === PRICING === */}
-        <section className="py-20 px-4 bg-gradient-to-br from-amber-900 to-stone-900 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-amber-900 to-stone-900 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/5 rounded-full blur-[100px]" />
 
@@ -391,7 +391,7 @@ export default function SunriseTajMahalTourPage() {
         </section>
 
         {/* === FAQs === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900">
@@ -418,7 +418,7 @@ export default function SunriseTajMahalTourPage() {
         </section>
 
         {/* === INTERLINKS === */}
-        <section className="py-16 px-4 bg-stone-100/50">
+        <section className="py-10 sm:py-16 px-4 bg-stone-100/50">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-900 text-center mb-10">
               More <span className="text-transparent bg-gradient-to-r from-amber-600 to-orange-500 bg-clip-text">Agra Experiences</span>
@@ -448,7 +448,7 @@ export default function SunriseTajMahalTourPage() {
         </section>
 
         {/* === CTA: Dawn Gradient Banner === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-900 via-purple-800 to-amber-700" />
           <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-orange-500/20 to-transparent" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[150px]" />

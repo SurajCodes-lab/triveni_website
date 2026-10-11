@@ -17,9 +17,9 @@ export const officeLocations = {
 
   Agra: {
     name: "Triveni Cabs Agra",
-    address: "366, dandupura Tajganj Agra",
+    address: "366, Dandupura, near Tajganj",
     pincode: "282006",
-    fullAddress: "366, dandupura Tajganj Agra, 282006",
+    fullAddress: "366, Dandupura, near Tajganj, 282006",
     landmark: "Tajganj",
     area: "Dandupura",
     contact: {

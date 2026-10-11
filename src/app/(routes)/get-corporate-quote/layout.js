@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Get Corporate Transportation Quote | Free Consultation | Triveni Cabs',
+  title: 'Get Corporate Transportation Quote | Free Consultation | Triveni Cabs™',
   description: 'Request a customized corporate transportation quote for your business. Employee pick-up/drop, executive travel, airport transfers, fleet management. Free consultation, transparent pricing, GST invoicing. Call 7668570551.',
   keywords: [
     // Primary keywords
@@ -29,9 +29,9 @@ export const metadata = {
     'corporate cab free estimate',
     'employee transport cost calculator'
   ].join(', '),
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/get-corporate-quote',
@@ -40,12 +40,12 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Get Corporate Transportation Quote | Free Consultation | Triveni Cabs',
+    title: 'Get Corporate Transportation Quote | Free Consultation | Triveni Cabs™',
     description: 'Request a customized corporate transport quote. Employee shuttles, executive travel, fleet solutions. Transparent pricing, GST compliant.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/get-corporate-quote',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
@@ -57,7 +57,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Get Corporate Transportation Quote | Triveni Cabs',
+    title: 'Get Corporate Transportation Quote | Triveni Cabs™',
     description: 'Free consultation for corporate transport needs. Employee shuttles, executive travel. Call 7668570551.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -91,7 +91,7 @@ export default function GetCorporateQuoteLayout({ children }) {
     },
     "sameAs": [
       "https://www.facebook.com/trivenicabs",
-      "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo",
+      "https://www.instagram.com/cabstriveni",
       "https://twitter.com/trivenicabs",
       "https://www.linkedin.com/company/trivenicabs"
     ],
@@ -134,7 +134,7 @@ export default function GetCorporateQuoteLayout({ children }) {
         "closes": "23:59"
       }
     ],
-    "priceRange": "$$"
+    "priceRange": "₹₹"
   };
 
   const serviceSchema = {

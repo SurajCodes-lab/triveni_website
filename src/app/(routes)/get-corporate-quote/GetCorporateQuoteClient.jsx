@@ -172,7 +172,7 @@ ${formData.additionalInfo || 'None'}`;
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
         {/* Background Effects */}
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[150px]" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[150px]" />
@@ -453,7 +453,7 @@ ${formData.additionalInfo || 'None'}`;
       </section>
 
       {/* Trust Section */}
-      <section className="py-16 px-4 bg-slate-800/50">
+      <section className="py-10 sm:py-16 px-4 bg-slate-800/50">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap justify-center items-center gap-8 text-white/70">
             {[

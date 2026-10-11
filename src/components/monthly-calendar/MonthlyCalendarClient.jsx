@@ -48,7 +48,7 @@ export default function MonthlyCalendarClient({ data, prev, next }) {
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FACF2D]/70 to-transparent z-20" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-28 pb-10 sm:pb-14">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full pt-16 sm:pt-28 pb-10 sm:pb-14">
           {/* Month navigation */}
           <div className="flex items-center gap-3 mb-7 flex-wrap">
             <Link href={`/where-to-go/${prev.slug}`} className="inline-flex items-center gap-1 bg-white/5 backdrop-blur-xl px-3 py-2 rounded-full text-sm text-white/60 border border-white/10 hover:text-[#FACF2D] hover:border-[#FACF2D]/40 transition-all">
@@ -282,7 +282,7 @@ export default function MonthlyCalendarClient({ data, prev, next }) {
           </div>
 
           {/* Festivals */}
-          <div className="mt-16">
+          <div className="mt-10 sm:mt-16">
             <ScrollReveal>
               <p className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-[0.3em] mb-2">Festivals &amp; Events</p>
               <h3 className="font-display-serif text-2xl sm:text-3xl text-white mb-8">Worth Timing Your Trip Around</h3>
@@ -365,6 +365,7 @@ export default function MonthlyCalendarClient({ data, prev, next }) {
               const isOpen = openFaq === i;
               return (
                 <div key={i} className={`bg-white/5 backdrop-blur-xl rounded-2xl border transition-all duration-300 ${isOpen ? 'border-[#FACF2D]/40' : 'border-white/10 hover:border-white/20'}`}>
+                  <h3 className="m-0">
                   <button
                     onClick={() => setOpenFaq(isOpen ? -1 : i)}
                     aria-expanded={isOpen}
@@ -375,6 +376,7 @@ export default function MonthlyCalendarClient({ data, prev, next }) {
                       <ChevronDown className={`w-4 h-4 ${isOpen ? 'text-[#FACF2D]' : 'text-white/50'}`} />
                     </div>
                   </button>
+                  </h3>
                   <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                     <div className="px-5 pb-5">
                       <div className="h-px bg-white/10 mb-4" />

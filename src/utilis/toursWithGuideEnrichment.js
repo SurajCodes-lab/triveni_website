@@ -4,6 +4,7 @@
 // each page renders 1,200–2,500 words of unique, useful content.
 
 import { GUIDE_LANGUAGES, TOUR_VEHICLES } from './toursWithGuideData';
+import { groupDigits } from '@/utilis/pricing';
 
 // ==================== PICKUP POINTS ====================
 const PICKUP_POINTS = {
@@ -213,7 +214,7 @@ export function getDirectAnswer(record) {
   const lang = record.guideLanguage || 'English';
   const monuments = (record.monuments || []).slice(0, 3).join(', ');
   const fare = record.bundledFare?.toLocaleString('en-IN');
-  return `A ${record.monuments?.[0] || record.city} tour with a licensed ${lang}-speaking guide in a ${record.vehicle} costs ₹${fare} all-in (vehicle + guide bundled). It runs ${record.duration}, covers ${monuments || record.city}, and includes AC vehicle, hotel pickup and drop, and a Ministry of Tourism approved guide. Monument entry tickets are paid separately at the gate.`;
+  return `A ${record.monuments?.[0] || record.city} tour with a licensed ${lang}-speaking guide in a ${record.vehicle} costs ₹${groupDigits(fare)} all-in (vehicle + guide bundled). It runs ${record.duration}, covers ${monuments || record.city}, and includes AC vehicle, hotel pickup and drop, and a Ministry of Tourism approved guide. Monument entry tickets are paid separately at the gate.`;
 }
 
 // ==================== VEHICLE COMPARISON (table + schema) ====================
@@ -290,7 +291,7 @@ export function getBookingSteps(record) {
     },
     {
       name: 'Get an instant bundled quote',
-      text: `We confirm the all-in bundled fare of ₹${fare} — the ${record.vehicle} plus a licensed ${record.guideLanguage || 'English'}-speaking guide — with no hidden charges.`,
+      text: `We confirm the all-in bundled fare of ₹${groupDigits(fare)} — the ${record.vehicle} plus a licensed ${record.guideLanguage || 'English'}-speaking guide — with no hidden charges.`,
     },
     {
       name: 'Pay a small advance to confirm',

@@ -31,10 +31,18 @@ const SEASON_START = new Date('2026-08-01T00:00:00+05:30');
 const SEASON_END = new Date('2027-01-15T23:59:59+05:30');
 
 const CAMPAIGNS = [
+  // ---- ORDERING RULE: `find` returns the FIRST active entry, so position in
+  // this array is priority. The default is `end` ascending (soonest-ending
+  // wins), with two deliberate exceptions placed early: Navratri Vaishno Devi
+  // and Diwali Ayodhya. Under strict end-ordering the Leh–Ladakh and Kedarnath
+  // windows out-ranked Navratri until 16 October — five days before Dussehra,
+  // after every advance booker had already decided — and Char Dham out-ranked
+  // Diwali until 1 November. Those two are the highest-value festival corridors
+  // of the year and need the strip from mid-September and from the day after
+  // Dussehra respectively. Run `node scripts/season-sim.mjs` after any change.
   {
-    // Independence Day (15 Aug) — promo window ends on the day itself; the
-    // "Reserve by 12 August" CTA is stale after the 15th, so expire here and
-    // let the banner fall through to the next in-window campaign.
+    // Independence Day (15 Aug) — expire on the day; the "Reserve by 12 August"
+    // CTA is stale after the 15th.
     start: '2026-08-10T00:00:00+05:30',
     end: '2026-08-15T23:59:59+05:30',
     label: 'Independence Day Weekend — 15 Aug 2026',
@@ -42,11 +50,8 @@ const CAMPAIGNS = [
     cta: 'Weekend cab deals',
   },
   {
-    // Raksha Bandhan week. Framed as an offer rather than a description, because
-    // this is the strip's peak-demand window and a bare label converts poorly.
-    // The promise is "no surge", which is an existing standing commitment — no
-    // discount figure is invented here. If a specific ₹-off or %-off is agreed,
-    // put it in `label`; that is a commercial decision, not a copy one.
+    // Raksha Bandhan week. "No surge" is an existing standing commitment — no
+    // discount figure is invented here. A specific offer is a commercial call.
     start: '2026-08-20T00:00:00+05:30',
     end: '2026-08-30T23:59:59+05:30',
     label: 'Raksha Bandhan Week Offer — sibling-visit cabs at locked fares, no surge',
@@ -68,11 +73,37 @@ const CAMPAIGNS = [
     cta: 'Book Ganesh cabs',
   },
   {
+    // Sharad Navratri 11–20 Oct 2026, Dussehra 20 Oct. The Katra rush is the
+    // single biggest pilgrimage demand spike of the quarter; promoted from
+    // 13 Sep so the 4–6 week advance bookers see it. Added Week 47 — the strip
+    // previously jumped from Kedarnath straight to Diwali with no Navratri.
+    start: '2026-09-13T00:00:00+05:30',
+    end: '2026-10-20T23:59:59+05:30',
+    label: 'Navratri Vaishno Devi — 11–20 Oct, Dussehra 20 Oct — Katra cabs at fixed fares',
+    href: '/navratri-vaishno-devi-cab',
+    cta: 'Book Navratri cab',
+  },
+  {
+    // Diwali is SUNDAY 8 NOV 2026 (not 19–21 Oct — that was the 2025 date and
+    // was wrong in the data until Week 47). Deepotsav in Ayodhya is the
+    // evening before. Window opens the day after Dussehra.
+    start: '2026-10-21T00:00:00+05:30',
+    end: '2026-11-08T23:59:59+05:30',
+    label: 'Diwali in Ayodhya — Deepotsav 7 Nov, Diwali 8 Nov — fixed fares, no surge',
+    href: '/diwali-ayodhya-transport',
+    cta: 'Book Deepotsav cab',
+  },
+  {
+    start: '2026-08-01T00:00:00+05:30',
+    end: '2026-09-30T23:59:59+05:30',
+    label: 'Leh–Ladakh & Spiti — last Aug–Sep road-trip window',
+    href: '/leh-ladakh-august-september-trip',
+    cta: 'Plan the road trip',
+  },
+  {
+    // Runs to 15 Oct, so the label must not say "September".
     start: '2026-09-01T00:00:00+05:30',
     end: '2026-10-15T23:59:59+05:30',
-    // Runs to 15 Oct, so the label must not name September — the strip would
-    // read "Kedarnath in September" to every visitor for the first fortnight of
-    // October. Surfaced by the season simulation, not by review.
     label: 'Kedarnath — the clear-weather darshan window',
     href: '/kedarnath-september-trip',
     cta: 'Book Kedarnath cab',
@@ -82,46 +113,39 @@ const CAMPAIGNS = [
     end: '2026-10-31T23:59:59+05:30',
     label: 'Char Dham Yatra 2026 — portals open, book before closing',
     href: '/chardham-yatra-september-2026',
-    cta: 'Book Char Dham taxi',
+    cta: 'Book Char Dham cab',
   },
   {
-    start: '2026-08-01T00:00:00+05:30',
-    end: '2026-09-30T23:59:59+05:30',
-    label: 'Leh–Ladakh & Spiti — last Aug–Sep road-trip window',
-    href: '/leh-ladakh-august-september-trip',
-    cta: 'Plan the road trip',
+    // Chhath 13–16 Nov 2026 (Sandhya Arghya 15, Usha Arghya 16).
+    start: '2026-11-09T00:00:00+05:30',
+    end: '2026-11-16T23:59:59+05:30',
+    label: 'Chhath Puja Varanasi — 13–16 Nov — ghat-side cabs from Delhi & Lucknow',
+    href: '/chhath-puja-varanasi-transport',
+    cta: 'Book Chhath cab',
   },
-  // ── Oct–Dec peak season ───────────────────────────────────────────────────
-  //
-  // Added Week 43. The season window previously closed on 31 October, so this
-  // strip — the site's only sitewide seasonal promotion — went dark on 1 November
-  // and stayed dark through the busiest months of the year. Meanwhile
-  // /diwali-ayodhya-transport, /winter-snow-trip-packages,
-  // /christmas-shimla-manali-package, /christmas-new-year-cab-packages and
-  // /new-year-road-trip-packages all already existed with nothing driving traffic
-  // to them. October to December is peak for exactly the corridors this business
-  // runs: Delhi, Agra and Jaipur have their best weather, and Shimla and Manali
-  // get the snow demand.
-  //
-  // Campaigns are deliberately started 4–8 weeks before the event. Search demand
-  // for "manali in december" builds through October, and a page published on 20
-  // December has no time left to rank.
-  //
-  // No exact festival dates in the labels — Diwali moves year to year and a wrong
-  // date printed sitewide is worse than a vaguer one that stays true.
   {
-    start: '2026-10-01T00:00:00+05:30',
-    end: '2026-11-12T23:59:59+05:30',
-    label: 'Diwali & festive-season cabs — Ayodhya Deepotsav',
-    href: '/diwali-ayodhya-transport',
-    cta: 'Book festive cabs',
+    // Pushkar Mela 17–25 Nov 2026, Kartik Purnima 24 Nov.
+    start: '2026-11-01T00:00:00+05:30',
+    end: '2026-11-25T23:59:59+05:30',
+    label: 'Pushkar Mela — 17–25 Nov — Delhi & Jaipur cabs, driver stays on',
+    href: '/pushkar-mela-transport',
+    cta: 'Book Pushkar cab',
   },
   {
     start: '2026-10-01T00:00:00+05:30',
     end: '2026-11-30T23:59:59+05:30',
     label: 'Golden Triangle peak weather — Delhi, Agra & Jaipur at their best',
     href: '/golden-triangle-tour-cost',
-    cta: 'See trip cost',
+    cta: 'See Golden Triangle fares',
+  },
+  {
+    // Wedding season opens on Dev Uthani Ekadashi, 20 Nov 2026. Couples book
+    // cars 4–8 weeks out, so this fills the slot between Pushkar and Christmas.
+    start: '2026-11-26T00:00:00+05:30',
+    end: '2026-12-10T23:59:59+05:30',
+    label: 'Wedding season is here — BMW, Audi, Mercedes & baraat tempos, decor included',
+    href: '/wedding',
+    cta: 'See wedding cars',
   },
   {
     start: '2026-11-15T00:00:00+05:30',
@@ -135,11 +159,9 @@ const CAMPAIGNS = [
     end: '2027-01-02T23:59:59+05:30',
     label: 'New Year road trips — book before the fleet fills',
     href: '/new-year-road-trip-packages',
-    cta: 'Plan New Year',
+    cta: 'Book New Year cab',
   },
-  // Evergreen fallback — covers any intra-season gap so the slot is never empty.
-  // Two of them now: one per half of the extended window, so the Nov–Jan stretch
-  // is never left with an empty 40px slot.
+  // Evergreen fallbacks — one per half of the window, so the slot is never empty.
   {
     start: '2026-08-01T00:00:00+05:30',
     end: '2026-10-31T23:59:59+05:30',

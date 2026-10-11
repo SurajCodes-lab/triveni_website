@@ -29,122 +29,148 @@ export const busBlogs = [
     },
 
     content: `
-      <p>Planning an epic adventure to <strong>Spiti Valley</strong>? Traveling by bus is the most economical and social way to explore this Himalayan wonderland. Our comprehensive guide covers everything you need for a memorable <a href="/bus-routes" class="text-blue-600 hover:underline font-semibold">bus tour to Spiti Valley</a>.</p>
+      <p>A bus to <strong>Spiti Valley</strong> is not one vehicle for the whole journey, and that single fact decides everything else about the trip. Delhi to Kaza is 730 km on the Shimla and Kinnaur road, eighteen to twenty hours of driving that our route data recommends as a two-day trip, and only the first day of it is highway. Beyond Shimla or Manali the road narrows, loses its tarmac in stretches, crosses streams and climbs above 4,000 m, and our <a href="/bus-routes/delhi-to-spiti-valley" class="text-blue-600 hover:underline font-semibold">Delhi to Spiti bus page</a> is plain about what that means: only buses up to 20 to 22 seats can attempt the route, even those face restrictions, and most groups switch to Tempo Travellers or SUVs beyond Shimla or Manali. This guide is about the bus itself - which sizes go where, what a bus day is actually like, where you sleep, how the altitude stacks up, and when each road is usually open.</p>
 
-      <h2>Why Choose Bus for Spiti Valley Adventure?</h2>
-      <p>Spiti Valley, often called "Little Tibet," is one of India's most breathtaking high-altitude desert landscapes. Located in Himachal Pradesh at an average elevation of 12,500 feet, this remote valley offers stunning monasteries, ancient villages, and dramatic Himalayan scenery.</p>
-
-      <h3>Benefits of Bus Travel to Spiti</h3>
-      <ul>
-        <li><strong>Cost Effective:</strong> Share costs among 40-50 passengers, making it affordable for everyone</li>
-        <li><strong>Group Experience:</strong> Travel with like-minded adventurers and make lasting memories</li>
-        <li><strong>Comfortable Journey:</strong> Volvo and luxury buses with reclining seats for long journeys</li>
-        <li><strong>Professional Drivers:</strong> Experienced drivers familiar with mountain roads</li>
-        <li><strong>All-Inclusive:</strong> Many packages include accommodation and meals</li>
-      </ul>
-
-      <h2>Best Routes to Spiti Valley</h2>
-
-      <h3>Route 1: Shimla-Kinnaur-Kaza (Recommended for Buses)</h3>
-      <p><strong>Distance:</strong> 412 km from Shimla | <strong>Duration:</strong> 2 days | <strong>Road Condition:</strong> Better maintained</p>
-      <p>This is the preferred route for large buses due to wider roads and better infrastructure.</p>
-      <ul>
-        <li><strong>Shimla (2,205m):</strong> Acclimatization stop, colonial architecture</li>
-        <li><strong>Sarahan (2,165m):</strong> Bhimakali Temple, overnight stay recommended</li>
-        <li><strong>Sangla Valley (2,680m):</strong> Apple orchards, Kamru Fort</li>
-        <li><strong>Chitkul (3,450m):</strong> Last Indian village before Tibet border</li>
-        <li><strong>Kalpa (2,960m):</strong> Stunning Kinner Kailash views</li>
-        <li><strong>Kaza (3,800m):</strong> Spiti's largest town, base for exploration</li>
-      </ul>
-
-      <h3>Route 2: Manali-Rohtang-Kunzum Pass</h3>
-      <p><strong>Distance:</strong> 200 km from Manali | <strong>Duration:</strong> 10-12 hours | <strong>Open:</strong> June to October only</p>
-      <p>Shorter but more challenging route, suitable for smaller buses only.</p>
-
-      <h2>Bus Types Available</h2>
+      <h2>The Bus Day, as a Timetable, Before the Itinerary</h2>
+      <p>Before the sightseeing and the acclimatisation plan below, the mode question first: what a chartered bus actually does, hour by hour, on the Shimla and Kinnaur road, and what it costs. This is our own coach's schedule, not a public bus timetable — a hired bus keeps to no fixed departure time and stops where the group wants, but this is the shape our route data and drivers work to on a standard two-day run.</p>
       <table class="w-full my-6 border-collapse border border-gray-300">
         <thead>
           <tr class="bg-gray-100">
-            <th class="border border-gray-300 p-3 text-left">Bus Type</th>
-            <th class="border border-gray-300 p-3 text-left">Capacity</th>
-            <th class="border border-gray-300 p-3 text-left">Rate/km</th>
-            <th class="border border-gray-300 p-3 text-left">Best For</th>
+            <th class="border border-gray-300 p-3 text-left">Day</th>
+            <th class="border border-gray-300 p-3 text-left">Leaves</th>
+            <th class="border border-gray-300 p-3 text-left">Passes / reaches</th>
+            <th class="border border-gray-300 p-3 text-left">Distance covered</th>
+            <th class="border border-gray-300 p-3 text-left">Vehicle for the stretch</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="border border-gray-300 p-3">Volvo AC</td>
-            <td class="border border-gray-300 p-3">45 Seater</td>
-            <td class="border border-gray-300 p-3">₹45-50</td>
-            <td class="border border-gray-300 p-3">Premium comfort</td>
+            <td class="border border-gray-300 p-3">Day 1</td>
+            <td class="border border-gray-300 p-3">Delhi, around 4:00 AM</td>
+            <td class="border border-gray-300 p-3">Breakfast at Chandigarh &#8594; Shimla bypass before noon &#8594; lunch at Narkanda &#8594; drops to the Sutlej at Rampur &#8594; up through Jeori, Jhakri, the Wangtu gorge &#8594; Reckong Peo by early evening</td>
+            <td class="border border-gray-300 p-3">560 km, 13 to 14 hrs</td>
+            <td class="border border-gray-300 p-3">Any size up to a full-size coach as far as Shimla/Narkanda; 20 to 22 seats from there</td>
           </tr>
           <tr>
-            <td class="border border-gray-300 p-3">Luxury Coach</td>
-            <td class="border border-gray-300 p-3">35-40 Seater</td>
-            <td class="border border-gray-300 p-3">₹40-45</td>
-            <td class="border border-gray-300 p-3">Mountain roads</td>
+            <td class="border border-gray-300 p-3">Night 1</td>
+            <td class="border border-gray-300 p-3">—</td>
+            <td class="border border-gray-300 p-3">Kalpa (about 2,960 m) or Nako (about 3,600 m) for groups sleeping higher</td>
+            <td class="border border-gray-300 p-3">—</td>
+            <td class="border border-gray-300 p-3">—</td>
           </tr>
           <tr>
-            <td class="border border-gray-300 p-3">Mini Bus</td>
-            <td class="border border-gray-300 p-3">20-26 Seater</td>
-            <td class="border border-gray-300 p-3">₹35-40</td>
-            <td class="border border-gray-300 p-3">Smaller groups</td>
+            <td class="border border-gray-300 p-3">Day 2</td>
+            <td class="border border-gray-300 p-3">Kalpa, morning</td>
+            <td class="border border-gray-300 p-3">Nako &#8594; Sumdo check post &#8594; an hour at Tabo &#8594; Kaza, mid-afternoon</td>
+            <td class="border border-gray-300 p-3">170 km, about 6 hrs</td>
+            <td class="border border-gray-300 p-3">20 to 22 seats at most; most groups are in a Tempo Traveller or SUV by this stage</td>
           </tr>
         </tbody>
       </table>
+      <p>That is 730 km over two driving days. Our chartered coaches for this route are quoted from ₹45/km, which on the full distance is about ₹32,850 one-way before tolls, the Atal Tunnel toll where the Manali road is used, parking and the driver's night halt, all paid at actual; a return coach doubles the distance. Where the group is small enough that a bus is not the right vehicle at all, the cab fares — Ertiga, Innova Crysta, 12-seater Tempo Traveller — are in the "Who Should Take a Cab Instead" section below.</p>
 
-      <h2>7-Day Spiti Valley Itinerary</h2>
-      <p><strong>Day 1:</strong> Delhi/Chandigarh to Shimla (350 km) - Overnight in Shimla</p>
-      <p><strong>Day 2:</strong> Shimla to Sangla via Rampur (210 km) - Visit Sarahan Temple</p>
-      <p><strong>Day 3:</strong> Sangla to Kalpa (40 km) - Explore Chitkul, last village</p>
-      <p><strong>Day 4:</strong> Kalpa to Tabo (170 km) - Visit Nako Lake, Tabo Monastery</p>
-      <p><strong>Day 5:</strong> Tabo to Kaza (50 km) - Key Monastery, Kibber village</p>
-      <p><strong>Day 6:</strong> Kaza exploration - Langza, Komic, Hikkim villages</p>
-      <p><strong>Day 7:</strong> Kaza to Manali via Kunzum Pass (200 km) - Scenic return</p>
+      <h2>Which Buses Actually Run the Two Roads In</h2>
+      <p>There are two roads into Spiti and both start as ordinary highway. The Shimla and Kinnaur road runs on NH-5 through Chandigarh, Shimla, Narkanda, Rampur, Reckong Peo, Nako and Tabo to Kaza. The Manali road runs on NH-44 and NH-21 to Manali, then through the Atal Tunnel, up the Chandra valley and over Kunzum La at 4,551 m before dropping to Losar and Kaza. On the highway sections of either, any coach in our fleet is comfortable. Past them, the size limit does the choosing for you.</p>
+      <table class="w-full my-6 border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 p-3 text-left">Stage of the journey</th>
+            <th class="border border-gray-300 p-3 text-left">What the road is</th>
+            <th class="border border-gray-300 p-3 text-left">What can run it</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 p-3">Delhi to Chandigarh and on to Shimla or Manali</td>
+            <td class="border border-gray-300 p-3">Standard highway; NH-44 four-lane to Chandigarh, then a maintained hill road</td>
+            <td class="border border-gray-300 p-3">Any size, 22 seater up to 56 seater</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-3">Shimla to Narkanda, Rampur and Reckong Peo</td>
+            <td class="border border-gray-300 p-3">Hill road cut into the Sutlej gorge; narrow in places, landslide zones</td>
+            <td class="border border-gray-300 p-3">Up to 20 to 22 seats, with an experienced mountain driver</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-3">Reckong Peo to Nako, Tabo and Kaza</td>
+            <td class="border border-gray-300 p-3">Unpaved patches, loose rock, high cold desert above 3,000 m</td>
+            <td class="border border-gray-300 p-3">20 to 22 seats at most; most groups change to a Tempo Traveller or SUV</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-3">Manali to Gramphu, Batal and over Kunzum La</td>
+            <td class="border border-gray-300 p-3">Unpaved from Gramphu with glacier-fed stream crossings at Chhatru and Batal</td>
+            <td class="border border-gray-300 p-3">Not a bus road; Tempo Traveller or SUV with clearance</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>So the realistic shape of a group trip is a bus to the hills and something smaller beyond them. Our bus page lists the halts in exactly that order - Chandigarh, then Shimla or Manali, then Narkanda or Keylong depending on the road, then Kalpa or Sarchu, then Kaza - and the <a href="/bus-routes/chandigarh-to-spiti-valley" class="text-blue-600 hover:underline font-semibold">Chandigarh to Spiti bus route</a> works the same way over 420 km and twelve to thirteen hours for groups flying or taking the train in. If you want the whole thing done in one vehicle, that vehicle is a 12-seater Tempo Traveller or an SUV, not a coach.</p>
 
-      <h2>Cost Breakdown</h2>
-      <p>For a 7-day Spiti Valley bus tour with 40 passengers:</p>
+      <h2>What a Bus Day to Spiti Is Actually Like</h2>
+      <p>Long, and front-loaded. Our Kaza road guide builds day one around a four o'clock start from Delhi: breakfast at Chandigarh, past Shimla before noon on the bypass at about 2,200 m, lunch at Narkanda at about 2,700 m, then a drop of nearly two thousand metres to the Sutlej at Rampur, and up the river through Jeori, Jhakri and the Wangtu gorge to Reckong Peo by early evening. That is 560 km and thirteen to fourteen hours with halts, most of it on a hill road. Day two is short by comparison - 170 km and about six hours from Kalpa to Kaza.</p>
       <ul>
-        <li><strong>Bus Rental:</strong> ₹54,000 - ₹60,000 (1,200 km × ₹45-50/km)</li>
-        <li><strong>Per Person:</strong> ₹1,350 - ₹1,500 for transportation only</li>
-        <li><strong>Accommodation:</strong> ₹500 - ₹1,500 per night</li>
-        <li><strong>Meals:</strong> ₹300 - ₹500 per day</li>
-        <li><strong>Permits:</strong> ₹50 per person (Inner Line Permit)</li>
+        <li><strong>The pace is set by the road, not the timetable.</strong> Above Rampur the surface, the traffic and the weather decide the day. A slide or a cleared-and-reopened stretch can add hours, and our bus page says plainly that conditions change rapidly with the weather.</li>
+        <li><strong>Halts are where the villages are.</strong> Narkanda for lunch, Rampur as the last proper town before Kinnaur and the last place to buy anything forgotten, Reckong Peo to fill the tank.</li>
+        <li><strong>Connectivity thins out.</strong> Our travel notes for the route list limited mobile connectivity among the things to plan for, along with carrying warm clothes and medicines and booking homestays in advance.</li>
+        <li><strong>The second day is the reward.</strong> Nako, the Spiti meeting the Sutlej at Khab, the check post at Sumdo, an hour at Tabo, then Kaza in the mid-afternoon.</li>
       </ul>
 
-      <h2>Best Time to Visit</h2>
-      <p><strong>June to September:</strong> Both routes open, best weather for exploration</p>
-      <p><strong>October:</strong> Autumn colors, less crowded, Kunzum may close</p>
-      <p><strong>November to May:</strong> Only Shimla-Kinnaur route accessible</p>
+      <h2>Where You Sleep</h2>
+      <p>Nobody drives this in one push, and the halts are not interchangeable. On the Shimla side the standard night is Kalpa, the old village seven kilometres above Reckong Peo at about 2,960 m, facing the Kinner Kailash range across the valley. Nako, at about 3,600 m, is the alternative for groups who would rather sleep higher and shorten day two. For a party that finds thirteen hours on day one too much - and for families it usually is - our guide sets out a three-day version: Shimla or Narkanda on night one, Kalpa on night two, Kaza on the afternoon of day three, which also opens up Sarahan with its Bhimakali temple and the Baspa valley at Sangla and Chitkul as detours from the Rampur to Peo stretch.</p>
+      <p>In Spiti itself the accommodation is homestays and small guesthouses, which is why our route notes tell groups to book them in advance rather than arrive and look. A coach party of forty needs far more beds than Kaza, Tabo or Kalpa can produce at short notice in season, and that alone is a reason group trips here tend to run at Tempo Traveller size.</p>
 
-      <h2>Essential Packing List</h2>
+      <h2>Altitude, in the Order It Happens</h2>
+      <p>Kaza sits at about 3,800 m, higher than Leh, and the villages people visit from it - Langza, Komic, Hikkim and Kibber - are higher still. Altitude sickness is about the rate of ascent more than the height itself, so the sequence matters more than any single number.</p>
       <ul>
-        <li>Warm layers (temperature drops to 0°C at night)</li>
-        <li>Sunscreen and sunglasses (high UV at altitude)</li>
-        <li>Medicine for altitude sickness</li>
-        <li>Power bank (limited electricity)</li>
-        <li>Cash (ATMs rare in Spiti)</li>
-        <li>Valid ID for permits</li>
+        <li><strong>Day one, to about 2,700 m and back down.</strong> Narkanda is the high point of the first day before the road drops to the Sutlej at about 1,000 m. That dip is useful, not wasted.</li>
+        <li><strong>Night one, at 2,960 m or 3,600 m.</strong> Kalpa or Nako. Sleeping at a middling altitude after a long day is the whole argument for the Shimla side.</li>
+        <li><strong>Day two, to about 3,800 m.</strong> Nako, Sumdo, Tabo, Kaza. The gain has been spread across two days and roughly thirty-six hours, which is about what standard advice on acclimatisation asks for.</li>
+        <li><strong>First day in Spiti, do little.</strong> Key Monastery and the town, not Langza and Komic. Drink more water than you think you need from Rampur onwards, eat light, and do not push through a headache.</li>
+        <li><strong>If someone is unwell, go down.</strong> On the Shimla side going down is easy - Tabo is about 500 m below Kaza and Nako is on the road behind you. On the Manali side the only way down from Losar is back over a 4,551 m pass, which is the other argument against arriving that way.</li>
+      </ul>
+      <p>The Manali road does the same climb in a single day: Manali at about 2,050 m to Kunzum La at 4,551 m, with the highest point of the whole trip in the middle of the drive. Our Delhi to Kaza route data says it in one line - going straight through is the main cause of altitude sickness on this route.</p>
+
+      <h2>When Each Road Is Usually Open</h2>
+      <p>The Shimla and Kinnaur road is the year-round one in principle and the one our bus page names as open all year, though heavy winter snow regularly cuts access and the practical season our route data gives is May to October. The Manali and Kunzum road is seasonal: Kunzum La is usually clear from roughly June to mid-October, the pass is snowed in through the winter, and the road is cleared each year once the snow allows - so early June is never guaranteed and the closing date depends on the first heavy fall. The Atal Tunnel has changed the first part of a Manali day, because Rohtang Pass no longer has to be crossed to reach Lahaul, but it has not changed Kunzum, which is where the season is decided. If a September or early-October return over Kunzum is part of the plan, confirm the pass before leaving. Our <a href="/best-time-to-visit/spiti-valley" class="text-blue-600 hover:underline font-semibold">best time to visit Spiti Valley</a> page goes through the months.</p>
+      <p>At Sumdo, where Kinnaur ends and Spiti begins, there is a check post. Indian nationals show identification; foreign nationals need an Inner Line Permit, issued by the district administration. We do not quote a fee for it here, because none is fixed on our pages - ask the issuing office or your operator when you apply.</p>
+
+      <h2>Who Should Take a Cab Instead</h2>
+      <p>Two to six people, a family, or anyone who wants one vehicle and one driver from Delhi to Kaza and back. A cab does not stop at Shimla or Manali and hand you to something smaller; it does the whole road, chooses the halts around the altitude, and waits at Kaza for the days in the valley. On the published rate card the 730 km two-day drive bills its distance - an Ertiga or SUV at ₹15/km is ₹10,950, an Innova Crysta at ₹18/km is ₹13,140 and a 12-seater Tempo Traveller at ₹23/km is ₹16,790. A sedan at ₹11/km comes to ₹8,030 but is not recommended beyond Reckong Peo, where the surface turns to loose rock. Tolls, the Atal Tunnel toll, parking and the driver's night halts are paid at actual.</p>
+      <p>The full comparison - which road to take, in which direction, and what each option costs over a six to eight day loop - belongs to a separate piece and we have not repeated it here. Read <a href="/blog/delhi-to-spiti-valley-bus-or-cab-how-the-two-roads-work" class="text-blue-600 hover:underline font-semibold">Delhi to Spiti Valley: bus or cab, and how the two roads in actually work</a> for that decision, and the <a href="/how-to-reach-kaza-from-delhi" class="text-blue-600 hover:underline font-semibold">Kaza road guide</a> for the stop-by-stop timeline both roads follow. For groups of eight to twelve who want to stay together the whole way, the <a href="/12-seater-tempo-traveller" class="text-blue-600 hover:underline font-semibold">12-seater Tempo Traveller</a> is the vehicle that goes where the coach stops.</p>
+
+      <h2>Packing for a Bus Day at Altitude</h2>
+      <ul>
+        <li>Warm layers, and more of them than the month suggests - Spiti is a high cold desert and the temperature falls hard after sunset</li>
+        <li>Sunscreen and sunglasses; the light at 3,800 m is fierce even when the air is cold</li>
+        <li>Medicines, including anything you normally take, and something for a headache</li>
+        <li>A power bank, because charging is limited and a bus day is long</li>
+        <li>Cash, since machines are scarce beyond Reckong Peo</li>
+        <li>Identification for everyone in the party, for the check post at Sumdo</li>
       </ul>
 
       <div class="my-8 p-6 bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-600 rounded-r-lg">
-        <h3 class="text-2xl font-bold mb-3 text-gray-800">🚌 Book Your Spiti Valley Bus Tour</h3>
-        <p class="mb-4 text-gray-700">Experience the magic of Spiti Valley with our comfortable Volvo buses. Group discounts available!</p>
-        <a href="/bus-routes" class="inline-block bg-amber-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors shadow-md">View Bus Options →</a>
+        <h3 class="text-2xl font-bold mb-3 text-gray-800">Plan the Spiti Group Trip</h3>
+        <p class="mb-4 text-gray-700">Tell us the head count and the dates and we will size the vehicle to the road - a coach to the hills, a Tempo Traveller or SUV beyond them, or one car the whole way.</p>
+        <a href="/bus-routes" class="inline-block bg-amber-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-amber-700 transition-colors shadow-md">View Bus Options</a>
       </div>
 
       <h2>Frequently Asked Questions</h2>
 
-      <h3>Is Spiti Valley safe for bus travel?</h3>
-      <p>Yes, with experienced drivers and well-maintained buses, Spiti is safe. We recommend the Shimla-Kinnaur route for large buses as roads are wider.</p>
+      <h3>Can a 45-seater Volvo go to Spiti Valley?</h3>
+      <p>No. Our bus page is clear that only buses up to 20 to 22 seats can attempt the Spiti roads, and even those face restrictions. A large coach works as far as Shimla or Manali; beyond that most groups move to a Tempo Traveller or an SUV.</p>
+
+      <h3>How many days does a bus trip to Spiti take?</h3>
+      <p>Delhi to Kaza is 730 km and eighteen to twenty hours of driving, which our route data recommends as a two-day trip with a night at Kalpa or Nako. A three-day version with a night at Shimla or Narkanda first is gentler on the altitude and is what most families choose.</p>
+
+      <h3>Which road into Spiti is open in winter?</h3>
+      <p>The Shimla and Kinnaur road is the one that stays open longest and is open in principle through the year, though heavy snow regularly cuts access. The Manali road over Kunzum La is usually clear only from about June to mid-October.</p>
 
       <h3>Do I need a permit for Spiti Valley?</h3>
-      <p>Indian nationals need an Inner Line Permit (ILP) for areas beyond Sumdo. Foreign nationals need a Protected Area Permit (PAP).</p>
+      <p>At the Sumdo check post Indian nationals show identification. Foreign nationals need an Inner Line Permit, issued by the district administration - check the current requirement and any charge with the issuing office when you apply.</p>
 
-      <h3>Can buses go to Key Monastery?</h3>
-      <p>Large buses stop at Kaza. Key Monastery is accessible by smaller vehicles or a 3 km trek from the main road.</p>
+      <h3>Can buses reach Key Monastery?</h3>
+      <p>Kaza is the practical end of the road for anything bus-sized. Key, Kibber, Langza, Komic and Hikkim are day runs from Kaza in a smaller vehicle, and the first day at 3,800 m is better spent on Key and the town than on the higher villages.</p>
 
-      <p>Ready to explore Spiti Valley? <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact us</a> for customized bus tour packages or call <strong>7668570551</strong> for instant booking!</p>
+      <p>Ready to plan it? <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact us</a> with your group size and dates, or call <strong>7668570551</strong>.</p>
+      <p class="text-gray-700 leading-relaxed mb-4"><strong>Read next:</strong> <a href="/blog/delhi-to-spiti-valley-bus-or-cab-how-the-two-roads-work">Delhi to Spiti Valley: Bus or Cab, and How the Two Roads In Actually Work</a></p>
     `,
 
     date: "2026-01-15",

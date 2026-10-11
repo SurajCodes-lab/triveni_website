@@ -18,14 +18,14 @@ const WA =<svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path
 
 export default function CompetitorCompareClient({ competitor, comparisonData }) {
   const { tagline, intro, features = [], verdictTitle, verdictText, faqs = [], advantages = [] } = comparisonData;
-  const whatsappMsg = `Hi, I want to know more about Triveni Cabs services vs ${competitor}. Please share pricing details.`;
+  const whatsappMsg = `Hi, I want to know more about Triveni Cabs™ services vs ${competitor}. Please share pricing details.`;
   const heroImage = getCityImage('delhi');
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
       <SetStickyCta
         price="₹11/km"
-        label={`Triveni Cabs vs ${competitor}`}
+        label={`Triveni Cabs™ vs ${competitor}`}
         whatsappText={whatsappMsg}
       />
 
@@ -42,7 +42,7 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
               <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">{tagline}</span>
             </div>
             <h1 className="speakable-headline text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[0.95] tracking-tight">
-              Triveni Cabs<br />
+              Triveni Cabs™<br />
               <span className="text-indigo-400">vs</span> <span className="text-white/70">{competitor}</span>
             </h1>
             <p className="speakable-lead text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">{intro}</p>
@@ -104,7 +104,7 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
                   <div className="text-center">
                     <div className="inline-flex items-center gap-2 bg-indigo-50 px-4 py-2 rounded-xl border border-indigo-200">
                       <Trophy className="w-4 h-4 text-indigo-600" />
-                      <span className="text-slate-900 font-bold text-sm">Triveni Cabs</span>
+                      <span className="text-slate-900 font-bold text-sm">Triveni Cabs™</span>
                     </div>
                   </div>
                   <div className="text-center">
@@ -138,7 +138,7 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
                   <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Winner</div>
                   <div className="text-center">
                     <div className="inline-flex items-center gap-2 bg-[#FACF2D] px-5 py-2 rounded-xl text-slate-900 font-bold text-sm shadow-sm">
-                      <Trophy className="w-4 h-4" /> Triveni Cabs
+                      <Trophy className="w-4 h-4" /> Triveni Cabs™
                     </div>
                   </div>
                   <div className="text-center text-slate-400 text-sm">{competitor}</div>
@@ -171,7 +171,7 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
             ))}
             <div className="bg-[#FACF2D] rounded-xl p-4 text-center">
               <Trophy className="w-5 h-5 text-slate-900 mx-auto mb-1" />
-              <p className="font-black text-slate-900 text-sm">Triveni Cabs Wins</p>
+              <p className="font-black text-slate-900 text-sm">Triveni Cabs™ Wins</p>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
           <div className="max-w-6xl mx-auto">
             <ScrollReveal>
               <p className="text-[10px] font-bold text-[#FACF2D] uppercase tracking-widest mb-1">Key Advantages</p>
-              <h2 className="text-2xl sm:text-3xl font-black text-white mb-8">Why Travelers Prefer Triveni Cabs</h2>
+              <h2 className="text-2xl sm:text-3xl font-black text-white mb-8">Why Travelers Prefer Triveni Cabs™</h2>
             </ScrollReveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {advantages.map((adv, i) => (
@@ -236,9 +236,9 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
         </div>
       </section>
 
-      <FleetShowcase theme="light" accentColor="violet" whatsappMessage="Hi, I want to know about Triveni Cabs services" title="Our Fleet" subtitle="Choose from our well-maintained vehicles" />
+      <FleetShowcase theme="light" accentColor="violet" whatsappMessage="Hi, I want to know about Triveni Cabs™ services" title="Our Fleet" subtitle="Choose from our well-maintained vehicles" />
       <FaqAccordion faqs={faqs} />
-      <CTASection heading="Switch to Triveni Cabs Today" subheading="Better pricing, verified drivers, transparent billing, and 24/7 support. See the difference for yourself." />
+      <CTASection heading="Switch to Triveni Cabs™ Today" subheading="Better pricing, verified drivers, transparent billing, and 24/7 support. See the difference for yourself." />
     </div>
   );
 }

@@ -11,7 +11,7 @@ export const metadata = {
   title: tightenTitle('10 Day North India Road Trip 2026 | Delhi to Jaisalmer Circuit'),
   description: '10-day Delhi → Agra → Jaipur → Udaipur → Jodhpur → Jaisalmer road trip. Day-wise plan, costs from ₹55K. Call 7668570551.',
   keywords: 'north india road trip 10 day itinerary, 10 day north india trip, delhi to jaisalmer road trip, rajasthan road trip plan, north india by car',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/10-day-north-india-road-trip' },
   openGraph: {
@@ -19,7 +19,7 @@ export const metadata = {
     description: 'Delhi→Agra→Jaipur→Udaipur→Jodhpur→Jaisalmer→Delhi. Day-wise itinerary with distances & costs.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/10-day-north-india-road-trip',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{
       url: '/images/sightseeing/Jaisalmer/Jaisalmer_Fort.jpg',
       width: 1200, height: 630,
@@ -108,7 +108,7 @@ export default function NorthIndiaRoadTripPage() {
   };
 
   const serviceSchema = buildStaticService({ slug: SLUG, name: "North India Road Trip Cab Service from Delhi", description: "10-Day North India Road Trip with an experienced driver, all-inclusive of fuel, tolls, permits and driver allowance.", lowPrice: 55000, highPrice: 120000, serviceType: 'Multi-Day Road Trip Cab Service' });
-  const articleSchema = getArticleSchema({ slug: SLUG, headline: "10-Day North India Road Trip 2026", description: "10-Day North India Road Trip itinerary, day-wise plan, costs and tips from Triveni Cabs.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
+  const articleSchema = getArticleSchema({ slug: SLUG, headline: "10-Day North India Road Trip 2026", description: "10-Day North India Road Trip itinerary, day-wise plan, costs and tips from Triveni Cabs™.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
   const howToSchema = getHowToSchema({ name: "How to Plan a 10-Day North India Road Trip", description: "Step-by-step day-wise plan for the 10-Day North India Road Trip by car.", totalTime: 'PT10M', estimatedCost: { currency: 'INR', value: 55000 }, steps: itinerary.map((d) => ({ name: d.title || d.day || 'Day', text: d.description || d.desc || d.detail || (Array.isArray(d.activities) ? d.activities.join('. ') : '') })) });
   const placeSchemas = buildPlaceSchemas(["delhi","agra","jaipur","udaipur","jodhpur","jaisalmer","pushkar"], SLUG, '/images/triveni-cabs-og.jpg');
 
@@ -138,11 +138,11 @@ export default function NorthIndiaRoadTripPage() {
           <div className="absolute top-20 left-20 w-[500px] h-[500px] bg-orange-500/8 rounded-full blur-[180px]" />
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-red-500/8 rounded-full blur-[150px]" />
 
-          <div className="max-w-7xl mx-auto px-4 relative z-10 py-20 w-full">
+          <div className="max-w-7xl mx-auto px-4 relative z-10 py-12 sm:py-20 w-full">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <div className="inline-flex items-center gap-3 bg-orange-500/10 border border-orange-500/20 backdrop-blur-sm px-5 py-2.5 rounded-full mb-8">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
+                  <div className="w-2 h-2 bg-orange-400 rounded-full" />
                   <span className="text-orange-300 text-sm font-medium tracking-widest uppercase">10 Days | 2,500 km | 6 Cities</span>
                 </div>
 
@@ -155,7 +155,7 @@ export default function NorthIndiaRoadTripPage() {
                 </h1>
 
                 <p className="speakable-lead text-neutral-400 text-lg mb-10 max-w-xl leading-relaxed">
-                  A 10-day North India road trip from Delhi covers Agra, Jaipur, Pushkar, Udaipur, Jodhpur and Jaisalmer, costing from Rs 55,000 (sedan) to Rs 1,20,000 (premium SUV) with Triveni Cabs, all-inclusive of fuel, tolls and driver allowance. The ultimate circuit of Taj Mahal, royal forts, desert safaris and lake palaces through Rajasthan and back.
+                  A 10-day North India road trip from Delhi covers Agra, Jaipur, Pushkar, Udaipur, Jodhpur and Jaisalmer, costing from Rs 55,000 (sedan) to Rs 1,20,000 (premium SUV) with Triveni Cabs™, all-inclusive of fuel, tolls and driver allowance. The ultimate circuit of Taj Mahal, royal forts, desert safaris and lake palaces through Rajasthan and back.
                 </p>
 
                 <div className="flex flex-wrap gap-4">
@@ -198,10 +198,10 @@ export default function NorthIndiaRoadTripPage() {
         </section>
 
         {/* Day-wise Itinerary - Color-coded cards */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 to-neutral-900" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="text-orange-400 text-sm font-medium tracking-widest uppercase">The Journey</span>
               <h2 className="text-4xl md:text-5xl font-black mt-3">10 Days of Discovery</h2>
             </div>
@@ -245,7 +245,7 @@ export default function NorthIndiaRoadTripPage() {
         </section>
 
         {/* Pricing */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-neutral-950" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-[200px]" />
           <div className="max-w-5xl mx-auto relative z-10">
@@ -272,7 +272,7 @@ export default function NorthIndiaRoadTripPage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-neutral-900" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-10">Related Itineraries</h2>
@@ -300,7 +300,7 @@ export default function NorthIndiaRoadTripPage() {
         </section>
 
         {/* Related Pages */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-neutral-950" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-3">Travel Guides & Resources</h2>
@@ -323,7 +323,7 @@ export default function NorthIndiaRoadTripPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-neutral-950" />
           <div className="max-w-3xl mx-auto relative z-10">
             <div className="text-center mb-14">
@@ -347,7 +347,7 @@ export default function NorthIndiaRoadTripPage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-orange-700 via-red-700 to-amber-800" />
           <div className="absolute top-0 left-1/3 w-96 h-96 bg-yellow-400/15 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-red-500/15 rounded-full blur-[100px]" />

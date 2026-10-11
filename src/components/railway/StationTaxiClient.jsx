@@ -20,6 +20,8 @@ import {
   getStationReviews, getCityThingsToDo, getExtendedStationFaqs, getWhyPreBookReasons,
   STATION_TAXI_INCLUSIONS, STATION_TAXI_EXCLUSIONS, STATION_CANCELLATION_POLICY,
 } from '@/utilis/stationTaxiEnrichment';
+import { clientRouteExists } from '@/lib/seo/client-route-exists';
+import { groupDigits } from '@/utilis/pricing';
 
 // ─── Ultra-Premium v2 vocabulary ────────────────────────────────────────────
 const FOIL =
@@ -96,11 +98,11 @@ export default function StationTaxiClient({ data }) {
     <article className="min-h-screen bg-slate-950" itemScope itemType="https://schema.org/TaxiService">
       <StickyPriceBar
         title={`${stationName} Taxi`}
-        price={`₹${cheapest}`}
+        price={`₹${groupDigits(cheapest)}`}
         whatsappMessage={whatsappMsg}
       />
       <SetStickyCta
-        price={`₹${cheapest}`}
+        price={`₹${groupDigits(cheapest)}`}
         label={`${stationName} Taxi`}
         whatsappText={whatsappMsg}
       />
@@ -122,7 +124,7 @@ export default function StationTaxiClient({ data }) {
         {/* Gold foil lane strip — brand motif */}
         <div className="absolute inset-x-0 top-0 z-20 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-28 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-16 sm:pt-28 sm:px-6 lg:px-8">
           <div className="grid items-end gap-10 lg:grid-cols-5 lg:gap-12">
             <div className="lg:col-span-3">
               {/* Station route-board seal — honest data: code + platforms */}
@@ -379,7 +381,6 @@ export default function StationTaxiClient({ data }) {
                       sizes="(max-width: 768px) 100vw, 33vw"
                       quality={90}
                     />
-                    <div className="absolute bottom-2 left-1/2 h-2 w-3/4 -translate-x-1/2 rounded-full bg-black/40 blur-xl" />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <div className="mb-1 flex items-start justify-between gap-3">
@@ -714,7 +715,6 @@ export default function StationTaxiClient({ data }) {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {benefits.map((b, i) => (
               <div key={i} className={`group relative overflow-hidden ${GLASS} p-7 transition-all duration-500 hover:border-amber-400/40 hover:bg-white/[0.07]`}>
-                <div className="absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/2 rounded-full bg-amber-400/5 blur-3xl transition-all duration-500 group-hover:bg-amber-400/10" />
                 <div className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-[#FACF2D]/40 bg-gradient-to-br from-amber-400/20 via-transparent to-transparent transition-transform duration-300 group-hover:scale-110">
                   {(() => { const Icon = resolveIcon(b.icon); return <Icon className="h-6 w-6 text-[#FACF2D]" />; })()}
                 </div>
@@ -832,6 +832,20 @@ export default function StationTaxiClient({ data }) {
       </section>
 
       {/* ====== RELATED GUIDES — cross-links to city cluster ====== */}
+      {(() => {
+        // Week 48: these cards were synthesised from the station's city for every
+        // station, so Katra, Jammu, Kalka, Kathgodam … linked to
+        // /best-time-to-visit/<city>, /cab-service/<city> and /<city>-travel-guide
+        // pages that were never built. Only built targets are offered; the whole
+        // section is skipped when there are none.
+        const citySlug = city.toLowerCase().replace(/\s+/g, '-');
+        const guides = [
+          { href: `/best-time-to-visit/${citySlug}`, Icon: Clock, title: `Best Time to Visit ${city}`, desc: `Month-by-month weather, festivals, peak-season guide for ${city}.`, cta: 'Read guide' },
+          { href: `/cab-service/${citySlug}`, Icon: Car, title: `${city} Cab Service`, desc: `Local, outstation, airport transfers — all ${city} cab services.`, cta: 'Explore' },
+          { href: `/${citySlug}-travel-guide`, Icon: MapPin, title: `${city} Travel Guide`, desc: `Complete ${city} attractions, food, shopping and itinerary guide.`, cta: 'View guide' },
+        ].filter((g) => clientRouteExists(g.href));
+        if (guides.length === 0) return null;
+        return (
       <section className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
           <SerifHeading
@@ -842,27 +856,19 @@ export default function StationTaxiClient({ data }) {
             tone="dark"
           />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <Link href={`/best-time-to-visit/${city.toLowerCase().replace(/\s+/g, '-')}`} className={`group ${GLASS} p-5 transition-all duration-300 hover:border-amber-400/40`}>
-              <Clock className="mb-3 h-6 w-6 text-[#FACF2D]" />
-              <h3 className="mb-1 text-base font-bold text-white">Best Time to Visit {city}</h3>
-              <p className="text-xs leading-relaxed text-slate-400">Month-by-month weather, festivals, peak-season guide for {city}.</p>
-              <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-amber-300 transition-transform group-hover:translate-x-1">Read guide <ArrowRight className="h-3 w-3" /></span>
+            {guides.map((g) => (
+            <Link key={g.href} href={g.href} className={`group ${GLASS} p-5 transition-all duration-300 hover:border-amber-400/40`}>
+              <g.Icon className="mb-3 h-6 w-6 text-[#FACF2D]" />
+              <h3 className="mb-1 text-base font-bold text-white">{g.title}</h3>
+              <p className="text-xs leading-relaxed text-slate-400">{g.desc}</p>
+              <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-amber-300 transition-transform group-hover:translate-x-1">{g.cta} <ArrowRight className="h-3 w-3" /></span>
             </Link>
-            <Link href={`/cab-service/${city.toLowerCase().replace(/\s+/g, '-')}`} className={`group ${GLASS} p-5 transition-all duration-300 hover:border-amber-400/40`}>
-              <Car className="mb-3 h-6 w-6 text-[#FACF2D]" />
-              <h3 className="mb-1 text-base font-bold text-white">{city} Cab Service</h3>
-              <p className="text-xs leading-relaxed text-slate-400">Local, outstation, airport transfers — all {city} cab services.</p>
-              <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-amber-300 transition-transform group-hover:translate-x-1">Explore <ArrowRight className="h-3 w-3" /></span>
-            </Link>
-            <Link href={`/${city.toLowerCase().replace(/\s+/g, '-')}-travel-guide`} className={`group ${GLASS} p-5 transition-all duration-300 hover:border-amber-400/40`}>
-              <MapPin className="mb-3 h-6 w-6 text-[#FACF2D]" />
-              <h3 className="mb-1 text-base font-bold text-white">{city} Travel Guide</h3>
-              <p className="text-xs leading-relaxed text-slate-400">Complete {city} attractions, food, shopping and itinerary guide.</p>
-              <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-amber-300 transition-transform group-hover:translate-x-1">View guide <ArrowRight className="h-3 w-3" /></span>
-            </Link>
+            ))}
           </div>
         </div>
       </section>
+        );
+      })()}
 
       {/* ====== FINAL CTA — city photo banner with gold ====== */}
       <section className="relative overflow-hidden px-4 py-24 md:py-32">

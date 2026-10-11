@@ -130,7 +130,7 @@ export const eventFleet = [
     ideal: 'Group guests, relative transport',
     vehicles: ['12 Seater', '17 Seater', '20 Seater', '26 Seater Maharaja'],
     features: ['AC', 'Pushback Seats', 'Music', 'Charging Points'],
-    priceRange: '₹20-28/km',
+    priceRange: '₹23/km',
     icon: '🚐',
     image: '/images/tempo/17_seater.jpg',
     highlight: true
@@ -171,7 +171,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
     tagline: 'Delhi NCR Event Capital',
     subtitle: '500+ Successful Events Served',
-    description: 'Triveni Cabs is Delhi NCR premier event transportation partner, handling weddings at luxury venues like Taj Palace and Leela, corporate conferences at Pragati Maidan, and MICE events across the capital. Our extensive fleet and experienced coordination team ensure flawless guest transportation for events of any scale.',
+    description: 'Triveni Cabs™ is Delhi NCR premier event transportation partner, handling weddings at luxury venues like Taj Palace and Leela, corporate conferences at Pragati Maidan, and MICE events across the capital. Our extensive fleet and experienced coordination team ensure flawless guest transportation for events of any scale.',
     highlights: [
       'Wedding venues - Taj Palace, ITC Maurya, The Leela',
       'Convention centers - Pragati Maidan, IEML Greater Noida',
@@ -201,7 +201,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Agra/Agra_Hero_section.jpg',
     tagline: 'Taj City Wedding Destination',
     subtitle: 'Making Agra Events Memorable',
-    description: 'Agra, with its iconic Taj Mahal backdrop, is India premier destination wedding location. Triveni Cabs specializes in event transportation for weddings at heritage hotels, corporate events at convention facilities, and tourist group management. Our local expertise ensures smooth logistics for your Agra event.',
+    description: 'Agra, with its iconic Taj Mahal backdrop, is India premier destination wedding location. Triveni Cabs™ specializes in event transportation for weddings at heritage hotels, corporate events at convention facilities, and tourist group management. Our local expertise ensures smooth logistics for your Agra event.',
     highlights: [
       'Destination weddings at Oberoi Amarvilas, ITC Mughal',
       'Heritage venue events - Agra Fort views',
@@ -231,7 +231,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
     tagline: 'Pink City Royal Events',
     subtitle: 'India Premier Wedding & Event Destination',
-    description: 'Jaipur, the Pink City, offers unparalleled royal wedding experiences at majestic palaces and heritage hotels. Triveni Cabs brings extensive experience in managing transportation for palace weddings at City Palace, Samode, and Rambagh, along with corporate events at JKK and JECC. Experience royal treatment for your guests.',
+    description: 'Jaipur, the Pink City, offers unparalleled royal wedding experiences at majestic palaces and heritage hotels. Triveni Cabs™ brings extensive experience in managing transportation for palace weddings at City Palace, Samode, and Rambagh, along with corporate events at JKK and JECC. Experience royal treatment for your guests.',
     highlights: [
       'Palace weddings - City Palace, Samode Palace, Rambagh',
       'Heritage hotels - Taj Jai Mahal, Oberoi Rajvilas',
@@ -261,7 +261,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg',
     tagline: 'Tricity Event Excellence',
     subtitle: 'Serving Chandigarh-Mohali-Panchkula Events',
-    description: 'Chandigarh Tricity region hosts spectacular weddings and corporate events at premium venues across Chandigarh, Mohali, and Panchkula. Triveni Cabs provides seamless event transportation services covering all three cities, ensuring your guests travel comfortably between venues, hotels, and airports.',
+    description: 'Chandigarh Tricity region hosts spectacular weddings and corporate events at premium venues across Chandigarh, Mohali, and Panchkula. Triveni Cabs™ provides seamless event transportation services covering all three cities, ensuring your guests travel comfortably between venues, hotels, and airports.',
     highlights: [
       'Wedding venues across Tricity region',
       'Corporate events at CII Chandigarh, hotels',
@@ -291,7 +291,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg',
     tagline: 'Uttarakhand Event Gateway',
     subtitle: 'Hill Station Events & Retreats',
-    description: 'Dehradun and Mussoorie offer stunning hill station settings for destination weddings and corporate retreats. Triveni Cabs specializes in navigating mountain roads, providing reliable transportation for events at luxury resorts, heritage properties, and scenic outdoor venues in the Doon Valley.',
+    description: 'Dehradun and Mussoorie offer stunning hill station settings for destination weddings and corporate retreats. Triveni Cabs™ specializes in navigating mountain roads, providing reliable transportation for events at luxury resorts, heritage properties, and scenic outdoor venues in the Doon Valley.',
     highlights: [
       'Mussoorie resort weddings and events',
       'Corporate retreats at forest resorts',
@@ -321,7 +321,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Shimla/shimla_hero_section.jpg',
     tagline: 'Queen of Hills Event Destination',
     subtitle: 'Premium Hill Station Events',
-    description: 'Shimla, the Queen of Hills, offers a stunning colonial setting for destination weddings and corporate retreats. Triveni Cabs provides expert mountain road transportation with experienced drivers for events at luxury resorts, heritage hotels, and scenic outdoor venues.',
+    description: 'Shimla, the Queen of Hills, offers a stunning colonial setting for destination weddings and corporate retreats. Triveni Cabs™ provides expert mountain road transportation with experienced drivers for events at luxury resorts, heritage hotels, and scenic outdoor venues.',
     highlights: [
       'Destination weddings at Wildflower Hall, Oberoi Cecil',
       'Corporate retreats at hill resorts',
@@ -351,7 +351,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Manali/Manali_hero_section.jpg',
     tagline: 'Adventure Valley Event Hub',
     subtitle: 'Mountain Adventure & Celebration Events',
-    description: 'Manali and the Kullu Valley provide a spectacular mountain backdrop for destination weddings and adventure-themed corporate events. Triveni Cabs offers reliable mountain road transportation for events at scenic resorts, apple orchards, and riverside venues.',
+    description: 'Manali and the Kullu Valley provide a spectacular mountain backdrop for destination weddings and adventure-themed corporate events. Triveni Cabs™ offers reliable mountain road transportation for events at scenic resorts, apple orchards, and riverside venues.',
     highlights: [
       'Destination weddings at Span Resort, The Himalayan',
       'Adventure team building with rafting and trekking',
@@ -381,7 +381,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Amritsar/Amristar_hero_section.jpg',
     tagline: 'Holy City Grand Events',
     subtitle: 'Punjab Premier Event Destination',
-    description: 'Amritsar, home to the Golden Temple, hosts grand Punjabi weddings, religious congregations, and cultural events. Triveni Cabs provides professional event transportation covering all major venues, marriage palaces, and hotels across the city.',
+    description: 'Amritsar, home to the Golden Temple, hosts grand Punjabi weddings, religious congregations, and cultural events. Triveni Cabs™ provides professional event transportation covering all major venues, marriage palaces, and hotels across the city.',
     highlights: [
       'Grand Punjabi weddings at marriage palaces',
       'Religious event transport near Golden Temple',
@@ -411,7 +411,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg',
     tagline: 'Sacred City Event Logistics',
     subtitle: 'Spiritual & Religious Event Transport',
-    description: 'Haridwar, one of Hinduism holiest cities, hosts massive religious gatherings, spiritual retreats, and pilgrim events throughout the year. Triveni Cabs specializes in managing transportation for large religious congregations, corporate retreats at ashrams, and wedding events near the sacred Ganges.',
+    description: 'Haridwar, one of Hinduism holiest cities, hosts massive religious gatherings, spiritual retreats, and pilgrim events throughout the year. Triveni Cabs™ specializes in managing transportation for large religious congregations, corporate retreats at ashrams, and wedding events near the sacred Ganges.',
     highlights: [
       'Kumbh Mela and Ardh Kumbh transportation',
       'Religious congregation and satsang transport',
@@ -441,7 +441,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Lucknow/Lucknow_hero_section.jpg',
     tagline: 'City of Nawabs Event Excellence',
     subtitle: 'Premium Event Transport in UP Capital',
-    description: 'Lucknow, the City of Nawabs, hosts elegant weddings, major corporate conferences, and cultural events at world-class venues. Triveni Cabs offers comprehensive event transportation services across the city, covering luxury hotels, convention centers, and heritage venues.',
+    description: 'Lucknow, the City of Nawabs, hosts elegant weddings, major corporate conferences, and cultural events at world-class venues. Triveni Cabs™ offers comprehensive event transportation services across the city, covering luxury hotels, convention centers, and heritage venues.',
     highlights: [
       'Nawabi-style grand weddings at luxury venues',
       'Corporate conferences at Taj and Hyatt',
@@ -471,7 +471,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg',
     tagline: 'City of Lakes Royal Events',
     subtitle: 'India Premier Destination Wedding City',
-    description: 'Udaipur, the City of Lakes, is India most sought-after destination wedding location with its stunning palace hotels and lakeside venues. Triveni Cabs provides luxury event transportation for royal weddings at Oberoi Udaivilas, Taj Lake Palace, and other iconic venues.',
+    description: 'Udaipur, the City of Lakes, is India most sought-after destination wedding location with its stunning palace hotels and lakeside venues. Triveni Cabs™ provides luxury event transportation for royal weddings at Oberoi Udaivilas, Taj Lake Palace, and other iconic venues.',
     highlights: [
       'Royal weddings at Oberoi Udaivilas, Taj Lake Palace',
       'Lakeside events at Fateh Prakash Palace',
@@ -501,7 +501,7 @@ export const eventCities = {
     heroImage: '/images/sightseeing/Varanasi/varanasi_hero_section.jpg',
     tagline: 'Spiritual Capital Event Logistics',
     subtitle: 'Sacred City Event Transportation',
-    description: 'Varanasi, one of the world oldest living cities, hosts major religious gatherings, cultural festivals, and spiritual events year-round. Triveni Cabs provides specialized event transportation navigating the city unique layout, connecting ghats, temples, and modern venues.',
+    description: 'Varanasi, one of the world oldest living cities, hosts major religious gatherings, cultural festivals, and spiritual events year-round. Triveni Cabs™ provides specialized event transportation navigating the city unique layout, connecting ghats, temples, and modern venues.',
     highlights: [
       'Dev Deepawali and Ganga Mahotsav event logistics',
       'Religious congregation transport near ghats',
@@ -1060,7 +1060,7 @@ export const eventTypes = [
 
 // Direct-answer lead for AEO/GEO (voice + featured snippet). 40-55 words, fact-dense.
 export const eventDirectAnswer =
-  "Event transportation is a managed group-mobility service where one vendor coordinates all vehicles for an event. Triveni Cabs runs a 500+ vehicle fleet — luxury sedans, SUVs, 12–26 seater tempo travellers and 32–56 seater AC buses — across Delhi NCR, Jaipur, Chandigarh, Agra and Dehradun, with a dedicated coordinator, GPS tracking and 24/7 event-day support. Book 2–4 weeks ahead.";
+  "Event transportation is a managed group-mobility service where one vendor coordinates all vehicles for an event. Triveni Cabs™ runs a 500+ vehicle fleet — luxury sedans, SUVs, 12–26 seater tempo travellers and 32–56 seater AC buses — across Delhi NCR, Jaipur, Chandigarh, Agra and Dehradun, with a dedicated coordinator, GPS tracking and 24/7 event-day support. Book 2–4 weeks ahead.";
 
 // Fleet capacity table source (visible <table> + Product/Offer schema). Mirrors corporateFleet shape.
 export const eventFleetTable = [

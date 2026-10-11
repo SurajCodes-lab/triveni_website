@@ -23,6 +23,36 @@ body {
     @apply max-w-full;
   }
 
+  /* Long route names, phone numbers and generated content must wrap instead of
+     widening or disappearing behind the page-level overflow guard. */
+  main p,
+  main li,
+  main dd,
+  main a,
+  .blog-prose,
+  .blog-prose * {
+    overflow-wrap: anywhere;
+  }
+
+  .blog-prose img,
+  .blog-prose video,
+  .blog-prose iframe,
+  .blog-prose table {
+    max-width: 100%;
+  }
+
+  /* Above the small breakpoint a blog table keeps its grid and may scroll if
+     it is genuinely wide. Below it, the restacking rules further down take
+     over, so sideways scrolling is no longer the answer here. */
+  @media (min-width: 640px) {
+    .blog-prose table {
+      display: block;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
   /* Improve mobile text readability */
   body {
     -webkit-font-smoothing: antialiased;
@@ -485,7 +515,308 @@ body {
   font-family: var(--font-display), Georgia, 'Times New Roman', serif;
   letter-spacing: 0.005em;
 }
+
+/* One-way route motion lives globally so the 180-page template can remain a
+   Server Component; only the FAQ and tracked anchors hydrate. */
+@keyframes route-shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes route-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes route-pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, .3); } 50% { box-shadow: 0 0 50px rgba(245, 158, 11, .6); } }
+@keyframes route-arrow-slide { 0%, 100% { transform: translateX(-8px); opacity: .4; } 50% { transform: translateX(8px); opacity: 1; } }
+@keyframes route-gradient-x { 0%, 100% { background-position: 0 50%; } 50% { background-position: 100% 50%; } }
+.animate-shimmer { background-size: 200% 100%; animation: route-shimmer 3s linear infinite; }
+.animate-float { animation: route-float 4s ease-in-out infinite; }
+.animate-pulse-glow { animation: route-pulse-glow 3s ease-in-out infinite; }
+.animate-arrow-slide { animation: route-arrow-slide 2s ease-in-out infinite; }
+.animate-gradient-x { background-size: 200% 200%; animation: route-gradient-x 6s ease infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer, .animate-float, .animate-pulse-glow, .animate-arrow-slide, .animate-gradient-x { animation: none; }
+}
 .blog-prose h2 {
   padding-bottom: 0.4rem;
   border-bottom: 1px solid rgba(250, 207, 45, 0.4);
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive data tables                                             */
+/* ------------------------------------------------------------------ */
+/*
+ * A comparison table with five or six columns cannot fit a 360px screen, and
+ * the previous answer was to let it scroll sideways inside its container. That
+ * keeps the page from overflowing but it reads badly: the header row scrolls
+ * out of view, so a reader sees numbers with no idea which column they belong
+ * to, and most people never discover there is more to the right.
+ *
+ * The principle: below the small breakpoint a table should restack, not scroll.
+ * Each row becomes its own block and each value sits beside its column label,
+ * so nothing is hidden and nothing needs a sideways swipe.
+ *
+ * The markup stays a real <table> with <thead> and <th scope="row">, because
+ * that is what makes it eligible for a table snippet and what lets an assistant
+ * pair a number with the thing it describes. Only the presentation changes.
+ */
+@media (max-width: 639px) {
+  /* Every table restacks, not just the ones a component remembered to opt in.
+     224 of this site's tables live inside blog HTML strings and were never
+     going to get a class added by hand, so the rule is the default and
+     .rt-scroll is the opt-out for the rare table that genuinely needs to keep
+     its grid (a wide timetable, say). */
+  table:not(.rt-scroll) {
+    min-width: 0 !important;
+    display: block;
+  }
+
+  /* The header row's labels are re-shown per cell via data-label below. */
+  table:not(.rt-scroll) thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  table:not(.rt-scroll) tbody,
+  table:not(.rt-scroll) tr {
+    display: block;
+    width: 100%;
+  }
+
+  /* Card chrome is mixed from the inherited text colour, so the same rule works
+     on a light table and on a dark glass one without either knowing about the
+     other. This is what replaced the old .rt-stack-dark pair of overrides. */
+  table:not(.rt-scroll) tr {
+    margin-bottom: 0.75rem;
+    border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  table:not(.rt-scroll) tr:last-child {
+    margin-bottom: 0;
+  }
+
+  /* The first cell is the row header — it becomes the card's title. */
+  table:not(.rt-scroll) tr > :first-child {
+    display: block;
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    background: color-mix(in srgb, currentColor 6%, transparent);
+    font-weight: 700;
+  }
+
+  table:not(.rt-scroll) td {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.5rem 0.875rem;
+    text-align: left !important;
+  }
+
+  table:not(.rt-scroll) td + td {
+    border-top: 1px solid color-mix(in srgb, currentColor 11%, transparent);
+  }
+
+  /* The column label, carried on the cell so it stays beside its value. */
+  table:not(.rt-scroll) td::before {
+    content: attr(data-label);
+    flex: 0 0 auto;
+    max-width: 55%;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    opacity: 0.6;
+  }
+
+  /* A header row written without <thead> is hidden the same way a real one is,
+     once the labelling script has identified it. */
+  table:not(.rt-scroll) tr[data-rt-headrow] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  /* An empty label would leave a stray gap. */
+  table:not(.rt-scroll) td:not([data-label])::before {
+    content: none;
+  }
+
+  /* A table that opts out still must not drag the page sideways with it. */
+  table.rt-scroll {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+}
+
+/* The table's minimum width applies from the small breakpoint upwards only; on
+   narrower screens the rows restack instead. Only tables that asked for a
+   minimum get one — a global min-width would stretch narrow two-column tables
+   for no reason. */
+@media (min-width: 640px) {
+  .rt-stack {
+    min-width: var(--rt-min-width, 420px);
+  }
+}
+
+
+/* ===========================================================================
+ * Typographic and surface quality
+ * ===========================================================================
+ *
+ * The layout audit counted what each page family spends its design budget on.
+ * The one-way-cab pages carry 120 gradient backgrounds, 13 animations and 48
+ * large padding blocks each; the corridor pages 50 gradients and 60 absolutely
+ * positioned ornaments. Meanwhile the typography was doing no work at all —
+ * default tracking on 48px headings, proportional figures in fare tables,
+ * paragraphs running the full width of a desktop container.
+ *
+ * That is the wrong way round. Decoration layered on top of unconsidered type
+ * reads as busy, not expensive. The rules below spend the budget on the things
+ * that actually carry a premium impression, and they are deliberately global:
+ * one stylesheet change improves all 3,833 pages, where chasing gradients
+ * component by component would not.
+ */
+
+/* --- Figures ---------------------------------------------------------------
+ * This site is mostly numbers: fares, distances, durations, toll charges. In a
+ * proportional font the digit 1 is narrower than the rest, so a column of
+ * prices never lines up and the decimal point wanders. Tabular figures make
+ * every digit the same width, which is what makes a price list look typeset
+ * rather than typed. It is the single highest-value change in this block. */
+table,
+.tabular,
+[class*='price'],
+[class*='fare'],
+[class*='Price'],
+[class*='Fare'] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* --- Optical tracking -----------------------------------------------------
+ * Letter-spacing that looks right at 16px is too loose at 48px: as type grows,
+ * the space between letters grows with it and large headings start to look
+ * spaced out. Typesetters tighten as size increases. Tailwind's heading classes
+ * set size but not tracking, so this applies the correction by rendered size. */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.011em;
+  text-wrap: balance;
+}
+
+h1 {
+  letter-spacing: -0.022em;
+}
+
+/* text-wrap: balance on a long heading is expensive and only helps short ones;
+ * pretty is the right setting for body copy, where it prevents single-word
+ * last lines without reflowing the whole paragraph. */
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
+/* --- Measure --------------------------------------------------------------
+ * A line of text longer than roughly 75 characters is measurably harder to
+ * read: the eye loses its place on the return sweep. Prose inside the guide
+ * and travel-content blocks had no cap, so on a desktop container it ran to
+ * about 110 characters. Tables, lists and grids are exempt — they have their
+ * own alignment logic and a width cap would break them. */
+.blog-prose > p,
+.prose-measure p {
+  max-width: 72ch;
+}
+
+/* --- Elevation ------------------------------------------------------------
+ * Premium surfaces read as premium because the light is consistent: shadows
+ * are soft, tinted toward the page rather than pure black, and never deep.
+ * These variables give the components one ramp to draw from instead of each
+ * inventing its own. */
+:root {
+  --elev-1: 0 1px 2px rgb(15 23 42 / 0.04), 0 1px 3px rgb(15 23 42 / 0.06);
+  --elev-2: 0 2px 4px rgb(15 23 42 / 0.04), 0 4px 12px rgb(15 23 42 / 0.07);
+  --elev-3: 0 4px 8px rgb(15 23 42 / 0.05), 0 12px 28px rgb(15 23 42 / 0.09);
+  --hairline: 1px solid rgb(15 23 42 / 0.08);
+}
+
+.elev-1 { box-shadow: var(--elev-1); }
+.elev-2 { box-shadow: var(--elev-2); }
+.elev-3 { box-shadow: var(--elev-3); }
+.hairline { border: var(--hairline); }
+
+/* --- Motion ---------------------------------------------------------------
+ * Thirteen simultaneous animations on a page is not a design decision anyone
+ * made; it accumulated. Respecting the operating-system setting removes them
+ * for the people who have asked for that, and costs nothing for everyone else.
+ * The exception list keeps genuine progress indicators spinning, because a
+ * frozen loading spinner reads as a broken page. */
+@media (prefers-reduced-motion: reduce) {
+  *:not([class*='spin']),
+  *:not([class*='spin'])::before,
+  *:not([class*='spin'])::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Touch targets --------------------------------------------------------
+ * The guidance everyone quotes is 44px, and it is about error rates, not
+ * aesthetics: a target smaller than a fingertip gets mis-tapped. Inline links
+ * inside a sentence are excluded — padding them out would break the line. */
+@media (pointer: coarse) {
+  button,
+  [role='button'],
+  a[class*='rounded'],
+  a[class*='btn'],
+  input[type='submit'] {
+    min-height: 44px;
+  }
+}
+
+
+/* --- Frosted surfaces -----------------------------------------------------
+ * backdrop-filter is the most expensive thing on these pages: the browser has
+ * to sample and blur everything behind the element, every frame it changes.
+ * The one-way-cab template alone stacks 45 of them, most at blur-xl or
+ * blur-2xl, and they sit on cards that scroll.
+ *
+ * The effect is worth keeping — it is what stops a translucent card from
+ * disappearing into a photographic background — but not at that radius. The
+ * visual difference between a 24px and an 8px blur behind a card is almost
+ * nothing; the cost difference on a mid-range phone is not. So the radius is
+ * capped on the devices that pay for it, rather than the effect being removed
+ * and every translucent surface left illegible.
+ */
+@media (max-width: 1023px) {
+  [class*='backdrop-blur-xl'],
+  [class*='backdrop-blur-2xl'],
+  [class*='backdrop-blur-3xl'] {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* A phone that has told us it is short on resources gets the flat surface. The
+ * cards keep their own background colour and border, so nothing becomes
+ * unreadable — they simply stop sampling the layer behind them. */
+@media (max-width: 639px) and (prefers-reduced-transparency: reduce) {
+  [class*='backdrop-blur'] {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }

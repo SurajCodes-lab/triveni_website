@@ -1,10 +1,11 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 import { Phone, MapPin, Shield, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Heart, Camera, Hotel, Compass, HelpCircle, Gift, Sparkles } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { filterClientLinks } from '@/lib/seo/client-route-exists';
 
 /* Verified destination hero photos (public/images/sightseeing/<City>/) */
 const HERO_IMAGES = {
@@ -89,7 +90,7 @@ export default function HoneymoonTripClient({ data }) {
             <span className="mt-2 block text-xl font-semibold text-white/85 sm:text-2xl md:text-3xl lg:text-4xl">Honeymoon by Car</span>
           </h1>
           <p className="speakable-lead mb-4 max-w-3xl text-lg leading-relaxed text-rose-50/85 sm:text-xl">
-            A {data.destination} honeymoon by car from Delhi starts at Rs {data.price.sedan.toLocaleString()} for a private sedan, all-inclusive of toll, parking and driver allowance. Triveni Cabs offers a complimentary decorated car option, experienced couple-friendly drivers and scenic romantic stops for an intimate getaway.
+            A {data.destination} honeymoon by car from Delhi starts at Rs {data.price.sedan.toLocaleString()} for a private sedan, all-inclusive of toll, parking and driver allowance. Triveni Cabs™ offers a complimentary decorated car option, experienced couple-friendly drivers and scenic romantic stops for an intimate getaway.
           </p>
           <p className="mb-10 max-w-3xl text-base leading-relaxed text-rose-50/65">
             {data.tagline}. Private {data.vehicle.type.toLowerCase()} ride with decorated car option and scenic stops.
@@ -355,7 +356,7 @@ export default function HoneymoonTripClient({ data }) {
             ))}
           </div>
 
-          <div className="mt-16 rounded-3xl border border-[#FACF2D]/50 bg-[#FACF2D]/10 p-10 text-center sm:p-14">
+          <div className="mt-10 sm:mt-16 rounded-3xl border border-[#FACF2D]/50 bg-[#FACF2D]/10 p-10 text-center sm:p-14">
             <span className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-900">
               <Calendar className="h-7 w-7 text-[#FACF2D]" />
             </span>
@@ -431,7 +432,9 @@ export default function HoneymoonTripClient({ data }) {
                 { href: '/tour-package', label: 'Tour Packages from Delhi' },
                 { href: '/outstation-cabs', label: 'Outstation Cab Service' },
               ];
-              return links.map((link, i) => (
+              // Week 48: only the synthesised links whose page was built
+              // ("Shimla & Manali" / "Jaipur & Udaipur" have no hub, guide or wedding page).
+              return filterClientLinks(links).map((link, i) => (
                 <Link key={i} href={link.href} className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-colors hover:border-rose-400/30 hover:bg-white/10">
                   <ArrowRight className="h-4 w-4 flex-shrink-0 text-rose-300 transition-transform group-hover:translate-x-1" />
                   <span className="text-sm font-medium text-rose-50/85 transition-colors group-hover:text-white">{link.label}</span>
@@ -511,10 +514,13 @@ function HoneymoonHubPage({ data, phoneNumber, whatsappLink }) {
             Honeymoon Road Trips
           </span>
 
-          <h2 className="speakable-headline font-display-serif mb-6 max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-6xl">
+          {/* The hub view is its own page (/honeymoon-trip-by-car) and this is
+              its main headline, so it is the h1. It was an h2, which left that
+              page with no h1 at all — the per-destination branch above has one. */}
+          <h1 className="speakable-headline font-display-serif mb-6 max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-6xl">
             <span className="text-gold-foil">Honeymoon Trip by Car</span>
             <span className="mt-2 block text-2xl font-semibold text-white/85 sm:text-3xl">from Delhi</span>
-          </h2>
+          </h1>
           <p className="speakable-lead mb-10 max-w-3xl text-lg leading-relaxed text-rose-50/85 sm:text-xl">
             {data.heroDescription}
           </p>

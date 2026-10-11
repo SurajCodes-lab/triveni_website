@@ -33,11 +33,11 @@ export const vehicleHirePages = {
     ],
     description: `The Toyota Innova Crysta is India's most trusted premium MPV for outstation travel and family trips. With 7 spacious seats, powerful 2.7L diesel engine, and legendary reliability, the Innova Crysta delivers unmatched comfort on long highway drives.
 
-Triveni Cabs offers Innova Crysta rentals with experienced, verified drivers across 50+ cities in India. Whether you need an airport transfer, a weekend getaway, or a multi-day outstation tour, our well-maintained Innova Crysta fleet ensures a premium travel experience at competitive rates.
+Triveni Cabs™ offers Innova Crysta rentals with experienced, verified drivers across 50+ cities in India. Whether you need an airport transfer, a weekend getaway, or a multi-day outstation tour, our well-maintained Innova Crysta fleet ensures a premium travel experience at competitive rates.
 
 The Innova Crysta features captain seats in the second row, ample boot space for family luggage, powerful AC for Indian summers, and a smooth ride quality that makes even 500 km journeys comfortable. It is the top choice for families, corporate executives, and anyone who values space and reliability.
 
-Book your Innova Crysta rental with Triveni Cabs starting at just \u20B918/km for outstation trips. All bookings include a professional driver, fuel, toll taxes information, and 24/7 roadside assistance.`,
+Book your Innova Crysta rental with Triveni Cabs™ starting at just \u20B918/km for outstation trips. All bookings include a professional driver, fuel, toll taxes information, and 24/7 roadside assistance.`,
     faqs: [
       { question: "What is the per km rate for Innova Crysta rental?", answer: "The Innova Crysta rental rate starts at \u20B918/km for outstation trips and \u20B920/km for local city travel. A minimum of 300 km/day applies for outstation bookings." },
       { question: "How many passengers can sit in an Innova Crysta?", answer: "The Toyota Innova Crysta comfortably seats 7 passengers including the driver. The second row has captain seats and the third row has a bench seat." },
@@ -46,7 +46,7 @@ Book your Innova Crysta rental with Triveni Cabs starting at just \u20B918/km fo
       { question: "Can I book an Innova Crysta for airport pickup?", answer: "Absolutely. We offer Innova Crysta airport transfers from all major airports including Delhi IGI, Jaipur, Lucknow, and more. The driver will be waiting at the arrival gate with a name board." },
       { question: "What is included in the Innova Crysta rental price?", answer: "The rental price includes the vehicle, professional driver, fuel cost calculation, and 24/7 support. Toll taxes and parking are typically paid extra by the passenger." },
       { question: "Is the Innova Crysta available in automatic transmission?", answer: "Yes, we offer both manual and automatic Innova Crysta variants. Please mention your preference while booking so we can confirm availability." },
-      { question: "How do I book an Innova Crysta with Triveni Cabs?", answer: "You can book by calling us at 7668570551, sending a WhatsApp message, or filling out the booking form on our website. Instant confirmation is provided for most routes." }
+      { question: "How do I book an Innova Crysta with Triveni Cabs™?", answer: "You can book by calling us at 7668570551, sending a WhatsApp message, or filling out the booking form on our website. Instant confirmation is provided for most routes." }
     ],
     comparisons: ["ertiga", "fortuner"]
   },
@@ -81,11 +81,11 @@ Book your Innova Crysta rental with Triveni Cabs starting at just \u20B918/km fo
     ],
     description: `The Maruti Ertiga is India's best-selling compact MPV, perfect for budget-conscious families who need a spacious yet affordable vehicle for travel. With 6 comfortable seats, excellent fuel economy, and Maruti's legendary reliability, the Ertiga offers outstanding value for money.
 
-Triveni Cabs provides well-maintained Ertiga rentals with professional drivers for local and outstation trips. The Ertiga is ideal for small families, couples with children, and budget travelers who want more space than a sedan without paying premium SUV rates.
+Triveni Cabs™ provides well-maintained Ertiga rentals with professional drivers for local and outstation trips. The Ertiga is ideal for small families, couples with children, and budget travelers who want more space than a sedan without paying premium SUV rates.
 
 The CNG variant of the Ertiga offers even better running costs, making it one of the most economical choices for long-distance travel. The compact dimensions make it easy to navigate city traffic and narrow hill roads, while the 1.5L engine provides adequate power for highway cruising.
 
-Starting at just \u20B915/km for outstation trips, the Maruti Ertiga is the smartest choice for travelers who want space, comfort, and value. Book with Triveni Cabs for a hassle-free experience.`,
+Starting at just \u20B915/km for outstation trips, the Maruti Ertiga is the smartest choice for travelers who want space, comfort, and value. Book with Triveni Cabs™ for a hassle-free experience.`,
     faqs: [
       { question: "What is the rental rate for Maruti Ertiga?", answer: "The Ertiga rental starts at \u20B915/km for outstation and \u20B917/km for local trips. Minimum 300 km/day applies for outstation bookings." },
       { question: "How many people can travel in an Ertiga?", answer: "The Maruti Ertiga seats 6 passengers comfortably (including driver). It has 3 rows with 2+3+2 seating configuration." },
@@ -118,7 +118,7 @@ Starting at just \u20B915/km for outstation trips, the Maruti Ertiga is the smar
     specs: { engine: "1.2L Petrol / CNG", power: "89 BHP", mileage: "22-28 km/l", bootSpace: "378L" },
     popularRoutes: [
       { route: "Delhi to Agra", price: "\u20B92,530", distance: "230 km" },
-      { route: "Delhi to Jaipur", price: "\u20B93,080", distance: "280 km" },
+      { route: "Delhi to Jaipur", price: "\u20B93,300", distance: "280 km" },
       { route: "Delhi to Haridwar", price: "\u20B92,640", distance: "240 km" },
       { route: "Delhi to Mathura", price: "\u20B91,870", distance: "170 km" },
       { route: "Delhi to Nainital", price: "\u20B93,410", distance: "310 km" },
@@ -128,11 +128,11 @@ Starting at just \u20B915/km for outstation trips, the Maruti Ertiga is the smar
     ],
     description: `The Maruti Swift Dzire is India's most popular sedan for outstation travel and the most economical choice for long-distance cab bookings. With its excellent fuel efficiency of 22-28 km/l, comfortable 4-seater cabin, and surprisingly spacious 378L boot, the Dzire delivers more than its compact size suggests.
 
-Triveni Cabs offers well-maintained Swift Dzire rentals with experienced drivers at just \u20B911/km for outstation trips. The Dzire is the go-to choice for couples, solo business travelers, and budget-conscious passengers who want a reliable, comfortable ride without breaking the bank.
+Triveni Cabs™ offers well-maintained Swift Dzire rentals with experienced drivers at just \u20B911/km for outstation trips. The Dzire is the go-to choice for couples, solo business travelers, and budget-conscious passengers who want a reliable, comfortable ride without breaking the bank.
 
 The Swift Dzire handles both city traffic and highway cruising with equal ease. The CNG variant further reduces running costs, making it the most affordable way to travel between cities. Despite being a compact sedan, its boot can easily accommodate 2 large suitcases, making it practical for most travel needs.
 
-Whether you are heading to Agra for the Taj Mahal, Jaipur for the Pink City, or Haridwar for a pilgrimage, the Swift Dzire with Triveni Cabs ensures a smooth, affordable, and comfortable journey.`,
+Whether you are heading to Agra for the Taj Mahal, Jaipur for the Pink City, or Haridwar for a pilgrimage, the Swift Dzire with Triveni Cabs™ ensures a smooth, affordable, and comfortable journey.`,
     faqs: [
       { question: "What is the per km rate for Swift Dzire rental?", answer: "The Swift Dzire rental starts at \u20B911/km for outstation trips and \u20B913/km for local city travel. This is the most affordable vehicle option we offer." },
       { question: "How many passengers can sit in a Swift Dzire?", answer: "The Swift Dzire comfortably seats 4 passengers (including driver). It is best suited for 2-3 passengers with luggage." },
@@ -176,11 +176,11 @@ Whether you are heading to Agra for the Taj Mahal, Jaipur for the Pink City, or 
     ],
     description: `The Toyota Fortuner is the flagship SUV for premium travel in India. With its commanding 201 BHP diesel engine, 4x4 capability, and luxurious cabin, the Fortuner is the vehicle of choice for VIPs, corporate executives, and travelers who demand the very best.
 
-Triveni Cabs offers Toyota Fortuner rentals with professional chauffeurs for those who want to travel in style and authority. The Fortuner effortlessly handles everything from smooth expressways to challenging hill station roads, making it the ultimate all-terrain luxury vehicle.
+Triveni Cabs™ offers Toyota Fortuner rentals with professional chauffeurs for those who want to travel in style and authority. The Fortuner effortlessly handles everything from smooth expressways to challenging hill station roads, making it the ultimate all-terrain luxury vehicle.
 
 With leather seats, climate control, a powerful sound system, and ample space for 7 passengers, the Fortuner turns every journey into a premium experience. The 400L boot space easily accommodates luggage for extended trips, and the elevated seating position offers a commanding view of the road.
 
-Book a Toyota Fortuner with Triveni Cabs at \u20B925/km for outstation trips. Ideal for Manali, Shimla, Leh, and other destinations where you need power, comfort, and prestige.`,
+Book a Toyota Fortuner with Triveni Cabs™ at \u20B925/km for outstation trips. Ideal for Manali, Shimla, Leh, and other destinations where you need power, comfort, and prestige.`,
     faqs: [
       { question: "What is the rental rate for Toyota Fortuner?", answer: "The Fortuner rental rate is \u20B925/km for outstation and \u20B928/km for local travel. A minimum of 300 km/day applies for outstation bookings." },
       { question: "Is the Fortuner good for hill stations?", answer: "The Fortuner is arguably the best rental vehicle for hill stations in India. Its powerful diesel engine, high ground clearance, and available 4x4 make it ideal for mountain roads." },
@@ -223,11 +223,11 @@ Book a Toyota Fortuner with Triveni Cabs at \u20B925/km for outstation trips. Id
     ],
     description: `The Force Urbania is India's newest premium group travel vehicle, designed to bridge the gap between a tempo traveller and a luxury bus. With 12 spacious seats, modern styling, and car-like ride quality, the Urbania is revolutionizing how groups travel in India.
 
-Triveni Cabs is among the first operators to offer the Force Urbania for rental. This vehicle features individual pushback seats, powerful AC, large panoramic windows, and a quiet cabin that makes it significantly more comfortable than traditional tempo travellers.
+Triveni Cabs™ is among the first operators to offer the Force Urbania for rental. This vehicle features individual pushback seats, powerful AC, large panoramic windows, and a quiet cabin that makes it significantly more comfortable than traditional tempo travellers.
 
 The Urbania is perfect for corporate teams, extended families, and travel groups of 10-12 who want premium comfort without booking an entire bus. Its modern design and smooth ride quality make it ideal for highway travel, and the powerful diesel engine handles hill stations with ease.
 
-Book the Force Urbania with Triveni Cabs at \u20B928/km and experience the future of group travel. All bookings include an experienced driver, fuel, and 24/7 support.`,
+Book the Force Urbania with Triveni Cabs™ at \u20B928/km and experience the future of group travel. All bookings include an experienced driver, fuel, and 24/7 support.`,
     faqs: [
       { question: "What is the seating capacity of Force Urbania?", answer: "The Force Urbania seats 12 passengers comfortably with individual pushback seats. It is designed for premium group travel with more space per seat than a standard tempo traveller." },
       { question: "How is the Urbania different from a tempo traveller?", answer: "The Urbania offers car-like ride quality, better noise insulation, modern styling, and individual pushback seats. It feels more like a luxury van than a traditional tempo traveller." },
@@ -269,11 +269,11 @@ Book the Force Urbania with Triveni Cabs at \u20B928/km and experience the futur
     ],
     description: `The Mahindra XUV700 is India's most technologically advanced SUV, packed with features like ADAS (Advanced Driver Assistance System), a panoramic sunroof, Alexa voice control, and connected car technology. With 182 BHP on tap, it delivers both power and sophistication.
 
-Triveni Cabs offers the XUV700 for travelers who want the latest in automotive technology combined with the comfort of a full-size SUV. The XUV700 sits between the Innova Crysta and Fortuner in our fleet, offering premium features at a competitive price point.
+Triveni Cabs™ offers the XUV700 for travelers who want the latest in automotive technology combined with the comfort of a full-size SUV. The XUV700 sits between the Innova Crysta and Fortuner in our fleet, offering premium features at a competitive price point.
 
 The ADAS safety suite includes adaptive cruise control, lane keep assist, and automatic emergency braking, making long highway drives safer and more relaxed. The dual-zone climate control, wireless charging, and premium sound system ensure all passengers enjoy a first-class experience.
 
-Book the Mahindra XUV700 with Triveni Cabs at \u20B922/km for outstation trips and experience the future of SUV travel in India.`,
+Book the Mahindra XUV700 with Triveni Cabs™ at \u20B922/km for outstation trips and experience the future of SUV travel in India.`,
     faqs: [
       { question: "What is the per km rate for XUV700 rental?", answer: "The XUV700 rental starts at \u20B922/km for outstation trips and \u20B925/km for local travel with a minimum of 300 km/day for outstation." },
       { question: "How many passengers can the XUV700 seat?", answer: "The XUV700 seats 7 passengers including the driver with a 2+3+2 layout. The second row is spacious with captain seats on higher variants." },
@@ -316,11 +316,11 @@ Book the Mahindra XUV700 with Triveni Cabs at \u20B922/km for outstation trips a
     ],
     description: `The Maharaja Tempo Traveller is the premium choice for group travel in India. Featuring luxury pushback seats, LED TV entertainment, powerful AC, and a lavishly appointed interior, the Maharaja variant transforms group travel from ordinary to extraordinary.
 
-Triveni Cabs offers Maharaja Tempo Travellers in 12-seater and 17-seater configurations, both featuring VIP-level amenities. The pushback seats recline significantly for maximum comfort on long journeys, while the LED TV keeps passengers entertained during travel.
+Triveni Cabs™ offers Maharaja Tempo Travellers in 12-seater and 17-seater configurations, both featuring VIP-level amenities. The pushback seats recline significantly for maximum comfort on long journeys, while the LED TV keeps passengers entertained during travel.
 
 The Maharaja Tempo is the preferred choice for Char Dham Yatra, Do Dham pilgrimages, Rajasthan tours, and wedding guest transfers. The spacious interior, roof-mounted luggage carrier, and ice box make multi-day trips comfortable and convenient.
 
-Book a Maharaja Tempo Traveller with Triveni Cabs starting at \u20B931/km. Available in 12 and 17-seater variants with professional drivers experienced in hill and highway driving.`,
+Book a Maharaja Tempo Traveller with Triveni Cabs™ starting at \u20B931/km. Available in 12 and 17-seater variants with professional drivers experienced in hill and highway driving.`,
     faqs: [
       { question: "What is the difference between Maharaja and regular tempo traveller?", answer: "The Maharaja variant features luxury pushback seats with more recline, LED TV, premium interior, curtains, ice box, and shoe rack. Regular tempo travellers have standard fixed seats and basic amenities." },
       { question: "How many seats are available in a Maharaja Tempo?", answer: "We offer Maharaja Tempo Travellers in 12-seater and 17-seater variants. The 12-seater offers more space per passenger." },
@@ -363,11 +363,11 @@ Book a Maharaja Tempo Traveller with Triveni Cabs starting at \u20B931/km. Avail
     ],
     description: `The AC Deluxe Tempo Traveller is the most popular and affordable option for group travel in India. With comfortable standard seats, reliable AC, and ample luggage space, it provides excellent value for groups of 10-17 passengers traveling together.
 
-Triveni Cabs offers AC Deluxe Tempo Travellers in 12-seater and 17-seater variants, perfect for school excursions, office outings, pilgrimages, and family group trips. The AC Deluxe variant offers all essential comforts at a lower price point compared to the Maharaja variant.
+Triveni Cabs™ offers AC Deluxe Tempo Travellers in 12-seater and 17-seater variants, perfect for school excursions, office outings, pilgrimages, and family group trips. The AC Deluxe variant offers all essential comforts at a lower price point compared to the Maharaja variant.
 
 The vehicle comes equipped with a music system, curtains for privacy, USB charging points, and a first aid kit. The roof carrier provides ample space for group luggage. Our experienced drivers are well-versed in both highway and hill station routes.
 
-Book an AC Deluxe Tempo Traveller with Triveni Cabs at just \u20B925/km for outstation trips. The most cost-effective way to travel as a group.`,
+Book an AC Deluxe Tempo Traveller with Triveni Cabs™ at just \u20B925/km for outstation trips. The most cost-effective way to travel as a group.`,
     faqs: [
       { question: "What is the difference between AC Deluxe and Maharaja Tempo?", answer: "The AC Deluxe has standard comfortable seats while the Maharaja has luxury pushback seats, LED TV, and premium interiors. The AC Deluxe is \u20B924/km vs Maharaja at \u20B926/km." },
       { question: "How many people can travel in an AC Deluxe Tempo?", answer: "We offer 12-seater and 17-seater AC Deluxe Tempo Travellers. The 17-seater is the most popular choice for large groups." },
@@ -409,11 +409,11 @@ Book an AC Deluxe Tempo Traveller with Triveni Cabs at just \u20B925/km for outs
     ],
     description: `The 20-Seater Mini Bus fills the sweet spot between tempo travellers and full-size buses, offering the ideal solution for medium-sized groups of 15-20 passengers. With comfortable pushback seats, dedicated luggage hold, and powerful AC, it provides bus-level amenities in a more maneuverable package.
 
-Triveni Cabs offers 20-seater mini bus rentals for corporate outings, wedding guest transfers, school trips, and pilgrimage tours. The mini bus is easier to navigate on narrow roads compared to full-size coaches, making it suitable for hill station destinations too.
+Triveni Cabs™ offers 20-seater mini bus rentals for corporate outings, wedding guest transfers, school trips, and pilgrimage tours. The mini bus is easier to navigate on narrow roads compared to full-size coaches, making it suitable for hill station destinations too.
 
 The under-floor luggage hold means no compromise on passenger space, and the PA system is perfect for tour guides or group announcements. All our mini buses are regularly serviced and sanitized.
 
-Book a 20-seater mini bus with Triveni Cabs at \u20B930/km for outstation trips. The best choice when your group is too large for a tempo traveller but does not need a full 45-seater bus.`,
+Book a 20-seater mini bus with Triveni Cabs™ at \u20B930/km for outstation trips. The best choice when your group is too large for a tempo traveller but does not need a full 45-seater bus.`,
     faqs: [
       { question: "What is the per km rate for a 20-seater mini bus?", answer: "The 20-seater mini bus rental is \u20B930/km for outstation with a minimum of 300 km/day. Local rates are \u20B935/km." },
       { question: "Is the mini bus suitable for hill stations?", answer: "Yes, the 20-seater mini bus is more maneuverable than larger buses and can handle most hill station roads. However, for very narrow mountain roads, a tempo traveller may be more suitable." },
@@ -455,11 +455,11 @@ Book a 20-seater mini bus with Triveni Cabs at \u20B930/km for outstation trips.
     ],
     description: `The 45-Seater Volvo Bus is the ultimate in luxury group transportation. Featuring Volvo recliner seats, LED TV entertainment, onboard washroom, Wi-Fi connectivity, and the legendary Volvo ride quality, this bus transforms group travel into a premium experience.
 
-Triveni Cabs offers 45-seater Volvo bus rentals for corporate events, destination weddings, large group tours, and conference shuttles. The Volvo recliner seats ensure passenger comfort on even the longest journeys, while the onboard amenities keep everyone entertained and connected.
+Triveni Cabs™ offers 45-seater Volvo bus rentals for corporate events, destination weddings, large group tours, and conference shuttles. The Volvo recliner seats ensure passenger comfort on even the longest journeys, while the onboard amenities keep everyone entertained and connected.
 
 The massive under-floor cargo hold can accommodate luggage for all 45 passengers, and the air-ride suspension delivers a smooth, vibration-free ride. The powerful 330 BHP engine handles expressways and even gradual hill routes with ease.
 
-Book a 45-seater Volvo Bus with Triveni Cabs at \u20B945/km. Perfect for groups of 30-45 passengers who demand premium comfort on their journey.`,
+Book a 45-seater Volvo Bus with Triveni Cabs™ at \u20B945/km. Perfect for groups of 30-45 passengers who demand premium comfort on their journey.`,
     faqs: [
       { question: "What is the rental rate for a 45-seater Volvo Bus?", answer: "The 45-seater Volvo Bus rental is \u20B945/km for outstation with a minimum of 300 km/day. Local rates are \u20B950/km." },
       { question: "Does the Volvo Bus have a washroom?", answer: "Yes, our 45-seater Volvo Buses come equipped with an onboard washroom, which is especially convenient for long-distance travel." },
@@ -499,13 +499,13 @@ Book a 45-seater Volvo Bus with Triveni Cabs at \u20B945/km. Perfect for groups 
       { route: "Delhi to Shimla", price: "\u20B917,500", distance: "350 km" },
       { route: "Delhi to Dehradun", price: "\u20B912,500", distance: "250 km" }
     ],
-    description: `Experience the pinnacle of automotive luxury with Triveni Cabs' premium fleet of BMW, Audi, and Mercedes-Benz vehicles. Our luxury car rental service brings world-class chauffeur-driven travel to India's discerning travelers, from corporate leaders to celebrities.
+    description: `Experience the pinnacle of automotive luxury with Triveni Cabs™' premium fleet of BMW, Audi, and Mercedes-Benz vehicles. Our luxury car rental service brings world-class chauffeur-driven travel to India's discerning travelers, from corporate leaders to celebrities.
 
 Choose from models like the BMW 5 Series, Audi A6, Mercedes-Benz E-Class, BMW X5, Audi Q7, and Mercedes GLS for the ultimate travel experience. Every vehicle in our luxury fleet is immaculately maintained, and our chauffeurs are trained to deliver five-star service.
 
 The luxury car experience includes leather interiors, premium sound systems, ambient lighting, climate control, and in some models, massage seats and Wi-Fi connectivity. These vehicles make a statement at every destination, whether it is a business meeting, wedding venue, or airport.
 
-Book a luxury car with Triveni Cabs starting at \u20B950/km. We offer BMW, Audi, and Mercedes for hire with professional chauffeurs. Advance booking recommended for availability.`,
+Book a luxury car with Triveni Cabs™ starting at \u20B950/km. We offer BMW, Audi, and Mercedes for hire with professional chauffeurs. Advance booking recommended for availability.`,
     faqs: [
       { question: "Which luxury car brands do you offer?", answer: "We offer BMW (3 Series, 5 Series, 7 Series, X5), Audi (A4, A6, Q7), and Mercedes-Benz (C-Class, E-Class, S-Class, GLS) for rental with professional chauffeurs." },
       { question: "What is the rental rate for luxury cars?", answer: "Luxury car rental starts at \u20B950/km for outstation and \u20B960/km for local travel. Rates vary by specific model. Contact us for exact pricing for your preferred model." },
@@ -544,13 +544,13 @@ Book a luxury car with Triveni Cabs starting at \u20B950/km. We offer BMW, Audi,
       { route: "Delhi to Chandigarh", price: "\u20B93,750", distance: "250 km" },
       { route: "Delhi to Jaipur", price: "\u20B94,200", distance: "280 km" }
     ],
-    description: `Triveni Cabs is proud to introduce electric vehicle (EV) taxi services for eco-conscious travelers. Our electric car fleet offers a silent, smooth, zero-emission travel experience that is better for the planet and surprisingly affordable.
+    description: `Triveni Cabs™ is proud to introduce electric vehicle (EV) taxi services for eco-conscious travelers. Our electric car fleet offers a silent, smooth, zero-emission travel experience that is better for the planet and surprisingly affordable.
 
 Our EV fleet includes models like the Tata Nexon EV, MG ZS EV, and Hyundai Kona Electric, offering ranges of 300-500 km on a single charge. With India's growing EV charging network, electric car travel is now practical for both city commutes and short outstation trips.
 
 The electric driving experience is remarkably different from conventional vehicles. Instant torque delivers smooth acceleration, regenerative braking extends range, and the near-silent cabin creates a peaceful travel environment. Automatic transmission ensures effortless driving in city traffic.
 
-Book an electric car with Triveni Cabs at just \u20B915/km for outstation trips. Join the green revolution and travel sustainably without compromising on comfort or convenience.`,
+Book an electric car with Triveni Cabs™ at just \u20B915/km for outstation trips. Join the green revolution and travel sustainably without compromising on comfort or convenience.`,
     faqs: [
       { question: "What electric car models do you offer?", answer: "We offer Tata Nexon EV, MG ZS EV, and Hyundai Kona Electric. Model availability depends on the city and route." },
       { question: "What is the range of your electric cars?", answer: "Our electric cars have a range of 300-500 km on a single charge depending on the model. This is sufficient for most city travel and short outstation trips." },
@@ -589,13 +589,13 @@ Book an electric car with Triveni Cabs at just \u20B915/km for outstation trips.
       { route: "Film Shoot (per day)", price: "\u20B920,000", distance: "Custom" },
       { route: "Photo Session (2 hrs)", price: "\u20B96,000", distance: "Stationary" }
     ],
-    description: `Step back in time with Triveni Cabs' vintage car rental service. Our collection of classic Ambassador and Contessa cars, beautifully restored and maintained, offers a unique travel experience that turns heads and creates lasting memories.
+    description: `Step back in time with Triveni Cabs™' vintage car rental service. Our collection of classic Ambassador and Contessa cars, beautifully restored and maintained, offers a unique travel experience that turns heads and creates lasting memories.
 
 Unlike our wedding vintage car service, this non-wedding rental is designed for film shoots, brand photo sessions, corporate events, birthday celebrations, city tours with a retro twist, and anyone who appreciates the charm of classic Indian automobiles.
 
 The Hindustan Ambassador, once the king of Indian roads, and the Contessa, India's muscle car, are both available in immaculate condition with chrome accents, vintage interiors, and that unmistakable classic car charm. Our chauffeurs can even dress in period-appropriate attire for an authentic experience.
 
-Book a vintage car with Triveni Cabs starting at \u20B940/km or \u20B910,000 for a half-day package. Perfect for creating Instagram-worthy moments and unforgettable experiences. Advance booking of 7-10 days is required.`,
+Book a vintage car with Triveni Cabs™ starting at \u20B940/km or \u20B910,000 for a half-day package. Perfect for creating Instagram-worthy moments and unforgettable experiences. Advance booking of 7-10 days is required.`,
     faqs: [
       { question: "What vintage car models do you offer?", answer: "We offer the Hindustan Ambassador (various years) and Contessa Classic. Both are beautifully restored with period-correct details and modern reliability improvements." },
       { question: "Are vintage cars available for film shoots?", answer: "Yes, our vintage cars are frequently used in Bollywood and ad film shoots. We offer full-day film shoot packages at \u20B920,000/day with flexible scheduling." },

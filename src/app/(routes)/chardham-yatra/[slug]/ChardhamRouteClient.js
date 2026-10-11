@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, XCircle, Clock, Sun, Award, Route, Fuel, Compass, Bus } from '@/components/ui/icons';
 import { registrationSteps, packingTips, seasonGuide, inclusions, exclusions } from '@/utilis/chardhamYatraData';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { groupDigits } from '@/utilis/pricing';
 
 // ============================================================================
 // CHARDHAM ROUTE CLIENT — "Sacred Journey" · Ultra-Premium v2
@@ -39,7 +40,7 @@ export default function ChardhamRouteClient({ data }) {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 pb-16 pt-32 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 pb-10 sm:pb-16 pt-16 sm:pt-32 w-full">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-slate-400/60 text-sm mb-6">
             <Link href="/" className="hover:text-orange-400 transition-colors">Home</Link>
@@ -61,14 +62,14 @@ export default function ChardhamRouteClient({ data }) {
             <h1
               className="speakable-headline font-display-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-[1.05] tracking-tight"
             >
-              {titleMain}
+              {titleMain}{' '}
               <span className="mt-2 block text-gold-foil text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{titleAccent}</span>
             </h1>
 
             <p
               className="speakable-lead text-slate-100/75 text-base md:text-lg mb-8 max-w-2xl leading-relaxed"
             >
-              {origin} to {destination} by {vehicle.name} costs from {estimatedPrice} (₹{vehicle.perKm}/km) for a {duration} trip covering {distance}. Fare includes vehicle, fuel, driver and tolls. Experienced Char Dham hill drivers, daytime-only driving and 24/7 support.
+              {origin} to {destination} by {vehicle.name} costs from {estimatedPrice} (₹{groupDigits(vehicle.perKm)}/km) for a {duration} trip covering {distance}. Fare includes vehicle, fuel, driver and tolls. Experienced Char Dham hill drivers, daytime-only driving and 24/7 support.
             </p>
 
             {/* Quick stats bar */}
@@ -180,7 +181,7 @@ export default function ChardhamRouteClient({ data }) {
                   <div className="mt-4 flex items-baseline gap-1">
                     <span className="text-2xl font-black text-gold-foil tabular-nums">{car.estimatedPrice}</span>
                   </div>
-                  <p className="text-slate-400/50 text-xs mt-1">₹{car.perKm}/km × {distanceKm} km + driver</p>
+                  <p className="text-slate-400/50 text-xs mt-1">₹{groupDigits(car.perKm)}/km × {distanceKm} km + driver</p>
                   <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
                     <div className="flex items-center gap-1 text-slate-300/70"><Fuel className="w-3 h-3" />{car.fuelType}</div>
                     <div className="flex items-center gap-1 text-slate-300/70"><Users className="w-3 h-3" />{car.seats} seats</div>
@@ -221,7 +222,7 @@ export default function ChardhamRouteClient({ data }) {
                         <Image src={bus.image} alt={bus.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain" />
                       </div>
                       <h4 className="text-white font-semibold">{bus.name}</h4>
-                      <p className="text-slate-400/60 text-sm">{bus.seats} Seater | ₹{bus.perKm}/km</p>
+                      <p className="text-slate-400/60 text-sm">{bus.seats} Seater | ₹{groupDigits(bus.perKm)}/km</p>
                       <p className="text-[#FACF2D] font-bold mt-2">{bus.estimatedPrice}</p>
                       <a href="tel:+917668570551" className="mt-3 block text-center bg-white/10 hover:bg-slate-600 text-white py-2 rounded-lg text-sm transition-all">
                         Book Bus
@@ -241,7 +242,7 @@ export default function ChardhamRouteClient({ data }) {
                         <Image src={tempo.image} alt={tempo.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain" />
                       </div>
                       <p className="text-white font-semibold text-sm">{tempo.name}</p>
-                      <p className="text-slate-400/60 text-xs">₹{tempo.perKm}/km</p>
+                      <p className="text-slate-400/60 text-xs">₹{groupDigits(tempo.perKm)}/km</p>
                     </div>
                   ))}
                 </div>
@@ -324,7 +325,7 @@ export default function ChardhamRouteClient({ data }) {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
             <span className="text-orange-400 text-sm font-bold tracking-widest uppercase">Why Choose Us</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">Why Book {origin} to {destination} with Triveni Cabs</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-display-serif mt-3">Why Book {origin} to {destination} with Triveni Cabs™</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -413,7 +414,7 @@ export default function ChardhamRouteClient({ data }) {
                       {car.type === vehicleType && <span className="ml-2 bg-[#FACF2D] text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Recommended</span>}
                     </td>
                     <td className="p-4 text-center text-slate-600">{car.seats}</td>
-                    <td className="p-4 text-center text-slate-600">₹{car.perKm}</td>
+                    <td className="p-4 text-center text-slate-600">₹{groupDigits(car.perKm)}</td>
                     <td className="p-4 text-center text-amber-700 font-black tabular-nums">{car.estimatedPrice}</td>
                   </tr>
                 ))}
@@ -421,7 +422,7 @@ export default function ChardhamRouteClient({ data }) {
                   <tr key={`b${i}`} className="border-b border-amber-100 hover:bg-amber-50/70 transition-colors">
                     <td className="p-4 text-slate-900 font-medium">{bus.name}</td>
                     <td className="p-4 text-center text-slate-600">{bus.seats}</td>
-                    <td className="p-4 text-center text-slate-600">₹{bus.perKm}</td>
+                    <td className="p-4 text-center text-slate-600">₹{groupDigits(bus.perKm)}</td>
                     <td className="p-4 text-center text-amber-700 font-black tabular-nums">{bus.estimatedPrice}</td>
                   </tr>
                 ))}
@@ -439,7 +440,7 @@ export default function ChardhamRouteClient({ data }) {
                   </span>
                   <span className="text-sm font-black text-amber-700 tabular-nums">{v.estimatedPrice}</span>
                 </div>
-                <p className="text-xs text-slate-500">{v.seats} seats · ₹{v.perKm}/km</p>
+                <p className="text-xs text-slate-500">{v.seats} seats · ₹{groupDigits(v.perKm)}/km</p>
               </div>
             ))}
           </div>
@@ -525,10 +526,10 @@ export default function ChardhamRouteClient({ data }) {
 
             <div className="prose prose-invert max-w-none space-y-6 text-slate-200/70 leading-relaxed">
               <p>
-                Planning your <strong className="text-white">{origin} to {destination}</strong> yatra by {vehicle.name}? Triveni Cabs offers the most reliable and affordable {vehicle.name} rental service for this sacred pilgrimage route. With our experienced mountain drivers and well-maintained fleet, your spiritual journey through the Himalayas will be safe, comfortable, and memorable.
+                Planning your <strong className="text-white">{origin} to {destination}</strong> yatra by {vehicle.name}? Triveni Cabs™ offers the most reliable and affordable {vehicle.name} rental service for this sacred pilgrimage route. With our experienced mountain drivers and well-maintained fleet, your spiritual journey through the Himalayas will be safe, comfortable, and memorable.
               </p>
               <p>
-                The {origin} to {destination} route covers approximately <strong className="text-white">{distance}</strong> and typically takes <strong className="text-white">{duration}</strong> to complete. Our {vehicle.name} ({vehicle.seats}-seater, {vehicle.fuelType}, AC) is priced at just <strong className="text-orange-400">₹{vehicle.perKm}/km</strong>, making the total estimated cost <strong className="text-orange-400">{estimatedPrice}</strong> including fuel, driver charges, and toll taxes.
+                The {origin} to {destination} route covers approximately <strong className="text-white">{distance}</strong> and typically takes <strong className="text-white">{duration}</strong> to complete. Our {vehicle.name} ({vehicle.seats}-seater, {vehicle.fuelType}, AC) is priced at just <strong className="text-orange-400">₹{groupDigits(vehicle.perKm)}/km</strong>, making the total estimated cost <strong className="text-orange-400">{estimatedPrice}</strong> including fuel, driver charges, and toll taxes.
               </p>
 
               {destinationData && (
@@ -605,6 +606,7 @@ export default function ChardhamRouteClient({ data }) {
                 key={i}
                 className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden hover:border-amber-400/30 transition-all"
               >
+                <h3 className="m-0">
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
                   aria-expanded={expandedFaq === i}
@@ -613,6 +615,7 @@ export default function ChardhamRouteClient({ data }) {
                   <span className="text-white font-semibold pr-4">{faq.question}</span>
                   <ChevronDown className={`w-5 h-5 text-[#FACF2D] flex-shrink-0 transition-transform ${expandedFaq === i ? 'rotate-180' : ''}`} />
                 </button>
+                </h3>
                 {expandedFaq === i && (
                   <p className={`px-5 pb-5 text-slate-200/70 leading-relaxed${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
                 )}

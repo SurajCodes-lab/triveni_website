@@ -791,7 +791,7 @@ const defaultFaqs = (dest, data = {}) => {
     },
     {
       question: `What is the cheapest time to visit ${dest}?`,
-      answer: `The cheapest time to visit ${dest} is ${off}. You'll save 30-50% on hotels and 15-20% on cab rates compared to ${peak}. Triveni Cabs rates stay transparent year-round — no surge pricing. Call 7668570551 for the current rate on your dates.`,
+      answer: `The cheapest time to visit ${dest} is ${off}. You'll save 30-50% on hotels and 15-20% on cab rates compared to ${peak}. Triveni Cabs™ rates stay transparent year-round — no surge pricing. Call 7668570551 for the current rate on your dates.`,
     },
     {
       question: `How many days are enough for ${dest}?`,
@@ -801,13 +801,13 @@ const defaultFaqs = (dest, data = {}) => {
       question: `Is it too hot to visit ${dest} in summer (April-June)?`,
       answer: summerSeason
         ? `Summer in ${dest} (${summerSeason.temp}): ${summerSeason.description} If you must travel, plan outdoor activities for early morning and evening. All Triveni cabs are fully AC and fuel is included — no summer surge.`
-        : `Summer in ${dest} is hot. Outdoor sightseeing is uncomfortable midday. Plan activities at sunrise or after 4 PM. AC cabs essential — Triveni Cabs AC sedans start at ₹11/km.`,
+        : `Summer in ${dest} is hot. Outdoor sightseeing is uncomfortable midday. Plan activities at sunrise or after 4 PM. AC cabs essential — Triveni Cabs™ AC sedans start at ₹11/km.`,
     },
     {
       question: `How cold does ${dest} get in winter (December-February)?`,
       answer: winterSeason
         ? `Winter in ${dest} (${winterSeason.temp}): ${winterSeason.description} Pack layers, a warm jacket, and expect chilly mornings. Most travelers consider this the most atmospheric time to visit.`
-        : `Winter in ${dest} is cool to cold. Pack layers and a warm jacket. Early morning and late evening are coldest. Most attractions remain open. AC cab heaters are standard in Triveni Cabs.`,
+        : `Winter in ${dest} is cool to cold. Pack layers and a warm jacket. Early morning and late evening are coldest. Most attractions remain open. AC cab heaters are standard in Triveni Cabs™.`,
     },
     {
       question: firstFestival ? `Should I plan my ${dest} trip around ${firstFestival}?` : `Does ${dest} have major festivals worth planning around?`,
@@ -821,7 +821,7 @@ const defaultFaqs = (dest, data = {}) => {
     },
     {
       question: `Can I book a cab from Delhi, Agra, or Jaipur to ${dest}?`,
-      answer: `Yes — Triveni Cabs operates one-way and round-trip cabs from Delhi, Agra, Jaipur, Chandigarh, and other major North India hubs to ${dest}. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller from ₹23/km. Toll, fuel, and driver allowance included. Book at 7668570551 or WhatsApp for instant quote.`,
+      answer: `Yes — Triveni Cabs™ operates one-way and round-trip cabs from Delhi, Agra, Jaipur, Chandigarh, and other major North India hubs to ${dest}. Sedan ₹11/km, SUV ₹15/km, Tempo Traveller from ₹23/km. Toll, fuel, and driver allowance included. Book at 7668570551 or WhatsApp for instant quote.`,
     },
     {
       question: `Is ${dest} good for a weekend trip?`,
@@ -841,7 +841,7 @@ const defaultFaqs = (dest, data = {}) => {
     },
     {
       question: `How far in advance should I book a cab for ${dest}?`,
-      answer: `For ${peak}, book 2-3 weeks in advance to guarantee your preferred vehicle type. For off-season, 3-5 days is enough. Festival weeks (like ${firstFestival || 'local festivals'}) — book 30+ days ahead. Triveni Cabs allows free cancellation up to 2 hours before pickup, so early booking carries no risk.`,
+      answer: `For ${peak}, book 2-3 weeks in advance to guarantee your preferred vehicle type. For off-season, 3-5 days is enough. Festival weeks (like ${firstFestival || 'local festivals'}) — book 30+ days ahead. Triveni Cabs™ allows free cancellation up to 2 hours before pickup, so early booking carries no risk.`,
     },
   ];
 };

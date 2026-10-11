@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera } from '@/components/ui/icons';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { groupDigits } from '@/utilis/pricing';
 
 export const revalidate = 3600;
 
@@ -8,9 +9,9 @@ export const metadata = {
   title: tightenTitle('Same Day Taj Mahal Tour | Sunrise Visit ₹4,500 | 2026'),
   description: 'Same day Taj Mahal tour by private car. Sunrise visit, golden hour photography. From Delhi ₹4,500, Jaipur ₹5,500. Entry details & tips. Call 7668570551.',
   keywords: 'same day taj mahal tour, taj mahal day trip, taj mahal visit by car, taj mahal sunrise tour, taj mahal one day tour',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/same-day-taj-mahal-tour' },
   openGraph: {
@@ -19,7 +20,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/same-day-taj-mahal-tour',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Same Day Taj Mahal Tour' }],
   },
   twitter: {
@@ -53,7 +54,7 @@ export default function SameDayTajMahalTourPage() {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
     },
     "offers": { "@type": "AggregateOffer", "lowPrice": "4500", "highPrice": "9500", "priceCurrency": "INR" },
   };
@@ -227,7 +228,7 @@ export default function SameDayTajMahalTourPage() {
         </section>
 
         {/* === ENTRY DETAILS: Premium Dark Table === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Essential Information</div>
@@ -273,7 +274,7 @@ export default function SameDayTajMahalTourPage() {
         </section>
 
         {/* === OVERVIEW CONTENT === */}
-        <section className="py-20 px-4 bg-gradient-to-br from-amber-50 via-yellow-50/30 to-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-amber-50 via-yellow-50/30 to-stone-50">
           <div className="max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
@@ -335,7 +336,7 @@ export default function SameDayTajMahalTourPage() {
         </section>
 
         {/* === PHOTOGRAPHY SPOTS: Staggered Gallery Cards === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Capture the Moment</div>
@@ -368,7 +369,7 @@ export default function SameDayTajMahalTourPage() {
         </section>
 
         {/* === PRICING: City Comparison Horizontal Cards === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-stone-900 to-stone-950 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-stone-900 to-stone-950 relative overflow-hidden">
           {/* Decorative Bokeh */}
           <div className="absolute top-[20%] left-[5%] w-60 h-60 bg-amber-500/10 rounded-full blur-[100px]" />
           <div className="absolute bottom-[10%] right-[10%] w-80 h-80 bg-yellow-500/5 rounded-full blur-[120px]" />
@@ -400,14 +401,14 @@ export default function SameDayTajMahalTourPage() {
                     <div className="md:col-span-1">
                       <div className="bg-stone-800/50 rounded-2xl p-4 text-center">
                         <div className="text-stone-500 text-xs mb-1">Sedan</div>
-                        <div className="text-2xl font-black text-white">₹{city.sedan}</div>
+                        <div className="text-2xl font-black text-white">₹{groupDigits(city.sedan)}</div>
                       </div>
                     </div>
                     {/* SUV Price */}
                     <div className="md:col-span-1">
                       <div className="bg-amber-500/10 rounded-2xl p-4 text-center border border-amber-500/20">
                         <div className="text-amber-300 text-xs mb-1">SUV</div>
-                        <div className="text-2xl font-black text-amber-300">₹{city.suv}</div>
+                        <div className="text-2xl font-black text-amber-300">₹{groupDigits(city.suv)}</div>
                       </div>
                     </div>
                     {/* CTA */}
@@ -433,7 +434,7 @@ export default function SameDayTajMahalTourPage() {
         </section>
 
         {/* === INCLUDED / EXCLUDED: Side-by-Side Gradient Panels === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-stone-900">
@@ -482,7 +483,7 @@ export default function SameDayTajMahalTourPage() {
         </section>
 
         {/* === TIPS: Bento Grid Photography Tips === */}
-        <section className="py-20 px-4 bg-gradient-to-br from-amber-50 to-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-amber-50 to-stone-50">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Expert Advice</div>
@@ -525,7 +526,7 @@ export default function SameDayTajMahalTourPage() {
         </section>
 
         {/* === FAQs: Accordion-Style Cards === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Questions Answered</div>
@@ -555,7 +556,7 @@ export default function SameDayTajMahalTourPage() {
         </section>
 
         {/* === INTERLINKS: Photo Strip Cards === */}
-        <section className="py-20 px-4 bg-stone-100/50">
+        <section className="py-12 sm:py-20 px-4 bg-stone-100/50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-stone-900">
@@ -591,7 +592,7 @@ export default function SameDayTajMahalTourPage() {
         </section>
 
         {/* === FINAL CTA: Full-Width Photo-Inspired Banner === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600" />
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000\' fill-opacity=\'1\'%3E%3Cpath d=\'M40 0l40 40-40 40L0 40z\' fill=\'none\' stroke=\'%23000\' stroke-width=\'1\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
 

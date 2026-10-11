@@ -34,7 +34,7 @@ import {
 } from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { phoneNumber } from "@/utilis/data";
+import { phoneNumber } from '@/utilis/contact';
 
 // Animation variants
 const fadeInUp = {
@@ -88,7 +88,7 @@ const AnimatedSection = ({ children, className = "", delay = 0 }) => {
 
 export default function AboutClient() {
   const handleWhatsAppClick = (message = '') => {
-    const defaultMessage = message || "Hi! I am interested in learning more about Triveni Cabs services.";
+    const defaultMessage = message || "Hi! I am interested in learning more about Triveni Cabs™ services.";
     const whatsappURL = `https://wa.me/91${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
     window.open(whatsappURL, '_blank');
   };
@@ -170,8 +170,6 @@ export default function AboutClient() {
         </div>
 
         {/* Static decorative orbs (infinite animations removed for INP) */}
-        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-yellow-400/40 to-amber-500/40 rounded-full blur-3xl opacity-60" />
-        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/30 to-pink-400/30 rounded-full blur-3xl opacity-50" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
@@ -204,7 +202,7 @@ export default function AboutClient() {
                 transition={{ delay: 0.8 }}
                 className="block text-gold-foil"
               >
-                Triveni Cabs
+                Triveni Cabs™
               </motion.span>
             </h1>
           </motion.div>
@@ -229,7 +227,7 @@ export default function AboutClient() {
             <motion.button
               
               whileTap={{ scale: 0.95 }}
-              onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs.")}
+              onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs™.")}
               className="group px-8 py-4 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px] bg-gradient-to-r from-[#FACF2D] to-amber-500 text-black font-bold rounded-full shadow-xl flex items-center gap-3"
             >
               Start Your Journey
@@ -260,7 +258,7 @@ export default function AboutClient() {
       </section>
 
       {/* FOUNDER'S MESSAGE SECTION */}
-      <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute top-20 right-0 w-96 h-96 bg-gradient-to-br from-yellow-200/30 to-amber-200/30 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-0 w-80 h-80 bg-gradient-to-br from-orange-200/30 to-pink-200/30 rounded-full blur-3xl"></div>
@@ -271,7 +269,6 @@ export default function AboutClient() {
             <AnimatedSection>
               <div className="relative">
                 {/* Static background glow (infinite animation removed for INP) */}
-                <div className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-br from-yellow-300/40 to-amber-300/40 rounded-full blur-3xl" />
 
                 <div className="relative bg-white rounded-3xl shadow-2xl p-8 border-2 border-amber-100">
                   {/* Quote Icon */}
@@ -355,7 +352,7 @@ export default function AboutClient() {
                 </div>
 
                 <p>
-                  <span className="font-bold text-amber-700">Triveni Cabs</span> was created to change that experience. Every vehicle in our fleet, every driver on our platform, and every route we operate reflects this belief. Whether it&apos;s a family trip, a work journey, airport pickup, or a weekend getaway, we ensure every detail is handled with care.
+                  <span className="font-bold text-amber-700">Triveni Cabs™</span> was created to change that experience. Every vehicle in our fleet, every driver on our platform, and every route we operate reflects this belief. Whether it&apos;s a family trip, a work journey, airport pickup, or a weekend getaway, we ensure every detail is handled with care.
                 </p>
               </div>
             </AnimatedSection>
@@ -364,9 +361,9 @@ export default function AboutClient() {
       </section>
 
       {/* PHILOSOPHY SECTION */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 px-6 py-2 rounded-full mb-6 shadow-sm">
               <Gem className="w-5 h-5" />
               <span className="font-semibold">Our Philosophy</span>
@@ -421,7 +418,7 @@ export default function AboutClient() {
       </section>
 
       {/* VISION SECTION */}
-      <section className="py-20 bg-gradient-to-b from-white via-amber-50/50 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white via-amber-50/50 to-white relative overflow-hidden">
         {/* Background Decoration */}
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full max-w-6xl">
           <div className="absolute top-20 left-0 w-72 h-72 bg-gradient-to-br from-yellow-200/40 to-amber-200/40 rounded-full blur-3xl"></div>
@@ -429,7 +426,7 @@ export default function AboutClient() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-800 px-6 py-2 rounded-full mb-6 shadow-sm">
               <Eye className="w-5 h-5" />
               <span className="font-semibold">Our Vision</span>
@@ -499,12 +496,12 @@ export default function AboutClient() {
       </section>
 
       {/* STATS SECTION */}
-      <section className="py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
         {/* Static background wash (infinite animation removed for INP) */}
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-amber-600/10 via-transparent to-orange-600/10 opacity-40" />
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <h2 className="font-display-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
               Our Journey <span className="text-gold-foil">So Far</span>
             </h2>
@@ -547,9 +544,9 @@ export default function AboutClient() {
       </section>
 
       {/* OUR TEAM EXPERTISE SECTION */}
-      <section className="py-20 bg-gradient-to-b from-white via-blue-50/30 to-white relative overflow-hidden" aria-label="Triveni Cabs team expertise and credentials">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white via-blue-50/30 to-white relative overflow-hidden" aria-label="Triveni Cabs team expertise and credentials">
         <div className="max-w-7xl mx-auto px-4">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 px-6 py-2 rounded-full mb-6 shadow-sm">
               <Award className="w-5 h-5" />
               <span className="font-semibold">Our Team</span>
@@ -564,7 +561,7 @@ export default function AboutClient() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 sm:mb-16">
             {[
               {
                 icon: GraduationCap,
@@ -629,12 +626,12 @@ export default function AboutClient() {
       </section>
 
       {/* WHY CHOOSE US SECTION */}
-      <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 px-6 py-2 rounded-full mb-6 shadow-sm">
               <BadgeCheck className="w-5 h-5" />
-              <span className="font-semibold">Why Choose Triveni Cabs</span>
+              <span className="font-semibold">Why Choose Triveni Cabs™</span>
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display-serif font-bold mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
@@ -707,7 +704,7 @@ export default function AboutClient() {
       </section>
 
       {/* THANK YOU / CTA SECTION */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 relative overflow-hidden">
         {/* Background Decoration */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-yellow-200/50 to-amber-200/50 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-br from-orange-200/50 to-pink-200/50 rounded-full blur-3xl"></div>
@@ -728,7 +725,7 @@ export default function AboutClient() {
                 </motion.div>
 
                 <h2 className="text-3xl md:text-4xl font-display-serif font-bold mb-6 bg-gradient-to-r from-amber-600 via-[#FACF2D] to-orange-600 bg-clip-text text-transparent">
-                  Thank You for Choosing Triveni Cabs
+                  Thank You for Choosing Triveni Cabs™
                 </h2>
 
                 <div className="space-y-4 text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
@@ -753,7 +750,7 @@ export default function AboutClient() {
                 <motion.button
                   
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs.")}
+                  onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs™.")}
                   className="group px-10 py-5 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px] bg-gradient-to-r from-[#FACF2D] to-amber-500 text-black font-bold text-lg rounded-full shadow-xl flex items-center justify-center gap-3 hover:shadow-2xl transition-all"
                 >
                   Book Your Ride Now

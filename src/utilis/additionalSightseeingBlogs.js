@@ -378,6 +378,8 @@ export const additionalSightseeingBlogs = [
       </div>
 
       <p>Plan your Amritsar trip! <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact us</a> or call <strong>7668570551</strong>!</p>
+
+      <p class="text-gray-700 leading-relaxed mb-4"><strong>Read next:</strong> <a href="/blog/amritsar-golden-temple-wagah-border-complete-guide-2026">Amritsar Golden Temple &amp; Wagah Border</a> for the fuller two-day itinerary, or <a href="/blog/wagah-border-ceremony-from-amritsar-by-cab">Wagah Border Ceremony from Amritsar</a> for the ceremony timing and seating advice on its own.</p>
     `,
 
     date: "2026-01-13",
@@ -948,6 +950,8 @@ export const additionalSightseeingBlogs = [
       </div>
 
       <p>Plan your pilgrimage! <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact us</a> or call <strong>7668570551</strong>!</p>
+
+      <p class="text-gray-700 leading-relaxed mb-4"><strong>Read next:</strong> <a href="/blog/ayodhya-ram-mandir-complete-travel-guide-2026">Ayodhya Ram Mandir Darshan Timings &amp; Booking (2026)</a> for the darshan hours and aarti passes, or <a href="/blog/ayodhya-ram-mandir-2026-crowd-hacks-dress-code-etiquette">Ayodhya Ram Mandir: Crowd Hacks, Dress Code &amp; Etiquette (2026)</a> for the queue and dress-code questions.</p>
     `,
 
     date: "2026-01-08",

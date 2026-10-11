@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getWeddingSpecialService } from '@/utilis/weddingCarModels';
+import DataTable from '@/components/seo/DataTable';
 import { getWeddingPages } from '@/utilis/linkingHelper';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import {
@@ -14,13 +15,13 @@ export const revalidate = 3600;
 const service = getWeddingSpecialService('baraat-tempo-traveller');
 
 export const metadata = {
-  title: tightenTitle(service?.metaTitle || 'Baraat Tempo Traveller | Triveni Cabs'),
+  title: tightenTitle(service?.metaTitle || 'Baraat Tempo Traveller | Triveni Cabs™'),
   description: service?.metaDescription || 'Book baraat tempo traveller with DJ for your wedding.',
   alternates: { canonical: 'https://www.trivenicabs.in/wedding/baraat-tempo-traveller' },
   openGraph: {
-    title: 'Baraat Tempo Traveller with DJ | Triveni Cabs',
+    title: 'Baraat Tempo Traveller with DJ | Triveni Cabs™',
     description: 'Book baraat tempo traveller with DJ and music system. 12 to 26 seater AC tempo for wedding baraat.',
-    type: 'website', locale: 'en_IN', siteName: 'Triveni Cabs',
+    type: 'website', locale: 'en_IN', siteName: 'Triveni Cabs™',
     images: [{ url: '/images/tempo/17_seater.jpg', width: 1200, height: 630, alt: 'Baraat Tempo Traveller with DJ' }]
   },
   keywords: service?.keywords || '',
@@ -28,7 +29,7 @@ export const metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: "Baraat Tempo Traveller with DJ | Triveni Cabs",
+    title: "Baraat Tempo Traveller with DJ | Triveni Cabs™",
     description: "Book baraat tempo traveller with DJ and music system. 12 to 26 seater AC tempo for wedding baraat.",
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -42,6 +43,8 @@ export default function BaraatTempoPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Merchant listings treats a missing `image` as critical.
+    "image": "https://www.trivenicabs.in/images/tempo/17_seater.jpg",
     "name": `${data.title} | Triveni Cabs`,
     "description": data.description,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
@@ -100,7 +103,7 @@ export default function BaraatTempoPage() {
             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/90 to-transparent" />
           </div>
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12 sm:py-20">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
               <Link href="/" className="hover:text-orange-400 transition-colors">Home</Link>
@@ -154,9 +157,29 @@ export default function BaraatTempoPage() {
         </section>
 
         {/* === SECTION: The Baraat Experience — warm light band === */}
+        {Array.isArray(service.options) && service.options.length > 1 && (
+          <div className="container mx-auto px-4 py-10">
+            <DataTable
+              title="Which baraat tempo traveller suits the procession, and what does it cost?"
+              caption="Baraat tempo traveller options: seater, price range and what each includes"
+              intro="Prices are per event for the baraat procession and include the decoration listed; the exact figure depends on the date, the distance and the hours. Fuel and the driver are included."
+              columns={[
+                { key: 'name', label: 'Option' },
+                { key: 'price', label: 'Price range' },
+                { key: 'includes', label: 'What it includes' },
+              ]}
+              rows={service.options.map((o) => ({
+                name: o.car ? `${o.name} (${o.car})` : o.name,
+                price: o.price,
+                includes: (o.features || o.includes || []).join(', '),
+              }))}
+            />
+          </div>
+        )}
+
         <section className="relative py-16 md:py-24 px-4 bg-[#FFF6DC]">
           <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="inline-block text-amber-700 text-sm font-bold tracking-widest uppercase mb-4">The Experience</span>
               <h2 className="font-display-serif text-4xl md:text-5xl font-bold text-[#3a1220] mb-6">
                 Make Your Baraat
@@ -180,7 +203,7 @@ export default function BaraatTempoPage() {
         </section>
 
         {/* === SECTION: Tempo Options - Stadium Pricing Cards === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-slate-950" />
           {/* Diagonal accent bands */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500/40 to-transparent" />
@@ -204,7 +227,6 @@ export default function BaraatTempoPage() {
                   'bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.08] hover:border-orange-500/20'
                 }`}>
                   {/* Spotlight glow */}
-                  <div className="absolute -top-10 -right-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <div className="relative z-10 p-8">
                     {idx === 0 && (
@@ -240,7 +262,7 @@ export default function BaraatTempoPage() {
         </section>
 
         {/* === SECTION: FAQ - Neon Ticket Style === */}
-        <section className="relative py-24 px-4">
+        <section className="relative py-14 sm:py-24 px-4">
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-orange-950/20 to-slate-950" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(234,179,8,0.06),transparent_50%)]" />
 
@@ -302,7 +324,7 @@ export default function BaraatTempoPage() {
         </section>
 
         {/* === SECTION: Related Services Cards === */}
-        <section className="relative py-24 px-4">
+        <section className="relative py-14 sm:py-24 px-4">
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-orange-950/10 to-slate-950" />
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="text-center mb-14">
@@ -339,7 +361,7 @@ export default function BaraatTempoPage() {
         </section>
 
         {/* === SECTION: Popular Links Footer Grid === */}
-        <section className="relative py-16 px-4">
+        <section className="relative py-10 sm:py-16 px-4">
           <div className="absolute inset-0 bg-slate-950" />
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 

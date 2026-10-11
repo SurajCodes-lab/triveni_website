@@ -1,6 +1,9 @@
-'use client';
-
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 import React from 'react';
+import clientSlugs from '@/generated/client-slugs.json';
 import Link from 'next/link';
 import Image from 'next/image';
 // Centralized icon imports for better bundle optimization
@@ -18,6 +21,7 @@ import {
 } from '@/components/ui/icons';
 import { cn } from '@/utilis/cn';
 import { BASE_URL } from '@/lib/seo/constants';
+import { rupeeText } from '@/utilis/pricing';
 
 /**
  * Related Content Component - Displays related internal links for SEO
@@ -103,10 +107,10 @@ export const PopularRoutes = ({
                 <Car className="w-5 h-5 text-amber-600" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-medium text-gray-900 group-hover:text-amber-700 transition-colors truncate">
+                <p className="break-words font-semibold leading-snug text-gray-900 transition-colors group-hover:text-amber-700">
                   {route.origin || city} to {route.destination}
                 </p>
-                <div className="flex items-center gap-3 text-sm text-gray-500">
+                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-600">
                   {route.distance && <span>{route.distance} km</span>}
                   {route.price && (
                     <span className="flex items-center">
@@ -182,7 +186,7 @@ export const RelatedTours = ({
                 </div>
               )}
               <div className="p-4">
-                <h3 className="font-semibold text-gray-900 group-hover:text-amber-700 transition-colors line-clamp-2 mb-2">
+                <h3 className="break-words font-semibold leading-snug text-gray-900 transition-colors group-hover:text-amber-700 mb-2">
                   {tour.name}
                 </h3>
                 <div className="flex items-center justify-between text-sm">
@@ -195,7 +199,7 @@ export const RelatedTours = ({
                   {tour.price && (
                     <span className="flex items-center text-amber-600 font-medium">
                       <IndianRupee className="w-3 h-3" />
-                      {tour.price}
+                      {rupeeText(tour.price)}
                     </span>
                   )}
                 </div>
@@ -233,6 +237,15 @@ export const CrossServiceLinks = ({
   // Default services if none provided
   const citySlug = city?.toLowerCase().replace(/\s+/g, '-') || '';
   const cityDisplay = city || 'your city';
+
+  // Week 47: a city hub used to link to /airport-service/<city>, /wedding/<city>
+  // and /corporate-transportation-service/<city> for EVERY city, including the
+  // ones with no such page — hundreds of 404 links Googlebot followed. Only
+  // families with a real page for this city are offered.
+  const hasPage = (url) => {
+    const m = String(url).match(/^\/(airport-service|sightseeing|wedding|corporate-transportation-service)\/([^/]+)$/);
+    return !m || (clientSlugs[m[1]] || []).includes(m[2]);
+  };
 
   const defaultServices = [
     {
@@ -285,7 +298,14 @@ export const CrossServiceLinks = ({
     }
   ];
 
-  const displayServices = services.length > 0 ? services : defaultServices;
+  // A card with no destination used to fall back to href="#", which rendered a
+  // styled link that goes nowhere — 27 pages across the religious-tours and
+  // tourist-attractions families carried three or four each. Drop those cards
+  // instead, and hold passed-in services to the same build-manifest check the
+  // defaults already get, so no card points at a page that was never built.
+  const displayServices = (services.length > 0 ? services : defaultServices)
+    .filter((svc) => svc?.url)
+    .filter((svc) => (String(svc.url).startsWith('/') ? hasPage(svc.url) : true));
 
   return (
     <section className={cn('py-8 md:py-12', className)} {...props}>
@@ -301,7 +321,7 @@ export const CrossServiceLinks = ({
             return (
               <Link
                 key={index}
-                href={service.url || '#'}
+                href={service.url}
                 className="group p-4 bg-white rounded-xl border border-gray-100 hover:border-amber-200 hover:shadow-md transition-all text-center"
               >
                 <div className="inline-flex p-3 bg-amber-50 rounded-full mb-3 group-hover:bg-amber-100 transition-colors">

@@ -1,10 +1,13 @@
 import { notFound } from 'next/navigation';
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import { getCabServiceCity, getAllCabServiceSlugs, getRelatedCabCities } from '@/utilis/cabServiceCityData';
 import CabServiceCityClient from '@/components/cab-service/CabServiceCityClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema, getCityPlaceSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
+import { groupDigits } from '@/utilis/pricing';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -16,7 +19,7 @@ function cityServiceReviewCount(slug) {
 
 function getCityServiceReviews(city) {
   return [
-    { name: "Rakesh V.", date: "2026-02-22", rating: 5, text: `Triveni Cabs in ${city} is my default choice now. Driver punctual, fare upfront, clean AC sedan. Used them for 4 trips last quarter — zero issues, zero surge.` },
+    { name: "Rakesh V.", date: "2026-02-22", rating: 5, text: `Triveni Cabs™ in ${city} is my default choice now. Driver punctual, fare upfront, clean AC sedan. Used them for 4 trips last quarter — zero issues, zero surge.` },
     { name: "Anita S.", date: "2026-03-11", rating: 5, text: `Needed a cab in ${city} for elderly parents. Triveni driver was polite, helped with bags, drove gently. Far better than the app cabs we had before.` },
     { name: "Deepak M.", date: "2026-03-29", rating: 5, text: `Booked local + outstation package in ${city}. Transparent fares, verified driver, FASTag included. The dashboard fare quote was the exact final bill. Will book again.` },
   ];
@@ -36,9 +39,9 @@ export async function generateMetadata({ params }) {
   }
 
   const cheapest = Math.min(...data.services.map(s => s.startingPrice));
-  const title = tightenTitle(`${data.city} Cab Service: Taxi from ₹${cheapest} | Local, Outstation, Airport — 4.9★`);
-  const description = `Book cab in ${data.city} from ₹${cheapest}. Local taxi, outstation cabs, airport transfer, railway station pickup. Sedan ₹11/km, SUV ₹15/km. 24/7 service. Call 7668570551.`;
-  const ogTitle = `${data.city} Cab Service — Local & Outstation Taxi from ₹${cheapest} | 24/7 Booking | Triveni Cabs`;
+  const title = tightenTitle(`${data.city} Cab Service: Taxi from ₹${groupDigits(cheapest)} | Local, Outstation, Airport — 4.9★`);
+  const description = `Book cab in ${data.city} from ₹${groupDigits(cheapest)}. Local taxi, outstation cabs, airport transfer, railway station pickup. Sedan ₹11/km, SUV ₹15/km. 24/7 service. Call 7668570551.`;
+  const ogTitle = `${data.city} Cab Service — Local & Outstation Taxi from ₹${groupDigits(cheapest)} | 24/7 Booking | Triveni Cabs™`;
 
   return {
     title,
@@ -59,9 +62,9 @@ export async function generateMetadata({ params }) {
       `online cab booking ${data.city.toLowerCase()}`,
       `24 hour taxi ${data.city.toLowerCase()}`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/cab-service/${slug}` },
     openGraph: {
@@ -70,7 +73,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/cab-service/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `${data.city} Cab Service` }],
     },
     twitter: {
@@ -81,7 +84,7 @@ export async function generateMetadata({ params }) {
       site: '@trivenicabs',
       images: [getOgImageForSlug(slug)],
     },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -105,7 +108,7 @@ export default async function CabServiceCityPage({ params }) {
     "@id": `https://www.trivenicabs.in/cab-service/${slug}#service`,
     "serviceType": "TaxiService",
     "name": `${data.city} Cab Service — Triveni Cabs`,
-    "description": `Complete cab service in ${data.city}. Local taxi, outstation cabs, airport transfer, railway station pickup. Starting ₹${cheapest}.`,
+    "description": `Complete cab service in ${data.city}. Local taxi, outstation cabs, airport transfer, railway station pickup. Starting ₹${groupDigits(cheapest)}.`,
     "provider": { "@id": "https://www.trivenicabs.in/#localbusiness" },
     "areaServed": {
       "@type": "City",
@@ -124,20 +127,7 @@ export default async function CabServiceCityPage({ params }) {
         "price": s.startingPrice.toString(),
         "priceCurrency": "INR"
       }))
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": reviewCount.toString(),
-      "bestRating": "5"
-    },
-    "review": reviews.map(r => ({
-      "@type": "Review",
-      "author": { "@type": "Person", "name": r.name },
-      "datePublished": r.date,
-      "reviewRating": { "@type": "Rating", "ratingValue": r.rating.toString(), "bestRating": "5" },
-      "reviewBody": r.text
-    }))
+    }
   };
 
   const breadcrumbSchema = {
@@ -164,11 +154,11 @@ export default async function CabServiceCityPage({ params }) {
   // ── AEO/Voice layer (added without duplicating reviews) ──
   const articleSchema = getArticleSchema({
     slug: `cab-service/${slug}`,
-    headline: `${data.city} Cab Service — Local, Outstation & Airport Taxi from ₹${cheapest}`,
+    headline: `${data.city} Cab Service — Local, Outstation & Airport Taxi from ₹${groupDigits(cheapest)}`,
     description: `Cab service in ${data.city}: fares by vehicle, popular routes, and how to book a verified, GPS-tracked taxi 24/7.`,
     image: getOgImageForSlug(slug),
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/cab-service/${slug}`) || getTodayDate()),
     authorName: 'editorial',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-answer-1'],
   });
@@ -187,7 +177,7 @@ export default async function CabServiceCityPage({ params }) {
   });
 
   // Real-world Place anchor (geo coords) for the city — null-safe for unmapped slugs
-  const placeSchema = getCityPlaceSchema(slug, { idSlug: `cab-service/${slug}`, description: `${data.city} — area served by Triveni Cabs cab service.`, image: getOgImageForSlug(slug) });
+  const placeSchema = getCityPlaceSchema(slug, { idSlug: `cab-service/${slug}`, description: `${data.city} — area served by Triveni Cabs™ cab service.`, image: getOgImageForSlug(slug) });
 
   return (
     <>

@@ -12,9 +12,9 @@ export const metadata = {
   title: tightenTitle(data.title),
   description: data.metaDescription,
   keywords: data.keywords,
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/rajasthan-trip-cost-budget' },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata = {
     type: 'article',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/rajasthan-trip-cost-budget',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: {
     card: 'summary_large_image',

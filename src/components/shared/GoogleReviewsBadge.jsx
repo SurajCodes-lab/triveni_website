@@ -1,5 +1,7 @@
-'use client';
-
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 import { Star } from '@/components/ui/icons';
 
 /**
@@ -48,7 +50,6 @@ export default function GoogleReviewsBadge({ variant = 'default' }) {
         <div className="flex items-center gap-1.5">
           <span className="text-sm font-bold text-gray-900">4.9</span>
           <StarRating rating={5} size="sm" />
-          <span className="text-xs text-gray-500">(10,000+)</span>
         </div>
       </div>
     );
@@ -70,7 +71,12 @@ export default function GoogleReviewsBadge({ variant = 'default' }) {
             <div className="flex items-center gap-1.5">
               <span className="text-lg font-black text-gray-900">4.9</span>
               <StarRating rating={5} />
-              <span className="text-xs text-gray-500">10,000+ reviews</span>
+              {/* Week 53: the count shown here was "10,000+", which no customer
+                  base supports — the Google Business Profile shows 354. The rating
+                  is real and stays; the count is removed rather than corrected,
+                  because a count beside a rating invites a reader to check it and
+                  the profile is where that is answered. The same figure was taken
+                  out of the structured markup in Week 52. */}
             </div>
           </div>
         </div>
@@ -108,7 +114,6 @@ export default function GoogleReviewsBadge({ variant = 'default' }) {
       </svg>
       <StarRating rating={5} size="sm" />
       <span className="text-xs font-bold text-gray-900">4.9</span>
-      <span className="text-[10px] text-gray-400">(10,000+ reviews)</span>
     </div>
   );
 }

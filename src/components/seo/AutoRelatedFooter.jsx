@@ -1,6 +1,22 @@
 'use client';
 
 import Link from 'next/link';
+import clientSlugs from '@/generated/client-slugs.json';
+
+// Week 47: this footer builds links like /${city}-travel-guide, /how-to-reach-${city},
+// /best-time-to-visit/${city} and /airport-service/${city} for whatever city the
+// URL mentions — including cities that have no such page. It was the single
+// largest source of the 2,519 "Not found" URLs in Search Console. A link is now
+// emitted only when the target is in the build manifest (client-slugs.json).
+function existsClient(href) {
+  const m = String(href).match(/^\/([^/]+)\/([^/]+)$/);
+  if (m) return !(m[1] in clientSlugs) || clientSlugs[m[1]].includes(m[2]);
+  const r = String(href).replace(/^\//, '');
+  if (/-travel-guide$|-shopping-guide$|-food-tour$|^places-to-visit-near-|^how-to-reach-|^weekend-getaways-from-|^things-to-do-in-/.test(r)) {
+    return clientSlugs.rootPatterns.includes(r);
+  }
+  return true;
+}
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 
@@ -39,7 +55,7 @@ function detectCity(pathname) {
 function getContextualLinks(pathname) {
   const links = [];
   const seen = new Set();
-  const add = (label, href) => { if (!seen.has(href) && href !== pathname) { seen.add(href); links.push({ label, href }); } };
+  const add = (label, href) => { if (existsClient(href) && !seen.has(href) && href !== pathname) { seen.add(href); links.push({ label, href }); } };
 
   const city = detectCity(pathname);
 
@@ -211,16 +227,17 @@ export default function AutoRelatedFooter() {
           id="related-pages-heading"
           className="mt-2 mb-5 text-lg font-extrabold tracking-tight text-white md:text-xl"
         >
-          Related Triveni Cabs Services
+          Related Triveni Cabs™ Services
         </h2>
-        <ul className="flex flex-wrap gap-2.5">
+        <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
           {links.map((l, i) => (
-            <li key={i}>
+            <li key={i} className="min-w-0">
               <Link
                 href={l.href}
-                className="inline-flex min-h-[40px] items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/70 transition-all duration-200 hover:border-[#FACF2D]/50 hover:bg-[#FACF2D]/10 hover:text-[#FACF2D]"
+                className="flex min-h-[48px] w-full items-center justify-between gap-3 rounded-xl border border-white/15 bg-white/[0.07] px-4 py-3 text-sm font-semibold leading-snug text-white/90 transition-colors duration-200 hover:border-[#FACF2D]/60 hover:bg-[#FACF2D]/10 hover:text-[#FACF2D] focus-visible:border-[#FACF2D]"
               >
-                {l.label}
+                <span className="min-w-0 break-words">{l.label}</span>
+                <span aria-hidden="true" className="shrink-0 text-[#FACF2D]">→</span>
               </Link>
             </li>
           ))}

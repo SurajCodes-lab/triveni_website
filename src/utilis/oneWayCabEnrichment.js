@@ -3,6 +3,13 @@
 // Keeps data file lean while delivering ~1500+ words of unique, useful content
 // per route page (auto-derived from distance, cities, highway).
 
+import { rupees } from './pricing';
+
+// Comparison costs and toll estimates were interpolated as raw numbers, so a
+// page could show a formatted cab fare beside an unformatted "₹1,170". inr()
+// adds Indian grouping only; rupees() already rounds, so the amounts are the same.
+const inr = (n) => rupees(n);
+
 const PICKUP_POINTS_BY_CITY = {
   delhi: [
     { name: "IGI Airport — Terminal 1 (Domestic)", note: "Flight tracking + 60 min free wait" },
@@ -173,7 +180,7 @@ export function getTollDetails(route) {
   // Default programmatic estimate
   const approxToll = Math.round((route.distanceNum || 300) * 1.8);
   return {
-    estimated: `~₹${approxToll}–${Math.round(approxToll * 1.5)} (car) / ₹${Math.round(approxToll * 1.5)}–${Math.round(approxToll * 2.2)} (SUV)`,
+    estimated: `~${inr(approxToll)}–${inr(approxToll * 1.5)} (car) / ${inr(approxToll * 1.5)}–${inr(approxToll * 2.2)} (SUV)`,
     plazas: ["Multiple national highway toll plazas en-route"],
     paymentMode: "FASTag / Cash accepted. Our driver pays toll — you reimburse at actual.",
     statetax: "Inter-state tax additional if crossing state border (₹200–500). Paid at actual.",
@@ -411,8 +418,8 @@ export function getTravelComparison(route) {
   const busTime = `${Math.round(distanceNum / 50)}-${Math.round(distanceNum / 45)} hours`;
   return [
     { mode: "One-Way Cab (Sedan)", time, cost: sedanFare, pros: "Door-to-door, no luggage limit, flexible stops, AC comfort, private", cons: "Higher per-person cost for solo travellers", best: "2–4 passengers with luggage / family / time-sensitive" },
-    { mode: "Train (AC 3-Tier)", time: trainTime, cost: `₹${Math.round(distanceNum * 3)}–₹${Math.round(distanceNum * 4.5)}/person`, pros: "Cheapest for long distances, safe", cons: "Station-to-station only, fixed schedule, booking uncertainty, luggage limits", best: "Solo or couple on a tight budget" },
-    { mode: "AC Bus / Volvo", time: busTime, cost: `₹${Math.round(distanceNum * 4)}–₹${Math.round(distanceNum * 6)}/person`, pros: "Budget-friendly, direct intercity", cons: "Fixed route & timing, luggage restrictions, no stops", best: "Solo traveller with minimal luggage" },
+    { mode: "Train (AC 3-Tier)", time: trainTime, cost: `${inr(distanceNum * 3)}–${inr(distanceNum * 4.5)}/person`, pros: "Cheapest for long distances, safe", cons: "Station-to-station only, fixed schedule, booking uncertainty, luggage limits", best: "Solo or couple on a tight budget" },
+    { mode: "AC Bus / Volvo", time: busTime, cost: `${inr(distanceNum * 4)}–${inr(distanceNum * 6)}/person`, pros: "Budget-friendly, direct intercity", cons: "Fixed route & timing, luggage restrictions, no stops", best: "Solo traveller with minimal luggage" },
     { mode: "Flight (if available)", time: "1-1.5 hours flight + 3 hours airport time", cost: `₹3,500–₹8,000/person (one-way, varies)`, pros: "Fastest for long distances", cons: "Expensive, airport transfers extra, baggage fees", best: "Long distances (600+ km) with light luggage" },
   ];
 }

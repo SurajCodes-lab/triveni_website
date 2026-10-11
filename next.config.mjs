@@ -1,4 +1,6 @@
 import { bookingCanonicalRedirects } from './src/lib/seo/booking-canonical-redirects.mjs';
+import { NOINDEX_FAMILIES, NOINDEX_ENABLED } from './src/lib/seo/noindex-families.mjs';
+import { brokenLinkRedirects } from './src/lib/seo/broken-link-redirects.mjs';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // URL Handling - Ensure consistent canonical URLs (no trailing slashes)
@@ -6,10 +8,30 @@ const nextConfig = {
 
   // Bundle optimization: tree-shake heavy packages automatically
   experimental: {
+    // Inline the CSS the first screen actually needs and load the rest
+    // asynchronously. Measured cause: the single stylesheet is 472 KB raw /
+    // 58 KB transferred, and because a stylesheet blocks rendering, Lighthouse
+    // charged it 1,661 ms of delay before anything could paint. That delay is
+    // the ceiling on First Contentful Paint, and therefore on LCP — the largest
+    // element cannot paint before the first one does.
+    // NOTE ON CRITICAL CSS — both routes were tried and measured, neither shipped.
+    //
+    // Lighthouse reports 94.8% of the stylesheet unused on any given page (54,785
+    // of 57,792 bytes). That is structural: Tailwind emits one file covering every
+    // utility used anywhere across 3,392 pages and each page needs a twentieth of it.
+    //
+    //   optimizeCss (critters)  the build accepts the flag but emits no inline
+    //                           styles for App Router output. No effect.
+    //   inlineCss: true         removes the blocking request, but the final clean
+    //                           build regressed from 2.7 s / 96 performance to
+    //                           3.0 s / 92 because the full CSS inflated HTML.
+    //
+    // Left linked and cached deliberately. Route-group stylesheet splitting is
+    // the real fix for the remaining local Lighthouse gap.
+
     optimizePackageImports: [
       'lucide-react',
       'framer-motion',
-      '@heroicons/react',
     ],
     // Tag the LCP/CLS/INP elements in the build so field-CWV attribution
     // (WebVitalsReporter) can pinpoint the exact element behind a regression.
@@ -19,7 +41,10 @@ const nextConfig = {
   // Image Optimization
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    // 3840 restored in Week 47: it is Next's default and Googlebot still requests
+    // w=3840 variants it crawled earlier; without it the optimizer returns 400 and
+    // Search Console reports "Blocked due to other 4xx issue".
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 31536000, // 1 year cache
     dangerouslyAllowSVG: true,
@@ -64,6 +89,23 @@ const nextConfig = {
       // split five ways. See src/lib/seo/booking-canonical-redirects.mjs for the
       // Search Console evidence behind each entry.
       ...bookingCanonicalRedirects,
+      // Week 47 — URL shapes Googlebot was 404-ing on, from the server access log.
+      // Place @ids used to be built as <page>/origin and <page>/destination; Google
+      // strips the fragment and crawls the path. The ids are now fragments, and
+      // these fold the already-discovered paths back onto the page.
+      { source: '/:path*/origin', destination: '/:path*', permanent: true },
+      { source: '/:path*/destination', destination: '/:path*', permanent: true },
+      // Old per-destination weekend-getaway URLs -> the city guide that exists.
+      { source: '/weekend-getaways-from-delhi-by-car-:dest', destination: '/weekend-getaways-from-delhi-by-car', permanent: true },
+      { source: '/weekend-getaways-from-jaipur-by-car-:dest', destination: '/weekend-getaways-from-jaipur-by-car', permanent: true },
+      { source: '/weekend-getaways-from-chandigarh-by-car-:dest', destination: '/weekend-getaways-from-chandigarh-by-car', permanent: true },
+      // A doubled suffix from an old link builder.
+      { source: '/ertiga-hire-hire/:slug', destination: '/ertiga-hire/:slug', permanent: true },
+      { source: '/innova-hire-hire/:slug', destination: '/innova-hire/:slug', permanent: true },
+      // Week 47 — 1,352 URLs the site's own pages linked to but never built (audit
+      // of every href in the production build), folded onto the nearest real page.
+      // Generated: see src/lib/seo/broken-link-redirects.mjs.
+      ...brokenLinkRedirects,
     ];
   },
 
@@ -164,9 +206,22 @@ const nextConfig = {
           // snippets, and large image thumbnails (critical for travel queries
           // where rich previews drive CTR). Unlimited video-preview is
           // harmless because Triveni's travel videos welcome full-frame.
-          { key: 'X-Robots-Tag', value: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
+          // X-Robots-Tag 'index, follow' header removed in Week 47: it is the default,
+          // and with per-slug noindex rules the page's robots meta must be the only
+          // signal. The noindex family headers below remain.
         ],
       },
+      // De-indexed templated families (Week 47) — the header must agree with the
+      // page's robots meta, and a later rule overrides the global "index, follow"
+      // above for the same key. Children only: prefixes end in "/", so the hubs
+      // (/round-trip, /event-transportation-service, …) keep the global value.
+      // ":path+" (one or more segments), NOT ":path*" — the star form also matches
+      // the bare hub (/round-trip) and would put a noindex header on a page whose
+      // own meta says index. Caught on the live site on 5 Sept and corrected.
+      ...(NOINDEX_ENABLED ? NOINDEX_FAMILIES : []).map((f) => ({
+        source: `${f.prefix}:path+`,
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, follow' }],
+      })),
       // Internal search + API routes must never be indexed
       {
         source: '/api/:path*',

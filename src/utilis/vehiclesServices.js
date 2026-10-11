@@ -1,0 +1,106 @@
+// src/utilis/vehiclesServices.js
+//
+// Split out of utilis/data.js, where it accounted for roughly 59 KB of a 95 KB
+// module. Header.jsx is a client component and imports this list, and the header
+// renders on all 3,392 pages — so the whole of data.js was going into the browser
+// bundle site-wide to supply a navigation list.
+//
+// data.js re-exports this, so existing imports from there keep working.
+
+export const vehiclesServices = [
+    {
+      type: "Sedan",
+      image: "/images/car/swift_dzire.jpg",
+      imageAlt: "Sedan taxi for hire - comfortable 4-seater AC car with professional driver, ideal for airport transfers and business trips",
+      seating: "4 passengers",
+      rating: "4.9",
+      reviews: "128",
+      perKm: "₹11/km",
+      driverCharges: "₹500 (Per Day)",
+      perDayLimit: "250km",
+      cancellationCharge: "₹500",
+      facilities: ["AC", "Music System", "Charging Point", "First Aid Kit"],
+      bestFor: ["Small families", "Business trips", "Airport transfers"],
+    },
+    {
+      type: "SUV",
+      image: "/images/car/premium_suv.jpg",
+      imageAlt: "SUV rental with driver - spacious 6-7 seater vehicle with extra legroom for family trips, group tours, and long-distance travel",
+      seating: "6-7 passengers",
+      perKm: "₹15/km",
+      rating: "4.8",
+      reviews: "120",
+      driverCharges: "₹500 (Per Day)",
+      perDayLimit: "250km",
+      cancellationCharge: "₹500",
+      facilities: [
+        "AC",
+        "Music System",
+        "Charging Point",
+        "Extra Legroom",
+        "Luggage Space",
+      ],
+      bestFor: ["Large families", "Group tours", "Long distance"],
+    },
+    {
+      type: "Tempo Traveller",
+      image: "/images/tempo/17_seater.jpg",
+      imageAlt: "AC tempo traveller with pushback seats - 12 to 26 seater options available for pilgrimages, weddings, and group tours",
+      seating: "12-26 passengers",
+      perKm: "from ₹23/km",
+      rating: "4.7",
+      reviews: "110",
+      driverCharges: "₹500 (Per Day)",
+      cancellationCharge: "₹500",
+      perDayLimit: "250km",
+      facilities: [
+        "AC",
+        "Push-back Seats",
+        "LCD TV",
+        "Audio System",
+        "Charging Points",
+      ],
+      bestFor: ["Tourist groups", "Corporate events", "Wedding parties"],
+    },
+    {
+      type: "Luxury Bus",
+      image: "/images/bus/45_SEATER_BUS.jpg",
+      imageAlt: "Luxury Volvo AC bus with pushback seats - 30 to 55 seater coach with washroom facility for extended group tours",
+      seating: "30-55 passengers",
+      perKm: "₹30/km",
+      rating: "4.7",
+      reviews: "102",
+      driverCharges: "₹500 (Per Day)",
+      cancellationCharge: "₹500",
+      perDayLimit: "250km",
+      facilities: [
+        "AC",
+        "Push-back Seats",
+        "LCD TV",
+        "Audio System",
+        "Washroom",
+        "Refrigerator",
+      ],
+      bestFor: ["Large groups", "Extended tours", "Luxury travel"],
+    },
+    {
+      type: "Bus",
+      image: "/images/bus/35_SEATER_BUS.jpg",
+      imageAlt: "28-35 seater AC bus for corporate outings and mid-sized group travel with professional driver and entertainment system",
+      seating: "28-35 passengers",
+      perKm: "₹35/km",
+      rating: "4.8",
+      reviews: "95",
+      driverCharges: "₹500 (Per Day)",
+      cancellationCharge: "₹500",
+      perDayLimit: "250km",
+      facilities: [
+        "AC",
+        "Push-back Seats",
+        "LCD TV",
+        "Audio System",
+        "Charging Points",
+      ],
+      bestFor: ["Mid-sized groups", "Short tours", "Corporate outings"],
+    },
+  ];

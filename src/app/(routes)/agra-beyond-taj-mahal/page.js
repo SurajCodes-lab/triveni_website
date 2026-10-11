@@ -9,9 +9,9 @@ export const metadata = {
   title: tightenTitle('Agra Beyond Taj Mahal | Hidden Gems & Day Trips | 2026'),
   description: 'Discover Agra beyond the Taj. Agra Fort, Fatehpur Sikri, Baby Taj, Mehtab Bagh, Sikandra + day trips to Mathura, Bharatpur. By Agra locals. Call 7668570551.',
   keywords: 'agra beyond taj mahal, places to visit in agra, agra fort, fatehpur sikri, agra hidden gems, agra day trips, baby taj, mehtab bagh',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/agra-beyond-taj-mahal' },
   openGraph: {
@@ -20,7 +20,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/agra-beyond-taj-mahal',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Agra Beyond Taj Mahal' }],
   },
   twitter: {
@@ -251,7 +251,7 @@ export default function AgraBeyondTajMahalPage() {
         </section>
 
         {/* INTRO */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-3xl p-8 md:p-12 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-teal-100/80 to-transparent rounded-bl-full" />
@@ -276,7 +276,7 @@ export default function AgraBeyondTajMahalPage() {
         </section>
 
         {/* MAIN ATTRACTIONS */}
-        <section className="py-20 px-4 bg-white/80">
+        <section className="py-12 sm:py-20 px-4 bg-white/80">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3 text-center">Must-Visit Attractions</h2>
             <p className="text-stone-500 text-center mb-14 text-lg">Five landmarks that rival the Taj Mahal in history and beauty</p>
@@ -305,7 +305,7 @@ export default function AgraBeyondTajMahalPage() {
         </section>
 
         {/* HIDDEN GEMS */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-teal-950 via-slate-900 to-cyan-950" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 20s ease infinite' }} />
           <div className="absolute top-20 left-10 w-64 h-64 bg-teal-500/10 rounded-full blur-[100px]" />
           <div className="absolute bottom-20 right-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-[100px]" />
@@ -348,7 +348,7 @@ export default function AgraBeyondTajMahalPage() {
         </section>
 
         {/* DAY TRIPS */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3 text-center">Day Trips from Agra</h2>
             <p className="text-stone-500 text-center mb-14 text-lg">Extend your Agra experience with these incredible nearby destinations</p>
@@ -375,7 +375,7 @@ export default function AgraBeyondTajMahalPage() {
         </section>
 
         {/* ITINERARIES */}
-        <section className="py-20 px-4 bg-white/80">
+        <section className="py-12 sm:py-20 px-4 bg-white/80">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3 text-center">{itineraryTitle}</h2>
             <p className="text-stone-500 text-center mb-14 text-lg">{itinerarySubtitle}</p>
@@ -409,7 +409,7 @@ export default function AgraBeyondTajMahalPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-12 text-center">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -429,7 +429,7 @@ export default function AgraBeyondTajMahalPage() {
         </section>
 
         {/* INTERNAL LINKS */}
-        <section className="py-20 px-4 bg-white/80">
+        <section className="py-12 sm:py-20 px-4 bg-white/80">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-10 text-center">{linksTitle}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -449,7 +449,7 @@ export default function AgraBeyondTajMahalPage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-teal-800 via-cyan-700 to-teal-900" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 15s ease infinite' }} />
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q25 30 50 50 Q75 70 100 50' fill='none' stroke='%23fff' stroke-width='0.5'/%3E%3C/svg%3E")` }} />
           <div className="absolute top-[20%] left-[10%] w-2 h-2 bg-teal-300/40 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />

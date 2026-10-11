@@ -3,15 +3,16 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Jodhpur Shopping Guide 2026 | Bandhani, Spices & Antiques'),
   description: 'Jodhpur shopping guide. Bandhani textiles, antique furniture, spices, mojaris, lacquer bangles. Sardar Market, Clock Tower Bazaar, Tripolia Bazaar.',
   keywords: 'jodhpur shopping guide, shopping in jodhpur, sardar market jodhpur, clock tower bazaar, jodhpur spices, jodhpur bandhani, jodhpur antique furniture, jodhpur handicrafts',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/jodhpur-shopping-guide' },
   openGraph: {
@@ -20,7 +21,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/jodhpur-shopping-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg', width: 1200, height: 630, alt: 'Jodhpur Shopping Guide' }],
   },
   twitter: {
@@ -244,7 +245,7 @@ export default function JodhpurShoppingGuidePage() {
         </section>
 
         {/* Shopping Categories */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3 text-center">What to Buy in Jodhpur</h2>
             <p className="text-stone-500 text-center mb-14">The Blue City&apos;s markets blend Marwar royal heritage with desert craftsmanship</p>
@@ -288,7 +289,7 @@ export default function JodhpurShoppingGuidePage() {
         </section>
 
         {/* Market Areas */}
-        <section className="py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-3 text-center">Best Shopping Areas in Jodhpur</h2>
             <p className="text-purple-200/60 text-center mb-14">From aromatic spice lanes to massive furniture warehouses</p>
@@ -321,7 +322,7 @@ export default function JodhpurShoppingGuidePage() {
         </section>
 
         {/* Bargaining Tips */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-3 text-center">Bargaining Tips from Locals</h2>
             <p className="text-stone-500 text-center mb-12">Eight rules that save our tourists money every single day</p>
@@ -339,7 +340,7 @@ export default function JodhpurShoppingGuidePage() {
         </section>
 
         {/* Combo */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-3xl overflow-hidden">
               <div className="bg-gradient-to-r from-purple-700 via-fuchsia-600 to-purple-700 px-6 py-5" style={{ backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite' }}>
@@ -371,21 +372,26 @@ export default function JodhpurShoppingGuidePage() {
         </section>
 
         {/* SEO Content */}
-        <section className="py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-8 text-center">Shopping in Jodhpur: The Blue City&apos;s Bazaar Soul</h2>
             <div className="glass-card-light rounded-3xl p-8 md:p-10">
               <div className="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
               <p>Jodhpur&apos;s markets carry the spirit of the Thar Desert -- bold, colorful, and unmistakably Rajasthani. The city&apos;s position as the historic capital of Marwar kingdom meant it attracted traders and artisans from across the desert region, creating a commercial culture that thrives to this day. The spice market around the Clock Tower is arguably India&apos;s most photographed bazaar, where pyramids of red chili, golden turmeric, and green cardamom create a feast for the senses.</p>
               <p>What makes Jodhpur unique among Rajasthan&apos;s shopping destinations is its furniture industry. The city is India&apos;s largest center for antique and reproduction furniture, with warehouses on Airport Road stocking everything from restored colonial doors to hand-carved cabinets. International interior designers regularly source from Jodhpur&apos;s furniture market, and domestic buyers can find statement pieces at prices 50-70% below Delhi retail.</p>
-              <p>A local cab is the best way to cover Jodhpur&apos;s diverse shopping districts. The old city bazaars (Clock Tower, Tripolia, Mochi Bazaar) are walkable but the furniture market on Airport Road requires a drive. Our Triveni Cabs drivers know the genuine spice merchants, the best bangle artisans, and can navigate the blue-painted lanes of the old city where some of the most authentic handicraft workshops are hidden. Combine your shopping with Mehrangarh Fort and the blue city walk for a complete Jodhpur experience.</p>
+              <p>A local cab is the best way to cover Jodhpur&apos;s diverse shopping districts. The old city bazaars (Clock Tower, Tripolia, Mochi Bazaar) are walkable but the furniture market on Airport Road requires a drive. Our Triveni Cabs™ drivers know the genuine spice merchants, the best bangle artisans, and can navigate the blue-painted lanes of the old city where some of the most authentic handicraft workshops are hidden. Combine your shopping with Mehrangarh Fort and the blue city walk for a complete Jodhpur experience.</p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Jodhpur" citySlug="jodhpur" />
+
+
         {/* FAQ */}
-        <section className="py-20 px-4 bg-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-12 text-center">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -405,7 +411,7 @@ export default function JodhpurShoppingGuidePage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-10 text-center">More Jodhpur & Rajasthan Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -433,7 +439,7 @@ export default function JodhpurShoppingGuidePage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-800 via-violet-700 to-fuchsia-800" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[15%] w-2 h-2 bg-white/30 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite' }} />
           <div className="absolute top-[40%] right-[20%] w-1.5 h-1.5 bg-white/20 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite 1s' }} />

@@ -3,6 +3,7 @@ import FriendsTripClient from '@/components/audience/FriendsTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import SiblingPages from '@/components/seo/SiblingPages';
 
 const SLUG = "friends-trip-rishikesh";
 const data = friendsTripData["rishikesh"];
@@ -11,10 +12,10 @@ export const metadata = {
   title: tightenTitle('Friends Trip Rishikesh by Tempo Traveller | ₹920/Person'),
   description: 'Book Tempo Traveller for friends trip to Rishikesh from Delhi. Rs 920/person. Rafting, bungee, camping, bonfire. 12-17 seater AC. Call 7668570551.',
   keywords: 'friends trip rishikesh, rishikesh group trip, rishikesh tempo traveller, delhi to rishikesh friends, rishikesh rafting group, friends trip package rishikesh',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/friends-trip-rishikesh' },
-  openGraph: { title: 'Friends Trip to Rishikesh | Tempo Traveller Rs 920/Person', description: 'Rishikesh friends trip. Rafting, bungee, camping, bonfire. From Rs 920/person.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/friends-trip-rishikesh', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Friends Trip to Rishikesh | Tempo Traveller Rs 920/Person', description: 'Rishikesh friends trip. Rafting, bungee, camping, bonfire. From Rs 920/person.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/friends-trip-rishikesh', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Friends Trip Rishikesh | Rs 920/Person', description: 'Rishikesh group trip by Tempo Traveller. Rafting, camping, bonfire.' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -36,7 +37,7 @@ export default function FriendsTripPage() {
     highPrice,
     tripName: 'Friends Trip to Rishikesh by Tempo Traveller from Delhi',
     howToName: 'How to Plan a Friends Group Trip to Rishikesh from Delhi',
-    howToDesc: 'Step-by-step guide to booking a Tempo Traveller for a friends group trip to Rishikesh from Delhi with Triveni Cabs.',
+    howToDesc: 'Step-by-step guide to booking a Tempo Traveller for a friends group trip to Rishikesh from Delhi with Triveni Cabs™.',
   });
 
   return (
@@ -49,7 +50,7 @@ export default function FriendsTripPage() {
           tone="dark"
           className="mx-auto max-w-4xl"
           question={'How much does a friends trip to Rishikesh from Delhi cost?'}
-          answer={'A friends trip to Rishikesh runs 2-3 days and covers 240 km from Delhi, planned for a group of 8-15 people. Triveni Cabs prices it at Rs 11,000 for a 12-seater Tempo Traveller and Rs 14,000 for a 17-seater, which works out to about Rs 920 per person in the 12-seater. The best season to go is September to June.'}
+          answer={'A friends trip to Rishikesh runs 2-3 days and covers 240 km from Delhi, planned for a group of 8-15 people. Triveni Cabs™ prices it at Rs 11,000 for a 12-seater Tempo Traveller and Rs 14,000 for a 17-seater, which works out to about Rs 920 per person in the 12-seater. The best season to go is September to June.'}
           facts={[
             { label: 'Distance', value: '240 km from Delhi' },
             { label: 'Duration', value: '2-3 Days' },
@@ -59,6 +60,8 @@ export default function FriendsTripPage() {
         />
       </div>
       <FriendsTripClient data={data} />
+      {/* Week 49: the family this page belongs to — an audit found nothing linked to it */}
+      <SiblingPages prefix="/friends-trip-" current="/friends-trip-rishikesh" title="Friends&rsquo; trips from Delhi, by destination" intro="The same trip planned for the other hill towns and desert forts groups ask for." />
     </>
   );
 }

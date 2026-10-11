@@ -18,7 +18,7 @@ export const metadata = {
     description: "Premium wedding cars (BMW, Audi, Mercedes) + Baraat tempo travellers. 500+ couples chose us. Professional chauffeurs, stunning decorations. Book now & save 15%!",
     type: "website",
     locale: "en_IN",
-    siteName: "Triveni Cabs",
+    siteName: "Triveni Cabs™",
     images: [
       {
         url: "/images/wedding/luxury_car.jpg",

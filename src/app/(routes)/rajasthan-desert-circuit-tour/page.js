@@ -8,10 +8,10 @@ export const metadata = {
   title: tightenTitle('Rajasthan Desert Circuit 2026 | Jaisalmer Jodhpur Bikaner'),
   description: 'Rajasthan desert circuit Jaisalmer Jodhpur Bikaner 5-6 day tour by car. Desert safari, forts, cultural experiences. Sedan ₹30,000, SUV ₹42,000. Call 7668570551.',
   keywords: 'rajasthan desert circuit jaisalmer jodhpur bikaner, rajasthan desert tour, thar desert tour by car, jaisalmer jodhpur tour, desert safari rajasthan',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/rajasthan-desert-circuit-tour' },
-  openGraph: { title: 'Rajasthan Desert Circuit Tour 2026 | Jaisalmer-Jodhpur-Bikaner', description: '5-6 day desert adventure: golden forts, sand dunes, camel safaris.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/rajasthan-desert-circuit-tour', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Rajasthan Desert Circuit Tour 2026 | Jaisalmer-Jodhpur-Bikaner', description: '5-6 day desert adventure: golden forts, sand dunes, camel safaris.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/rajasthan-desert-circuit-tour', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Rajasthan Desert Circuit Tour 2026' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -74,7 +74,7 @@ export default function RajasthanDesertCircuitPage() {
           <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-yellow-500/10 rounded-full blur-[180px]" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[300px] bg-orange-500/8 rounded-full blur-[150px]" />
 
-          <div className="max-w-7xl mx-auto px-4 relative z-10 py-20 w-full">
+          <div className="max-w-7xl mx-auto px-4 relative z-10 py-12 sm:py-20 w-full">
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-8">
                 <div className="h-px w-12 bg-gradient-to-r from-yellow-400 to-transparent" />
@@ -115,10 +115,10 @@ export default function RajasthanDesertCircuitPage() {
         </section>
 
         {/* Itinerary - Cards with warm gradient accents */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-yellow-950 to-amber-950" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="text-yellow-400 text-sm font-medium tracking-widest uppercase">The Adventure</span>
               <h2 className="text-4xl md:text-5xl font-black mt-3">Day-by-Day Desert Plan</h2>
             </div>
@@ -161,7 +161,7 @@ export default function RajasthanDesertCircuitPage() {
         </section>
 
         {/* Pricing */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-amber-950" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-[200px]" />
           <div className="max-w-5xl mx-auto relative z-10">
@@ -187,7 +187,7 @@ export default function RajasthanDesertCircuitPage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-yellow-950" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-10">Related Trips</h2>
@@ -215,7 +215,7 @@ export default function RajasthanDesertCircuitPage() {
         </section>
 
         {/* Related Pages */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-yellow-950" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-3">Travel Guides & Resources</h2>
@@ -238,7 +238,7 @@ export default function RajasthanDesertCircuitPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-amber-950" />
           <div className="max-w-3xl mx-auto relative z-10">
             <div className="text-center mb-14">
@@ -262,7 +262,7 @@ export default function RajasthanDesertCircuitPage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-yellow-700 via-amber-700 to-orange-800" />
           <div className="absolute top-0 right-1/3 w-96 h-96 bg-yellow-300/15 rounded-full blur-[130px]" />
           <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-orange-400/10 rounded-full blur-[100px]" />

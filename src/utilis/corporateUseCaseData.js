@@ -14,7 +14,7 @@ export const corporateUseCases = {
     color: 'from-cyan-500 to-blue-500',
     tagline: 'Hassle-Free Employee Commute',
     subtitle: 'Door-to-Door Transport for Your Workforce',
-    description: 'Transform your employee commute experience with Triveni Cabs\' comprehensive pick-up and drop service. We handle the complete logistics of transporting your workforce from their homes to office and back, ensuring they arrive fresh, on time, and ready to work.',
+    description: 'Transform your employee commute experience with Triveni Cabs™\' comprehensive pick-up and drop service. We handle the complete logistics of transporting your workforce from their homes to office and back, ensuring they arrive fresh, on time, and ready to work.',
 
     howItWorks: [
       { step: 1, title: 'Share Employee Roster', description: 'Provide us with employee addresses and shift timings', icon: '📋' },
@@ -123,6 +123,10 @@ export const corporateUseCases = {
       { type: 'Premium Sedan', vehicles: 'Camry, Accord', capacity: '2-3 pax + luggage', useCase: 'Senior executives, VIPs' },
       { type: 'SUV', vehicles: 'Innova Crysta, Ertiga', capacity: '4-5 pax + luggage', useCase: 'Small groups' },
       { type: 'Luxury', vehicles: 'Mercedes, BMW, Audi', capacity: '2-3 pax + luggage', useCase: 'CXOs, Board members' },
+      // The gap between a luxury sedan and a standard tempo traveller: a whole
+      // delegation arriving together, in a vehicle that still reads as a
+      // considered choice rather than a booked minibus.
+      { type: 'Force Urbania', vehicles: '10-17 Seater Executive', capacity: '9-16 pax + luggage', useCase: 'Client delegations, executive groups' },
       { type: 'Tempo Traveller', vehicles: '12-17 Seater', capacity: '8-12 pax + luggage', useCase: 'Group arrivals' }
     ],
 
@@ -186,6 +190,15 @@ export const corporateUseCases = {
         vehicles: ['Toyota Fortuner', 'Innova Crysta', 'MG Gloster'],
         features: ['Commanding presence', 'Spacious', 'Versatile'],
         idealFor: 'Executives who prefer SUVs, site visits'
+      },
+      {
+        // The executive option once the party outgrows an SUV. A visiting
+        // delegation of a dozen arrives together instead of in three cars,
+        // and the interior still suits a client-facing journey.
+        category: 'Executive Group (Force Urbania)',
+        vehicles: ['Force Urbania 10 Seater', 'Force Urbania 13 Seater', 'Force Urbania 17 Seater'],
+        features: ['Luxury captain seats with armrests', 'Rear AC with per-row vents', 'High-roof flat-floor cabin'],
+        idealFor: 'Client delegations, board visits, senior teams travelling together'
       },
       {
         category: 'Luxury SUV',
@@ -286,6 +299,7 @@ export const corporateUseCases = {
     ],
 
     vehicleOptions: [
+      { type: '10-17 Seater Force Urbania', capacity: '9-16 comfortable', ac: 'Yes', features: ['Luxury captain seats with armrests', 'Rear AC with per-row vents', 'High-roof flat-floor cabin', 'USB + 12V charging'] },
       { type: '12-17 Seater Tempo', capacity: '12-15 comfortable', ac: 'Yes', features: ['Pushback seats', 'Music system', 'Charging points'] },
       { type: '20-26 Seater Tempo', capacity: '18-24 comfortable', ac: 'Yes', features: ['Pushback seats', 'Maharaja variant available'] },
       { type: '32 Seater Mini Bus', capacity: '28-30 comfortable', ac: 'Yes', features: ['Comfortable seats', 'PA system'] },
@@ -379,6 +393,10 @@ export const corporateUseCases = {
     vehicleCategories: [
       { category: 'Sedan', vehicles: ['Swift Dzire', 'Honda Amaze', 'Hyundai Aura'], priceRange: '₹28,000 - ₹35,000/month' },
       { category: 'Premium Sedan', vehicles: ['Toyota Camry', 'Honda Accord'], priceRange: '₹55,000 - ₹70,000/month' },
+      // Priced on request rather than with an invented figure: the published
+      // Force Urbania card carries a per-km and a day rate, but no monthly
+      // corporate rate, and a monthly contract is not simply 30x the day rate.
+      { category: 'Executive Group (Force Urbania)', vehicles: ['Force Urbania 10-17 Seater'], priceRange: 'On Request' },
       { category: 'SUV', vehicles: ['Ertiga', 'Marazzo', 'XUV700'], priceRange: '₹38,000 - ₹48,000/month' },
       { category: 'Premium SUV', vehicles: ['Innova Crysta', 'Fortuner'], priceRange: '₹50,000 - ₹65,000/month' },
       { category: 'Luxury', vehicles: ['Mercedes', 'BMW', 'Audi'], priceRange: 'On Request' }

@@ -8,10 +8,10 @@ export const metadata = {
   title: tightenTitle('Private Taj Mahal Tour from Delhi 2026 | Skip-the-Line Tips'),
   description: 'Private Taj Mahal tour from Delhi for tourists. Sunrise visit, skip-the-line tips, photography guide. AC car with English-speaking driver from $40.',
   keywords: 'private taj mahal tour from delhi for tourists, taj mahal day tour from delhi, taj mahal private driver, taj mahal sunrise tour, taj mahal guide for foreigners',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/taj-mahal-private-tour-from-delhi' },
-  openGraph: { title: 'Private Taj Mahal Tour from Delhi 2026 | Premium Experience', description: 'Private car + English driver to Taj Mahal. Sunrise visits, photography tips, skip-the-line.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/taj-mahal-private-tour-from-delhi', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Private Taj Mahal Tour from Delhi 2026 | Premium Experience', description: 'Private car + English driver to Taj Mahal. Sunrise visits, photography tips, skip-the-line.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/taj-mahal-private-tour-from-delhi', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Private Taj Mahal Tour from Delhi 2026' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -66,7 +66,7 @@ export default function TajMahalPrivateTourPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-purple-50">
-        <section className="relative bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-900 text-white py-20 px-4">
+        <section className="relative bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-900 text-white py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto text-center relative z-10">
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-4 py-2 rounded-full mb-6">
               <Star className="w-4 h-4" /><span className="text-sm font-medium">One of the Seven Wonders of the World</span>
@@ -86,7 +86,7 @@ export default function TajMahalPrivateTourPage() {
         </section>
 
         {/* Tour Options */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Choose Your Taj Mahal Experience</h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -111,7 +111,7 @@ export default function TajMahalPrivateTourPage() {
         </section>
 
         {/* Photography Guide */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">Taj Mahal Photography Guide</h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -133,7 +133,7 @@ export default function TajMahalPrivateTourPage() {
         </section>
 
         {/* Practical Info */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">Practical Information</h2>
             <div className="grid md:grid-cols-3 gap-6">
@@ -178,7 +178,7 @@ export default function TajMahalPrivateTourPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -193,7 +193,7 @@ export default function TajMahalPrivateTourPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 px-4 bg-gradient-to-r from-indigo-900 to-purple-900 text-white">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-r from-indigo-900 to-purple-900 text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Book Your Private Taj Mahal Tour</h2>
             <p className="text-purple-200 text-lg mb-8">From $42 (Sedan). Sunrise option available. English-speaking driver.</p>

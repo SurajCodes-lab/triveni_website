@@ -12,9 +12,9 @@ export const metadata = {
   title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['long weekend cab packages 2026', 'weekend getaway cab booking', 'short trip cab india', '2 day trip cab service', 'weekend road trip cab', 'long weekend travel 2026', 'quick getaway cab delhi', 'saturday sunday cab trip', 'weekend holiday cab packages', 'mini vacation cab booking'],
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${slug}`,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Long Weekend Getaway Packages' }],
   },
   twitter: { card: 'summary_large_image', title: pageTitle, description: pageDesc, creator: '@trivenicabs', site: '@trivenicabs' },
@@ -45,8 +45,7 @@ export default function LongWeekendPage() {
     "name": "Long Weekend Getaway Cab Packages 2026 — Triveni Cabs",
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
-    "areaServed": { "@type": "Country", "name": "India" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('long-weekend-getaway-packages-2026')), "bestRating": "5" }
+    "areaServed": { "@type": "Country", "name": "India" }
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",

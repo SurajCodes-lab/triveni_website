@@ -13,6 +13,7 @@
  */
 
 import { cityRoutesData, basicCityRoutes } from '@/utilis/cityRoutesData';
+import { deepFilterLinks } from './route-exists';
 
 // ------------------------------------------------------------------
 // City-level money pages — high commercial-intent destinations
@@ -22,16 +23,16 @@ import { cityRoutesData, basicCityRoutes } from '@/utilis/cityRoutesData';
 const MONEY_PAGES_BY_CITY = {
   delhi: [
     { href: '/delhi', anchor: 'Delhi taxi service', priority: 10 },
-    { href: '/one-way-cab/delhi-to-agra', anchor: 'Delhi to Agra one-way', priority: 9 },
+    { href: '/delhi-to-agra', anchor: 'Delhi to Agra one-way', priority: 9 },
     { href: '/airport-service/delhi', anchor: 'Delhi IGI airport taxi', priority: 9 },
-    { href: '/one-way-cab/delhi-to-jaipur', anchor: 'Delhi to Jaipur one-way', priority: 9 },
+    { href: '/delhi-to-jaipur', anchor: 'Delhi to Jaipur one-way', priority: 9 },
     { href: '/round-trip/delhi-to-vrindavan', anchor: 'Delhi to Vrindavan round trip', priority: 9 },
     { href: '/one-way-cab/delhi-to-badrinath', anchor: 'Delhi to Badrinath one-way', priority: 8 },
     { href: '/round-trip/delhi-to-leh', anchor: 'Delhi to Leh round trip', priority: 8 },
     { href: '/one-way-cab/delhi-to-gulmarg', anchor: 'Delhi to Gulmarg one-way', priority: 8 },
     { href: '/agra-day-trip-from-delhi', anchor: 'Delhi to Agra day trip', priority: 8 },
     { href: '/one-way-cab/delhi-to-alwar', anchor: 'Delhi to Alwar one-way', priority: 7 },
-    { href: '/one-way-cab/delhi-to-chandigarh', anchor: 'Delhi to Chandigarh one-way', priority: 7 },
+    { href: '/delhi-to-chandigarh', anchor: 'Delhi to Chandigarh one-way', priority: 7 },
     { href: '/one-way-cab/delhi-to-haridwar', anchor: 'Delhi to Haridwar one-way', priority: 7 },
     { href: '/ayodhya-ram-mandir-tour-from-delhi', anchor: 'Ayodhya tour from Delhi', priority: 7 },
   ],
@@ -66,11 +67,11 @@ const MONEY_PAGES_BY_CITY = {
   chandigarh: [
     { href: '/chandigarh', anchor: 'Chandigarh taxi service', priority: 10 },
     { href: '/airport-service/chandigarh', anchor: 'Chandigarh airport taxi', priority: 9 },
-    { href: '/one-way-cab/chandigarh-to-manali', anchor: 'Chandigarh to Manali', priority: 8 },
+    { href: '/chandigarh-to-manali', anchor: 'Chandigarh to Manali', priority: 8 },
     { href: '/one-way-cab/chandigarh-to-shimla', anchor: 'Chandigarh to Shimla', priority: 8 },
     { href: '/round-trip/kasol-to-chandigarh', anchor: 'Chandigarh to Kasol round trip', priority: 7 },
     { href: '/one-way-cab/chandigarh-to-dharamshala', anchor: 'Chandigarh to Dharamshala', priority: 7 },
-    { href: '/one-way-cab/chandigarh-to-delhi', anchor: 'Chandigarh to Delhi', priority: 7 },
+    { href: '/chandigarh-to-delhi', anchor: 'Chandigarh to Delhi', priority: 7 },
   ],
   haridwar: [
     { href: '/haridwar', anchor: 'Haridwar taxi service', priority: 10 },
@@ -83,7 +84,7 @@ const MONEY_PAGES_BY_CITY = {
   rishikesh: [
     { href: '/rishikesh', anchor: 'Rishikesh taxi service', priority: 10 },
     { href: '/round-trip/haridwar-to-rishikesh', anchor: 'Rishikesh to Haridwar round trip', priority: 8 },
-    { href: '/one-way-cab/rishikesh-to-delhi', anchor: 'Rishikesh to Delhi', priority: 8 },
+    { href: '/rishikesh-to-delhi', anchor: 'Rishikesh to Delhi', priority: 8 },
     { href: '/chardham-yatra', anchor: 'Char Dham Yatra', priority: 8 },
     { href: '/round-trip/rishikesh-to-dehradun', anchor: 'Rishikesh to Dehradun round trip', priority: 7 },
     { href: '/one-way-cab/rishikesh-to-dehradun', anchor: 'Rishikesh to Dehradun', priority: 7 },
@@ -133,7 +134,7 @@ const MONEY_PAGES_BY_CITY = {
     { href: '/manali', anchor: 'Manali taxi service', priority: 10 },
     { href: '/manali-travel-guide', anchor: 'Manali travel guide', priority: 9 },
     { href: '/round-trip/shimla-to-manali', anchor: 'Manali to Shimla round trip', priority: 8 },
-    { href: '/one-way-cab/manali-to-delhi', anchor: 'Manali to Delhi', priority: 8 },
+    { href: '/manali-to-delhi', anchor: 'Manali to Delhi', priority: 8 },
     { href: '/round-trip/kasol-to-manali', anchor: 'Manali to Kasol round trip', priority: 7 },
     { href: '/round-trip/dharamshala-to-manali', anchor: 'Manali to Dharamshala round trip', priority: 7 },
   ],
@@ -203,7 +204,7 @@ const MONEY_PAGES_BY_CITY = {
     { href: '/mathura', anchor: 'Mathura taxi service', priority: 10 },
     { href: '/mathura-vrindavan-travel-guide', anchor: 'Mathura & Vrindavan travel guide', priority: 9 },
     { href: '/one-way-cab/delhi-to-mathura', anchor: 'Delhi to Mathura one-way', priority: 8 },
-    { href: '/round-trip/delhi-to-mathura', anchor: 'Delhi to Mathura round trip', priority: 8 },
+    { href: '/delhi-to-mathura', anchor: 'Delhi to Mathura round trip', priority: 8 },
     { href: '/one-way-cab/mathura-to-delhi', anchor: 'Mathura to Delhi', priority: 7 },
   ],
   vrindavan: [
@@ -284,7 +285,7 @@ const MONEY_PAGES_BY_CITY = {
   ],
   kasauli: [
     { href: '/kasauli', anchor: 'Kasauli taxi service', priority: 10 },
-    { href: '/one-way-cab/chandigarh-to-kasauli', anchor: 'Chandigarh to Kasauli', priority: 9 },
+    { href: '/chandigarh-to-kasauli', anchor: 'Chandigarh to Kasauli cab', priority: 9 },
     { href: '/round-trip/delhi-to-kasauli', anchor: 'Delhi to Kasauli round trip', priority: 8 },
     { href: '/one-way-cab/delhi-to-kasauli', anchor: 'Delhi to Kasauli one-way', priority: 7 },
   ],
@@ -327,14 +328,14 @@ const MONEY_PAGES_BY_CITY = {
     { href: '/ghaziabad', anchor: 'Ghaziabad taxi service', priority: 10 },
     { href: '/one-way-cab/delhi-to-ghaziabad', anchor: 'Delhi to Ghaziabad one-way', priority: 9 },
     { href: '/airport-service/delhi', anchor: 'Delhi IGI airport taxi', priority: 8 },
-    { href: '/one-way-cab/delhi-to-agra', anchor: 'Delhi to Agra one-way', priority: 7 },
+    { href: '/delhi-to-agra', anchor: 'Delhi to Agra one-way', priority: 7 },
   ],
   noida: [
     { href: '/noida', anchor: 'Noida taxi service', priority: 10 },
     { href: '/one-way-cab/noida-to-agra', anchor: 'Noida to Agra one-way', priority: 9 },
     { href: '/airport-service/jewar', anchor: 'Jewar airport taxi', priority: 8 },
     { href: '/airport-service/delhi', anchor: 'Delhi IGI airport taxi', priority: 8 },
-    { href: '/one-way-cab/delhi-to-agra', anchor: 'Delhi to Agra one-way', priority: 7 },
+    { href: '/delhi-to-agra', anchor: 'Delhi to Agra one-way', priority: 7 },
   ],
   'greater-noida': [
     { href: '/greater-noida', anchor: 'Greater Noida taxi service', priority: 10 },
@@ -346,13 +347,13 @@ const MONEY_PAGES_BY_CITY = {
     { href: '/gurgaon', anchor: 'Gurgaon taxi service', priority: 10 },
     { href: '/one-way-cab/gurgaon-to-jaipur', anchor: 'Gurgaon to Jaipur one-way', priority: 9 },
     { href: '/airport-service/delhi', anchor: 'Delhi IGI airport taxi', priority: 8 },
-    { href: '/one-way-cab/delhi-to-agra', anchor: 'Delhi to Agra one-way', priority: 7 },
+    { href: '/delhi-to-agra', anchor: 'Delhi to Agra one-way', priority: 7 },
   ],
   faridabad: [
     { href: '/faridabad', anchor: 'Faridabad taxi service', priority: 10 },
     { href: '/one-way-cab/delhi-to-faridabad', anchor: 'Delhi to Faridabad one-way', priority: 9 },
     { href: '/airport-service/delhi', anchor: 'Delhi IGI airport taxi', priority: 8 },
-    { href: '/one-way-cab/delhi-to-agra', anchor: 'Delhi to Agra one-way', priority: 7 },
+    { href: '/delhi-to-agra', anchor: 'Delhi to Agra one-way', priority: 7 },
   ],
   ahmedabad: [
     { href: '/ahmedabad', anchor: 'Ahmedabad taxi service', priority: 10 },
@@ -383,7 +384,7 @@ const SILO_HUBS = {
  * Money-page links for a city. Falls back to silo hubs + city-topical guides
  * when the city is not in the hand-curated MONEY_PAGES_BY_CITY map.
  */
-export function getMoneyPageLinks(city, limit = 5) {
+function getMoneyPageLinks__raw(city, limit = 5) {
   if (!city) return [];
   const key = String(city).toLowerCase().replace(/\s+/g, '-');
   const list = MONEY_PAGES_BY_CITY[key];
@@ -402,7 +403,7 @@ export function getMoneyPageLinks(city, limit = 5) {
  * Adjacent routes for a one-way slug like 'delhi-to-agra'.
  * Returns "other destinations from Delhi" and "other origins to Agra".
  */
-export function getRelatedRoutes(slug, limit = 6) {
+function getRelatedRoutes__raw(slug, limit = 6) {
   if (!slug || typeof slug !== 'string') return [];
   const m = slug.match(/^(.+?)-to-(.+)$/);
   if (!m) return [];
@@ -445,7 +446,7 @@ export function getRelatedRoutes(slug, limit = 6) {
  * Silo hub links — used on category pages to cross-link sibling categories.
  * `exclude` is the slug of the current silo (so you don't link to yourself).
  */
-export function getSiloHubLinks(exclude = null, limit = 6) {
+function getSiloHubLinks__raw(exclude = null, limit = 6) {
   return Object.entries(SILO_HUBS)
     .filter(([k]) => k !== exclude)
     .slice(0, limit)
@@ -458,7 +459,7 @@ export function getSiloHubLinks(exclude = null, limit = 6) {
  */
 const TOPICAL_CITIES = new Set(['agra', 'amritsar', 'jaipur', 'delhi', 'chandigarh', 'lucknow', 'varanasi', 'udaipur']);
 
-export function getCityTopicalLinks(city, exclude = null) {
+function getCityTopicalLinks__raw(city, exclude = null) {
   if (!city) return [];
   const key = String(city).toLowerCase().replace(/\s+/g, '-');
   if (!TOPICAL_CITIES.has(key)) return [];
@@ -487,3 +488,14 @@ function pascalize(s) {
   // 'delhi' → 'Delhi', 'new-delhi' → 'New Delhi' (matches cityRoutesData keys)
   return String(s || '').split('-').map((p) => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
 }
+
+
+// ---------------------------------------------------------------------------
+// Week 47: every list this module returns is filtered against the build
+// manifest (src/generated/known-routes.json) so no internal link points at a
+// page that was never built. See src/lib/seo/route-exists.js for why.
+// ---------------------------------------------------------------------------
+export const getMoneyPageLinks = (...a) => deepFilterLinks(getMoneyPageLinks__raw(...a));
+export const getRelatedRoutes = (...a) => deepFilterLinks(getRelatedRoutes__raw(...a));
+export const getSiloHubLinks = (...a) => deepFilterLinks(getSiloHubLinks__raw(...a));
+export const getCityTopicalLinks = (...a) => deepFilterLinks(getCityTopicalLinks__raw(...a));

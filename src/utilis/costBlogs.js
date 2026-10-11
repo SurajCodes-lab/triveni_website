@@ -259,7 +259,7 @@ const costBlogs = [
     relatedDestinations: [],
     primaryCTA: { text: 'Book Tempo Traveller', url: '/tempo-traveller', description: 'Hire tempo traveller for your group', price: 'From ₹18/km' },
     content: `
-      <p>Looking for <strong>tempo traveller hire cost per day</strong> in 2026? Whether it is a family trip, wedding function, corporate outing, or pilgrimage, this guide covers rates for every tempo traveller type available at <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">Triveni Cabs</a>.</p>
+      <p>Looking for <strong>tempo traveller hire cost per day</strong> in 2026? Whether it is a family trip, wedding function, corporate outing, or pilgrimage, this guide covers rates for every tempo traveller type available at <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">Triveni Cabs™</a>.</p>
 
       <h2>Tempo Traveller Daily Rental Rates 2026</h2>
       <table class="w-full my-6 border-collapse border border-gray-300">
@@ -466,7 +466,7 @@ const costBlogs = [
     relatedDestinations: [],
     primaryCTA: { text: 'Get Corporate Quote', url: '/get-corporate-quote', description: 'Custom corporate transport packages', price: 'From ₹35,000/month' },
     content: `
-      <p>Need reliable <strong>corporate cab service</strong> for your company? Triveni Cabs offers customized monthly packages for employee transport, client meetings, airport transfers, and executive travel. Get a <a href="/get-corporate-quote" class="text-blue-600 hover:underline font-semibold">free corporate quote</a> today.</p>
+      <p>Need reliable <strong>corporate cab service</strong> for your company? Triveni Cabs™ offers customized monthly packages for employee transport, client meetings, airport transfers, and executive travel. Get a <a href="/get-corporate-quote" class="text-blue-600 hover:underline font-semibold">free corporate quote</a> today.</p>
 
       <h2>Monthly Corporate Cab Packages 2026</h2>
       <table class="w-full my-6 border-collapse border border-gray-300">
@@ -655,7 +655,7 @@ const costBlogs = [
     relatedDestinations: [{ name: 'Jaipur', slug: 'jaipur', type: 'city' }],
     primaryCTA: { text: 'Book Delhi to Jaipur Cab', url: '/sightseeing/jaipur', description: 'AC cab to Jaipur', price: 'From ₹3,500' },
     content: `
-      <p>Looking for <strong>Delhi to Jaipur cab fare</strong> in 2026? This guide covers all vehicle options, route details, toll costs, and tips to save on your Delhi-Jaipur trip. Book through <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline font-semibold">Triveni Cabs</a> for the best rates.</p>
+      <p>Looking for <strong>Delhi to Jaipur cab fare</strong> in 2026? This guide covers all vehicle options, route details, toll costs, and tips to save on your Delhi-Jaipur trip. Book through <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline font-semibold">Triveni Cabs™</a> for the best rates.</p>
 
       <h2>Delhi to Jaipur Fare Chart 2026</h2>
       <table class="w-full my-6 border-collapse border border-gray-300">

@@ -1,8 +1,10 @@
 import { notFound } from 'next/navigation';
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import Link from 'next/link';
 import { getRoundTripRoute, getAllRoundTripSlugs, getRelatedRoundTripRoutes, cityToGeoSlug } from '@/utilis/roundTripData';
 import RoundTripClient from '@/components/round-trip/RoundTripClient';
 import { getCorridorLinks } from '@/utilis/corridorLinks';
+import { getSeasonalCorridorCallout } from '@/utilis/seasonalCorridors';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import RelatedLinks from '@/components/seo/RelatedLinks';
@@ -14,6 +16,8 @@ import { getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate, get
 import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
 import { BookOpen, Clock, ArrowRight } from '@/components/ui/icons';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
+import { BASE_URL } from '@/lib/seo/constants';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -35,11 +39,11 @@ export async function generateMetadata({ params }) {
   // "how much / how far / how long" before the click. Parentheticals are
   // stripped from route.duration to keep the whole line inside ~160 characters.
   const snippetDuration = String(route.duration).replace(/\s*\([^)]*\)\s*/g, ' ').trim();
-  const description = `Sedan ₹${route.sedanRaw.toLocaleString('en-IN')} round trip · ${route.distanceKm.toLocaleString('en-IN')} km each way · ${snippetDuration} · 4.9★ Triveni Cabs. Same driver throughout, 10% off.`;
+  const description = `Sedan ₹${route.sedanRaw.toLocaleString('en-IN')} round trip · ${route.distanceKm.toLocaleString('en-IN')} km each way · ${snippetDuration} · 4.9★ Triveni Cabs™. Same driver throughout, 10% off.`;
   // Social cards are not length-capped the way a SERP snippet is, so they keep
   // the fuller pitch.
   const socialDescription = `Book ${route.origin} to ${route.destination} round trip cab from ₹${route.sedanRaw.toLocaleString('en-IN')}. ${route.distanceKm} km one-way via ${route.highway}. Driver stays with you. ${route.nightHalt ? 'Night halt included.' : 'Same day return.'} 10% round trip discount. AC sedan, SUV, Tempo Traveller. Call 7668570551.`;
-  const ogTitle = `${route.origin} ⟷ ${route.destination} Round Trip Cab — ₹${route.sedanRaw.toLocaleString('en-IN')} | Driver Stays With You | Triveni Cabs`;
+  const ogTitle = `${route.origin} ⟷ ${route.destination} Round Trip Cab — ₹${route.sedanRaw.toLocaleString('en-IN')} | Driver Stays With You | Triveni Cabs™`;
 
   const o = route.origin.toLowerCase();
   const d = route.destination.toLowerCase();
@@ -64,9 +68,9 @@ export async function generateMetadata({ params }) {
       `${o} to ${d} outstation cab round trip`,
       `${o} to ${d} tour package by car`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/round-trip/${slug}` },
     openGraph: {
@@ -75,7 +79,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/round-trip/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `${route.origin} to ${route.destination} Round Trip Cab` }],
     },
     twitter: {
@@ -86,7 +90,7 @@ export async function generateMetadata({ params }) {
       site: '@trivenicabs',
       images: [getOgImageForSlug(slug)],
     },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -134,9 +138,9 @@ export default async function RoundTripPage({ params }) {
       url: 'https://www.trivenicabs.in',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '366 Dandupura near Tajganj',
+        streetAddress: '366, Dandupura, near Tajganj',
         addressLocality: 'Agra',
-        addressRegion: 'UP',
+        addressRegion: 'Uttar Pradesh',
         postalCode: '282006',
         addressCountry: 'IN',
       },
@@ -184,6 +188,8 @@ export default async function RoundTripPage({ params }) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: `${route.origin} to ${route.destination} Round Trip Cab — Triveni Cabs`,
+    // Week 53: Merchant listings treats a missing `image` as critical.
+    image: `${BASE_URL}/images/car/swift_dzire.jpg`,
     description: `Round trip cab service from ${route.origin} to ${route.destination} (${route.distanceKm} km one way). Driver stays with you. AC vehicle, verified driver, 10% round trip discount.`,
     brand: { '@type': 'Brand', name: 'Triveni Cabs' },
     offers: {
@@ -257,7 +263,7 @@ export default async function RoundTripPage({ params }) {
       availability: 'https://schema.org/InStock',
     },
     provider: { '@type': 'TravelAgency', '@id': 'https://www.trivenicabs.in/#organization', name: 'Triveni Cabs' },
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/round-trip/${slug}`) || getTodayDate()),
     ...getRatingAndReviews(slug, 'outstation'),
   };
 
@@ -274,7 +280,12 @@ export default async function RoundTripPage({ params }) {
         <script key={`geo-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(node) }} />
       ))}
       <AEOHead pageType="route" data={{ url: `/round-trip/${slug}`, title: `${route.origin} to ${route.destination} Round Trip Cab`, origin: route.origin, destination: route.destination, city: route.origin }} />
-      <RoundTripClient route={route} relatedRoutes={relatedRoutes} corridorLinks={getCorridorLinks(slug, 'round-trip')} />
+      <RoundTripClient
+        route={route}
+        relatedRoutes={relatedRoutes}
+        corridorLinks={getCorridorLinks(slug, 'round-trip')}
+        seasonalCallout={getSeasonalCorridorCallout({ destination: route.destination, origin: route.origin })}
+      />
 
       {/* Internal-link panel for adjacent commercial pages from the origin
           city. relatedRoutes are already rendered inside the client component

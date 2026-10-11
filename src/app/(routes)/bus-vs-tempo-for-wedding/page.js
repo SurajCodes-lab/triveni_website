@@ -6,6 +6,7 @@ import SemanticComparison from '@/components/seo/SemanticComparison';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getComparisonSchema, getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 const SLUG = 'bus-vs-tempo-for-wedding';
 const SITE = 'https://www.trivenicabs.in';
@@ -21,7 +22,7 @@ export const metadata = {
     'Bus or tempo for wedding guest transport & baraat? Compare capacity, cost per guest & venue access. Verdict: bus for 40+, tempo for baraat. Call 7668570551.',
   keywords:
     'bus vs tempo for wedding, bus or tempo for wedding, bus or tempo for baraat, wedding guest transport, baraat vehicle rental, wedding bus booking, tempo for wedding baraat, wedding group transport comparison, bus for wedding guests, tempo traveller for baraat, wedding shuttle service, destination wedding transport, baraat tempo with DJ, wedding bus cost, tempo vs bus for wedding price',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL(SITE),
   alternates: { canonical: PAGE_URL, languages: { 'en-IN': `/${SLUG}` } },
   openGraph: {
@@ -31,7 +32,7 @@ export const metadata = {
     type: 'article',
     locale: 'en_IN',
     url: PAGE_URL,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Bus vs Tempo Traveller for Wedding — Triveni Cabs' }],
   },
   twitter: {
@@ -88,7 +89,7 @@ export default function BusVsTempoWeddingPage() {
       { name: 'Check the venue road', text: 'Farmhouses and heritage venues with narrow access need tempos — a bus cannot reach them.' },
       { name: 'Plan the baraat', text: 'Baraat with DJ and decoration is traditionally a 17-20 seater tempo, not a bus.' },
       { name: 'Mix vehicles if needed', text: 'Most weddings combine one bus for bulk guest transport with 1-2 baraat tempos and family shuttles.' },
-      { name: 'Book with Triveni Cabs', text: 'Call 7668570551 for a custom wedding transport quote with decoration options.' },
+      { name: 'Book with Triveni Cabs™', text: 'Call 7668570551 for a custom wedding transport quote with decoration options.' },
     ],
   });
 
@@ -99,7 +100,7 @@ export default function BusVsTempoWeddingPage() {
       'An experience-based guide to wedding transport comparing bus and tempo traveller on guest capacity, cost per head, venue access, baraat suitability and comfort.',
     image: OG_IMAGE,
     datePublished: '2024-06-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/${SLUG}`) || getTodayDate()),
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'],
   });
 
@@ -115,8 +116,7 @@ export default function BusVsTempoWeddingPage() {
     areaServed: { '@type': 'Country', name: 'India' },
     brand: { '@type': 'Brand', name: 'Triveni Cabs' },
     provider: { '@type': 'TravelAgency', '@id': `${SITE}/#organization`, name: 'Triveni Cabs', telephone: '+91-7668570551' },
-    aggregateRating: rr.aggregateRating,
-    review: rr.review,
+
   };
 
   const speakableSchema = {
@@ -125,7 +125,7 @@ export default function BusVsTempoWeddingPage() {
     '@id': `${PAGE_URL}#webpage`,
     name: 'Bus vs Tempo Traveller for Wedding',
     url: PAGE_URL,
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/${SLUG}`) || getTodayDate()),
     speakable: getSpeakableSchema(['.speakable-headline', '.speakable-lead', '.speakable-faq-first']),
   };
 
@@ -144,9 +144,9 @@ export default function BusVsTempoWeddingPage() {
       {/* AEO/GEO supplemental content — direct-answer verdict, attribute table, decision guide */}
       <section className="bg-slate-50 py-14 px-4">
         <div className="max-w-5xl mx-auto">
-          <h1 className="speakable-headline text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="speakable-headline text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Bus vs Tempo Traveller for Wedding: Which Should You Book?
-          </h1>
+          </h2>
           <p className="speakable-lead text-lg text-slate-700 bg-rose-50 border border-rose-100 rounded-xl px-5 py-4 mb-8">
             Short answer: for transporting <strong>40+ wedding guests</strong> on a flat route, a <strong>bus</strong> is the
             most economical single-vehicle option. For a <strong>baraat of 15-25</strong>, a decorated{' '}

@@ -1,11 +1,15 @@
 import { notFound } from 'next/navigation';
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import { getOutstationCity, getAllOutstationCitySlugs, getRelatedOutstationCities } from '@/utilis/outstationCityData';
 import OutstationCityClient from '@/components/outstation/OutstationCityClient';
+import { getAllOneWayRouteSlugs } from '@/utilis/oneWayCabData';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema, getCityPlaceSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
+import { groupDigits } from '@/utilis/pricing';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -26,7 +30,7 @@ export async function generateMetadata({ params }) {
   const routeCount = cityData.popularRoutes.length;
 
   const title = tightenTitle(`Outstation Cabs from ${cityData.city} | ${routeCount}0+ Routes from \u20B9${lowestFare.toLocaleString('en-IN')} \u2014 4.9\u2605`);
-  const description = `Book outstation cabs from ${cityData.city} starting \u20B9${cityData.vehicleOptions[0].perKm}/km. ${routeCount}0+ routes with one-way & round trip options. Sedan, SUV, Tempo Traveller. Verified drivers, AC vehicles. Call 7668570551 for instant booking.`;
+  const description = `Book outstation cabs from ${cityData.city} starting \u20B9${groupDigits(cityData.vehicleOptions[0].perKm)}/km. ${routeCount}0+ routes with one-way & round trip options. Sedan, SUV, Tempo Traveller. Verified drivers, AC vehicles. Call 7668570551 for instant booking.`;
 
   return {
     title,
@@ -48,18 +52,18 @@ export async function generateMetadata({ params }) {
       `${cityData.city.toLowerCase()} round trip cab`,
       `${cityData.city.toLowerCase()} outstation cab fare`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/outstation-cabs/${slug}` },
     openGraph: {
-      title: `Outstation Cabs from ${cityData.city} | Book ${routeCount}0+ Routes from \u20B9${lowestFare.toLocaleString('en-IN')} | Triveni Cabs`,
+      title: `Outstation Cabs from ${cityData.city} | Book ${routeCount}0+ Routes from \u20B9${lowestFare.toLocaleString('en-IN')} | Triveni Cabs™`,
       description,
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/outstation-cabs/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `Outstation Cabs from ${cityData.city}` }],
     },
     twitter: {
@@ -70,7 +74,7 @@ export async function generateMetadata({ params }) {
       site: '@trivenicabs',
       images: [getOgImageForSlug(slug)],
     },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -96,7 +100,7 @@ export default async function OutstationCityCabPage({ params }) {
     "@id": `https://www.trivenicabs.in/outstation-cabs/${slug}/#service`,
     "serviceType": `Outstation Cab Service from ${cityData.city}`,
     "name": `Outstation Cabs from ${cityData.city} - One Way & Round Trip`,
-    "description": `Book outstation cabs from ${cityData.city}. Sedan \u20B9${cityData.vehicleOptions[0].perKm}/km, SUV \u20B9${cityData.vehicleOptions[1].perKm}/km, Tempo \u20B9${cityData.vehicleOptions[2].perKm}/km. ${cityData.popularRoutes.length}0+ routes available.`,
+    "description": `Book outstation cabs from ${cityData.city}. Sedan \u20B9${groupDigits(cityData.vehicleOptions[0].perKm)}/km, SUV \u20B9${groupDigits(cityData.vehicleOptions[1].perKm)}/km, Tempo \u20B9${groupDigits(cityData.vehicleOptions[2].perKm)}/km. ${cityData.popularRoutes.length}0+ routes available.`,
     "provider": { "@id": "https://www.trivenicabs.in/#localbusiness" },
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "areaServed": {
@@ -121,7 +125,7 @@ export default async function OutstationCityCabPage({ params }) {
     estimatedCost: { currency: "INR", value: lowestFare.toString() },
     steps: [
       { name: "Share Trip Details", text: `Tell us your pickup point in ${cityData.city}, destination, travel date, and number of passengers via call or WhatsApp at 7668570551.` },
-      { name: "Get an Instant Quote", text: `Receive a transparent all-inclusive fare for Sedan (\u20B9${cityData.vehicleOptions[0].perKm}/km), SUV (\u20B9${cityData.vehicleOptions[1].perKm}/km) or Tempo Traveller (\u20B9${cityData.vehicleOptions[2].perKm}/km). No hidden charges.` },
+      { name: "Get an Instant Quote", text: `Receive a transparent all-inclusive fare for Sedan (\u20B9${groupDigits(cityData.vehicleOptions[0].perKm)}/km), SUV (\u20B9${groupDigits(cityData.vehicleOptions[1].perKm)}/km) or Tempo Traveller (\u20B9${groupDigits(cityData.vehicleOptions[2].perKm)}/km). No hidden charges.` },
       { name: "Confirm & Travel", text: `Confirm your booking and your verified driver arrives 15 minutes early in a clean, FASTag-equipped AC vehicle from ${cityData.city}.` }
     ]
   });
@@ -133,7 +137,7 @@ export default async function OutstationCityCabPage({ params }) {
     description: `Outstation cab booking guide for ${cityData.city}: fares from \u20B9${lowestFare.toLocaleString('en-IN')}, ${cityData.popularRoutes.length}0+ one-way and round-trip routes, vehicle options, and inclusions.`,
     image: ogImage,
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/outstation-cabs/${slug}`) || getTodayDate()),
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
   });
 
@@ -200,7 +204,8 @@ export default async function OutstationCityCabPage({ params }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />
       )}
       <AEOHead pageType="route" data={{ url: `/outstation-cabs/${slug}`, title: `Outstation Cabs from ${cityData.city}`, city: cityData.city }} />
-      <OutstationCityClient cityData={cityData} relatedCities={relatedCities} />
+      {/* Slugs resolved here so oneWayCabData.js (560 KB) stays server-side. */}
+      <OutstationCityClient cityData={cityData} relatedCities={relatedCities} oneWaySlugs={getAllOneWayRouteSlugs()} />
     </>
   );
 }

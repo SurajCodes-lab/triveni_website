@@ -30,7 +30,7 @@ export default function Page() {
     <NearMePage
       slug="wedding-car-rental-near-me"
       h1="Wedding Car Rental Near You — Decorated Luxury & Vintage Cars"
-      intro="Make your big day unforgettable with a beautifully decorated wedding car from Triveni Cabs. Choose from Mercedes, BMW, Audi, classic vintage cars for the bride and groom, plus decorated tempo travellers and minibuses for the baraat and guests. Every car is chauffeur-driven and fully decorated with flowers and ribbons."
+      intro="Make your big day unforgettable with a beautifully decorated wedding car from Triveni Cabs™. Choose from Mercedes, BMW, Audi, classic vintage cars for the bride and groom, plus decorated tempo travellers and minibuses for the baraat and guests. Every car is chauffeur-driven and fully decorated with flowers and ribbons."
       fareChips={[
         { label: 'Luxury sedan', value: 'from ₹15k' },
         { label: 'Mercedes/BMW', value: 'on request' },

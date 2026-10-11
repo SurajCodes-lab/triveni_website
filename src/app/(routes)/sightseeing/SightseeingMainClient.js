@@ -116,7 +116,7 @@ export default function SightseeingMainClient({ data, faqData }) {
           <div className="pointer-events-none absolute -top-20 right-0 h-80 w-80 rounded-full bg-emerald-500/15 blur-[140px]" aria-hidden />
           <div className="pointer-events-none absolute bottom-28 -left-16 h-64 w-64 rounded-full bg-teal-400/10 blur-[110px]" aria-hidden />
 
-          <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-24 sm:px-6 sm:pb-16 lg:px-8">
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-14 sm:pt-24 sm:px-6 sm:pb-16 lg:px-8">
             <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.25em] text-emerald-300 backdrop-blur-md">
               <Camera className="h-3.5 w-3.5" />
               {data.allTours.length}+ curated tours · 20+ destinations
@@ -505,7 +505,7 @@ export default function SightseeingMainClient({ data, faqData }) {
                 desc: 'Wonder of the World',
                 tagline: 'Taj Mahal • Agra Fort • Fatehpur Sikri',
                 tours: '6+ Tours',
-                image: '/images/sightseeing/Agra/Agra_hero_section.jpg'
+                image: '/images/sightseeing/Agra/Agra_Hero_section.jpg'
               },
               {
                 name: 'Jaipur',
@@ -709,14 +709,14 @@ const TourCard = memo(function TourCard({ tour, isFavorite, onToggleFavorite, fe
 
             {/* Urgency badge — booked X times */}
             <span className="absolute right-14 top-4 z-10 inline-flex items-center gap-1 rounded-full bg-emerald-500/95 px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg backdrop-blur-md">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white"></span>
+              <span className="h-1.5 w-1.5 rounded-full bg-white"></span>
               {urgency.bookedThisMonth} booked this month
             </span>
 
             <div className="absolute bottom-4 left-4 right-4 z-10">
               <h4 className="text-lg font-black text-white drop-shadow-lg">{tour.name}</h4>
               <p className="mt-1 flex items-center gap-1 text-xs text-emerald-200">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400"></span>
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
                 {urgency.viewingNow} viewing · last booked {urgency.lastBooked} ago
               </p>
             </div>

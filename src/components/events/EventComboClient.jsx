@@ -1,5 +1,6 @@
 "use client";
 
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -128,6 +129,7 @@ export default function EventComboClient({ data, jsonLd }) {
               {type.title}
               <span className="block mt-2 text-gold-foil">in {city.name}</span>
             </h1>
+              <FamilyFacts family="event" data={data} />
             <p className="speakable-lead mt-4 text-lg text-slate-300 max-w-2xl">
               {intro}
             </p>
@@ -187,6 +189,7 @@ export default function EventComboClient({ data, jsonLd }) {
           </div>
         </div>
       </section>
+      <FamilyFacts family="event" data={data} details />
 
       {/* QUOTE FORM — dark */}
       <section className="border-b border-white/10 bg-white/[0.03]">
@@ -343,7 +346,7 @@ export default function EventComboClient({ data, jsonLd }) {
         <section className="text-slate-900" style={{ backgroundColor: WARM }}>
           <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
             <h2 className="font-display-serif text-2xl font-bold text-slate-900">
-              Why Triveni Cabs for {type.name.toLowerCase()} in {city.name}
+              Why Triveni Cabs™ for {type.name.toLowerCase()} in {city.name}
             </h2>
             <ul className="mt-5 grid sm:grid-cols-2 gap-3">
               {city.highlights.map((h, i) => (
@@ -370,6 +373,7 @@ export default function EventComboClient({ data, jsonLd }) {
                 openFaq === i ? "border-cyan-400/40" : "border-white/10"
               }`}
             >
+              <h3 className="m-0">
               <button
                 onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
                 className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left"
@@ -388,6 +392,7 @@ export default function EventComboClient({ data, jsonLd }) {
                   }`}
                 />
               </button>
+              </h3>
               {openFaq === i && (
                 <div className="px-5 pb-5 text-slate-300 leading-relaxed">
                   {f.answer}

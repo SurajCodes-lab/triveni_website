@@ -8,10 +8,10 @@ export const metadata = {
   title: tightenTitle('Golden Triangle Tour 2026 | English-Speaking Driver'),
   description: 'Golden Triangle tour (Delhi-Agra-Jaipur) with English-speaking chauffeur. 3/4/5 day options from $135. Taj Mahal, Amber Fort, India Gate.',
   keywords: 'golden triangle tour english speaking driver, delhi agra jaipur tour with driver, golden triangle private tour, english speaking chauffeur india',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/golden-triangle-english-speaking-driver' },
-  openGraph: { title: 'Golden Triangle Tour with English Speaking Driver 2026', description: 'Delhi-Agra-Jaipur private tour with English-speaking chauffeur. 3/4/5 day options.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/golden-triangle-english-speaking-driver', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Golden Triangle Tour with English Speaking Driver 2026', description: 'Delhi-Agra-Jaipur private tour with English-speaking chauffeur. 3/4/5 day options.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/golden-triangle-english-speaking-driver', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Golden Triangle English Speaking Driver Tour 2026' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -92,14 +92,14 @@ export default function GoldenTriangleEnglishDriverPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-stone-950 via-amber-950/30 to-stone-950" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-orange-500/8 via-transparent to-transparent" />
-          <div className="absolute top-20 right-20 w-[350px] h-[350px] bg-amber-500/10 rounded-full blur-[140px] animate-pulse" />
-          <div className="absolute bottom-20 left-20 w-[280px] h-[280px] bg-orange-500/8 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-20 right-20 w-[350px] h-[350px] bg-amber-500/10 rounded-full blur-[140px]" />
+          <div className="absolute bottom-20 left-20 w-[280px] h-[280px] bg-orange-500/8 rounded-full blur-[120px]" style={{ animationDelay: '2s' }} />
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(251,191,36,0.3) 1px, transparent 0)`,
             backgroundSize: '40px 40px'
           }} />
 
-          <div className="max-w-7xl mx-auto px-4 py-20 relative z-10 w-full">
+          <div className="max-w-7xl mx-auto px-4 py-12 sm:py-20 relative z-10 w-full">
             <nav className="flex items-center gap-2 text-sm text-stone-500 mb-8">
               <Link href="/" className="hover:text-amber-400 transition-colors">Home</Link>
               <ChevronRight className="w-4 h-4" />
@@ -198,10 +198,10 @@ export default function GoldenTriangleEnglishDriverPage() {
         </section>
 
         {/* Tour Options */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[200px]" />
           <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 px-6 py-3 rounded-full mb-6 border border-amber-500/30">
                 <Calendar className="w-5 h-5 text-amber-400" />
                 <span className="text-amber-300 font-semibold text-sm tracking-wider uppercase">Choose Your Package</span>
@@ -264,10 +264,10 @@ export default function GoldenTriangleEnglishDriverPage() {
         </section>
 
         {/* What's Included */}
-        <section className="py-20 px-4 bg-stone-900/30 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-stone-900/30 relative overflow-hidden">
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[150px]" />
           <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-white">
                 What Is <span className="text-transparent bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">Included</span>
               </h2>
@@ -308,7 +308,7 @@ export default function GoldenTriangleEnglishDriverPage() {
         </section>
 
         {/* Related Pages */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-2xl font-bold text-center mb-8 text-white">More for Tourists</h2>
             <div className="grid md:grid-cols-3 gap-4">
@@ -335,10 +335,10 @@ export default function GoldenTriangleEnglishDriverPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[200px]" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
                 Frequently Asked
                 <span className="block text-transparent bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">Questions</span>
@@ -361,14 +361,14 @@ export default function GoldenTriangleEnglishDriverPage() {
         {/* CTA */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-amber-950/40 to-stone-900" />
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/15 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/15 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px]" style={{ animationDelay: '1s' }} />
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(251,191,36,0.3) 1px, transparent 0)`,
             backgroundSize: '30px 30px'
           }} />
 
-          <div className="relative z-10 max-w-4xl mx-auto px-4 py-24 text-center">
+          <div className="relative z-10 max-w-4xl mx-auto px-4 py-14 sm:py-24 text-center">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               Book Your Golden
               <span className="block text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">Triangle Tour</span>

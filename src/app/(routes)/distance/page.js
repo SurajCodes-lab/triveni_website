@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("Road Distance Guides — Km, Drive Time & Cab Fares");
-  const description = "Road distance, drive time, toll and cab fares for hundreds of North India routes. Plan your trip and book an AC cab with Triveni Cabs. Call 7668570551.";
+  const description = "Road distance, drive time, toll and cab fares for hundreds of North India routes. Plan your trip and book an AC cab with Triveni Cabs™. Call 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

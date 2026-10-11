@@ -86,22 +86,22 @@ export default function AnswerBox({
 
       {/* Key stats — extractable tabular data. Each cell is an info-gain unit. */}
       {stats.length > 0 && (
-        <div className="key-stats grid grid-cols-2 md:grid-cols-4 gap-3 mb-4" data-speakable="true">
+        <dl className="key-facts key-stats grid grid-cols-2 md:grid-cols-4 gap-3 mb-4" data-speakable="true">
           {stats.map((stat, i) => (
             <div
               key={i}
               className={`rounded-xl border px-3 py-2.5 ${t.pill}`}
               data-stat-key={stat.label}
             >
-              <div className="text-[11px] font-bold uppercase tracking-wider opacity-70">
+              <dt className="text-[11px] font-bold uppercase tracking-wider opacity-70">
                 {stat.label}
-              </div>
-              <div className="text-base md:text-lg font-extrabold mt-0.5 leading-tight">
+              </dt>
+              <dd className="text-base md:text-lg font-extrabold mt-0.5 leading-tight">
                 {stat.value}
-              </div>
+              </dd>
             </div>
           ))}
-        </div>
+        </dl>
       )}
 
       {/* Freshness + source — the three pillars: date, author, origin data. */}

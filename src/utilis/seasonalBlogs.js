@@ -170,133 +170,112 @@ export const seasonalBlogs = [
       description: "Experience Himalayan winters",
       price: "Starting ₹18,000"
     },
-    content: `<p>There's something magical about snow—the silence of a white landscape, the crunch underfoot, the cozy warmth of a bonfire after playing in powder. The <strong>Himalayas</strong> offer genuine snow experiences from December through March. Book your <a href="/contact" class="text-blue-600 hover:underline font-semibold">winter adventure</a> with reliable transportation.</p>
+    content: `<p>Snow in North India is a matter of height and of months, and the places worth travelling for are the ones where it is usual rather than lucky. This guide is about those places in the snow months - what each one is actually like between December and March, what stays open, what closes, and what to wear. The drive itself, the distances and what a winter cab costs belong to a separate piece, and we have kept them to one table here. Book your <a href="/contact" class="text-blue-600 hover:underline font-semibold">winter trip</a> when the forecast for the week ahead is clear, not months out on a hope.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">When Does It Snow in India?</h2>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">When the Snow Comes, and Where</h2>
 
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Early Winter (December-January):</strong> Higher altitudes (above 3,000m) like Gulmarg, Auli, Solang, Chopta receive snow</p>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Peak Winter (January-February):</strong> Snow reaches lower hill stations like Shimla, Manali, Dalhousie</p>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Late Winter (February-March):</strong> Best consolidated snow; spring skiing in high areas</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>December and January:</strong> the high ground gets it first and keeps it. Gulmarg, Auli, Solang and the Lahaul side of the Atal Tunnel are usually white; our best-time pages give December as the month snowfall starts in Manali and December to February for Shimla.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>January and February:</strong> the deepest and most reliable stretch. Snow reaches the lower hill towns - Shimla, Manali town, Mussoorie, Nainital - and the higher resorts are at their best for skiing.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>February and March:</strong> consolidated snow at height, thawing below it. Gulmarg's ski season runs to March; the lower towns are done by the end of February in most years.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>The honest caveat:</strong> nothing here is a guarantee on a date. Snowfall follows Western Disturbances, the higher the place the more reliably it holds, and the week's forecast is what should decide which of these you book.</p>
 
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Important:</strong> Snowfall is never guaranteed. It depends on Western Disturbances. Check forecasts before planning your <a href="/sightseeing/shimla-to-manali-2-days-tour" class="text-blue-600 hover:underline font-semibold">Shimla-Manali trip</a>.</p>
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">The snow calendar, by destination</h3>
+<p class="text-gray-700 leading-relaxed mb-4">The same five months and destinations as above, read across rather than down, from our own best-time and route pages for each place:</p>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Destination</th><th class="border border-gray-300 px-4 py-2 text-left">December</th><th class="border border-gray-300 px-4 py-2 text-left">January</th><th class="border border-gray-300 px-4 py-2 text-left">February</th><th class="border border-gray-300 px-4 py-2 text-left">March</th></tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Gulmarg</td><td class="border border-gray-300 px-4 py-2">Snow, ski season starts</td><td class="border border-gray-300 px-4 py-2">Peak — deepest snow</td><td class="border border-gray-300 px-4 py-2">Peak — skiing continues</td><td class="border border-gray-300 px-4 py-2">Ski season's last month</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Auli</td><td class="border border-gray-300 px-4 py-2">Snow, skiing open</td><td class="border border-gray-300 px-4 py-2">Peak — deepest and most reliable</td><td class="border border-gray-300 px-4 py-2">Skiing continues, thaw begins late</td><td class="border border-gray-300 px-4 py-2">Season over on our pages</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Solang (above Manali)</td><td class="border border-gray-300 px-4 py-2">Snow starts, Manali town white</td><td class="border border-gray-300 px-4 py-2">Peak — snow sports at Solang</td><td class="border border-gray-300 px-4 py-2">Snow holds at Solang and the tunnel</td><td class="border border-gray-300 px-4 py-2">Season over on our pages</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Chopta</td><td class="border border-gray-300 px-4 py-2">Snow on the meadow</td><td class="border border-gray-300 px-4 py-2">Peak — deepest, road can block</td><td class="border border-gray-300 px-4 py-2">Snow continues, road can block</td><td class="border border-gray-300 px-4 py-2">Ski season's last month</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Shimla, Kufri, Narkanda</td><td class="border border-gray-300 px-4 py-2">Snow starts, magical per our page</td><td class="border border-gray-300 px-4 py-2">Peak — ice rink carnival</td><td class="border border-gray-300 px-4 py-2">Snow holds, especially at Kufri and Narkanda</td><td class="border border-gray-300 px-4 py-2">Season over on our pages</td></tr>
+</tbody>
+</table>
+<p class="text-gray-700 leading-relaxed mb-4">Gulmarg and Chopta are the two on this list our own pages carry into March; the other three are done by the end of February in a normal year. None of this is a promise for a specific week — it is what the months usually give, and the forecast for the week you are travelling is what should decide between them.</p>
 
 <hr class="my-8 border-gray-200" />
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Top Snow Destinations</h2>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">The Snow Destinations, One by One</h2>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">1. Gulmarg, Kashmir</h3>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,730m base, 4,390m top | <strong>Snow Period:</strong> December-March</p>
-<p class="text-gray-700 leading-relaxed mb-4">Home to Asia's highest and longest cable car (Gulmarg Gondola) and world-class skiing. The reliable heavy snowfall produces powder snow quality that rivals international destinations.</p>
-
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Activities:</strong></p>
-<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
-<li class="ml-4">Skiing (beginner to advanced)</li>
-<li class="ml-4">Snowboarding</li>
-<li class="ml-4">Gondola ride (₹1,600 Phase 1, ₹1,800 Phase 2)</li>
-<li class="ml-4">Sledging and snowshoeing</li>
-</ul>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>From Delhi:</strong> Fly to Srinagar, drive 56 km</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Snow months:</strong> December to March | <strong>Winter temperature on our best-time page:</strong> -10 to 5 degrees</p>
+<p class="text-gray-700 leading-relaxed mb-4">The most reliable deep snow on this list, and the only one of the five that is a proper ski resort rather than a snowy hill town. Our best-time page calls the winter here world-class skiing and snowboarding on deep powder, with the Gondola running in two phases - up to Kongdoori first, then on towards Apharwat Peak at 13,780 ft, where the snow activities and the Himalayan panorama are. Alpather Lake above the meadow sits frozen at 4,390 m through the winter.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Open:</strong> the Gondola, the ski slopes and the hotels; this is peak season, not off season. <strong>Closed or reduced:</strong> the golf course and the flower meadows, which belong to April to June. <strong>Getting there:</strong> Gulmarg is 50 km and about an hour and a half from Srinagar by the Tangmarg road, which our route data bills as a half-day local run rather than an outstation trip. The long road approach from Delhi is 810 km and sixteen to eighteen hours, and our route notes warn that the Banihal section into the valley can close after heavy snowfall between December and February - so check road status before committing to the drive. Most winter visitors fly in and take a car from Srinagar. See the <a href="/gulmarg" class="text-blue-600 hover:underline font-semibold">Gulmarg cab page</a> and the <a href="/distance/srinagar-to-gulmarg" class="text-blue-600 hover:underline font-semibold">Srinagar to Gulmarg route</a>.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">2. Auli, Uttarakhand</h3>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,500-3,050m | <strong>Snow Period:</strong> January-March | <strong>From Delhi:</strong> 500 km (12-14 hours)</p>
-<p class="text-gray-700 leading-relaxed mb-4">India's premier ski resort with affordable skiing, stunning Nanda Devi views, and cable car from Joshimath. Less crowded than Gulmarg and more accessible by road. Perfect for combining with <a href="/sightseeing/char-dham-yatra-complete-circuit" class="text-blue-600 hover:underline font-semibold">Char Dham Yatra</a>.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Snow months:</strong> December to February | <strong>Slopes at:</strong> around 2,900 m</p>
+<p class="text-gray-700 leading-relaxed mb-4">India's best-known ski destination and the most reliable snow reachable by road from Delhi. The meadow slopes look straight at Nanda Devi, and the skiing is cheap by any international standard. The important practical point is that Auli is not the road-head: our cars go to Joshimath, and the last hop up is by the Joshimath to Auli ropeway, one of the longest cable cars in Asia, or by a short hill road in season. The ropeway ticket, the chairlift and the ski hire are arranged separately from the car.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Open:</strong> the slopes, the ropeway and the Joshimath hotels; December to February is exactly what our one-way page gives as the season for snow and skiing. <strong>Closed:</strong> the high trekking routes and the Valley of Flowers side, which is a summer proposition. <strong>Getting there:</strong> 520 km and thirteen to fourteen hours on NH-7 through Rishikesh, Devprayag and the Alaknanda confluences - a long day that our route page suggests splitting with a night at Rishikesh or Srinagar in Garhwal. Book the <a href="/one-way-cab/delhi-to-auli" class="text-blue-600 hover:underline font-semibold">Delhi to Auli cab</a> and say whether you want the halt.</p>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Solang Valley, Manali</h3>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,560m | <strong>Snow Period:</strong> December-February | <strong>From Delhi:</strong> 530 km (12-13 hours)</p>
-<p class="text-gray-700 leading-relaxed mb-4">Easy access from <a href="/sightseeing/manali-solang-valley-tour" class="text-blue-600 hover:underline font-semibold">Manali</a>, variety of activities, and the Atal Tunnel makes the journey shorter. Budget-friendly options for families.</p>
-
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Activities:</strong> Skiing, paragliding (even in winter!), snow scooter rides, zorbing, cable car</p>
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">3. Solang Valley, above Manali</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Snow months:</strong> December to February | <strong>Altitude:</strong> 2,560 m, 13 km above Manali</p>
+<p class="text-gray-700 leading-relaxed mb-4">The easiest snow day in the country, which is why it is also the busiest. Our Solang route notes call it Snow Point locally, and in winter it is a snow-sports ground: skiing, snowboarding and snow tubing on the slopes, with the Solang Gondola climbing above 3,000 m for views of the Pir Panjal. Snow gear is hired at Solang rather than carried up. Manali town itself gets its snowfall from December on our best-time page, and the winter temperature range there is -5 to 15 degrees.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Open:</strong> Solang, the Atal Tunnel to Sissu on the Lahaul side - often under snow when Manali town is clear - and Old Manali's cafes, which our best-time page describes as cosy in the winter months. <strong>Closed:</strong> Rohtang Pass, from December to April in a normal year; our route data gives May to October as its season. The winter snow day here is Solang and the tunnel, not the pass, and no permit is needed for what replaces it. <strong>Getting there:</strong> 530 km and twelve to thirteen hours on NH-44 and NH-21 through Chandigarh, Bilaspur, Mandi and Kullu. The <a href="/sightseeing/manali-solang-valley-tour" class="text-blue-600 hover:underline font-semibold">Manali and Solang Valley tour</a> packages the snow day.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">4. Chopta, Uttarakhand</h3>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,680m | <strong>Snow Period:</strong> December-February | <strong>From Delhi:</strong> 410 km (10-11 hours)</p>
-<p class="text-gray-700 leading-relaxed mb-4">Less commercial destination with stunning snow trekking to Tungnath Temple (world's highest Shiva temple) and Chandrashila peak. Budget camping available.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Snow months:</strong> December to March | <strong>Meadow at:</strong> around 2,700 m</p>
+<p class="text-gray-700 leading-relaxed mb-4">The uncommercial one. Chopta is a high meadow hamlet in the alpine forest with the Chaukhamba and Kedarnath peaks on the horizon, and in winter it is a place to walk in snow rather than to ski on it. The car reaches Chopta or the nearby Sari village; Tungnath, about 4 km up on foot, and Chandrashila above it are a trek, which in these months is a snow walk and needs the right footwear and a sensible turnaround time.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Open:</strong> the road to Chopta in most conditions, and the tented camps and small guesthouses - our route notes are blunt that facilities here are basic and should be booked in advance rather than found on arrival. <strong>Can close:</strong> the last stretch. The Ukhimath to Chopta forest climb needs caution in snow, and our bus notes for the corridor say the road may be snow-blocked between December and February, so this is the one on the list to check before setting out. <strong>Getting there:</strong> 450 km and twelve to thirteen hours on NH-7 through Rishikesh, Devprayag and Rudraprayag, then the climb via Ukhimath - best split with a night at Rishikesh or Rudraprayag so the forest road is driven in daylight. Book the <a href="/one-way-cab/delhi-to-chopta" class="text-blue-600 hover:underline font-semibold">Delhi to Chopta cab</a>.</p>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">5. Shimla & Kufri</h3>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Altitude:</strong> 2,205m (Shimla), 2,510m (Kufri) | <strong>From Delhi:</strong> 350 km (8-9 hours)</p>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Reality Check:</strong> Shimla town rarely gets heavy snow; Kufri is more likely. Not guaranteed—plan as "bonus" rather than primary goal. Book our <a href="/sightseeing/shimla-kufri-tour" class="text-blue-600 hover:underline font-semibold">Shimla tour package</a> for the best experience.</p>
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">5. Shimla, Kufri and Narkanda</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Snow months:</strong> December to February | <strong>Shimla at:</strong> 2,205 m, Kufri at 8,600 ft</p>
+<p class="text-gray-700 leading-relaxed mb-4">The town for people who want a winter holiday with the snow as a bonus rather than the whole point. Our best-time page gives Shimla a winter range of -2 to 15 degrees, calls the December to February snowfall magical and tells you to carry heavy woollens; the Ridge, the Mall and Christ Church do not need snow to be worth the trip. What matters is that the snow is more reliable the higher you go. Kufri, the small hill resort above the town, holds it more often than the Mall does, with the Himalayan Nature Park, the Mahasu Peak rides and the Green Valley viewpoints; Narkanda, further out on the Rampur road with Hatu Peak above it, has it as a matter of course.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Open:</strong> everything in town, and in a good year the open-air natural ice rink, which our Shimla page lists as hosting a skating carnival in December and January. <strong>Can close for a morning:</strong> the hill road after a fresh fall, and the shaded bends near the town ice over until midday. <strong>Getting there:</strong> 350 km and seven to eight hours on NH-44 and NH-5 via Karnal, Ambala, Pinjore and Solan. The <a href="/sightseeing/shimla-kufri-tour" class="text-blue-600 hover:underline font-semibold">Shimla and Kufri tour</a> covers the snow-day run, and the <a href="/best-time-to-visit/shimla" class="text-blue-600 hover:underline font-semibold">best time to visit Shimla</a> page goes through the months.</p>
 
 <hr class="my-8 border-gray-200" />
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Winter Road Trip Planning</h2>
-
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Vehicle Considerations</h3>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Snow Chains:</strong> Required for high-altitude routes. Our SUVs carry chains for Rohtang, Gulmarg, and Auli routes. Essential above 3,000m in winter.</p>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Vehicle Choice:</strong> SUV strongly recommended (ground clearance, better traction). 4x4 ideal for areas with heavy snow. Our <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">tempo travellers</a> are equipped with chains for group trips.</p>
-
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Route Accessibility</h3>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">How Far Each One Is, and What the Cab Costs</h2>
 <table class="w-full border-collapse border border-gray-300 my-6">
-<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Destination</th><th class="border border-gray-300 px-4 py-2 text-left">Winter Status</th><th class="border border-gray-300 px-4 py-2 text-left">Recommendation</th></tr></thead>
+<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Destination</th><th class="border border-gray-300 px-4 py-2 text-left">Road-head and distance</th><th class="border border-gray-300 px-4 py-2 text-left">Drive time</th><th class="border border-gray-300 px-4 py-2 text-left">Sedan one-way</th><th class="border border-gray-300 px-4 py-2 text-left">Innova Crysta one-way</th></tr></thead>
 <tbody>
-<tr><td class="border border-gray-300 px-4 py-2">Gulmarg</td><td class="border border-gray-300 px-4 py-2">Open, may need chains</td><td class="border border-gray-300 px-4 py-2">SUV preferred</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Auli</td><td class="border border-gray-300 px-4 py-2">Open, Joshimath route</td><td class="border border-gray-300 px-4 py-2">SUV preferred</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Solang</td><td class="border border-gray-300 px-4 py-2">Open (Atal Tunnel)</td><td class="border border-gray-300 px-4 py-2">Any vehicle</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Chopta</td><td class="border border-gray-300 px-4 py-2">May close in heavy snow</td><td class="border border-gray-300 px-4 py-2">Check before travel</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Rohtang</td><td class="border border-gray-300 px-4 py-2">Closed Nov-May</td><td class="border border-gray-300 px-4 py-2">Atal Tunnel alternative</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Ladakh</td><td class="border border-gray-300 px-4 py-2">Closed Nov-May</td><td class="border border-gray-300 px-4 py-2">Flights only</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Shimla and Kufri</td><td class="border border-gray-300 px-4 py-2">Shimla, 350 km from Delhi</td><td class="border border-gray-300 px-4 py-2">7 to 8 hrs</td><td class="border border-gray-300 px-4 py-2">₹3,850</td><td class="border border-gray-300 px-4 py-2">₹6,300</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Chopta</td><td class="border border-gray-300 px-4 py-2">Chopta or Sari, 450 km from Delhi</td><td class="border border-gray-300 px-4 py-2">12 to 13 hrs</td><td class="border border-gray-300 px-4 py-2">₹4,950</td><td class="border border-gray-300 px-4 py-2">₹8,100</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Auli</td><td class="border border-gray-300 px-4 py-2">Joshimath, 520 km from Delhi</td><td class="border border-gray-300 px-4 py-2">13 to 14 hrs</td><td class="border border-gray-300 px-4 py-2">₹5,720</td><td class="border border-gray-300 px-4 py-2">₹9,360</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Solang Valley</td><td class="border border-gray-300 px-4 py-2">Manali, 530 km from Delhi</td><td class="border border-gray-300 px-4 py-2">12 to 13 hrs</td><td class="border border-gray-300 px-4 py-2">₹5,830</td><td class="border border-gray-300 px-4 py-2">₹9,540</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Gulmarg</td><td class="border border-gray-300 px-4 py-2">Gulmarg, 50 km from Srinagar</td><td class="border border-gray-300 px-4 py-2">1.5 to 2 hrs</td><td class="border border-gray-300 px-4 py-2">₹2,310</td><td class="border border-gray-300 px-4 py-2">₹2,980</td></tr>
 </tbody>
 </table>
+<p class="text-gray-700 leading-relaxed mb-4">Distances and drive times are the ones our own route pages publish. Fares are the published rate card worked on those distances - ₹11/km for a sedan, ₹15 for an Ertiga or SUV, ₹18 for an Innova Crysta and ₹23 for a 12-seater Tempo Traveller, on a 300 km per day minimum - with tolls, parking and the driver's night halt at actual. Srinagar to Gulmarg is short enough to be quoted from the published 4 hr / 40 km local package instead, which is why its figures sit on a different basis from the rest. For the drives themselves - the fog on the plains, the ice on the shaded bends, which corridor takes tolls and how a winter day is timed - read <a href="/blog/snowfall-places-near-delhi-this-winter-by-road" class="text-blue-600 hover:underline font-semibold">snowfall places near Delhi this winter, by road</a>.</p>
 
 <hr class="my-8 border-gray-200" />
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">What to Pack for Snow Trip</h2>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">What to Wear</h2>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Clothing Layers</h3>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Base Layer:</strong> Thermal tops and bottoms, moisture-wicking fabric</p>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Mid Layer:</strong> Fleece jacket, wool sweater</p>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Outer Layer:</strong> Waterproof down jacket, snow pants/waterproof trousers</p>
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Layers</h3>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Base:</strong> thermal top and bottom in a moisture-wicking fabric. Cotton next to the skin is the classic mistake - it holds sweat and then chills you.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Middle:</strong> fleece or a wool sweater, something you can take off in the car and put back on outside.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Outer:</strong> a genuinely waterproof jacket and waterproof trousers. Snow play means sitting in snow, and a shower-resistant jacket is not the same thing.</p>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Accessories</h3>
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">The Rest of It</h3>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
-<li class="ml-4">Woolen cap/beanie (covers ears)</li>
-<li class="ml-4">Waterproof gloves (2 pairs)</li>
-<li class="ml-4">Muffler/neck gaiter</li>
-<li class="ml-4">Snow boots OR sturdy shoes with waterproof cover</li>
-<li class="ml-4">Sunscreen and sunglasses (snow reflects UV intensely)</li>
-<li class="ml-4">Power bank (cold drains batteries faster)</li>
+<li class="ml-4">A cap that covers the ears, and two pairs of waterproof gloves so one can dry</li>
+<li class="ml-4">Boots with grip, or sturdy shoes with waterproof covers hired at the snow point</li>
+<li class="ml-4">Sunscreen and sunglasses - snow reflects ultraviolet hard, and our Spiti and Auli notes say the same about high-altitude light</li>
+<li class="ml-4">A power bank, because cold drains batteries faster than the day does</li>
+<li class="ml-4">Heavy woollens for Shimla and Manali specifically, which is what our best-time pages for both towns tell visitors to pack</li>
 </ul>
-
-<hr class="my-8 border-gray-200" />
-
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Winter Trip Packages</h2>
-
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Auli Skiing Adventure (4 Days by Road)</h3>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Route:</strong> Delhi → Joshimath → Auli → Delhi | <strong>Distance:</strong> 1,000 km round trip</p>
-<table class="w-full border-collapse border border-gray-300 my-6">
-<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Transport Only</th><th class="border border-gray-300 px-4 py-2 text-left">With Hotel</th></tr></thead>
-<tbody>
-<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹28,000</td><td class="border border-gray-300 px-4 py-2">₹42,000/person (min 4)</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo 12-seater</td><td class="border border-gray-300 px-4 py-2">₹45,000</td><td class="border border-gray-300 px-4 py-2">₹35,000/person (min 8)</td></tr>
-</tbody>
-</table>
-
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Manali-Solang Winter Trip (3 Days)</h3>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Route:</strong> Delhi → Manali → Solang → Delhi | <strong>Distance:</strong> 1,060 km round trip</p>
-<table class="w-full border-collapse border border-gray-300 my-6">
-<thead><tr class="bg-gray-100"><th class="border border-gray-300 px-4 py-2 text-left">Vehicle</th><th class="border border-gray-300 px-4 py-2 text-left">Rate</th></tr></thead>
-<tbody>
-<tr><td class="border border-gray-300 px-4 py-2">Sedan</td><td class="border border-gray-300 px-4 py-2">₹18,000</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">SUV</td><td class="border border-gray-300 px-4 py-2">₹24,000</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Tempo 12-seater</td><td class="border border-gray-300 px-4 py-2">₹35,000</td></tr>
-</tbody>
-</table>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is snowfall guaranteed?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">Never guaranteed in India. Higher altitudes (Gulmarg, Auli) are more reliable. Lower hill stations (Shimla, Mussoorie) may or may not have snow.</p>
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Which destination has the most reliable snow?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Gulmarg, then Auli. Both are high enough that December to March snow is the normal condition rather than the lucky one, and both are ski destinations rather than towns that happen to get snow. Solang, above Manali, is the most reliable one within a day's drive of Delhi.</p>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Best time to see snow?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">January-February for best chances. Fresh snowfall often follows weather reports of "Western Disturbance."</p>
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is snowfall guaranteed anywhere in these months?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">No. It follows Western Disturbances and no page on this site will promise it on a date. The higher the place, the more reliably the snow lies once it has fallen - which is the argument for Kufri over the Mall, Solang over Manali town, and Auli or Gulmarg over either.</p>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Can I drive my car in snow?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">Not recommended unless you have experience and appropriate equipment. Our drivers are winter-trained with proper snow chains.</p>
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">What closes in winter?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Rohtang Pass, from December to April in a normal year - the Atal Tunnel and Solang replace it. The Ukhimath to Chopta forest road can be snow-blocked. The Banihal section on the road into Kashmir can close after heavy snowfall. Everything else on this list stays open, with the occasional morning lost to clearing after a fresh fall.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Which vehicle should I book for a snow trip?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">An SUV or an Innova Crysta. Every hill page on this site recommends one for the climbs, and in winter the drivers prefer it without argument for the clearance on a snowed bend. Groups of eight or more take a 12-seater <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">Tempo Traveller</a>; chains are carried on the hill routes in these months.</p>
 
 <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-lg my-8">
-<h3 class="text-xl font-bold mb-2">Book Your Winter Adventure</h3>
-<p class="mb-4">Experience the magic of Himalayan winters with safe, reliable, winter-prepared transportation.</p>
+<h3 class="text-xl font-bold mb-2">Book Your Winter Trip</h3>
+<p class="mb-4">Tell us which of these you are aiming for and when, and we will put a hill-experienced driver and the right vehicle on it.</p>
 <p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> 7668570551</p>
 <a href="/contact" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book Now</a>
-</div>`,
+</div>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Read next:</strong> <a href="/blog/snowfall-places-near-delhi-this-winter-by-road">Snowfall Places Near Delhi This Winter: Where the Snow Is and How Far It Is by Road</a></p>`,
     date: "2026-01-15",
     readTime: "14 min read",
     image: "/images/packages/manali.webp",

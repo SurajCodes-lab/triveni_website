@@ -59,14 +59,7 @@ export function generateOrganizationSchema() {
         areaServed: 'IN'
       }
     ],
-    sameAs: Object.values(COMPANY_INFO.social),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: AGGREGATE_RATING.ratingValue,
-      reviewCount: AGGREGATE_RATING.reviewCount,
-      bestRating: AGGREGATE_RATING.bestRating,
-      worstRating: AGGREGATE_RATING.worstRating
-    }
+    sameAs: Object.values(COMPANY_INFO.social)
   };
 }
 
@@ -106,13 +99,7 @@ export function generateLocalBusinessSchema(options = {}) {
       opens: '00:00',
       closes: '23:59'
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: AGGREGATE_RATING.ratingValue,
-      reviewCount: AGGREGATE_RATING.reviewCount,
-      bestRating: AGGREGATE_RATING.bestRating,
-      worstRating: AGGREGATE_RATING.worstRating
-    },
+    
     hasOfferCatalog: specificServices.length > 0 ? {
       '@type': 'OfferCatalog',
       name: 'Transportation Services',
@@ -188,19 +175,6 @@ export function generateTourSchema(tour) {
         '@type': 'TravelAgency',
         name: COMPANY_INFO.name
       }
-    },
-    aggregateRating: reviews.length > 0 ? {
-      '@type': 'AggregateRating',
-      ratingValue: calculateAverageRating(reviews),
-      reviewCount: reviews.length,
-      bestRating: 5,
-      worstRating: 1
-    } : {
-      '@type': 'AggregateRating',
-      ratingValue: AGGREGATE_RATING.ratingValue,
-      reviewCount: AGGREGATE_RATING.reviewCount,
-      bestRating: AGGREGATE_RATING.bestRating,
-      worstRating: AGGREGATE_RATING.worstRating
     }
   };
 
@@ -221,7 +195,7 @@ export function generateCitySchema(city, tours = []) {
     '@type': 'TouristDestination',
     '@id': `${BASE_URL}/${city.slug}/#touristdestination`,
     name: city.name,
-    description: city.description || `Explore ${city.name} with Triveni Cabs. Book sightseeing tours, airport transfers, and local taxi services.`,
+    description: city.description || `Explore ${city.name} with Triveni Cabs™. Book sightseeing tours, airport transfers, and local taxi services.`,
     url: `${BASE_URL}/${city.slug}`,
     image: city.image,
     geo: city.coordinates ? {
@@ -308,13 +282,6 @@ export function generateRouteSchema(origin, destination, data = {}) {
         '@type': 'Reservation',
         name: `${origin} to ${destination} Taxi Booking`
       }
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: AGGREGATE_RATING.ratingValue,
-      reviewCount: AGGREGATE_RATING.reviewCount,
-      bestRating: AGGREGATE_RATING.bestRating,
-      worstRating: AGGREGATE_RATING.worstRating
     }
   };
 }
@@ -433,14 +400,7 @@ export function generateServiceSchema(service) {
         unitText: priceUnit
       },
       availability: 'https://schema.org/InStock'
-    } : undefined,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: AGGREGATE_RATING.ratingValue,
-      reviewCount: reviewCount,
-      bestRating: AGGREGATE_RATING.bestRating,
-      worstRating: AGGREGATE_RATING.worstRating
-    }
+    } : undefined
   };
 }
 
@@ -604,13 +564,6 @@ export function generateProductSchema(product) {
         '@type': 'Organization',
         name: COMPANY_INFO.name
       }
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: AGGREGATE_RATING.ratingValue,
-      reviewCount: AGGREGATE_RATING.reviewCount,
-      bestRating: AGGREGATE_RATING.bestRating,
-      worstRating: AGGREGATE_RATING.worstRating
     }
   };
 }

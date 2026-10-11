@@ -489,7 +489,7 @@ export default function HowToReachClient({ cityData }) {
             >
               <motion.h2 variants={fadeInUp} className="text-2xl md:text-3xl font-bold text-center mb-10">
                 Explore {name} with{' '}
-                <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Triveni Cabs</span>
+                <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Triveni Cabs™</span>
               </motion.h2>
 
               <motion.div variants={fadeInUp} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
@@ -555,7 +555,7 @@ export default function HowToReachClient({ cityData }) {
               <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">{name}</span>?
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-slate-300 text-lg mb-8">
-              Book a comfortable and affordable cab with Triveni Cabs. Professional drivers, well-maintained vehicles, and 24/7 support.
+              Book a comfortable and affordable cab with Triveni Cabs™. Professional drivers, well-maintained vehicles, and 24/7 support.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">

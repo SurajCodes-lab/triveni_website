@@ -1,5 +1,6 @@
 // This is the Server Component for Booking Page
 import { tourDetails } from "@/utilis/data";
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import BookingForm from "@/components/BookingForm";
 import { tightenTitle, DESC_BUDGET, tightenDescription } from '@/lib/seo/serp-ctr';
 
@@ -171,7 +172,7 @@ export async function generateMetadata({ params }) {
       ],
       type: 'website',
       locale: 'en_IN',
-      siteName: 'Triveni Cabs'
+      siteName: 'Triveni Cabs™'
     },
     twitter: {
       card: 'summary_large_image',
@@ -182,17 +183,7 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `https://www.trivenicabs.in/tour-package/${slug}/book`
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -284,7 +275,7 @@ export default function BookingPage({ params }) {
   const { slug } = params;
   const packageInfo = tourDetails[slug];
   if (!packageInfo) {
-    return <div className="text-center py-16">Package not found</div>;
+    return <div className="text-center py-10 sm:py-16">Package not found</div>;
   }
   const content = bookingSeoContent[slug] || buildBookingContent(packageInfo);
 
@@ -303,7 +294,7 @@ export default function BookingPage({ params }) {
         "@type": "TravelAgency",
         "name": "Triveni Cabs",
         "url": "https://www.trivenicabs.in",
-        "telephone": "7668570551",
+        "telephone": "+91-7668570551",
         "email": "cabstriveni@gmail.com"
       },
       "offers": {

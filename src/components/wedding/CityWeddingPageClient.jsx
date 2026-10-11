@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from "react";
+import FamilyFacts from '@/components/seo/FamilyFacts';
 // Centralized icon imports for better bundle optimization
 import {
   Heart, Users, Car, Phone, MapPin, Clock, Shield, Star,
@@ -10,11 +11,13 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
-import { phoneNumber } from "@/utilis/data";
+import { phoneNumber } from '@/utilis/contact';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { CrossServiceLinks, PopularRoutes } from '@/components/seo/RelatedContent';
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
-import { getRelatedRoutes } from '@/utilis/linkingHelper';
+// linkingHelper is NOT imported here. It pulls in sightseeingData.js (1.24 MB)
+// and this is a client component, so the whole dataset shipped to the browser.
+// These values are computed on the server and arrive as props.
 import dynamic from 'next/dynamic';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
@@ -49,7 +52,7 @@ const CityWeddingHero = ({ city }) => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
         {/* Breadcrumb */}
         <nav className="mb-8" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-2 text-xs sm:text-sm">
@@ -82,6 +85,13 @@ const CityWeddingHero = ({ city }) => {
             Wedding Car Rental in{' '}
             <span className="text-gold-foil">{city.name}</span>
           </h1>
+
+          {/* Week 48: the direct answer (the city description and its published price range). */}
+          <FamilyFacts family="wedding" data={city} />
+          {/* Week 48: the wedding-car guide, linked from every wedding city page. */}
+          <p className="mt-4 text-sm text-amber-50/90">
+            Not sure which car for which moment? Read <Link href="/best-car-for-wedding-2026" className="font-semibold underline decoration-amber-300 underline-offset-2 hover:text-white">which car for the bride entry, the groom entry, the vidai and the baraat in 2026</Link>.
+          </p>
 
           <p className="mt-5 text-lg md:text-2xl font-semibold text-amber-50">
             Make Your {city.name} Wedding Journey Unforgettable
@@ -718,13 +728,13 @@ const RelatedServices = ({ city, citySlug }) => {
 };
 
 // Main Component
-export default function CityWeddingPageClient({ city, citySlug }) {
+export default function CityWeddingPageClient({ city, citySlug, relatedRoutes = [], shortAnswer = null }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   // SEO internal linking data
-  const relatedRoutes = getRelatedRoutes(city.name);
+  // arrives as a prop (see the note on the import above).
 
   return (
     <>
@@ -740,6 +750,10 @@ export default function CityWeddingPageClient({ city, citySlug }) {
             variant="minimal"
           />
         </div>
+        {/* The short answer, rendered on the server. Placed above the trust
+            strip so it is the first prose a reader or a retrieval engine meets. */}
+        {shortAnswer}
+
         {/* Trust Strip */}
         <div className="bg-white border-b border-amber-100 py-3">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -760,6 +774,10 @@ export default function CityWeddingPageClient({ city, citySlug }) {
           </div>
         </div>
         <CityOverview city={city} />
+        {/* Week 49: the car-model table, from the models the site already publishes. */}
+        <div className="mx-auto max-w-6xl px-4 py-8">
+          <FamilyFacts family="wedding" data={city} details />
+        </div>
         {/* Quick Booking Section — dark band */}
         <section className="py-16 md:py-24 bg-slate-950 relative overflow-hidden">
           <div className="absolute inset-0">

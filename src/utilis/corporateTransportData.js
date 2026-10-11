@@ -60,7 +60,7 @@ export const corporateFleet = [
     ideal: 'Executive travel, client pickups',
     vehicles: ['Swift Dzire', 'Honda Amaze', 'Hyundai Aura'],
     features: ['AC', 'Leather Seats', 'Music System', 'GPS Tracking'],
-    priceRange: '₹12-15/km',
+    priceRange: '₹11/km',
     icon: '🚗',
     image: '/images/car/swift_dzire.jpg'
   },
@@ -71,9 +71,26 @@ export const corporateFleet = [
     ideal: 'Senior management, VIP clients',
     vehicles: ['Innova Crysta', 'Ertiga', 'Marazzo'],
     features: ['AC', 'Spacious', 'Premium Interiors', 'GPS Tracking'],
-    priceRange: '₹16-20/km',
+    priceRange: '₹15–18/km',
     icon: '🚙',
     image: '/images/car/innova_crysta.jpg'
+  },
+  {
+    // Force Urbania sits deliberately between the SUV and the Tempo Traveller.
+    // It is the vehicle for client-facing corporate work — an arriving
+    // delegation, a board visit, senior staff to the airport — where the
+    // interior gets noticed and a standard minibus reads as the wrong choice.
+    // Rates and specs come from the same published card as vehicleTypeData.js
+    // (₹25/km for the 10-seater up to ₹30/km for the 17-seater).
+    id: 'urbania',
+    name: 'Force Urbania (Executive)',
+    capacity: '10-17 Passengers',
+    ideal: 'Client delegations, executive teams, board visits',
+    vehicles: ['10 Seater', '12 Seater', '13 Seater', '17 Seater'],
+    features: ['Luxury Captain Seats', 'Rear AC Vents', 'USB Charging', 'High-Roof Cabin'],
+    priceRange: '₹25-30/km',
+    icon: '🚎',
+    image: '/images/tempo/20_seater.jpg'
   },
   {
     id: 'tempo',
@@ -82,7 +99,7 @@ export const corporateFleet = [
     ideal: 'Team outings, employee transport',
     vehicles: ['12 Seater', '17 Seater', '20 Seater', '26 Seater'],
     features: ['AC', 'Pushback Seats', 'Music System', 'Charging Points'],
-    priceRange: '₹20-28/km',
+    priceRange: '₹23/km',
     icon: '🚐',
     image: '/images/tempo/17_seater.jpg'
   },
@@ -109,7 +126,7 @@ export const corporateCities = {
     heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
     tagline: 'Delhi NCR Corporate Hub',
     subtitle: 'Trusted by 500+ Companies in Delhi NCR',
-    description: 'Triveni Cabs provides comprehensive corporate transportation solutions in Delhi NCR, serving IT parks in Gurgaon, corporate offices in Noida, and business districts across the capital. Our fleet of executive sedans, SUVs, tempo travellers, and buses ensures your workforce travels in comfort and arrives on time, every time.',
+    description: 'Triveni Cabs™ provides comprehensive corporate transportation solutions in Delhi NCR, serving IT parks in Gurgaon, corporate offices in Noida, and business districts across the capital. Our fleet of executive sedans, SUVs, tempo travellers, and buses ensures your workforce travels in comfort and arrives on time, every time.',
     highlights: [
       'Serving Gurgaon Cyber City, DLF Phase 1-5, Udyog Vihar',
       'Noida Sector 62, 63, 125, 126 IT corridors',
@@ -136,7 +153,7 @@ export const corporateCities = {
     heroImage: '/images/sightseeing/Agra/Agra_Hero_section.jpg',
     tagline: 'Business Gateway to Taj City',
     subtitle: 'Connecting Agra Industries with Excellence',
-    description: 'Triveni Cabs offers specialized corporate transportation services in Agra, catering to the leather, footwear, and tourism industries. From industrial area pickups to executive hotel transfers, we ensure your business operations run smoothly with our reliable and professional service.',
+    description: 'Triveni Cabs™ offers specialized corporate transportation services in Agra, catering to the leather, footwear, and tourism industries. From industrial area pickups to executive hotel transfers, we ensure your business operations run smoothly with our reliable and professional service.',
     highlights: [
       'Industrial area connectivity - Nunhai, Artoni, Sikandra',
       'Hotel-to-meeting venue transfers',
@@ -163,7 +180,7 @@ export const corporateCities = {
     heroImage: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
     tagline: 'Pink City Corporate Solutions',
     subtitle: 'Empowering Jaipur IT & Business Sector',
-    description: 'Triveni Cabs delivers premium corporate transportation services in Jaipur, the emerging IT and business hub of Rajasthan. We serve major technology parks, SEZs, and corporate offices with reliable employee transport, executive travel, and event transportation solutions.',
+    description: 'Triveni Cabs™ delivers premium corporate transportation services in Jaipur, the emerging IT and business hub of Rajasthan. We serve major technology parks, SEZs, and corporate offices with reliable employee transport, executive travel, and event transportation solutions.',
     highlights: [
       'Mahindra World City SEZ shuttle services',
       'Sitapura IT Park employee transport',
@@ -190,7 +207,7 @@ export const corporateCities = {
     heroImage: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg',
     tagline: 'Tricity IT Corridor Excellence',
     subtitle: 'Serving Chandigarh-Mohali-Panchkula Business Hub',
-    description: 'Triveni Cabs provides exceptional corporate transportation across the Chandigarh Tricity region, connecting major IT companies, industrial areas, and business districts. Our service spans Chandigarh IT Park, Mohali Phase 8B, and industrial sectors with punctual and professional transport solutions.',
+    description: 'Triveni Cabs™ provides exceptional corporate transportation across the Chandigarh Tricity region, connecting major IT companies, industrial areas, and business districts. Our service spans Chandigarh IT Park, Mohali Phase 8B, and industrial sectors with punctual and professional transport solutions.',
     highlights: [
       'Chandigarh IT Park shuttle services',
       'Mohali Phase 8B & SAS Nagar connectivity',
@@ -217,7 +234,7 @@ export const corporateCities = {
     heroImage: '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg',
     tagline: 'Uttarakhand Corporate Gateway',
     subtitle: 'Connecting Dehradun Business & IT Sector',
-    description: 'Triveni Cabs offers corporate transportation services in Dehradun, supporting the growing IT and pharmaceutical industries. From IT Park Sahastradhara to Selaqui industrial area, we provide reliable employee transport and executive travel services in the capital of Uttarakhand.',
+    description: 'Triveni Cabs™ offers corporate transportation services in Dehradun, supporting the growing IT and pharmaceutical industries. From IT Park Sahastradhara to Selaqui industrial area, we provide reliable employee transport and executive travel services in the capital of Uttarakhand.',
     highlights: [
       'IT Park Sahastradhara shuttle services',
       'Selaqui Industrial Area connectivity',
@@ -244,7 +261,7 @@ export const corporateCities = {
     heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
     tagline: 'Noida IT Hub Excellence',
     subtitle: 'Powering Noida Expressway Corporate Corridor',
-    description: 'Triveni Cabs delivers premium corporate transportation services in Noida, one of India\'s fastest-growing IT and business hubs. From Sector 62 tech parks to Film City, Greater Noida Expressway to Knowledge Park, we ensure your workforce travels with reliability and comfort across the entire Noida region.',
+    description: 'Triveni Cabs™ delivers premium corporate transportation services in Noida, one of India\'s fastest-growing IT and business hubs. From Sector 62 tech parks to Film City, Greater Noida Expressway to Knowledge Park, we ensure your workforce travels with reliability and comfort across the entire Noida region.',
     highlights: [
       'Sector 62, 63, 125, 126 IT park shuttles',
       'Greater Noida Expressway corporate corridor',
@@ -271,7 +288,7 @@ export const corporateCities = {
     heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
     tagline: 'Millennium City Corporate Hub',
     subtitle: 'Serving Fortune 500 Companies in Gurgaon',
-    description: 'Triveni Cabs provides world-class corporate transportation in Gurgaon, the Millennium City and India\'s leading corporate hub. From DLF Cyber City to Udyog Vihar, Sohna Road to Golf Course Road, we connect Gurgaon\'s top business districts with reliable, professional transport solutions for enterprises of all sizes.',
+    description: 'Triveni Cabs™ provides world-class corporate transportation in Gurgaon, the Millennium City and India\'s leading corporate hub. From DLF Cyber City to Udyog Vihar, Sohna Road to Golf Course Road, we connect Gurgaon\'s top business districts with reliable, professional transport solutions for enterprises of all sizes.',
     highlights: [
       'DLF Cyber City and Cyber Hub connectivity',
       'Udyog Vihar Phase 1-5 industrial transport',
@@ -298,7 +315,7 @@ export const corporateCities = {
     heroImage: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
     tagline: 'UP State Capital Corporate Hub',
     subtitle: 'Connecting Lucknow Government & IT Sectors',
-    description: 'Triveni Cabs offers professional corporate transportation services in Lucknow, the state capital of Uttar Pradesh. We serve government offices, IT hubs in Gomti Nagar, corporate houses in Hazratganj, and industrial areas across the city with punctual, reliable employee transport and executive travel services.',
+    description: 'Triveni Cabs™ offers professional corporate transportation services in Lucknow, the state capital of Uttar Pradesh. We serve government offices, IT hubs in Gomti Nagar, corporate houses in Hazratganj, and industrial areas across the city with punctual, reliable employee transport and executive travel services.',
     highlights: [
       'Gomti Nagar IT City and tech park shuttles',
       'Government office and Vidhan Sabha connectivity',
@@ -325,7 +342,7 @@ export const corporateCities = {
     heroImage: '/images/sightseeing/Dehradun/Dehradun_hero_section.jpg',
     tagline: 'Haridwar Industrial Hub Gateway',
     subtitle: 'Powering BHEL & SIDCUL Workforce Mobility',
-    description: 'Triveni Cabs provides specialized corporate transportation in Haridwar, serving major industrial establishments including BHEL, SIDCUL industrial area, and pharmaceutical companies. Our service connects the holy city\'s industrial belt with reliable employee transport, shift-based operations, and executive travel solutions.',
+    description: 'Triveni Cabs™ provides specialized corporate transportation in Haridwar, serving major industrial establishments including BHEL, SIDCUL industrial area, and pharmaceutical companies. Our service connects the holy city\'s industrial belt with reliable employee transport, shift-based operations, and executive travel solutions.',
     highlights: [
       'BHEL Haridwar campus employee transport',
       'SIDCUL Industrial Area full connectivity',
@@ -346,7 +363,7 @@ export const corporateCities = {
 };
 
 // Direct-answer lead for AEO/GEO (voice + AI citation). 40-55 words, B2B specifics.
-export const corporateDirectAnswer = "Triveni Cabs provides corporate transportation across Delhi NCR, Jaipur, Chandigarh, Agra, Dehradun, Noida, Gurgaon, Lucknow and Haridwar with a 500+ vehicle fleet — sedans, SUVs, tempo travellers and 56-seater buses. We offer employee pick-up & drop, executive travel, airport transfers and monthly contracts with GST invoicing, a dedicated account manager, GPS tracking, 30-minute backup vehicles and 24/7 operations. Corporate cabs start at ₹11/km.";
+export const corporateDirectAnswer = "Triveni Cabs™ provides corporate transportation across Delhi NCR, Jaipur, Chandigarh, Agra, Dehradun, Noida, Gurgaon, Lucknow and Haridwar with a 500+ vehicle fleet — sedans, SUVs, tempo travellers and 56-seater buses. We offer employee pick-up & drop, executive travel, airport transfers and monthly contracts with GST invoicing, a dedicated account manager, GPS tracking, 30-minute backup vehicles and 24/7 operations. Corporate cabs start at ₹11/km.";
 
 // Contract / pricing models — visible table + Offer schema source.
 export const corporatePricingModels = [
@@ -511,7 +528,7 @@ export const corporateFAQs = [
   },
   {
     question: 'How much does a corporate cab cost per kilometer?',
-    answer: 'Corporate cab rates start at around ₹11/km for sedans on contract, ₹16-20/km for SUVs, ₹20-28/km for tempo travellers, and ₹45-75/km for buses. The exact rate depends on city, volume, shift pattern, and whether you choose per-trip, monthly, or dedicated-fleet billing. Monthly contracts for 50+ employees unlock the lowest per-km rates with no surge pricing.'
+    answer: 'Corporate cab rates start at around ₹11/km for sedans on contract, ₹15–18/km for SUVs, ₹23/km for tempo travellers, and ₹45-75/km for buses. The exact rate depends on city, volume, shift pattern, and whether you choose per-trip, monthly, or dedicated-fleet billing. Monthly contracts for 50+ employees unlock the lowest per-km rates with no surge pricing.'
   },
   {
     question: 'What is the minimum number of employees for a corporate tie-up?',

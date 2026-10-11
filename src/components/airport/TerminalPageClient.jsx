@@ -11,6 +11,7 @@ import { WhatsAppIcon } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import AirportAnswerBox from './AirportAnswerBox';
 import {
   AirportShell, AirportBackdrop, AirportCrumb, FlightStatusPill,
   TerminalBadge, getAccent, HeroPhoto,
@@ -23,9 +24,21 @@ const wa = (text) => `https://wa.me/917668570551?text=${encodeURIComponent(text)
 const ICONS = { Plane, Globe, Car, Crown, Star, MapPin, Navigation, Shield, Clock, Users, Luggage };
 
 // Pick a representative photo for a related-service link by its href keywords.
+// An explicit `img` on the link always wins — the keyword table is the fallback
+// so the four original Delhi/Jewar pages keep working untouched.
 const relImg = (href = '') => {
   const h = href.toLowerCase();
-  if (h.includes('agra')) return '/images/sightseeing/Agra/Taj_mahal.jpg';
+  if (h.includes('pushkar') || h.includes('ajmer')) return '/images/sightseeing/Ajmer_Pushkar/Pushkar_Lake_Ghats.jpg';
+  if (h.includes('udaipur')) return '/images/sightseeing/Udaipur/Lake_Pichola.jpg';
+  if (h.includes('shimla')) return '/images/sightseeing/Shimla/shimla_hero_section.jpg';
+  if (h.includes('manali')) return '/images/sightseeing/Manali/Manali_hero_section.jpg';
+  if (h.includes('amritsar')) return '/images/sightseeing/Amritsar/Golden_Temple.jpg';
+  if (h.includes('kasauli')) return '/images/sightseeing/Kasauli/Kasauli_Hero_Section.jpg';
+  if (h.includes('dharamshala')) return '/images/sightseeing/Dharamshala/McLeod_Ganj.jpg';
+  if (h.includes('dalhousie')) return '/images/sightseeing/Dalhousie/Khajjiar_Meadow.jpg';
+  if (h.includes('mathura') || h.includes('vrindavan')) return '/images/sightseeing/Mathura_Vrindavan/Prem_Mandir.jpg';
+  if (h.includes('agra') || h.includes('taj')) return '/images/sightseeing/Agra/Taj_mahal.jpg';
+  if (h.includes('chandigarh')) return '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg';
   if (h.includes('jewar')) return '/images/airport_section.jpg';
   if (h.includes('terminal') || h.includes('airport-service')) return '/images/airport_section.jpg';
   if (h.includes('sightseeing/delhi')) return '/images/sightseeing/Delhi/Delhi_hero_section.jpg';
@@ -54,8 +67,8 @@ export default function TerminalPageClient({ t }) {
       <SetStickyCta price="From ₹11/km" label={`${t.airportCode} ${t.terminalCode} Taxi`} whatsappText={heroWa} />
 
       {/* ══ HERO — cinematic photo, serif + gold-foil title ══ */}
-      <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pb-24">
-        <HeroPhoto src="/images/airport_section.jpg" />
+      <section className="relative overflow-hidden px-4 pt-14 sm:pt-24 pb-16 md:pb-24">
+        <HeroPhoto src={t.heroImage || '/images/airport_section.jpg'} />
         <LaneStrip />
         <div className="relative z-10 mx-auto max-w-7xl">
           <AirportCrumb trail={t.crumb} />
@@ -72,6 +85,8 @@ export default function TerminalPageClient({ t }) {
                 <span className="block text-white">{t.headlineSub}</span>
               </h1>
               <p className="mt-2 font-mono text-sm tracking-wide text-slate-400">{t.airportName} · {t.terminalType}</p>
+              <AirportAnswerBox updatedOn={t.updatedOn} answer={`For ${t.airportName} ${t.terminalCode}, the published meeting point is ${t.meetingPoint || t.pickupPoint}. ${t.pricing?.[0] ? `${t.pricing[0].destination} is ${t.pricing[0].distance}, with a published fare of ${t.pricing[0].fare} and a drive of ${t.pricing[0].time}.` : ''} Confirm the flight, terminal and waiting allowance when booking.`}
+                facts={[{label:'Terminal',value:t.terminalCode},{label:'Traffic',value:t.terminalType},{label:'Meeting point',value:t.meetingPoint || t.pickupPoint}]} />
 
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">{t.tagline}</p>
 
@@ -183,6 +198,57 @@ export default function TerminalPageClient({ t }) {
         </section>
       )}
 
+      {/* ══ GALLERY — luminous photo showcase of where this terminal drives you ══ */}
+      {Array.isArray(t.gallery) && t.gallery.length > 0 && (
+        <section className="relative overflow-hidden px-4 py-16 md:py-24">
+          <AirportBackdrop variant="full" />
+          <div className="relative z-10 mx-auto max-w-7xl">
+            <SerifHeading
+              center
+              eyebrow={t.galleryEyebrow || 'From the Gate'}
+              title={t.galleryTitle || 'Where we'}
+              highlight={t.galleryHighlight || 'drive you'}
+              subtitle={t.gallerySubtitle}
+              className="mb-12"
+            />
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {t.gallery.map((g, i) => (
+                <figure
+                  key={i}
+                  className={`group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.02] shadow-[0_24px_70px_-40px_rgba(0,0,0,0.9)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[color:var(--air-accent)]/40 hover:shadow-[0_30px_80px_-30px_var(--air-glow)] ${i === 0 ? 'lg:col-span-2 lg:row-span-2' : ''}`}
+                >
+                  <div className={`relative w-full overflow-hidden ${i === 0 ? 'h-64 lg:h-[34rem]' : 'h-56'}`}>
+                    <Image
+                      src={g.img}
+                      alt={g.alt || g.title}
+                      fill
+                      sizes={i === 0 ? '(max-width:1024px) 100vw, 66vw' : '(max-width:640px) 100vw, 33vw'}
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                    />
+                    {/* luminous scrim + gold bloom on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--air-deep)] via-[var(--air-deep)]/35 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                         style={{ background: 'radial-gradient(120% 80% at 50% 100%, var(--air-glow), transparent 65%)' }} />
+                    <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/5" />
+                  </div>
+                  <figcaption className="absolute inset-x-0 bottom-0 p-6">
+                    {g.tag && (
+                      <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-[color:var(--air-accent)]/35 bg-black/50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--air-accent)] backdrop-blur-sm">
+                        <MapPin className="h-3 w-3" /> {g.tag}
+                      </span>
+                    )}
+                    <h3 className={`font-display-serif font-black leading-tight text-white ${i === 0 ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
+                      {g.title}
+                    </h3>
+                    {g.desc && <p className="mt-1.5 text-sm leading-relaxed text-slate-300">{g.desc}</p>}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ══ PRICING — stacked cards on mobile, true table md+ ══ */}
       {Array.isArray(t.pricing) && t.pricing.length > 0 && (
         <section className="relative px-4 py-16 md:py-24">
@@ -196,10 +262,20 @@ export default function TerminalPageClient({ t }) {
               className="mb-10"
             />
 
-            {/* Mobile: one glass card per destination — no sideways scrolling */}
+            {/* Mobile: one photo card per destination — no sideways scrolling */}
             <div className="space-y-3 md:hidden">
               {t.pricing.map((r, i) => (
-                <div key={`fare-card-${i}`} className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 backdrop-blur-xl">
+                <div key={`fare-card-${i}`} className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl">
+                  {r.img && (
+                    <div className="relative h-32 w-full overflow-hidden">
+                      <Image src={r.img} alt={r.destination} fill sizes="100vw" className="object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[var(--air-deep)] via-[var(--air-deep)]/25 to-transparent" />
+                      <span className="absolute bottom-3 right-3 rounded-full border border-[color:var(--air-accent)]/40 bg-black/60 px-3 py-1 font-mono text-sm font-bold text-[color:var(--air-accent)] backdrop-blur-sm">
+                        {r.fare}
+                      </span>
+                    </div>
+                  )}
+                  <div className="p-4">
                   <p className="flex items-center gap-2 text-sm font-bold text-white">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-amber-400/15">
                       <MapPin className="h-4 w-4 text-[color:var(--air-accent)]" />
@@ -220,6 +296,7 @@ export default function TerminalPageClient({ t }) {
                       <dd className="text-right font-mono text-sm text-slate-400">{r.time}</dd>
                     </div>
                   </dl>
+                  </div>
                 </div>
               ))}
             </div>
@@ -238,7 +315,16 @@ export default function TerminalPageClient({ t }) {
                 <tbody>
                   {t.pricing.map((r, i) => (
                     <tr key={i} className="border-b border-white/[0.04] transition-colors hover:bg-[color:var(--air-accent)]/[0.04]">
-                      <th scope="row" className="px-6 py-4 text-left text-sm font-semibold text-white">{r.destination}</th>
+                      <th scope="row" className="px-6 py-4 text-left text-sm font-semibold text-white">
+                        <span className="flex items-center gap-3">
+                          {r.img && (
+                            <span className="relative h-11 w-16 shrink-0 overflow-hidden rounded-lg border border-white/10">
+                              <Image src={r.img} alt="" fill sizes="64px" className="object-cover" />
+                            </span>
+                          )}
+                          {r.destination}
+                        </span>
+                      </th>
                       <td className="px-4 py-4 font-mono text-sm text-slate-400">{r.distance}</td>
                       <td className="px-4 py-4 font-mono text-sm font-bold text-[color:var(--air-accent)]">{r.fare}</td>
                       <td className="px-6 py-4 font-mono text-sm text-slate-400">{r.time}</td>
@@ -322,12 +408,14 @@ export default function TerminalPageClient({ t }) {
             <div className="grid items-start gap-3 md:grid-cols-2 md:gap-4">
               {t.faqs.map((faq, i) => (
                 <div key={i} className="overflow-hidden rounded-2xl border border-amber-200/60 bg-white shadow-[0_16px_50px_-34px_rgba(15,23,42,0.3)]">
+                  <h3 className="m-0">
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i}
                     className="flex w-full items-center justify-between gap-4 p-5 text-left">
                     <span className="font-semibold text-slate-900">{faq.q}</span>
                     <ChevronDown className={`h-5 w-5 shrink-0 text-amber-500 transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
                   </button>
-                  {openFaq === i && <div className="border-t border-amber-100 px-5 pb-5 pt-4 leading-relaxed text-slate-600">{faq.a}</div>}
+                  </h3>
+                  <div hidden={openFaq !== i} className="faq-answer border-t border-amber-100 px-5 pb-5 pt-4 leading-relaxed text-slate-600">{faq.a}</div>
                 </div>
               ))}
             </div>
@@ -353,7 +441,7 @@ export default function TerminalPageClient({ t }) {
                   <Link key={i} href={s.href}
                     className="group overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.03] transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--air-accent)]/30">
                     <div className="relative h-32 w-full overflow-hidden">
-                      <Image src={relImg(s.href)} alt={s.title} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <Image src={s.img || relImg(s.href)} alt={s.title} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[var(--air-deep)] via-[var(--air-deep)]/40 to-transparent" />
                       <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl border border-[color:var(--air-accent)]/30 bg-black/40 backdrop-blur-sm">
                         <Ic className="h-5 w-5 text-[color:var(--air-accent)]" />

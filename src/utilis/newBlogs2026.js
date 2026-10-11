@@ -9,7 +9,7 @@ const popularLinksSection = `
 <hr class="my-8 border-gray-200" />
 
 <div class="my-10">
-<h2 class="text-2xl font-bold text-gray-900 mb-6">Explore More with Triveni Cabs</h2>
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Explore More with Triveni Cabs™</h2>
 
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
 <a href="/outstation-cabs" class="bg-blue-50 hover:bg-blue-100 rounded-lg p-3 text-center text-sm font-medium text-blue-700 transition-colors">Outstation Cabs</a>
@@ -61,7 +61,7 @@ const popularLinksSection = `
 </div>
 
 <div class="mt-6 text-center">
-<p class="text-gray-600 text-sm mb-3">Trust Triveni Cabs for safe, reliable travel across North India</p>
+<p class="text-gray-600 text-sm mb-3">Trust Triveni Cabs™ for safe, reliable travel across North India</p>
 <div class="flex flex-wrap justify-center gap-3">
 <a href="/safety" class="text-sm text-blue-600 hover:underline font-medium">Our Safety Standards</a>
 <span class="text-gray-300">|</span>
@@ -100,7 +100,7 @@ const newBlogs2026 = [
       description: "Visit Taj Mahal with comfortable AC cab from Delhi",
       price: "Starting ₹3,500"
     },
-    content: `<p>Planning to visit the <strong>Taj Mahal in 2026</strong>? Timing your visit right can mean the difference between a magical, crowd-free sunrise experience and a sweltering, overcrowded afternoon. This comprehensive month-by-month guide covers the best time to visit Taj Mahal, including sunrise and sunset times, weather conditions, crowd levels, ticket prices, and essential photography tips. <a href="/sightseeing/agra" class="text-blue-600 hover:underline font-semibold">Book an Agra tour package</a> with Triveni Cabs for a hassle-free experience.</p>
+    content: `<p>Planning to visit the <strong>Taj Mahal in 2026</strong>? Timing your visit right can mean the difference between a magical, crowd-free sunrise experience and a sweltering, overcrowded afternoon. This comprehensive month-by-month guide covers the best time to visit Taj Mahal, including sunrise and sunset times, weather conditions, crowd levels, ticket prices, and essential photography tips. <a href="/sightseeing/agra" class="text-blue-600 hover:underline font-semibold">Book an Agra tour package</a> with Triveni Cabs™ for a hassle-free experience.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Taj Mahal Quick Facts for 2026</h2>
 
@@ -458,7 +458,7 @@ const newBlogs2026 = [
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Hire a Cab for Your Agra Day Trip?</h2>
 <p class="text-gray-700 leading-relaxed mb-4">After completing over <strong>500+ same-day Agra trips since 2015</strong>, we have fine-tuned the ideal itinerary. A pre-booked cab beats every other transport option for a day trip because you control the timing - critical for sunrise visits - and your driver doubles as a local navigator who knows the best parking spots at each monument, the fastest routes between attractions, and can recommend authentic food joints away from tourist traps.</p>
-<p class="text-gray-700 leading-relaxed mb-4">With <a href="/outstation-cabs" class="text-blue-600 hover:underline">Triveni Cabs outstation service</a>, your vehicle is registered and permitted for tourist use. Our drivers carry all necessary documents including the Yamuna Expressway FASTag, so you never deal with toll hassles. All our vehicles are comprehensively insured with passenger coverage, and every trip includes GPS tracking that you can share with family for peace of mind. Reach us anytime at our Agra office: 366 Dandupura, Agra - or call 7668570551.</p>
+<p class="text-gray-700 leading-relaxed mb-4">With <a href="/outstation-cabs" class="text-blue-600 hover:underline">Triveni Cabs™ outstation service</a>, your vehicle is registered and permitted for tourist use. Our drivers carry all necessary documents including the Yamuna Expressway FASTag, so you never deal with toll hassles. All our vehicles are comprehensively insured with passenger coverage, and every trip includes GPS tracking that you can share with family for peace of mind. Reach us anytime at our Agra office: 366 Dandupura, Agra - or call 7668570551.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Seasonal Considerations for Your Day Trip</h3>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Winter (November-February):</strong> The most comfortable season. Morning fog can delay your departure; leave by 5 AM to account for slow visibility on the expressway. Carry a light jacket as the Taj complex is open and breezy. This is peak tourist season, so arrive at the gate by 7 AM.</p>
@@ -513,9 +513,9 @@ const newBlogs2026 = [
       text: "Book Your Road Trip",
       url: "/outstation-cabs",
       description: "Reliable outstation cabs for all road trips from Delhi",
-      price: "Starting ₹9/km"
+      price: "Starting ₹11/km"
     },
-    content: `<p>Delhi sits at the crossroads of some of India's most spectacular <strong>road trips</strong>. From the snow-capped Himalayas to the golden deserts of Rajasthan, the spiritual ghats of Varanasi to the lakes of Udaipur - epic adventures await in every direction. Here are the top 10 road trips from Delhi for 2026, with complete route details, cost estimates, and expert tips. <a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Book an outstation cab</a> with Triveni Cabs for any of these journeys.</p>
+    content: `<p>Delhi sits at the crossroads of some of India's most spectacular <strong>road trips</strong>. From the snow-capped Himalayas to the golden deserts of Rajasthan, the spiritual ghats of Varanasi to the lakes of Udaipur - epic adventures await in every direction. Here are the top 10 road trips from Delhi for 2026, with complete route details, cost estimates, and expert tips. <a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Book an outstation cab</a> with Triveni Cabs™ for any of these journeys.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">1. Delhi to Manali - The Classic Himalayan Escape</h2>
 <table class="w-full border-collapse border border-gray-300 my-6">
@@ -727,7 +727,7 @@ const newBlogs2026 = [
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Choose a Pre-Booked Cab Over Self-Drive?</h2>
 <p class="text-gray-700 leading-relaxed mb-4">Long-distance road trips from Delhi involve navigating toll plazas, state borders, mountain hairpins, and unfamiliar city roads at the destination. Having an experienced driver who knows the routes intimately transforms the experience from stressful navigation to relaxed sightseeing from the backseat.</p>
-<p class="text-gray-700 leading-relaxed mb-4">Since 2015, Triveni Cabs has completed over <strong>500+ outstation trips</strong> on each of these routes. Our drivers know the best dhaba stops on the Murthal stretch, the safest night-driving segments, the mountain sections that require extra caution, and the local parking at every tourist spot. Every vehicle carries comprehensive insurance, active FASTag, and GPS tracking. Our Agra office at 366 Dandupura coordinates trips across the entire Golden Triangle region.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Since 2015, Triveni Cabs™ has completed over <strong>500+ outstation trips</strong> on each of these routes. Our drivers know the best dhaba stops on the Murthal stretch, the safest night-driving segments, the mountain sections that require extra caution, and the local parking at every tourist spot. Every vehicle carries comprehensive insurance, active FASTag, and GPS tracking. Our Agra office at 366 Dandupura coordinates trips across the entire Golden Triangle region.</p>
 <p class="text-gray-700 leading-relaxed mb-4">For group road trips of 8-20 people, a <a href="/tempo-traveller" class="text-blue-600 hover:underline">tempo traveller</a> is the most economical option - a 12-seater to Manali costs just ₹1,800 per person one-way when split across the group. For couples and small families, our AC sedans start at just ₹9 per kilometre with no hidden charges. Check our <a href="/pricing" class="text-blue-600 hover:underline">transparent pricing page</a> for exact rates, and read our <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a> to see what other road trippers say.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
@@ -773,9 +773,9 @@ const newBlogs2026 = [
       text: "Book Rajasthan Road Trip",
       url: "/outstation-cabs",
       description: "Explore Rajasthan with comfortable outstation cabs from Jaipur",
-      price: "Starting ₹9/km"
+      price: "Starting ₹11/km"
     },
-    content: `<p>Jaipur is the perfect base for exploring Rajasthan's royal heritage, desert landscapes, and lake cities by road. These <strong>road trips from Jaipur</strong> range from quick weekend getaways to week-long adventures through the Thar Desert. <a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Book an outstation cab</a> with Triveni Cabs for reliable, comfortable travel across Rajasthan.</p>
+    content: `<p>Jaipur is the perfect base for exploring Rajasthan's royal heritage, desert landscapes, and lake cities by road. These <strong>road trips from Jaipur</strong> range from quick weekend getaways to week-long adventures through the Thar Desert. <a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Book an outstation cab</a> with Triveni Cabs™ for reliable, comfortable travel across Rajasthan.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">1. Jaipur to Pushkar - The Sacred Lake Town</h2>
 <table class="w-full border-collapse border border-gray-300 my-6">
@@ -922,19 +922,19 @@ const newBlogs2026 = [
 <li class="ml-4"><strong>Photography:</strong> The golden light in Rajasthan (especially sunset) is world-class; plan stops accordingly</li>
 </ul>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Choose Triveni Cabs for Your Jaipur Road Trip?</h2>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Choose Triveni Cabs™ for Your Jaipur Road Trip?</h2>
 <p class="text-gray-700 leading-relaxed mb-4">Rajasthan road trips require drivers who understand desert conditions, camel crossings, sand on highways, and the peculiarities of small-town navigation. Since 2015, we have completed over <strong>500+ Rajasthan road trips</strong> covering routes from short Pushkar hops to week-long Jaisalmer circuits. Our drivers know every route on this list personally - the best petrol pump stops in western Rajasthan, the highway dhabas that serve authentic dal baati churma, and the shortcuts that save an hour on the Jaisalmer route.</p>
 <p class="text-gray-700 leading-relaxed mb-4">All our vehicles are equipped with active FASTag for toll plazas, comprehensive insurance with passenger coverage, and GPS tracking that you can share with family. We provide transparent pricing with no hidden charges - the quote you receive includes everything. Contact our team at <strong>366 Dandupura, Agra</strong> or call 7668570551. Read what past road trippers say on our <a href="/reviews" class="text-blue-600 hover:underline">customer reviews page</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">What is the best vehicle for Rajasthan road trips?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">For couples, a sedan like the Swift Dzire offers excellent value at ₹9-11 per km. Families of 4-6 should choose an SUV like the Innova for extra luggage space and comfort on rough stretches near Jaisalmer. Groups of 8+ save significantly with a <a href="/tempo-traveller" class="text-blue-600 hover:underline">tempo traveller</a> where per-person costs drop below ₹2,500 for a 3-day trip.</p>
+<p class="text-gray-700 leading-relaxed mb-4">For couples, a sedan like the Swift Dzire offers excellent value at ₹11 per km. Families of 4-6 should choose an SUV like the Innova for extra luggage space and comfort on rough stretches near Jaisalmer. Groups of 8+ save significantly with a <a href="/tempo-traveller" class="text-blue-600 hover:underline">tempo traveller</a> where per-person costs drop below ₹2,500 for a 3-day trip.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Are Rajasthan roads safe for night driving?</h3>
 <p class="text-gray-700 leading-relaxed mb-4">We strongly recommend against night driving in Rajasthan. Camels, nilgai deer, and cattle are common on highways after dark and are nearly invisible until too close. Plan your itinerary to reach each destination before sunset. Our <a href="/safety" class="text-blue-600 hover:underline">safety page</a> details our strict no-fatigued-driving policy.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Can I combine multiple Rajasthan destinations?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">Absolutely. The classic 5-day Rajasthan circuit covers Jaipur-Pushkar-Jodhpur-Jaisalmer. A 7-day version adds Udaipur and Mount Abu. We offer custom multi-city itineraries where you only pay per-km rates with no per-day charges. The round-trip rate of ₹9-11 per km for a sedan makes multi-stop trips very affordable.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Absolutely. The classic 5-day Rajasthan circuit covers Jaipur-Pushkar-Jodhpur-Jaisalmer. A 7-day version adds Udaipur and Mount Abu. We offer custom multi-city itineraries where you only pay per-km rates with no per-day charges. The round-trip rate of ₹11 per km for a sedan makes multi-stop trips very affordable.</p>
 
 <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-lg my-8">
 <h3 class="text-xl font-bold mb-2">Explore Rajasthan by Road</h3>
@@ -1086,7 +1086,7 @@ const newBlogs2026 = [
 </tbody>
 </table>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Families Trust Triveni Cabs</h2>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Families Trust Triveni Cabs™</h2>
 <p class="text-gray-700 leading-relaxed mb-4">With over <strong>500+ family trips to Jaipur completed since 2015</strong>, we understand what families need: a spacious, clean vehicle with working AC (critical in Rajasthan), a patient driver who accommodates unplanned stops, and a reliable support system for any situation. Our drivers carry child-safe booster seats on request (book 48 hours in advance), and every vehicle has GPS tracking you can share with extended family.</p>
 <p class="text-gray-700 leading-relaxed mb-4">We provide transparent pricing with no hidden charges, and our <a href="/safety" class="text-blue-600 hover:underline">safety standards</a> include verified drivers with clean records and comprehensive passenger insurance. Reach us at our office: <strong>366 Dandupura, Agra</strong>, or call 7668570551. Check our <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a> from families who have traveled with us.</p>
 
@@ -1132,15 +1132,15 @@ const newBlogs2026 = [
       text: "Book Safe Solo Travel Cab",
       url: "/contact",
       description: "Verified drivers, GPS tracking, 24/7 support for solo women travelers",
-      price: "Starting ₹9/km"
+      price: "Starting ₹11/km"
     },
-    content: `<p><strong>Solo female travel in North India</strong> is becoming increasingly popular and for good reason - the region offers incredible cultural experiences, spiritual journeys, and natural beauty. While safety concerns are valid, thousands of women travel solo through North India every year with wonderful experiences. This guide provides practical safety tips, recommended routes, trusted transport options, and emergency contacts to help you plan a confident solo trip. <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact Triveni Cabs</a> for verified, GPS-tracked transport options.</p>
+    content: `<p><strong>Solo female travel in North India</strong> is becoming increasingly popular and for good reason - the region offers incredible cultural experiences, spiritual journeys, and natural beauty. While safety concerns are valid, thousands of women travel solo through North India every year with wonderful experiences. This guide provides practical safety tips, recommended routes, trusted transport options, and emergency contacts to help you plan a confident solo trip. <a href="/contact" class="text-blue-600 hover:underline font-semibold">Contact Triveni Cabs™</a> for verified, GPS-tracked transport options.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Safety First: Practical Tips That Actually Work</h2>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Transportation Safety</h3>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
-<li class="ml-4"><strong>Pre-book your cab:</strong> Always book through a reputable company rather than hailing random vehicles. Companies like Triveni Cabs provide driver details, vehicle numbers, and GPS tracking</li>
+<li class="ml-4"><strong>Pre-book your cab:</strong> Always book through a reputable company rather than hailing random vehicles. Companies like Triveni Cabs™ provide driver details, vehicle numbers, and GPS tracking</li>
 <li class="ml-4"><strong>Share trip details:</strong> Send your driver's name, phone number, and vehicle details to a trusted contact before every journey</li>
 <li class="ml-4"><strong>Sit in the back seat:</strong> This gives you more personal space and easy access to both doors</li>
 <li class="ml-4"><strong>Night travel:</strong> Avoid road travel after 9 PM. If unavoidable, use only pre-booked cabs with company-verified drivers</li>
@@ -1219,7 +1219,7 @@ const newBlogs2026 = [
 <tr><td class="border border-gray-300 px-4 py-2">Tourist Police (Delhi)</td><td class="border border-gray-300 px-4 py-2">011-23782040</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Tourist Police (Jaipur)</td><td class="border border-gray-300 px-4 py-2">0141-2630517</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Ambulance</td><td class="border border-gray-300 px-4 py-2">108</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Triveni Cabs (24/7)</td><td class="border border-gray-300 px-4 py-2">7668570551</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Triveni Cabs™ (24/7)</td><td class="border border-gray-300 px-4 py-2">7668570551</td></tr>
 </tbody>
 </table>
 
@@ -1240,7 +1240,7 @@ const newBlogs2026 = [
 <li class="ml-4"><a href="/blog/summer-hill-station-trips-from-delhi" class="text-blue-600 hover:underline font-semibold">Summer Hill Station Trips</a> - safe and scenic hill station destinations</li>
 <li class="ml-4"><a href="/blog/best-time-to-visit-taj-mahal-2026" class="text-blue-600 hover:underline font-semibold">Best Time to Visit Taj Mahal</a> - plan your Agra visit right</li>
 <li class="ml-4"><a href="/safety" class="text-blue-600 hover:underline font-semibold">Our Safety Standards</a> - GPS tracking, verified drivers, 24/7 support</li>
-<li class="ml-4"><a href="/reviews" class="text-blue-600 hover:underline font-semibold">Customer Reviews</a> - what solo travelers say about Triveni Cabs</li>
+<li class="ml-4"><a href="/reviews" class="text-blue-600 hover:underline font-semibold">Customer Reviews</a> - what solo travelers say about Triveni Cabs™</li>
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">What Solo Women Travelers Say</h2>
@@ -1265,7 +1265,7 @@ const newBlogs2026 = [
 </table>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Money tip:</strong> Pre-booked intercity transport offers better safety and value than negotiating at the station. A <a href="/one-way-cab" class="text-blue-600 hover:underline">one-way cab</a> from Delhi to Rishikesh costs ₹3,500-5,000 and eliminates the stress of navigating bus stations alone after dark.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Solo Women Choose Triveni Cabs</h2>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Solo Women Choose Triveni Cabs™</h2>
 <p class="text-gray-700 leading-relaxed mb-4">Since 2015, we have provided safe transport for hundreds of solo women travelers across North India. Our commitment to women's safety is not just a marketing line - it is built into our operations:</p>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
 <li class="ml-4"><strong>Verified drivers:</strong> Every driver undergoes police verification and background checks before joining our fleet</li>
@@ -1433,8 +1433,8 @@ const newBlogs2026 = [
 </tbody>
 </table>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Book with Triveni Cabs for Holi</h2>
-<p class="text-gray-700 leading-relaxed mb-4">Holi in Mathura creates massive traffic jams as lakhs of visitors converge on the small temple town. Having a driver who has navigated Holi traffic for years is invaluable. Since 2015, Triveni Cabs has completed <strong>500+ festival-season trips</strong> to Mathura-Vrindavan, and our drivers know the back routes, alternative parking areas, and the exact timing to reach each celebration.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Book with Triveni Cabs™ for Holi</h2>
+<p class="text-gray-700 leading-relaxed mb-4">Holi in Mathura creates massive traffic jams as lakhs of visitors converge on the small temple town. Having a driver who has navigated Holi traffic for years is invaluable. Since 2015, Triveni Cabs™ has completed <strong>500+ festival-season trips</strong> to Mathura-Vrindavan, and our drivers know the back routes, alternative parking areas, and the exact timing to reach each celebration.</p>
 <p class="text-gray-700 leading-relaxed mb-4">Your driver waits at the designated parking area while you enjoy the festival, and is available on call to pick you up whenever you are ready. All vehicles are comprehensively insured with passenger coverage, and GPS tracking lets your family know your location. Book through our <a href="/contact" class="text-blue-600 hover:underline">contact page</a> or call our office at <strong>366 Dandupura, Agra</strong> - 7668570551. Read our <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a> from past Holi travelers.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
@@ -1586,7 +1586,7 @@ const newBlogs2026 = [
 <li class="ml-4"><strong>Factor in toll costs:</strong> Use our <a href="/blog/toll-charges-delhi-agra-jaipur-2026" class="text-blue-600 hover:underline">toll charges guide</a> to budget accurately</li>
 </ul>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Families Trust Triveni Cabs for Festival Travel</h2>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Families Trust Triveni Cabs™ for Festival Travel</h2>
 <p class="text-gray-700 leading-relaxed mb-4">Since 2015, we have completed over <strong>500+ festival-season trips</strong> during Diwali, Holi, and other major holidays. Our drivers are available through the festival period (we compensate them additionally for holiday duty), ensuring you are not stranded by a last-minute cancellation. Every vehicle has active FASTag for seamless toll passage, comprehensive insurance, and GPS tracking. Our office at <strong>366 Dandupura, Agra</strong> coordinates trips across the Golden Triangle region. Call 7668570551 or check our <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
@@ -1634,131 +1634,156 @@ const newBlogs2026 = [
       description: "Celebrate NYE 2027 at the best destinations from Delhi",
       price: "Starting ₹4,500"
     },
-    content: `<p>Looking for the perfect <strong>New Year trip from Delhi for 2027</strong>? Whether you want to ring in the new year amidst snow-capped mountains, at a royal palace party, camping by the Ganges, or dancing at a beach party, this guide covers the best NYE destinations accessible from Delhi with complete travel details, party spots, and cab packages. <a href="/contact" class="text-blue-600 hover:underline font-semibold">Book your New Year cab early</a> - transport sells out fast during the holiday season.</p>
+    content: `<p>The New Year trip from Delhi that works is the one where you know, well before the thirty-first, exactly where you are sleeping that night. Everything else - the drive, the vehicle, the fare - follows from that decision, and the room is the part that sells out first. This guide is about the towns: what the night of the thirty-first is actually like in each, what kind of party or quiet you get, where people stay, and how far ahead you need to move. <a href="/contact" class="text-blue-600 hover:underline font-semibold">Talk to us early</a> - the last week of December is the busiest of the year on every corridor out of Delhi.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">1. Manali - Snow, Bonfires & Mountain Magic</h2>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Distance from Delhi:</strong> 540 km | <strong>Drive Time:</strong> 12-14 hours | <strong>Cab Cost:</strong> ₹7,000-9,000 one-way</p>
-<p class="text-gray-700 leading-relaxed mb-4">Manali is the top New Year destination from Delhi for good reason. December-end often brings fresh snowfall, and the combination of bonfires, hot chocolate, and snow creates a magical NYE atmosphere. Old Manali cafes host countdown parties with live music and DJs.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">The Five Towns, and the Night Each One Gives You</h2>
+<table class="w-full border-collapse border border-gray-300 my-6">
+<thead><tr class="bg-gray-100">
+<th class="border border-gray-300 px-4 py-2 text-left">Town</th>
+<th class="border border-gray-300 px-4 py-2 text-left">What the night is</th>
+<th class="border border-gray-300 px-4 py-2 text-left">Who it suits</th>
+<th class="border border-gray-300 px-4 py-2 text-left">Where people sleep</th>
+</tr></thead>
+<tbody>
+<tr><td class="border border-gray-300 px-4 py-2">Manali</td><td class="border border-gray-300 px-4 py-2">Bonfires, cafe countdowns, snow if the month has delivered</td><td class="border border-gray-300 px-4 py-2">Friends, couples who want the party</td><td class="border border-gray-300 px-4 py-2">Old Manali, the Mall end of town, or a Solang-side resort</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Jaipur</td><td class="border border-gray-300 px-4 py-2">Gala dinners, rooftops, a city that stays up</td><td class="border border-gray-300 px-4 py-2">Couples, families, groups who want to dress up</td><td class="border border-gray-300 px-4 py-2">The old city, the heritage properties, the resort belt on the Amber road</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Rishikesh</td><td class="border border-gray-300 px-4 py-2">Riverside camps, bonfire and barbecue, a dawn on the Ganga</td><td class="border border-gray-300 px-4 py-2">Adventure-minded groups, anyone avoiding a dance floor</td><td class="border border-gray-300 px-4 py-2">Camps upriver, or Tapovan and Laxman Jhula guesthouses</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Shimla and Kufri</td><td class="border border-gray-300 px-4 py-2">The Ridge and the Mall at midnight, snow above the town</td><td class="border border-gray-300 px-4 py-2">Families with children</td><td class="border border-gray-300 px-4 py-2">Mall Road and the Ridge, or quieter Chhota Shimla</td></tr>
+<tr><td class="border border-gray-300 px-4 py-2">Kasauli and Chail</td><td class="border border-gray-300 px-4 py-2">A dinner, a fire, and nothing else happening</td><td class="border border-gray-300 px-4 py-2">Couples and anyone escaping the crowd</td><td class="border border-gray-300 px-4 py-2">Small boutique properties and cottages in the pines</td></tr>
+</tbody>
+</table>
+<p class="text-gray-700 leading-relaxed mb-4">Four of the five are within a day's drive of Delhi on our route pages - Rishikesh at 250 km, Jaipur at 280 km, Shimla at 350 km and Manali at 530 km. Kasauli and Chail sit off the Shimla road and are covered on their own <a href="/one-way-cab/delhi-to-kasauli" class="text-blue-600 hover:underline font-semibold">Kasauli</a> and <a href="/one-way-cab/delhi-to-chail" class="text-blue-600 hover:underline font-semibold">Chail</a> pages. For the drives themselves, the corridors, the tolls, the winter fog and what the cab costs on each, read <a href="/blog/new-year-2027-road-trips-from-delhi-where-to-drive-cab-cost" class="text-blue-600 hover:underline font-semibold">New Year 2027 road trips from Delhi</a>, which carries the fares; this page stays with the towns.</p>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">NYE Highlights</h3>
-<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
-<li class="ml-4">Snow play at Solang Valley and Rohtang (if open)</li>
-<li class="ml-4">Bonfire parties at hotels and camps</li>
-<li class="ml-4">Old Manali cafe parties (Lazy Dog, Johnson's Bar, Drifter's Cafe)</li>
-<li class="ml-4">Mall Road midnight celebrations</li>
-<li class="ml-4">New Year sunrise from Hadimba Temple area</li>
-</ul>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Budget:</strong> ₹8,000-15,000/person (3 days including transport, stay, food) | <strong>Tip:</strong> Book by early November - hotels quadruple rates by December. <a href="/sightseeing/manali" class="text-blue-600 hover:underline font-semibold">Explore Manali tour packages</a>.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">1. Manali - the Loud One</h2>
+<p class="text-gray-700 leading-relaxed mb-4">Manali is where most of Delhi's under-thirties want to be on the thirty-first, and the town knows it. Our best-time page puts Manali's snowfall from December and gives the winter range as minus five to fifteen degrees, so the cold is real and the snow is likely rather than promised. The shape of the night is the same every year: an afternoon at Solang Valley above the town for snow play, back down as it gets dark, and then bonfires at the hotels and camps while the cafes in Old Manali run countdowns. Nobody sleeps early and nobody expects to.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Two things to know before you commit. The first is that Rohtang is closed from December to April in a normal year, so the snow day is Solang or the Atal Tunnel to Sissu on the Lahaul side, not the pass - which is fine, because both carry snow more reliably than the town does. The second is that Manali is the longest of the five drives at 530 km, so this is a three-night trip at minimum, not a dash. Our <a href="/sightseeing/manali" class="text-blue-600 hover:underline font-semibold">Manali tour packages</a> set out the shape.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">2. Jaipur - Royal NYE Celebrations</h2>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Distance from Delhi:</strong> 280 km | <strong>Drive Time:</strong> 4.5-5.5 hours | <strong>Cab Cost:</strong> ₹3,500-5,000 one-way</p>
-<p class="text-gray-700 leading-relaxed mb-4">Jaipur offers the most sophisticated NYE experience - heritage hotels host lavish dinner parties in palace settings, rooftop restaurants offer views of illuminated forts, and the weather is perfect (15-18°C evenings). <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline font-semibold">View Jaipur sightseeing packages</a>.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">2. Jaipur - the Dressed-Up One</h2>
+<p class="text-gray-700 leading-relaxed mb-4">The most comfortable New Year on this list, and the only one where the weather is an asset rather than something to endure. Our best-time page gives Jaipur eight to twenty-five degrees in the winter months and calls November to February the peak - cool, pleasant, with chilly evenings, which is exactly what you want for a rooftop dinner and an outdoor gala. Heritage properties across the city run dinner evenings; the rooftop restaurants in the old town look across at the illuminated forts; the bazaars stay open late.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Jaipur also gives you a proper first morning. Amber and the City Palace on the first of January are easier than on any summer day, and the Literature Festival follows in January if you want to stretch the trip. Because Jaipur is a real city rather than a hill town, the room options run from budget to extravagant, and it is the one destination here where booking late still leaves you something - though not something good. See the <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline font-semibold">Jaipur sightseeing packages</a>.</p>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">NYE Highlights</h3>
-<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
-<li class="ml-4">Heritage hotel gala dinners (Rambagh Palace, Jai Mahal Palace, Samode Haveli)</li>
-<li class="ml-4">Rooftop parties with Nahargarh Fort views</li>
-<li class="ml-4">DJ nights at Jaipur's premium clubs and lounges</li>
-<li class="ml-4">Chokhi Dhani special NYE cultural show with Rajasthani dinner</li>
-<li class="ml-4">Hot air balloon ride on New Year morning (weather permitting)</li>
-</ul>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Budget:</strong> ₹6,000-25,000/person (2 days) depending on hotel choice.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">3. Rishikesh - the Quiet-by-the-River One</h2>
+<p class="text-gray-700 leading-relaxed mb-4">For people who want a fire, a river and no dance floor. The camps strung along the Ganga upriver run New Year evenings around a bonfire and a barbecue, and the appeal is the morning as much as the night - the first sunrise of the year over the water, then an aarti at the ghats, which our Rishikesh notes list as a nightly fixture at Triveni Ghat and Parmarth Niketan. Our best-time page puts the autumn and winter stretch from September to January at five to twenty-eight degrees, with post-monsoon clarity and rafting running again, so the adventure side of the town is open if you want it.</p>
+<p class="text-gray-700 leading-relaxed mb-4">It is also the most family-workable of the five for a two-night trip: close enough at 250 km that you are there by afternoon, and quiet enough that children sleep. Book the camp rather than assume one, and confirm what the evening includes - camps vary far more than hotels do. The <a href="/sightseeing/rishikesh" class="text-blue-600 hover:underline font-semibold">Rishikesh packages</a> cover the stay-and-sightseeing combinations.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">3. Rishikesh - Adventure NYE by the Ganges</h2>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Distance from Delhi:</strong> 240 km | <strong>Drive Time:</strong> 5-6 hours | <strong>Cab Cost:</strong> ₹3,500-5,000 one-way</p>
-<p class="text-gray-700 leading-relaxed mb-4">For those who prefer adventure over parties, Rishikesh offers riverside camping, bonfires under the stars, and a peaceful New Year dawn. Multiple camps along the Ganges organize special NYE events with music, barbecue, and campfire storytelling.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">4. Shimla and Kufri - the Family One</h2>
+<p class="text-gray-700 leading-relaxed mb-4">Shimla does New Year the way it does everything - on foot, on the Mall, in the cold. Our best-time page gives the town minus two to fifteen degrees in winter, calls the December to February snowfall magical and tells you to carry heavy woollens, and lists an open-air natural ice rink that hosts a skating carnival in December and January. The Ridge fills up before midnight and the crowd is families rather than a club queue, which is the point.</p>
+<p class="text-gray-700 leading-relaxed mb-4">The snow, if you want it, is above the town rather than on the Mall: Kufri holds it more often, and Narkanda further out on the Rampur road has it as a matter of course. Plan that as a daytime run on the first or the thirtieth, with the same driver, and leave the night to the town. At 350 km and seven to eight hours, Shimla is the shortest hill drive of the three on this list. The <a href="/sightseeing/shimla-kufri-tour" class="text-blue-600 hover:underline font-semibold">Shimla and Kufri tour</a> covers both halves.</p>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">NYE Highlights</h3>
-<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
-<li class="ml-4">Riverside camping with bonfire and barbecue dinner</li>
-<li class="ml-4">New Year sunrise over the Ganges</li>
-<li class="ml-4">Adventure combo - rafting, bungee, zip-lining (pre-book)</li>
-<li class="ml-4">Beatles Ashram exploration and cafe hopping in Tapovan</li>
-<li class="ml-4">New Year yoga session at an ashram</li>
-</ul>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Budget:</strong> ₹5,000-10,000/person (2 days including camp, food, activities).</p>
-
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">4. Shimla/Kufri - Colonial Charm in Winter</h2>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Distance from Delhi:</strong> 350 km | <strong>Drive Time:</strong> 7-8 hours | <strong>Cab Cost:</strong> ₹5,000-7,000 one-way</p>
-<p class="text-gray-700 leading-relaxed mb-4">Shimla's colonial architecture draped in occasional snow creates a European-holiday feel. Mall Road comes alive with countdown celebrations, and Kufri (16 km ahead) offers snow activities. Heritage hotels like Wildflower Hall and Oberoi Cecil host premium NYE events.</p>
-
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">5. Kasauli/Chail - Quiet Mountain Retreat</h2>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Distance from Delhi:</strong> 300 km | <strong>Drive Time:</strong> 6-7 hours | <strong>Cab Cost:</strong> ₹4,500-6,000 one-way</p>
-<p class="text-gray-700 leading-relaxed mb-4">Perfect for couples and families who want a peaceful New Year away from the party crowd. Kasauli's pine forests and Chail's cricket ground (world's highest) offer serene settings. Several boutique hotels organize intimate NYE dinners.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">5. Kasauli and Chail - the Ones Where Nothing Happens</h2>
+<p class="text-gray-700 leading-relaxed mb-4">Deliberately. Kasauli is a small cantonment town in pine forest, and our best-time page describes its winter in exactly those terms - quiet, peaceful, with possible frost, good for people seeking solitude - with Monkey Point and Christ Church and a walk through the trees as the whole of the sightseeing. Chail is the old royal retreat above Kandaghat with its famously high cricket ground, and our route notes give it occasional snow in the deodar forests between December and February.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Neither town throws a party. What they have is a handful of small properties that put on a dinner and light a fire, and a New Year's Day that starts with silence instead of a headache. If that is what you are after, these are also the two that need the earliest booking of the five, because there are so few rooms to go round.</p>
 
 <hr class="my-8 border-gray-200" />
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Comparison: Which NYE Trip is Right for You?</h2>
-<table class="w-full border-collapse border border-gray-300 my-6">
-<thead><tr class="bg-gray-100">
-<th class="border border-gray-300 px-4 py-2 text-left">Destination</th>
-<th class="border border-gray-300 px-4 py-2 text-left">Best For</th>
-<th class="border border-gray-300 px-4 py-2 text-left">Vibe</th>
-<th class="border border-gray-300 px-4 py-2 text-left">Budget/Person</th>
-</tr></thead>
-<tbody>
-<tr><td class="border border-gray-300 px-4 py-2">Manali</td><td class="border border-gray-300 px-4 py-2">Friends, couples</td><td class="border border-gray-300 px-4 py-2">Snow + party</td><td class="border border-gray-300 px-4 py-2">₹8,000-15,000</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Jaipur</td><td class="border border-gray-300 px-4 py-2">Couples, groups</td><td class="border border-gray-300 px-4 py-2">Royal + elegant</td><td class="border border-gray-300 px-4 py-2">₹6,000-25,000</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Rishikesh</td><td class="border border-gray-300 px-4 py-2">Adventure seekers</td><td class="border border-gray-300 px-4 py-2">Nature + camping</td><td class="border border-gray-300 px-4 py-2">₹5,000-10,000</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Shimla</td><td class="border border-gray-300 px-4 py-2">Families</td><td class="border border-gray-300 px-4 py-2">Colonial + snow</td><td class="border border-gray-300 px-4 py-2">₹7,000-15,000</td></tr>
-<tr><td class="border border-gray-300 px-4 py-2">Kasauli</td><td class="border border-gray-300 px-4 py-2">Couples, peace seekers</td><td class="border border-gray-300 px-4 py-2">Quiet + romantic</td><td class="border border-gray-300 px-4 py-2">₹6,000-12,000</td></tr>
-</tbody>
-</table>
-
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Related Reading</h2>
-<p class="text-gray-700 leading-relaxed mb-4">More travel guides for your year-end plans:</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">How Far Ahead to Book</h2>
+<p class="text-gray-700 leading-relaxed mb-4">In order, and the order matters more than the dates:</p>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
-<li class="ml-4"><a href="/blog/summer-hill-station-trips-from-delhi" class="text-blue-600 hover:underline font-semibold">Hill Station Trips from Delhi</a> - detailed guide to Manali, Shimla, and more</li>
-<li class="ml-4"><a href="/blog/best-road-trips-from-delhi-by-car" class="text-blue-600 hover:underline font-semibold">Best Road Trips from Delhi</a> - discover more weekend destinations</li>
-<li class="ml-4"><a href="/blog/best-road-trips-from-jaipur" class="text-blue-600 hover:underline font-semibold">Road Trips from Jaipur</a> - extend your Jaipur NYE with a Rajasthan road trip</li>
-<li class="ml-4"><a href="/blog/how-to-book-tempo-traveller-guide" class="text-blue-600 hover:underline font-semibold">How to Book Tempo Traveller</a> - save money with group travel to NYE destinations</li>
-<li class="ml-4"><a href="/blog/road-trip-packing-checklist-india" class="text-blue-600 hover:underline font-semibold">Road Trip Packing Checklist</a> - winter packing essentials for hill station trips</li>
-<li class="ml-4"><a href="/blog/outstation-cab-booking-tips-2026" class="text-blue-600 hover:underline font-semibold">Outstation Cab Booking Tips</a> - book your NYE cab with confidence</li>
-<li class="ml-4"><a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Outstation Cab Service</a> - browse cab options and get instant quotes</li>
+<li class="ml-4"><strong>The room first, and by November.</strong> Hotels in the hill towns go before cars do, and Kasauli and Chail go earliest of all because they have the fewest rooms. Jaipur is the one place still holding stock in December, and not the stock you wanted.</li>
+<li class="ml-4"><strong>The car the same day.</strong> Once the room is fixed, the destination, the dates and the head count are settled, which is everything we need to quote. The last week of December is the busiest of the year on every corridor out of Delhi and cars book out days ahead.</li>
+<li class="ml-4"><strong>Travel on the twenty-ninth or thirtieth, not the thirty-first.</strong> Arriving a day early means you see the place instead of the back of a queue, and it takes the pressure off a winter drive where fog can cost you two hours on the plains.</li>
+<li class="ml-4"><strong>Hold the first of January loosely.</strong> Everyone leaves the hills at once on the first. A late breakfast and an afternoon departure is a better drive than a dawn start into the same traffic, and an extra night is the cheapest way to avoid the crush entirely.</li>
+<li class="ml-4"><strong>Keep a spare day if you are going high.</strong> A fresh fall can hold a hill road for a morning. The trips that go wrong in winter are the ones with a flight to catch.</li>
 </ul>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">NYE Travel Tips from Delhi</h2>
-<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
-<li class="ml-4"><strong>Book everything early:</strong> November is the latest you should book for NYE travel - hotels and cabs sell out</li>
-<li class="ml-4"><strong>Depart Dec 30:</strong> Travel on December 30th to avoid the Dec 31st traffic rush</li>
-<li class="ml-4"><strong>Carry warm clothes:</strong> All hill stations are freezing in late December (0-10°C at night)</li>
-<li class="ml-4"><strong>Chain requirements:</strong> For Manali and high-altitude destinations, ask about snow chain availability</li>
-<li class="ml-4"><strong>Return Jan 2:</strong> Roads are jam-packed on Jan 1 as everyone heads back simultaneously. Stay an extra day</li>
-<li class="ml-4"><strong>Group cabs save money:</strong> A <a href="/tempo-traveller" class="text-blue-600 hover:underline">tempo traveller for 12 people</a> to Manali costs ₹12,000 one-way - only ₹1,000 per person</li>
-</ul>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">What the Night Costs You in Planning Terms</h2>
+<p class="text-gray-700 leading-relaxed mb-4">Not money - that is on the <a href="/blog/new-year-2027-road-trips-from-delhi-where-to-drive-cab-cost" class="text-blue-600 hover:underline font-semibold">road trips guide</a>, where the rate card is worked out corridor by corridor - but attention. A New Year trip has three moving parts that all have to line up: the room on the thirty-first, the car that gets you there before dark, and the party or the quiet you actually came for. Groups get this wrong by booking the car first and then discovering the hill town is full; families get it wrong by treating a 530 km winter drive as a day trip. Fix the night, then work backwards. A group of eight or more travelling together should ask about a <a href="/tempo-traveller" class="text-blue-600 hover:underline font-semibold">12-seater Tempo Traveller</a> at the same time as the rooms, because those go early too.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">How to Save Money on Your NYE Trip</h2>
-<p class="text-gray-700 leading-relaxed mb-4">New Year is peak season and prices for everything skyrocket. Here are tried-and-tested strategies to keep costs down:</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">More Reading</h2>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
-<li class="ml-4"><strong>Travel on December 29-30:</strong> Avoid December 31 departure when roads are jammed and surge pricing kicks in. Arriving a day early also gives you time to explore</li>
-<li class="ml-4"><strong>Group travel:</strong> A <a href="/tempo-traveller" class="text-blue-600 hover:underline">12-seater tempo traveller</a> to Manali costs ₹12,000 one-way. Split among 10 friends, that is only ₹1,200 per person for transport</li>
-<li class="ml-4"><strong>Book by November:</strong> Hotels and cabs at regular rates. Wait until December and expect 2-3x pricing</li>
-<li class="ml-4"><strong>Choose Rishikesh:</strong> Camping packages (₹2,000-4,000/person including dinner, bonfire, tent) offer the best value NYE experience</li>
-<li class="ml-4"><strong>Return January 2:</strong> Staying an extra night (when rates drop back) and avoiding the January 1 traffic crush saves both money and stress</li>
+<li class="ml-4"><a href="/blog/summer-hill-station-trips-from-delhi" class="text-blue-600 hover:underline font-semibold">Hill Station Trips from Delhi</a> - the same towns in their other season</li>
+<li class="ml-4"><a href="/blog/how-to-book-tempo-traveller-guide" class="text-blue-600 hover:underline font-semibold">How to Book a Tempo Traveller</a> - for groups travelling together</li>
+<li class="ml-4"><a href="/blog/road-trip-packing-checklist-india" class="text-blue-600 hover:underline font-semibold">Road Trip Packing Checklist</a> - winter packing for the hills</li>
+<li class="ml-4"><a href="/blog/outstation-cab-booking-tips-2026" class="text-blue-600 hover:underline font-semibold">Outstation Cab Booking Tips</a> - what to confirm when you book</li>
+<li class="ml-4"><a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Outstation Cab Service</a> - vehicles, rates and instant quotes</li>
 </ul>
-
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">NYE Road Safety and Winter Driving</h2>
-<p class="text-gray-700 leading-relaxed mb-4">Winter driving to hill stations requires special preparation. December temperatures at Manali and Shimla can drop below zero at night, and black ice is a real hazard above 2,000 metres. Here is what matters:</p>
-<ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
-<li class="ml-4"><strong>Snow chains:</strong> For Manali trips after heavy snowfall, snow chains on tyres are mandatory on some stretches</li>
-<li class="ml-4"><strong>Daylight driving:</strong> Mountain roads are safest in daylight. Plan to reach your destination before 5 PM</li>
-<li class="ml-4"><strong>Fog on plains:</strong> The Delhi-Chandigarh highway gets dense fog in December-January. Early morning and late evening visibility can drop to 20 metres</li>
-<li class="ml-4"><strong>Vehicle checks:</strong> Battery, coolant, and anti-freeze must be checked before winter hill trips</li>
-</ul>
-<p class="text-gray-700 leading-relaxed mb-4">With Triveni Cabs, all winter vehicles are pre-checked for cold-weather readiness. Our hill-route drivers have experience navigating snow and ice conditions. Since 2015, we have completed over <strong>500+ winter hill station trips</strong> without incident. Every vehicle carries GPS tracking, comprehensive insurance, and our 24/7 support line (7668570551). Office: <strong>366 Dandupura, Agra</strong>. Check our <a href="/safety" class="text-blue-600 hover:underline">safety standards</a> and <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Will there be snow in Manali on New Year?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">Snow in Manali around New Year is likely but not guaranteed. Fresh snowfall typically begins in mid-December and continues through February. Solang Valley and higher areas are more likely to have snow than Manali town itself. Even without fresh snow, December-end temperatures in Manali hover around 0 to -5 degrees Celsius at night.</p>
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Where should I spend New Year's Eve if I want snow?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Manali, with the snow day at Solang Valley above the town rather than in it. Shimla is the shorter drive and Kufri above it holds snow more often than the Mall does. Neither can promise it on the night - our best-time pages give December as the month it usually starts, not a date.</p>
 
-<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Can I book a cab for just New Year Eve and return the next day?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">For nearby destinations like Jaipur (5 hours), yes. For hill stations like Manali (12+ hours), a same-day return is not feasible. We recommend a minimum 2-night trip for Manali and Shimla. Our <a href="/outstation-cabs" class="text-blue-600 hover:underline">outstation cab service</a> offers flexible multi-day packages.</p>
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Which New Year destination is best for families with children?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Shimla, for the walkable Ridge and the daytime snow run to Kufri, or Rishikesh, which is close enough to reach by afternoon and quiet enough that children sleep. Jaipur works too if the children are older and you want a proper dinner.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Can I do New Year's Eve and come straight back?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">For Jaipur at 280 km or Rishikesh at 250 km, yes, though it is a hard two days. For Manali at 530 km and twelve to thirteen hours each way, no - plan two nights at least, and preferably three.</p>
+
+<h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">When do rooms actually run out?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">Through November for the hill towns, and earliest in Kasauli and Chail, which have very few rooms. If you are reading this in December, Jaipur is the destination with anything left.</p>
 
 <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-lg my-8">
-<h3 class="text-xl font-bold mb-2">Book Your NYE 2027 Trip Now</h3>
-<p class="mb-4">New Year cabs from Delhi sell out by mid-December. Reserve yours today for guaranteed availability. 500+ winter trips completed since 2015.</p>
+<h3 class="text-xl font-bold mb-2">Book Your New Year Cab</h3>
+<p class="mb-4">Fix the room, then tell us the town, the dates and the head count. We will put a hill-experienced driver and the right vehicle on it.</p>
 <p><strong>Call:</strong> 7668570551 | <strong>WhatsApp:</strong> <a href="https://wa.me/917668570551" class="text-white underline">7668570551</a></p>
 <a href="/contact" class="inline-block mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book NYE Trip</a>
+</div>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Read next:</strong> <a href="/blog/new-year-2027-road-trips-from-delhi-where-to-drive-cab-cost">New Year 2027 Road Trips from Delhi: Where to Drive for the Night and What the Cab Costs</a></p>
+<hr class="my-8 border-gray-200" />
+
+<div class="my-10">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Explore More with Triveni Cabs™</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+<a href="/outstation-cabs" class="bg-blue-50 hover:bg-blue-100 rounded-lg p-3 text-center text-sm font-medium text-blue-700 transition-colors">Outstation Cabs</a>
+<a href="/local-taxi" class="bg-blue-50 hover:bg-blue-100 rounded-lg p-3 text-center text-sm font-medium text-blue-700 transition-colors">Local Taxi Service</a>
+<a href="/one-way-cab" class="bg-blue-50 hover:bg-blue-100 rounded-lg p-3 text-center text-sm font-medium text-blue-700 transition-colors">One-Way Cab</a>
+<a href="/round-trip-cab" class="bg-blue-50 hover:bg-blue-100 rounded-lg p-3 text-center text-sm font-medium text-blue-700 transition-colors">Round Trip Cab</a>
+<a href="/tempo-traveller" class="bg-green-50 hover:bg-green-100 rounded-lg p-3 text-center text-sm font-medium text-green-700 transition-colors">Tempo Traveller</a>
+<a href="/airport-service" class="bg-green-50 hover:bg-green-100 rounded-lg p-3 text-center text-sm font-medium text-green-700 transition-colors">Airport Transfer</a>
+<a href="/wedding" class="bg-pink-50 hover:bg-pink-100 rounded-lg p-3 text-center text-sm font-medium text-pink-700 transition-colors">Wedding Cars</a>
+<a href="/corporate-transportation-service" class="bg-purple-50 hover:bg-purple-100 rounded-lg p-3 text-center text-sm font-medium text-purple-700 transition-colors">Corporate Transport</a>
+</div>
+
+<h3 class="text-lg font-bold text-gray-900 mb-3">Popular Routes</h3>
+<div class="flex flex-wrap gap-2 mb-6">
+<a href="/same-day-agra-tour-from-delhi" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Agra</a>
+<a href="/sightseeing/jaipur" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Jaipur</a>
+<a href="/sightseeing/manali" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Manali</a>
+<a href="/sightseeing/shimla" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Shimla</a>
+<a href="/sightseeing/rishikesh" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Rishikesh</a>
+<a href="/sightseeing/nainital" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Nainital</a>
+<a href="/sightseeing/varanasi" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Varanasi</a>
+<a href="/sightseeing/amritsar" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Amritsar</a>
+<a href="/sightseeing/udaipur" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Udaipur</a>
+<a href="/sightseeing/dharamshala" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi to Dharamshala</a>
+</div>
+
+<h3 class="text-lg font-bold text-gray-900 mb-3">Popular City Guides</h3>
+<div class="flex flex-wrap gap-2 mb-6">
+<a href="/delhi" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Delhi</a>
+<a href="/agra" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Agra</a>
+<a href="/jaipur" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Jaipur</a>
+<a href="/varanasi" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Varanasi</a>
+<a href="/rishikesh" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Rishikesh</a>
+<a href="/manali" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Manali</a>
+<a href="/shimla" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Shimla</a>
+<a href="/udaipur" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Udaipur</a>
+<a href="/amritsar" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Amritsar</a>
+<a href="/chandigarh" class="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 text-gray-700 transition-colors">Chandigarh</a>
+</div>
+
+<h3 class="text-lg font-bold text-gray-900 mb-3">Special Tours</h3>
+<div class="flex flex-wrap gap-2 mb-6">
+<a href="/same-day-taj-mahal-tour" class="text-sm bg-amber-50 hover:bg-amber-100 rounded-full px-3 py-1 text-amber-700 transition-colors">Same Day Taj Mahal Tour</a>
+<a href="/golden-triangle-english-speaking-driver" class="text-sm bg-amber-50 hover:bg-amber-100 rounded-full px-3 py-1 text-amber-700 transition-colors">Golden Triangle Tour</a>
+<a href="/religious-tours" class="text-sm bg-amber-50 hover:bg-amber-100 rounded-full px-3 py-1 text-amber-700 transition-colors">Religious Tours</a>
+<a href="/ayodhya-ram-mandir-tour-from-delhi" class="text-sm bg-amber-50 hover:bg-amber-100 rounded-full px-3 py-1 text-amber-700 transition-colors">Ayodhya Ram Mandir Tour</a>
+<a href="/weekend-getaways-from-delhi-by-car" class="text-sm bg-amber-50 hover:bg-amber-100 rounded-full px-3 py-1 text-amber-700 transition-colors">Weekend Getaways from Delhi</a>
+<a href="/private-driver-hire-india" class="text-sm bg-amber-50 hover:bg-amber-100 rounded-full px-3 py-1 text-amber-700 transition-colors">Hire Private Driver India</a>
+</div>
+
+<div class="mt-6 text-center">
+<p class="text-gray-600 text-sm mb-3">Trust Triveni Cabs™ for safe, reliable travel across North India</p>
+<div class="flex flex-wrap justify-center gap-3">
+<a href="/safety" class="text-sm text-blue-600 hover:underline font-medium">Our Safety Standards</a>
+<span class="text-gray-300">|</span>
+<a href="/reviews" class="text-sm text-blue-600 hover:underline font-medium">Customer Reviews</a>
+<span class="text-gray-300">|</span>
+<a href="/pricing" class="text-sm text-blue-600 hover:underline font-medium">Transparent Pricing</a>
+<span class="text-gray-300">|</span>
+<a href="/blog" class="text-sm text-blue-600 hover:underline font-medium">Travel Blog</a>
+</div>
+</div>
 </div>`,
     date: "2026-02-01",
     readTime: "13 min read",
@@ -1792,7 +1817,7 @@ const newBlogs2026 = [
       description: "Escape the heat with a comfortable cab to the hills",
       price: "Starting ₹5,000"
     },
-    content: `<p>When Delhi hits 45°C in summer, the only cure is a <strong>hill station escape</strong>. From the pine forests of Shimla to the snow-capped views of Manali, these 10 summer hill station trips from Delhi offer relief from the scorching plains. This guide includes temperature charts, crowd levels, best time to visit each destination, and cab costs to help you plan the perfect summer getaway. <a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Book your hill station cab</a> with Triveni Cabs.</p>
+    content: `<p>When Delhi hits 45°C in summer, the only cure is a <strong>hill station escape</strong>. From the pine forests of Shimla to the snow-capped views of Manali, these 10 summer hill station trips from Delhi offer relief from the scorching plains. This guide includes temperature charts, crowd levels, best time to visit each destination, and cab costs to help you plan the perfect summer getaway. <a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Book your hill station cab</a> with Triveni Cabs™.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Summer Temperature Comparison Chart</h2>
 <table class="w-full border-collapse border border-gray-300 my-6">
@@ -1902,7 +1927,7 @@ const newBlogs2026 = [
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Choose a Cab Over Bus or Train for Hill Stations?</h2>
 <p class="text-gray-700 leading-relaxed mb-4">Buses to hill stations are uncomfortable for families - the Volvo to Manali takes 14 hours on winding mountain roads with no flexibility for stops. Trains reach only Kalka (for Shimla) or Kathgodam (for Nainital), requiring further road transport. A pre-booked cab door-to-door offers incomparable comfort: you control departure time, stop wherever you want for photos or breaks, carry unlimited luggage, and reach your hotel directly.</p>
-<p class="text-gray-700 leading-relaxed mb-4">Since 2015, Triveni Cabs has completed over <strong>500+ hill station trips</strong> from Delhi. Our hill-route drivers are specially selected for mountain driving experience - they know every hairpin turn, every safe overtaking zone, and every scenic viewpoint. Vehicles undergo extra checks before mountain trips: brake pads, coolant levels, tyre condition, and functioning defoggers. Our <a href="/safety" class="text-blue-600 hover:underline">safety page</a> details our mountain driving protocols.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Since 2015, Triveni Cabs™ has completed over <strong>500+ hill station trips</strong> from Delhi. Our hill-route drivers are specially selected for mountain driving experience - they know every hairpin turn, every safe overtaking zone, and every scenic viewpoint. Vehicles undergo extra checks before mountain trips: brake pads, coolant levels, tyre condition, and functioning defoggers. Our <a href="/safety" class="text-blue-600 hover:underline">safety page</a> details our mountain driving protocols.</p>
 <p class="text-gray-700 leading-relaxed mb-4">Contact us at <strong>366 Dandupura, Agra</strong> or call 7668570551. All quotes are transparent with no hidden charges - the price you are quoted is the price you pay. Check our <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a> from hill station travelers.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
@@ -1946,9 +1971,9 @@ const newBlogs2026 = [
       text: "Book Monsoon Road Trip",
       url: "/contact",
       description: "Experience India's green season with monsoon-ready vehicles",
-      price: "Starting ₹9/km"
+      price: "Starting ₹11/km"
     },
-    content: `<p>The <strong>monsoon season</strong> (July-September) transforms North India into a lush green paradise. Waterfalls roar to life, valleys turn emerald, and tourist crowds disappear - making it one of the best times for road trips if you know where to go. This guide covers the best <strong>monsoon road trips in North India</strong>, essential driving safety tips, scenic routes, and a complete packing list. <a href="/contact" class="text-blue-600 hover:underline font-semibold">Book a monsoon-ready cab</a> with Triveni Cabs for a safe, comfortable rainy season adventure.</p>
+    content: `<p>The <strong>monsoon season</strong> (July-September) transforms North India into a lush green paradise. Waterfalls roar to life, valleys turn emerald, and tourist crowds disappear - making it one of the best times for road trips if you know where to go. This guide covers the best <strong>monsoon road trips in North India</strong>, essential driving safety tips, scenic routes, and a complete packing list. <a href="/contact" class="text-blue-600 hover:underline font-semibold">Book a monsoon-ready cab</a> with Triveni Cabs™ for a safe, comfortable rainy season adventure.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Top 8 Monsoon Road Trip Destinations</h2>
 
@@ -2060,7 +2085,7 @@ const newBlogs2026 = [
 </tbody>
 </table>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Triveni Cabs for Monsoon Travel</h2>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Triveni Cabs™ for Monsoon Travel</h2>
 <p class="text-gray-700 leading-relaxed mb-4">Monsoon road trips demand vehicles in top condition. Since 2015, we have completed over <strong>500+ monsoon-season trips</strong> and our preparation protocol is rigorous: every vehicle undergoes a pre-monsoon check covering tyre tread depth, brake pad condition, wiper blade replacement, defogger testing, headlight clarity, and underbody rust inspection. Our drivers are trained in wet-weather driving techniques including aquaplaning recovery and fog navigation.</p>
 <p class="text-gray-700 leading-relaxed mb-4">Every trip includes real-time GPS tracking, comprehensive passenger insurance, and our 24/7 support line. If road conditions become dangerous due to heavy rain or landslides, our control room can reroute your trip or arrange overnight accommodation. Contact us at <strong>366 Dandupura, Agra</strong> or call 7668570551. Read our <a href="/safety" class="text-blue-600 hover:underline">safety standards</a> and <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a>.</p>
 
@@ -2108,7 +2133,7 @@ const newBlogs2026 = [
       description: "Comfortable cab from Jaipur or Delhi for Pushkar Camel Fair",
       price: "Starting ₹3,000"
     },
-    content: `<p>The <strong>Pushkar Camel Fair</strong> (Pushkar Mela) is one of the world's largest camel fairs and India's most vibrant cultural events. Held annually in the small holy town of Pushkar, Rajasthan, this unique festival combines a livestock trading fair with religious rituals, cultural performances, and carnival-like entertainment. This complete travel guide covers everything you need to know about visiting the <strong>Pushkar Fair 2026 by car</strong>. <a href="/contact" class="text-blue-600 hover:underline font-semibold">Book your cab</a> from Jaipur or Delhi with Triveni Cabs.</p>
+    content: `<p>The <strong>Pushkar Camel Fair</strong> (Pushkar Mela) is one of the world's largest camel fairs and India's most vibrant cultural events. Held annually in the small holy town of Pushkar, Rajasthan, this unique festival combines a livestock trading fair with religious rituals, cultural performances, and carnival-like entertainment. This complete travel guide covers everything you need to know about visiting the <strong>Pushkar Fair 2026 by car</strong>. <a href="/contact" class="text-blue-600 hover:underline font-semibold">Book your cab</a> from Jaipur or Delhi with Triveni Cabs™.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Pushkar Fair 2026 Dates</h2>
 <p class="text-gray-700 leading-relaxed mb-4">The Pushkar Camel Fair is held during the Hindu month of Kartik, culminating on Kartik Purnima (full moon night). For 2026, the approximate dates are:</p>
@@ -2225,7 +2250,7 @@ const newBlogs2026 = [
 </tbody>
 </table>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Book with Triveni Cabs for Pushkar Fair</h2>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Book with Triveni Cabs™ for Pushkar Fair</h2>
 <p class="text-gray-700 leading-relaxed mb-4">The Pushkar Fair creates extreme traffic congestion in a town with narrow streets designed for foot traffic and camels. Having a driver who has navigated fair crowds before is essential. Since 2015, we have completed over <strong>500+ Rajasthan trips</strong> including multiple Pushkar Fair visits. Our drivers know the designated parking areas, the best approach roads during fair days, and can shuttle you between Ajmer accommodation and the Pushkar fairgrounds efficiently.</p>
 <p class="text-gray-700 leading-relaxed mb-4">All vehicles carry comprehensive insurance, active FASTag, and GPS tracking. Our transparent pricing means no festival-season surge charges. Reach us at <strong>366 Dandupura, Agra</strong> or call 7668570551. Check our <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a> from past Rajasthan travelers.</p>
 
@@ -2422,8 +2447,8 @@ const newBlogs2026 = [
 </table>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Value tip:</strong> Tempo travellers offer the best per-person value for groups. Compared to booking individual sedan cabs, a group of 10 in a 12-seater saves 40-60% on transport costs. The math is simple: one tempo at ₹18/km serves 10 people, while two sedans at ₹11/km each serve the same group but cost 22% more total.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Triveni Cabs for Tempo Traveller Bookings</h2>
-<p class="text-gray-700 leading-relaxed mb-4">Since 2015, Triveni Cabs has provided <strong>500+ tempo traveller trips</strong> for weddings, corporate outings, pilgrimages, college trips, and friend group adventures. Our fleet includes 9-seater, 12-seater, 17-seater, 20-seater, and 26-seater Force Traveller vehicles, all post-2019 models with pushback reclining seats, individual AC vents, charging points, and ample luggage space.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Triveni Cabs™ for Tempo Traveller Bookings</h2>
+<p class="text-gray-700 leading-relaxed mb-4">Since 2015, Triveni Cabs™ has provided <strong>500+ tempo traveller trips</strong> for weddings, corporate outings, pilgrimages, college trips, and friend group adventures. Our fleet includes 9-seater, 12-seater, 17-seater, 20-seater, and 26-seater Force Traveller vehicles, all post-2019 models with pushback reclining seats, individual AC vents, charging points, and ample luggage space.</p>
 <p class="text-gray-700 leading-relaxed mb-4">What sets us apart: <strong>transparent pricing with no hidden charges</strong>. The quote we provide includes the per-km rate, estimated kilometres, and a clear list of additional costs (tolls, permits, driver allowance). No surprises at the end. All vehicles carry comprehensive insurance, and GPS tracking is shared with your group organizer. Our office at <strong>366 Dandupura, Agra</strong> is available for in-person vehicle inspections before booking. Call 7668570551 or check our <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
@@ -2456,7 +2481,7 @@ const newBlogs2026 = [
     title: 'Outstation Cab Booking Tips for First-Timers: Complete Checklist & What to Expect',
     excerpt: 'Essential tips for first-time outstation cab bookers - what to expect, pricing guide, checklist and common mistakes to avoid in 2026.',
     relatedTours: [
-      { id: "outstation", name: "Outstation Cab Service", slug: "outstation-cabs", city: "delhi", price: "₹9/km" }
+      { id: "outstation", name: "Outstation Cab Service", slug: "outstation-cabs", city: "delhi", price: "₹11/km" }
     ],
     relatedDestinations: [
       { name: "Delhi", slug: "delhi", type: "city" },
@@ -2467,9 +2492,9 @@ const newBlogs2026 = [
       text: "Book Outstation Cab",
       url: "/outstation-cabs",
       description: "Transparent pricing for all outstation trips",
-      price: "Starting ₹9/km"
+      price: "Starting ₹11/km"
     },
-    content: `<p>Booking an <strong>outstation cab for the first time</strong> can feel overwhelming. How much should it cost? What is included? What questions should you ask? This complete guide walks you through everything a first-time outstation cab booker needs to know - from understanding pricing to a pre-trip checklist, so you can travel with confidence. <a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Book an outstation cab</a> with Triveni Cabs for transparent, hassle-free travel.</p>
+    content: `<p>Booking an <strong>outstation cab for the first time</strong> can feel overwhelming. How much should it cost? What is included? What questions should you ask? This complete guide walks you through everything a first-time outstation cab booker needs to know - from understanding pricing to a pre-trip checklist, so you can travel with confidence. <a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Book an outstation cab</a> with Triveni Cabs™ for transparent, hassle-free travel.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Understanding Outstation Cab Pricing</h2>
 
@@ -2597,8 +2622,8 @@ const newBlogs2026 = [
 </table>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Pro Tip:</strong> Round trip rates are 15-20% cheaper per km than one-way rates. If you plan to return to Delhi, always book a round trip package. Check our <a href="/blog/toll-charges-delhi-agra-jaipur-2026" class="text-blue-600 hover:underline">detailed toll charges guide</a> for exact booth locations and costs on the Delhi-Agra and Delhi-Jaipur routes.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why First-Timers Choose Triveni Cabs</h2>
-<p class="text-gray-700 leading-relaxed mb-4">If it is your first outstation cab booking, trust is the most important factor. Since 2015, Triveni Cabs has completed over <strong>500+ outstation trips</strong> across North India with a transparent, no-surprise pricing model. Here is what makes us different for first-time outstation travelers:</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why First-Timers Choose Triveni Cabs™</h2>
+<p class="text-gray-700 leading-relaxed mb-4">If it is your first outstation cab booking, trust is the most important factor. Since 2015, Triveni Cabs™ has completed over <strong>500+ outstation trips</strong> across North India with a transparent, no-surprise pricing model. Here is what makes us different for first-time outstation travelers:</p>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
 <li class="ml-4"><strong>Written quote with all costs:</strong> Every quote itemizes per-km rate, estimated distance, tolls, permits, and driver allowance. The total you see is the total you pay</li>
 <li class="ml-4"><strong>No hidden charges:</strong> We do not add night surcharges, waiting charges, or booking fees that appear only at payment time</li>
@@ -2611,10 +2636,10 @@ const newBlogs2026 = [
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is it cheaper to book outstation cab online or offline?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">Direct booking with a cab operator (like Triveni Cabs) is typically 15-30% cheaper than aggregator apps because there is no platform commission. You also get a dedicated driver and vehicle, rather than being assigned a random available car.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Direct booking with a cab operator (like Triveni Cabs™) is typically 15-30% cheaper than aggregator apps because there is no platform commission. You also get a dedicated driver and vehicle, rather than being assigned a random available car.</p>
 
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">What happens if I want to extend my trip?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">With Triveni Cabs, extensions are easy. Call our support line, inform us about the additional days or destinations, and we will adjust the quote accordingly. The same driver continues with you - no rebooking needed. Additional days are charged at the same per-km rate with the minimum daily km policy.</p>
+<p class="text-gray-700 leading-relaxed mb-4">With Triveni Cabs™, extensions are easy. Call our support line, inform us about the additional days or destinations, and we will adjust the quote accordingly. The same driver continues with you - no rebooking needed. Additional days are charged at the same per-km rate with the minimum daily km policy.</p>
 
 <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6 rounded-lg my-8">
 <h3 class="text-xl font-bold mb-2">Book Your First Outstation Trip</h3>
@@ -2651,7 +2676,7 @@ const newBlogs2026 = [
       description: "Luxury wedding cars with decoration options",
       price: "Starting ₹5,000"
     },
-    content: `<p>Your wedding day deserves the perfect ride. A beautifully decorated <strong>wedding car</strong> is not just transport - it is part of your celebration, your photos, and your memories. This complete <strong>wedding car booking checklist</strong> covers everything you need to know, from when to book to decoration options, what questions to ask vendors, and how to avoid last-minute disasters. <a href="/wedding" class="text-blue-600 hover:underline font-semibold">Browse our wedding car collection</a> at Triveni Cabs.</p>
+    content: `<p>Your wedding day deserves the perfect ride. A beautifully decorated <strong>wedding car</strong> is not just transport - it is part of your celebration, your photos, and your memories. This complete <strong>wedding car booking checklist</strong> covers everything you need to know, from when to book to decoration options, what questions to ask vendors, and how to avoid last-minute disasters. <a href="/wedding" class="text-blue-600 hover:underline font-semibold">Browse our wedding car collection</a> at Triveni Cabs™.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Wedding Car Booking Timeline</h2>
 
@@ -2781,7 +2806,7 @@ const newBlogs2026 = [
 <li class="ml-4"><strong>Airport transfers:</strong> Pick up outstation guests from the <a href="/airport-service" class="text-blue-600 hover:underline">airport</a> with name boards</li>
 </ul>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Couples Choose Triveni Cabs</h2>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Why Couples Choose Triveni Cabs™</h2>
 <p class="text-gray-700 leading-relaxed mb-4">With our <strong>Agra office at 366 Dandupura</strong>, we serve weddings across the Delhi-Agra-Jaipur Golden Triangle - India's most popular wedding belt. Our fleet includes luxury sedans, decorated SUVs, and vintage cars, all maintained to showroom standards. Chauffeurs wear formal black suits, and every vehicle undergoes detailing before wedding duty.</p>
 <p class="text-gray-700 leading-relaxed mb-4">What sets us apart: we provide a dedicated wedding coordinator who manages all transport logistics for your event. One point of contact, one invoice, zero stress. From baraat vehicle to guest shuttles, we handle the complete transport. Transparent pricing, no hidden charges, and a written backup vehicle guarantee. Call 7668570551 or check our <a href="/wedding" class="text-blue-600 hover:underline">wedding car collection</a> and <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a>.</p>
 
@@ -2815,7 +2840,7 @@ const newBlogs2026 = [
     title: 'Road Trip Packing Checklist India: Complete List of Documents, Essentials & Emergency Kit',
     excerpt: 'The complete road trip packing list for India - documents, clothing, snacks, tech, emergency kit and vehicle checklist for a safe journey.',
     relatedTours: [
-      { id: "outstation", name: "Outstation Cab Service", slug: "outstation-cabs", city: "delhi", price: "₹9/km" }
+      { id: "outstation", name: "Outstation Cab Service", slug: "outstation-cabs", city: "delhi", price: "₹11/km" }
     ],
     relatedDestinations: [
       { name: "Delhi", slug: "delhi", type: "city" }
@@ -2824,9 +2849,9 @@ const newBlogs2026 = [
       text: "Book Your Road Trip",
       url: "/outstation-cabs",
       description: "Well-maintained vehicles for safe, comfortable road trips",
-      price: "Starting ₹9/km"
+      price: "Starting ₹11/km"
     },
-    content: `<p>A great <strong>road trip in India</strong> starts with great packing. Whether you are driving to the mountains, heading to the desert, or cruising the highway to the coast, having the right essentials can make or break your experience. This comprehensive <strong>road trip packing checklist</strong> covers everything: documents, clothing, snacks, tech gear, emergency kit, and a vehicle preparation checklist. Print this list before your next trip with <a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Triveni Cabs</a>.</p>
+    content: `<p>A great <strong>road trip in India</strong> starts with great packing. Whether you are driving to the mountains, heading to the desert, or cruising the highway to the coast, having the right essentials can make or break your experience. This comprehensive <strong>road trip packing checklist</strong> covers everything: documents, clothing, snacks, tech gear, emergency kit, and a vehicle preparation checklist. Print this list before your next trip with <a href="/outstation-cabs" class="text-blue-600 hover:underline font-semibold">Triveni Cabs™</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Documents Checklist (Must-Carry)</h2>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
@@ -2840,7 +2865,7 @@ const newBlogs2026 = [
 <li class="ml-4"><strong>Hotel bookings</strong> - printed confirmations (phone battery may die)</li>
 <li class="ml-4"><strong>Emergency contacts list</strong> - printed, including family, roadside assistance, insurance helpline</li>
 </ul>
-<p class="text-gray-700 leading-relaxed mb-4"><strong>Pro Tip:</strong> If booking a cab with Triveni Cabs, our driver carries all vehicle documents. You only need your personal ID and hotel bookings.</p>
+<p class="text-gray-700 leading-relaxed mb-4"><strong>Pro Tip:</strong> If booking a cab with Triveni Cabs™, our driver carries all vehicle documents. You only need your personal ID and hotel bookings.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Clothing Checklist</h2>
 
@@ -2907,7 +2932,7 @@ const newBlogs2026 = [
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Vehicle Emergency Kit</h2>
-<p class="text-gray-700 leading-relaxed mb-4">If self-driving, ensure your vehicle has these items. If traveling with Triveni Cabs, our vehicles come equipped with standard emergency gear.</p>
+<p class="text-gray-700 leading-relaxed mb-4">If self-driving, ensure your vehicle has these items. If traveling with Triveni Cabs™, our vehicles come equipped with standard emergency gear.</p>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
 <li class="ml-4">Spare tyre (inflated and in good condition) + jack + wheel spanner</li>
 <li class="ml-4">Jumper cables for dead battery</li>
@@ -2967,7 +2992,7 @@ const newBlogs2026 = [
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">What You Do NOT Need to Pack (When Traveling with a Cab)</h2>
-<p class="text-gray-700 leading-relaxed mb-4">One advantage of traveling with a pre-booked cab service like Triveni Cabs is that several common road trip concerns are handled for you:</p>
+<p class="text-gray-700 leading-relaxed mb-4">One advantage of traveling with a pre-booked cab service like Triveni Cabs™ is that several common road trip concerns are handled for you:</p>
 <ul class="list-disc list-inside space-y-2 my-4 text-gray-700">
 <li class="ml-4"><strong>Vehicle documents:</strong> Our driver carries all RC, insurance, PUC, and permits</li>
 <li class="ml-4"><strong>FASTag:</strong> Active on every vehicle with sufficient balance</li>
@@ -2975,7 +3000,7 @@ const newBlogs2026 = [
 <li class="ml-4"><strong>Navigation:</strong> Our drivers know the routes; no need for you to run Google Maps</li>
 <li class="ml-4"><strong>Car charger:</strong> Available in all vehicles (but bring your own cable)</li>
 </ul>
-<p class="text-gray-700 leading-relaxed mb-4">Since 2015, Triveni Cabs has completed over <strong>500+ road trips</strong> across North India. Every vehicle undergoes a comprehensive trip-readiness check before departure: tyres, brakes, AC, fluids, wipers, and lights. Our drivers carry a fully stocked vehicle emergency kit. Contact us at <strong>366 Dandupura, Agra</strong> or call 7668570551. Check our <a href="/safety" class="text-blue-600 hover:underline">safety standards</a> and <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a>.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Since 2015, Triveni Cabs™ has completed over <strong>500+ road trips</strong> across North India. Every vehicle undergoes a comprehensive trip-readiness check before departure: tyres, brakes, AC, fluids, wipers, and lights. Our drivers carry a fully stocked vehicle emergency kit. Contact us at <strong>366 Dandupura, Agra</strong> or call 7668570551. Check our <a href="/safety" class="text-blue-600 hover:underline">safety standards</a> and <a href="/reviews" class="text-blue-600 hover:underline">customer reviews</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">How much luggage can I bring in a cab?</h3>
@@ -3022,7 +3047,7 @@ const newBlogs2026 = [
       description: "Delhi-Agra-Jaipur tour with all tolls included",
       price: "Starting ₹12,000"
     },
-    content: `<p>Planning a road trip on the <strong>Delhi-Agra</strong> or <strong>Delhi-Jaipur</strong> routes? Toll charges are a significant part of your travel budget. This guide provides exact <strong>toll booth locations, charges per vehicle type, and total cost breakdowns</strong> for the most popular routes in the Golden Triangle for 2026. All charges are for FASTag payments (cash payment costs double). When you <a href="/sightseeing/golden-triangle-tour-3-days" class="text-blue-600 hover:underline font-semibold">book a tour with Triveni Cabs</a>, toll charges are clearly communicated upfront - no surprises.</p>
+    content: `<p>Planning a road trip on the <strong>Delhi-Agra</strong> or <strong>Delhi-Jaipur</strong> routes? Toll charges are a significant part of your travel budget. This guide provides exact <strong>toll booth locations, charges per vehicle type, and total cost breakdowns</strong> for the most popular routes in the Golden Triangle for 2026. All charges are for FASTag payments (cash payment costs double). When you <a href="/sightseeing/golden-triangle-tour-3-days" class="text-blue-600 hover:underline font-semibold">book a tour with Triveni Cabs™</a>, toll charges are clearly communicated upfront - no surprises.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Delhi to Agra Toll Charges (Yamuna Expressway)</h2>
 <p class="text-gray-700 leading-relaxed mb-4"><strong>Route:</strong> Delhi (Noida) → Yamuna Expressway → Agra | <strong>Distance:</strong> 230 km | <strong>Duration:</strong> 3-3.5 hours</p>
@@ -3136,7 +3161,7 @@ const newBlogs2026 = [
 <li class="ml-4"><strong>Check balance:</strong> Always check FASTag balance before a trip. Low balance = failed transaction = cash penalty</li>
 <li class="ml-4"><strong>Recharge options:</strong> Paytm, Google Pay, PhonePe, and bank apps support FASTag recharge</li>
 <li class="ml-4"><strong>Return trip discount:</strong> FASTag users get a cashback on return journeys within 24 hours on most expressways</li>
-<li class="ml-4"><strong>With Triveni Cabs:</strong> All our vehicles have active FASTag. You reimburse the toll amount based on the FASTag statement</li>
+<li class="ml-4"><strong>With Triveni Cabs™:</strong> All our vehicles have active FASTag. You reimburse the toll amount based on the FASTag statement</li>
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Related Reading</h2>

@@ -1,6 +1,7 @@
 // src/app/tourist-attractions/[city]/page.js
 
 import TouristAttractionsClient from '@/components/TouristAttractionsClient';
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import { touristAttractions, getCitiesWithAttractions } from '@/utilis/touristAttractionsData';
 import AEOHead from '@/components/seo/AEOHead';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
@@ -49,6 +50,7 @@ export async function generateMetadata({ params }) {
       `${cityName.toLowerCase()} vacation spots`
     ].join(', '),
     alternates: { canonical: `https://www.trivenicabs.in/tourist-attractions/${city}` },
+    robots: NOINDEX_ROBOTS,
     openGraph: {
       title: `Tourist Attractions in ${cityName} | Complete Travel Guide`,
       description: `Complete guide to ${attractions.length} must-visit attractions in ${cityName}. Historical sites, temples, forts and more.`,

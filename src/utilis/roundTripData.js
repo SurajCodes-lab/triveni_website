@@ -1,6 +1,6 @@
 // src/utilis/roundTripData.js - Complete data for 25 round-trip route pages
 // Pricing: Round trip = one-way fare * 2 with 10% discount
-// Per km: Sedan ₹11/km, SUV ₹14/km, Tempo ₹23/km (min 300km billing per direction)
+// Per km: Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km (min 300km billing per direction)
 
 function calcRoundTripFares(distanceKm) {
   const billableOneWay = Math.max(distanceKm, 300);
@@ -34,7 +34,7 @@ function generateRoundTripFaqs(origin, dest, distKm, duration, highway, sedanFar
     },
     {
       question: `Does the driver stay with me during the ${origin} to ${dest} round trip?`,
-      answer: `Yes, with Triveni Cabs round trip service, the same driver and car stay with you for the entire trip. The driver waits at ${dest} while you explore, sightsee, or attend meetings. ${nightHalt ? 'Driver night halt charges (₹300/night) apply for overnight stays.' : 'No extra waiting charges during the day.'}`,
+      answer: `Yes, with Triveni Cabs™ round trip service, the same driver and car stay with you for the entire trip. The driver waits at ${dest} while you explore, sightsee, or attend meetings. ${nightHalt ? 'Driver night halt charges (₹300/night) apply for overnight stays.' : 'No extra waiting charges during the day.'}`,
     },
     {
       question: `Is a night halt required for ${origin} to ${dest} round trip?`,

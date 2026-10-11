@@ -23,10 +23,10 @@ export const EDITORIAL_TEAM = {
     name: 'Pankaj Singh Gaur',
     givenName: 'Pankaj',
     familyName: 'Singh Gaur',
-    jobTitle: 'Founder & CEO, Triveni Cabs',
+    jobTitle: 'Founder & CEO, Triveni Cabs™',
     worksFor: { '@id': `${BASE_URL}/#organization` },
     description:
-      'Founded Triveni Cabs in 2015. 15+ years operating outstation taxi services and tour logistics across North India. Personally vets every guide and driver in the fleet. Based in Agra.',
+      'Founded Triveni Cabs™ in 2015. 15+ years operating outstation taxi services and tour logistics across North India. Personally vets every guide and driver in the fleet. Based in Agra.',
     url: `${BASE_URL}/about`,
     knowsAbout: [
       'Outstation taxi operations',

@@ -5,6 +5,14 @@ import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getCityImage } from '@/utilis/imageUtils';
 import { buildBestTimeMeta } from '@/lib/seo/serp-ctr';
+import DataTable from '@/components/seo/DataTable';
+// Week 48: two destinations (Kasol, Amritsar) were rebuilt as full guides on
+// their existing URLs rather than beside them, so the ranking URL keeps its
+// history. The registry answers with a guide for those slugs and null for the
+// rest, which fall through to the family template unchanged.
+import { getWeek48GuideByPath } from '@/utilis/guides/week48';
+import GuidePage from '@/components/guides/GuidePage';
+import { buildGuideMetadata } from '@/lib/seo/guide-schema';
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -31,6 +39,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { destination: slug } = resolvedParams;
+  const week48Guide = getWeek48GuideByPath(`/best-time-to-visit/${slug}`);
+  if (week48Guide) return buildGuideMetadata(week48Guide);
   const data = getBestTimeData(slug);
 
   if (!data) {
@@ -38,16 +48,19 @@ export async function generateMetadata({ params }) {
   }
 
   // Week 43 — answer-box defence: Google prints a weather widget and a
-  // featured snippet for "best time to visit X". Lead with cost + crowds
-  // instead, which the panel never shows. See src/lib/seo/serp-ctr.js.
+  // featured snippet for "best time to visit X", so the title never carries
+  // the weather figure. Week 48 (C3): the title now answers the question
+  // (peak months) and names the rate card; the description leads with the
+  // cheapest months and crowds, which the panel cannot show.
+  // See buildBestTimeMeta in src/lib/seo/serp-ctr.js.
   const { title, description } = buildBestTimeMeta(data);
-  const ogTitle = `When to Visit ${data.destination}? | Season-by-Season Travel Guide with Cab Booking | Triveni Cabs`;
+  const ogTitle = `When to Visit ${data.destination}? | Season-by-Season Travel Guide with Cab Booking | Triveni Cabs™`;
 
   return {
     // Title carries no brand suffix of its own: the root layout appends
-    // '%s | Triveni Cabs'. serp-ctr budgets the content half at 45 chars
-    // (TITLE_BUDGET) so the rendered title lands inside Google's ~60-char
-    // truncation instead of being cut mid-phrase.
+    // '%s | Triveni Cabs'. serp-ctr budgets the content half at 58 chars
+    // (DISPLAY_BUDGET) so the peak months and the rate survive Google's
+    // ~60-char truncation on every destination name in the dataset.
     title: title,
     description,
     keywords: [
@@ -67,9 +80,9 @@ export async function generateMetadata({ params }) {
       `best season ${data.destination.toLowerCase()}`,
       `${data.destination.toLowerCase()} tourism`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/best-time-to-visit/${slug}` },
     openGraph: {
@@ -78,7 +91,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/best-time-to-visit/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `Best Time to Visit ${data.destination}` }],
     },
     twitter: {
@@ -96,6 +109,8 @@ export async function generateMetadata({ params }) {
 export default async function BestTimeToVisitPage({ params }) {
   const resolvedParams = await params;
   const { destination: slug } = resolvedParams;
+  const week48Guide = getWeek48GuideByPath(`/best-time-to-visit/${slug}`);
+  if (week48Guide) return <GuidePage guide={week48Guide} />;
   const data = getBestTimeData(slug);
 
   if (!data) {
@@ -133,20 +148,7 @@ export default async function BestTimeToVisitPage({ params }) {
       "highPrice": "24",
       "priceCurrency": "INR",
       "offerCount": "3"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": reviewCount.toString(),
-      "bestRating": "5"
-    },
-    "review": reviews.map(r => ({
-      "@type": "Review",
-      "author": { "@type": "Person", "name": r.name },
-      "datePublished": r.date,
-      "reviewRating": { "@type": "Rating", "ratingValue": r.rating.toString(), "bestRating": "5" },
-      "reviewBody": r.text
-    }))
+    }
   };
 
   // JSON-LD: Breadcrumb
@@ -178,6 +180,24 @@ export default async function BestTimeToVisitPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <AEOHead pageType="cityHub" data={{ url: `/best-time-to-visit/${slug}`, title: `Best Time to Visit ${data.destination}`, city: data.destination }} />
+      {/* Season table — "best time to visit X" is a month-by-month question,
+          and a table is the format Google renders as a snippet for it. */}
+      <DataTable
+        title={`Best time to visit ${data.destination} — season by season`}
+        caption={`Seasons in ${data.destination} compared by months, typical temperature, crowd level and price tier.`}
+        intro="Temperatures are typical daytime ranges. Price tier reflects both accommodation and cab demand."
+        columns={[
+          { key: 'name', label: 'Season' },
+          { key: 'months', label: 'Months' },
+          { key: 'temp', label: 'Temperature' },
+          { key: 'crowd', label: 'Crowds' },
+          { key: 'pricing', label: 'Price tier', align: 'right', strong: true },
+        ]}
+        rows={data.seasons || []}
+        tone="light"
+        className="bg-slate-50"
+      />
+
       <BestTimeClient data={data} relatedDestinations={relatedDestinations} />
     </>
   );

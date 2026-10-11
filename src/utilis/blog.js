@@ -12,6 +12,8 @@ import seasonalBlogs from './seasonalBlogs';
 import costBlogs from './costBlogs';
 import newBlogs2026 from './newBlogs2026';
 import newBlogsWeek39 from './newBlogsWeek39';
+import newBlogsWeek49 from './newBlogsWeek49';
+import newBlogsWeek52 from './newBlogsWeek52';
 // 30-Blog Pillar+Cluster+Decision Program (May 2026)
 import { blogPosts30 } from './blogPosts30';
 // Blog utilities no longer needed - all blogs now in correct format
@@ -508,7 +510,7 @@ export const travelBlogPosts = [
         <li><strong>Emergency contacts:</strong> Save local emergency numbers and our 24/7 support line</li>
       </ul>
 
-      <h2>Why Choose Triveni Cabs for Char Dham Yatra?</h2>
+      <h2>Why Choose Triveni Cabs™ for Char Dham Yatra?</h2>
       <ul>
         <li><strong>10+ Years Experience:</strong> We've been serving pilgrims on Char Dham routes since 2014</li>
         <li><strong>Expert Hill Drivers:</strong> Our drivers know every hairpin turn, shortcut, and safe halt point</li>
@@ -521,7 +523,7 @@ export const travelBlogPosts = [
 
       <div class="my-8 p-6 bg-gradient-to-r from-orange-50 to-amber-50 border-l-4 border-orange-500 rounded-r-lg">
         <h3 class="text-2xl font-bold mb-3 text-gray-800">Ready to Begin Your Spiritual Journey?</h3>
-        <p class="mb-4 text-gray-700">Book your Char Dham Yatra 2026 with Triveni Cabs. Choose from sedan, SUV, or tempo traveller options. Experienced drivers, comfortable vehicles, and complete pilgrimage assistance.</p>
+        <p class="mb-4 text-gray-700">Book your Char Dham Yatra 2026 with Triveni Cabs™. Choose from sedan, SUV, or tempo traveller options. Experienced drivers, comfortable vehicles, and complete pilgrimage assistance.</p>
         <div class="flex flex-wrap gap-3">
           <a href="/religious-tours/char-dham-yatra" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors">View Char Dham Packages →</a>
           <a href="/tempo-traveller/delhi-to-chardham-yatra-tempo-traveller" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Book Tempo Traveller →</a>
@@ -1765,7 +1767,7 @@ export const travelBlogPosts = [
         <li><strong>Tipping:</strong> Tipping is discretionary but appreciated. 10% in restaurants and small tips for porters/guides are standard.</li>
       </ul>
 
-      <h2>Why Book With Triveni Cabs?</h2>
+      <h2>Why Book With Triveni Cabs™?</h2>
       <p>We specialize in customizable <strong>Golden Triangle tour packages</strong> that suit every budget and preference. Whether you need a luxury SUV, a comfortable sedan, or a tempo traveller for a family group, we have the perfect vehicle for you.</p>
       <ul>
         <li><strong>Experienced Drivers:</strong> Our drivers are well-versed with the Golden Triangle route and can double as basic guides.</li>
@@ -1911,7 +1913,7 @@ export const travelBlogPosts = [
       <h2>Getting Around Delhi</h2>
       <ul>
         <li><strong>Metro:</strong> The Delhi Metro is world-class, clean, and connects almost every part of the city.</li>
-        <li><strong>Private Cab:</strong> For a hassle-free experience, especially in summer, hiring a private AC cab for the full day is recommended. Triveni Cabs offers <strong>8 Hours / 80 Km</strong> packages starting at just ₹2,500.</li>
+        <li><strong>Private Cab:</strong> For a hassle-free experience, especially in summer, hiring a private AC cab for the full day is recommended. Triveni Cabs™ offers <strong>8 Hours / 80 Km</strong> packages starting at just ₹2,500.</li>
         <li><strong>Auto Rickshaws:</strong> Good for short distances, but always negotiate the fare or ask for the meter.</li>
       </ul>
 
@@ -2066,7 +2068,7 @@ export const travelBlogPosts = [
       
       <div class="bg-pink-50 p-6 rounded-lg border border-pink-200 my-8">
         <h3 class="text-xl font-bold mb-3 text-pink-700">👑 Explore Jaipur Like a Royal</h3>
-        <p class="mb-4">Book a comfortable AC sedan or SUV with Triveni Cabs for a hassle-free sightseeing experience.</p>
+        <p class="mb-4">Book a comfortable AC sedan or SUV with Triveni Cabs™ for a hassle-free sightseeing experience.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>✅ Hotel Pickup & Drop</div>
             <div>✅ Expert Driver-Guide</div>
@@ -2197,7 +2199,7 @@ export const travelBlogPosts = [
       
       <div class="bg-red-50 p-6 rounded-lg border border-red-200 my-8">
         <h3 class="text-xl font-bold mb-3 text-red-800">🚗 Seamless Agra Sightseeing</h3>
-        <p class="mb-4">Don't let the heat and crowds ruin your experience. Travel in AC comfort with Triveni Cabs.</p>
+        <p class="mb-4">Don't let the heat and crowds ruin your experience. Travel in AC comfort with Triveni Cabs™.</p>
         <ul class="list-disc list-inside mb-4 text-gray-700">
             <li>Pickup from Railway Station/Hotel</li>
             <li>English Speaking Drivers</li>
@@ -2312,7 +2314,7 @@ export const travelBlogPosts = [
       <ul>
         <li><strong>By Road:</strong> Ramnagar is well connected by road. Delhi to Ramnagar is approx 260 km (5-6 hours drive).</li>
         <li><strong>By Train:</strong> Ramnagar (RMR) is the nearest railway station. The <em>Ranikhet Express</em> from Delhi is a convenient overnight train.</li>
-        <li><strong>By Cab:</strong> The most comfortable option. Book a reliable outstation cab from Delhi with Triveni Cabs for a smooth journey.</li>
+        <li><strong>By Cab:</strong> The most comfortable option. Book a reliable outstation cab from Delhi with Triveni Cabs™ for a smooth journey.</li>
       </ul>
 
       <h2>Best Time to Visit</h2>
@@ -2468,7 +2470,7 @@ export const travelBlogPosts = [
             <td class="border border-gray-300 p-2">Shayan Aarti</td>
           </tr>
         </tbody>
-      </table>
+      </table><p class="text-sm text-gray-600 italic my-4">Aarti and darshan times at the Ram Mandir move with the season, the festival calendar and the crowd on the day, and the aarti slots are issued as passes. Treat the table above as the usual pattern, not a timetable: confirm the day's times and the pass position with the Shri Ram Janmabhoomi Teerth Kshetra Trust before you travel, or ask your driver to check on the morning. Our drivers do this for every Ayodhya booking.</p>
 
       <p><strong>Pro Tip:</strong> For the most peaceful darshan experience, visit on weekdays during early morning (7-8 AM) or late afternoon (5-6 PM). Avoid weekends and major festivals if you prefer shorter queues.</p>
 
@@ -2606,8 +2608,10 @@ export const travelBlogPosts = [
 
       <h3>Can I visit Ayodhya and Varanasi together?</h3>
       <p>Absolutely! Many pilgrims combine both cities. <a href="/tempo-traveller/varanasi-to-ayodhya" class="text-blue-600 hover:underline">Book our Varanasi-Ayodhya package</a> for a complete spiritual experience.</p>
+
+      <p class="text-gray-700 leading-relaxed mb-4"><strong>Read next:</strong> <a href="/blog/ayodhya-ram-mandir-2026-crowd-hacks-dress-code-etiquette">Ayodhya Ram Mandir: Crowd Hacks, Dress Code & Etiquette (2026)</a> for the queue and dress-code questions this guide doesn't cover, or <a href="/blog/ayodhya-ram-mandir-complete-guide-2026">Ayodhya Ram Mandir: Pilgrimage & Sightseeing Guide</a> if you're combining the darshan with a wider Ayodhya-Lucknow trip.</p>
     `,
-    date: "2026-12-20",
+    date: "2026-01-20",
     readTime: "15 min read",
     image: "/images/sightseeing/Ayodhya/ayodha_hero_section.jpg",
     category: "Pilgrimage",
@@ -2870,7 +2874,7 @@ export const travelBlogPosts = [
         </div>
       </div>
     `,
-    date: "2026-12-20",
+    date: "2026-01-20",
     readTime: "18 min read",
     image: "/images/sightseeing/Varanasi/varanasi_hero_section.jpg",
     category: "Pilgrimage",
@@ -3148,7 +3152,7 @@ export const travelBlogPosts = [
         </div>
       </div>
     `,
-    date: "2026-12-20",
+    date: "2026-01-20",
     readTime: "16 min read",
     image: "/images/tempo/17_seater.jpg",
     category: "Travel Tips",
@@ -3408,7 +3412,7 @@ export const travelBlogPosts = [
         <li><strong>Plan for Traffic:</strong> Account for wedding season traffic, especially in Delhi/Mumbai</li>
       </ol>
 
-      <h2>Why Choose Triveni Cabs for Your Wedding?</h2>
+      <h2>Why Choose Triveni Cabs™ for Your Wedding?</h2>
       <ul>
         <li>✅ Largest fleet of luxury and decorated vehicles</li>
         <li>✅ Professional, uniformed chauffeurs</li>
@@ -3428,7 +3432,7 @@ export const travelBlogPosts = [
         </div>
       </div>
     `,
-    date: "2026-12-20",
+    date: "2026-01-20",
     readTime: "14 min read",
     image: "/images/wedding_section.jpg",
     category: "Wedding",
@@ -3719,7 +3723,7 @@ export const travelBlogPosts = [
         </div>
       </div>
     `,
-    date: "2026-12-20",
+    date: "2026-01-20",
     readTime: "17 min read",
     image: "/images/sightseeing/Udaipur/Udaipur_hero_section.jpg",
     category: "Destinations",
@@ -4054,7 +4058,7 @@ export const travelBlogPosts = [
         <li>Keep Aadhaar cards and registration slips handy</li>
       </ul>
 
-      <h2>Why Book with Triveni Cabs?</h2>
+      <h2>Why Book with Triveni Cabs™?</h2>
       <p>We've been serving pilgrims on the Char Dham route for over 10 years. Here's why families trust us:</p>
       <ul>
         <li><strong>Experienced Hill Drivers:</strong> Our drivers know every hairpin turn of Uttarakhand</li>
@@ -4900,6 +4904,7 @@ export const travelBlogPosts = [
 
 // All blog posts combined (Travel + Attractions + Sightseeing + Corporate Transport + New SEO Blogs)
 export const blogPosts = [
+  ...newBlogsWeek52,
   ...travelBlogPosts,
   ...attractionBlogPosts,
   ...sightseeingBlogPosts,
@@ -4915,7 +4920,8 @@ export const blogPosts = [
   // Phase 16: 30-blog pillar+cluster+decision program (May 2026)
   ...blogPosts30,
   // Week 39: 15 AEO/GEO question-first blogs (July 2026)
-  ...newBlogsWeek39
+  ...newBlogsWeek39,
+  ...newBlogsWeek49
 ];
 
 // Helper functions to filter blogs

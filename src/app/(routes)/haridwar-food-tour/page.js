@@ -3,13 +3,14 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Haridwar Food Tour 2026 | Pure Veg Kachori & Aloo Puri Guide'),
   description: 'Haridwar pure veg food guide — Kachori Sabzi, Aloo Puri, Chole Bhature, Rabri, Lassi. Best restaurants & ghat-side eateries. Call 7668570551.',
   keywords: 'haridwar food tour, haridwar street food, haridwar food guide, pure vegetarian haridwar, kachori haridwar, har ki pauri food, haridwar restaurants, hoshiyar puri haridwar',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/haridwar-food-tour' },
   openGraph: { title: 'Haridwar Food Tour 2026 | Holy City Culinary Guide by Locals', description: 'Complete Haridwar food guide. Pure vegetarian city. Kachori, Aloo Puri, Chole Bhature, best restaurants and ghat-side food.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/haridwar-food-tour', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Haridwar/Haridwar_hero_section.jpg', width: 1200, height: 630, alt: 'Haridwar Food Tour Guide' }] },
@@ -185,19 +186,19 @@ export default function HaridwarFoodTourPage() {
         </section>
 
         {/* SEO Prose */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-stone-800">
               Haridwar Food Tour — Pure Vegetarian Flavours by the Ganga
             </h2>
             <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
-              <p>Haridwar, one of <strong className="text-stone-800">India&apos;s seven most sacred cities</strong>, is a unique culinary destination where every bite is pure vegetarian and every meal carries a touch of devotion. The city&apos;s food culture is deeply tied to its role as the gateway to the Char Dham pilgrimage — feeding millions of devotees with simple, wholesome, and deeply satisfying vegetarian cuisine that has been perfected over centuries.</p><p>Our <strong className="text-stone-800">Haridwar food tour by car</strong> takes you from the dawn Ganga Aarti at Har Ki Pauri to Hoshiyar Puri for legendary Kachori Sabzi, through Moti Bazaar for Mohan Ji&apos;s Aloo Puri, up to Mansa Devi Temple for prasad and hill views, and back to the ghats for evening chaat and the grand Ganga Aarti. Your Triveni Cabs driver knows every food spot in this compact holy city.</p><p>The <strong className="text-stone-800">best time for a Haridwar food tour</strong> is during the cooler months (October to March) or during major festivals like Kumbh Mela, Kanwar Yatra, and Ganga Dussehra when special food preparations appear. Combine Haridwar with nearby Rishikesh (25 km) for a complete spiritual food experience — from traditional ghat-side dining to Rishikesh&apos;s international cafe scene.</p>
+              <p>Haridwar, one of <strong className="text-stone-800">India&apos;s seven most sacred cities</strong>, is a unique culinary destination where every bite is pure vegetarian and every meal carries a touch of devotion. The city&apos;s food culture is deeply tied to its role as the gateway to the Char Dham pilgrimage — feeding millions of devotees with simple, wholesome, and deeply satisfying vegetarian cuisine that has been perfected over centuries.</p><p>Our <strong className="text-stone-800">Haridwar food tour by car</strong> takes you from the dawn Ganga Aarti at Har Ki Pauri to Hoshiyar Puri for legendary Kachori Sabzi, through Moti Bazaar for Mohan Ji&apos;s Aloo Puri, up to Mansa Devi Temple for prasad and hill views, and back to the ghats for evening chaat and the grand Ganga Aarti. Your Triveni Cabs™ driver knows every food spot in this compact holy city.</p><p>The <strong className="text-stone-800">best time for a Haridwar food tour</strong> is during the cooler months (October to March) or during major festivals like Kumbh Mela, Kanwar Yatra, and Ganga Dussehra when special food preparations appear. Combine Haridwar with nearby Rishikesh (25 km) for a complete spiritual food experience — from traditional ghat-side dining to Rishikesh&apos;s international cafe scene.</p>
             </div>
           </div>
         </section>
 
         {/* Famous Foods - Glassmorphism Cards */}
-        <section className="py-16 px-4 bg-orange-50/80">
+        <section className="py-10 sm:py-16 px-4 bg-orange-50/80">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3">Famous Foods of Haridwar</h2>
@@ -228,7 +229,7 @@ export default function HaridwarFoodTourPage() {
         </section>
 
         {/* Street Food Itinerary - Premium Timeline */}
-        <section className="py-16 px-4 bg-gradient-to-b from-red-950 via-orange-950 to-red-950">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-red-950 via-orange-950 to-red-950">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-3">Street Food Tour Itinerary</h2>
@@ -267,7 +268,7 @@ export default function HaridwarFoodTourPage() {
         </section>
 
         {/* Best Restaurants - Premium Card Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Best Restaurants in Haridwar</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -296,7 +297,7 @@ export default function HaridwarFoodTourPage() {
         </section>
 
         {/* Markets - Glass Map Cards */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Food Markets to Visit</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -319,7 +320,7 @@ export default function HaridwarFoodTourPage() {
         </section>
 
         {/* Combine with Sightseeing */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-2xl overflow-hidden shadow-xl">
               <div className="bg-gradient-to-r from-red-600 to-orange-600 p-6" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }}>
@@ -342,8 +343,13 @@ export default function HaridwarFoodTourPage() {
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Haridwar" citySlug="haridwar" />
+
+
         {/* FAQ - Expandable-looking Cards */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -361,7 +367,7 @@ export default function HaridwarFoodTourPage() {
         </section>
 
         {/* Interlinks - Interactive Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-8 text-center">More Haridwar Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -383,7 +389,7 @@ export default function HaridwarFoodTourPage() {
         </section>
 
         {/* CTA - Animated Gradient */}
-        <section className="relative py-20 px-4 overflow-hidden">
+        <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-red-700 via-orange-600 to-amber-600" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[10%] w-3 h-3 bg-white/20 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />
           <div className="absolute top-[60%] right-[15%] w-2 h-2 bg-white/15 rounded-full" style={{ animation: 'float 8s ease-in-out infinite 2s' }} />

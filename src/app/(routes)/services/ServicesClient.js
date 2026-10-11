@@ -10,7 +10,7 @@ import {
   ShieldCheck, Map, ChevronRight, Sparkles, Zap, MessageCircle,
 } from "@/components/ui/icons";
 import { WhatsAppIcon } from "@/components/ui/icons";
-import { phoneNumber } from "@/utilis/data";
+import { phoneNumber } from '@/utilis/contact';
 import LiveActivityBadge from "@/components/shared/LiveActivityBadge";
 import GoogleReviewsBadge from "@/components/shared/GoogleReviewsBadge";
 import { trackWhatsAppClick, trackPhoneCall } from "@/utilis/analytics";
@@ -635,7 +635,7 @@ function TrustSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Stats — Glass cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 sm:mb-16">
           {[
             { value: "10,000+", label: "Trips Completed", icon: Route, gradient: "from-amber-400 to-orange-500" },
             { value: "5,000+", label: "Expert Drivers", icon: Users, gradient: "from-blue-500 to-indigo-600" },
@@ -806,7 +806,7 @@ function CitiesCTASection() {
         </div>
 
         {/* Also Serving */}
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mb-16">
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mb-10 sm:mb-16">
           <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.25em] mb-4">Also Serving</p>
           <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
             {ALSO_SERVING.map((c, i) => (
@@ -822,7 +822,7 @@ function CitiesCTASection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-10 sm:mb-16"
         >
           <div className="flex items-center gap-4 mb-8">
             <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-amber-300/30">
@@ -919,10 +919,10 @@ function CitiesCTASection() {
         <div className="border-t border-gray-200/60 pt-8 mt-12">
           <div className="prose prose-sm max-w-none text-gray-500 text-xs sm:text-sm leading-relaxed space-y-4">
             <p>
-              <strong className="text-gray-700">Triveni Cabs</strong> offers a complete range of <Link href="/outstation-cabs" className="text-amber-600 hover:underline">outstation cab services</Link> starting at just <strong>&#8377;11/km for sedans</strong> and <strong>&#8377;15/km for SUVs</strong>. Whether you need an <Link href="/airport-service" className="text-amber-600 hover:underline">airport transfer</Link>, <Link href="/wedding" className="text-amber-600 hover:underline">wedding car rental</Link>, <Link href="/tempo-traveller" className="text-amber-600 hover:underline">tempo traveller for group travel</Link>, or a <Link href="/sightseeing" className="text-amber-600 hover:underline">guided sightseeing tour</Link>, we cover 50+ cities across North India with 5,000+ verified drivers.
+              <strong className="text-gray-700">Triveni Cabs™</strong> offers a complete range of <Link href="/outstation-cabs" className="text-amber-600 hover:underline">outstation cab services</Link> starting at just <strong>&#8377;11/km for sedans</strong> and <strong>&#8377;15/km for SUVs</strong>. Whether you need an <Link href="/airport-service" className="text-amber-600 hover:underline">airport transfer</Link>, <Link href="/wedding" className="text-amber-600 hover:underline">wedding car rental</Link>, <Link href="/tempo-traveller" className="text-amber-600 hover:underline">tempo traveller for group travel</Link>, or a <Link href="/sightseeing" className="text-amber-600 hover:underline">guided sightseeing tour</Link>, we cover 50+ cities across North India with 5,000+ verified drivers.
             </p>
             <p>
-              Popular routes include <Link href="/one-way-cab/delhi-to-agra" className="text-amber-600 hover:underline">Delhi to Agra (&#8377;2,400)</Link>, <Link href="/one-way-cab/delhi-to-jaipur" className="text-amber-600 hover:underline">Delhi to Jaipur (&#8377;3,200)</Link>, and <Link href="/one-way-cab/delhi-to-shimla" className="text-amber-600 hover:underline">Delhi to Shimla (&#8377;4,500)</Link>. Book <Link href="/chardham-yatra" className="text-amber-600 hover:underline">Chardham Yatra packages</Link>, <Link href="/same-day-agra-tour-from-delhi" className="text-amber-600 hover:underline">same-day Taj Mahal tours</Link>, or <Link href="/corporate-transportation-service" className="text-amber-600 hover:underline">corporate transportation</Link> — all with 24/7 support and transparent pricing.
+              Popular routes include <Link href="/delhi-to-agra" className="text-amber-600 hover:underline">Delhi to Agra (&#8377;2,400)</Link>, <Link href="/delhi-to-jaipur" className="text-amber-600 hover:underline">Delhi to Jaipur (&#8377;3,200)</Link>, and <Link href="/delhi-to-shimla" className="text-amber-600 hover:underline">Delhi to Shimla (&#8377;4,500)</Link>. Book <Link href="/chardham-yatra" className="text-amber-600 hover:underline">Chardham Yatra packages</Link>, <Link href="/same-day-agra-tour-from-delhi" className="text-amber-600 hover:underline">same-day Taj Mahal tours</Link>, or <Link href="/corporate-transportation-service" className="text-amber-600 hover:underline">corporate transportation</Link> — all with 24/7 support and transparent pricing.
             </p>
           </div>
         </div>

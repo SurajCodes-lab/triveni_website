@@ -34,6 +34,8 @@ import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import {
   THEME_BY_VEHICLE, getLook, resolveVariant, VariantMotif, VariantSignature,
 } from '@/components/vehicleThemes';
+import VehicleFleetTable from '@/components/seo/VehicleFleetTable';
+import { groupDigits } from '@/utilis/pricing';
 
 const ICONS = { Users, Snowflake, Route, Receipt, Crown, Gauge, ShieldCheck, Sparkles, Heart, Building2, Plane, Mountain, Car, Compass, Map, Navigation };
 const Icon = ({ name, className }) => { const C = ICONS[name] || Car; return <C className={className} />; };
@@ -60,7 +62,7 @@ export default function VehicleRouteClient({ data }) {
 
   // One-way billed both ways (group vehicles return to base — no one-way discount).
   const estimate = selected && distanceKm ? distanceKm * 2 * selected.perKm : null;
-  const lowestRate = fleetList.length ? `₹${Math.min(...fleetList.map((x) => x.perKm))}/km` : `₹${v.lowPrice}/km`;
+  const lowestRate = fleetList.length ? `₹${groupDigits(Math.min(...fleetList.map((x) => x.perKm)))}/km` : `₹${groupDigits(v.lowPrice)}/km`;
 
   const waText = `Hi, I want to book a ${selected?.name || v.type} from ${origin} to ${displayDestination}. Please share the exact fare and availability.`;
   const attractions = Array.isArray(localSightseeing)
@@ -187,6 +189,18 @@ export default function VehicleRouteClient({ data }) {
       <VariantSignature look={look} payload={{ origin, destination: displayDestination, displayDestination, vehicle: v, routeData }} />
 
       {/* ===================== WHY THIS VEHICLE ===================== */}
+      {/* ===== FARE TABLE (answer engines + AI assistants) =================
+           Same reasoning as the city pages. The route pages carry a fare
+           estimator already, but an estimator is interactive and a crawler
+           cannot operate it — the table states every seater's rate outright. */}
+      <VehicleFleetTable
+        fleet={fleetList}
+        vehicleType={v.type}
+        placeLabel={null}
+        tone="light"
+        className={isRoyal ? 'bg-[#FBF1DF]' : 'bg-slate-50'}
+      />
+
       <section className={`py-16 ${isRoyal ? 'bg-[#FFF8EC]' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -249,11 +263,17 @@ export default function VehicleRouteClient({ data }) {
             <div className="space-y-3">
               {faqData.map((f, i) => (
                 <div key={i} className={`rounded-2xl border overflow-hidden ${isRoyal ? 'bg-[#FFFBF2] border-amber-300/60' : 'bg-white border-gray-200'}`}>
-                  <button type="button" onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
-                    className="w-full flex items-center justify-between gap-4 text-left px-5 md:px-6 py-4 transition-colors" aria-expanded={openFaq === i}>
-                    <span className={`font-bold ${isRoyal ? 'font-display-serif text-[#4C0519]' : 'text-gray-900'}`}>{f.question}</span>
-                    <ChevronLeft className={`w-5 h-5 flex-shrink-0 transition-transform ${look.vAccent.text} ${openFaq === i ? '-rotate-90' : ''}`} />
-                  </button>
+{/* h3 wraps the button — the WAI-ARIA accordion pattern. These FAQ questions
+   were rendered as plain text, so a question-shaped heading never existed on
+   the page for an answer engine to match against a question query. Tailwind
+   preflight resets heading margin and font-size, so this is visually a no-op. */}
+<h3 className="m-0">
+                    <button type="button" onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
+                      className="w-full flex items-center justify-between gap-4 text-left px-5 md:px-6 py-4 transition-colors" aria-expanded={openFaq === i}>
+                      <span className={`font-bold ${isRoyal ? 'font-display-serif text-[#4C0519]' : 'text-gray-900'}`}>{f.question}</span>
+                      <ChevronLeft className={`w-5 h-5 flex-shrink-0 transition-transform ${look.vAccent.text} ${openFaq === i ? '-rotate-90' : ''}`} />
+                    </button>
+</h3>
                   {openFaq === i && (
                     <div className="px-5 md:px-6 pb-5">
                       <p className={`leading-relaxed${i === 0 ? ' speakable-faq-first' : ''} ${isRoyal ? 'text-amber-900/80' : 'text-gray-600'}`}>{f.answer}</p>
@@ -279,7 +299,7 @@ export default function VehicleRouteClient({ data }) {
                 </div>
                 <h2 className={`text-2xl md:text-4xl font-black mb-3 ${isRoyal ? 'font-display-serif' : ''}`}>Other {v.type.toLowerCase()} routes from {origin}</h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10 sm:mb-16">
                 {relatedRoutes.map((r, i) => {
                   const rImg = resolveDestinationImage(formatDestinationForDisplay(r.name), resolveVariant({ destination: r.name }));
                   const rDest = formatDestinationForDisplay(r.name);
@@ -408,7 +428,7 @@ function RouteHero({ look, v, origin, dest, destImage, routeSlug, otherVehicleTy
           <div className={`absolute inset-0 ${isRoyal ? 'bg-gradient-to-t from-[#2A050D]/95 via-[#3B0712]/70 to-[#3B0712]/40' : 'bg-gradient-to-t from-[#050B18]/95 via-[#0B1E3F]/70 to-[#0B1E3F]/40'}`} />
         </div>
         <VariantMotif look={look} opacity={0.1} />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-10">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-28 pb-10">
           {back}{switcher}{kicker}{h1}{routeLine}{lead}
           <div className="mt-8 flex flex-wrap gap-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-4">
             {facts.map((f, i) => <FactTile key={i} f={f} accent={accent} />)}
@@ -427,7 +447,7 @@ function RouteHero({ look, v, origin, dest, destImage, routeSlug, otherVehicleTy
           <Image src={destImage} alt={`${origin} to ${dest}`} fill className="object-cover" priority fetchPriority="high" onError={(e) => { e.target.style.display = 'none'; }} />
         </div>
         <VariantMotif look={look} opacity={0.14} />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-28 pb-10 sm:pb-16 text-center">
           <div className="flex justify-center mb-6">{back}</div>
           <div className={`w-14 h-14 mx-auto mb-6 rounded-2xl flex items-center justify-center text-2xl ${isRoyal ? 'bg-amber-400/15 border border-amber-400/30' : 'bg-white/10 border border-white/20'}`}>{look.variantIcon}</div>
           {switcher && <div className="flex justify-center">{switcher}</div>}{kicker}
@@ -449,7 +469,7 @@ function RouteHero({ look, v, origin, dest, destImage, routeSlug, otherVehicleTy
         <div className="absolute inset-0 opacity-20">
           <Image src={destImage} alt={`${origin} to ${dest}`} fill className="object-cover" onError={(e) => { e.target.style.display = 'none'; }} />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-28 pb-10 sm:pb-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-7 border-l-4 pl-6" style={{ borderColor: isRoyal ? '#D4AF37' : '#38BDF8' }}>
             {back}{switcher}{kicker}{h1}{routeLine}{lead}{ctas}
           </div>
@@ -465,7 +485,7 @@ function RouteHero({ look, v, origin, dest, destImage, routeSlug, otherVehicleTy
   return (
     <section className={`relative overflow-hidden ${heroBg}`}>
       <VariantMotif look={look} opacity={0.1} />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-28 pb-10 sm:pb-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-7">
           {back}{switcher}{kicker}{h1}{routeLine}{lead}{ctas}
         </div>

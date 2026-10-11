@@ -11,7 +11,11 @@
 // ============================================================================
 
 import React, { useState, useMemo, useCallback } from "react";
-import Link from "next/link";
+import SeasonalCorridorCallout from '@/components/seasonal/SeasonalCorridorCallout';
+import { getRegionTheme } from '@/utilis/regionThemes';
+import RegionNotesStrip from '@/components/seo/RegionNotesStrip';
+import RoadParagraph from '@/components/seo/RoadParagraph';
+import Link from '@/components/ui/JourneyLink';
 import Image from "next/image";
 // Centralized icon imports for better bundle optimization
 import {
@@ -21,8 +25,11 @@ import {
   BadgeCheck, Snowflake, CircleDot, ShieldCheck
 } from "@/components/ui/icons";
 import { WhatsAppIcon as BsWhatsapp } from "@/components/ui/icons";
-import { phoneNumber } from "@/utilis/data";
-import { getRouteOffices } from "@/utilis/officeLocations";
+import { phoneNumber } from '@/utilis/contact';
+// officeLocations and cityLocalInfo are NOT imported here. Between them they
+// are ~51 KB of lookup tables covering every city, and this client component
+// renders on 322 route pages to show one entry from each. Both lookups now
+// happen on the server and arrive as props.
 import OfficeLocations from "@/components/cities/OfficeLocations";
 import dynamic from 'next/dynamic';
 
@@ -37,7 +44,11 @@ import { getCityImage, heroBlurDataURL } from '@/utilis/imageUtils';
 
 // SEO Components
 import QuickAnswer from '@/components/seo/QuickAnswer';
-import { getRelatedContent, getRelatedRoutes, getServiceCrossLinks } from '@/utilis/linkingHelper';
+import { canonicalClientHref } from '@/lib/seo/client-route-exists';
+import { groupDigits } from '@/utilis/pricing';
+// relatedContent, relatedRoutes and serviceCrossLinks arrive as props now,
+// computed on the server. Importing linkingHelper here pulled sightseeingData.js
+// (1.3 MB) into the browser bundle for every one of these 322 pages.
 
 // Vehicle image mapping
 const vehicleImageMap = {
@@ -95,6 +106,13 @@ function getFareVehicleImage(name) {
   return '/images/car/swift_dzire.jpg';
 }
 
+// A city name put straight into an href produces "/jim corbett", which is not a
+// page. Both /jim-corbett and /mount-abu exist and were unreachable through these
+// links; the server log shows the malformed versions being requested and 404ing.
+function citySlug(name) {
+  return String(name || '').trim().toLowerCase().replace(/\s+/g, '-');
+}
+
 function createRouteSlug(cityName, destination) {
   if (!cityName || !destination) return '';
   return `${cityName.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`;
@@ -137,9 +155,11 @@ export default function RouteClientContent({
   estimatedTime,
   route,
   routes,
-  vehiclesServices
-}) {
+  vehiclesServices, relatedContent = [], relatedRoutes = [], serviceCrossLinks = [],
+  destinationInfo = null, routeOffices = [], seasonalCallout = null, roadParagraph = null, planningGuide = null, stopLinks,}) {
   const [tripType, setTripType] = useState('oneWay');
+  // Regional design system for this destination (palette, motif, driving notes).
+  const region = getRegionTheme(formattedDestination || destination);
   // Phase 3: unique, entity-rich, slug-seeded intro so each city-route page reads differently.
   const uniqueIntro = generateUniqueIntro({
     origin: formattedCityName || cityName,
@@ -152,10 +172,7 @@ export default function RouteClientContent({
     slug: createRouteSlug(cityName, destination),
   });
 
-  const routeOffices = useMemo(() =>
-    getRouteOffices(formattedCityName, formattedDestination),
-    [formattedCityName, formattedDestination]
-  );
+  // routeOffices arrives as a prop. See the note on the imports above.
 
   const handleCallNow = useCallback(() => {
     window.location.href = `tel:+91${phoneNumber}`;
@@ -227,7 +244,7 @@ export default function RouteClientContent({
   }, [filteredVehicles, tripType]);
 
   const startingPrice = useMemo(() => {
-    if (!filteredVehicles.length) return "2,760";
+    if (!filteredVehicles.length) return "3,300";
     const prices = filteredVehicles.map(p => {
       const price = tripType === 'oneWay' ? p.price : p.roundTrip;
       return parseInt(price?.replace('₹', '').replace(',', '') || '0');
@@ -258,22 +275,43 @@ export default function RouteClientContent({
   const quickAnswerFacts = useMemo(() => ([
     { label: 'Distance', value: route.distance || estimatedDistance },
     { label: 'Drive time', value: route.time || estimatedTime },
-    { label: 'Sedan one way', value: answerFares.sedanOneWay || `₹${startingPrice}` },
+    { label: 'Sedan one way', value: answerFares.sedanOneWay || `₹${groupDigits(startingPrice)}` },
     { label: 'Vehicles', value: '4 to 56 seats' },
   ].filter((f) => f.value && !/contact\s*us|on\s*request|n\/?a/i.test(String(f.value)))), [route.distance, route.time, estimatedDistance, estimatedTime, answerFares.sedanOneWay, startingPrice]);
 
   const faqs = [
     {
-      q: `What is the taxi fare from ${formattedCityName} to ${formattedDestination}?`,
-      a: `The cab fare starts from ₹${startingPrice} for a sedan. SUV rates start from ₹${parseInt(startingPrice.replace(',', '')) + 600}. All prices include fuel, driver charges, and applicable taxes. Toll and parking charges are extra.`
+      // Week 49 gap fix: the plan's Workstream F asked for the FAQ question
+      // closest to the page's main search to be phrased the way the export's
+      // own queries read ("delhi to agra cab price", "chandigarh to kasauli
+      // taxi fare") rather than in formal site copy ("What is the taxi fare
+      // from..."). This corridor family covers both wordings, so the
+      // question leads with the export's literal phrase and keeps the
+      // grammatical question after it.
+      //
+      // The answer below also used to add a flat, made-up ₹600 to the sedan
+      // figure for "the SUV rate", which matched neither the Ertiga (₹15/km)
+      // nor the Innova (₹18/km) rate-card figure for any real corridor. It
+      // now reads the same recomputed SUV/Innova fare the quick-answer strip
+      // already uses. A missing SUV row requires a quote, not an invented fare.
+      q: `${formattedCityName} to ${formattedDestination} cab price — what is the taxi fare?`,
+      a: `The one-way sedan fare is ${answerFares.sedanOneWay || 'available on request'}. ${answerFares.suvOneWay ? `${answerFares.suvName || 'SUV'} rates start from ${answerFares.suvOneWay}.` : 'Contact us for the SUV fare and availability on this route.'} All prices include fuel, driver charges, and applicable taxes. Toll and parking charges are extra.`
     },
     {
       q: `How long does it take to travel from ${formattedCityName} to ${formattedDestination}?`,
       a: `The journey takes approximately ${route.time || estimatedTime}, covering a distance of ${route.distance || estimatedDistance}. Travel time may vary based on traffic, weather, and road conditions.`
     },
     {
+      // Week 50 keyword separation. This page is the corridor's general booking
+      // page and should own "<origin> to <destination> cab" and "taxi fare".
+      // One-way and round-trip travel each have their own page, and this page
+      // was answering both at a length that made the search engine prefer it
+      // for all three searches — leaving the dedicated pages twenty places
+      // below their siblings. The question stays, because people do ask it
+      // here; the full treatment belongs to the page named after it, which the
+      // corridor block below links to by name.
       q: `Is one-way cab available from ${formattedCityName} to ${formattedDestination}?`,
-      a: `Yes! We offer affordable one-way cab service. You only pay for the distance traveled without any return charges. Sedans and SUVs are available for one-way booking.`
+      a: `Yes. ${answerFares.sedanOneWay ? `A one-way sedan starts at ${answerFares.sedanOneWay}` : 'Contact us for the one-way sedan fare'} and no return fare is charged — you pay for the outward journey only. The vehicle-by-vehicle one-way fares and the drop-off terms are set out in full on the ${formattedCityName} to ${formattedDestination} one-way cab page.`
     },
     {
       q: `What vehicles are available for this route?`,
@@ -290,12 +328,7 @@ export default function RouteClientContent({
   ];
 
   // Get destination city info for "Things to Do" section
-  const destinationInfo = (() => {
-    try {
-      const { getCityLocalInfo } = require('@/utilis/cityLocalInfo');
-      return getCityLocalInfo(formattedDestination);
-    } catch { return null; }
-  })();
+  // destinationInfo arrives as a prop. See the note on the imports above.
 
   return (
     <article className="min-h-screen bg-[#FAFAFA]" itemScope itemType="https://schema.org/TravelAction">
@@ -319,16 +352,16 @@ export default function RouteClientContent({
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-slate-950 to-transparent" />
         </div>
         {/* soft top hairline in brand gold */}
-        <div className="absolute inset-x-0 top-0 z-20 h-[3px] bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+        <div className={`absolute inset-x-0 top-0 z-20 h-[3px] ${region.laneStrip}`} />
 
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5">
           <ol className="flex flex-wrap items-center gap-1.5 text-xs sm:text-sm">
             <li><Link href="/" className="text-white/60 hover:text-white transition-colors">Home</Link></li>
             <ChevronRight className="w-4 h-4 text-white/40" />
-            <li><Link href={`/${cityName}`} className="text-white/60 hover:text-white transition-colors">{formattedCityName}</Link></li>
+            <li><Link href={`/${citySlug(cityName)}`} className="text-white/60 hover:text-white transition-colors">{formattedCityName}</Link></li>
             <ChevronRight className="w-4 h-4 text-white/40" />
-            <li className="text-[#FACF2D] font-medium truncate max-w-[45vw]">{formattedDestination}</li>
+            <li className="min-w-0 break-words text-[#FACF2D] font-medium">{formattedDestination}</li>
           </ol>
         </nav>
 
@@ -336,6 +369,11 @@ export default function RouteClientContent({
           <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
             {/* Left: copy */}
             <div className="min-w-0">
+              {/* region eyebrow — the page's regional identity, before anything generic */}
+              <div className={`mb-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] backdrop-blur-md ${region.chip}`}>
+                <span className={`h-1.5 w-1.5 rounded-full ${region.chipDot}`} aria-hidden="true" />
+                {region.eyebrow}
+              </div>
               {/* trust chip */}
               <div className="mb-5 inline-flex items-center gap-2 rounded-full glass-dark px-3 py-1.5 text-xs text-white/80">
                 <Star className="h-3.5 w-3.5 text-amber-400" fill="currentColor" />
@@ -348,10 +386,18 @@ export default function RouteClientContent({
               {/* serif display headline with gold-foil destination */}
               <h1 className="speakable-headline font-serif text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 {formattedCityName}
-                <span className="mx-2 font-sans text-white/40 sm:mx-3">→</span>
-                <span className="text-gradient-gold">{formattedDestination}</span>
+                {/* sr-only carries the word "to" so the heading text reads "Agra to
+                    Ahmedabad" for a crawler. The arrow is decorative: it is drawn by a
+                    CSS ::before pseudo-element so it is NOT part of the DOM text —
+                    aria-hidden hides it from screen readers but not from Googlebot,
+                    which was reading the heading as "Delhi to → Agra" (Week 47). */}
+                <span className="sr-only"> to </span>
+                <span className="mx-2 font-sans text-white/40 before:content-['→'] sm:mx-3" aria-hidden="true" />
+                <span className="sr-only"> </span>
+                <span className="text-gradient-gold">{formattedDestination}</span>{' '}
                 <span className="mt-2 block font-sans text-lg font-bold text-white/75 sm:text-2xl">Taxi &amp; Cab Service</span>
               </h1>
+              <p className={`mt-3 max-w-lg text-sm font-semibold sm:text-base ${region.accentText}`}>{region.tagline}</p>
 
               {/* route lane chip */}
               <div className="mt-5 max-w-md rounded-2xl glass-dark px-4 py-3">
@@ -398,7 +444,7 @@ export default function RouteClientContent({
               <div className="border-gradient-gold group relative overflow-hidden rounded-3xl glass-dark p-6 sm:p-7">
                 <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Fixed all-inclusive fare</p>
                 <div className="mt-2 flex items-end gap-2">
-                  <span className="text-5xl font-black text-white sm:text-6xl">₹{startingPrice}</span>
+                  <span className="text-5xl font-black text-white sm:text-6xl">₹{groupDigits(startingPrice)}</span>
                   <span className="mb-2 text-sm text-white/50">
                     /{tripType === 'roundTrip' ? 'round trip' : 'one way'}
                   </span>
@@ -474,11 +520,21 @@ export default function RouteClientContent({
           <QuickAnswer
             tone="light"
             question={`How much is a cab from ${formattedCityName} to ${formattedDestination}?`}
-            answer={`A ${formattedCityName} to ${formattedDestination} cab starts at ${answerFares.sedanOneWay || `₹${startingPrice}`} one way in an AC sedan${answerFares.suvOneWay && answerFares.suvName ? `, and ${answerFares.suvOneWay} in a ${answerFares.suvName}` : ''}${answerFares.sedanRoundTrip ? `; the same sedan is ${answerFares.sedanRoundTrip} as a round trip with the driver waiting for you` : ''}. The road distance is about ${route.distance || estimatedDistance} and the drive takes around ${route.time || estimatedTime}.${answerFares.tempoFare && answerFares.tempoName ? ` Group travellers can book a ${answerFares.tempoName} from ${answerFares.tempoFare}.` : ''} Fares cover fuel, driver and GST; tolls, parking and state permits are charged as per actuals.`}
+            answer={`A ${formattedCityName} to ${formattedDestination} cab starts at ${answerFares.sedanOneWay || `₹${groupDigits(startingPrice)}`} one way in an AC sedan${answerFares.suvOneWay && answerFares.suvName ? `, and ${answerFares.suvOneWay} in a ${answerFares.suvName}` : ''}${answerFares.sedanRoundTrip ? `; the same sedan is ${answerFares.sedanRoundTrip} as a round trip with the driver waiting for you` : ''}. The road distance is about ${route.distance || estimatedDistance} and the drive takes around ${route.time || estimatedTime}.${answerFares.tempoFare && answerFares.tempoName ? ` Group travellers can book a ${answerFares.tempoName} from ${answerFares.tempoFare}.` : ''} Fares cover fuel, driver and GST; tolls, parking and state permits are charged as per actuals.`}
             facts={quickAnswerFacts}
           />
         </div>
       </section>
+
+      {/* In-window festival / yatra call-out for this destination (server-resolved, null on most routes). */}
+      <SeasonalCorridorCallout callout={seasonalCallout} />
+
+      {/* Region-specific driving notes — palette and copy differ by destination region. */}
+      <RegionNotesStrip theme={region} origin={formattedCityName} destination={formattedDestination} />
+
+      {/* Week 48 A3: hand-written paragraph about the physical road (server-resolved, null when none exists). */}
+      <RoadParagraph paragraph={roadParagraph} theme={region} />
+      {planningGuide}
 
       {/* Trust Strip */}
       <div className="bg-white border-b border-gray-100 py-3 mt-8">
@@ -512,7 +568,7 @@ export default function RouteClientContent({
               {[
                 { icon: Navigation, label: 'Distance', value: route.distance || estimatedDistance },
                 { icon: Clock, label: 'Duration', value: route.time || estimatedTime },
-                { icon: CreditCard, label: 'Starting Fare', value: `₹${startingPrice}` },
+                { icon: CreditCard, label: 'Starting Fare', value: `₹${groupDigits(startingPrice)}` },
                 { icon: Star, label: 'Rating', value: '4.9★' },
               ].map((tile, i) => (
                 <div key={i} className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-amber-100 shadow-sm">
@@ -525,13 +581,37 @@ export default function RouteClientContent({
               ))}
             </div>
             <p className="speakable-lead faq-answer text-slate-700 leading-relaxed text-base md:text-lg">
-              The {formattedCityName} to {formattedDestination} taxi fare starts from <strong>₹{startingPrice}</strong> for a sedan (one way).
+              The {formattedCityName} to {formattedDestination} taxi fare starts from <strong>₹{groupDigits(startingPrice)}</strong> for a sedan (one way).
               The road distance is approximately <strong>{route.distance || estimatedDistance}</strong> and the journey takes around <strong>{route.time || estimatedTime}</strong>.
               {route.routeHighlights ? ` The route goes ${route.routeHighlights.toLowerCase()}.` : ''}
               {route.bestTimeToTravel ? ` Best time to travel: ${route.bestTimeToTravel}.` : ''}
-              Triveni Cabs offers AC sedan, SUV, tempo traveller, and bus options with verified professional drivers, GPS tracking, and 24/7 booking.
+              Triveni Cabs™ offers AC sedan, SUV, tempo traveller, and bus options with verified professional drivers, GPS tracking, and 24/7 booking.
               Book by calling <strong>+91-7668570551</strong> or WhatsApp for instant confirmation.
             </p>
+            {/* Week 49 (Workstream E): the at-a-glance rows a booking search wants,
+                in the pattern the airport pages took in Week 48: distance, drive
+                time, the fare per vehicle from the rate card, and the pickup. Every
+                value is the page's own record; nothing is typed here. */}
+            {(() => {
+              const pick = (name) => (Array.isArray(route?.prices) ? route.prices.find((p) => p && p.vehicle === name) : null);
+              const sedan = pick('Sedan'); const innova = pick('SUV Innova'); const tempo = pick('12 Seater Tempo');
+              const rows = [
+                ['Distance', route?.distance || estimatedDistance],
+                ['Drive time', route?.time || estimatedTime],
+                ['Sedan, one way', sedan?.price],
+                ['Sedan, round trip', sedan?.roundTrip],
+                ['Innova Crysta, one way', innova?.price],
+                ['12-seater Tempo Traveller', tempo?.price],
+                ['Pickup', `Anywhere in ${formattedCityName}, at your time`],
+              ].filter(([, v]) => v);
+              return rows.length >= 4 ? (
+                <dl className="key-facts mt-5 grid grid-cols-2 gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:grid-cols-3" aria-label={`${formattedCityName} to ${formattedDestination} cab at a glance`}>
+                  {rows.map(([k, v]) => (
+                    <div key={k}><dt className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{k}</dt><dd className="text-sm font-bold text-slate-900">{v}</dd></div>
+                  ))}
+                </dl>
+              ) : null;
+            })()}
             {uniqueIntro && (
               <p className="mt-4 text-slate-600 leading-relaxed text-base md:text-lg">
                 {uniqueIntro}
@@ -707,9 +787,9 @@ export default function RouteClientContent({
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center mb-12">
-            <p className="text-[11px] font-black uppercase tracking-[0.25em] text-amber-400 mb-3">Why Triveni Cabs</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.25em] text-amber-400 mb-3">Why Triveni Cabs™</p>
             <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-black tracking-tight text-white mb-4">
-              Why book a {formattedCityName} to {formattedDestination} cab with <span className="text-gradient-gold">Triveni Cabs</span>?
+              Why book a {formattedCityName} to {formattedDestination} cab with <span className="text-gradient-gold">Triveni Cabs™</span>?
             </h2>
             <p className="text-white/60 text-lg max-w-2xl mx-auto">
               Trusted by 50,000+ customers for reliable {formattedCityName} to {formattedDestination} taxi service
@@ -969,21 +1049,32 @@ export default function RouteClientContent({
                       <span className="ml-4 text-sm font-black uppercase tracking-wide text-slate-900">{formattedCityName}</span>
                     </div>
 
-                    {/* stop cards (links preserved) */}
-                    <div className="space-y-3">
-                      {route.popularStops.map(stop => (
-                        <div key={stop} className="relative flex items-center">
-                          <span className="absolute -left-5 flex h-4 w-4 items-center justify-center rounded-full border-2 border-amber-400 bg-white" aria-hidden="true" />
-                          <Link
-                            href={`/${stop.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="ml-4 flex w-full items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:border-amber-300 hover:text-amber-700 hover:shadow-md"
-                          >
-                            {stop}
-                            <ArrowRight className="h-4 w-4 text-amber-500 shrink-0" />
-                          </Link>
-                        </div>
-                      ))}
-                    </div>
+                    {/* Stop cards. Each href is resolved on the server and handed
+                          down as stopLinks, because this is a client component
+                          and the build manifest never reaches the browser. A
+                          stop with no page of its own — the waypoint towns on
+                          the Dehradun and Haridwar corridors — is still shown,
+                          as a card rather than a link: the halt is useful
+                          information about the route, and it was previously a
+                          link to a 404. */}
+                      <div className="space-y-3">
+                        {(stopLinks?.length ? stopLinks : (route.popularStops || []).map((s) => ({ name: s, href: null }))).map(({ name, href }) => {
+                          const card = "ml-4 flex w-full items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm";
+                          return (
+                            <div key={name} className="relative flex items-center">
+                              <span className="absolute -left-5 flex h-4 w-4 items-center justify-center rounded-full border-2 border-amber-400 bg-white" aria-hidden="true" />
+                              {href ? (
+                                <Link href={href} className={`${card} transition-all hover:border-amber-300 hover:text-amber-700 hover:shadow-md`}>
+                                  {name}
+                                  <ArrowRight className="h-4 w-4 text-amber-500 shrink-0" />
+                                </Link>
+                              ) : (
+                                <span className={card}>{name}</span>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
 
                     {/* destination foil badge */}
                     <div className="relative mt-4 flex items-center gap-4">
@@ -1025,7 +1116,7 @@ export default function RouteClientContent({
 
             <h3 className="text-xl font-bold text-slate-900 mt-8 mb-3">{formattedCityName} to {formattedDestination} Cab Fare Breakdown</h3>
             <p>
-              The one-way taxi fare from {formattedCityName} to {formattedDestination} starts at just ₹{startingPrice} for an AC sedan (Swift Dzire / Toyota Etios).
+              The {formattedCityName} to {formattedDestination} cab fare starts at ₹{groupDigits(startingPrice)} for an AC sedan (Swift Dzire / Toyota Etios).
               SUV options like Ertiga and Innova Crysta are available at slightly higher rates, ideal for families of 5-7 people.
               For larger groups, tempo travellers (12-26 seater) and buses (22-56 seater) offer cost-effective per-person pricing.
               All fares include fuel, driver charges, and applicable taxes. Toll and parking charges are extra and paid directly.
@@ -1055,7 +1146,7 @@ export default function RouteClientContent({
 
             <h3 className="text-xl font-bold text-slate-900 mt-8 mb-3">Booking Process</h3>
             <p>
-              Booking your {formattedCityName} to {formattedDestination} cab with Triveni Cabs takes under 2 minutes. Call us at <strong>+91-7668570551</strong> or
+              Booking your {formattedCityName} to {formattedDestination} cab with Triveni Cabs™ takes under 2 minutes. Call us at <strong>+91-7668570551</strong> or
               send a WhatsApp message with your travel date, pickup time, and number of passengers. We confirm your booking instantly with driver name,
               vehicle number, and phone number. No advance payment required—pay after your trip. We serve over 10,000 happy customers with a 4.9-star rating.
             </p>
@@ -1243,7 +1334,7 @@ export default function RouteClientContent({
               Explore other popular destinations with transparent pricing
             </p>
             <Link
-              href={`/${cityName}`}
+              href={`/${citySlug(cityName)}`}
               className="inline-flex items-center gap-2 bg-slate-900 text-white hover:bg-slate-800 px-6 py-3 lg:py-2.5 rounded-full font-bold transition-colors"
             >
               View all routes
@@ -1258,7 +1349,7 @@ export default function RouteClientContent({
               .map((routeItem, index) => (
                 <div key={index} className="group">
                   <Link
-                    href={`/${createRouteSlug(cityName, routeItem.destination)}`}
+                    href={canonicalClientHref(`/${createRouteSlug(cityName, routeItem.destination)}`)}
                     className="block relative h-full"
                   >
                     <div className="relative h-full bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm transition-all duration-300 group-hover:border-amber-300 group-hover:shadow-xl group-hover:-translate-y-1">
@@ -1335,7 +1426,7 @@ export default function RouteClientContent({
 
       {/* ==================== TRAVEL GUIDES & TOURS ==================== */}
       {(() => {
-        const relatedContent = getRelatedContent(formattedCityName);
+        // relatedContent is a prop
         return relatedContent && relatedContent.length > 0 && (
           <section className="py-12 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4">
@@ -1357,8 +1448,8 @@ export default function RouteClientContent({
 
       {/* ==================== POPULAR ROUTES & SERVICES ==================== */}
       {(() => {
-        const relatedRoutes = getRelatedRoutes(formattedCityName, formattedDestination, 6);
-        const services = getServiceCrossLinks(formattedCityName);
+        // relatedRoutes is a prop
+        const services = serviceCrossLinks;
         return (relatedRoutes.length > 0 || services.length > 0) && (
           <section className="py-12 bg-white">
             <div className="max-w-7xl mx-auto px-4">
@@ -1396,7 +1487,7 @@ export default function RouteClientContent({
 
       {/* Global mobile sticky bar becomes price/route-aware (replaces the old custom bar) */}
       <SetStickyCta
-        price={`₹${startingPrice}`}
+        price={`₹${groupDigits(startingPrice)}`}
         label={`${formattedCityName} to ${formattedDestination} cab`}
         whatsappText={whatsappMessage}
       />

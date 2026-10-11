@@ -68,7 +68,7 @@ export default function OutboundCitations({
                 {s.name}
               </a>
               {s.label && <span className={`ml-2 text-xs ${dark ? 'text-white/50' : 'text-slate-500'}`}>— {s.label}</span>}
-              <span className={`ml-2 text-xs ${dark ? 'text-white/40' : 'text-slate-400'}`}>({getDomain(s.url)})</span>
+              <span className={`ml-2 text-xs ${dark ? 'text-slate-300' : 'text-slate-600'}`}>({getDomain(s.url)})</span>
             </li>
           );
         })}

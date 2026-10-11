@@ -1,15 +1,19 @@
 import { Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import { Inter, Fraunces } from 'next/font/google';
+import { Fraunces } from 'next/font/google';
 import Script from 'next/script';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import PageUpdatedLine from "@/components/seo/PageUpdatedLine";
 import SeasonalBanner from "@/components/layout/SeasonalBanner";
+import { getSeasonalNavItems } from "@/utilis/seasonalNav";
+import { getSeasonalFooterLinks } from "@/utilis/seasonalFooter";
 import "@/styles/globals.css";
 // @vercel/analytics removed — site runs on Lightsail; the injected
 // /_vercel/insights/script.js 404'd on every page (console error sitewide).
-import { getSchemaReviews } from '@/utilis/schemaReviews';
+import { ratingAndReviews } from '@/lib/seo/business-rating';
 import { StickyCtaProvider } from '@/components/ui/StickyCtaContext';
+import ResponsiveTables from '@/components/ui/ResponsiveTables';
 
 // Dynamic imports for non-critical client components (code-split from main bundle)
 const WhatsAppFloat = dynamic(() => import("@/components/layout/WhatsAppFloat"));
@@ -20,23 +24,36 @@ const WebVitalsReporter = dynamic(() => import("@/components/analytics/WebVitals
 const ServiceWorkerRegistration = dynamic(() => import("@/components/pwa/ServiceWorkerRegistration"));
 const AutoRelatedFooter = dynamic(() => import("@/components/seo/AutoRelatedFooter"));
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '600', '700'],
-  variable: '--font-inter',
-  preload: true,
-});
-
 // Ultra-Premium v2: editorial display serif for major headlines sitewide
 // (consumed via the .font-display-serif utility → var(--font-display)).
+// Variable, for the same reason as Inter — and deliberately not preloaded.
+// Fraunces only styles headlines, it already has display:swap so those headlines
+// paint immediately in the fallback, and preloading it put it in front of the
+// hero image in the critical chain.
 const fraunces = Fraunces({
   subsets: ['latin'],
-  display: 'swap',
-  weight: ['600', '700', '900'],
+  // 'optional', not 'swap'. Dropping the preload took Fraunces out of the render
+  // path, which is what we wanted — but with display:swap the headlines then
+  // painted in the fallback serif and re-flowed when Fraunces arrived. Lighthouse
+  // scored that as a 0.059 layout shift on the Force Urbania routes, reported as a
+  // root-level reflow with no attributable element, against a baseline of 0.006.
+  //
+  // 'optional' gives the font about 100 ms to arrive: if it makes it, it is used;
+  // if not, the fallback is kept for that page view and nothing re-flows. Since
+  // this is a decorative display serif and next/font already generates a
+  // metric-matched fallback, a first-time visitor occasionally seeing the fallback
+  // is a far better trade than a visible shift on every page.
+  display: 'optional',
   variable: '--font-display',
-  preload: true,
+  preload: false,
 });
+
+// GA4 measurement ID. The literal is the fallback on purpose: this used to be
+// read from NEXT_PUBLIC_GA_ID alone, behind a `{process.env.NEXT_PUBLIC_GA_ID &&
+// ...}` guard, which meant a build run without .env.local silently shipped a
+// site with no analytics at all and nothing in the output said so. The GTM
+// container ID has always been a literal here for the same reason.
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-4JLY2DXYLS';
 
 // ISR — keep the root layout (and therefore SeasonalBanner's date-checked strip)
 // fresh at most hourly. Mirrors the per-page `revalidate = 3600` already used on
@@ -53,14 +70,31 @@ export const viewport = {
 
 export const metadata = {
   title: {
-    default: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking India',
-    template: '%s | Triveni Cabs'
+    default: 'Triveni Cabs™ — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking India',
+    // Week 53: this was `template: '%s | Triveni Cabs™'`, which appended 16
+    // characters to every page title AFTER tightenTitle had trimmed it to its
+    // 58-character display budget. Measured across the build: median title 68
+    // characters, p90 exactly 74 — which is 58 + 16 — and 2,505 of 3,843 titles
+    // over 65.
+    //
+    // So the tightening was real and then undone. That matters because of what
+    // gets cut: Week 52 established that the cab fare is the only part of a
+    // distance-page listing the answer panel does not already show, and took
+    // the family from 65% carrying a fare to 100%. Spending a quarter of the
+    // display budget re-stating a brand the searcher can already see next to
+    // the result is the wrong trade, and it is the trade that pushes the fare
+    // toward the cut.
+    //
+    // The template is removed rather than shortened. Google surfaces the site
+    // name alongside a result on its own, the default above keeps the brand on
+    // the homepage, and the pages that genuinely want it in the title still
+    // carry it in their own string.
   },
-  description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
+  description: 'Triveni Cabs™ — India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km. 4.9★ from 10,000+ riders. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
   keywords: 'taxi service India, car rental India, outstation cab booking, airport transfer Delhi, tempo traveller hire, wedding car rental, Delhi taxi 24/7, Agra tour packages, Jaipur cab booking, Triveni Cabs, one way taxi, round trip cab, cab service near me',
-  authors: [{ name: 'Triveni Cabs - Car Rental & Tours' }],
-  creator: 'Triveni Cabs Travel Services',
-  publisher: 'Triveni Cabs India',
+  authors: [{ name: 'Triveni Cabs™ - Car Rental & Tours' }],
+  creator: 'Triveni Cabs™ Travel Services',
+  publisher: 'Triveni Cabs™ India',
   formatDetection: {
     email: false,
     address: false,
@@ -80,16 +114,16 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking India',
-    description: 'India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km. 10,000+ happy customers, 4.9★ rated. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
+    title: 'Triveni Cabs™ — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking India',
+    description: 'Triveni Cabs™ — India\'s trusted taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km. 4.9★ from 10,000+ riders. Delhi, Agra, Jaipur & 50+ cities. Call 7668570551!',
     url: 'https://www.trivenicabs.in',
-    siteName: 'Triveni Cabs - Car Rental & Tour Services',
+    siteName: 'Triveni Cabs™ - Car Rental & Tour Services',
     images: [
       {
         url: '/images/HERO_SECTION_MAIN_PAGE.jpg',
         width: 1200,
         height: 630,
-        alt: 'Triveni Cabs - Best Car Rental & Tour Packages India',
+        alt: 'Triveni Cabs™ - Best Car Rental & Tour Packages India',
       },
     ],
     locale: 'en_IN',
@@ -97,8 +131,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Triveni Cabs — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking',
-    description: 'India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km. 10,000+ happy customers. Call 7668570551!',
+    title: 'Triveni Cabs™ — Taxi ₹11/km | 4.9★ Rated | 24/7 Booking',
+    description: 'Triveni Cabs™ — India\'s trusted taxi. Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km. 10,000+ happy riders. Call 7668570551!',
     images: ['/images/HERO_SECTION_MAIN_PAGE.jpg'],
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -118,19 +152,18 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/images/logo/logo2.webp', type: 'image/webp' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/favicon.ico',
+    shortcut: '/apple-touch-icon.png',
     apple: [
-      { url: '/images/logo/logo2.webp', sizes: '180x180', type: 'image/webp' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   manifest: '/site.webmanifest',
   other: {
     'msapplication-TileColor': '#FACF2D',
-    'apple-mobile-web-app-title': 'Triveni Cabs',
-    'application-name': 'Triveni Cabs',
+    'apple-mobile-web-app-title': 'Triveni Cabs™',
+    'application-name': 'Triveni Cabs™',
     'mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
@@ -149,15 +182,15 @@ const structuredData = {
     "@type": ["Organization", "TravelAgency"],
     "@id": "https://www.trivenicabs.in/#organization",
     "name": "Triveni Cabs",
-    "alternateName": ["Triveni Car Rental", "Triveni Taxi Service"],
+    "alternateName": ["Triveni Cabs™", "Triveni Car Rental", "Triveni Taxi Service"],
     "url": "https://www.trivenicabs.in",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://www.trivenicabs.in/images/logo/logo.webp",
+      "url": "https://www.trivenicabs.in/images/logo/logo-tm.webp",
       "width": 600,
       "height": 315
     },
-    "image": "https://www.trivenicabs.in/images/logo/logo.webp",
+    "image": "https://www.trivenicabs.in/images/logo/logo-tm.webp",
     "description": "India's trusted car rental & taxi service. Sedan ₹11/km, SUV ₹15/km, Tempo from ₹23/km. 50+ cities, 24/7 booking.",
     "telephone": "+91-7668570551",
     "email": "cabstriveni@gmail.com",
@@ -171,7 +204,7 @@ const structuredData = {
     },
     "sameAs": [
       "https://www.facebook.com/trivenicabs",
-      "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo",
+      "https://www.instagram.com/cabstriveni",
       "https://twitter.com/trivenicabs"
     ],
     "contactPoint": [
@@ -204,7 +237,7 @@ const structuredData = {
     "@type": "WebSite",
     "@id": "https://www.trivenicabs.in/#website",
     "name": "Triveni Cabs",
-    "alternateName": ["Triveni Taxi", "Triveni Cab Service"],
+    "alternateName": ["Triveni Cabs™", "Triveni Taxi", "Triveni Cab Service"],
     "url": "https://www.trivenicabs.in",
     "description": "India's trusted taxi service. Book outstation cabs, airport transfers, sightseeing tours, wedding cars, and tempo travellers across 50+ cities.",
     "inLanguage": "en-IN",
@@ -236,10 +269,10 @@ const structuredData = {
     "parentOrganization": { "@id": "https://www.trivenicabs.in/#organization" },
     "isPartOf": { "@id": "https://www.trivenicabs.in/#website" },
     "name": "Triveni Cabs",
-    "alternateName": "Triveni Car Rental Services",
-    "logo": "https://www.trivenicabs.in/images/logo/logo.webp",
+    "alternateName": ["Triveni Cabs™", "Triveni Car Rental Services"],
+    "logo": "https://www.trivenicabs.in/images/logo/logo-tm.webp",
     "image": [
-      "https://www.trivenicabs.in/images/logo/logo.webp",
+      "https://www.trivenicabs.in/images/logo/logo-tm.webp",
       "https://www.trivenicabs.in/images/car/swift_dzire.jpg",
       "https://www.trivenicabs.in/images/car/premium_suv.jpg"
     ],
@@ -298,18 +331,16 @@ const structuredData = {
       { "@type": "City", "name": "Gurgaon" },
       { "@type": "City", "name": "Noida" }
     ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "10000",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    // Reviews are loaded from src/utilis/schemaReviews.js where datePublished
-    // is computed dynamically at build time (1–10 weeks ago relative to today).
-    // This eliminates the "stale review dates" E-E-A-T problem without needing
-    // a quarterly manual refresh.
-    "review": getSchemaReviews(),
+    // Rating and reviews come from src/lib/seo/business-rating.js, which
+    // publishes them only when they are backed by verified data. Both keys are
+    // spread in, so when there is nothing verified they are absent from the
+    // markup entirely rather than present and invented.
+    //
+    // This block previously hardcoded ratingValue "4.9" with reviewCount
+    // "10000" on all 3,833 pages — the same 10,000 that review-helpers.js was
+    // written to remove as schema spam, still going out from here — alongside
+    // eight Review nodes whose authors and text were written in a source file.
+    ...ratingAndReviews(),
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Car Rental and Tour Packages",
@@ -328,27 +359,26 @@ const structuredData = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-IN" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="en-IN" className={fraunces.variable}>
       <head>
         {/* Resource Hints for Performance */}
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        {/* GA4's gtag.js is on the measurement path, so pay the TLS handshake
+            up front rather than at request time — dns-prefetch alone only
+            resolves DNS and still leaves a full connect before the first hit. */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="//media.istockphoto.com" />
         <link rel="dns-prefetch" href="//img.freepik.com" />
         <link rel="dns-prefetch" href="//upload.wikimedia.org" />
         <link rel="dns-prefetch" href="//stimg.cardekho.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://media.istockphoto.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://img.freepik.com" crossOrigin="anonymous" />
-
         {/* Single consolidated structured data script - reduces DOM nodes & parse time */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className="antialiased">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -359,60 +389,109 @@ export default function RootLayout({ children }) {
           />
         </noscript>
 
-        {/* Google Tag Manager - lazyOnload to free the main thread during early
-            interactions (INP fix). GTM still fires on browser idle; GA4 active-user
-            counting is unaffected (it uses the separate direct gtag below). */}
-        <Script
-          id="gtm-script"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WBN5ZTSC');`
-          }}
-        />
-
-        {/* Google Analytics — afterInteractive (NOT lazyOnload). lazyOnload
-            undercounted fast-bounce mobile visitors (GA4 "active users" showed
-            ~150 vs GSC-implied ~330+/day, Aug 2026). The Week-41 INP work
-            removed the animation main-thread cost, so counting accurately is
-            affordable again. GTM/Ads below stay lazy — only counting moved. */}
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <Script
-              strategy="afterInteractive"
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-            />
-            <Script strategy="afterInteractive" id="ga-init">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `}
-            </Script>
-          </>
-        )}
-
-        {/* Google Ads conversion tag — config only.
-            The gtag.js library is already loaded once by the GA4
-            <Script src> above (afterInteractive); loading it a SECOND
-            time here pulled ~58 KB of duplicate JS on every page (Lighthouse
-            "unused-javascript" flagged AW-17336319883 twice — once via GTM, once
-            standalone). We keep the AW config call firing lazily (lazyOnload,
-            same timing as before) but reuse the already-loaded gtag instance,
-            so conversion tracking is unchanged while ~58 KB drops off every
-            page. If NEXT_PUBLIC_GA_ID is ever unset, gtag won't exist yet and
-            this call no-ops via the guard. */}
-        <Script strategy="lazyOnload" id="gads-init">
+        {/* Analytics bootstrap. Defines dataLayer and gtag() before any runtime
+            arrives so an event fired by a fast-clicking visitor is queued rather
+            than dropped. Every tracking call in src/utilis/analytics.js goes
+            through window.gtag, so this must exist first. */}
+        <Script strategy="afterInteractive" id="analytics-bootstrap">
           {`
-            if (typeof window.gtag === 'function') {
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+          `}
+        </Script>
+
+        {/* GA4 — direct gtag.js, afterInteractive, NOT deferred behind an
+            interaction gate.
+
+            History, so this is not "optimised" away again: a previous pass
+            deleted this block on the assumption that the GTM container carried
+            the GA4 configuration tag. It does not. With the direct tag gone the
+            property recorded essentially nothing — reported visits collapsed to
+            single digits — because a bare dataLayer.push of gtag-style
+            arguments is not a GA4 hit and GTM never turned it into one.
+
+            The timing is equally deliberate. An earlier experiment moved GA4 to
+            lazyOnload and active users fell to ~150/day against a Search
+            Console-implied 330+, since short mobile visits ended before the
+            load event. afterInteractive counts those sessions. */}
+        <Script
+          id="ga4-lib"
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        />
+        <Script strategy="afterInteractive" id="ga-init">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+            window.gtag('js', new Date());
+            window.gtag('config', '${GA_MEASUREMENT_ID}', {
+              page_path: window.location.pathname,
+            });
+            // Google Ads conversion config — deferred out of the paint window.
+            //
+            // Measured on the live site (Week 50): this config triggers its own
+            // 162 KB gtag fetch and 945 ms of script evaluation on the distance
+            // template, inside the LCP window. The largest paint on these pages is
+            // a paragraph of TEXT, delivered by the server in 319 ms, with the font
+            // done at 737 ms and no render-blocking resources — yet LCP measured
+            // 7.2-7.7 s. Nothing was blocking the paint except a main thread busy
+            // executing tag scripts.
+            //
+            // This is a CONVERSION tag, not a measurement tag: it fires when
+            // somebody calls, books or submits, which is always seconds after the
+            // page has painted. Loading it during paint buys nothing and costs the
+            // largest paint on every template.
+            //
+            // GA4 above is deliberately NOT moved. Lazy-loading it once cut reported
+            // active users to roughly 150/day against a Search Console-implied 330+,
+            // and short mobile sessions were the ones lost. That stays afterInteractive
+            // until its timing is trialled separately and the counting is checked.
+            var adsLoaded = false;
+            function loadAdsTag() {
+              if (adsLoaded) return;
+              adsLoaded = true;
+              ['pointerdown', 'keydown', 'touchstart'].forEach(function (e) {
+                window.removeEventListener(e, loadAdsTag, true);
+              });
               window.gtag('config', 'AW-17336319883');
             }
+            ['pointerdown', 'keydown', 'touchstart'].forEach(function (e) {
+              window.addEventListener(e, loadAdsTag, { once: true, passive: true, capture: true });
+            });
+            // Backstop: a visitor who converts by phone without ever tapping the page
+            // still needs the tag present, so it loads regardless shortly after paint.
+            window.setTimeout(loadAdsTag, 3500);
+          `}
+        </Script>
+
+        {/* Google Tag Manager — container only, and safe to defer because GA4
+            measurement no longer depends on it. Loads on the first real user
+            action, with a five-second backstop. Scroll is not a trigger because
+            audits and browsers can emit it inside the LCP window without any
+            user intent. */}
+        <Script strategy="afterInteractive" id="gtm-loader">
+          {`
+            (function (w, d) {
+              w.dataLayer = w.dataLayer || [];
+              var loaded = false;
+              var events = ['pointerdown', 'keydown', 'touchstart'];
+              function loadTags() {
+                if (loaded) return;
+                loaded = true;
+                events.forEach(function (eventName) {
+                  w.removeEventListener(eventName, loadTags, true);
+                });
+                w.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+                var script = d.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WBN5ZTSC';
+                d.head.appendChild(script);
+              }
+              events.forEach(function (eventName) {
+                w.addEventListener(eventName, loadTags, { once: true, passive: true, capture: true });
+              });
+              w.setTimeout(loadTags, 5000);
+            })(window, document);
           `}
         </Script>
 
@@ -423,7 +502,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div className="App min-h-screen flex flex-col">
           <StickyCtaProvider>
             <SeasonalBanner />
-            <Header />
+            <Header seasonalNav={getSeasonalNavItems(new Date(), 8)} />
             <main id="main-content" className="flex-grow pb-[64px] md:pb-0" role="main">
               {children}
             </main>
@@ -433,10 +512,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               <DesktopQuoteButton />
               <MobileStickyBar />
             </Suspense>
-            <Footer />
+            <PageUpdatedLine />
+            <Footer seasonLinks={getSeasonalFooterLinks(new Date())} />
           </StickyCtaProvider>
         </div>
         <ServiceWorkerRegistration />
+        <ResponsiveTables />
       </body>
     </html>
   );

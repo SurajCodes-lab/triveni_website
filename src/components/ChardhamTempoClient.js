@@ -44,7 +44,7 @@ export default function ChardhamTempoClient({ data, reviews = [], reviewCount = 
             {/* ============================================ */}
             {/* HERO SECTION - Spiritual Premium */}
             {/* ============================================ */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden pb-32">
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden pb-16 sm:pb-32">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <Image
@@ -61,10 +61,8 @@ export default function ChardhamTempoClient({ data, reviews = [], reviewCount = 
                 </div>
 
                 {/* Still gold glow — no animation */}
-                <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-500/20 to-amber-500/20 rounded-full blur-3xl z-0" />
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-yellow-500/15 to-orange-500/15 rounded-full blur-3xl z-0" />
 
-                <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-20">
+                <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-12 sm:pt-20">
 
                     <div
                         className="inline-flex items-center gap-2 bg-orange-500/20 backdrop-blur-md px-6 py-2 rounded-full mb-8 border border-orange-400/50"
@@ -246,7 +244,7 @@ export default function ChardhamTempoClient({ data, reviews = [], reviewCount = 
             <section className="py-16 md:py-24 bg-stone-100 relative">
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-orange-300 to-transparent"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-10 sm:mb-16">
                         <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-4 font-display-serif">2026 Yatra Packages</h2>
                         <p className="text-stone-600">Transparent pricing. No hidden costs. Pure devotion.</p>
                     </div>
@@ -315,7 +313,7 @@ export default function ChardhamTempoClient({ data, reviews = [], reviewCount = 
                     </div>
                     {/* Desktop table */}
                     <div className="hidden md:block rounded-2xl border border-amber-200 shadow-sm overflow-hidden">
-                        <table className="w-full text-left text-sm md:text-base">
+                        <table className="w-full text-left text-sm md:text-base rt-stack">
                             <thead>
                                 <tr className="bg-stone-900 text-white">
                                     <th className="p-4 font-bold">Seater</th>
@@ -426,7 +424,7 @@ export default function ChardhamTempoClient({ data, reviews = [], reviewCount = 
             {/* ============================================ */}
             <section className="py-16 md:py-24 bg-white">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-10 sm:mb-16">
                         <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-4 font-display-serif">Day-wise Itinerary</h2>
                         <p className="text-stone-600">A carefully planned schedule for your comfort and Darshan.</p>
                     </div>
@@ -738,13 +736,13 @@ export default function ChardhamTempoClient({ data, reviews = [], reviewCount = 
             </section>
 
             {/* SEO Content Section */}
-            <section className="py-16 px-4 bg-white border-t border-stone-200">
+            <section className="py-10 sm:py-16 px-4 bg-white border-t border-stone-200">
                 <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
                     <h2 className="text-2xl font-bold text-stone-900 mb-6">
                         {data.title} by Tempo Traveller — Complete Pilgrimage Package
                     </h2>
                     <p className="text-stone-700 leading-relaxed">
-                        Embark on the sacred Chardham Yatra from {data.origin} with Triveni Cabs’ premium tempo traveller service.
+                        Embark on the sacred Chardham Yatra from {data.origin} with Triveni Cabs™’ premium tempo traveller service.
                         Our {data.duration} package covers all four holy shrines — Kedarnath, Badrinath, Gangotri, and Yamunotri —
                         with AC tempo travellers, experienced mountain drivers, and a carefully planned day-wise itinerary for a
                         comfortable pilgrimage experience.
@@ -758,7 +756,7 @@ export default function ChardhamTempoClient({ data, reviews = [], reviewCount = 
                     </p>
                     <p className="text-stone-700 leading-relaxed">
                         With 2500+ completed pilgrimages, experienced Uttarakhand road drivers, and 24/7 roadside assistance,
-                        Triveni Cabs ensures a safe and comfortable Chardham Yatra. View our full{' '}
+                        Triveni Cabs™ ensures a safe and comfortable Chardham Yatra. View our full{' '}
                         <Link href="/tempo-traveller" className="text-blue-600 hover:underline">tempo traveller fleet</Link>,
                         explore <Link href="/religious-tours" className="text-blue-600 hover:underline">other pilgrimage tours</Link>,
                         or <a href="tel:+917668570551" className="text-blue-600 hover:underline">call 7668570551</a> to book
@@ -832,7 +830,7 @@ function ChardhamRichBlock({ title, origin, destination, duration }) {
         </section>
       )}
 
-      <section className="py-16 px-4 sm:px-6">
+      <section className="py-10 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Yatra Q&amp;A</span>

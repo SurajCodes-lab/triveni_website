@@ -60,7 +60,7 @@ export default function FAQClient({ categories }) {
             Frequently Asked Questions
           </h1>
           <p className="speakable-lead text-lg text-gray-600 max-w-2xl mx-auto">
-            Everything you need to know about booking a cab with Triveni Cabs — pricing, vehicles, routes, safety, and more.
+            Everything you need to know about booking a cab with Triveni Cabs™ — pricing, vehicles, routes, safety, and more.
           </p>
 
           {/* Direct Answer Box for Featured Snippets */}
@@ -84,7 +84,7 @@ export default function FAQClient({ categories }) {
               </div>
             </div>
             <p className="faq-answer speakable-faq-first text-gray-700 text-sm leading-relaxed">
-              Triveni Cabs offers affordable taxi services starting at ₹11/km for sedans across 50+ cities in North India. Book instantly by calling 7668570551 or WhatsApp. No advance payment required. All fares include fuel, driver, and AC. Available 24/7 with 4.9-star rated service and 10,000+ happy customers.
+              Triveni Cabs™ offers affordable taxi services starting at ₹11/km for sedans across 50+ cities in North India. Book instantly by calling 7668570551 or WhatsApp. No advance payment required. All fares include fuel, driver, and AC. Available 24/7 with 4.9-star rated service and 10,000+ happy customers.
             </p>
           </div>
         </div>
@@ -192,14 +192,14 @@ export default function FAQClient({ categories }) {
               { name: "Delhi to Agra", href: "/delhi-to-agra" },
               { name: "Delhi to Jaipur", href: "/delhi-to-jaipur" },
               { name: "Delhi to Shimla", href: "/delhi-to-shimla" },
-              { name: "Delhi to Manali", href: "/delhi-to-manali" },
+              { name: "Delhi to Manali", href: "/one-way-cab/delhi-to-manali" },
               { name: "Delhi to Chandigarh", href: "/delhi-to-chandigarh" },
-              { name: "Delhi to Haridwar", href: "/delhi-to-haridwar" },
+              { name: "Delhi to Haridwar", href: "/one-way-cab/delhi-to-haridwar" },
               { name: "Delhi to Amritsar", href: "/delhi-to-amritsar" },
               { name: "Jaipur to Agra", href: "/jaipur-to-agra" },
               { name: "Chandigarh to Shimla", href: "/chandigarh-to-shimla" },
               { name: "Chandigarh to Manali", href: "/chandigarh-to-manali" },
-              { name: "Agra to Jaipur", href: "/agra-to-jaipur" },
+              { name: "Agra to Jaipur", href: "/one-way-cab/agra-to-jaipur" },
               { name: "Delhi to Rishikesh", href: "/delhi-to-rishikesh" },
             ].map(route => (
               <Link

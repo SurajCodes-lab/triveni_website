@@ -56,7 +56,7 @@ const VehicleServices = () => {
 
   return (
     <div className="bg-gradient-to-b from-white to-[#FFFCD1]">
-      <section className="py-16 max-w-7xl mx-auto px-4" aria-labelledby="vehicle-fleet-heading">
+      <section className="py-10 sm:py-16 max-w-7xl mx-auto px-4" aria-labelledby="vehicle-fleet-heading">
         <header className="text-center mb-12">
           <h3 id="vehicle-fleet-heading" className="text-3xl max-sm:text-2xl font-bold mb-4">
             Our Premium Vehicle Fleet - Professional Taxi Service

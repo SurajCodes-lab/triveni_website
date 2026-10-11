@@ -18,7 +18,7 @@ export const metadata = {
     description: "India's most trusted airport transfer service! ✓ Real-time flight tracking ✓ Meet & greet ✓ Luggage help ✓ Zero cancellation fee. Serving Delhi IGI, Jaipur, Chandigarh & 50+ cities. Pre-book for guaranteed rates!",
     type: "website",
     locale: "en_IN",
-    siteName: "Triveni Cabs",
+    siteName: "Triveni Cabs™",
     images: [
       {
         url: "/images/about/about_banner.webp",
@@ -92,33 +92,7 @@ export default function AirportServicePage() {
       "availability": "https://schema.org/InStock",
       "validFrom": "2024-01-01"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "412",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Priya Sharma" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Driver from Triveni Cabs was waiting at IGI T3 arrival with a name board even though my Emirates flight landed 40 minutes late. Fixed fare honoured, no surge. Highly recommend for international arrivals."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Rohit Mehta" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Booked Triveni Cabs for a 2 AM Jaipur airport pickup. Driver tracked the flight, helped with luggage, AC sedan was clean. Far better than prepaid taxi counter prices."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Anjali Khanna" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Used the Chandigarh airport to Shimla service. Hill driver was experienced, Innova was comfortable for the family, fixed Rs 6,000 with no hidden charges. Will book again."
-      }
-    ],
+
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Airport Transfer Fleet",
@@ -209,7 +183,7 @@ export default function AirportServicePage() {
       answer: "Delhi IGI airport to city center (Connaught Place) starts from ₹800-1,200 depending on vehicle type. Sedan ₹800, SUV ₹1,200. Prices are fixed with no surge pricing."
     },
     {
-      question: "How do I book an airport taxi with Triveni Cabs?",
+      question: "How do I book an airport taxi with Triveni Cabs™?",
       answer: "Book via WhatsApp at +91-7668570551, call directly, or use our website. We provide instant confirmation with driver details and exact fare within 2 minutes."
     },
     {

@@ -18,10 +18,12 @@ import {
   SerifHeading, TrustSeal, LaneStrip, GOLD_BTN, GHOST_BTN, FOIL,
 } from '@/components/airport/AirportKit';
 import { getCityImage } from '@/utilis/imageUtils';
+import AirportAnswerBox from './AirportAnswerBox';
+import DataTable from '@/components/seo/DataTable';
+import DestinationPhotos from '@/components/seo/DestinationPhotos';
 
 const PHONE = '+917668570551';
 const wa = (text) => `https://wa.me/917668570551?text=${encodeURIComponent(text)}`;
-const routeSlug = (a, b) => `/${a.toLowerCase().replace(/\s+/g, '-')}-to-${b.toLowerCase().replace(/\s+/g, '-')}`;
 
 // Canonical airport fleet-card rates: Sedan ₹11/km · SUV ₹15/km · Tempo ₹23/km.
 const FLEET = [
@@ -29,6 +31,32 @@ const FLEET = [
   { name: 'SUV', cars: 'Innova · Ertiga', seats: '1–6', bags: '4', rate: '₹15/km', tag: 'Most Booked', img: '/images/car/innova_crysta.jpg' },
   { name: 'Tempo', cars: '12–16 Seater', seats: '7–16', bags: '12+', rate: '₹23/km', tag: null, img: '/images/tempo/16_seater.jpg' },
 ];
+
+// Terminal-level pages per airport city. Keeps every terminal page one click
+// from its city hub instead of relying on the sitemap alone for discovery.
+const CITY_TERMINALS = {
+  delhi: [
+    { href: '/airport-service/delhi/igi-terminal-1-domestic', code: 'T1', name: 'Terminal 1 — Domestic', desc: 'IndiGo, SpiceJet and the low-cost domestic carriers.', img: '/images/sightseeing/Delhi/Delhi_hero_section.jpg' },
+    { href: '/airport-service/delhi/igi-terminal-2-domestic', code: 'T2', name: 'Terminal 2 — Domestic', desc: 'Additional domestic operations at IGI.', img: '/images/sightseeing/Delhi/red_fort.jpg' },
+    { href: '/airport-service/delhi/igi-terminal-3-international', code: 'T3', name: 'Terminal 3 — International', desc: 'Emirates, Lufthansa, Singapore and premium domestic.', img: '/images/sightseeing/Delhi/India_Gate.jpg' },
+  ],
+  jaipur: [
+    { href: '/airport-service/jaipur/jai-terminal-1-international', code: 'T1', name: 'Terminal 1 — International', desc: 'Dubai, Sharjah, Muscat, Bangkok and Kuala Lumpur.', img: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg' },
+    { href: '/airport-service/jaipur/jai-terminal-2-domestic', code: 'T2', name: 'Terminal 2 — Domestic', desc: 'IndiGo, Air India, SpiceJet and Akasa domestic arrivals.', img: '/images/sightseeing/Jaipur/Hawa_Mahal.jpg' },
+  ],
+  agra: [
+    { href: '/airport-service/agra/kheria-civil-terminal-domestic', code: 'AGR', name: 'Kheria Civil Terminal', desc: 'The single civil terminal — Taj Mahal in 30 minutes.', img: '/images/sightseeing/Agra/Taj_mahal.jpg' },
+  ],
+  chandigarh: [
+    { href: '/airport-service/chandigarh/ixc-integrated-terminal', code: 'IXC', name: 'Integrated Terminal', desc: 'One building for domestic and international arrivals.', img: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg' },
+  ],
+  hindon: [
+    { href: '/airport-service/hindon/hindon-civil-terminal-domestic', code: 'HDO', name: 'Hindon Civil Terminal', desc: 'Ghaziabad RCS-UDAN domestic terminal.', img: '/images/airport_section.jpg' },
+  ],
+  jewar: [
+    { href: '/airport-service/jewar/jewar-terminal-1-international', code: 'T1', name: 'Terminal 1 — International', desc: 'Noida International Airport greenfield terminal.', img: '/images/airport_section.jpg' },
+  ],
+};
 
 const INCLUDES = [
   { icon: Navigation, t: 'Meet & greet at arrivals' },
@@ -39,13 +67,21 @@ const INCLUDES = [
   { icon: Shield, t: 'Fixed fare — no hidden charges' },
 ];
 
-export default function CityAirportServiceClient({ city, citySlug, cityTours = [] }) {
+export default function CityAirportServiceClient({ city, citySlug, cityTours = [], corridorRows = [], terminalRows = [], onwardLinks = [], shortAnswer = null }) {
   const [openFaq, setOpenFaq] = useState(0);
+  const [requestedTransfer, setRequestedTransfer] = useState(null);
   const accent = getAccent(citySlug);
+  const terminals = CITY_TERMINALS[citySlug] || [];
   const base = 11; // ₹/km
 
-  const heroWa = `Hi Triveni Cabs, I need an airport taxi in ${city.name} (${city.airport}) with flight tracking. Please share availability and fare.`;
-  const faqs = generateAirportFAQs({ city: city.name, airportName: city.airport, price: base, distance: (city.distance || '').replace(/[^0-9]/g, '') || '15' });
+  const heroWa = `Hi Triveni Cabs™, I need an airport taxi in ${city.name} (${city.airport}) with flight tracking. Please share availability and fare.`;
+  const policyFaqs = generateAirportFAQs({ city: city.name, airportName: city.airport, price: base, distance: (city.distance || '').replace(/[^0-9]/g, '') || '15' });
+  const firstDrop = city.popularDestinations?.[0];
+  const faqs = [...[1,3,4,6].map(i => policyFaqs[i]),
+    ...(firstDrop ? [{question: `How far is ${city.airport} from ${firstDrop.name}?`, answer: `${firstDrop.name} is ${firstDrop.distance} from ${city.airport}; the published driving estimate is ${firstDrop.time}. Traffic and your exact drop point can change this.`}] : []),
+    {question: `Which terminal should I book for my ${city.name} transfer?`, answer: `${city.airport}: ${city.terminals}. Share the terminal and flight number shown on your ticket so the meeting point can be confirmed.`},
+    {question: `What can I visit after arriving in ${city.name}?`, answer: `Places listed in our ${city.name} guide include ${(city.nearbyAttractions || []).join(', ')}. Arrange sightseeing separately from your airport transfer.`},
+  ];
 
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -59,7 +95,7 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
       <SetStickyCta price="From ₹11/km" label={`${city.name} Airport Taxi`} whatsappText={heroWa} />
 
       {/* ══ HERO — cinematic city photo, serif + gold-foil title ══ */}
-      <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pb-24">
+      <section className="relative overflow-hidden px-4 pt-14 sm:pt-24 pb-16 md:pb-24">
         <HeroPhoto src={getCityImage(city.name)} />
         <LaneStrip />
         <div className="relative z-10 mx-auto max-w-7xl">
@@ -77,12 +113,13 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
               </div>
 
               <h1 className="mt-7 font-display-serif text-balance text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl md:text-7xl">
-                <span className="block text-white">{city.name}</span>
+                <span className="block text-white">{city.name}</span>{' '}
                 <span className={`block ${FOIL}`}>Airport Taxi</span>
               </h1>
               <p className="mt-2 font-mono text-sm tracking-wide text-slate-400">{city.airport}</p>
 
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">{city.description}</p>
+              <AirportAnswerBox updatedOn="2026-09-12" answer={`${city.airport} serves this ${city.name} transfer page (${city.distance}). Published fleet rates start at ₹11/km for a sedan, ₹15/km for an SUV and ₹23/km for a Tempo Traveller. Confirm the fixed airport quote and terminal meeting point before booking.`}
+                facts={[{label:'Airport',value:city.airportCode},{label:'Distance',value:city.distance},{label:'Terminals',value:city.terminals},{label:'Sedan rate',value:'From ₹11/km'}]} />
 
               {/* quick facts — glass stat tiles, missing values omitted */}
               <div className="mt-7 flex flex-wrap gap-3">
@@ -125,12 +162,19 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
                   <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--air-accent)]">{city.name} Desk</span>
                   <FlightStatusPill label="Open" />
                 </div>
-                <QuickEnquiryForm toCity={city.name} pageType="airport_transfer" />
+                <div id="airport-enquiry" className="scroll-mt-24">
+                  {requestedTransfer && <p className="mb-3 text-sm text-amber-200">Request a quote: {requestedTransfer.label}</p>}
+                  <QuickEnquiryForm fromCity={requestedTransfer?.fromCity || ''} toCity={requestedTransfer?.toCity || city.name} pageType="airport_transfer" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* The short answer, rendered on the server and slotted in directly
+          below the hero so it is the first prose on the page. */}
+      {shortAnswer}
 
       {/* ══ TRUST BOARD ══ */}
       <section className="relative px-4 py-8">
@@ -153,6 +197,58 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
         </div>
       </section>
 
+      {/* ══ TERMINAL PICKER — one click from the city hub to each terminal ══ */}
+      {terminals.length > 0 && (
+        <section className="relative overflow-hidden px-4 py-16 md:py-20">
+          <AirportBackdrop variant="grid" />
+          <div className="relative z-10 mx-auto max-w-7xl">
+            <SerifHeading
+              center
+              eyebrow="Choose Your Terminal"
+              title="Pickup by"
+              highlight="terminal"
+              subtitle={`Exact meeting point, free waiting time and fixed fares for each ${city.name} terminal.`}
+              className="mb-10"
+            />
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {terminals.map((t) => (
+                <Link
+                  key={t.href}
+                  href={t.href}
+                  className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.02] transition-all duration-500 hover:-translate-y-1.5 hover:border-[color:var(--air-accent)]/40 hover:shadow-[0_30px_80px_-30px_var(--air-glow)]"
+                >
+                  <div className="relative h-44 w-full overflow-hidden">
+                    <Image src={t.img} alt={t.name} fill sizes="(max-width:640px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.06]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--air-deep)] via-[var(--air-deep)]/40 to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                         style={{ background: 'radial-gradient(120% 80% at 50% 100%, var(--air-glow), transparent 65%)' }} />
+                    <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-xl border border-[color:var(--air-accent)]/35 bg-black/55 px-3 py-1.5 font-mono text-sm font-black text-[color:var(--air-accent)] backdrop-blur-sm">
+                      <Plane className="h-3.5 w-3.5" /> {t.code}
+                    </span>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-bold text-white group-hover:text-[color:var(--air-accent)]">{t.name}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-400">{t.desc}</p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[color:var(--air-accent)]">
+                      View fares <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            {['delhi', 'jewar', 'hindon'].includes(citySlug) && (
+              <p className="mt-8 text-center text-sm text-slate-400">
+                Delhi NCR has three airports.{' '}
+                <Link href="/delhi-ncr-airports-guide" className="font-semibold text-[color:var(--air-accent)] underline-offset-4 hover:underline">
+                  Compare IGI, Jewar and Hindon
+                </Link>{' '}
+                to see which is closest to you.
+              </p>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* ══ POPULAR DESTINATIONS — stacked cards on mobile, true table md+ ══ */}
       {Array.isArray(city.popularDestinations) && city.popularDestinations.length > 0 && (
         <section className="relative overflow-hidden px-4 py-16 md:py-24">
@@ -161,8 +257,8 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
             <SerifHeading
               center
               eyebrow={`Departures from ${city.airportCode}`}
-              title="Popular drop"
-              highlight="points"
+              title="How far are popular drop"
+              highlight="points?"
               className="mb-10"
             />
 
@@ -238,8 +334,8 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
           <SerifHeading
             center
             eyebrow="Cabin Class"
-            title="Choose your"
-            highlight="ride"
+            title="Which is your"
+            highlight="ride?"
             subtitle={`${city.name} airport transfers — all-inclusive per-km pricing.`}
             className="mb-12"
           />
@@ -290,8 +386,8 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
             tone="light"
             center
             eyebrow="Every Ride Includes"
-            title="No surprises,"
-            highlight="ever"
+            title="What does your transfer"
+            highlight="include?"
             className="mb-12"
           />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -330,6 +426,10 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
         </section>
       )}
 
+      <DataTable tone="dark" title={`Which vehicle can you book in ${city.name}?`} columns={[{key:'name',label:'Vehicle'},{key:'cars',label:'Models'},{key:'seats',label:'Seats'},{key:'bags',label:'Bags'},{key:'rate',label:'Rate'}]} rows={FLEET} footnote="Per-kilometre rates do not determine the fixed airport-transfer fare. Confirm your complete quote." />
+      <DataTable tone="dark" title={`Where do you meet the driver at ${city.airport}?`} columns={[{key:'terminalCode',label:'Terminal'},{key:'terminalType',label:'Traffic'},{key:'meetingPoint',label:'Meeting point'},{key:'waitInfo',label:'Published waiting policy'}]} rows={terminalRows} />
+      <DataTable tone="dark" title={`Where can you drive from ${city.name}?`} columns={[{key:'label',label:'City corridor'},{key:'distance',label:'Distance'},{key:'duration',label:'Drive time'},{key:'guide',label:'Road guide'}]} rows={corridorRows.map(r => ({...r, guide:<Link href={r.href} className="underline">{r.label} road guide</Link>}))} footnote="City-to-city reference distances; airport approaches may differ." />
+      {citySlug !== 'ahmedabad' && <DestinationPhotos city={city.name} />}
       {/* ══ POPULAR ROUTES FROM CITY ══ */}
       {Array.isArray(city.routes) && city.routes.length > 0 && (
         <section className="relative px-4 py-16 md:py-24">
@@ -342,11 +442,13 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
               className="mb-10"
             />
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {city.routes.map((r) => {
-                const parts = r.split(' to ');
-                const href = parts.length === 2 ? routeSlug(parts[0], parts[1]) : '#';
+              {onwardLinks.map((route) => {
+                const r = route.label;
+                const href = route.href;
                 return (
                   <Link key={r} href={href}
+                    aria-label={href.startsWith('#') ? `Request a quote for ${r}` : r}
+                    onClick={href.startsWith('#') ? () => setRequestedTransfer(route) : undefined}
                     className="group flex items-center justify-between rounded-2xl border border-white/[0.07] bg-white/[0.03] px-6 py-5 transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--air-accent)]/30">
                     <span className="flex items-center gap-3 font-semibold text-white">
                       <Navigation className="h-5 w-5 text-[color:var(--air-accent)]" /> {r}
@@ -394,7 +496,7 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
             center
             eyebrow="3 Steps to Touchdown"
             title={`How ${city.name} pickup`}
-            highlight="works"
+            highlight="works?"
             className="mb-12"
           />
           <div className="grid gap-6 md:grid-cols-3">
@@ -420,18 +522,20 @@ export default function CityAirportServiceClient({ city, citySlug, cityTours = [
             center
             eyebrow="Traveller Help"
             title={`${city.name} airport`}
-            highlight="FAQs"
+            highlight="questions?"
             className="mb-10"
           />
           <div className="grid items-start gap-3 md:grid-cols-2 md:gap-4">
             {faqs.map((faq, i) => (
               <div key={i} className="overflow-hidden rounded-2xl border border-amber-200/60 bg-white shadow-[0_16px_50px_-34px_rgba(15,23,42,0.3)]">
+                <h3 className="m-0">
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i}
                   className="flex w-full items-center justify-between gap-4 p-5 text-left">
                   <span className="font-semibold text-slate-900">{faq.question}</span>
                   <ChevronDown className={`h-5 w-5 shrink-0 text-amber-500 transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
                 </button>
-                {openFaq === i && <div className="border-t border-amber-100 px-5 pb-5 pt-4 leading-relaxed text-slate-600">{faq.answer}</div>}
+                </h3>
+                <div hidden={openFaq !== i} className="faq-answer border-t border-amber-100 px-5 pb-5 pt-4 leading-relaxed text-slate-600">{faq.answer}</div>
               </div>
             ))}
           </div>

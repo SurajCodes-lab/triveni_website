@@ -1,10 +1,12 @@
 // src/app/sitemap.js - Complete sitemap with all routes
 
 import { execSync } from "child_process";
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 import { cities } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes } from "@/utilis/cityRoutesData";
 import { getAllTourSlugs } from "@/utilis/religiousTourData";
 import { tempoRoutes, tempoCities } from "@/utilis/tempoTravellerData";
+import { getNcrSlugsForVehicle } from "@/utilis/ncrLocalityData";
 import { chardhamRoutes } from "@/utilis/chardhamData";
 import { getAllSlugs as getAllChardhamYatraSlugs } from "@/utilis/chardhamYatraData";
 import { blogPosts } from "@/utilis/blog";
@@ -20,6 +22,21 @@ import { getAllDistanceRouteSlugs } from "@/utilis/distanceData";
 import { getAllLocalTaxiSlugs } from "@/utilis/localTaxiCityData";
 import { getAllOutstationCitySlugs } from "@/utilis/outstationCityData";
 import { getAllHowToReachSlugs } from "@/utilis/howToReachRouteData";
+// Used to keep 301 sources out of the sitemap — see the filter before the return.
+import { bookingCanonicalRedirects } from "@/lib/seo/booking-canonical-redirects.mjs";
+import { oneWayDuplicateRedirects } from "@/lib/seo/one-way-duplicate-redirects.mjs";
+import { brokenLinkRedirects } from "@/lib/seo/broken-link-redirects.mjs";
+// De-indexed templated families (Week 47) — see the filter before the return.
+import { isNoindexPath } from "@/lib/seo/noindex-families.mjs";
+// Week 47: the sitemap used to submit URLs synthesised by convention
+// (/how-to-reach-<city>, /places-to-visit-near-<city>) that were never built.
+// Every entry is now checked against the build manifest before submission.
+import { routeExists } from "@/lib/seo/route-exists";
+import knownRoutes from "@/generated/known-routes.json";
+// Week 48: the twenty-three new guide URLs (two more guides were rebuilt onto
+// existing /best-time-to-visit URLs and are already listed by that family).
+import { WEEK48_NEW_PATHS } from "@/utilis/guides/week48";
+import { WEEK49_NEW_PATHS } from "@/utilis/guides/week49";
 import { getAllHowToReachCities } from "@/utilis/howToReachData";
 import { getAllBestTimeSlugs } from "@/utilis/bestTimeToVisitData";
 import { getAllRoundTripSlugs } from "@/utilis/roundTripData";
@@ -665,6 +682,18 @@ export default function sitemap() {
     // Phase 10b: Jewar Airport Terminal Pages
     { url: `${baseUrl}/airport-service/jewar/jewar-terminal-1-international`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
 
+    // Week 47: Jaipur / Agra / Chandigarh / Hindon Airport Terminal Pages
+    { url: `${baseUrl}/airport-service/jaipur/jai-terminal-1-international`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/airport-service/jaipur/jai-terminal-2-domestic`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/airport-service/agra/kheria-civil-terminal-domestic`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/airport-service/chandigarh/ixc-integrated-terminal`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/airport-service/hindon/hindon-civil-terminal-domestic`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${baseUrl}/delhi-ncr-airports-guide`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.8 },
+
+    // Week 48: twenty-three search-led guides (near-me and weekend, the season, road and route)
+    ...WEEK48_NEW_PATHS.map((p) => ({ url: `${baseUrl}${p}`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.85 })),
+    ...WEEK49_NEW_PATHS.map((p) => ({ url: `${baseUrl}${p}`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.85 })),
+
     // Additional Tour Packages (Phase 14 - new)
     { url: `${baseUrl}/tour-package/golden-triangle-tour`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/tour-package/delhi-agra-weekend-tour`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
@@ -793,6 +822,33 @@ export default function sitemap() {
         });
       });
     });
+  });
+
+  // NCR locality + airport landing pages.
+  // Hyperlocal pickup-area pages (Noida, Ghaziabad, Indirapuram, Dwarka,
+  // Karol Bagh, South Delhi, Delhi Airport, …). These live under the same
+  // /{vehicle}/{slug} pattern as the city pages but are a separate tier — they
+  // carry no outstation route matrix, and only Noida, Gurgaon and the airport
+  // are published for Force Urbania. Priority sits just above the route pages
+  // because these are high commercial-intent landing pages.
+  ['tempo-traveller', 'force-urbania'].forEach((vSlug) => {
+    getNcrSlugsForVehicle(vSlug).forEach((slug) => {
+      urls.push({
+        url: `${baseUrl}/${vSlug}/${slug}`,
+        lastModified: lastContentUpdate,
+        changeFrequency: 'weekly',
+        priority: 0.85,
+      });
+    });
+  });
+
+  // Group airport transfer — the capacity-led counterpart to the two
+  // single-fleet airport pages above.
+  urls.push({
+    url: `${baseUrl}/group-airport-transfer-delhi`,
+    lastModified: lastContentUpdate,
+    changeFrequency: 'weekly',
+    priority: 0.85,
   });
 
   // Add Bus Routes Main Page - CATEGORY PAGE
@@ -1548,5 +1604,69 @@ export default function sitemap() {
   for (const u of urls) {
     if (!seen.has(u.url)) { seen.add(u.url); deduped.push(u); }
   }
-  return deduped;
+
+  // Drop any URL that 301-redirects somewhere else.
+  //
+  // The Week 43 booking-canonical work added 22 redirects to fold duplicate
+  // booking URLs onto one page per corridor, but the sitemap was still built from
+  // the raw slug lists — so all 22 redirect sources were still being submitted to
+  // Google. A sitemap is a statement about which URLs are canonical, and listing a
+  // URL that immediately redirects contradicts that: it spends crawl budget on a
+  // hop and muddies the very consolidation the redirects exist to achieve.
+  //
+  // Derived from the redirect map rather than hardcoded, so it stays correct as
+  // that map grows. Note the map runs in both directions — for some corridors the
+  // root page is canonical, for others the /one-way-cab/ page is — so this cannot
+  // be done by excluding a URL prefix.
+  // Week 49: every redirect list, not just the booking one. The live sitemap was
+  // still submitting 86 addresses that answer with a redirect — the one-way
+  // duplicate format of a corridor whose canonical page is the root address —
+  // and each of those is a wasted crawl and a "page with redirect" line in the
+  // coverage report.
+  const redirectSources = new Set([
+    ...bookingCanonicalRedirects,
+    ...(oneWayDuplicateRedirects || []),
+    ...(brokenLinkRedirects || []),
+  ].map((r) => `${baseUrl}${r.source}`));
+  const canonical = deduped.filter((u) => !redirectSources.has(u.url));
+
+  // Drop the de-indexed templated families (Week 47). A sitemap entry is a
+  // request to index; submitting a URL whose own <meta name="robots"> says
+  // noindex is the same contradiction as submitting a redirect source. Hubs are
+  // kept — the prefixes match children only.
+  const indexable = canonical.filter((u) => !isNoindexPath(u.url));
+
+  // Week 47: only URLs the build actually produced. A sitemap entry for a page
+  // that does not exist is a request to index a 404 — Search Console had 2,519
+  // of them. The manifest (src/generated/known-routes.json) is written by the
+  // postbuild step, so it describes the previous build; when a NEW page family
+  // is added, build twice so the second build's sitemap picks it up.
+  const built = indexable.filter((u) => routeExists(u.url));
+
+  // Week 48 (strategy action 9): the sweep. The lists above are maintained by
+  // hand, family by family, and the build manifest showed 233 built pages that
+  // none of them named (the vehicle-hire block emitted nothing at all). Rather
+  // than chase each list, every route the last build produced that is not
+  // already listed is appended here at a modest priority, under the same three
+  // guards as everything above it: not a redirect source, not a noindex family,
+  // and actually built. Files (anything with an extension), the API and the
+  // Next internals are skipped. The manifest describes the previous build, so a
+  // brand-new family still needs two builds to appear, as before.
+  const listed = new Set(built.map((u) => u.url));
+  const swept = [];
+  for (const path of knownRoutes) {
+    if (typeof path !== 'string' || !path.startsWith('/')) continue;
+    if (/\.[a-z0-9]{2,5}$/i.test(path)) continue;
+    if (path.startsWith('/_next') || path.startsWith('/api')) continue;
+    const url = `${baseUrl}${path}`;
+    if (listed.has(url) || redirectSources.has(url) || isNoindexPath(url)) continue;
+    listed.add(url);
+    swept.push({ url, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.6 });
+  }
+  const complete = [...built, ...swept];
+
+  return complete.map(entry => {
+    const updatedOn=getContentUpdatedOn(entry.url);
+    return updatedOn ? {...entry,lastModified:new Date(updatedOn)} : entry;
+  });
 }

@@ -9,7 +9,9 @@ import {
   Headphones, BadgeCheck, Sparkles, MapPinned, Milestone, Luggage, Zap
 } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
-import { getNearbyStations } from '@/utilis/railwayStationData';
+// getNearbyStations is NOT imported here. It lives in railwayStationData.js
+// (121 KB) and this is a client component, so the whole station dataset went
+// to the browser to list a handful of neighbours. They arrive as a prop.
 import { getCityImage } from '@/utilis/imageUtils';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import StickyPriceBar from '@/components/shared/StickyPriceBar';
@@ -18,6 +20,7 @@ import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import SectionDivider from '@/components/shared/SectionDivider';
+import { groupDigits } from '@/utilis/pricing';
 
 // ─── Ultra-Premium v2 vocabulary ────────────────────────────────────────────
 const FOIL =
@@ -54,9 +57,9 @@ function SerifHeading({ eyebrow, icon: EyebrowIcon, title, highlight, after, sub
   );
 }
 
-export default function RailwayStationClient({ station, slug }) {
+export default function RailwayStationClient({ station, slug, nearbyStations = [] }) {
   const [openFaq, setOpenFaq] = useState(null);
-  const nearbyStations = getNearbyStations(slug);
+  // Resolved on the server. See the note on the import above.
   const lowestFare = station.destinations.reduce((min, d) => Math.min(min, d.sedanFare), Infinity);
   const heroImage = getCityImage(station.city);
 
@@ -64,11 +67,11 @@ export default function RailwayStationClient({ station, slug }) {
     <article className="min-h-screen bg-slate-950" itemScope itemType="https://schema.org/TaxiService">
       <StickyPriceBar
         title={`${station.name} Taxi Service`}
-        price={`₹${lowestFare}`}
+        price={`₹${groupDigits(lowestFare)}`}
         whatsappMessage={`Hi, I need a taxi from ${station.name}`}
       />
       <SetStickyCta
-        price={`₹${lowestFare}`}
+        price={`₹${groupDigits(lowestFare)}`}
         label={`${station.name} Taxi`}
         whatsappText={`Hi, I need a taxi from ${station.name} (${station.stationCode}). Please share rates and availability.`}
       />
@@ -88,7 +91,7 @@ export default function RailwayStationClient({ station, slug }) {
         <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-slate-950/80 via-slate-950/25 to-transparent lg:w-3/4" />
         <div className="absolute inset-x-0 top-0 z-20 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-28 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-16 sm:pt-28 sm:px-6 lg:px-8">
           <div className="grid items-end gap-10 lg:grid-cols-5 lg:gap-12">
             {/* Left: Content (3 cols) */}
             <div className="lg:col-span-3">
@@ -104,7 +107,7 @@ export default function RailwayStationClient({ station, slug }) {
               </div>
 
               <h1 className="font-display-serif text-balance text-4xl font-black leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-7xl">
-                {station.city}
+                {station.city}{' '}
                 <span className={`block ${FOIL}`}>Station Taxi</span>
               </h1>
 
@@ -428,7 +431,7 @@ export default function RailwayStationClient({ station, slug }) {
             <div className="key-info mb-6 grid grid-cols-2 gap-4 md:grid-cols-4">
               <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
                 <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Starting Fare</p>
-                <p className="font-display-serif text-xl font-black text-amber-600">₹{lowestFare}</p>
+                <p className="font-display-serif text-xl font-black text-amber-600">₹{groupDigits(lowestFare)}</p>
               </div>
               <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-center">
                 <p className="mb-1 text-xs font-semibold uppercase text-slate-500">Destinations</p>
@@ -444,7 +447,7 @@ export default function RailwayStationClient({ station, slug }) {
               </div>
             </div>
             <p className="faq-answer text-base leading-relaxed text-slate-700 md:text-lg">
-              Taxi from <strong className="text-slate-900">{station.name} ({station.stationCode})</strong> starts at just <strong className="text-amber-600">₹{lowestFare}</strong> for AC sedan.
+              Taxi from <strong className="text-slate-900">{station.name} ({station.stationCode})</strong> starts at just <strong className="text-amber-600">₹{groupDigits(lowestFare)}</strong> for AC sedan.
               Our drivers meet you at the <strong className="text-slate-900">platform exit gate</strong> with a name placard — no waiting, no searching.
               Fixed fares to {station.destinations.slice(0, 3).map(d => d.name).join(', ')} and {station.destinations.length - 3}+ more destinations.
               AC sedan and SUV options with verified professional drivers and GPS tracking.

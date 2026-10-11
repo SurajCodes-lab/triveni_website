@@ -1,5 +1,6 @@
 "use client";
 
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import { useState } from "react";
 import Link from "next/link";
 import {
@@ -75,9 +76,7 @@ export default function VehicleHireClient({ vehicle }) {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-slate-900/90 to-gray-950" />
           {/* Animated orbs */}
-          <div className="absolute top-10 left-[10%] w-80 h-80 bg-amber-600/15 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-10 right-[10%] w-96 h-96 bg-slate-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-amber-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-[10%] w-96 h-96 bg-slate-400/10 rounded-full blur-3xl" style={{ animationDelay: "1s" }} />
           {/* Grid pattern overlay */}
           <div
             className="absolute inset-0 opacity-[0.03]"
@@ -139,6 +138,7 @@ export default function VehicleHireClient({ vehicle }) {
               {vehicle.name}
             </span>
           </h1>
+              <FamilyFacts family="vehicle" data={vehicle} />
           <p className="text-xl md:text-2xl text-center text-gray-500 font-light tracking-wide mb-2">on Rent</p>
           <p className="text-lg md:text-xl text-slate-400 text-center max-w-2xl mx-auto mb-12 font-medium italic">
             &ldquo;{vehicle.tagline}&rdquo;
@@ -176,7 +176,7 @@ export default function VehicleHireClient({ vehicle }) {
               onClick={() => trackPhoneCall('vehicle_hire')} href="tel:+917668570551"
               className="group inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-xl shadow-amber-600/25 hover:shadow-amber-500/40 hover:scale-105"
             >
-              <Phone className="w-5 h-5 group-hover:animate-pulse" />
+              <Phone className="w-5 h-5 group-hover:" />
               Call: +91 76685 70551
             </a>
             <a
@@ -191,6 +191,7 @@ export default function VehicleHireClient({ vehicle }) {
           </div>
         </div>
       </section>
+      <FamilyFacts family="vehicle" data={vehicle} details />
 
       <SocialProofStrip theme="dark" />
 
@@ -331,7 +332,7 @@ export default function VehicleHireClient({ vehicle }) {
                   className="group relative bg-white/[0.04] backdrop-blur-2xl rounded-2xl border border-white/10 p-5 flex items-center gap-4 hover:bg-white/[0.08] hover:border-amber-400/30 hover:shadow-lg hover:shadow-amber-500/10 transition-all duration-500"
                 >
                   {/* Dashboard indicator dot */}
-                  <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-amber-500/40 group-hover:bg-amber-400 group-hover:animate-pulse transition-all" />
+                  <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-amber-500/40 group-hover:bg-amber-400 group-hover:transition-all" />
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/15 to-slate-600/10 border border-amber-500/15 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <IconComp className="w-5 h-5 text-amber-400" />
                   </div>
@@ -631,8 +632,7 @@ export default function VehicleHireClient({ vehicle }) {
       <section className="py-24 md:py-32 px-4 relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0 bg-gradient-to-t from-amber-950/30 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-slate-400/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-slate-400/8 rounded-full blur-3xl" style={{ animationDelay: "1.5s" }} />
 
         <div className="relative max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium mb-6">
@@ -650,7 +650,7 @@ export default function VehicleHireClient({ vehicle }) {
               onClick={() => trackPhoneCall('vehicle_hire')} href="tel:+917668570551"
               className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl shadow-amber-600/30 hover:shadow-amber-500/50 hover:scale-105"
             >
-              <Phone className="w-6 h-6 group-hover:animate-pulse" />
+              <Phone className="w-6 h-6 group-hover:" />
               Call: +91 76685 70551
             </a>
             <a
@@ -667,7 +667,7 @@ export default function VehicleHireClient({ vehicle }) {
       </section>
 
       {/* Cross-Service Links */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl font-bold text-white mb-8 text-center">Explore More Services</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

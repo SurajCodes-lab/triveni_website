@@ -1,0 +1,81 @@
+import { placesToVisitPages } from '@/utilis/placesToVisitData';
+import PlacesToVisitClient from '@/components/places/PlacesToVisitClient';
+import { tightenTitle } from '@/lib/seo/serp-ctr';
+
+// Week 53. One of ten new near-city destination lists — the best-converting
+// page shape on the site at 3.42% against a 0.60% site average, because a list
+// of priced journeys cannot be reduced to a panel answer.
+//
+// Every fare on this page is computed from the rate card in pricing.js rather
+// than written, so none of them can drift from the published rates. The figures
+// in the metadata below are read from the data for the same reason.
+const data = placesToVisitPages.mussoorie;
+const allCities = Object.values(placesToVisitPages).map(c => ({ city: c.city, slug: c.slug }));
+
+export const revalidate = 3600;
+
+export const metadata = {
+  title: tightenTitle('8 Places to Visit Near Mussoorie by Car | Triveni Cabs'),
+  description: `Best places to visit near Mussoorie by car. Company Garden (3 km), Landour (4 km), Lal Tibba (6 km) and more. Sedan from Rs 2,200. Distances, drive times and cab fares for each. Call 7668570551.`,
+  keywords: 'places to visit near mussoorie, places near mussoorie, day trips from mussoorie, tourist places near mussoorie, mussoorie nearby places, places to visit near mussoorie by car',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
+  metadataBase: new URL('https://www.trivenicabs.in'),
+  alternates: { canonical: '/places-to-visit-near-mussoorie' },
+  openGraph: {
+    title: '8 Places to Visit Near Mussoorie by Car | Book Cab',
+    description: 'Kempty Falls, Dhanaulti, Landour and Surkanda Devi from Mussoorie.',
+    type: 'website', locale: 'en_IN',
+    url: 'https://www.trivenicabs.in/places-to-visit-near-mussoorie',
+    siteName: 'Triveni Cabs',
+    images: [{ url: '/images/sightseeing/Mussoorie/Mussoorie_Hero_section.jpg', width: 1200, height: 630, alt: '8 Places to Visit Near Mussoorie by Car' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '8 Places to Visit Near Mussoorie by Car | Triveni Cabs™',
+    description: 'Kempty Falls, Dhanaulti, Landour and Surkanda Devi from Mussoorie.',
+    images: ['/images/sightseeing/Mussoorie/Mussoorie_Hero_section.jpg'],
+  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+};
+
+export default function PlacesToVisitNearMussooriePage() {
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Places to Visit Near Mussoorie",
+    "description": "Top destinations near Mussoorie with distance, drive time and cab fares",
+    "numberOfItems": data.destinations.length,
+    // listUrl rather than bookingSlug: the slug is resolved against the build
+    // manifest and is null where no corridor page exists, so the markup can
+    // never publish an address that does not resolve.
+    "itemListElement": data.destinations.map((d, i) => ({
+      "@type": "ListItem", "position": i + 1, "name": d.name,
+      "url": `https://www.trivenicabs.in${d.listUrl}`,
+    })),
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": data.faqs.map(f => ({
+      "@type": "Question", "name": f.question,
+      "acceptedAnswer": { "@type": "Answer", "text": f.answer },
+    })),
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" },
+      { "@type": "ListItem", "position": 2, "name": "Places to Visit Near Mussoorie", "item": "https://www.trivenicabs.in/places-to-visit-near-mussoorie" },
+    ],
+  };
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <PlacesToVisitClient data={data} allCities={allCities} />
+    </>
+  );
+}

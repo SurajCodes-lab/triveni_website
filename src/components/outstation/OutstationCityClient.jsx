@@ -1,5 +1,6 @@
 'use client';
 
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,14 +16,19 @@ import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import FleetShowcase from '@/components/shared/FleetShowcase';
-import { getAllOneWayRouteSlugs } from '@/utilis/oneWayCabData';
+import { canonicalClientHref } from '@/lib/seo/client-route-exists';
+// getAllOneWayRouteSlugs is NOT imported here. It lives in oneWayCabData.js
+// (560 KB) and was only used to build a Set for membership checks — the whole
+// module shipped to the browser for that. The slugs arrive as a prop.
 
 // Slugs that have a dedicated bookable /one-way-cab/{slug} page (dynamicParams=false)
-const ONE_WAY_SLUGS = new Set(getAllOneWayRouteSlugs());
+
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" /></svg>;
 
-export default function OutstationCityClient({ cityData, relatedCities }) {
+export default function OutstationCityClient({ cityData, relatedCities, oneWaySlugs = [] }) {
+  // Rebuilt from the prop rather than from a 560 KB import.
+  const ONE_WAY_SLUGS = new Set(oneWaySlugs);
   const [tripType, setTripType] = useState('oneWay');
   const lowestFare = Math.min(...cityData.popularRoutes.map((r) => r.fare));
   const heroImage = getCityImage(cityData.city);
@@ -57,6 +63,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
               <h1 className="speakable-headline text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
                 {cityData.city}
               </h1>
+              <FamilyFacts family="outstation" data={cityData} />
               <p className="speakable-lead text-white/55 mt-4 text-sm sm:text-base max-w-xl leading-relaxed">
                 Book an outstation cab from <strong className="text-white">{cityData.city}</strong> starting at <span className="text-[#FACF2D] font-bold">{'\u20B9'}{lowestFare.toLocaleString('en-IN')}</span>. One-way and round-trip taxis to {cityData.popularRoutes.length}0+ destinations &mdash; Sedan {'\u20B9'}11/km, SUV {'\u20B9'}15/km, Tempo Traveller {'\u20B9'}24/km. Verified drivers, FASTag-equipped AC vehicles, and 24/7 support. Call 7668570551 for an instant quote.
               </p>
@@ -100,6 +107,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
           </div>
         </div>
       </section>
+      <FamilyFacts family="outstation" data={cityData} details />
 
       {/* ━━━ DARK STRIP: Departure board ━━━ */}
       <section className="bg-slate-900 py-6 sm:py-8 px-4 sm:px-6">
@@ -107,7 +115,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
           <p className="text-[10px] text-white/30 uppercase tracking-widest font-bold mb-4 text-center">Top Departures from {cityData.city}</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {cityData.popularRoutes.slice(0, 6).map((route, i) => (
-              <Link key={i} href={ONE_WAY_SLUGS.has(route.slug) ? `/one-way-cab/${route.slug}` : `/distance/${route.slug}`} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-3 hover:border-[#FACF2D]/30 transition-all text-center">
+              <Link key={i} href={canonicalClientHref(ONE_WAY_SLUGS.has(route.slug) ? `/one-way-cab/${route.slug}` : `/distance/${route.slug}`)} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-3 hover:border-[#FACF2D]/30 transition-all text-center">
                 <p className="text-xs font-bold text-white truncate group-hover:text-[#FACF2D] transition-colors">{route.destination}</p>
                 <p className="text-[10px] text-white/30 mt-1">{route.distance} km &middot; {route.duration}</p>
                 <p className="text-sm font-black text-[#FACF2D] mt-1">{'\u20B9'}{route.fare.toLocaleString('en-IN')}</p>
@@ -136,7 +144,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
               return (
               <ScrollReveal key={i} delay={i * 50}>
                 <div className="group bg-white rounded-2xl border border-slate-100 p-5 hover:border-blue-200 hover:shadow-lg transition-all duration-300 flex flex-col h-full">
-                  <Link href={bookingHref} className="block">
+                  <Link href={canonicalClientHref(bookingHref)} className="block">
                     <div className="flex items-start justify-between mb-3">
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 mb-1 text-sm">
@@ -157,7 +165,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
                     </div>
                   </Link>
                   <div className="mt-auto pt-3 border-t border-slate-100 flex items-center gap-2">
-                    <Link href={bookingHref} className="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold py-2.5 rounded-xl transition-all">
+                    <Link href={canonicalClientHref(bookingHref)} className="flex-1 inline-flex items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold py-2.5 rounded-xl transition-all">
                       {hasBooking ? 'Book Cab' : 'View Route'} <ChevronRight className="w-4 h-4" />
                     </Link>
                     <a onClick={() => trackWhatsAppClick('outstation_route_card')} href={routeWhatsapp} target="_blank" rel="noopener noreferrer" aria-label={`WhatsApp quote for ${cityData.city} to ${route.destination}`} className="inline-flex items-center justify-center w-11 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white transition-all">
@@ -199,7 +207,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
                   <div className="w-11 h-11 rounded-xl bg-blue-500/20 flex items-center justify-center"><ArrowRight className="w-5 h-5 text-blue-400" /></div>
                   <div><h3 className="text-lg font-black text-white">One-Way Drop</h3><p className="text-sm text-white/40">Pay single direction only</p></div>
                 </div>
-                {[{ l: 'Min Billing', v: '300 km' }, { l: 'Sedan Rate', v: '\u20B911/km' }, { l: 'SUV Rate', v: '\u20B915/km' }, { l: 'Toll/Tax', v: 'Extra (one side)' }, { l: 'Best For', v: 'Single direction' }, { l: 'Savings', v: 'Up to 50%' }].map((item, i) => (
+                {[{ l: 'Min Billing', v: '300 km' }, { l: 'Sedan Rate', v: '\u20B911/km' }, { l: 'SUV Rate', v: '\u20B915/km' }, { l: 'Innova Crysta', v: '₹18/km' }, { l: 'Toll/Tax', v: 'Extra (one side)' }, { l: 'Best For', v: 'Single direction' }, { l: 'Savings', v: 'Up to 50%' }].map((item, i) => (
                   <div key={i} className="flex justify-between py-2 border-b border-white/10 last:border-0"><span className="text-sm text-white/40">{item.l}</span><span className="text-sm font-semibold text-white">{item.v}</span></div>
                 ))}
               </div>
@@ -210,7 +218,7 @@ export default function OutstationCityClient({ cityData, relatedCities }) {
                   <div className="w-11 h-11 rounded-xl bg-indigo-500/20 flex items-center justify-center"><Route className="w-5 h-5 text-indigo-400" /></div>
                   <div><h3 className="text-lg font-black text-white">Round Trip</h3><p className="text-sm text-white/40">{cityData.roundTripDiscount}</p></div>
                 </div>
-                {[{ l: 'Min Billing', v: '250 km/day' }, { l: 'Sedan Rate', v: '\u20B911/km' }, { l: 'SUV Rate', v: '\u20B915/km' }, { l: 'Toll/Tax', v: 'Extra (both sides)' }, { l: 'Best For', v: 'Multi-day trips' }, { l: 'Driver Allow.', v: '\u20B9300/night' }].map((item, i) => (
+                {[{ l: 'Min Billing', v: '300 km/day' }, { l: 'Sedan Rate', v: '\u20B911/km' }, { l: 'SUV Rate', v: '\u20B915/km' }, { l: 'Innova Crysta', v: '₹18/km' }, { l: 'Toll/Tax', v: 'Extra (both sides)' }, { l: 'Best For', v: 'Multi-day trips' }, { l: 'Driver Allow.', v: '\u20B9300/night' }].map((item, i) => (
                   <div key={i} className="flex justify-between py-2 border-b border-white/10 last:border-0"><span className="text-sm text-white/40">{item.l}</span><span className="text-sm font-semibold text-white">{item.v}</span></div>
                 ))}
               </div>

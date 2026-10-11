@@ -2,7 +2,7 @@ export const tripCostData = [
   {
     slug: "agra-trip-cost-from-delhi",
     title: "Agra Trip Cost from Delhi — Complete Budget Breakdown 2026",
-    metaDescription: "Plan your Agra trip from Delhi with our complete cost guide. Budget ₹3,000-15,000 for cab, hotel, food, entry fees. Book Triveni Cabs sedan at ₹11/km.",
+    metaDescription: "Plan your Agra trip from Delhi with our complete cost guide. Budget ₹3,000-15,000 for cab, hotel, food, entry fees. Book Triveni Cabs™ sedan at ₹11/km.",
     keywords: "agra trip cost from delhi, delhi to agra trip budget, agra tour expenses, taj mahal trip cost, agra travel cost by car",
     origin: "Delhi",
     destination: "Agra",
@@ -33,7 +33,7 @@ export const tripCostData = [
     ],
     description: `Agra is just 233 km from Delhi via the Yamuna Expressway — a smooth 3 to 3.5-hour drive that makes it one of the most popular day trips from the capital. Whether you are planning a quick Taj Mahal visit or a relaxed 2-day getaway, understanding the complete trip cost helps you budget smartly and avoid surprises.
 
-The biggest expense on a Delhi to Agra trip is usually transportation. While trains and buses are cheaper, they lack the flexibility and comfort of a private cab. With Triveni Cabs, you get an AC sedan at just ₹11/km with an experienced driver who knows every shortcut and parking spot in Agra. For families or groups of 4-6, our SUVs at ₹15/km offer even better per-person value.
+The biggest expense on a Delhi to Agra trip is usually transportation. While trains and buses are cheaper, they lack the flexibility and comfort of a private cab. With Triveni Cabs™, you get an AC sedan at just ₹11/km with an experienced driver who knows every shortcut and parking spot in Agra. For families or groups of 4-6, our SUVs at ₹15/km offer even better per-person value.
 
 Beyond cab fare, your Agra trip budget should account for entry fees (₹50-₹1,100 for Taj Mahal depending on nationality), meals at local restaurants, and optional hotel stays if you are extending to 2 days. The good news is Agra offers excellent value at every budget level — from ₹800 budget lodges to ₹15,000 luxury hotels with Taj views.
 
@@ -46,13 +46,13 @@ For a typical same-day trip, a couple can comfortably visit the Taj Mahal, Agra 
       { q: "Is it cheaper to take a train or cab to Agra?", a: "Trains are cheaper (₹200-700) but less convenient. A cab offers door-to-door service, flexible timing, and the ability to visit multiple spots. When you split cab fare among 3-4 people, the per-person cost becomes very comparable to train travel." },
       { q: "How many days are enough for an Agra trip?", a: "One day is enough to see Taj Mahal, Agra Fort, and Baby Taj. For a relaxed trip including Fatehpur Sikri and Mehtab Bagh, plan 2 days. Budget travelers can do a satisfying same-day trip from Delhi." },
       { q: "What is the best time to visit Agra to save money?", a: "Visit during weekdays (Monday-Thursday) from July to September for the lowest hotel and cab rates. Avoid peak season (October-March) and weekends when prices surge 30-50%." },
-      { q: "Can I book a one-way cab from Delhi to Agra?", a: "Yes, Triveni Cabs offers one-way Delhi to Agra cabs at ₹2,530 (sedan) and ₹3,450 (SUV). One-way is ideal if you plan to return by train or continue to Jaipur." }
+      { q: "Can I book a one-way cab from Delhi to Agra?", a: "Yes, Triveni Cabs™ offers one-way Delhi to Agra cabs at ₹2,530 (sedan) and ₹3,450 (SUV). One-way is ideal if you plan to return by train or continue to Jaipur." }
     ]
   },
   {
     slug: "jaipur-trip-cost-from-delhi",
     title: "Jaipur Trip Cost from Delhi — Complete Budget Guide 2026",
-    metaDescription: "Complete Jaipur trip cost breakdown from Delhi. Budget ₹5,000-20,000 for 2-3 days. Cab at ₹11/km, hotels from ₹1,000. Book Triveni Cabs. Call 7668570551.",
+    metaDescription: "Complete Jaipur trip cost breakdown from Delhi. Budget ₹5,000-20,000 for 2-3 days. Cab at ₹11/km, hotels from ₹1,000. Book Triveni Cabs™. Call 7668570551.",
     keywords: "jaipur trip cost from delhi, delhi to jaipur trip budget, jaipur tour expenses, jaipur travel cost by car, pink city trip cost",
     origin: "Delhi",
     destination: "Jaipur",
@@ -60,7 +60,7 @@ For a typical same-day trip, a couple can comfortably visit the Taj Mahal, Agra 
     days: "2-3",
     totalBudget: { budget: "₹5,000-8,000", mid: "₹8,000-15,000", luxury: "₹15,000-30,000" },
     cabCost: {
-      sedan: { oneWay: "₹3,080", roundTrip: "₹6,160", perKm: "₹11" },
+      sedan: { oneWay: "₹3,300", roundTrip: "₹6,600", perKm: "₹11" },
       suv: { oneWay: "₹4,200", roundTrip: "₹8,400", perKm: "₹15" }
     },
     hotelCost: { budget: "₹1,000-2,000/night", mid: "₹2,500-5,000/night", luxury: "₹8,000-25,000/night" },
@@ -84,14 +84,14 @@ For a typical same-day trip, a couple can comfortably visit the Taj Mahal, Agra 
     ],
     description: `Jaipur, the Pink City, is 280 km from Delhi — a comfortable 4.5 to 5-hour drive on the excellent NH-48 highway. As one of the Golden Triangle cities, Jaipur offers an incredible mix of royal palaces, vibrant bazaars, and Rajasthani culture that makes it a must-visit destination from Delhi.
 
-A 2-3 day Jaipur trip from Delhi can cost anywhere from ₹5,000 for budget backpackers to ₹30,000 for luxury travelers. The key variables are your choice of hotel, dining preferences, and how many attractions you plan to visit. Transportation via Triveni Cabs costs a predictable ₹11/km for sedans — with no hidden surge pricing.
+A 2-3 day Jaipur trip from Delhi can cost anywhere from ₹5,000 for budget backpackers to ₹30,000 for luxury travelers. The key variables are your choice of hotel, dining preferences, and how many attractions you plan to visit. Transportation via Triveni Cabs™ costs a predictable ₹11/km for sedans — with no hidden surge pricing.
 
 Jaipur is a shopper's paradise, so budget extra for handicrafts, gemstones, block-printed textiles, and blue pottery from Johari Bazaar and Bapu Bazaar. Entry fees for forts and palaces are very reasonable for Indian nationals — the composite ticket at ₹300 covers four major attractions and saves you significant money.
 
 For the best value, plan your Jaipur trip during the off-season months of July to September when hotel rates drop by 40-50%. A mid-range couple's trip for 2 nights with cab, hotel, meals, sightseeing, and shopping typically costs ₹12,000-15,000 — excellent value for one of India's most iconic cities.`,
     faqs: [
       { q: "What is the total cost of a Jaipur trip from Delhi?", a: "A 2-3 day Jaipur trip from Delhi costs ₹5,000-8,000 (budget), ₹8,000-15,000 (mid-range), or ₹15,000-30,000 (luxury) per person. This includes cab fare, hotel, meals, entry fees, and shopping." },
-      { q: "How much does a Delhi to Jaipur cab cost?", a: "A sedan cab costs ₹3,080 one-way (₹11/km for 280 km) or ₹6,160 round trip. An SUV costs ₹4,200 one-way or ₹8,400 round trip at ₹15/km. Toll charges of ₹800 are additional." },
+      { q: "How much does a Delhi to Jaipur cab cost?", a: "A sedan cab costs ₹3,300 one-way (₹11/km for 280 km) or ₹6,600 round trip. An SUV costs ₹4,200 one-way or ₹8,400 round trip at ₹15/km. Toll charges of ₹800 are additional." },
       { q: "How many days are needed for Jaipur?", a: "2 days is the minimum to cover Amber Fort, City Palace, Hawa Mahal, Jantar Mantar, and Nahargarh Fort. 3 days allows for Jal Mahal, Albert Hall Museum, shopping, and a relaxed pace." },
       { q: "What is the best time to visit Jaipur on a budget?", a: "July to September (monsoon season) offers the lowest hotel and travel rates. Weekday visits also help save 20-30% on accommodation. Avoid December-February peak season." },
       { q: "Is Jaipur expensive compared to Agra?", a: "Jaipur requires more time (2-3 days vs 1 day for Agra), so the overall trip cost is higher. But daily costs are similar — Jaipur hotels, food, and entry fees are very affordable by tourist city standards." },
@@ -132,7 +132,7 @@ For the best value, plan your Jaipur trip during the off-season months of July t
     ],
     description: `Shimla, the Queen of Hills, sits 350 km from Delhi — a scenic 7 to 8-hour drive through the Shivalik foothills. This colonial-era hill station offers cool weather, stunning mountain views, and a charming old-world atmosphere that makes it one of North India's most beloved getaways.
 
-A 3-4 day Shimla trip from Delhi costs between ₹6,000 for strict budget travelers to ₹35,000 for a luxury experience. The biggest expenses are the cab fare (given the mountain distance) and hotel accommodation. With Triveni Cabs, you get an experienced hill-driving chauffeur at ₹11/km in a sedan — crucial for the winding Himalayan roads.
+A 3-4 day Shimla trip from Delhi costs between ₹6,000 for strict budget travelers to ₹35,000 for a luxury experience. The biggest expenses are the cab fare (given the mountain distance) and hotel accommodation. With Triveni Cabs™, you get an experienced hill-driving chauffeur at ₹11/km in a sedan — crucial for the winding Himalayan roads.
 
 Shimla itself is relatively affordable once you arrive. Most of the major attractions — Mall Road, the Ridge, Christ Church, and Scandal Point — are free to explore on foot. The main expenses come from activities at Kufri (horse riding, skiing in winter) and day trips to Narkanda or Chail.
 
@@ -149,7 +149,7 @@ For best value, plan your trip for September to November when monsoon ends, the 
   {
     slug: "manali-trip-cost-from-delhi",
     title: "Manali Trip Cost from Delhi — Complete Budget Guide 2026",
-    metaDescription: "Complete Manali trip cost from Delhi. Budget ₹8,000-35,000 for 4-5 days. Cab at ₹11/km, hotels from ₹1,000. Book Triveni Cabs. Call 7668570551.",
+    metaDescription: "Complete Manali trip cost from Delhi. Budget ₹8,000-35,000 for 4-5 days. Cab at ₹11/km, hotels from ₹1,000. Book Triveni Cabs™. Call 7668570551.",
     keywords: "manali trip cost from delhi, delhi to manali trip budget, manali tour expenses, manali travel cost by car, manali holiday budget",
     origin: "Delhi",
     destination: "Manali",
@@ -180,7 +180,7 @@ For best value, plan your trip for September to November when monsoon ends, the 
     ],
     description: `Manali is 540 km from Delhi — a scenic 10 to 12-hour drive through the Kullu Valley that is an adventure in itself. This Himalayan hotspot offers everything from snow-capped peaks and adventure sports to riverside cafes and ancient temples, making it North India's most versatile holiday destination.
 
-A 4-5 day Manali trip from Delhi ranges from ₹8,000 for hostel-hopping backpackers to ₹45,000 for luxury resort experiences. The cab fare is a significant portion given the distance, but Triveni Cabs keeps it affordable at ₹11/km for sedans. Our drivers are experienced with the Manali mountain roads and Aut Tunnel route.
+A 4-5 day Manali trip from Delhi ranges from ₹8,000 for hostel-hopping backpackers to ₹45,000 for luxury resort experiences. The cab fare is a significant portion given the distance, but Triveni Cabs™ keeps it affordable at ₹11/km for sedans. Our drivers are experienced with the Manali mountain roads and Aut Tunnel route.
 
 The real spending in Manali happens on adventure activities — paragliding at Solang Valley (₹1,500-3,000), river rafting in Kullu (₹800-1,500), and the Rohtang Pass trip (₹550 permit + cab). Budget travelers can still have an amazing time exploring Old Manali, Vashisht hot springs, and Hadimba Temple — all free.
 
@@ -190,7 +190,7 @@ For the best experience at reasonable cost, plan your trip for March-April (spri
       { q: "How much is a Delhi to Manali cab fare?", a: "A sedan costs ₹5,940 one-way (₹11/km x 540 km) or ₹11,880 round trip. An SUV costs ₹8,100 one-way or ₹16,200 round trip. Toll is approximately ₹600 round trip." },
       { q: "How many days should I spend in Manali?", a: "4-5 days is ideal: 1 day for travel each way, 1 day for Solang Valley/Rohtang, 1 day for Old Manali and temples, 1 day for Kullu and leisure. Adventure lovers may want 6-7 days." },
       { q: "Is Manali expensive in December?", a: "Yes, December-January is peak snowfall season with hotel rates 2-3x higher. Adventure activities like skiing cost more too. But snow experiences are unique — budget ₹20,000-30,000 for a mid-range winter trip." },
-      { q: "Is it safe to drive to Manali by car?", a: "Yes, the NH-3/NH-21 route is well-maintained. Triveni Cabs drivers are experienced with mountain roads. The new Atal Tunnel has reduced travel time by 4-5 hours and eliminated the dangerous Rohtang route." },
+      { q: "Is it safe to drive to Manali by car?", a: "Yes, the NH-3/NH-21 route is well-maintained. Triveni Cabs™ drivers are experienced with mountain roads. The new Atal Tunnel has reduced travel time by 4-5 hours and eliminated the dangerous Rohtang route." },
       { q: "What is the cheapest way to do a Manali trip?", a: "Stay in Old Manali hostels (₹500-800/night), eat at local dhabas, skip Rohtang Pass, and focus on free attractions like Hadimba Temple, Vashisht, and riverside walks. Minimum budget: ₹8,000-10,000 for 4 days." }
     ]
   },
@@ -227,7 +227,7 @@ For the best experience at reasonable cost, plan your trip for March-April (spri
       "Book Gulmarg gondola tickets online to avoid long queues",
       "Use your Triveni cab for the entire Srinagar-Gulmarg-Pahalgam circuit"
     ],
-    description: `Kashmir, often called Paradise on Earth, is 812 km from Delhi — a 2-day drive through Punjab, Jammu, and the dramatic Jawahar Tunnel. While flights to Srinagar are faster, driving with Triveni Cabs lets you experience the incredible journey through changing landscapes and make stops at Patnitop and Katra.
+    description: `Kashmir, often called Paradise on Earth, is 812 km from Delhi — a 2-day drive through Punjab, Jammu, and the dramatic Jawahar Tunnel. While flights to Srinagar are faster, driving with Triveni Cabs™ lets you experience the incredible journey through changing landscapes and make stops at Patnitop and Katra.
 
 A 5-7 day Kashmir trip from Delhi costs ₹15,000-60,000 depending on your travel style. The cab fare is substantial given the distance, but having your own vehicle in Kashmir is invaluable — public transport between Srinagar, Gulmarg, Pahalgam, and Sonmarg is unreliable and time-consuming.
 
@@ -237,10 +237,10 @@ The biggest variable costs are adventure activities: Gulmarg gondola (₹740-920
     faqs: [
       { q: "What is the total cost of a Kashmir trip from Delhi?", a: "A 5-7 day Kashmir trip costs ₹15,000-22,000 (budget), ₹22,000-35,000 (mid-range), or ₹35,000-60,000 (luxury) per person. This covers cab, accommodation, food, activities, and sightseeing." },
       { q: "How much does a Delhi to Kashmir cab cost?", a: "A sedan costs ₹8,930 one-way (₹11/km x 812 km) or ₹17,860 round trip. An SUV costs ₹12,180 one-way or ₹24,360 round trip. Tolls are approximately ₹1,200 round trip." },
-      { q: "Is it safe to drive from Delhi to Kashmir?", a: "Yes, the NH-44 route via Jammu is well-maintained and safe. Triveni Cabs drivers are experienced with the Kashmir route. We recommend breaking the journey with an overnight stop in Jammu or Patnitop." },
+      { q: "Is it safe to drive from Delhi to Kashmir?", a: "Yes, the NH-44 route via Jammu is well-maintained and safe. Triveni Cabs™ drivers are experienced with the Kashmir route. We recommend breaking the journey with an overnight stop in Jammu or Patnitop." },
       { q: "How many days do I need for Kashmir?", a: "5 days minimum: 1 day travel each way + 3 days sightseeing. Ideally 7 days to properly cover Srinagar (2 days), Gulmarg (1 day), Pahalgam (1 day), and Sonmarg (1 day)." },
       { q: "What is the cheapest time to visit Kashmir?", a: "March-April and November are the most affordable months. Peak summer (June-August) and peak winter/snow season (December-February) are the most expensive." },
-      { q: "Should I fly or drive to Kashmir from Delhi?", a: "Flying saves time (1.5 hours) but you still need a local cab in Kashmir. Driving with Triveni Cabs gives you a vehicle for the entire trip — no separate local taxi costs. Best for groups of 3-4 who can split the fare." }
+      { q: "Should I fly or drive to Kashmir from Delhi?", a: "Flying saves time (1.5 hours) but you still need a local cab in Kashmir. Driving with Triveni Cabs™ gives you a vehicle for the entire trip — no separate local taxi costs. Best for groups of 3-4 who can split the fare." }
     ]
   },
   {
@@ -280,7 +280,7 @@ The biggest variable costs are adventure activities: Gulmarg gondola (₹740-920
 
 Despite the long distance, a Varanasi trip is surprisingly affordable once you arrive. Most attractions — the ghats, temples, and the mesmerizing Ganga Aarti — are completely free. Budget travelers can have a deeply fulfilling 3-day trip for under ₹10,000 including cab sharing, basic hotels, and street food.
 
-The cab fare from Delhi to Varanasi is the biggest expense at ₹9,020 one-way for a sedan. However, for groups of 3-4, this becomes very reasonable per person. Your Triveni Cabs vehicle then serves as your local transport for day trips to Sarnath (10 km) and Ramnagar Fort across the river.
+The cab fare from Delhi to Varanasi is the biggest expense at ₹9,020 one-way for a sedan. However, for groups of 3-4, this becomes very reasonable per person. Your Triveni Cabs™ vehicle then serves as your local transport for day trips to Sarnath (10 km) and Ramnagar Fort across the river.
 
 For the spiritual seeker, Varanasi offers incredible value. A morning boat ride on the Ganga costs just ₹200-500, the evening aarti at Dashashwamedh Ghat is free, and wandering through the narrow galis past ancient temples is priceless. Budget ₹2,000-3,000 extra for silk shopping at the famous Varanasi silk shops if you are interested.`,
     faqs: [
@@ -329,7 +329,7 @@ For the spiritual seeker, Varanasi offers incredible value. A morning boat ride 
 
 Planning the budget for a Rajasthan trip requires considering multiple cities, each with its own costs. The good news is Rajasthan offers incredible value — even luxury heritage hotels are half the price of comparable properties in Goa or Kerala. Street food like dal bati churma, mirchi vada, and pyaaz kachori costs under ₹100.
 
-A Triveni Cabs circuit package is the smartest way to do Rajasthan. At ₹11/km for sedans, a typical 1,800 km circuit costs about ₹20,000 for the cab — which when split among 3-4 travelers is just ₹5,000-7,000 each. Your driver serves as a local guide and handles the desert and rural roads with ease.
+A Triveni Cabs™ circuit package is the smartest way to do Rajasthan. At ₹11/km for sedans, a typical 1,800 km circuit costs about ₹20,000 for the cab — which when split among 3-4 travelers is just ₹5,000-7,000 each. Your driver serves as a local guide and handles the desert and rural roads with ease.
 
 The wildcard expense in Rajasthan is shopping. Jaipur is famous for gems and textiles, Jodhpur for antiques and spices, Jaisalmer for leather and embroidery, and Udaipur for miniature paintings. Set a firm shopping budget before you go, or you might overspend in the incredible bazaars!`,
     faqs: [
@@ -337,7 +337,7 @@ The wildcard expense in Rajasthan is shopping. Jaipur is famous for gems and tex
       { q: "How much does a Rajasthan road trip cab cost?", a: "A sedan for a full Rajasthan circuit (1,500-2,000 km) costs ₹16,500-22,000 at ₹11/km. An SUV costs ₹22,500-30,000 at ₹15/km. Toll charges are ₹2,000-2,500 for the circuit." },
       { q: "What is the best Rajasthan itinerary?", a: "The classic 8-day circuit: Delhi → Jaipur (2 nights) → Jodhpur (2 nights) → Jaisalmer (2 nights) → Udaipur (2 nights) → Delhi. Add Pushkar for a 10-day trip." },
       { q: "When is the cheapest time to visit Rajasthan?", a: "July to September (monsoon) has the lowest prices but extreme heat in desert areas. October-November and February-March offer the best balance of pleasant weather and reasonable prices." },
-      { q: "Is it safe to road trip in Rajasthan by car?", a: "Yes, Rajasthan's highways (NH-48, NH-62, NH-15) are well-maintained. Night driving between cities is not recommended. Triveni Cabs drivers know the routes and rest stops well." },
+      { q: "Is it safe to road trip in Rajasthan by car?", a: "Yes, Rajasthan's highways (NH-48, NH-62, NH-15) are well-maintained. Night driving between cities is not recommended. Triveni Cabs™ drivers know the routes and rest stops well." },
       { q: "How much should I budget for desert camping in Jaisalmer?", a: "Budget desert camps with dinner and camel ride cost ₹1,500-2,000/person. Mid-range camps with better amenities cost ₹3,000-5,000. Luxury Swiss tents with AC and attached bath cost ₹8,000-15,000/person." }
     ]
   },
@@ -378,7 +378,7 @@ The wildcard expense in Rajasthan is shopping. Jaipur is famous for gems and tex
 
 A 2-3 day Rishikesh trip from Delhi is surprisingly affordable. The base costs — cab, food, and basic accommodation — are quite low. The variable is how many adventure activities you choose: rafting alone costs ₹600-1,200, while bungee jumping is ₹3,550, and a camping package with meals runs ₹1,200-3,000.
 
-With Triveni Cabs, the drive to Rishikesh takes about 5 hours at ₹11/km. Having your own cab means you can easily visit both Rishikesh and Haridwar, stop at Rajaji National Park, and reach activity spots like Shivpuri (the rafting start point) without relying on expensive local autos.
+With Triveni Cabs™, the drive to Rishikesh takes about 5 hours at ₹11/km. Having your own cab means you can easily visit both Rishikesh and Haridwar, stop at Rajaji National Park, and reach activity spots like Shivpuri (the rafting start point) without relying on expensive local autos.
 
 Budget travelers focused on yoga and spirituality can do Rishikesh for under ₹5,000 including cab sharing, ashram stays (₹500-800/night with meals), and free ghat experiences. Adventure seekers should budget ₹10,000-15,000 for rafting, bungee, camping, and other activities on top of travel costs.`,
     faqs: [
@@ -421,13 +421,13 @@ Budget travelers focused on yoga and spirituality can do Rishikesh for under ₹
       "Watch the free sunset from Ambrai Ghat instead of paying for a boat ride",
       "Eat at rooftop restaurants in old city — same lake views as luxury hotels at 1/10th the price",
       "Walk the old city instead of taking autos — most attractions are within 2 km",
-      "Combine with Chittorgarh (112 km) using your Triveni Cabs vehicle"
+      "Combine with Chittorgarh (112 km) using your Triveni Cabs™ vehicle"
     ],
     description: `Udaipur, the City of Lakes and Venice of the East, is 660 km from Delhi — an 8 to 10-hour drive through southern Rajasthan. With its stunning lakeside palaces, romantic atmosphere, and rich Mewar heritage, Udaipur is consistently rated among India's most beautiful cities.
 
 A 3-4 day Udaipur trip from Delhi can range from ₹8,000 for budget backpackers to ₹50,000 for luxury romance seekers. The wide range is because Udaipur offers everything from ₹1,500/night guesthouses with lake views to the iconic Taj Lake Palace where rooms start at ₹40,000/night.
 
-Getting to Udaipur by cab with Triveni Cabs costs ₹7,260 one-way at ₹11/km. The drive through Rajasthan is scenic, and you can break the journey at Ajmer/Pushkar or Chittorgarh. Having your own vehicle also lets you easily visit Kumbhalgarh Fort (85 km), Ranakpur Jain Temple (90 km), and Haldighati.
+Getting to Udaipur by cab with Triveni Cabs™ costs ₹7,260 one-way at ₹11/km. The drive through Rajasthan is scenic, and you can break the journey at Ajmer/Pushkar or Chittorgarh. Having your own vehicle also lets you easily visit Kumbhalgarh Fort (85 km), Ranakpur Jain Temple (90 km), and Haldighati.
 
 The best time to visit Udaipur is September-October, right after monsoon when the lakes are brimming, the Aravalli hills are green, and hotel rates are 30-40% lower than peak season. A mid-range 3-night trip including cab, lakeside hotel, meals, and sightseeing costs about ₹15,000-20,000 per person.`,
     faqs: [
@@ -470,11 +470,11 @@ The best time to visit Udaipur is September-October, right after monsoon when th
       "Carry your own warm clothes, raincoat, and trekking shoes instead of renting",
       "Trek to Kedarnath (18 km) instead of taking helicopter to save ₹5,000+",
       "Eat at ashram bhojanalayas for simple, affordable meals",
-      "Book your Triveni Cabs vehicle for the entire circuit — much cheaper than local taxis at each stop"
+      "Book your Triveni Cabs™ vehicle for the entire circuit — much cheaper than local taxis at each stop"
     ],
     description: `The Chardham Yatra is the most sacred Hindu pilgrimage, covering four divine temples in the Uttarakhand Himalayas — Yamunotri, Gangotri, Kedarnath, and Badrinath. The circuit from Haridwar covers approximately 1,600 km of stunning mountain roads over 10-12 days.
 
-A Chardham Yatra by car from Delhi costs between ₹25,000 for budget pilgrims to ₹80,000 for comfortable travelers. The cab is the most significant expense but also the most valuable — mountain roads require experienced drivers, and Triveni Cabs provides chauffeurs who know every hairpin turn on the Chardham route.
+A Chardham Yatra by car from Delhi costs between ₹25,000 for budget pilgrims to ₹80,000 for comfortable travelers. The cab is the most significant expense but also the most valuable — mountain roads require experienced drivers, and Triveni Cabs™ provides chauffeurs who know every hairpin turn on the Chardham route.
 
 Beyond the cab fare, major costs include accommodation along the route (limited luxury options — most stays are basic to mid-range), trekking arrangements for Kedarnath and Yamunotri, and puja offerings at each temple. The Kedarnath leg alone can add ₹3,000-7,000 for pony/palki or helicopter services.
 
@@ -491,7 +491,7 @@ The Chardham route opens from late April/May to early November. June and Septemb
   {
     slug: "golden-triangle-tour-cost",
     title: "Golden Triangle Tour Cost — Delhi Agra Jaipur Budget Guide 2026",
-    metaDescription: "Complete Golden Triangle tour cost for Delhi-Agra-Jaipur circuit. Budget ₹10,000-40,000 for 4-6 days. Cab at ₹11/km. Book Triveni Cabs. Call 7668570551.",
+    metaDescription: "Complete Golden Triangle tour cost for Delhi-Agra-Jaipur circuit. Budget ₹10,000-40,000 for 4-6 days. Cab at ₹11/km. Book Triveni Cabs™. Call 7668570551.",
     keywords: "golden triangle tour cost, delhi agra jaipur tour cost, golden triangle india budget, golden triangle trip cost by car, golden triangle tour package cost",
     origin: "Delhi",
     destination: "Delhi → Agra → Jaipur → Delhi",
@@ -524,7 +524,7 @@ The Chardham route opens from late April/May to early November. June and Septemb
     ],
     description: `The Golden Triangle — Delhi, Agra, and Jaipur — is India's most iconic tourist circuit, covering 720 km in a perfect triangle. This 4-6 day road trip gives you the best of India: Mughal grandeur in Agra, Rajput royalty in Jaipur, and historic monuments in Delhi.
 
-A Golden Triangle tour by car is the most flexible and comfortable way to do this circuit. With Triveni Cabs at ₹11/km, the entire 720 km circuit costs just ₹7,920 for a sedan — remarkably affordable when split among 3-4 travelers. You get door-to-door service, flexible timing, and no waiting for trains or buses.
+A Golden Triangle tour by car is the most flexible and comfortable way to do this circuit. With Triveni Cabs™ at ₹11/km, the entire 720 km circuit costs just ₹7,920 for a sedan — remarkably affordable when split among 3-4 travelers. You get door-to-door service, flexible timing, and no waiting for trains or buses.
 
 Budget travelers can complete the Golden Triangle in 4 days for under ₹12,000 per person: 2 nights in Agra and Jaipur, meals at local restaurants, and entry fees for major monuments. Mid-range travelers spending 5-6 days with better hotels and dining should budget ₹20,000-25,000. Luxury travelers can expect ₹40,000-60,000 with 5-star hotels and premium experiences.
 
@@ -575,7 +575,7 @@ The Golden Triangle works year-round, but October to March offers the best weath
 
 A Shimla-Manali honeymoon trip from Delhi costs ₹15,000-70,000 per couple depending on your romance and comfort quotient. Budget honeymooners can enjoy cozy rooms with valley views and candlelit dhaba dinners. Luxury couples can opt for heritage hotels in Shimla and premium resorts in Manali with spa packages.
 
-The ideal route with Triveni Cabs is Delhi → Shimla (2 nights) → Manali (3 nights) → Delhi. The cab serves as your private chariot throughout — no haggling with local taxis, no carrying luggage in buses. At ₹11/km for the 900 km circuit, it is the most comfortable and romantic way to travel.
+The ideal route with Triveni Cabs™ is Delhi → Shimla (2 nights) → Manali (3 nights) → Delhi. The cab serves as your private chariot throughout — no haggling with local taxis, no carrying luggage in buses. At ₹11/km for the 900 km circuit, it is the most comfortable and romantic way to travel.
 
 This honeymoon classic works best from March to June and September to November. Winter (December-February) adds a magical snow element but higher costs and road risks. Budget an extra ₹3,000-5,000 for romantic add-ons like couple spa sessions, candlelight dinners, and a Solang Valley snow experience.`,
     faqs: [
@@ -622,7 +622,7 @@ This honeymoon classic works best from March to June and September to November. 
     ],
     description: `Amritsar, the spiritual heart of Sikhism, is 450 km from Delhi — a smooth 6 to 7-hour drive on the well-maintained NH-44 highway. Home to the stunning Golden Temple and the electrifying Wagah Border ceremony, Amritsar offers a deeply moving cultural experience combined with some of India's best street food.
 
-A 3-day Amritsar trip from Delhi is remarkably affordable because the main attractions — Golden Temple, Jallianwala Bagh, and Wagah Border — are all free to visit. The primary costs are transportation and accommodation. With Triveni Cabs at ₹11/km for sedans, the round trip cab fare is ₹9,900, which splits well among 3-4 travelers.
+A 3-day Amritsar trip from Delhi is remarkably affordable because the main attractions — Golden Temple, Jallianwala Bagh, and Wagah Border — are all free to visit. The primary costs are transportation and accommodation. With Triveni Cabs™ at ₹11/km for sedans, the round trip cab fare is ₹9,900, which splits well among 3-4 travelers.
 
 The city is a food paradise. Amritsari kulcha at Bharawan Da Dhaba, lassi at Ahuja or Giani Di Lassi, and the legendary langar at Golden Temple (serving over 50,000 free meals daily) mean you can eat incredibly well on any budget. Budget travelers should try the street food trail from Lawrence Road to Hall Bazaar.
 
@@ -673,7 +673,7 @@ For the best experience, plan your visit from October to March when the weather 
 
 A 3-day Dharamshala trip from Delhi costs between ₹6,000 for backpackers to ₹32,000 for luxury travelers. McLeodganj is a budget traveler's paradise — most monasteries and temples are free, the Triund Trek costs nothing, and Tibetan street food is delicious and affordable.
 
-With Triveni Cabs at ₹11/km, the round trip costs ₹10,560 for a sedan. Having your own vehicle is especially useful here as Dharamshala, McLeodganj, Bhagsunag, and Kangra are spread across different elevations. Your driver handles the steep mountain roads while you enjoy the stunning Dhauladhar views.
+With Triveni Cabs™ at ₹11/km, the round trip costs ₹10,560 for a sedan. Having your own vehicle is especially useful here as Dharamshala, McLeodganj, Bhagsunag, and Kangra are spread across different elevations. Your driver handles the steep mountain roads while you enjoy the stunning Dhauladhar views.
 
 For the perfect Dharamshala experience, combine spiritual exploration at the Tsuglagkhang Complex with the Triund Trek for Himalayan panoramas and evenings at the atmospheric cafes of McLeodganj. Budget ₹3,000-5,000 extra if you want to attend a Tibetan cooking class or meditation retreat.`,
     faqs: [
@@ -722,7 +722,7 @@ For the perfect Dharamshala experience, combine spiritual exploration at the Tsu
 
 A 2-day Mussoorie trip from Delhi is one of the most affordable hill station getaways you can plan. Most attractions — Mall Road, Camel Back Road, Lal Tibba viewpoint — are free to explore on foot. The main costs are the cab ride and hotel accommodation. Weekend rates are significantly higher, so plan a weekday trip if possible.
 
-With Triveni Cabs at ₹11/km, the round trip costs just ₹6,380 for a sedan. Your driver will handle the winding road from Dehradun to Mussoorie (35 km of hairpin bends) and can take you to attractions like Kempty Falls and Dhanaulti that are outside the town.
+With Triveni Cabs™ at ₹11/km, the round trip costs just ₹6,380 for a sedan. Your driver will handle the winding road from Dehradun to Mussoorie (35 km of hairpin bends) and can take you to attractions like Kempty Falls and Dhanaulti that are outside the town.
 
 For a perfect quick getaway, spend an evening strolling Mall Road and watching sunset from Gun Hill, then enjoy a morning at Lal Tibba or Camel Back Road before heading back. A mid-range couple can enjoy a relaxing 2-day Mussoorie trip for about ₹8,000-10,000 per person including everything.`,
     faqs: [
@@ -771,7 +771,7 @@ For a perfect quick getaway, spend an evening strolling Mall Road and watching s
 
 A 3-day Nainital trip from Delhi costs between ₹5,000 for budget travelers to ₹28,000 for luxury. The Naini Lake itself is free to enjoy — morning walks along the mall road with lake reflections are priceless. Main paid activities include boat rides (₹210-310), the Snow View ropeway (₹300), and the zoo.
 
-With Triveni Cabs at ₹11/km, the round trip from Delhi costs ₹6,600 for a sedan. Having your own cab is invaluable in the Nainital district — it lets you easily explore Bhimtal (22 km), Naukuchiatal (26 km), and Sattal (23 km), each offering unique lake experiences with fewer crowds.
+With Triveni Cabs™ at ₹11/km, the round trip from Delhi costs ₹6,600 for a sedan. Having your own cab is invaluable in the Nainital district — it lets you easily explore Bhimtal (22 km), Naukuchiatal (26 km), and Sattal (23 km), each offering unique lake experiences with fewer crowds.
 
 The ideal Nainital itinerary includes a sunrise boat ride on Naini Lake, the Snow View ropeway for Himalayan panoramas, and evening strolls along the Mall Road. For the best value, visit in March-May when spring blooms are beautiful and hotel rates are reasonable. Peak season (June and December) sees prices jump 50-80%.`,
     faqs: [
@@ -820,7 +820,7 @@ The ideal Nainital itinerary includes a sunrise boat ride on Naini Lake, the Sno
 
 A 3-day Jodhpur trip from Delhi ranges from ₹7,000 for budget travelers to ₹40,000 for luxury seekers staying at Umaid Bhawan Palace. The main attraction, Mehrangarh Fort, is worth every rupee of the ₹100 entry fee — it is widely considered one of India's finest forts with stunning views of the blue city below.
 
-With Triveni Cabs, the round trip from Delhi costs ₹13,200 for a sedan at ₹11/km. The drive passes through Ajmer and Beawar, and you can break the journey with a stop at Pushkar (570 km from Delhi via Jodhpur detour). Having your own cab also lets you visit Osian (65 km) and Mandore Gardens (9 km) easily.
+With Triveni Cabs™, the round trip from Delhi costs ₹13,200 for a sedan at ₹11/km. The drive passes through Ajmer and Beawar, and you can break the journey with a stop at Pushkar (570 km from Delhi via Jodhpur detour). Having your own cab also lets you visit Osian (65 km) and Mandore Gardens (9 km) easily.
 
 Jodhpur is a food lover's paradise — from the famous Mirchi Vada and Pyaaz Kachori to Makhania Lassi and Dal Bati Churma, you can eat like royalty for under ₹500 a day. The Clock Tower market area is the best spot for both street food and spice shopping.`,
     faqs: [
@@ -869,7 +869,7 @@ Jodhpur is a food lover's paradise — from the famous Mirchi Vada and Pyaaz Kac
 
 A 4-day Jaisalmer trip from Delhi costs between ₹10,000 for budget backpackers to ₹50,000 for luxury desert glamping. The biggest unique expense is the desert safari — an overnight camp in the Sam or Khuri sand dunes with camel rides, cultural performances, and sleeping under the stars. Budget camps start at ₹1,500/person while luxury Swiss tents cost ₹8,000-15,000.
 
-The cab fare from Delhi is significant at ₹8,580 one-way for a sedan, but we strongly recommend breaking the journey in Jodhpur (500 km from Delhi, 280 km from Jaisalmer). This gives you two incredible Rajasthani cities in one trip. Your Triveni Cabs driver handles the desert highway expertly.
+The cab fare from Delhi is significant at ₹8,580 one-way for a sedan, but we strongly recommend breaking the journey in Jodhpur (500 km from Delhi, 280 km from Jaisalmer). This gives you two incredible Rajasthani cities in one trip. Your Triveni Cabs™ driver handles the desert highway expertly.
 
 Jaisalmer Fort is one of the few living forts in the world — people still live, work, and run shops inside it. Entry is free, and wandering its honey-colored lanes is the highlight of any visit. Combined with the sunset at Sam Sand Dunes and a night under the desert stars, Jaisalmer delivers memories that last a lifetime.`,
     faqs: [
@@ -967,7 +967,7 @@ For the most meaningful experience, attend the evening Saryu Aarti and visit Ram
 
 A 7-day Ladakh trip from Delhi costs between ₹25,000 for budget adventurers to ₹90,000 for premium comfort. The major cost components are the cab (SUV strongly recommended), accommodation, food (expensive in remote areas), and mandatory permits. Ladakh is NOT a budget destination — remote location means higher prices for everything.
 
-We strongly recommend an SUV for the Ladakh trip at ₹15/km. The roads include 5,000m+ passes, river crossings, and unpaved stretches where sedans struggle. Triveni Cabs provides experienced high-altitude drivers who know the Manali-Leh and Leh-Srinagar routes, carry emergency supplies, and understand acclimatization requirements.
+We strongly recommend an SUV for the Ladakh trip at ₹15/km. The roads include 5,000m+ passes, river crossings, and unpaved stretches where sedans struggle. Triveni Cabs™ provides experienced high-altitude drivers who know the Manali-Leh and Leh-Srinagar routes, carry emergency supplies, and understand acclimatization requirements.
 
 The classic route is Delhi → Manali (Day 1) → Manali to Leh via Keylong (Day 2-3) → Leh sightseeing and Pangong Lake (Day 4-5) → Nubra Valley (Day 6) → Leh to Srinagar or return (Day 7). Allow 1-2 acclimatization days in Leh. The season runs from mid-June to September — July-August has the best weather but highest prices.`,
     faqs: [
@@ -1016,7 +1016,7 @@ The classic route is Delhi → Manali (Day 1) → Manali to Leh via Keylong (Day
 
 A 3-day Jim Corbett trip from Delhi costs ₹6,000-35,000 per person, with the safari cost being the major variable. A single jeep safari costs ₹4,500-7,000 for Indians, and most visitors do 2-3 safaris over their stay. Budget travelers can opt for the more affordable canter safari at ₹2,500-3,500 per person.
 
-The cab fare from Delhi is very reasonable at ₹2,860 one-way for a sedan. With Triveni Cabs, your driver drops you at your resort, stays available for Ramnagar town trips, and picks you up when the stay ends. Note that personal vehicles are NOT allowed inside the park — safaris use park-provided jeeps and canters.
+The cab fare from Delhi is very reasonable at ₹2,860 one-way for a sedan. With Triveni Cabs™, your driver drops you at your resort, stays available for Ramnagar town trips, and picks you up when the stay ends. Note that personal vehicles are NOT allowed inside the park — safaris use park-provided jeeps and canters.
 
 For the best tiger sighting chances, visit between November and February when vegetation is thinner and animals congregate near water sources. The Dhikala zone is the most famous for tiger sightings but also most expensive and difficult to book. Bijrani and Jhirna zones offer excellent wildlife at lower costs.`,
     faqs: [
@@ -1065,7 +1065,7 @@ For the best tiger sighting chances, visit between November and February when ve
 
 A 3-day Kasol trip from Delhi costs between ₹5,000 for backpackers to ₹25,000 for comfort seekers. Kasol is inherently budget-friendly — riverside camps start at ₹800/night, Israeli/Himalayan cafes serve massive meals for ₹200-400, and the best experiences (treks, river walks, village exploration) are free.
 
-With Triveni Cabs at ₹11/km, the round trip costs ₹11,440 for a sedan. The last stretch from Bhuntar to Kasol (30 km) is narrow mountain road — our experienced drivers navigate this carefully. Your cab also takes you to Manikaran (4 km), Tosh (20 km), and serves as a base for Kheerganga trek arrangements.
+With Triveni Cabs™ at ₹11/km, the round trip costs ₹11,440 for a sedan. The last stretch from Bhuntar to Kasol (30 km) is narrow mountain road — our experienced drivers navigate this carefully. Your cab also takes you to Manikaran (4 km), Tosh (20 km), and serves as a base for Kheerganga trek arrangements.
 
 The Parvati Valley offers incredible trekking — Kheerganga (12 km one-way) with natural hot springs at the top, the easy Chalal walk (30 minutes), and the scenic Rasol Trek (8 km). No special equipment needed for most treks, just good shoes and a sense of adventure. The village cafes with mountain views are perfect for unwinding after a trek.`,
     faqs: [
@@ -1112,7 +1112,7 @@ The Parvati Valley offers incredible trekking — Kheerganga (12 km one-way) wit
     ],
     description: `Dehradun, the capital of Uttarakhand, sits in the picturesque Doon Valley just 250 km from Delhi — a quick 4 to 5-hour drive on NH-58 through Meerut and Roorkee. Known for its pleasant climate, prestigious institutions like FRI and ISBT, and proximity to hill stations, Dehradun is the perfect low-key weekend getaway from Delhi.
 
-A 2-day Dehradun trip from Delhi is remarkably affordable. At ₹2,750 one-way for a sedan with Triveni Cabs, it is one of the cheapest cab trips from the capital. Add modest hotel and food costs in this non-touristy city, and you get excellent value for money.
+A 2-day Dehradun trip from Delhi is remarkably affordable. At ₹2,750 one-way for a sedan with Triveni Cabs™, it is one of the cheapest cab trips from the capital. Add modest hotel and food costs in this non-touristy city, and you get excellent value for money.
 
 Dehradun's highlights include the stunning Forest Research Institute (FRI) with its colonial architecture, Robber's Cave with its river flowing through a narrow gorge, the peaceful Mindrolling Monastery, and the therapeutic Sahastradhara sulphur springs. Most attractions cost less than ₹50 to enter.
 
@@ -1163,7 +1163,7 @@ The real charm of Dehradun is its laid-back vibe — the Rajpur Road cafe cultur
 
 A 3-day Pushkar trip from Delhi is wonderfully affordable. Pushkar is a small, walkable town where most attractions — Brahma Temple, the 52 ghats, and Rangji Temple — are free. The main street is lined with cafes, handicraft shops, and guesthouses, all at very reasonable prices.
 
-With Triveni Cabs at ₹11/km, the round trip costs ₹8,800 for a sedan. The drive through Rajasthan is pleasant, and you can easily visit Ajmer's famous Dargah Sharif (15 km from Pushkar) using your cab. The Ajmer-Pushkar road through the Ana Sagar hills is itself scenic.
+With Triveni Cabs™ at ₹11/km, the round trip costs ₹8,800 for a sedan. The drive through Rajasthan is pleasant, and you can easily visit Ajmer's famous Dargah Sharif (15 km from Pushkar) using your cab. The Ajmer-Pushkar road through the Ana Sagar hills is itself scenic.
 
 The Pushkar Camel Fair in November is a spectacular event — thousands of camels, horses, and cattle are traded while cultural performances and competitions take place. If visiting during the fair, book accommodation 1-2 months in advance as prices triple and availability is scarce. Outside fair season, Pushkar is a tranquil, almost meditative experience.`,
     faqs: [
@@ -1212,7 +1212,7 @@ The Pushkar Camel Fair in November is a spectacular event — thousands of camel
 
 A 2-day Haridwar trip from Delhi is one of the most affordable getaways you can plan. Almost everything — the famous Ganga Aarti at Har Ki Pauri, temple visits, and riverside walks — is completely free. Ashram stays with meals included can cost as little as ₹200-500/night.
 
-With Triveni Cabs at ₹11/km, the round trip costs just ₹4,400 for a sedan — one of the cheapest cab trips from Delhi. Your driver can also take you to Rishikesh (25 km) for adventure activities, making a combined spiritual-adventure weekend possible.
+With Triveni Cabs™ at ₹11/km, the round trip costs just ₹4,400 for a sedan — one of the cheapest cab trips from Delhi. Your driver can also take you to Rishikesh (25 km) for adventure activities, making a combined spiritual-adventure weekend possible.
 
 The Ganga Aarti at Har Ki Pauri at sunset is Haridwar's signature experience — hundreds of oil lamps float on the river while priests perform ancient fire rituals. Arrive early (by 5 PM in winter, 6 PM in summer) for a good viewing spot. The morning dip at Har Ki Pauri at sunrise is equally magical and less crowded.`,
     faqs: [
@@ -1261,7 +1261,7 @@ The Ganga Aarti at Har Ki Pauri at sunset is Haridwar's signature experience —
 
 A 3-day Lucknow trip from Delhi is a food lover's dream at any budget. The famous Tunday Kababi serves legendary buffalo galawati kebabs for ₹60-80, Prakash Kulfi's malai kulfi costs ₹40, and a full Awadhi thali at a nice restaurant runs ₹300-500. You could eat like royalty for ₹500-800 a day.
 
-With Triveni Cabs at ₹11/km, the round trip costs ₹12,100 for a sedan. The Agra-Lucknow Expressway makes this one of the smoothest long-distance drives from Delhi. Having your own cab lets you cover the spread-out monuments — Bara Imambara, Residency, and Rumi Darwaza are in Old Lucknow, while modern attractions like Ambedkar Park are across the city.
+With Triveni Cabs™ at ₹11/km, the round trip costs ₹12,100 for a sedan. The Agra-Lucknow Expressway makes this one of the smoothest long-distance drives from Delhi. Having your own cab lets you cover the spread-out monuments — Bara Imambara, Residency, and Rumi Darwaza are in Old Lucknow, while modern attractions like Ambedkar Park are across the city.
 
 Beyond food, Lucknow's architectural heritage is remarkable. The Bara Imambara with its famous Bhool Bhulaiya (labyrinth), the atmospheric British Residency ruins, and the imposing Rumi Darwaza are all within walking distance in Old Lucknow. The Hazratganj shopping district and Aminabad market for chikankari embroidery round out the experience.`,
     faqs: [
@@ -1308,9 +1308,9 @@ Beyond food, Lucknow's architectural heritage is remarkable. The Bara Imambara w
     ],
     description: `Chandigarh, India's best-planned city and Le Corbusier's modernist masterpiece, is just 250 km from Delhi — a quick 4 to 4.5-hour drive on the excellent NH-44 expressway. This clean, green city offers wide boulevards, beautiful gardens, and a relaxed pace of life that makes it an ideal weekend escape.
 
-A 2-day Chandigarh trip from Delhi is very pocket-friendly. The city's main attractions — Rock Garden, Sukhna Lake, Rose Garden, and the Capitol Complex — all have minimal entry fees (₹10-120). The wide sector-based layout makes navigation easy, and your Triveni Cabs vehicle is the most comfortable way to cover the spread-out attractions.
+A 2-day Chandigarh trip from Delhi is very pocket-friendly. The city's main attractions — Rock Garden, Sukhna Lake, Rose Garden, and the Capitol Complex — all have minimal entry fees (₹10-120). The wide sector-based layout makes navigation easy, and your Triveni Cabs™ vehicle is the most comfortable way to cover the spread-out attractions.
 
-With Triveni Cabs at ₹11/km, the round trip costs just ₹5,500 for a sedan. The NH-44 drive is one of India's best highway experiences — smooth, well-lit, and quick. This makes Chandigarh one of the most accessible weekend getaways from Delhi.
+With Triveni Cabs™ at ₹11/km, the round trip costs just ₹5,500 for a sedan. The NH-44 drive is one of India's best highway experiences — smooth, well-lit, and quick. This makes Chandigarh one of the most accessible weekend getaways from Delhi.
 
 Chandigarh's food scene is underrated. Sector 17's underground market has everything from Punjabi dhabas to continental restaurants. The Elante Mall area in Industrial Area Phase 1 has modern dining. And the legendary butter chicken and lassi joints scattered across sectors offer authentic Punjabi flavors at honest prices.`,
     faqs: [

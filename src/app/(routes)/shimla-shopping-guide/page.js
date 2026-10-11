@@ -3,15 +3,16 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Shimla Shopping Guide 2026 | What to Buy & Where (Prices)'),
   description: 'What to buy in Shimla: Kullu shawls ₹500-5K, wooden toys ₹50-500, Himachali caps ₹150+, dry fruits, jams. Lakkar Bazaar, Mall Road, Lower Bazaar.',
   keywords: 'shimla shopping guide, shopping in shimla, lakkar bazaar shimla, shimla mall road shopping, kullu shawls shimla, shimla wooden toys, himachali cap, shimla dry fruits',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/shimla-shopping-guide' },
   openGraph: {
@@ -20,7 +21,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/shimla-shopping-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Shimla/shimla_hero_section.jpg', width: 1200, height: 630, alt: 'Shimla Shopping Guide' }],
   },
   twitter: {
@@ -257,7 +258,7 @@ export default function ShimlaShoppingGuidePage() {
         </section>
 
         {/* Shopping Categories */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3 text-center">What to Buy in Shimla</h2>
             <p className="text-stone-500 text-center mb-14">The Queen of Hills offers mountain crafts and Himalayan delicacies</p>
@@ -301,7 +302,7 @@ export default function ShimlaShoppingGuidePage() {
         </section>
 
         {/* Market Areas */}
-        <section className="py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-3 text-center">Best Shopping Areas in Shimla</h2>
             <p className="text-purple-200/60 text-center mb-14">Four charming markets nestled in the Himalayan hills</p>
@@ -334,7 +335,7 @@ export default function ShimlaShoppingGuidePage() {
         </section>
 
         {/* Bargaining Tips */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-3 text-center">Bargaining Tips from Locals</h2>
             <p className="text-stone-500 text-center mb-12">Eight rules that save our tourists money every single day</p>
@@ -352,7 +353,7 @@ export default function ShimlaShoppingGuidePage() {
         </section>
 
         {/* Combo */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-3xl overflow-hidden">
               <div className="bg-gradient-to-r from-purple-700 via-fuchsia-600 to-purple-700 px-6 py-5" style={{ backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite' }}>
@@ -384,21 +385,26 @@ export default function ShimlaShoppingGuidePage() {
         </section>
 
         {/* SEO Content */}
-        <section className="py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-8 text-center">Shopping in Shimla: The Queen of Hills&apos; Market Charm</h2>
             <div className="glass-card-light rounded-3xl p-8 md:p-10">
               <div className="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
               <p>Shimla&apos;s shopping experience is as charming as the hill station itself. Unlike the overwhelming bazaars of Rajasthan or Delhi, Shimla&apos;s markets are compact, walkable, and set against a backdrop of colonial architecture and Himalayan pine forests. Mall Road -- Shimla&apos;s pedestrian shopping boulevard -- is one of the most pleasant shopping streets in India, where you can browse shops, pause for coffee, and enjoy mountain views between purchases.</p>
               <p>The city&apos;s shopping offerings reflect its dual identity as a Himalayan town and former British summer capital. Lakkar Bazaar carries forward a woodcraft tradition that flourished when British officers commissioned furniture and toys from local artisans. The shawl shops stock products from the entire Himalayan belt -- Kullu Valley weavers, Kinnauri craftspeople, and Tibetan refugees all contribute to Shimla&apos;s textile richness. And the jam and preserve industry grew directly from the British-era fruit orchards that still blanket the surrounding hills.</p>
-              <p>While Shimla&apos;s central markets (Mall Road, Lakkar Bazaar) are walkable, a cab is invaluable for exploring beyond the town center. Our Triveni Cabs drivers can take you to apple orchards in season (July-Sept), the Kufri area for adventure activities, or nearby Mashobra and Naldehra for a quieter hill experience. For the drive to Shimla from Delhi or Chandigarh, we ensure a comfortable journey through some of India&apos;s most scenic mountain roads.</p>
+              <p>While Shimla&apos;s central markets (Mall Road, Lakkar Bazaar) are walkable, a cab is invaluable for exploring beyond the town center. Our Triveni Cabs™ drivers can take you to apple orchards in season (July-Sept), the Kufri area for adventure activities, or nearby Mashobra and Naldehra for a quieter hill experience. For the drive to Shimla from Delhi or Chandigarh, we ensure a comfortable journey through some of India&apos;s most scenic mountain roads.</p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Shimla" citySlug="shimla" />
+
+
         {/* FAQ */}
-        <section className="py-20 px-4 bg-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-12 text-center">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -418,7 +424,7 @@ export default function ShimlaShoppingGuidePage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-10 text-center">More Shimla & Himachal Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -446,7 +452,7 @@ export default function ShimlaShoppingGuidePage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-800 via-violet-700 to-fuchsia-800" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[15%] w-2 h-2 bg-white/30 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite' }} />
           <div className="absolute top-[40%] right-[20%] w-1.5 h-1.5 bg-white/20 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite 1s' }} />

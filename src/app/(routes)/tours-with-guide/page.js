@@ -22,6 +22,7 @@ import {
   getTodayDate,
 } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 export const revalidate = 3600;
 
@@ -90,7 +91,7 @@ export const metadata = {
     url,
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: `${baseUrl}/images/sightseeing/Agra/Taj_mahal.jpg`, width: 1200, height: 630, alt: 'Tours With Guide — Triveni Cabs' }],
   },
   twitter: {
@@ -136,7 +137,7 @@ export default function ToursWithGuideHub() {
         serviceType: 'Guided Tour Package',
         description: 'Bundled guided tours pairing a verified AC vehicle with a Ministry-of-Tourism licensed multilingual guide across Agra, Delhi, Jaipur and the Golden Triangle.',
         provider: { '@id': `${baseUrl}/#organization` },
-        brand: { '@type': 'Brand', name: 'Triveni Cabs' },
+        brand: { '@type': 'Brand', name: 'Triveni Cabs™' },
         areaServed: ['Delhi', 'Agra', 'Jaipur', 'Golden Triangle, India'],
         url,
         offers: {
@@ -168,7 +169,7 @@ export default function ToursWithGuideHub() {
         description: 'How to book a guided tour in India with a vehicle and a Ministry-licensed multilingual guide bundled into one fixed fare — vehicles, languages, prices and routes.',
         image: `${baseUrl}/images/sightseeing/Agra/Taj_mahal.jpg`,
         datePublished: '2026-01-01',
-        dateModified: getTodayDate(),
+        dateModified: (getContentUpdatedOn(url) || getTodayDate()),
         authorName: 'editorial',
         speakableSelectors: ['.speakable-lead', '.speakable-faq-first'],
       }),
@@ -305,7 +306,7 @@ export default function ToursWithGuideHub() {
               { label: 'Pickup', value: 'Hotel / Airport' },
             ]}
             lastReviewed="2026-04-29"
-            source="Triveni Cabs guide-bundle catalogue"
+            source="Triveni Cabs™ guide-bundle catalogue"
             className="shadow-[0_30px_80px_-30px_rgba(251,191,36,0.3)]"
           />
         </section>
@@ -314,7 +315,7 @@ export default function ToursWithGuideHub() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14">
           <AnswerCard question="How much does a tour with a guide and vehicle cost in India?">
             <p className="speakable-lead text-base md:text-lg text-slate-200/95 leading-relaxed">
-              A Tours-With-Guide bundle from Triveni Cabs combines a verified AC vehicle and a
+              A Tours-With-Guide bundle from Triveni Cabs™ combines a verified AC vehicle and a
               Ministry-of-Tourism licensed guide into one fixed fare, starting at
               <span className="text-amber-200 font-semibold"> ₹3,000</span> for a sedan day tour with an English or
               Hindi guide. You pick the route (Agra, Delhi, Jaipur or the 5-day Golden Triangle), the vehicle by
@@ -326,7 +327,7 @@ export default function ToursWithGuideHub() {
         </section>
 
         {/* ============= SUB-HUB SHORTCUTS ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
           <div className="grid md:grid-cols-2 gap-6">
             <SubHubCard
               href="/tours-with-guide/by-guide-language"
@@ -348,18 +349,18 @@ export default function ToursWithGuideHub() {
         </section>
 
         {/* ============= FIND YOUR FIT ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
           <FindYourFit />
         </section>
 
         {/* ============= COMPARE CLUSTERS ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
           <SectionTitle eyebrow="Quick compare" title="The five clusters, at a glance" sub="Tap any row to jump to those tours." />
           <ClusterComparison groupA={groupA} clusters={clusters} />
         </section>
 
         {/* ============= CLUSTER ANCHORS ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="Browse by destination" title="Pick your route" sub="Five signature clusters, forty hand-built itineraries." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
             {clusters.map(c => {
@@ -395,7 +396,7 @@ export default function ToursWithGuideHub() {
         {clusters.map(c => {
           const items = groupA.filter(t => t.cluster === c.id);
           return (
-            <section key={c.id} id={`cluster-${c.id}`} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-24">
+            <section key={c.id} id={`cluster-${c.id}`} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-24">
               <ClusterHeader c={c} count={items.length} />
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
                 {items.map((t, i) => (
@@ -410,24 +411,23 @@ export default function ToursWithGuideHub() {
         <ArchDivider />
 
         {/* ============= MID INLINE CTA ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-16">
           <InlineCTA
             theme="guide"
             headline="Don't see exactly what you want?"
             sub="Tell us your route, dates and group size — we'll quote a custom guided tour bundle in under 10 minutes."
             context="tours-with-guide-hub-mid"
-            waMessage="Hi Triveni Cabs, I want a custom Tour With Guide. Here's what I'm thinking: ..."
+            waMessage="Hi Triveni Cabs™, I want a custom Tour With Guide. Here's what I'm thinking: ..."
             variant="full"
           />
         </section>
 
         {/* ============= GROUP B (LANGUAGE LANDINGS) ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="Browse · by spoken language" title="Hire a guide by language" sub="Ten official languages. Specialist guides on request for Korean, Arabic, Dutch, Polish, Thai." />
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mt-10">
             {groupB.map(t => (
               <Link key={t.slug} href={`/tours-with-guide/${t.slug}`} className="group relative overflow-hidden rounded-2xl border border-amber-400/10 bg-gradient-to-br from-slate-900/80 to-slate-900/40 px-5 py-5 hover:border-amber-300/40 transition">
-                <div className="absolute -top-12 -right-12 w-28 h-28 rounded-full blur-2xl bg-amber-400/0 group-hover:bg-amber-400/15 transition" />
                 <p className="font-serif italic text-base text-amber-200/80">{t.languageNative || t.guideLanguage}</p>
                 <p className="mt-1 text-base font-black text-white">{t.guideLanguage}</p>
                 <p className="mt-2 text-[11px] uppercase tracking-widest text-slate-500">From</p>
@@ -438,7 +438,7 @@ export default function ToursWithGuideHub() {
         </section>
 
         {/* ============= GROUP C INDEX ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="Pick a tour, then a language" title="Top tours in your language" sub="Three most-booked itineraries published in every supported language." />
           {['C-taj', 'C-sameday', 'C-gt'].map(cluster => {
             const items = groupC.filter(t => t.cluster === cluster);
@@ -487,7 +487,7 @@ export default function ToursWithGuideHub() {
         </section>
 
         {/* ============= VEHICLE + LANGUAGE TABLES ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="Plan your bundle" title="Which vehicle and guide language fits you?" sub="Pick a vehicle by group size and a guide by language. Both are bundled into one fixed fare." />
           <div className="grid lg:grid-cols-2 gap-6 mt-10">
             <VehicleBundleTable rows={TWG_VEHICLE_ROWS} />
@@ -496,24 +496,24 @@ export default function ToursWithGuideHub() {
         </section>
 
         {/* ============= FAQ ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="Good to know" title="Tours With Guide — frequently asked questions" sub="Everything about vehicles, licensed guides, languages, pricing and cancellation." />
           <FaqAccordion faqs={TWG_FAQS} />
         </section>
 
         {/* ============= REASSURANCE BAND ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <ReassuranceBand />
         </section>
 
         {/* ============= FINAL CTA ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pb-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pb-14 sm:pb-24">
           <InlineCTA
             theme="guide"
             headline="Book a guide-included tour today"
             sub="Vehicle + licensed guide bundle · Multilingual guides · Ministry-licensed · 4.9★ by 10K+ travellers · No surprise fees"
             context="tours-with-guide-hub-final"
-            waMessage="Hi Triveni Cabs, I want help picking a Tour With Guide."
+            waMessage="Hi Triveni Cabs™, I want help picking a Tour With Guide."
             variant="banner"
           />
         </section>
@@ -670,7 +670,6 @@ function ReassuranceBand() {
   ];
   return (
     <div className="relative overflow-hidden rounded-[1.6rem] border border-amber-400/15 bg-gradient-to-br from-[#1a1408]/60 via-slate-950 to-slate-900/40 p-6 sm:p-8">
-      <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full bg-amber-400/[0.08] blur-3xl" />
       <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-amber-300/80 text-center mb-5">Why book Triveni</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
         {items.map((it, i) => (
@@ -774,7 +773,6 @@ function PolaroidStack() {
   ];
   return (
     <div className="relative h-[520px] w-full">
-      <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/20 via-transparent to-emerald-500/10 blur-3xl rounded-full" />
       {HERO_TILES.map((tile, i) => {
         const p = positions[i];
         return (
@@ -865,7 +863,6 @@ function SubHubCard({ href, eyebrow, title, copy, chips, accent }) {
   const isTeal = accent === 'teal';
   return (
     <Link href={href} className={`group relative overflow-hidden rounded-[1.4rem] border bg-gradient-to-br p-8 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a14] ${isTeal ? 'border-teal-300/25 from-teal-500/10 via-slate-900/40 to-slate-950 hover:border-teal-300/60 focus-visible:ring-teal-300' : 'border-amber-400/25 from-amber-500/10 via-slate-900/40 to-slate-950 hover:border-amber-400/60 focus-visible:ring-amber-300'}`}>
-      <div className={`absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl ${isTeal ? 'bg-teal-400/15' : 'bg-amber-400/15'}`} />
       <p className={`text-[10px] font-bold tracking-[0.3em] uppercase ${isTeal ? 'text-teal-200/80' : 'text-amber-200/80'}`}>{eyebrow}</p>
       <p className="mt-3 text-2xl md:text-3xl font-black text-white leading-tight">
         {title}
@@ -980,7 +977,7 @@ function FaqAccordion({ faqs }) {
       {faqs.map((f, i) => (
         <details key={i} className="group rounded-2xl border border-amber-400/12 bg-slate-900/40 open:border-amber-300/40 open:bg-slate-900/60 hover:border-amber-300/30 transition">
           <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 min-h-[44px] focus-visible:outline-none focus-visible:bg-amber-400/5 rounded-2xl">
-            <span className="text-base md:text-lg font-black text-amber-100 leading-snug">{f.question}</span>
+            <h3 className="m-0 text-base md:text-lg font-black text-amber-100 leading-snug">{f.question}</h3>
             <span aria-hidden className="shrink-0 w-8 h-8 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-300 flex items-center justify-center group-open:rotate-180 group-open:bg-amber-400/20 transition-transform duration-300">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" /></svg>
             </span>

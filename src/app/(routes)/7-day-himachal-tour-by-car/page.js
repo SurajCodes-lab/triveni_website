@@ -11,7 +11,7 @@ export const metadata = {
   title: tightenTitle('7 Day Himachal Tour by Car 2026 | Shimla Manali Dharamshala'),
   description: '7-day Himachal trip: Shimla, Manali, Dharamshala, Dalhousie. Day-wise plan, costs from ₹35K Sedan / ₹50K SUV. Call 7668570551.',
   keywords: '7 day himachal pradesh tour plan by car, himachal tour itinerary, shimla manali tour by car, himachal road trip, himachal pradesh tour package by car',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/7-day-himachal-tour-by-car' },
   openGraph: {
@@ -19,9 +19,9 @@ export const metadata = {
     description: 'Shimla, Manali, Dharamshala, Dalhousie - complete 7-day road trip plan with distances, stays & costs.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/7-day-himachal-tour-by-car',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{
-      url: '/images/sightseeing/Manali/Manali_Hero_section.jpg',
+      url: '/images/sightseeing/Manali/Manali_hero_section.jpg',
       width: 1200, height: 630,
       alt: '7 Day Himachal Tour by Car — Shimla, Manali, Dharamshala, Dalhousie',
     }],
@@ -32,7 +32,7 @@ export const metadata = {
     description: 'Delhi → Shimla → Manali → Dharamshala → Dalhousie → Delhi. Day-wise itinerary, stays, costs. From ₹35,000 Sedan / ₹50,000 SUV.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
-    images: ['/images/sightseeing/Manali/Manali_Hero_section.jpg'],
+    images: ['/images/sightseeing/Manali/Manali_hero_section.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -141,7 +141,7 @@ export default function HimachalTourPage() {
   };
 
   const serviceSchema = buildStaticService({ slug: SLUG, name: "Himachal Road Trip Cab Service from Delhi", description: "7-Day Himachal Tour by Car with an experienced driver, all-inclusive of fuel, tolls, permits and driver allowance.", lowPrice: 35000, highPrice: 80000, serviceType: 'Multi-Day Road Trip Cab Service' });
-  const articleSchema = getArticleSchema({ slug: SLUG, headline: "7-Day Himachal Tour by Car 2026", description: "7-Day Himachal Tour by Car itinerary, day-wise plan, costs and tips from Triveni Cabs.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
+  const articleSchema = getArticleSchema({ slug: SLUG, headline: "7-Day Himachal Tour by Car 2026", description: "7-Day Himachal Tour by Car itinerary, day-wise plan, costs and tips from Triveni Cabs™.", image: '/images/triveni-cabs-og.jpg', datePublished: '2025-03-01', speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'] });
   const howToSchema = getHowToSchema({ name: "How to Plan a 7-Day Himachal Tour by Car", description: "Step-by-step day-wise plan for the 7-Day Himachal Tour by Car by car.", totalTime: 'PT10M', estimatedCost: { currency: 'INR', value: 35000 }, steps: itinerary.map((d) => ({ name: d.title || d.day || 'Day', text: d.description || d.desc || d.detail || (Array.isArray(d.activities) ? d.activities.join('. ') : '') })) });
   const placeSchemas = buildPlaceSchemas(["shimla","manali","dharamshala","dalhousie","kasol"], SLUG, '/images/triveni-cabs-og.jpg');
 
@@ -171,7 +171,7 @@ export default function HimachalTourPage() {
           <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-emerald-500/10 rounded-full blur-[160px]" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[400px] bg-teal-500/8 rounded-full blur-[140px]" />
 
-          <div className="max-w-7xl mx-auto px-4 relative z-10 py-20 w-full">
+          <div className="max-w-7xl mx-auto px-4 relative z-10 py-12 sm:py-20 w-full">
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-8">
                 <div className="h-px flex-1 max-w-[60px] bg-gradient-to-r from-emerald-400 to-transparent" />
@@ -187,7 +187,7 @@ export default function HimachalTourPage() {
               </h1>
 
               <p className="speakable-lead text-green-300/40 text-lg mb-8 max-w-xl leading-relaxed">
-                A 7-day Himachal tour by car covers Shimla, Manali and Dharamshala, costing from Rs 35,000 (sedan) to Rs 80,000 (premium SUV) with Triveni Cabs, all-inclusive of fuel, tolls and an experienced hill driver. The definitive circuit of snow peaks, cedar forests, Tibetan culture and mountain adventures.
+                A 7-day Himachal tour by car covers Shimla, Manali and Dharamshala, costing from Rs 35,000 (sedan) to Rs 80,000 (premium SUV) with Triveni Cabs™, all-inclusive of fuel, tolls and an experienced hill driver. The definitive circuit of snow peaks, cedar forests, Tibetan culture and mountain adventures.
               </p>
 
               {/* Price badges */}
@@ -232,10 +232,10 @@ export default function HimachalTourPage() {
         </section>
 
         {/* Day-by-Day Vertical Timeline */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-green-950 to-emerald-950" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="text-emerald-400 text-sm font-medium tracking-widest uppercase">Your Journey</span>
               <h2 className="text-4xl md:text-5xl font-black mt-3">Day-by-Day Itinerary</h2>
             </div>
@@ -249,7 +249,7 @@ export default function HimachalTourPage() {
                   <div key={day.day} className="relative pl-16 md:pl-20">
                     {/* Timeline dot */}
                     <div className="absolute left-4 md:left-6 w-4 h-4 bg-emerald-500 rounded-full border-4 border-green-950 shadow-lg shadow-emerald-500/30 z-10" />
-                    <div className="absolute left-2.5 md:left-4.5 -top-0.5 w-7 h-7 bg-emerald-500/20 rounded-full animate-ping opacity-20" />
+                    <div className="absolute left-2.5 md:left-4.5 -top-0.5 w-7 h-7 bg-emerald-500/20 rounded-full opacity-20" />
 
                     <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/20 backdrop-blur-sm border border-green-700/20 rounded-3xl overflow-hidden hover:border-emerald-500/25 transition-all duration-500">
                       {/* Day header */}
@@ -306,7 +306,7 @@ export default function HimachalTourPage() {
         </section>
 
         {/* Pricing - Glassmorphism Cards */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-emerald-950" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[200px]" />
           <div className="max-w-6xl mx-auto relative z-10">
@@ -336,7 +336,7 @@ export default function HimachalTourPage() {
         </section>
 
         {/* Packing Checklist */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-green-950" />
           <div className="max-w-4xl mx-auto relative z-10">
             <h2 className="text-3xl font-black text-center mb-10">Packing Checklist</h2>
@@ -364,7 +364,7 @@ export default function HimachalTourPage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-emerald-950/50" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-10">More Road Trip Itineraries</h2>
@@ -393,7 +393,7 @@ export default function HimachalTourPage() {
         </section>
 
         {/* Related Pages */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-green-950" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-3">Travel Guides & Resources</h2>
@@ -416,7 +416,7 @@ export default function HimachalTourPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-green-950" />
           <div className="max-w-3xl mx-auto relative z-10">
             <div className="text-center mb-14">
@@ -440,7 +440,7 @@ export default function HimachalTourPage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-800 via-green-800 to-teal-900" />
           <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-emerald-400/10 to-transparent" />
           <div className="absolute bottom-10 right-20 w-96 h-96 bg-emerald-400/10 rounded-full blur-[130px]" />

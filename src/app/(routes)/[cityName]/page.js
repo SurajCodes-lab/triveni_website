@@ -7,23 +7,69 @@ export const revalidate = 3600;
 export const dynamicParams = false;
 import { cities, vehiclesServices, cityDetails, touristSpots } from "@/utilis/data";
 import { cityRoutesData, basicCityRoutes, defaultRoutes } from "@/utilis/cityRoutesData";
+import { rupees, LOCAL_PACKAGE, groupDigits } from '@/utilis/pricing';
+import { rateCardPrices } from "@/utilis/cityRoutePricing";
+import { routeExists, servedHref } from "@/lib/seo/route-exists";
+// Resolved here rather than inside the client components below: cityLocalInfo,
+// officeLocations and bestTimeToVisitData are lookup tables for the whole
+// country, and only one city's entry is ever displayed.
+import { getRouteOffices } from "@/utilis/officeLocations";
+import { bestTimeToVisitData } from "@/utilis/bestTimeToVisitData";
 import { getCityLocalInfo } from "@/utilis/cityLocalInfo";
 import { generateRouteMetadata, generateCityHubMetadata } from "@/lib/seo/metadata-factory";
 import { generateRouteFAQs, generateCityFAQs } from "@/lib/seo/faq-generator";
 import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from "@/lib/seo/constants";
 import CityServiceClient from "@/components/cities/CityServiceClient";
 import RouteClientContent from "./RouteClientContent";
+import PriorityPageGuide from '@/components/content/PriorityPageGuide';
+import AdventureActivities from '@/components/content/AdventureActivities';
+import { getRoadParagraph } from "@/utilis/roadParagraphs";
 import CityLocalInfoSection from "@/components/cities/CityLocalInfoSection";
 import AEOHead from '@/components/seo/AEOHead';
 import { getRatingAndReviews, getDeterministicReviewCount } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getComparisonSchema, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import RelatedLinks from '@/components/seo/RelatedLinks';
+import CorridorLinks from '@/components/seo/CorridorLinks';
+import { getCorridorLinks } from '@/utilis/corridorLinks';
+// Week 48: CityServiceClient's hero "Popular Routes" card links /<city>-to-<dest>
+// for a hand-written highlight list, and 23 of those corridors were never built
+// (they only resolve because Week 47 added 301s for them). The hub now hands the
+// card the corridor slugs that actually exist for this city, straight from the
+// build manifest, and the card drops the rest. Server component — the manifest
+// never reaches the browser, only the handful of slugs for one city.
+import knownRoutes from '@/generated/known-routes.json';
+import { getSeasonalCorridorCallout } from '@/utilis/seasonalCorridors';
+// Aliased deliberately. page.js already imports getRelatedRoutes from
+// '@/lib/seo/linkingHelper' with a different signature — a bare import of the
+// same name from utils silently changed which function the existing call site
+// resolved to and broke the build. These helpers pull in sightseeingData.js
+// (1.3 MB); computing them here keeps that out of the browser on 322 pages.
+import {
+  getRelatedContent as utilsRelatedContent,
+  getRelatedRoutes as utilsRelatedRoutes,
+  getServiceCrossLinks as utilsServiceCrossLinks,
+  getNearbyDestinations as utilsNearbyDestinations,
+} from '@/utilis/linkingHelper';
 import { getMoneyPageLinks, getRelatedRoutes, getCityTopicalLinks } from '@/lib/seo/linkingHelper';
+import CityPageDirectory from '@/components/seo/CityPageDirectory';
+import CityFaresTable from '@/components/seo/CityFaresTable';
+import CityQuickAnswer from '@/components/content/CityQuickAnswer';
+import CityPickupPoints from '@/components/seo/CityPickupPoints';
+import WeekGuidesForCity from '@/components/seo/WeekGuidesForCity';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 const allCityRoutes = {
   ...cityRoutesData,
   ...basicCityRoutes
 };
+
+// Week 49 (Workstream E): the car rows of a corridor's price list are
+// recomputed from its own distance with the rate card (pricing.js), so the
+// booking page prints the same sedan, Ertiga and Innova fares as the distance,
+// one-way and guide pages for the corridor. Coach and tempo rows are kept as
+// recorded (they have no per-seater figure on the rate card). A record whose
+// distance cannot be read is returned unchanged.
+// The shared data boundary and this compatibility call use the same helper.
 
 // Reserved route names that should NEVER be handled by this dynamic route
 // These are static routes that should be served by their own page.js files
@@ -100,7 +146,7 @@ export async function generateMetadata({ params }) {
     const formattedDestination = destination.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     const routes = allCityRoutes[formattedCityName] || defaultRoutes[formattedCityName] || [];
     const route = Array.isArray(routes) ? routes.find(r => r && r.destination && r.destination.toLowerCase() === formattedDestination.toLowerCase()) : null;
-    const startingPrice = route?.prices?.[0]?.price || "2,760";
+    const startingPrice = rateCardPrices(route)?.[0]?.price || "₹3,300";
     const estimatedDistance = route?.distance || '200';
     const estimatedTime = route?.time || '4 hours';
 
@@ -108,6 +154,9 @@ export async function generateMetadata({ params }) {
       origin: formattedCityName,
       destination: formattedDestination,
       price: startingPrice.replace('₹', ''),
+      // Week 48: the builder names the sedan round trip, SUV and Innova fares
+      // from the route's own table, so the listing answers "how much" in full.
+      prices: rateCardPrices(route),
       distance: estimatedDistance,
       duration: estimatedTime,
       slug: cityName
@@ -116,11 +165,23 @@ export async function generateMetadata({ params }) {
     // CITY PAGE METADATA — using factory
     const formattedCityName = cityName.replace(/-/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
+    // Week 49: the city's own facts for the search snippet — its loudest
+    // corridors with distances, the published local package, and the other
+    // pages this city has (station, airport, tempo), each only if it exists.
+    const cityRoutes = (cityRoutesData[formattedCityName] || defaultRoutes[formattedCityName] || [])
+      .filter((r) => r && r.destination)
+      .slice(0, 3)
+      .map((r) => ({ to: r.destination, km: (String(r.distance || '').match(/(\d[\d,]*)/) || [])[1] || '' }));
+    const extras = [];
+    if (routeExists(`/railway-station-taxi/${cityName}`)) extras.push('station pickup');
+    if (routeExists(`/airport-service/${cityName}`) || routeExists(`/${cityName}-airport-taxi`)) extras.push('airport pickup');
+    if (routeExists(`/tempo-traveller/${cityName}`)) extras.push('12-seater tempo for groups');
     return generateCityHubMetadata({
       city: formattedCityName,
       minPrice: 11,
       services: ['Airport', 'Local', 'Outstation'],
-      slug: cityName
+      slug: cityName,
+      facts: { routes: cityRoutes, localPrice: rupees(LOCAL_PACKAGE.base.sedan), extras },
     });
   }
 }
@@ -150,11 +211,22 @@ export default function CityNamePage({ params }) {
     
     if (!route) { notFound(); }
     
-    const estimatedDistance = route.distance || `${Math.floor(Math.random() * 200) + 150} km`;
+    const estimatedDistance = route.distance || '';
     const estimatedTime = route.time || `${Math.floor(Math.random() * 4) + 3} hours`;
-    const startingPrice = route?.prices?.[0]?.price || "₹2760";
+    const startingPrice = rateCardPrices(route)?.[0]?.price || "₹3,300";
 
-    const priceNum = parseInt(String(startingPrice).replace('₹', '').replace(',', '') || '2760');
+    const priceNum = parseInt(String(startingPrice).replace('₹', '').replace(/,/g, '') || '3300');
+
+    // Week 49 gap fix (found on audit, 19 September): rateCardPrices() was
+    // only ever applied to build the title/description above and this
+    // page's own startingPrice variable. The raw, un-recomputed `route` was
+    // still the one handed to RouteClientContent, so its own "Starting
+    // Fare" badge, its fare FAQ and its quick-answer strip kept computing
+    // their own figures straight from the old price list (Delhi to Agra
+    // sedan ₹2,760, the pre-rate-card figure, next to a hero and title that
+    // already said ₹3,300). Passing the recomputed route down closes that:
+    // every fare on the page now comes from the same rateCardPrices() call.
+    const rateCardRoute = route ? { ...route, prices: rateCardPrices(route) } : route;
 
     // GEO: resolve origin + destination to real-world Place/City entities with
     // GeoCoordinates from the shared _CITY_PLACES map. Null-safe — cities that
@@ -250,7 +322,12 @@ export default function CityNamePage({ params }) {
       "@context": "https://schema.org",
       "@type": "Product",
       "name": `${formattedCityName} to ${formattedDestination} Cab Booking — Triveni Cabs`,
-      "description": `Book ${formattedCityName} to ${formattedDestination} taxi starting ₹${startingPrice}. ${estimatedDistance} km, ${estimatedTime}. AC sedan, SUV, tempo traveller available.`,
+      // Week 53: Google's Merchant listings report flags a missing `image`
+      // as a critical error, and 1,791 Product nodes in the build had none.
+      // This is the same asset the page already declares as its og:image, so
+      // nothing new is introduced and the two agree.
+      "image": `${BASE_URL}/images/car/swift_dzire.jpg`,
+      "description": `Book ${formattedCityName} to ${formattedDestination} taxi starting ₹${groupDigits(startingPrice)}. ${estimatedDistance} km, ${estimatedTime}. AC sedan, SUV, tempo traveller available.`,
       "brand": {
         "@type": "Brand",
         "name": COMPANY_INFO.name
@@ -348,11 +425,11 @@ export default function CityNamePage({ params }) {
     // Article schema — editorial guide entity for AEO/GEO + freshness signal,
     // Speakable-enabled, so the page can be cited as an authoritative answer
     // source for "{city} to {dest} taxi fare" AI/voice queries. Auto-fresh
-    // dateModified via getTodayDate() re-evaluated every ISR cycle.
+    // dateModified via (getContentUpdatedOn(`/${cityName}`) || getTodayDate()) re-evaluated every ISR cycle.
     const routeArticleSchema = getArticleSchema({
       slug: cityName,
       headline: `${formattedCityName} to ${formattedDestination} Taxi (2026) — Fare, Distance, Duration & Booking`,
-      description: `Complete guide to booking a ${formattedCityName} to ${formattedDestination} cab: fares from ₹${startingPrice}, ${estimatedDistance} distance, ${estimatedTime} journey time, AC sedan/SUV/tempo options and one-way vs round-trip pricing.`,
+      description: `Complete guide to booking a ${formattedCityName} to ${formattedDestination} cab: fares from ₹${groupDigits(startingPrice)}, ${estimatedDistance} distance, ${estimatedTime} journey time, AC sedan/SUV/tempo options and one-way vs round-trip pricing.`,
       image: '/images/triveni-cabs-og.jpg',
       authorName: 'editorial',
       speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
@@ -454,17 +531,70 @@ export default function CityNamePage({ params }) {
         ))}
         <AEOHead pageType="route" data={{ url: `/${cityName}`, title: `${formattedCityName} to ${formattedDestination} Taxi`, origin: formattedCityName, destination: formattedDestination }} />
 
+        {/* Week 52: Triveni Adventure, our Rishikesh operation. Renders only on
+            the Rishikesh, Haridwar and Char Dham paths; null everywhere else. */}
+        <AdventureActivities path={`/${cityName}`} />
         <RouteClientContent
+          planningGuide={<PriorityPageGuide path={`/${cityName}`} />}
           cityName={originCity}
           formattedCityName={formattedCityName}
           destination={destination.replace(/\s+/g, '-')}
           formattedDestination={formattedDestination}
           estimatedDistance={estimatedDistance}
           estimatedTime={estimatedTime}
-          route={route}
+          route={rateCardRoute}
+          /* The route stepper used to synthesise each stop's href by convention
+             — `/${stop.toLowerCase().replace(/\s+/g,'-')}` — which is the exact
+             pattern route-exists.js was written to stop. Most stops are real
+             city hubs; the waypoint towns on the Dehradun and Haridwar
+             corridors (Muzaffarnagar, Roorkee, Saharanpur) are not, and those
+             three links were serving a 404 to anyone who clicked them.
+             Resolved here rather than in the stepper, because that is a client
+             component where servedHref cannot read the build manifest. */
+          stopLinks={(rateCardRoute?.popularStops || []).map((stop) => ({
+            name: stop,
+            href: servedHref(`/${String(stop).toLowerCase().replace(/\s+/g, '-')}`),
+          }))}
           routes={routes}
           vehiclesServices={vehiclesServices}
+          relatedContent={utilsRelatedContent(formattedCityName)}
+          relatedRoutes={utilsRelatedRoutes(formattedCityName, formattedDestination, 6)}
+          serviceCrossLinks={utilsServiceCrossLinks(formattedCityName)}
+          seasonalCallout={getSeasonalCorridorCallout({ destination: formattedDestination, origin: formattedCityName })}
+          destinationInfo={getCityLocalInfo(formattedDestination)}
+          routeOffices={getRouteOffices(formattedCityName, formattedDestination)}
+          roadParagraph={getRoadParagraph(cityName)}
         />
+
+        {/* The corridor's sibling formats — one-way, round trip, tempo, bus,
+            distance, toll.
+            This was the only family on the site that rendered none of these.
+            Every other corridor family has linked to its siblings since Week 49,
+            which is why the distance and toll pages send three to five
+            well-anchored links each to the booking pages. The general booking
+            page, which is often the best-ranked page for its corridor, sent
+            none — so the pages meant to own the "one way" and "round trip"
+            searches got no signal from the strongest page about their own
+            journey, and sit twenty places below their siblings.
+            The anchor text is the phrase people type ("Delhi to Agra one-way
+            cab"), which is the point: each sibling is introduced by the search
+            it is meant to answer, not by a generic label.
+            Self-links are filtered out because the booking-canonical map
+            resolves some corridors' one-way URL to this very page. */}
+        {(() => {
+          const siblingLinks = getCorridorLinks(cityName, 'root')
+            .filter((l) => l.href !== `/${cityName}`);
+          return siblingLinks.length > 0 ? (
+            <div className="container mx-auto px-4 pb-10">
+              <CorridorLinks
+                links={siblingLinks}
+                fromLabel={formattedCityName}
+                toLabel={formattedDestination}
+                theme="light"
+              />
+            </div>
+          ) : null;
+        })()}
 
         {/* Structured internal-link panels — boosts topical-authority signals
             for AI engines. Two panels: adjacent one-way routes + money pages
@@ -570,7 +700,7 @@ export default function CityNamePage({ params }) {
     // Null-safe — cities absent from _CITY_PLACES emit no Place node.
     const cityPlaceSchema = getCityPlaceSchema(toGeoSlug(cityName), {
       idSlug: cityName,
-      description: `${formattedCityName}, India — service city for Triveni Cabs local, outstation and airport taxi bookings.`,
+      description: `${formattedCityName}, India — service city for Triveni Cabs™ local, outstation and airport taxi bookings.`,
       image: '/images/triveni-cabs-og.jpg'
     });
     const cityPlaceId = cityPlaceSchema ? cityPlaceSchema['@id'] : null;
@@ -592,7 +722,6 @@ export default function CityNamePage({ params }) {
       "address": {
         "@type": "PostalAddress",
         "addressLocality": formattedCityName,
-        "addressRegion": "India",
         "addressCountry": "IN"
       },
       "geo": {
@@ -606,13 +735,7 @@ export default function CityNamePage({ params }) {
         "opens": "00:00",
         "closes": "23:59"
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": String(AGGREGATE_RATING.ratingValue),
-        "reviewCount": String(getDeterministicReviewCount(cityName)),
-        "bestRating": "5",
-        "worstRating": "1"
-      },
+      
       "areaServed": {
         "@type": "City",
         "name": formattedCityName,
@@ -656,6 +779,11 @@ export default function CityNamePage({ params }) {
       "@context": "https://schema.org",
       "@type": "Product",
       "name": `${formattedCityName} Taxi & Cab Service — Triveni Cabs`,
+      // Week 53: Google's Merchant listings report flags a missing `image`
+      // as a critical error, and 1,791 Product nodes in the build had none.
+      // This is the same asset the page already declares as its og:image, so
+      // nothing new is introduced and the two agree.
+      "image": `${BASE_URL}/images/car/swift_dzire.jpg`,
       "description": `Book taxi in ${formattedCityName} from ₹11/km. Local, outstation, airport transfers. AC sedan, SUV, tempo traveller available 24/7.`,
       "brand": {
         "@type": "Brand",
@@ -851,10 +979,15 @@ export default function CityNamePage({ params }) {
           "@type": "Product",
           "name": vehicle.name,
           "description": vehicle.description,
+          "image": vehicle.image ? `${BASE_URL}${vehicle.image}` : undefined,
+          "brand": { "@type": "Brand", "name": "Triveni Cabs" },
           "offers": {
             "@type": "Offer",
+            // per-km starting rate parsed from the published label ("₹11/km", "from ₹23/km")
+            "price": String(vehicle.perKm || '').replace(/[^0-9]/g, '') || undefined,
             "priceCurrency": "INR",
-            "availability": "https://schema.org/InStock"
+            "availability": "https://schema.org/InStock",
+            "url": `${BASE_URL}/${cityName}`
           }
         }
       }))
@@ -915,14 +1048,36 @@ export default function CityNamePage({ params }) {
         ))}
         <AEOHead pageType="cityHub" data={{ url: `/${cityName}`, title: `${formattedCityName} Cab Service`, city: formattedCityName }} />
 
+        {/* Link data resolved here: these helpers import sightseeingData.js
+            (1.24 MB) and CityServiceClient is a client component. */}
         <CityServiceClient
           formattedCityName={formattedCityName}
           citySpots={citySpots}
           details={details}
           vehiclesServices={vehiclesServices}
           cityLocalInfo={cityLocalInfo}
+          nearbyDestinations={utilsNearbyDestinations(formattedCityName, 6)}
+          relatedRoutes={utilsRelatedRoutes(formattedCityName, null, 8)}
+          relatedContent={utilsRelatedContent(formattedCityName)}
+          cityRoutes={cityRoutesData[formattedCityName] || defaultRoutes[formattedCityName] || []}
+          builtCorridorSlugs={knownRoutes.filter((p) => p.startsWith(`/${cityName}-to-`)).map((p) => p.slice(1))}
+          bestTimeInfo={bestTimeToVisitData[formattedCityName] || null}
         />
 
+        {/* Week 48: the guides written for this city's searches (weekend
+            getaways near me, hill stations near X, the festival guides) get
+            their inbound links from the hub. Server-rendered; nothing for a
+            city with no guide. */}
+        {/* Week 51: a direct answer at the top of the city hub, built from this
+            city's own route records — the answer shape the corridor and distance
+            families already had. */}
+        <AdventureActivities path={`/${cityName}`} />
+        <CityQuickAnswer city={formattedCityName} routes={cityRoutesData[formattedCityName] || defaultRoutes[formattedCityName] || []} />
+        {/* Week 49: the fact table the city pages lacked, from the city's own route records and the rate card. */}
+        <CityFaresTable city={formattedCityName} citySlug={cityName} routes={cityRoutesData[formattedCityName] || defaultRoutes[formattedCityName] || []} />
+        <CityPickupPoints city={formattedCityName} citySlug={cityName} />
+        <WeekGuidesForCity city={formattedCityName} citySlug={cityName} />
+        <CityPageDirectory city={formattedCityName} />
         {/* Structured internal-link panels — two siloed grids. Money pages
             anchor commercial intent; topical links anchor research intent. */}
         <div className="container mx-auto px-4 pb-12">

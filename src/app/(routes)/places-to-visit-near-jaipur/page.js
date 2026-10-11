@@ -11,16 +11,16 @@ export const metadata = {
   title: tightenTitle('15+ Places to Visit Near Jaipur by Car | Royal Rajasthan'),
   description: `Best places to visit near Jaipur by car. Pushkar (145 km), Ranthambore (180 km), Udaipur (395 km), Jodhpur (340 km) & more. Sedan ₹11/km. Call 7668570551.`,
   keywords: 'places to visit near jaipur, places near jaipur, weekend getaways from jaipur, day trips from jaipur, jaipur nearby places, places around jaipur, rajasthan road trip from jaipur, tourist places near jaipur, places to visit near jaipur by car',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/places-to-visit-near-jaipur' },
   openGraph: { title: '15+ Places to Visit Near Jaipur by Car | Book Cab', description: 'Explore Rajasthan from Jaipur. Pushkar, Ranthambore, Udaipur, Jodhpur & more with cab fares.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/places-to-visit-near-jaipur', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg', width: 1200, height: 630, alt: 'Places to Visit Near Jaipur' }] },
-  twitter: { card: 'summary_large_image', title: '15+ Places to Visit Near Jaipur by Car | Triveni Cabs', description: 'Royal Rajasthan road trips from Jaipur. Call 7668570551.', images: ['/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg'] },
+  twitter: { card: 'summary_large_image', title: '15+ Places to Visit Near Jaipur by Car | Triveni Cabs™', description: 'Royal Rajasthan road trips from Jaipur. Call 7668570551.', images: ['/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
 export default function PlacesToVisitNearJaipurPage() {
-  const itemListSchema = { "@context": "https://schema.org", "@type": "ItemList", "name": "Places to Visit Near Jaipur", "description": "Top destinations near Jaipur with distance, drive time, and cab fares", "numberOfItems": data.destinations.length, "itemListElement": data.destinations.map((d, i) => ({ "@type": "ListItem", "position": i + 1, "name": d.name, "url": `https://www.trivenicabs.in${d.bookingSlug}` })) };
+  const itemListSchema = { "@context": "https://schema.org", "@type": "ItemList", "name": "Places to Visit Near Jaipur", "description": "Top destinations near Jaipur with distance, drive time, and cab fares", "numberOfItems": data.destinations.length, "itemListElement": data.destinations.map((d, i) => ({ "@type": "ListItem", "position": i + 1, "name": d.name, "url": `https://www.trivenicabs.in${d.listUrl}` })) };
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": data.faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } })) };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Places to Visit Near Jaipur", "item": "https://www.trivenicabs.in/places-to-visit-near-jaipur" }] };
 

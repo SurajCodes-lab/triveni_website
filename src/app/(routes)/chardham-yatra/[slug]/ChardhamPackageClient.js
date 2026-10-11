@@ -7,6 +7,7 @@ import { registrationSteps, packingTips, seasonGuide, exclusions } from '@/utili
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import ChardhamVehicleTable from '@/components/seo/ChardhamVehicleTable';
 import { vehicles } from '@/utilis/chardhamYatraData';
+import { groupDigits } from '@/utilis/pricing';
 
 // ============================================================================
 // CHARDHAM PACKAGE CLIENT — "Royal Yatra" Design
@@ -120,7 +121,7 @@ export default function ChardhamPackageClient({ data }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-24 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-14 sm:py-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Package Info */}
             <div>
@@ -144,14 +145,14 @@ export default function ChardhamPackageClient({ data }) {
               <h1
                 className="speakable-headline font-display-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 leading-[1.05] tracking-tight"
               >
-                {titleMain}
+                {titleMain}{' '}
                 <span className="mt-2 block text-gold-foil text-2xl sm:text-3xl md:text-4xl">{titleAccent}</span>
               </h1>
 
               <p
                 className="speakable-lead text-white/75 text-base md:text-lg mb-3 max-w-2xl leading-relaxed"
               >
-                This {theme.name.toLowerCase()} Char Dham Yatra 2026 package uses the {vehicle.name} ({vehicle.seats}-seater) at ₹{vehicle.perKm}/km — from {estimatedPrice} for the full {duration} circuit covering all four Dhams. Includes vehicle, fuel, driver, tolls and 24/7 support with experienced hill drivers.
+                This {theme.name.toLowerCase()} Char Dham Yatra 2026 package uses the {vehicle.name} ({vehicle.seats}-seater) at ₹{groupDigits(vehicle.perKm)}/km — from {estimatedPrice} for the full {duration} circuit covering all four Dhams. Includes vehicle, fuel, driver, tolls and 24/7 support with experienced hill drivers.
               </p>
 
               <p
@@ -169,7 +170,7 @@ export default function ChardhamPackageClient({ data }) {
                   <span className="text-4xl font-black text-gold-foil tabular-nums">{estimatedPrice}</span>
                   <span className="text-white/40 text-sm">for {duration}</span>
                 </div>
-                <p className="text-white/40 text-xs mt-1">₹{vehicle.perKm}/km | {distance}</p>
+                <p className="text-white/40 text-xs mt-1">₹{groupDigits(vehicle.perKm)}/km | {distance}</p>
                 {perPersonCost && (
                   <p className={`${theme.text} text-sm font-semibold mt-2`}>Just ₹{perPersonCost.toLocaleString('en-IN')}/person (40 pax)</p>
                 )}
@@ -360,7 +361,7 @@ export default function ChardhamPackageClient({ data }) {
                     <div className="mt-3">
                       <span className={`text-2xl font-bold ${isCurrentPackage ? pkgTheme.text : 'text-white'}`}>{car.estimatedPrice}</span>
                     </div>
-                    <p className="text-gray-500 text-xs mt-1">₹{car.perKm}/km outstation</p>
+                    <p className="text-gray-500 text-xs mt-1">₹{groupDigits(car.perKm)}/km outstation</p>
                     <a href="tel:+917668570551" className={`mt-4 block text-center py-2.5 rounded-xl font-semibold text-sm transition-all ${
                       isCurrentPackage
                         ? `bg-gradient-to-r ${pkgTheme.gradient} text-white hover:shadow-lg ${pkgTheme.shadow}`
@@ -404,7 +405,7 @@ export default function ChardhamPackageClient({ data }) {
                           </div>
                         </td>
                         <td className="p-4 text-center text-gray-300">{bus.seats}</td>
-                        <td className="p-4 text-center text-[#FACF2D] font-semibold">₹{bus.perKm}</td>
+                        <td className="p-4 text-center text-[#FACF2D] font-semibold">₹{groupDigits(bus.perKm)}</td>
                         <td className="p-4 text-center text-gray-300">{bus.minCharge}</td>
                         <td className="p-4 text-center text-gray-300">
                           ~₹{Math.round((distanceKm * bus.perKm) / (bus.seats * 0.85)).toLocaleString('en-IN')}
@@ -419,7 +420,7 @@ export default function ChardhamPackageClient({ data }) {
                     <div key={i} className="p-4">
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-white font-medium text-sm">{bus.name}</span>
-                        <span className="text-[#FACF2D] font-semibold text-sm">₹{bus.perKm}/km</span>
+                        <span className="text-[#FACF2D] font-semibold text-sm">₹{groupDigits(bus.perKm)}/km</span>
                       </div>
                       <p className="text-gray-400 text-xs">
                         {bus.seats} seats · Min. {bus.minCharge} · ~₹{Math.round((distanceKm * bus.perKm) / (bus.seats * 0.85)).toLocaleString('en-IN')}/person
@@ -503,10 +504,10 @@ export default function ChardhamPackageClient({ data }) {
 
             <div className="prose prose-invert max-w-none space-y-6 text-gray-300/80 leading-relaxed">
               <p>
-                The <strong className="text-white">{theme.name} Char Dham Yatra Package</strong> by Triveni Cabs offers a {theme.name === 'Luxury' ? 'premium VIP experience' : theme.name === 'Budget' ? 'cost-effective pilgrimage solution' : theme.name === 'Family' ? 'comfortable family-friendly journey' : 'group-optimized travel experience'} for your sacred pilgrimage to all four Dhams of Uttarakhand — Yamunotri, Gangotri, Kedarnath, and Badrinath.
+                The <strong className="text-white">{theme.name} Char Dham Yatra Package</strong> by Triveni Cabs™ offers a {theme.name === 'Luxury' ? 'premium VIP experience' : theme.name === 'Budget' ? 'cost-effective pilgrimage solution' : theme.name === 'Family' ? 'comfortable family-friendly journey' : 'group-optimized travel experience'} for your sacred pilgrimage to all four Dhams of Uttarakhand — Yamunotri, Gangotri, Kedarnath, and Badrinath.
               </p>
               <p>
-                <strong className="text-white">Vehicle:</strong> {vehicle.name} ({vehicle.seats}-seater, {vehicle.fuelType}, {vehicle.transmission}). <strong className={theme.text}>Price: ₹{vehicle.perKm}/km outstation.</strong> The {duration} package covers approximately {distance}, starting from {estimatedPrice} (including vehicle, fuel, driver, tolls).
+                <strong className="text-white">Vehicle:</strong> {vehicle.name} ({vehicle.seats}-seater, {vehicle.fuelType}, {vehicle.transmission}). <strong className={theme.text}>Price: ₹{groupDigits(vehicle.perKm)}/km outstation.</strong> The {duration} package covers approximately {distance}, starting from {estimatedPrice} (including vehicle, fuel, driver, tolls).
               </p>
               <p>
                 {vehicle.description}
@@ -619,6 +620,7 @@ export default function ChardhamPackageClient({ data }) {
                 key={i}
                 className={`bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden ${theme.hoverBorder} transition-all`}
               >
+                <h3 className="m-0">
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
                   aria-expanded={expandedFaq === i}
@@ -627,6 +629,7 @@ export default function ChardhamPackageClient({ data }) {
                   <span className="text-white font-semibold pr-4">{faq.question}</span>
                   <ChevronDown className={`w-5 h-5 text-[#FACF2D] flex-shrink-0 transition-transform ${expandedFaq === i ? 'rotate-180' : ''}`} />
                 </button>
+                </h3>
                 {expandedFaq === i && (
                   <p className={`px-5 pb-5 text-gray-300/70 leading-relaxed${i === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
                 )}

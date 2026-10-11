@@ -32,11 +32,11 @@ export default function DataTable({ columns = [], rows = [], tone = 'light', cap
             )}
             <dl className="mt-2.5 space-y-1.5">
               {rest.map((c) => (
-                <div key={c.key} className="flex items-baseline justify-between gap-3">
-                  <dt className={`text-xs font-semibold uppercase tracking-wide ${dark ? 'text-white/45' : 'text-slate-400'}`}>
+                <div key={c.key} className="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-start gap-3">
+                  <dt className={`min-w-0 break-words text-xs font-semibold uppercase tracking-wide ${dark ? 'text-white/60' : 'text-slate-500'}`}>
                     {c.label}
                   </dt>
-                  <dd className={`text-right text-sm ${dark ? 'text-slate-200' : 'text-slate-700'}`}>
+                  <dd className={`min-w-0 break-words text-right text-sm leading-snug ${dark ? 'text-slate-100' : 'text-slate-700'}`}>
                     {row[c.key]}
                   </dd>
                 </div>
@@ -48,7 +48,7 @@ export default function DataTable({ columns = [], rows = [], tone = 'light', cap
 
       {/* ── Desktop: true semantic table, fits its container ── */}
       <div className="hidden overflow-hidden rounded-2xl md:block">
-        <table className={`w-full text-sm ${dark ? 'text-slate-200' : 'text-slate-700'}`}>
+        <table className={`w-full text-sm ${dark ? 'text-slate-200' : 'text-slate-700'} rt-stack`}>
           {caption && <caption className="sr-only">{caption}</caption>}
           <thead>
             <tr className={dark ? 'bg-white/5' : 'bg-slate-50'}>

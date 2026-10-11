@@ -8,10 +8,10 @@ export const metadata = {
   title: tightenTitle('Romantic Trip to Agra Taj Mahal | Couple Trip Rs 4,500 | 2026'),
   description: 'Book romantic Agra trip from Delhi. Sedan Rs 4,500, Innova Rs 8,500. Taj Mahal sunrise, Mehtab Bagh sunset, decorated car. Couples special. Call 7668570551.',
   keywords: 'romantic trip agra taj mahal, couple trip agra, taj mahal romantic trip, agra honeymoon trip, romantic agra day trip from delhi',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/romantic-trip-agra-taj-mahal' },
-  openGraph: { title: 'Romantic Trip to Agra Taj Mahal | Rs 4,500', description: 'Monument of love. Taj Mahal sunrise, Mehtab Bagh sunset, decorated car.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/romantic-trip-agra-taj-mahal', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Romantic Trip to Agra Taj Mahal | Rs 4,500', description: 'Monument of love. Taj Mahal sunrise, Mehtab Bagh sunset, decorated car.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/romantic-trip-agra-taj-mahal', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Romantic Agra Trip | Taj Mahal | Rs 4,500', description: 'The world most romantic monument. Taj Mahal couple trip from Delhi.' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

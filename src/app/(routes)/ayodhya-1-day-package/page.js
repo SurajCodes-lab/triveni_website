@@ -13,9 +13,9 @@ export const metadata = {
   title: tightenTitle(data.metaTitle),
   description: data.metaDescription,
   keywords: data.metaKeywords,
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/ayodhya-1-day-package' },
   openGraph: {
@@ -24,7 +24,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/ayodhya-1-day-package',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{
       url: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg',
       width: 1200, height: 630,
@@ -74,7 +74,7 @@ export default function Page() {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
     },
     "offers": { "@type": "AggregateOffer", "lowPrice": String(data.priceNum), "highPrice": String(data.priceNum * 4), "priceCurrency": "INR" },
   };

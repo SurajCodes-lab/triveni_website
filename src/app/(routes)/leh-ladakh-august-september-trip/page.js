@@ -9,13 +9,13 @@ export const metadata = {
   title: tightenTitle('Leh Ladakh August September Trip 2026 | Last Road Window'),
   description: 'Ladakh in August-September 2026 — the last dependable road window before the passes close. Manali-Leh in, Srinagar out. From ₹26,400. Call 7668570551.',
   keywords: 'leh ladakh august september trip, best time to visit ladakh, ladakh in august, ladakh in september, ladakh road closing date, manali leh highway august, ladakh trip from delhi september',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/leh-ladakh-august-september-trip' },
   openGraph: {
     title: 'Leh Ladakh August September Trip 2026 | From ₹26,400',
     description: 'August-September is the last dependable Ladakh road window before the passes close. Manali-Leh in, Srinagar-Leh out.',
-    type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/leh-ladakh-august-september-trip', siteName: 'Triveni Cabs',
+    type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/leh-ladakh-august-september-trip', siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Ladakh/Pangong_Lake.jpg', width: 1200, height: 630, alt: 'Leh Ladakh August September Trip — Pangong Lake — Triveni Cabs' }],
   },
   twitter: { card: 'summary_large_image', title: 'Leh Ladakh August September Trip 2026', description: 'The last dependable Ladakh road window. From ₹26,400.', images: ['/images/sightseeing/Ladakh/Pangong_Lake.jpg'], creator: '@trivenicabs' },
@@ -27,7 +27,7 @@ export const revalidate = 3600;
 export default function LehLadakhAugustSeptemberTripPage() {
   if (!festival) return null;
 
-  const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Ladakh Seasonal Road Trip Transport", "name": "Leh Ladakh August September Trip from Delhi", "description": "Seasonal Ladakh road trips in August and September — the last dependable window before the Manali-Leh and Srinagar-Leh highways close. Full circuit via Manali, Leh, Nubra, Pangong and Srinagar with a mandatory Leh acclimatisation day and Inner Line Permit assistance.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Manali" }, { "@type": "City", "name": "Leh" }, { "@type": "City", "name": "Srinagar" }], "offers": { "@type": "AggregateOffer", "lowPrice": "26400", "highPrice": "67200", "priceCurrency": "INR" } };
+  const serviceSchema = { "@context": "https://schema.org", "@type": "Service", "serviceType": "Ladakh Seasonal Road Trip Transport", "name": "Leh Ladakh August September Trip from Delhi", "description": "Seasonal Ladakh road trips in August and September — the last dependable window before the Manali-Leh and Srinagar-Leh highways close. Full circuit via Manali, Leh, Nubra, Pangong and Srinagar with a mandatory Leh acclimatisation day and Inner Line Permit assistance.", "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } }, "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Manali" }, { "@type": "City", "name": "Leh" }, { "@type": "City", "name": "Srinagar" }], "offers": { "@type": "AggregateOffer", "lowPrice": "26400", "highPrice": "67200", "priceCurrency": "INR" } };
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Leh Ladakh August September Trip", "item": "https://www.trivenicabs.in/leh-ladakh-august-september-trip" }] };
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": (festival.faqs || []).map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } })) };
 

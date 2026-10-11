@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Phone, MessageCircle, ArrowRight, MapPin, ShieldCheck, Clock, Star } from '@/components/ui/icons';
+import { canonicalClientHref } from '@/lib/seo/client-route-exists';
 
 const PHONE = '+917668570551';
 const WA = 'https://wa.me/917668570551';
@@ -75,7 +76,7 @@ export default function CategoryHubClient({
           {items.map((it) => (
             <li key={it.href}>
               <Link
-                href={it.href}
+                href={canonicalClientHref(it.href)}
                 className="group flex items-center justify-between gap-3 bg-white rounded-xl px-4 py-3 border border-slate-200/80 hover:border-amber-300 hover:shadow-md transition-all"
               >
                 <span className="min-w-0">

@@ -3,6 +3,7 @@ import FriendsTripClient from '@/components/audience/FriendsTripClient';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { buildTripSchemaGraph } from '@/utilis/tripSchemaHelper';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import SiblingPages from '@/components/seo/SiblingPages';
 
 const SLUG = "friends-trip-spiti";
 const data = friendsTripData["spiti"];
@@ -11,10 +12,10 @@ export const metadata = {
   title: tightenTitle('Friends Trip to Spiti Valley by Tempo Traveller | Rs 3,410/Person | 2026'),
   description: 'Book Tempo Traveller for a friends trip to Spiti Valley from Delhi. Rs 3,410/person. Kaza, Key Monastery, Chandratal, Kalpa circuit. 12-17 seater hill-spec. Call 7668570551.',
   keywords: 'friends trip spiti, spiti valley group trip, spiti tempo traveller, delhi to spiti friends, kaza chandratal circuit, spiti valley road trip package',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/friends-trip-spiti' },
-  openGraph: { title: 'Friends Trip to Spiti Valley | Tempo Traveller Rs 3,410/Person', description: 'Spiti Valley friends circuit. Kaza, Key Monastery, Chandratal, Kalpa. From Rs 3,410/person.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/friends-trip-spiti', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Friends Trip to Spiti Valley | Tempo Traveller Rs 3,410/Person', description: 'Spiti Valley friends circuit. Kaza, Key Monastery, Chandratal, Kalpa. From Rs 3,410/person.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/friends-trip-spiti', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Friends Trip Spiti Valley | Rs 3,410/Person', description: 'Spiti group circuit by Tempo Traveller. Kaza, Chandratal, high-altitude villages.' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -36,7 +37,7 @@ export default function FriendsTripPage() {
     highPrice,
     tripName: 'Friends Trip to Spiti Valley by Tempo Traveller from Delhi',
     howToName: 'How to Plan a Friends Group Trip to Spiti Valley from Delhi',
-    howToDesc: 'Step-by-step guide to booking a hill-spec Tempo Traveller for a friends group circuit to Spiti Valley from Delhi with Triveni Cabs.',
+    howToDesc: 'Step-by-step guide to booking a hill-spec Tempo Traveller for a friends group circuit to Spiti Valley from Delhi with Triveni Cabs™.',
   });
 
   return (
@@ -49,7 +50,7 @@ export default function FriendsTripPage() {
           tone="dark"
           className="mx-auto max-w-4xl"
           question={'How much does a friends trip to Spiti Valley from Delhi cost?'}
-          answer={'A friends trip to Spiti Valley runs 7-9 days and covers 760 km from Delhi, planned for a group of 8-15 people. Triveni Cabs prices it at Rs 48,000 for a 12-seater Tempo Traveller and Rs 58,000 for a 17-seater, which works out to about Rs 4,000 per person in the 12-seater. The best season to go is June to September (summer circuit).'}
+          answer={'A friends trip to Spiti Valley runs 7-9 days and covers 760 km from Delhi, planned for a group of 8-15 people. Triveni Cabs™ prices it at Rs 48,000 for a 12-seater Tempo Traveller and Rs 58,000 for a 17-seater, which works out to about Rs 4,000 per person in the 12-seater. The best season to go is June to September (summer circuit).'}
           facts={[
             { label: 'Distance', value: '760 km from Delhi' },
             { label: 'Duration', value: '7-9 Days' },
@@ -59,6 +60,8 @@ export default function FriendsTripPage() {
         />
       </div>
       <FriendsTripClient data={data} />
+      {/* Week 49: the family this page belongs to — an audit found nothing linked to it */}
+      <SiblingPages prefix="/friends-trip-" current="/friends-trip-spiti" title="Friends&rsquo; trips from Delhi, by destination" intro="The same trip planned for the other hill towns and desert forts groups ask for." />
     </>
   );
 }

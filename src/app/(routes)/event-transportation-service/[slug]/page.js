@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import {
@@ -10,6 +11,7 @@ import {
 import { generateEventServiceSchema, generateBreadcrumbSchema } from '@/lib/seo/schema-generators';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import AEOHead from '@/components/seo/AEOHead';
+import CorporateFleetTable from '@/components/seo/CorporateFleetTable';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -43,16 +45,16 @@ export async function generateMetadata({ params }) {
   const eventType = getEventTypeBySlug(slug);
 
   if (!eventType) {
-    return { title: 'Event Transportation Services | Triveni Cabs' };
+    return { title: 'Event Transportation Services | Triveni Cabs™' };
   }
 
   return {
     title: eventType.metaTitle,
     description: eventType.metaDescription,
     keywords: eventType.keywords.join(', '),
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: {
       canonical: `/event-transportation-service/${slug}`,
@@ -63,7 +65,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/event-transportation-service/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [
         {
           url: eventType.heroImage || '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
@@ -81,16 +83,7 @@ export async function generateMetadata({ params }) {
       site: '@trivenicabs',
       images: [eventType.heroImage || '/images/sightseeing/Delhi/Delhi_hero_section.jpg']
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -188,7 +181,7 @@ export default async function EventTypePage({ params }) {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px]" style={{ animationDelay: '2s' }} />
 
           {/* Content */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12 sm:py-20">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -202,7 +195,6 @@ export default async function EventTypePage({ params }) {
               {/* Left Content */}
               <div className="space-y-8">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <span className="text-4xl">{eventType.icon}</span>
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">{eventType.name}</span>
@@ -210,7 +202,7 @@ export default async function EventTypePage({ params }) {
                 </div>
 
                 <h1 className="font-display-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]">
-                  {eventType.title.split(' ').slice(0, 2).join(' ')}
+                  {eventType.title.split(' ').slice(0, 2).join(' ')}{' '}
                   <span className="block mt-2 text-gold-foil">
                     {eventType.title.split(' ').slice(2).join(' ') || 'Services'}
                   </span>
@@ -332,7 +324,7 @@ export default async function EventTypePage({ params }) {
 
           <div className="max-w-7xl mx-auto relative z-10">
             {/* Section Header */}
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 sm:mb-20">
               <div className="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full mb-8 shadow-lg shadow-slate-200/50 border border-slate-100">
                 <div className="w-2 h-2 bg-cyan-500 rounded-full" />
                 <span className="text-slate-600 font-semibold text-sm tracking-wider uppercase">What We Offer</span>
@@ -409,7 +401,7 @@ export default async function EventTypePage({ params }) {
             </div>
 
             {/* Bottom CTA */}
-            <div className="mt-16 text-center">
+            <div className="mt-10 sm:mt-16 text-center">
               <div className="inline-flex items-center gap-4 bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-2 pl-8 shadow-xl">
                 <span className="text-white font-medium">Need a custom solution?</span>
                 <Link
@@ -425,6 +417,8 @@ export default async function EventTypePage({ params }) {
         </section>
 
         {/* Service Cities Section - Premium Dark Design */}
+        {/* Week 49: the fleet-and-rate table, from the corporate fleet records. */}
+        <CorporateFleetTable context={`${eventType.name || 'event'} transport`} />
         <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
           {/* Animated Mesh Gradient Background */}
           <div className="absolute inset-0">
@@ -434,9 +428,8 @@ export default async function EventTypePage({ params }) {
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 sm:mb-20">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                 <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                   <MapPin className="w-6 h-6 text-cyan-300" />
                   <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Service Coverage</span>
@@ -509,7 +502,7 @@ export default async function EventTypePage({ params }) {
         {/* FAQ Section - Premium Cards Design */}
         <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] relative overflow-hidden">
           <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 sm:mb-20">
               <div className="inline-flex items-center gap-2 bg-white/70 ring-1 ring-amber-900/10 px-6 py-3 rounded-full mb-6">
                 <HelpCircle className="w-5 h-5 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Got Questions?</span>
@@ -552,7 +545,7 @@ export default async function EventTypePage({ params }) {
             </div>
 
             {/* Contact CTA */}
-            <div className="mt-16 text-center">
+            <div className="mt-10 sm:mt-16 text-center">
               <p className="text-slate-600 mb-4">Still have questions?</p>
               <Link
                 href="tel:+917668570551"
@@ -569,7 +562,7 @@ export default async function EventTypePage({ params }) {
         {/* Other Event Types */}
         <section className="py-16 md:py-24 px-4 bg-slate-50">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
                 Explore Other Event Types
               </h2>
@@ -615,7 +608,7 @@ export default async function EventTypePage({ params }) {
             backgroundSize: '40px 40px'
           }} />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 py-14 sm:py-24">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left Content */}
               <div>

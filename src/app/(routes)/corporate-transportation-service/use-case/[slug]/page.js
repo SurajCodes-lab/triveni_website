@@ -1,7 +1,11 @@
 import Link from 'next/link';
+import { NOINDEX_ROBOTS, isNoindexPath } from '@/lib/seo/noindex-families.mjs';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import AEOHead from '@/components/seo/AEOHead';
+import CorporateFleetTable from '@/components/seo/CorporateFleetTable';
+import CorporateFleetPhotos from '@/components/seo/CorporateFleetPhotos';
+import { resolveVehicleImage } from '@/lib/seo/vehicle-image';
 import {
   getUseCaseBySlug,
   getAllUseCaseSlugs
@@ -31,6 +35,7 @@ import {
   Star
 } from '@/components/ui/icons';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 // Generate static params for all use cases
 export async function generateStaticParams() {
@@ -52,9 +57,9 @@ export async function generateMetadata({ params }) {
   return {
     title: useCase.metaTitle,
     description: useCase.metaDescription,
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: {
       canonical: `/corporate-transportation-service/use-case/${slug}`,
@@ -65,7 +70,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/corporate-transportation-service/use-case/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [
         {
           url: useCase.heroImage,
@@ -81,16 +86,7 @@ export async function generateMetadata({ params }) {
       description: useCase.metaDescription,
       images: [useCase.heroImage]
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
+    robots: isNoindexPath(`/corporate-transportation-service/use-case/${slug}`) ? NOINDEX_ROBOTS : { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
     keywords: useCase.keywords.join(', '),
   };
 }
@@ -137,7 +133,7 @@ export default async function UseCasePage({ params }) {
     description: useCase.metaDescription || useCase.description,
     image: useCase.heroImage,
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/corporate-transportation-service/use-case/${slug}`) || getTodayDate()),
     authorName: 'editorial',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
   });
@@ -200,7 +196,7 @@ export default async function UseCasePage({ params }) {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px]" style={{ animationDelay: '2s' }} />
 
           {/* Content */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12 sm:py-20">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -214,7 +210,6 @@ export default async function UseCasePage({ params }) {
               {/* Left Content */}
               <div className="space-y-8">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <span className="text-4xl">{useCase.icon}</span>
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">{useCase.name}</span>
@@ -312,6 +307,9 @@ export default async function UseCasePage({ params }) {
           </div>
         </section>
 
+        {!useCase.vehicleOptions && <CorporateFleetPhotos context={useCase && useCase.name ? useCase.name.toLowerCase() : 'corporate travel'} />}
+        <CorporateFleetTable context={useCase && useCase.name ? useCase.name.toLowerCase() : 'corporate travel'} />
+
         {/* Trust Bar */}
         <section className="py-6 bg-slate-900 border-y border-slate-800">
           <div className="max-w-7xl mx-auto px-4">
@@ -339,9 +337,8 @@ export default async function UseCasePage({ params }) {
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-30" />
                   <div className="relative inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-cyan-500/30">
                     <Zap className="w-5 h-5 text-white" />
                     <span className="text-white font-semibold text-sm tracking-wider uppercase">How It Works</span>
@@ -406,9 +403,8 @@ export default async function UseCasePage({ params }) {
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <Sparkles className="w-6 h-6 text-cyan-300" />
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Features Included</span>
@@ -467,9 +463,8 @@ export default async function UseCasePage({ params }) {
             <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-emerald-100/50 rounded-full blur-[150px]" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full blur-xl opacity-30" />
                   <div className="relative inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-green-500/30">
                     <DollarSign className="w-5 h-5 text-white" />
                     <span className="text-white font-semibold text-sm tracking-wider uppercase">Pricing Options</span>
@@ -576,9 +571,8 @@ export default async function UseCasePage({ params }) {
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <CheckCircle2 className="w-6 h-6 text-cyan-300" />
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Key Benefits</span>
@@ -634,7 +628,7 @@ export default async function UseCasePage({ params }) {
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-100/50 rounded-full blur-[120px]" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-blue-500/30">
                   <Car className="w-5 h-5 text-white" />
                   <span className="text-white font-semibold text-sm tracking-wider uppercase">Vehicle Options</span>
@@ -654,14 +648,26 @@ export default async function UseCasePage({ params }) {
                       'bg-purple-500'
                     }`} />
 
-                    <div className="relative bg-white rounded-[2rem] p-8 shadow-xl shadow-slate-200/50 border border-slate-100 hover:border-blue-200 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 h-full">
-                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform ${
-                        idx % 3 === 0 ? 'bg-gradient-to-br from-blue-500 to-blue-600 shadow-blue-500/40' :
-                        idx % 3 === 1 ? 'bg-gradient-to-br from-indigo-500 to-indigo-600 shadow-indigo-500/40' :
-                        'bg-gradient-to-br from-purple-500 to-purple-600 shadow-purple-500/40'
-                      }`}>
-                        <Car className="w-8 h-8 text-white" />
-                      </div>
+                    <div className="relative overflow-hidden bg-white rounded-[2rem] p-8 shadow-xl shadow-slate-200/50 border border-slate-100 hover:border-blue-200 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 h-full">
+                      {resolveVehicleImage(vehicle.type, vehicle.vehicles, vehicle.capacity) ? (
+                        <div className="relative mb-6 -mx-8 -mt-8 aspect-[16/10] overflow-hidden rounded-t-[2rem]">
+                          <Image
+                            src={resolveVehicleImage(vehicle.type, vehicle.vehicles, vehicle.capacity)}
+                            alt={`${vehicle.type} for ${useCase.name}`}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      ) : (
+                        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform ${
+                          idx % 3 === 0 ? 'bg-gradient-to-br from-blue-500 to-blue-600 shadow-blue-500/40' :
+                          idx % 3 === 1 ? 'bg-gradient-to-br from-indigo-500 to-indigo-600 shadow-indigo-500/40' :
+                          'bg-gradient-to-br from-purple-500 to-purple-600 shadow-purple-500/40'
+                        }`}>
+                          <Car className="w-8 h-8 text-white" />
+                        </div>
+                      )}
                       <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{vehicle.type}</h3>
                       <p className="text-slate-500 mb-4">{vehicle.vehicles}</p>
                       <div className="flex items-center justify-between pt-4 border-t border-slate-200">
@@ -683,7 +689,7 @@ export default async function UseCasePage({ params }) {
             <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-orange-100/50 rounded-full blur-[120px]" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-amber-500/30">
                   <Star className="w-5 h-5 text-white" />
                   <span className="text-white font-semibold text-sm tracking-wider uppercase">Executive Fleet</span>
@@ -701,7 +707,18 @@ export default async function UseCasePage({ params }) {
                       idx === 0 ? 'bg-amber-500' : 'bg-orange-500'
                     }`} />
 
-                    <div className="relative bg-white rounded-[2rem] p-10 shadow-xl shadow-slate-200/50 border border-slate-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 h-full">
+                    <div className="relative overflow-hidden bg-white rounded-[2rem] p-10 shadow-xl shadow-slate-200/50 border border-slate-100 hover:border-amber-200 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 h-full">
+                      {resolveVehicleImage(category.category, (category.vehicles || []).join(' ')) && (
+                        <div className="relative mb-6 -mx-10 -mt-10 aspect-[16/9] overflow-hidden rounded-t-[2rem]">
+                          <Image
+                            src={resolveVehicleImage(category.category, (category.vehicles || []).join(' '))}
+                            alt={`${category.category} for ${useCase.name}`}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
                       <h3 className="text-2xl font-bold text-slate-900 mb-6">{category.category}</h3>
                       <div className="flex flex-wrap gap-3 mb-6">
                         {category.vehicles.map((v, vIdx) => (
@@ -736,7 +753,7 @@ export default async function UseCasePage({ params }) {
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-100/50 rounded-full blur-[120px]" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-500 to-purple-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-violet-500/30">
                   <Car className="w-5 h-5 text-white" />
                   <span className="text-white font-semibold text-sm tracking-wider uppercase">Shuttle Types</span>
@@ -760,6 +777,17 @@ export default async function UseCasePage({ params }) {
                       }`}>
                         {idx + 1}
                       </div>
+                      {resolveVehicleImage(shuttle.type, (shuttle.vehicles || []).join(' ')) && (
+                        <div className="relative mb-5 aspect-[16/9] overflow-hidden rounded-2xl">
+                          <Image
+                            src={resolveVehicleImage(shuttle.type, (shuttle.vehicles || []).join(' '))}
+                            alt={`${shuttle.type} shuttle`}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
                       <h3 className="text-2xl font-bold text-slate-900 mb-3">{shuttle.type}</h3>
                       <p className="text-slate-500 mb-6">{shuttle.description}</p>
                       <div className="bg-violet-50 rounded-xl p-4 border border-violet-100 mb-6">
@@ -785,7 +813,7 @@ export default async function UseCasePage({ params }) {
         {useCase.faqs && useCase.faqs.length > 0 && (
           <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] relative overflow-hidden">
             <div className="max-w-5xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="inline-flex items-center gap-2 bg-white/70 ring-1 ring-amber-900/10 px-6 py-3 rounded-full mb-6">
                   <HelpCircle className="w-5 h-5 text-indigo-600" />
                   <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Got Questions?</span>
@@ -820,7 +848,7 @@ export default async function UseCasePage({ params }) {
                 ))}
               </div>
 
-              <div className="mt-16 text-center">
+              <div className="mt-10 sm:mt-16 text-center">
                 <p className="text-slate-600 mb-4">Still have questions?</p>
                 <Link
                   href="tel:+917668570551"
@@ -848,7 +876,7 @@ export default async function UseCasePage({ params }) {
             backgroundSize: '40px 40px'
           }} />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 py-14 sm:py-24">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-xl px-5 py-2.5 rounded-full mb-8 border border-cyan-400/30">

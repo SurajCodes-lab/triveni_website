@@ -36,6 +36,8 @@ import {
   SectionLabel, ThemedDivider, ThemedHeading, Accent, ThemedCard, ThemedSpecTable,
   resolveVariant, getLook, VariantMotif, VariantSignature,
 } from '@/components/vehicleThemes';
+import VehicleFleetTable from '@/components/seo/VehicleFleetTable';
+import { groupDigits } from '@/utilis/pricing';
 
 const ICONS = { Users, Snowflake, Route, Receipt, Crown, Gauge, ShieldCheck, Sparkles, Heart, Building2, Plane, Mountain, Car, Compass, Map, Navigation };
 const Icon = ({ name, className }) => { const C = ICONS[name] || Car; return <C className={className} />; };
@@ -62,7 +64,7 @@ export default function VehicleCityClient({ data }) {
   return (
     <MotionConfig reducedMotion={reduce ? 'always' : 'never'}>
       <div className={`min-h-screen ${theme.pageBg} overflow-hidden`}>
-        <SetStickyCta price={`From ₹${v.lowPrice}/km`} label={`${cityData.name} ${v.type}`} whatsappText={waText} />
+        <SetStickyCta price={`From ₹${groupDigits(v.lowPrice)}/km`} label={`${cityData.name} ${v.type}`} whatsappText={waText} />
 
         {/* ============================== HERO ============================== */}
         {isRoyal ? (
@@ -82,7 +84,7 @@ export default function VehicleCityClient({ data }) {
                 How much does a {v.type.toLowerCase()} cost in {cityData.name}?
               </h2>
               <p className="speakable-lead text-slate-700 leading-relaxed text-base md:text-lg">
-                A <strong>{v.type.toLowerCase()} in {cityData.name}</strong> starts at <strong>₹{v.lowPrice}/km</strong> for the {fleet[0].name.toLowerCase()} and goes up to <strong>₹{v.highPrice}/km</strong> for the {fleet[fleet.length - 1].name.toLowerCase()}, with local 8-hour/80-km day packages from <strong>{v.localRate.split(' ')[0]}</strong>. Triveni Cabs offers {v.capacity.toLowerCase()} AC {v.type.toLowerCase()}s in {cityData.name} with {v.features.slice(0, 3).join(', ').toLowerCase()} — ideal for {v.idealFor.slice(0, 2).join(', ').toLowerCase()} to {cityData.popularDestinations?.slice(0, 3).join(', ')} and {routes.length}+ destinations. Book by calling <strong>+91-7668570551</strong> or WhatsApp.
+                A <strong>{v.type.toLowerCase()} in {cityData.name}</strong> starts at <strong>₹{groupDigits(v.lowPrice)}/km</strong> for the {fleet[0].name.toLowerCase()} and goes up to <strong>₹{groupDigits(v.highPrice)}/km</strong> for the {fleet[fleet.length - 1].name.toLowerCase()}, with local 8-hour/80-km day packages from <strong>{v.localRate.split(' ')[0]}</strong>. Triveni Cabs™ offers {v.capacity.toLowerCase()} AC {v.type.toLowerCase()}s in {cityData.name} with {v.features.slice(0, 3).join(', ').toLowerCase()} — ideal for {v.idealFor.slice(0, 2).join(', ').toLowerCase()} to {cityData.popularDestinations?.slice(0, 3).join(', ')} and {routes.length}+ destinations. Book by calling <strong>+91-7668570551</strong> or WhatsApp.
               </p>
               <ThemedSpecTable theme={theme} rows={v.tableRows} caption={`${v.type} fares and seating in ${cityData.name}`} />
               <p className={`text-xs mt-2 ${isRoyal ? 'text-amber-800/60' : 'text-slate-500'}`}>Rates in {cityData.name} include fuel &amp; driver. Tolls, parking &amp; state taxes extra. GST as applicable.</p>
@@ -92,6 +94,19 @@ export default function VehicleCityClient({ data }) {
             </div>
           </div>
         </section>
+
+        {/* ===== FARE TABLE (answer engines + AI assistants) =================
+             A real <table>, not styled cards. Google's table snippet requires
+             one, and an assistant pairing a rate to a seater needs the
+             relationship stated rather than inferred from card order. None of
+             these pages had a table before. ================================= */}
+        <VehicleFleetTable
+          fleet={fleet}
+          vehicleType={v.type}
+          placeLabel={cityData.name}
+          tone="light"
+          className={isRoyal ? 'bg-[#FFF8EC]' : 'bg-slate-50'}
+        />
 
         {/* ============================ USPs ============================ */}
         <section className={`py-16 md:py-24 ${isRoyal ? 'bg-[#FBF1DF]' : 'bg-white'}`}>
@@ -159,7 +174,7 @@ export default function VehicleCityClient({ data }) {
                           <div className="flex items-center justify-between mt-4">
                             <div>
                               <span className="text-xs text-slate-400">from</span>
-                              <p className={`text-lg font-black ${isRoyal ? 'text-amber-700' : 'text-cyan-700'} ${!isRoyal ? 'font-mono' : ''}`}>₹{v.lowPrice}<span className="text-xs font-medium text-slate-400">/km</span></p>
+                              <p className={`text-lg font-black ${isRoyal ? 'text-amber-700' : 'text-cyan-700'} ${!isRoyal ? 'font-mono' : ''}`}>₹{groupDigits(v.lowPrice)}<span className="text-xs font-medium text-slate-400">/km</span></p>
                             </div>
                             <span className={`flex items-center gap-1 text-sm font-bold ${isRoyal ? 'text-amber-600' : 'text-cyan-600'} group-hover:gap-2 transition-all`}>View <ArrowRight className="w-4 h-4" /></span>
                           </div>
@@ -316,7 +331,7 @@ export default function VehicleCityClient({ data }) {
               <h2 className={`text-4xl md:text-6xl font-black text-white mb-6 ${isRoyal ? 'font-display-serif' : ''}`} style={{ textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
                 Ready to explore from <span className={isRoyal ? 'text-gold-foil' : 'text-cyan-400'}>{cityData.name}</span>?
               </h2>
-              <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">Book your {v.type.toLowerCase()} today and experience premium group travel with Triveni Cabs.</p>
+              <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">Book your {v.type.toLowerCase()} today and experience premium group travel with Triveni Cabs™.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="tel:+917668570551" onClick={() => trackPhoneCall(`${v.slug}_city_cta`)} className={`px-10 py-5 rounded-full font-bold text-lg shadow-2xl flex items-center justify-center gap-3 ${isRoyal ? theme.cta : 'bg-white text-[#0B1E3F]'}`}><Phone className="w-6 h-6" /> Call: +91 76685 70551</a>
                 <a href={`https://wa.me/917668570551?text=${encodeURIComponent(waText)}`} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick(`${v.slug}_city_cta`)} className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-3"><MessageCircle className="w-6 h-6" /> WhatsApp Us</a>
@@ -344,7 +359,7 @@ export default function VehicleCityClient({ data }) {
                   <Link key={i} href={`${v.hubHref}/${dest.slug}`} className={`group flex items-center justify-between gap-3 rounded-2xl border px-5 py-4 transition-all ${isRoyal ? 'bg-[#FFFBF2] border-amber-200 hover:border-amber-400 hover:bg-amber-50' : 'bg-slate-50 border-slate-200 hover:border-cyan-300 hover:bg-cyan-50/40'}`}>
                     <span className="flex items-center gap-3">
                       <span className={`w-9 h-9 rounded-xl flex items-center justify-center text-white ${isRoyal ? 'bg-gradient-to-br from-amber-300 to-amber-600' : 'bg-gradient-to-br from-[#0B1E3F] to-[#1E3A8A]'}`}><MapPin className="w-4 h-4" /></span>
-                      <span className={`font-bold ${isRoyal ? 'text-[#4C0519]' : 'text-[#0B1E3F]'}`}>{cityData.name} to {formatDestinationForDisplay(dest.name)}<span className={`block text-xs font-medium ${isRoyal ? 'text-amber-800/60' : 'text-slate-500'}`}>{v.type} • from ₹{v.lowPrice}/km</span></span>
+                      <span className={`font-bold ${isRoyal ? 'text-[#4C0519]' : 'text-[#0B1E3F]'}`}>{cityData.name} to {formatDestinationForDisplay(dest.name)}<span className={`block text-xs font-medium ${isRoyal ? 'text-amber-800/60' : 'text-slate-500'}`}>{v.type} • from ₹{groupDigits(v.lowPrice)}/km</span></span>
                     </span>
                     <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-transform ${isRoyal ? 'text-amber-500' : 'text-cyan-500'}`} />
                   </Link>
@@ -366,10 +381,16 @@ export default function VehicleCityClient({ data }) {
               <div className="space-y-3">
                 {cityFaqs.map((faq, index) => (
                   <div key={index} className={`${theme.cardBg} rounded-2xl border ${theme.cardBorder} overflow-hidden`}>
-                    <button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)} className="w-full flex items-center justify-between gap-4 text-left px-5 md:px-6 py-4 hover:bg-amber-50/40 transition-colors" aria-expanded={openFaq === index}>
-                      <span className={`font-bold ${isRoyal ? 'font-display-serif text-[#4C0519]' : 'text-[#0B1E3F]'}`}>{faq.question}</span>
-                      <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform ${isRoyal ? 'text-amber-500' : 'text-cyan-500'} ${openFaq === index ? 'rotate-180' : ''}`} />
-                    </button>
+{/* h3 wraps the button — the WAI-ARIA accordion pattern. These FAQ questions
+   were rendered as plain text, so a question-shaped heading never existed on
+   the page for an answer engine to match against a question query. Tailwind
+   preflight resets heading margin and font-size, so this is visually a no-op. */}
+<h3 className="m-0">
+                      <button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)} className="w-full flex items-center justify-between gap-4 text-left px-5 md:px-6 py-4 hover:bg-amber-50/40 transition-colors" aria-expanded={openFaq === index}>
+                        <span className={`font-bold ${isRoyal ? 'font-display-serif text-[#4C0519]' : 'text-[#0B1E3F]'}`}>{faq.question}</span>
+                        <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform ${isRoyal ? 'text-amber-500' : 'text-cyan-500'} ${openFaq === index ? 'rotate-180' : ''}`} />
+                      </button>
+</h3>
                     {openFaq === index && <div className="px-5 md:px-6 pb-5"><p className={`text-slate-600 leading-relaxed${index === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p></div>}
                   </div>
                 ))}
@@ -383,8 +404,8 @@ export default function VehicleCityClient({ data }) {
           <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
             <h2 className={`text-2xl font-bold mb-6 ${isRoyal ? 'font-display-serif text-[#4C0519]' : 'text-[#0B1E3F]'}`}>{v.type} on Rent in {cityData.name} — Outstation & Local Group Travel</h2>
             <p className="text-gray-700 leading-relaxed">{v.intro}</p>
-            <p className="text-gray-700 leading-relaxed">Popular routes from {cityData.name} include trips to {cityData.popularDestinations?.join(', ')} and many more. Our {v.type.toLowerCase()}s come {v.features.slice(0, 4).join(', ').toLowerCase()}, with experienced, verified drivers. Outstation rates in {cityData.name} start from <strong>₹{v.lowPrice}/km</strong> and local day packages from <strong>{v.localRate.split(' ')[0]}</strong>.</p>
-            <p className="text-gray-700 leading-relaxed">With 2500+ completed group trips, a 4.9-star rating, and 24/7 availability, Triveni Cabs is {cityData.name}&apos;s trusted {v.type.toLowerCase()} rental service. View all <Link href={v.hubHref} className="text-blue-600 hover:underline">{v.type.toLowerCase()} options and routes</Link>, check our <Link href="/pricing" className="text-blue-600 hover:underline">transparent pricing</Link>, or <a href="tel:+917668570551" className="text-blue-600 hover:underline">call 7668570551</a> for instant booking.</p>
+            <p className="text-gray-700 leading-relaxed">Popular routes from {cityData.name} include trips to {cityData.popularDestinations?.join(', ')} and many more. Our {v.type.toLowerCase()}s come {v.features.slice(0, 4).join(', ').toLowerCase()}, with experienced, verified drivers. Outstation rates in {cityData.name} start from <strong>₹{groupDigits(v.lowPrice)}/km</strong> and local day packages from <strong>{v.localRate.split(' ')[0]}</strong>.</p>
+            <p className="text-gray-700 leading-relaxed">With 2500+ completed group trips, a 4.9-star rating, and 24/7 availability, Triveni Cabs™ is {cityData.name}&apos;s trusted {v.type.toLowerCase()} rental service. View all <Link href={v.hubHref} className="text-blue-600 hover:underline">{v.type.toLowerCase()} options and routes</Link>, check our <Link href="/pricing" className="text-blue-600 hover:underline">transparent pricing</Link>, or <a href="tel:+917668570551" className="text-blue-600 hover:underline">call 7668570551</a> for instant booking.</p>
             <p className="text-gray-600 text-sm">{v.comparison}</p>
           </div>
         </section>
@@ -407,7 +428,7 @@ function ExecutiveHero({ theme, look, v, cityData, routes, otherVehicleTypes, mo
         </div>
       )}
       <div className="absolute inset-0 bg-gradient-to-r from-[#0B1E3F] via-[#0B1E3F]/85 to-transparent" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-28 pb-12 sm:pb-20">
         <Link href={v.hubHref} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-white/90 hover:bg-white/20 transition-all border border-white/20 mb-8">
           <ArrowLeft className="w-4 h-4" /><span className="text-sm font-medium">All {v.type} cities</span>
         </Link>
@@ -450,7 +471,7 @@ function ExecutiveHero({ theme, look, v, cityData, routes, otherVehicleTypes, mo
               <div className="p-5 grid grid-cols-2 gap-4">
                 {[
                   { k: 'Vehicle', val: v.shortName, sub: v.capacity },
-                  { k: 'Outstation', val: `₹${v.lowPrice}/km`, sub: `to ₹${v.highPrice}/km`, mono: true },
+                  { k: 'Outstation', val: `₹${groupDigits(v.lowPrice)}/km`, sub: `to ₹${groupDigits(v.highPrice)}/km`, mono: true },
                   { k: 'Destinations', val: String(routes.length), sub: 'from this city', mono: true },
                   { k: 'Rating', val: '4.9★', sub: 'verified reviews', mono: true },
                 ].map((s, i) => (
@@ -487,7 +508,7 @@ function RoyalHero({ theme, look, v, cityData, routes, otherVehicleTypes, mounte
       <RoyalFrame />
       <VariantMotif look={look} opacity={0.12} />
       <Embers count={16} />
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-28 pb-12 sm:pb-20 text-center">
         <Link href={v.hubHref} className="inline-flex items-center gap-2 bg-amber-400/10 backdrop-blur-md px-4 py-2 rounded-full text-amber-100/90 hover:bg-amber-400/20 transition-all border border-amber-400/30 mb-10">
           <ArrowLeft className="w-4 h-4" /><span className="text-sm font-medium">All {v.type} cities</span>
         </Link>
@@ -516,13 +537,13 @@ function RoyalHero({ theme, look, v, cityData, routes, otherVehicleTypes, mounte
         </div>
 
         <h1 className="speakable-headline font-display-serif text-4xl sm:text-6xl md:text-7xl font-black mb-5" style={{ textShadow: '0 4px 24px rgba(0,0,0,0.5)' }}>
-          <span className="text-amber-50">{v.heroLabel} in</span><br />
+          <span className="text-amber-50">{v.heroLabel} in</span>{' '}<br />
           <span className="text-gold-foil">{cityData.name}</span>
         </h1>
         <p className="text-lg text-amber-100/80 max-w-2xl mx-auto mb-8">{v.heroSubtitle}</p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {[{ k: 'Destinations', val: String(routes.length) }, { k: 'Region', val: cityData.state }, { k: 'Rating', val: '4.9★' }, { k: 'From', val: `₹${v.lowPrice}/km` }].map((s, i) => (
+          {[{ k: 'Destinations', val: String(routes.length) }, { k: 'Region', val: cityData.state }, { k: 'Rating', val: '4.9★' }, { k: 'From', val: `₹${groupDigits(v.lowPrice)}/km` }].map((s, i) => (
             <div key={i} className="bg-amber-400/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-amber-400/30">
               <span className="text-amber-100/60 text-xs mr-2">{s.k}</span>
               <span className="text-amber-50 font-bold">{s.val}</span>
@@ -555,7 +576,7 @@ function VehicleCityRichBlock({ vehicle, cityData, isRoyal }) {
         </div>
       </section>
       {founderQuote && <section className="py-10 px-4 sm:px-6"><div className="max-w-4xl mx-auto"><ExpertQuote quote={founderQuote.quote} authorName={founderQuote.author} authorTitle={founderQuote.title} authorOrg={founderQuote.org} tone="dark" /></div></section>}
-      <section className="py-16 px-4 sm:px-6"><div className="max-w-4xl mx-auto"><div className="text-center mb-10"><span className={`font-semibold text-sm tracking-widest uppercase ${isRoyal ? 'text-amber-400' : 'text-amber-400'}`}>{vehicle.shortName} in {city}</span><h2 className={`text-2xl sm:text-4xl font-black mt-3 tracking-tight ${isRoyal ? 'font-display-serif' : ''}`}>More about hiring a {vehicle.type.toLowerCase()} in {city}</h2></div><LongTailFAQ faqs={longTailFaqs} tone="dark" /></div></section>
+      <section className="py-10 sm:py-16 px-4 sm:px-6"><div className="max-w-4xl mx-auto"><div className="text-center mb-10"><span className={`font-semibold text-sm tracking-widest uppercase ${isRoyal ? 'text-amber-400' : 'text-amber-400'}`}>{vehicle.shortName} in {city}</span><h2 className={`text-2xl sm:text-4xl font-black mt-3 tracking-tight ${isRoyal ? 'font-display-serif' : ''}`}>More about hiring a {vehicle.type.toLowerCase()} in {city}</h2></div><LongTailFAQ faqs={longTailFaqs} tone="dark" /></div></section>
       {citations.length > 0 && <section className="py-12 px-4 sm:px-6"><div className="max-w-4xl mx-auto"><OutboundCitations sources={citations} tone="dark" heading="Verified against these sources" /></div></section>}
     </div>
   );

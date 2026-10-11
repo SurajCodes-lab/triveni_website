@@ -54,8 +54,6 @@ export default function FindYourFit() {
 
   return (
     <div className="relative overflow-hidden rounded-[1.6rem] border border-amber-400/20 bg-gradient-to-br from-[#1a1408]/80 via-slate-950 to-slate-900 p-7 md:p-10 shadow-[0_30px_80px_-25px_rgba(251,191,36,0.25)]">
-      <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-amber-400/15 blur-3xl" />
-      <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-emerald-400/10 blur-3xl" />
 
       <div className="relative">
         <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-amber-300/80">Not sure which to pick?</p>

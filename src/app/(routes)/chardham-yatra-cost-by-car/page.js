@@ -23,9 +23,9 @@ export const metadata = {
   title: tightenTitle(data.title),
   description: data.metaDescription,
   keywords: data.keywords,
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/chardham-yatra-cost-by-car' },
   openGraph: {
@@ -34,7 +34,7 @@ export const metadata = {
     type: 'article',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/chardham-yatra-cost-by-car',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: {
     card: 'summary_large_image',

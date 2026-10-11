@@ -5,6 +5,7 @@
 // unique, useful content + real reviews + urgency signals.
 
 import { getSightseeingReviews, getDeterministicReviewCount } from '@/lib/seo/review-helpers';
+import { groupDigits } from '@/utilis/pricing';
 
 // ==================== PICKUP POINTS (city-keyed) ====================
 const PICKUP_POINTS = {
@@ -161,7 +162,7 @@ export function getTourFaqs(tour) {
   return [
     {
       q: `What is included in the ${tourName} price?`,
-      a: `The base fare ₹${price} includes the vehicle, professional driver, fuel, tolls, parking, and one bottled water per passenger. Monument entry tickets, guide fees, and meals are charged separately at actuals.`,
+      a: `The base fare ₹${groupDigits(price)} includes the vehicle, professional driver, fuel, tolls, parking, and one bottled water per passenger. Monument entry tickets, guide fees, and meals are charged separately at actuals.`,
     },
     {
       q: `How long does the ${tourName} take?`,

@@ -19,7 +19,7 @@ const WEEKENDS = [
     links: [
       { href: '/august-long-weekend-getaways-delhi', label: 'August getaway plans' },
       { href: '/independence-day-weekend-packages-2026', label: 'Independence Day packages' },
-      { href: '/one-way-cab/delhi-to-rishikesh', label: 'Delhi to Rishikesh cab' },
+      { href: '/delhi-to-rishikesh', label: 'Delhi to Rishikesh cab' },
     ],
   },
   {
@@ -31,7 +31,7 @@ const WEEKENDS = [
     idea: 'Three days — the classic family-visit weekend. Book the return leg early; trains sell out first.',
     links: [
       { href: '/raksha-bandhan-cab-service', label: 'Raksha Bandhan cabs' },
-      { href: '/one-way-cab/delhi-to-jaipur', label: 'Delhi to Jaipur cab' },
+      { href: '/delhi-to-jaipur', label: 'Delhi to Jaipur cab' },
       { href: '/round-trip/delhi-to-vrindavan', label: 'Delhi to Vrindavan round trip' },
     ],
   },
@@ -81,7 +81,7 @@ const WEEKENDS = [
     end: '2026-11-09T23:59:59+05:30',
     idea: 'The heaviest travel weekend of the year. Outstation cabs and tempo travellers book out 2–3 weeks ahead.',
     links: [
-      { href: '/one-way-cab/delhi-to-jaipur', label: 'Delhi to Jaipur cab' },
+      { href: '/delhi-to-jaipur', label: 'Delhi to Jaipur cab' },
       { href: '/tempo-traveller', label: 'Tempo Traveller for family groups' },
     ],
   },
@@ -94,7 +94,7 @@ const WEEKENDS = [
     idea: 'Snow season opens — Shimla, Kufri and Manali. Carry chains-fitted cabs; we arrange them.',
     links: [
       { href: '/winter-snow-trip-packages', label: 'Winter snow trips' },
-      { href: '/one-way-cab/delhi-to-shimla', label: 'Delhi to Shimla cab' },
+      { href: '/delhi-to-shimla', label: 'Delhi to Shimla cab' },
       { href: '/one-way-cab/delhi-to-manali', label: 'Delhi to Manali cab' },
     ],
   },
@@ -107,14 +107,14 @@ const WEEKENDS = [
     idea: 'Start 2027 in the mountains or on the ghats — both fill fast, decide before mid-December.',
     links: [
       { href: '/winter-snow-trip-packages', label: 'New Year snow trips' },
-      { href: '/one-way-cab/delhi-to-rishikesh', label: 'Delhi to Rishikesh cab' },
+      { href: '/delhi-to-rishikesh', label: 'Delhi to Rishikesh cab' },
     ],
   },
 ];
 
 const BASE = 'https://www.trivenicabs.in';
 const WA_LINK = `https://wa.me/917668570551?text=${encodeURIComponent(
-  'Hi Triveni Cabs, please send me the 2026 long weekend list and cab options.'
+  'Hi Triveni Cabs™, please send me the 2026 long weekend list and cab options.'
 )}`;
 
 export const metadata = {
@@ -130,7 +130,7 @@ export const metadata = {
       'All remaining 2026 long weekends with the best road trips for each. Bookmark it — plan every trip of the year from one page.',
     url: `${BASE}/long-weekend-calendar-2026`,
     type: 'article',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -266,7 +266,7 @@ export default function LongWeekendCalendar2026() {
         </section>
 
         {/* Pull-back CTA: get the calendar on WhatsApp = a saved thread */}
-        <section className="px-4 pb-16 sm:px-6">
+        <section className="px-4 pb-10 sm:pb-16 sm:px-6">
           <div className="mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border-2 border-[#FACF2D]/50 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-6 sm:p-10">
             <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
               <div>

@@ -6,25 +6,25 @@ import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const slug = 'triveni-cabs-safety-features';
-const pageTitle = 'Triveni Cabs Safety Features | GPS Tracking, Verified Drivers, SOS — 4.9★';
-const pageDesc = 'Triveni Cabs safety: real-time GPS tracking, verified drivers, SOS emergency support, live trip sharing, sanitized vehicles. Safe travel for families & solo travelers. Call 7668570551.';
+const pageTitle = 'Triveni Cabs™ Safety Features | GPS Tracking, Verified Drivers, SOS — 4.9★';
+const pageDesc = 'Triveni Cabs™ safety: real-time GPS tracking, verified drivers, SOS emergency support, live trip sharing, sanitized vehicles. Safe travel for families & solo travelers. Call 7668570551.';
 
 export const metadata = {
   title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs safety features', 'safe cab service india', 'gps tracked cab india', 'cab safety features', 'safe travel for women', 'verified driver cab service', 'sos emergency cab support', 'family safe cab service', 'live trip sharing cab', 'sanitized cab service'],
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
-    title: 'Triveni Cabs Safety — GPS Tracking, Verified Drivers & 24/7 Emergency Support',
+    title: 'Triveni Cabs™ Safety — GPS Tracking, Verified Drivers & 24/7 Emergency Support',
     description: pageDesc,
     type: 'website',
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${slug}`,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Triveni Cabs Safety Features' }],
   },
   twitter: { card: 'summary_large_image', title: pageTitle, description: pageDesc, creator: '@trivenicabs', site: '@trivenicabs' },
@@ -32,11 +32,11 @@ export const metadata = {
 };
 
 const faqs = [
-  { question: 'How does Triveni Cabs ensure passenger safety?', answer: 'We use a multi-layered safety approach: GPS-tracked vehicles, background-verified drivers, 24/7 emergency support, live trip sharing, regular vehicle maintenance, and comprehensive insurance coverage on every trip.' },
+  { question: 'How does Triveni Cabs™ ensure passenger safety?', answer: 'We use a multi-layered safety approach: GPS-tracked vehicles, background-verified drivers, 24/7 emergency support, live trip sharing, regular vehicle maintenance, and comprehensive insurance coverage on every trip.' },
   { question: 'Can I share my live trip location with family?', answer: 'Yes, upon request we share a live tracking link that your family or friends can access in real-time. This is especially popular with solo female travelers and parents sending children on trips.' },
   { question: 'What should I do in case of an emergency during a trip?', answer: 'Call our 24/7 emergency line at 7668570551 immediately. Our support team will coordinate with the driver, arrange roadside assistance, contact local emergency services if needed, and keep your emergency contacts informed.' },
-  { question: 'Are Triveni Cabs vehicles insured?', answer: 'Yes, all vehicles carry comprehensive insurance including passenger liability coverage. In the unlikely event of an accident, all passengers are covered under our insurance policy.' },
-  { question: 'Is Triveni Cabs safe for solo female travelers?', answer: 'Absolutely. All our drivers are police-verified, GPS tracking is always on, trip sharing is available, and our 24/7 support team monitors all trips. Many of our 5-star reviews come from solo women travelers.' },
+  { question: 'Are Triveni Cabs™ vehicles insured?', answer: 'Yes, all vehicles carry comprehensive insurance including passenger liability coverage. In the unlikely event of an accident, all passengers are covered under our insurance policy.' },
+  { question: 'Is Triveni Cabs™ safe for solo female travelers?', answer: 'Absolutely. All our drivers are police-verified, GPS tracking is always on, trip sharing is available, and our 24/7 support team monitors all trips. Many of our 5-star reviews come from solo women travelers.' },
 ];
 
 export default function SafetyFeaturesPage() {
@@ -50,7 +50,7 @@ export default function SafetyFeaturesPage() {
   };
   const articleSchema = getArticleSchema({
     slug,
-    headline: 'Triveni Cabs Safety Features: GPS Tracking, Verified Drivers & SOS',
+    headline: 'Triveni Cabs™ Safety Features: GPS Tracking, Verified Drivers & SOS',
     description: pageDesc,
     image: '/images/citypage_hero_section_image.jpg',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
@@ -83,7 +83,7 @@ export default function SafetyFeaturesPage() {
           {
             title: 'Our Safety Infrastructure',
             badge: 'Multi-Layered Safety',
-            description: 'Safety is not a feature at Triveni Cabs. It is the foundation everything else is built on.',
+            description: 'Safety is not a feature at Triveni Cabs™. It is the foundation everything else is built on.',
             features: [
               { title: 'Real-Time GPS Tracking', description: 'Every vehicle is GPS-tracked 24/7. Our operations team monitors all active trips and can intervene if route deviations are detected.' },
               { title: 'Background-Verified Drivers', description: 'Every driver undergoes police verification, criminal background check, driving skill test, and customer service training before joining.' },

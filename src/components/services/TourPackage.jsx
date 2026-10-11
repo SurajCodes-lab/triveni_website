@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { tourPackages } from "@/utilis/data";
+import { tourPackages } from '@/utilis/tourPackages';
 // Centralized icon imports for better bundle optimization
 import {
   Calendar,

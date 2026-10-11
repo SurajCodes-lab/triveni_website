@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import EventComboClient from "@/components/events/EventComboClient";
 import {
   getEventCombo,
@@ -16,6 +17,7 @@ import {
   getArticleSchema,
   getTodayDate,
 } from "@/lib/seo/speakable-helpers";
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 const SITE_URL = "https://www.trivenicabs.in";
 export const revalidate = 3600;
@@ -48,7 +50,7 @@ function buildIntro(type, city) {
   const firstPrice = type.packages?.[0]?.price
     ? ` Packages start from ${type.packages[0].price.toLowerCase()}.`
     : "";
-  return `Triveni Cabs handles ${svcLabel(type).toLowerCase()} transportation in ${city.name} end to end — ${type.description} In ${city.name} we coordinate guest movement${venueNames ? ` across venues like ${venueNames}` : ""}, with a dedicated event coordinator, a 500+ vehicle fleet, fixed pricing and 24/7 event-day support.${firstPrice}`;
+  return `Triveni Cabs™ handles ${svcLabel(type).toLowerCase()} transportation in ${city.name} end to end — ${type.description} In ${city.name} we coordinate guest movement${venueNames ? ` across venues like ${venueNames}` : ""}, with a dedicated event coordinator, a 500+ vehicle fleet, fixed pricing and 24/7 event-day support.${firstPrice}`;
 }
 
 function buildComboFaqs(type, city) {
@@ -77,13 +79,13 @@ function buildComboFaqs(type, city) {
 export async function generateMetadata({ params }) {
   const { slug, city: citySlug } = await params;
   const combo = getEventCombo(slug, citySlug);
-  if (!combo) return { title: "Event Transportation | Triveni Cabs" };
+  if (!combo) return { title: "Event Transportation | Triveni Cabs™" };
   const { type, city } = combo;
   const url = `${SITE_URL}/event-transportation-service/${slug}/${citySlug}`;
   const startPrice = type.packages?.[0]?.price?.replace("Starting ", "") || "";
   const title = `${type.name} in ${city.name}${startPrice ? ` from ${startPrice}` : ""}`;
   const description = `${type.title} in ${city.name}. Guest shuttles, coordinated fleet & coordinator for ${city.name} events. 500+ vehicles, GST invoice, 24/7 support. Call 7668570551.`;
-  const ogTitle = `${type.title} in ${city.name} — Coordinated Fleet & Coordinator | Triveni Cabs`;
+  const ogTitle = `${type.title} in ${city.name} — Coordinated Fleet & Coordinator | Triveni Cabs™`;
 
   return {
     title,
@@ -104,7 +106,7 @@ export async function generateMetadata({ params }) {
       type: "website",
       locale: "en_IN",
       url,
-      siteName: "Triveni Cabs",
+      siteName: "Triveni Cabs™",
       images: [
         {
           url: `${SITE_URL}${city.heroImage || type.heroImage}`,
@@ -122,16 +124,7 @@ export async function generateMetadata({ params }) {
       creator: "@trivenicabs",
       images: [`${SITE_URL}${city.heroImage || type.heroImage}`],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -142,7 +135,7 @@ export default async function EventComboPage({ params }) {
 
   const { type, city } = combo;
   const url = `${SITE_URL}/event-transportation-service/${slug}/${citySlug}`;
-  const today = getTodayDate();
+  const today = (getContentUpdatedOn(`/event-transportation-service/${slug}/${citySlug}`) || getTodayDate());
 
   const intro = buildIntro(type, city);
   const faqs = buildComboFaqs(type, city);
@@ -168,7 +161,7 @@ export default async function EventComboPage({ params }) {
 
   const howTo = getHowToSchema({
     name: `How to Book ${type.name} in ${city.name}`,
-    description: `Book coordinated ${svcLabel(type).toLowerCase()} transportation in ${city.name} with Triveni Cabs in four steps.`,
+    description: `Book coordinated ${svcLabel(type).toLowerCase()} transportation in ${city.name} with Triveni Cabs™ in four steps.`,
     totalTime: "PT5M",
     steps: [
       {

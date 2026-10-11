@@ -16,7 +16,7 @@ const defaultFleet = [
     capacity: '4',
     luggage: '2 Bags',
     features: ['AC', 'Music System', 'Comfortable'],
-    startingPrice: '₹9/km',
+    startingPrice: '₹11/km',
     image: '/images/car/swift_dzire.jpg',
   },
   {
@@ -25,7 +25,7 @@ const defaultFleet = [
     capacity: '6',
     luggage: '3 Bags',
     features: ['AC', 'Spacious', 'Family-friendly'],
-    startingPrice: '₹12/km',
+    startingPrice: '₹15/km',
     image: '/images/car/ertiga.jpg',
   },
   {
@@ -34,7 +34,7 @@ const defaultFleet = [
     capacity: '7',
     luggage: '4 Bags',
     features: ['AC', 'Premium', 'Captain Seats'],
-    startingPrice: '₹15/km',
+    startingPrice: '₹18/km',
     popular: true,
     image: '/images/car/innova_crysta.jpg',
   },
@@ -44,7 +44,7 @@ const defaultFleet = [
     capacity: '12-26',
     luggage: '10+ Bags',
     features: ['AC', 'Pushback Seats', 'LCD'],
-    startingPrice: '₹18/km',
+    startingPrice: '₹23/km',
     image: '/images/tempo/26_seater.jpg',
   },
 ];

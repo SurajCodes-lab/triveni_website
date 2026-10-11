@@ -4,6 +4,7 @@ import { getGeneralContent, getWeddingPages } from '@/utilis/linkingHelper';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema, getComparisonSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 export const revalidate = 3600;
 
@@ -11,16 +12,16 @@ export const metadata = {
   title: tightenTitle('Local Taxi Service 2026 | 4hr/40km from ₹1,200 | Hourly Packages'),
   description: 'Book local taxi service in Delhi, Agra, Jaipur & 50+ cities. Hourly packages: 4hr/40km ₹1,200, 8hr/80km ₹2,200. Verified drivers, AC cabs, GPS tracked.',
   keywords: 'local taxi service, local taxi near me, local cab booking, hourly taxi, taxi service near me, local cab service, city taxi booking, hire taxi for local use, local taxi for shopping, local taxi for hospital, local taxi for meetings, local sightseeing taxi, hourly cab rental, 4 hour taxi package, 8 hour taxi package, local taxi Delhi, local taxi Agra, local taxi Jaipur, cheap local taxi, affordable local cab, best local taxi service, AC local taxi, GPS tracked taxi, safe local cab',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/local-taxi' },
   openGraph: {
     title: 'Local Taxi Service | Hourly Packages from ₹1,200 | 50+ Cities',
     description: 'Book local taxi by the hour. 4hr/40km ₹1,200, 8hr/80km ₹2,200. AC cabs, verified drivers, GPS tracking. Available in Delhi, Agra, Jaipur & more.',
-    type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/local-taxi', siteName: 'Triveni Cabs',
+    type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/local-taxi', siteName: 'Triveni Cabs™',
     images: [{ url: '/images/about/about_banner.webp', width: 1200, height: 630, alt: 'Local Taxi Service - Triveni Cabs' }]
   },
-  twitter: { card: 'summary_large_image', title: 'Local Taxi Service | Hourly Packages from ₹1,200 | Triveni Cabs', description: 'Book local taxi by the hour. AC cabs, verified drivers, GPS tracking in 50+ cities. Call 7668570551.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/about/about_banner.webp'] },
+  twitter: { card: 'summary_large_image', title: 'Local Taxi Service | Hourly Packages from ₹1,200 | Triveni Cabs™', description: 'Book local taxi by the hour. AC cabs, verified drivers, GPS tracking in 50+ cities. Call 7668570551.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/about/about_banner.webp'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -56,7 +57,7 @@ export default function LocalTaxiPage() {
     description: 'How local taxi hourly packages work, fares by vehicle, and how they compare to app cabs and autos across 50+ Indian cities.',
     image: '/images/about/about_banner.webp',
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn('/local-taxi') || getTodayDate()),
     authorName: 'editorial',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-answer-1'],
   });
@@ -121,10 +122,8 @@ export default function LocalTaxiPage() {
 
         {/* ─── HERO: Full-width with diagonal bottom cut ─── */}
         <section className="relative overflow-hidden">
-          <div className="bg-gradient-to-br from-amber-600 via-yellow-500 to-orange-400 pt-20 pb-40 md:pb-52 px-4 sm:px-6 relative">
+          <div className="bg-gradient-to-br from-amber-600 via-yellow-500 to-orange-400 pt-12 sm:pt-20 pb-40 md:pb-52 px-4 sm:px-6 relative">
             {/* Floating decorative circles */}
-            <div className="absolute top-10 right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 left-10 w-48 h-48 bg-orange-300/20 rounded-full blur-2xl" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yellow-300/10 rounded-full blur-[150px]" />
 
             <div className="max-w-6xl mx-auto relative z-10">
@@ -166,23 +165,23 @@ export default function LocalTaxiPage() {
         </section>
 
         {/* ─── OVERVIEW: SEO prose content section ─── */}
-        <section className="py-20 px-4 sm:px-6 relative">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 relative">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-center mb-8 text-stone-800">
               Local Taxi Service — Hourly Car Rental for City Travel
             </h2>
             <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
               <p className="speakable-lead text-stone-700 font-medium">A <strong className="text-stone-800">local taxi</strong> in India costs from <strong className="text-stone-800">₹1,200 for a 4-hour / 40 km package</strong> (Sedan), ₹2,200 for 8 hours / 80 km, and ₹3,200 for 12 hours / 120 km. You get one dedicated AC car and verified driver for the entire booking, with the driver waiting at every stop — no surge pricing and no re-booking. Book in under 2 minutes by calling 7668570551.</p>
-              <p>Need a <strong className="text-stone-800">local taxi service near you</strong> for errands, hospital visits, shopping trips, or a half-day city tour? Triveni Cabs offers flexible <strong className="text-stone-800">hourly cab rental packages</strong> available in 50+ cities across North India including Delhi, Agra, Jaipur, Chandigarh, Lucknow, Haridwar, and Dehradun.</p>
+              <p>Need a <strong className="text-stone-800">local taxi service near you</strong> for errands, hospital visits, shopping trips, or a half-day city tour? Triveni Cabs™ offers flexible <strong className="text-stone-800">hourly cab rental packages</strong> available in 50+ cities across North India including Delhi, Agra, Jaipur, Chandigarh, Lucknow, Haridwar, and Dehradun.</p>
               <p>Unlike ride-hailing apps that charge per ride with unpredictable surge pricing, our <strong className="text-stone-800">local taxi booking</strong> works on transparent hourly packages — 4 hours / 40 km, 8 hours / 80 km, or 12 hours / 120 km. You get a dedicated car and driver for the entire duration, making multiple stops without rebooking or waiting for a new cab each time. Ideal for business meetings, wedding errands, city sightseeing, airport runs, and medical appointments.</p>
               <p>Every vehicle in our <strong className="text-stone-800">local cab service</strong> fleet is GPS-tracked, fully air-conditioned, and driven by a verified, trained professional. Whether you choose a sedan for personal use, an SUV for family outings, or a tempo traveller for group travel, the rate is fixed with no hidden charges. Extra kilometres and hours are billed at a transparent per-unit rate.</p>
-              <p>Families with children, senior citizens requiring hospital visits, corporate professionals with back-to-back meetings, and tourists exploring city attractions — all trust Triveni Cabs as their <strong className="text-stone-800">go-to local taxi service</strong>. Book instantly via call or WhatsApp and your car arrives at your doorstep within 30 minutes.</p>
+              <p>Families with children, senior citizens requiring hospital visits, corporate professionals with back-to-back meetings, and tourists exploring city attractions — all trust Triveni Cabs™ as their <strong className="text-stone-800">go-to local taxi service</strong>. Book instantly via call or WhatsApp and your car arrives at your doorstep within 30 minutes.</p>
             </div>
           </div>
         </section>
 
         {/* ─── HOURLY PACKAGES: Neumorphic pricing cards ─── */}
-        <section className="py-20 px-4 sm:px-6 -mt-8 relative z-10">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 -mt-8 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <span className="text-amber-600 font-semibold text-sm tracking-widest uppercase">Flexible Plans</span>
@@ -229,7 +228,7 @@ export default function LocalTaxiPage() {
         </section>
 
         {/* ─── COMPARISON: Local taxi vs App cab vs Auto ─── */}
-        <section className="py-20 px-4 sm:px-6">
+        <section className="py-12 sm:py-20 px-4 sm:px-6">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
               <span className="text-amber-600 font-semibold text-sm tracking-widest uppercase">Honest Comparison</span>
@@ -270,7 +269,7 @@ export default function LocalTaxiPage() {
         </section>
 
         {/* ─── CITIES: Warm card grid with pin icons ─── */}
-        <section className="py-20 px-4 sm:px-6">
+        <section className="py-12 sm:py-20 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <span className="text-amber-600 font-semibold text-sm tracking-widest uppercase">Wide Coverage</span>
@@ -298,7 +297,7 @@ export default function LocalTaxiPage() {
         </section>
 
         {/* ─── USE CASES: Illustrated cards with warm tones ─── */}
-        <section className="py-20 px-4 sm:px-6 bg-gradient-to-b from-[#f5f0e8] to-[#efe8db]">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-[#f5f0e8] to-[#efe8db]">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <span className="text-amber-600 font-semibold text-sm tracking-widest uppercase">Every Occasion</span>
@@ -325,11 +324,9 @@ export default function LocalTaxiPage() {
         </section>
 
         {/* ─── SAFETY: Warm trust section ─── */}
-        <section className="py-20 px-4 sm:px-6">
+        <section className="py-12 sm:py-20 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
             <div className="bg-gradient-to-br from-stone-800 to-stone-900 rounded-[2rem] p-10 md:p-14 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-yellow-500/10 rounded-full blur-3xl" />
 
               <div className="relative z-10">
                 <div className="text-center mb-12">
@@ -363,7 +360,7 @@ export default function LocalTaxiPage() {
         </section>
 
         {/* ─── FAQ: Warm cards ─── */}
-        <section className="py-20 px-4 sm:px-6 bg-gradient-to-b from-[#f5f0e8] to-[#efe8db]">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-[#f5f0e8] to-[#efe8db]">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <span className="text-amber-600 font-semibold text-sm tracking-widest uppercase">Help Center</span>
@@ -382,12 +379,12 @@ export default function LocalTaxiPage() {
         </section>
 
         {/* ─── SEO Prose Section with Contextual Links ─── */}
-        <section className="py-16 px-4 sm:px-6">
+        <section className="py-10 sm:py-16 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-stone-800 mb-6 text-center">Local Taxi Service — Hourly Cab Rental Made Simple</h2>
             <div className="space-y-4 text-stone-600 text-lg leading-relaxed">
               <p>
-                Need a <strong className="text-stone-800">local taxi</strong> for shopping, hospital visits, or city sightseeing? Triveni Cabs offers flexible hourly cab rental packages in <Link href="/delhi" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Delhi</Link>, <Link href="/agra" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Agra</Link>, <Link href="/jaipur" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Jaipur</Link>, and 50+ cities across North India. With <Link href="/reviews" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">thousands of happy customers rating us 4.9/5</Link>, our local taxi service delivers comfort, punctuality, and transparent pricing every single time.
+                Need a <strong className="text-stone-800">local taxi</strong> for shopping, hospital visits, or city sightseeing? Triveni Cabs™ offers flexible hourly cab rental packages in <Link href="/delhi" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Delhi</Link>, <Link href="/agra" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Agra</Link>, <Link href="/jaipur" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">Jaipur</Link>, and 50+ cities across North India. With <Link href="/reviews" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">thousands of happy customers rating us 4.9/5</Link>, our local taxi service delivers comfort, punctuality, and transparent pricing every single time.
               </p>
               <p>
                 Unlike ride-hailing apps with unpredictable surge pricing, our <strong className="text-stone-800">hourly taxi packages</strong> give you a <Link href="/safety" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">verified, GPS-tracked driver</Link> at a fixed rate — starting at just ₹1,200 for 4 hours. Perfect for multi-stop errands, <Link href="/sightseeing/delhi-sightseeing-tour" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">local sightseeing tours</Link>, wedding shopping trips, or <Link href="/corporate-transportation-service" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">corporate meetings</Link>. Check our <Link href="/pricing" className="text-amber-600 hover:text-amber-700 underline underline-offset-2">complete fare chart</Link> for all vehicle options.
@@ -400,7 +397,7 @@ export default function LocalTaxiPage() {
         </section>
 
         {/* ─── DYNAMIC: Travel Guides & Wedding Services ─── */}
-        <section className="py-16 px-4 sm:px-6 bg-[#efe8db]">
+        <section className="py-10 sm:py-16 px-4 sm:px-6 bg-[#efe8db]">
           <div className="max-w-7xl mx-auto space-y-14">
             <div>
               <h2 className="text-2xl font-bold text-stone-800 mb-6">Travel Guides</h2>
@@ -428,7 +425,7 @@ export default function LocalTaxiPage() {
         </section>
 
         {/* ─── INTERLINKS: Comprehensive footer-style grids ─── */}
-        <section className="py-16 px-4 sm:px-6 border-t border-stone-200">
+        <section className="py-10 sm:py-16 px-4 sm:px-6 border-t border-stone-200">
           <div className="max-w-7xl mx-auto space-y-12">
 
             {/* Related Services */}
@@ -502,11 +499,9 @@ export default function LocalTaxiPage() {
         </section>
 
         {/* ─── CTA ─── */}
-        <section className="py-20 px-4 sm:px-6">
+        <section className="py-12 sm:py-20 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="bg-gradient-to-br from-amber-500 to-orange-500 rounded-[2rem] p-10 md:p-14 text-center relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-yellow-300/10 rounded-full blur-3xl" />
 
               <div className="relative z-10">
                 <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Need a Taxi <span className="text-stone-900/80">Right Now?</span></h2>

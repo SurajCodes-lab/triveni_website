@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { phoneNumber } from "@/utilis/data";
+import { phoneNumber } from '@/utilis/contact';
 
 // Animation variants
 const fadeInUp = {
@@ -80,8 +80,8 @@ const termsData = [
     gradient: 'from-blue-400 to-cyan-500',
     content: [
       'All bookings must be made in advance via our website, phone, WhatsApp, or email.',
-      'Bookings are subject to vehicle availability and will be confirmed only after receiving a confirmation message or email from Triveni Cabs.',
-      'Triveni Cabs reserves the right to cancel any booking if the customer provides false or incomplete information.'
+      'Bookings are subject to vehicle availability and will be confirmed only after receiving a confirmation message or email from Triveni Cabs™.',
+      'Triveni Cabs™ reserves the right to cancel any booking if the customer provides false or incomplete information.'
     ],
     highlights: ['Advance booking required', 'Subject to availability', 'Confirmation via message/email']
   },
@@ -104,7 +104,7 @@ const termsData = [
     title: 'Vehicle & Driver Responsibilities',
     gradient: 'from-purple-400 to-pink-500',
     content: [
-      'Triveni Cabs ensures that all vehicles are clean, well-maintained, and driven by licensed, professional drivers.',
+      'Triveni Cabs™ ensures that all vehicles are clean, well-maintained, and driven by licensed, professional drivers.',
       'Passengers are requested to cooperate with drivers and not engage in any unlawful or unsafe activities during the ride.',
       'Any damage to the vehicle caused by the passenger will be chargeable.'
     ],
@@ -128,7 +128,7 @@ const termsData = [
     title: 'Delays and Liability',
     gradient: 'from-red-400 to-rose-500',
     content: [
-      'Triveni Cabs will make every effort to reach the pickup location on time but shall not be held responsible for delays due to traffic, weather, vehicle breakdowns, or any unforeseen events.',
+      'Triveni Cabs™ will make every effort to reach the pickup location on time but shall not be held responsible for delays due to traffic, weather, vehicle breakdowns, or any unforeseen events.',
       'We are not liable for any loss of personal belongings during the journey.'
     ],
     highlights: ['Best effort punctuality', 'Not liable for external delays', 'Personal belongings at own risk']
@@ -165,7 +165,7 @@ const statsItems = [
 
 export default function TermsClient() {
   const handleWhatsAppClick = (message = '') => {
-    const defaultMessage = message || "Hi! I have a question about Triveni Cabs terms and conditions.";
+    const defaultMessage = message || "Hi! I have a question about Triveni Cabs™ terms and conditions.";
     const whatsappURL = `https://wa.me/91${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
     window.open(whatsappURL, '_blank');
   };
@@ -191,8 +191,6 @@ export default function TermsClient() {
         </div>
 
         {/* Background Orbs */}
-        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-yellow-400/30 to-amber-500/30 rounded-full blur-3xl opacity-60" />
-        <div className="absolute top-40 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/20 to-pink-400/20 rounded-full blur-3xl opacity-50" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
@@ -237,7 +235,7 @@ export default function TermsClient() {
             transition={{ duration: 0.8, delay: 1 }}
             className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-medium"
           >
-            Please read our terms and conditions carefully before using Triveni Cabs services.
+            Please read our terms and conditions carefully before using Triveni Cabs™ services.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -250,7 +248,7 @@ export default function TermsClient() {
             <motion.button
               
               whileTap={{ scale: 0.95 }}
-              onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs.")}
+              onClick={() => handleWhatsAppClick("Hi! I'd like to book a cab with Triveni Cabs™.")}
               className="group px-8 py-4 lg:w-auto lg:px-5 lg:py-2 lg:text-[13px] bg-gradient-to-r from-[#FACF2D] to-amber-500 text-black font-bold rounded-full shadow-xl flex items-center gap-3"
             >
               Book Now
@@ -281,13 +279,13 @@ export default function TermsClient() {
       </section>
 
       {/* TERMS SECTIONS */}
-      <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute top-20 right-0 w-96 h-96 bg-gradient-to-br from-yellow-200/30 to-amber-200/30 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-0 w-80 h-80 bg-gradient-to-br from-orange-200/30 to-pink-200/30 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 px-6 py-2 rounded-full mb-6 shadow-sm">
               <FileText className="w-5 h-5" />
               <span className="font-semibold">Service Agreement</span>
@@ -372,12 +370,12 @@ export default function TermsClient() {
       </section>
 
       {/* STATS SECTION */}
-      <section className="py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
         {/* Static background wash (infinite animation removed for INP) */}
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-amber-600/10 via-transparent to-orange-600/10 opacity-40" />
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <AnimatedSection className="text-center mb-16">
+          <AnimatedSection className="text-center mb-10 sm:mb-16">
             <h2 className="font-display-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
               Key <span className="text-gold-foil">Highlights</span>
             </h2>
@@ -420,7 +418,7 @@ export default function TermsClient() {
       </section>
 
       {/* CONTACT SECTION */}
-      <section className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white via-amber-50/30 to-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <AnimatedSection>
             <div className="bg-gradient-to-br from-[#FACF2D] via-yellow-400 to-amber-500 rounded-3xl p-8 md:p-12 text-gray-900 relative overflow-hidden">
@@ -482,7 +480,7 @@ export default function TermsClient() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute top-0 left-0 w-32 h-32 bg-[#FACF2D]/10 rounded-full blur-xl"></div>
         <div className="absolute bottom-0 right-0 w-40 h-40 bg-yellow-500/10 rounded-full blur-xl"></div>
@@ -505,14 +503,14 @@ export default function TermsClient() {
               </h2>
 
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Now that you understand our terms, start your journey with Triveni Cabs. Professional, safe, and reliable transportation.
+                Now that you understand our terms, start your journey with Triveni Cabs™. Professional, safe, and reliable transportation.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.button
                   
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => handleWhatsAppClick("Hi! I want to book a taxi with Triveni Cabs. Can you help me with the booking?")}
+                  onClick={() => handleWhatsAppClick("Hi! I want to book a taxi with Triveni Cabs™. Can you help me with the booking?")}
                   className="group px-10 py-5 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-bold text-lg rounded-full shadow-xl flex items-center justify-center gap-3 hover:shadow-2xl transition-all"
                 >
                   <MessageCircle className="w-6 h-6" />

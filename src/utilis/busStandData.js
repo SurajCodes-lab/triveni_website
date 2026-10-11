@@ -20,10 +20,10 @@ export const busStands = {
       { name: "Lajpat Nagar", distance: "12 km", fare: "\u20B9350", time: "30 min" }
     ],
     faqs: [
-      { question: "How to get a cab from ISBT Kashmere Gate?", answer: "You can book a Triveni Cabs taxi by calling 7668570551 or WhatsApp. Our driver will meet you at the prepaid taxi counter near Gate No. 1. Pre-booking ensures zero waiting time, especially during peak hours and festival seasons." },
-      { question: "Is there a prepaid taxi counter at Kashmere Gate ISBT?", answer: "Yes, there is a prepaid taxi counter near the main exit. However, for better rates and guaranteed AC cabs, pre-booking with Triveni Cabs is recommended. Our fares are transparent with no hidden charges." },
+      { question: "How to get a cab from ISBT Kashmere Gate?", answer: "You can book a Triveni Cabs™ taxi by calling 7668570551 or WhatsApp. Our driver will meet you at the prepaid taxi counter near Gate No. 1. Pre-booking ensures zero waiting time, especially during peak hours and festival seasons." },
+      { question: "Is there a prepaid taxi counter at Kashmere Gate ISBT?", answer: "Yes, there is a prepaid taxi counter near the main exit. However, for better rates and guaranteed AC cabs, pre-booking with Triveni Cabs™ is recommended. Our fares are transparent with no hidden charges." },
       { question: "What is the taxi fare from Kashmere Gate ISBT to IGI Airport?", answer: "The taxi fare from ISBT Kashmere Gate to IGI Airport (T1/T2/T3) is approximately \u20B9600-800 depending on the terminal. The journey takes about 45-60 minutes depending on traffic conditions." },
-      { question: "Are cabs available at night from Kashmere Gate ISBT?", answer: "Yes, Triveni Cabs operates 24/7. Many buses arrive late at night, and our drivers are available for pickup at any hour. No extra night charges are applied." },
+      { question: "Are cabs available at night from Kashmere Gate ISBT?", answer: "Yes, Triveni Cabs™ operates 24/7. Many buses arrive late at night, and our drivers are available for pickup at any hour. No extra night charges are applied." },
       { question: "Can I book a cab from Kashmere Gate ISBT to Agra?", answer: "Absolutely! We offer outstation trips from Kashmere Gate ISBT. Delhi to Agra costs \u20B93,500 by sedan and the journey takes approximately 3-4 hours via the Yamuna Expressway." }
     ],
     tips: ["Book in advance during festival seasons like Diwali and Holi", "Keep your bus ticket handy for reference", "Confirm the gate number before exiting", "Use the metro (Yellow Line) if arriving from South Delhi to avoid traffic"]
@@ -49,7 +49,7 @@ export const busStands = {
       { name: "Nizamuddin", distance: "10 km", fare: "\u20B9300", time: "25 min" }
     ],
     faqs: [
-      { question: "How to get a cab from ISBT Anand Vihar?", answer: "Call Triveni Cabs at 7668570551 or WhatsApp us. Our driver will be waiting at the designated pickup zone near the metro station exit. You can also walk to Anand Vihar Railway Station for our pickup." },
+      { question: "How to get a cab from ISBT Anand Vihar?", answer: "Call Triveni Cabs™ at 7668570551 or WhatsApp us. Our driver will be waiting at the designated pickup zone near the metro station exit. You can also walk to Anand Vihar Railway Station for our pickup." },
       { question: "What is the distance from Anand Vihar ISBT to IGI Airport?", answer: "The distance is approximately 28 km and takes 55-70 minutes depending on traffic. Our sedan fare is \u20B9750 for this route." },
       { question: "Is Anand Vihar ISBT connected by metro?", answer: "Yes, Anand Vihar ISBT has its own metro station on the Blue Line. It is also adjacent to Anand Vihar Railway Station, making it a major transport hub." },
       { question: "Can I get a cab to Noida from Anand Vihar ISBT?", answer: "Yes, Noida is just 8 km away. Our fare to Noida Sector 18 is \u20B9250 and takes about 20 minutes. We also serve Greater Noida, Ghaziabad, and other NCR areas." }
@@ -77,7 +77,7 @@ export const busStands = {
       { name: "India Gate", distance: "5 km", fare: "\u20B9200", time: "12 min" }
     ],
     faqs: [
-      { question: "How to get a cab from ISBT Sarai Kale Khan?", answer: "Book with Triveni Cabs by calling 7668570551 or via WhatsApp. Our driver will meet you at the main gate exit. We recommend pre-booking as auto-rickshaws and local taxis here often overcharge." },
+      { question: "How to get a cab from ISBT Sarai Kale Khan?", answer: "Book with Triveni Cabs™ by calling 7668570551 or via WhatsApp. Our driver will meet you at the main gate exit. We recommend pre-booking as auto-rickshaws and local taxis here often overcharge." },
       { question: "Is Sarai Kale Khan ISBT near Nizamuddin Station?", answer: "Yes, Nizamuddin Railway Station is just 1 km away. Many passengers use this ISBT as a connector. Our cab fare between the two is just \u20B9100." },
       { question: "What is the taxi fare from Sarai Kale Khan to Airport?", answer: "The fare from ISBT Sarai Kale Khan to IGI Airport is approximately \u20B9550-700 depending on the terminal. The journey takes 40-55 minutes." },
       { question: "Which buses operate from Sarai Kale Khan ISBT?", answer: "RSRTC (Rajasthan), MPSRTC (Madhya Pradesh), and UPSRTC (UP) are the main operators. Buses to Jaipur, Agra, Ajmer, Udaipur, and Bhopal are most frequent." }
@@ -105,10 +105,10 @@ export const busStands = {
       { name: "Mehtab Bagh", distance: "5 km", fare: "\u20B9180", time: "12 min" }
     ],
     faqs: [
-      { question: "How to get a taxi from Agra ISBT Idgah to Taj Mahal?", answer: "Call Triveni Cabs at 7668570551. The Taj Mahal is just 4 km from Idgah Bus Stand, and our fare is \u20B9150. We can drop you at the East Gate or West Gate as per your preference." },
+      { question: "How to get a taxi from Agra ISBT Idgah to Taj Mahal?", answer: "Call Triveni Cabs™ at 7668570551. The Taj Mahal is just 4 km from Idgah Bus Stand, and our fare is \u20B9150. We can drop you at the East Gate or West Gate as per your preference." },
       { question: "What is the distance from Idgah Bus Stand to Agra Cantt Station?", answer: "Agra Cantt Railway Station is approximately 5 km from Idgah Bus Stand. The cab fare is \u20B9180 and it takes about 15 minutes." },
       { question: "Can I book a full-day Agra sightseeing from Idgah Bus Stand?", answer: "Yes! We offer full-day Agra sightseeing packages starting from \u20B91,500. This covers Taj Mahal, Agra Fort, Mehtab Bagh, Fatehpur Sikri, and other attractions." },
-      { question: "Are there cabs available early morning at Idgah Bus Stand?", answer: "Yes, Triveni Cabs operates 24/7. Many tourists arrive by early morning buses from Delhi and Jaipur to visit the Taj Mahal at sunrise. We are always ready for pickups." },
+      { question: "Are there cabs available early morning at Idgah Bus Stand?", answer: "Yes, Triveni Cabs™ operates 24/7. Many tourists arrive by early morning buses from Delhi and Jaipur to visit the Taj Mahal at sunrise. We are always ready for pickups." },
       { question: "What is the cab fare from Agra Idgah to Delhi?", answer: "The one-way cab fare from Agra to Delhi is \u20B93,500 by sedan (Swift Dzire) and \u20B95,000 by SUV (Innova). The journey takes 3-4 hours via Yamuna Expressway." }
     ],
     tips: ["Arrive early for sunrise Taj Mahal visits", "Auto-rickshaws outside may overcharge - pre-book for fair rates", "Keep small change for local travel", "Ask your driver about combo sightseeing deals"]
@@ -134,7 +134,7 @@ export const busStands = {
       { name: "Ajmer", distance: "135 km", fare: "\u20B92,500", time: "2 hrs" }
     ],
     faqs: [
-      { question: "How to get a cab from Sindhi Camp Bus Stand Jaipur?", answer: "Book a Triveni Cabs taxi by calling 7668570551 or WhatsApp. Our driver will be waiting near Platform 1 exit. Pre-booking is recommended during tourist season (October-March)." },
+      { question: "How to get a cab from Sindhi Camp Bus Stand Jaipur?", answer: "Book a Triveni Cabs™ taxi by calling 7668570551 or WhatsApp. Our driver will be waiting near Platform 1 exit. Pre-booking is recommended during tourist season (October-March)." },
       { question: "What is the taxi fare from Sindhi Camp to Amber Fort?", answer: "The cab fare from Sindhi Camp Bus Stand to Amber Fort is \u20B9350 and takes about 25 minutes. We also offer Jaipur sightseeing packages covering all major forts and palaces." },
       { question: "Can I book a Jaipur full-day tour from Sindhi Camp?", answer: "Yes! Our Jaipur sightseeing package starts at \u20B91,800 covering Amber Fort, Hawa Mahal, City Palace, Jantar Mantar, Nahargarh Fort, and Jal Mahal." },
       { question: "Is Sindhi Camp Bus Stand near Jaipur Railway Station?", answer: "Yes, Jaipur Railway Station is just 1 km from Sindhi Camp Bus Stand. Our cab fare between the two is just \u20B9100." },
@@ -163,7 +163,7 @@ export const busStands = {
       { name: "Shimla", distance: "115 km", fare: "\u20B92,800", time: "3.5 hrs" }
     ],
     faqs: [
-      { question: "How to get a taxi from Chandigarh ISBT Sector 43?", answer: "Call Triveni Cabs at 7668570551 or WhatsApp us. Our driver will meet you at the main gate of ISBT Sector 43. We offer both city rides and outstation trips to Shimla, Manali, and other hill stations." },
+      { question: "How to get a taxi from Chandigarh ISBT Sector 43?", answer: "Call Triveni Cabs™ at 7668570551 or WhatsApp us. Our driver will meet you at the main gate of ISBT Sector 43. We offer both city rides and outstation trips to Shimla, Manali, and other hill stations." },
       { question: "What is the cab fare from Chandigarh ISBT to Shimla?", answer: "The one-way cab fare from Chandigarh ISBT to Shimla is \u20B92,800 by sedan. The scenic drive takes about 3.5 hours via NH5." },
       { question: "Can I book a cab from Chandigarh ISBT to Manali?", answer: "Yes! The cab fare from Chandigarh to Manali is \u20B95,500 by sedan. The journey takes approximately 7-8 hours. We recommend starting early morning for the best experience." },
       { question: "Is there parking at Chandigarh ISBT?", answer: "Yes, there is a paid parking facility at ISBT Sector 43. However, if you are being picked up, our driver will wait in the designated taxi zone for free." }
@@ -191,7 +191,7 @@ export const busStands = {
       { name: "Neelkanth Mahadev", distance: "35 km", fare: "\u20B9800", time: "1 hr" }
     ],
     faqs: [
-      { question: "How to get a cab from Haridwar Bus Stand?", answer: "Book with Triveni Cabs by calling 7668570551 or WhatsApp. Our driver will pick you up from the bus stand on Railway Road. We serve all routes including Rishikesh, Dehradun, Mussoorie, and Delhi." },
+      { question: "How to get a cab from Haridwar Bus Stand?", answer: "Book with Triveni Cabs™ by calling 7668570551 or WhatsApp. Our driver will pick you up from the bus stand on Railway Road. We serve all routes including Rishikesh, Dehradun, Mussoorie, and Delhi." },
       { question: "What is the taxi fare from Haridwar to Rishikesh?", answer: "The cab fare from Haridwar Bus Stand to Rishikesh is \u20B9500 and takes about 35 minutes. We can drop you at Ram Jhula, Laxman Jhula, or any ashram in Rishikesh." },
       { question: "Can I book a Char Dham Yatra cab from Haridwar?", answer: "Yes! Haridwar is the starting point for Char Dham Yatra. We offer complete Char Dham packages covering Yamunotri, Gangotri, Kedarnath, and Badrinath. Call us for detailed itinerary and pricing." },
       { question: "Are cabs available during Kumbh Mela from Haridwar Bus Stand?", answer: "Yes, but we strongly recommend advance booking during Kumbh Mela and Kanwar Yatra as demand is extremely high. Our pre-booked customers get priority pickup." },
@@ -220,7 +220,7 @@ export const busStands = {
       { name: "Robber Cave", distance: "8 km", fare: "\u20B9250", time: "18 min" }
     ],
     faqs: [
-      { question: "How to get a cab from Dehradun ISBT?", answer: "Call Triveni Cabs at 7668570551 or WhatsApp. Our driver will meet you outside the ISBT main gate at the designated taxi zone. Pre-booking is recommended, especially during tourist season." },
+      { question: "How to get a cab from Dehradun ISBT?", answer: "Call Triveni Cabs™ at 7668570551 or WhatsApp. Our driver will meet you outside the ISBT main gate at the designated taxi zone. Pre-booking is recommended, especially during tourist season." },
       { question: "What is the taxi fare from Dehradun ISBT to Mussoorie?", answer: "The cab fare from Dehradun ISBT to Mussoorie is \u20B9800 by sedan. The scenic mountain drive takes about 1.5 hours via Rajpur Road." },
       { question: "Can I book a cab to Jolly Grant Airport from Dehradun ISBT?", answer: "Yes, the fare from Dehradun ISBT to Jolly Grant Airport is \u20B9600 and takes approximately 40 minutes." },
       { question: "What are the best tourist places to visit from Dehradun ISBT?", answer: "Popular destinations include Mussoorie (35 km), Sahastradhara (14 km), Robber Cave (8 km), Tapkeshwar Temple, and Mindrolling Monastery. We offer full-day Dehradun sightseeing packages." }
@@ -248,7 +248,7 @@ export const busStands = {
       { name: "Kanpur", distance: "85 km", fare: "\u20B92,000", time: "1.5 hrs" }
     ],
     faqs: [
-      { question: "How to get a cab from Lucknow Alambagh Bus Stand?", answer: "Call Triveni Cabs at 7668570551 or WhatsApp for instant booking. Our driver will be at the main exit gate. We offer city rides, airport transfers, and outstation trips from Alambagh Bus Stand." },
+      { question: "How to get a cab from Lucknow Alambagh Bus Stand?", answer: "Call Triveni Cabs™ at 7668570551 or WhatsApp for instant booking. Our driver will be at the main exit gate. We offer city rides, airport transfers, and outstation trips from Alambagh Bus Stand." },
       { question: "What is the distance from Alambagh Bus Stand to Lucknow Airport?", answer: "Lucknow Airport (Chaudhary Charan Singh International Airport) is 15 km from Alambagh Bus Stand. The cab fare is \u20B9400 and takes about 30 minutes." },
       { question: "Can I visit Lucknow heritage sites from Alambagh Bus Stand?", answer: "Absolutely! Bara Imambara, Chota Imambara, Rumi Darwaza, and Hazratganj are all within 10 km. We offer Lucknow heritage tour packages starting at \u20B91,500." },
       { question: "Is Alambagh Bus Stand connected by metro?", answer: "Yes, Alambagh has a metro station on the Red Line of Lucknow Metro. This connects you to Charbagh Railway Station and other parts of the city." }
@@ -276,7 +276,7 @@ export const busStands = {
       { name: "Allahabad (Prayagraj)", distance: "125 km", fare: "\u20B92,800", time: "2.5 hrs" }
     ],
     faqs: [
-      { question: "How to get a cab from Varanasi Bus Stand?", answer: "Book with Triveni Cabs by calling 7668570551 or WhatsApp. Our driver will meet you at the main bus stand gate. We specialize in ghat tours, Sarnath visits, and outstation trips." },
+      { question: "How to get a cab from Varanasi Bus Stand?", answer: "Book with Triveni Cabs™ by calling 7668570551 or WhatsApp. Our driver will meet you at the main bus stand gate. We specialize in ghat tours, Sarnath visits, and outstation trips." },
       { question: "What is the taxi fare from Varanasi Bus Stand to Dashashwamedh Ghat?", answer: "The fare is \u20B9180 and it takes about 15 minutes. We recommend this for the evening Ganga Aarti experience." },
       { question: "Can I book a Varanasi sightseeing tour from the bus stand?", answer: "Yes! Our Varanasi sightseeing package covers Dashashwamedh Ghat, Kashi Vishwanath Temple, Sarnath, BHU, Assi Ghat, and Manikarnika Ghat starting at \u20B91,500." },
       { question: "How far is Sarnath from Varanasi Bus Stand?", answer: "Sarnath is 10 km from Varanasi Bus Stand. The cab fare is \u20B9300 and takes about 25 minutes. Sarnath is where Lord Buddha gave his first sermon." },
@@ -305,7 +305,7 @@ export const busStands = {
       { name: "Chandigarh", distance: "230 km", fare: "\u20B94,500", time: "4.5 hrs" }
     ],
     faqs: [
-      { question: "How to get a cab from Amritsar Bus Stand?", answer: "Call Triveni Cabs at 7668570551 or WhatsApp for instant booking. Our driver will pick you up from the GT Road bus stand entrance. We offer Golden Temple visits, Wagah Border trips, and outstation services." },
+      { question: "How to get a cab from Amritsar Bus Stand?", answer: "Call Triveni Cabs™ at 7668570551 or WhatsApp for instant booking. Our driver will pick you up from the GT Road bus stand entrance. We offer Golden Temple visits, Wagah Border trips, and outstation services." },
       { question: "What is the cab fare from Amritsar Bus Stand to Golden Temple?", answer: "The fare is just \u20B9130 and takes about 10 minutes. We recommend visiting early morning for the serene atmosphere and Palki Sahib ceremony." },
       { question: "Can I book a cab to Wagah Border from Amritsar Bus Stand?", answer: "Yes! The Wagah Border is 30 km away and the cab fare is \u20B9700. We recommend leaving by 2 PM to get good seats for the retreat ceremony at 4:30 PM (summer) or 4 PM (winter)." },
       { question: "What is the taxi fare from Amritsar to Delhi?", answer: "The one-way cab fare from Amritsar to Delhi is \u20B98,000 by sedan. The journey is approximately 450 km and takes 7-8 hours via NH44 (GT Road)." },
@@ -334,11 +334,11 @@ export const busStands = {
       { name: "Manali", distance: "260 km", fare: "\u20B95,500", time: "7 hrs" }
     ],
     faqs: [
-      { question: "How to get a cab from Shimla ISBT Tutikandi?", answer: "Call Triveni Cabs at 7668570551 or WhatsApp. Our driver will meet you at the ISBT Tutikandi exit. Shimla roads are narrow and hilly, so a reliable cab is essential for safe travel." },
+      { question: "How to get a cab from Shimla ISBT Tutikandi?", answer: "Call Triveni Cabs™ at 7668570551 or WhatsApp. Our driver will meet you at the ISBT Tutikandi exit. Shimla roads are narrow and hilly, so a reliable cab is essential for safe travel." },
       { question: "What is the cab fare from Shimla ISBT to Mall Road?", answer: "The fare from Shimla ISBT to Mall Road is \u20B9200 and takes about 15 minutes. Note that vehicles are not allowed on Mall Road itself - we drop you at the nearest point." },
       { question: "Can I book a Shimla sightseeing tour from ISBT?", answer: "Yes! Our Shimla sightseeing package covers Mall Road, The Ridge, Jakhu Temple, Kufri, Green Valley, and Indian Institute of Advanced Study starting at \u20B91,800." },
       { question: "What is the taxi fare from Shimla to Manali?", answer: "The cab fare from Shimla to Manali is \u20B95,500 by sedan. The scenic journey through the mountains takes about 7 hours." },
-      { question: "Is it difficult to get a cab at Shimla ISBT during peak season?", answer: "During peak season (May-June and December), local taxis can be scarce and overpriced. Pre-booking with Triveni Cabs guarantees your ride at fixed, transparent rates." }
+      { question: "Is it difficult to get a cab at Shimla ISBT during peak season?", answer: "During peak season (May-June and December), local taxis can be scarce and overpriced. Pre-booking with Triveni Cabs™ guarantees your ride at fixed, transparent rates." }
     ],
     tips: ["Shimla roads are narrow - SUVs are recommended for family travel", "Mall Road is pedestrian-only - your cab will drop you nearby", "Book early during summer vacation (May-June) and Christmas-New Year", "Carry warm clothes even in summer - Shimla evenings are chilly"]
   },
@@ -363,7 +363,7 @@ export const busStands = {
       { name: "Manikaran", distance: "80 km", fare: "\u20B91,800", time: "2.5 hrs" }
     ],
     faqs: [
-      { question: "How to get a cab from Manali Bus Stand?", answer: "Call Triveni Cabs at 7668570551 or WhatsApp for instant booking. Our driver will meet you at the Mall Road bus stand. We offer local sightseeing, Rohtang Pass trips, and Leh-Ladakh transfers." },
+      { question: "How to get a cab from Manali Bus Stand?", answer: "Call Triveni Cabs™ at 7668570551 or WhatsApp for instant booking. Our driver will meet you at the Mall Road bus stand. We offer local sightseeing, Rohtang Pass trips, and Leh-Ladakh transfers." },
       { question: "What is the cab fare from Manali Bus Stand to Rohtang Pass?", answer: "The cab fare to Rohtang Pass is \u20B92,000 for a round trip. The journey takes about 2 hours one way. Note: Rohtang Pass requires a permit which we can help arrange." },
       { question: "Can I book a cab from Manali to Leh?", answer: "Yes! The Manali to Leh highway is one of the most scenic drives in the world. The cab fare is approximately \u20B912,000-15,000 depending on vehicle type. The journey takes 2 days with an overnight stop at Keylong or Jispa." },
       { question: "What are the must-visit places from Manali Bus Stand?", answer: "Top spots include Hadimba Temple (2 km), Solang Valley (14 km), Rohtang Pass (51 km), Old Manali (3 km), Vashisht Hot Springs (4 km), and Manikaran (80 km)." },
@@ -416,15 +416,15 @@ export function getStandFaqs(stand) {
     },
     railway && {
       question: `How much does a cab from ${stand.name} to ${railway.name} cost?`,
-      answer: `A cab from ${stand.name} to ${railway.name} costs ${railway.fare} (${railway.distance}, around ${railway.time}). Many travellers transfer between the bus stand and the railway station — pre-book with Triveni Cabs on 7668570551 for a fixed fare and a driver waiting at ${pickup}.`,
+      answer: `A cab from ${stand.name} to ${railway.name} costs ${railway.fare} (${railway.distance}, around ${railway.time}). Many travellers transfer between the bus stand and the railway station — pre-book with Triveni Cabs™ on 7668570551 for a fixed fare and a driver waiting at ${pickup}.`,
     },
     {
       question: `Is there a prepaid taxi counter at ${stand.name}?`,
-      answer: `Local prepaid auto and taxi options exist around ${stand.name}, but rates fluctuate and AC cabs are not guaranteed. Booking Triveni Cabs in advance gives you a confirmed fixed fare, an air-conditioned sedan or SUV, and a verified driver who meets you at ${pickup} — no haggling at the counter.`,
+      answer: `Local prepaid auto and taxi options exist around ${stand.name}, but rates fluctuate and AC cabs are not guaranteed. Booking Triveni Cabs™ in advance gives you a confirmed fixed fare, an air-conditioned sedan or SUV, and a verified driver who meets you at ${pickup} — no haggling at the counter.`,
     },
     {
       question: `Are night taxis available at ${stand.name} and are there extra night charges?`,
-      answer: `Yes. Triveni Cabs operates 24/7 at ${stand.name}, including late-night and early-morning bus arrivals. There are no extra night surcharges on standard city fares — the price you are quoted at the time of booking is the price you pay, whether your bus arrives at midnight or noon.`,
+      answer: `Yes. Triveni Cabs™ operates 24/7 at ${stand.name}, including late-night and early-morning bus arrivals. There are no extra night surcharges on standard city fares — the price you are quoted at the time of booking is the price you pay, whether your bus arrives at midnight or noon.`,
     },
     {
       question: `How long will the driver wait for me at ${stand.name}?`,
@@ -444,7 +444,7 @@ export function getStandFaqs(stand) {
     },
     {
       question: `Are the drivers and cabs from ${stand.name} safe and verified?`,
-      answer: `Yes. Every Triveni Cabs driver serving ${stand.name} is background-verified, licensed, and trained in courteous, professional service. All rides are GPS-tracked and you receive the driver's name, photo, phone number, and vehicle registration before pickup — ideal for solo travellers and families arriving at ${stand.city}.`,
+      answer: `Yes. Every Triveni Cabs™ driver serving ${stand.name} is background-verified, licensed, and trained in courteous, professional service. All rides are GPS-tracked and you receive the driver's name, photo, phone number, and vehicle registration before pickup — ideal for solo travellers and families arriving at ${stand.city}.`,
     },
     {
       question: `Where exactly is the cab pickup point at ${stand.name}?`,
@@ -452,7 +452,7 @@ export function getStandFaqs(stand) {
     },
     {
       question: `Do you provide a GST invoice for cab rides from ${stand.name}?`,
-      answer: `Yes. Triveni Cabs provides a proper GST tax invoice on request for all rides from ${stand.name}, which is useful for business travellers and corporate reimbursement. Mention your GST requirement at the time of booking and we will email or hand over the invoice after your trip.`,
+      answer: `Yes. Triveni Cabs™ provides a proper GST tax invoice on request for all rides from ${stand.name}, which is useful for business travellers and corporate reimbursement. Mention your GST requirement at the time of booking and we will email or hand over the invoice after your trip.`,
     },
     cheapest && {
       question: `What is the cheapest taxi ride available from ${stand.name}?`,

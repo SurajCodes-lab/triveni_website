@@ -33,12 +33,12 @@ export const metadata = {
     type: 'article',
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${SLUG}`,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
 
   twitter: {
     card: 'summary_large_image',
-    title: "${data.title} | Triveni Cabs",
+    title: "${data.title} | Triveni Cabs™",
     description: "",
     creator: '@trivenicabs',
     site: '@trivenicabs',

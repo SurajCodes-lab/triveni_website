@@ -1,5 +1,6 @@
 'use client';
 
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,6 +26,9 @@ import LongTailFAQ from '@/components/seo/LongTailFAQ';
 import { getCitationsForRoute } from '@/utilis/outboundCitations';
 import { getFounderQuoteForContext } from '@/utilis/expertQuotes';
 import { generateLongTailFaqs } from '@/utilis/longTailFaqGenerator';
+// canonicalLink keeps these internal links off the Week 43 redirects — see
+// src/lib/seo/canonical-link.js for why a prefix rule cannot do this.
+import { canonicalLink } from '@/lib/seo/canonical-link';
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>;
 
@@ -95,17 +99,18 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-emerald-500/15 backdrop-blur-md px-4 py-1.5 rounded-full border border-emerald-400/25 mb-5">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 <Car className="w-3.5 h-3.5 text-[#FACF2D]" />
                 <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">Road Trip Guide</span>
               </div>
               <p className="tbc-serif text-emerald-200/70 text-base sm:text-lg italic mb-2">Drive</p>
               <h1 className="speakable-headline text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
-                {route.origin} to {route.destination}<br />
+                {route.origin} to {route.destination}{' '}<br />
                 <span className="tbc-serif italic font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] via-amber-300 to-emerald-400">
                   by Car
                 </span>
               </h1>
+              <FamilyFacts family="travel-by-car" data={route} />
               {/* Route badge */}
               <div className="inline-flex items-center gap-2.5 mt-4 text-sm bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2">
                 <span className="inline-flex items-center gap-1.5 font-bold text-white"><MapPin className="w-3.5 h-3.5 text-[#FACF2D]" />{route.origin}</span>
@@ -158,6 +163,7 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
           </div>
         </div>
       </section>
+      <FamilyFacts family="travel-by-car" data={route} details />
 
       {/* ━━━ DIRECT-ANSWER LEAD: voice + featured-snippet target ━━━ */}
       <section className="bg-white py-8 sm:py-10 px-4 sm:px-6 border-b border-slate-100">
@@ -181,7 +187,7 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
             <Link href={`/distance/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
               <Route className="w-3.5 h-3.5" /> {route.origin}-{route.destination} distance &amp; time
             </Link>
-            <Link href={`/one-way-cab/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
+            <Link href={canonicalLink(`/one-way-cab/${route.slug}`)} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
               <Car className="w-3.5 h-3.5" /> One-way cab {route.origin} to {route.destination}
             </Link>
             <Link href={`/toll-cost/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
@@ -592,7 +598,7 @@ function TravelByCarRichBlock({ route }) {
         </section>
       )}
 
-      <section className="py-16 px-4 sm:px-6">
+      <section className="py-10 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-emerald-400 font-semibold text-sm tracking-widest uppercase">Road Trip Q&amp;A</span>

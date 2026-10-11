@@ -7,6 +7,7 @@ import {
   getCityPlaceSchema,
   getTodayDate,
 } from "@/lib/seo/speakable-helpers";
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 const SITE_URL = "https://www.trivenicabs.in";
 
@@ -16,7 +17,7 @@ export function buildGTMetadata(slug) {
   const fromPart = d.origin === "Delhi" ? "" : ` from ${d.origin}`;
   const title = `Golden Triangle Tour${fromPart} ₹${d.priceFrom.toLocaleString("en-IN")} | Car + Driver`;
   const description = `${d.tagline}. ${d.durationOptions}, private AC car with English-speaking driver, all-inclusive of fuel, tolls & driver. Taj Mahal, Amber Fort & more. Call 7668570551.`;
-  const ogTitle = `${d.h1} — ${d.durationOptions}, from ₹${d.priceFrom.toLocaleString("en-IN")} | Triveni Cabs`;
+  const ogTitle = `${d.h1} — ${d.durationOptions}, from ₹${d.priceFrom.toLocaleString("en-IN")} | Triveni Cabs™`;
   return {
     title,
     description,
@@ -28,11 +29,11 @@ export function buildGTMetadata(slug) {
       `golden triangle ${d.durationOptions.replace(/\s+/g, " ")} package`,
       "taj mahal tour", "golden triangle itinerary", "golden triangle tour cost",
     ],
-    authors: [{ name: "Triveni Cabs" }],
+    authors: [{ name: "Triveni Cabs™" }],
     metadataBase: new URL(SITE_URL),
     alternates: { canonical: `/${d.slug}` },
     openGraph: {
-      title: ogTitle, description, type: "website", locale: "en_IN", url, siteName: "Triveni Cabs",
+      title: ogTitle, description, type: "website", locale: "en_IN", url, siteName: "Triveni Cabs™",
       images: [{ url: `${SITE_URL}${d.heroImage}`, width: 1200, height: 630, alt: `${d.h1} — Triveni Cabs` }],
     },
     twitter: { card: "summary_large_image", title: ogTitle, description, site: "@trivenicabs", creator: "@trivenicabs", images: [`${SITE_URL}${d.heroImage}`] },
@@ -43,7 +44,7 @@ export function buildGTMetadata(slug) {
 export function buildGTJsonLd(slug, { aggregateRating, review }) {
   const d = goldenTriangleTours[slug];
   const url = `${SITE_URL}/${d.slug}`;
-  const today = getTodayDate();
+  const today = (getContentUpdatedOn(`/${d.slug}`) || getTodayDate());
   const speakable = getSpeakableSchema([".speakable-headline", ".speakable-lead", ".speakable-faq-first"]);
 
   // Geo-grounded City place entities for each city in the circuit.
@@ -53,7 +54,7 @@ export function buildGTJsonLd(slug, { aggregateRating, review }) {
 
   const howTo = getHowToSchema({
     name: `How to Book the ${d.name}`,
-    description: `Book a private chauffeur-driven ${d.name} with Triveni Cabs in four steps.`,
+    description: `Book a private chauffeur-driven ${d.name} with Triveni Cabs™ in four steps.`,
     totalTime: "PT5M",
     steps: [
       { name: "Share your dates & group size", text: `Call 7668570551 or WhatsApp with your travel dates, ${d.origin} pickup point and number of travellers.` },
@@ -97,10 +98,10 @@ export function buildGTJsonLd(slug, { aggregateRating, review }) {
       url,
       availability: "https://schema.org/InStock",
     },
-    provider: { "@type": "TravelAgency", "@id": `${SITE_URL}/#organization`, name: "Triveni Cabs" },
+    provider: { "@type": "TravelAgency", "@id": `${SITE_URL}/#organization`, name: "Triveni Cabs™" },
     ...(places.length ? { subjectOf: places.map((p) => ({ "@id": p["@id"] })) } : {}),
-    aggregateRating,
-    review,
+    ...(aggregateRating ? { aggregateRating } : {}),
+    ...(review ? { review } : {}),
   };
 
   return {

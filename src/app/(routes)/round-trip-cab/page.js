@@ -9,6 +9,8 @@ import { getAllRoundTripSlugs, getRoundTripRoute } from '@/utilis/roundTripData'
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import TrackedCta from '@/components/ui/TrackedCta';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { canonicalHref } from '@/lib/seo/route-exists';
+import { BASE_URL } from '@/lib/seo/constants';
 
 export const revalidate = 3600;
 
@@ -16,9 +18,9 @@ export const metadata = {
   title: tightenTitle('Round Trip Cab 2026 | Same Driver | Sedan ₹11/km'),
   description: 'Book round trip cabs with same driver for multi-day trips. Sedan ₹11/km, SUV ₹15/km. Delhi-Agra, Delhi-Jaipur & 500+ routes. Flexible schedules.',
   keywords: 'round trip cab, round trip taxi, round trip cab booking, return cab, round trip taxi service, multi-day cab, round trip outstation cab, round trip cab rates, round trip cab with driver, same driver cab, Delhi to Agra round trip, Delhi to Jaipur round trip, round trip cab near me, cheap round trip cab, affordable round trip taxi, family cab booking, vacation cab rental, round trip cab Delhi, round trip cab Agra, round trip cab Jaipur',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/round-trip-cab',
@@ -29,7 +31,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/round-trip-cab',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: '/images/citypage_hero_section_image.jpg',
@@ -41,7 +43,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Round Trip Cab | Same Driver | Multi-Day | Triveni Cabs',
+    title: 'Round Trip Cab | Same Driver | Multi-Day | Triveni Cabs™',
     description: 'Round trip cabs from ₹11/km. Same driver, flexible schedule, multi-day trips. 500+ routes. Call 7668570551.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -209,6 +211,8 @@ export default function RoundTripCabPage() {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Merchant listings treats a missing `image` as critical.
+    "image": `${BASE_URL}/images/car/swift_dzire.jpg`,
     "name": "Round Trip Cab Booking — Triveni Cabs (Sedan, SUV, Tempo Traveller)",
     "description": "Round trip cab fleet across 500+ Indian routes. Sedan from ₹11/km, SUV ₹15/km, Tempo Traveller from ₹23/km. Same driver throughout, 10% round trip discount, 250 km/day minimum.",
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
@@ -232,9 +236,11 @@ export default function RoundTripCabPage() {
 
   // Build the internal-link grid of REAL /round-trip/{slug} pages from data.
   const featuredRoundTripSlugs = [
-    'delhi-to-agra', 'delhi-to-jaipur', 'delhi-to-shimla', 'delhi-to-manali',
-    'delhi-to-haridwar', 'delhi-to-rishikesh', 'delhi-to-amritsar', 'delhi-to-chandigarh',
-    'jaipur-to-udaipur', 'agra-to-jaipur', 'delhi-to-nainital', 'delhi-to-mussoorie',
+    // Ordered by the searches the round-trip pages actually receive (the 12 Sep export).
+    'delhi-to-rishikesh', 'jaipur-to-pushkar', 'delhi-to-corbett', 'delhi-to-mussoorie',
+    'delhi-to-agra', 'delhi-to-mathura', 'chandigarh-to-manali', 'delhi-to-manali',
+    'lucknow-to-ayodhya', 'delhi-to-jaipur', 'delhi-to-shimla', 'delhi-to-haridwar',
+    'delhi-to-amritsar', 'delhi-to-chandigarh', 'jaipur-to-udaipur', 'agra-to-jaipur', 'delhi-to-nainital',
   ];
   const allSlugs = new Set(getAllRoundTripSlugs());
   const dataRoundTripRoutes = featuredRoundTripSlugs
@@ -252,15 +258,15 @@ export default function RoundTripCabPage() {
     });
 
   const roundTripRoutes = [
-    { from: "Delhi", to: "Agra", days: "1-2 Days", price: "₹5,500+", highlights: "Taj Mahal, Agra Fort, Fatehpur Sikri", href: "/delhi-to-agra" },
+    { from: "Delhi", to: "Agra", days: "1-2 Days", price: "₹5,060+", highlights: "Taj Mahal, Agra Fort, Fatehpur Sikri", href: "/delhi-to-agra" },
     { from: "Delhi", to: "Jaipur", days: "2-3 Days", price: "₹6,160+", highlights: "Hawa Mahal, Amber Fort, City Palace", href: "/delhi-to-jaipur" },
     { from: "Delhi", to: "Shimla", days: "3-4 Days", price: "₹7,700+", highlights: "Mall Road, Ridge, Kufri, Naldehra", href: "/delhi-to-shimla" },
-    { from: "Delhi", to: "Manali", days: "4-5 Days", price: "₹11,880+", highlights: "Solang Valley, Rohtang, Old Manali", href: "/delhi-to-manali" },
-    { from: "Delhi", to: "Haridwar-Rishikesh", days: "2-3 Days", price: "₹5,500+", highlights: "Ganga Aarti, Lakshman Jhula, Rafting", href: "/delhi-to-haridwar" },
+    { from: "Delhi", to: "Manali", days: "4-5 Days", price: "₹11,880+", highlights: "Solang Valley, Rohtang, Old Manali", href: "/one-way-cab/delhi-to-manali" },
+    { from: "Delhi", to: "Haridwar-Rishikesh", days: "2-3 Days", price: "₹5,060+", highlights: "Ganga Aarti, Lakshman Jhula, Rafting", href: "/one-way-cab/delhi-to-haridwar" },
     { from: "Delhi", to: "Amritsar", days: "2-3 Days", price: "₹9,900+", highlights: "Golden Temple, Wagah Border, Jallianwala", href: "/delhi-to-amritsar" },
     { from: "Jaipur", to: "Udaipur", days: "2-3 Days", price: "₹8,690+", highlights: "Lake Pichola, City Palace, Ranakpur", href: "/jaipur-to-udaipur" },
     { from: "Delhi", to: "Chandigarh", days: "1-2 Days", price: "₹5,500+", highlights: "Rock Garden, Sukhna Lake, Rose Garden", href: "/delhi-to-chandigarh" },
-    { from: "Agra", to: "Jaipur", days: "2-3 Days", price: "₹5,280+", highlights: "Fatehpur Sikri, Bharatpur, Amber Fort", href: "/agra-to-jaipur" },
+    { from: "Agra", to: "Jaipur", days: "2-3 Days", price: "₹5,280+", highlights: "Fatehpur Sikri, Bharatpur, Amber Fort", href: "/one-way-cab/agra-to-jaipur" },
   ];
 
   const benefits = [
@@ -273,10 +279,10 @@ export default function RoundTripCabPage() {
   ];
 
   const multiDayPackages = [
-    { days: "2-Day Trip", minKm: "500 km", sedanCost: "₹5,500", suvCost: "₹7,500", tempoPrice: "₹12,000", example: "Delhi-Agra, Delhi-Chandigarh" },
-    { days: "3-Day Trip", minKm: "750 km", sedanCost: "₹8,250", suvCost: "₹11,250", tempoPrice: "₹18,000", example: "Delhi-Jaipur, Delhi-Haridwar-Rishikesh" },
-    { days: "5-Day Trip", minKm: "1,250 km", sedanCost: "₹13,750", suvCost: "₹18,750", tempoPrice: "₹30,000", example: "Golden Triangle, Delhi-Manali" },
-    { days: "7-Day Trip", minKm: "1,750 km", sedanCost: "₹19,250", suvCost: "₹26,250", tempoPrice: "₹42,000", example: "Rajasthan Circuit, Himachal Tour" },
+    { days: "2-Day Trip", minKm: "600 km", sedanCost: "₹6,600", suvCost: "₹9,000", tempoPrice: "₹13,800", example: "Delhi-Agra, Delhi-Chandigarh" },
+    { days: "3-Day Trip", minKm: "900 km", sedanCost: "₹9,900", suvCost: "₹13,500", tempoPrice: "₹20,700", example: "Delhi-Jaipur, Delhi-Haridwar-Rishikesh" },
+    { days: "5-Day Trip", minKm: "1,500 km", sedanCost: "₹16,500", suvCost: "₹22,500", tempoPrice: "₹34,500", example: "Golden Triangle, Delhi-Manali" },
+    { days: "7-Day Trip", minKm: "2,100 km", sedanCost: "₹23,100", suvCost: "₹31,500", tempoPrice: "₹48,300", example: "Rajasthan Circuit, Himachal Tour" },
   ];
 
   const journeySteps = [
@@ -324,7 +330,7 @@ export default function RoundTripCabPage() {
           <div className="absolute bottom-10 left-10 w-72 h-72 bg-amber-500/15 rounded-full blur-[100px]" />
           <div className="absolute top-1/3 left-1/4 w-40 h-40 bg-amber-400/10 rounded-full blur-[60px]" />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 grid lg:grid-cols-5 gap-12 items-center">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 sm:py-20 grid lg:grid-cols-5 gap-12 items-center">
             {/* Left: Content (3 cols) */}
             <div className="lg:col-span-3">
               <div className="inline-flex items-center gap-2 bg-amber-500/15 backdrop-blur-md px-5 py-2 rounded-full mb-8 border border-amber-400/20">
@@ -401,7 +407,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── SEO Prose Section ─── */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             {/* Direct-answer lead box — voice/AI answer target (.speakable-lead) */}
             <div className="speakable-lead bg-white/5 rounded-2xl border border-amber-200/70 shadow-[0_4px_24px_rgba(109,40,217,0.06)] p-6 md:p-8 mb-12">
@@ -415,7 +421,7 @@ export default function RoundTripCabPage() {
             </h2>
             <div className="prose prose-lg max-w-none text-slate-200 space-y-4">
               <p>
-                A <strong>round trip cab</strong> is the smartest way to travel for multi-day trips across North India. Unlike booking two separate <Link href="/one-way-cab" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">one-way cabs</Link>, a round trip gives you the <strong>same driver throughout your journey</strong> — from pickup to sightseeing to the return home. At Triveni Cabs, our round trip service starts at just <strong>₹11/km for sedans</strong>, with SUVs at ₹15/km and <Link href="/tempo-traveller" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">tempo travellers</Link> from ₹23/km, making it the most cost-effective choice for family vacations, group tours, and <Link href="/corporate-transportation-service" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">corporate business trips</Link> lasting 2 to 15+ days.
+                A <strong>round trip cab</strong> is the smartest way to travel for multi-day trips across North India. Unlike booking two separate <Link href="/one-way-cab" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">one-way cabs</Link>, a round trip gives you the <strong>same driver throughout your journey</strong> — from pickup to sightseeing to the return home. At Triveni Cabs™, our round trip service starts at just <strong>₹11/km for sedans</strong>, with SUVs at ₹15/km and <Link href="/tempo-traveller" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">tempo travellers</Link> from ₹23/km, making it the most cost-effective choice for family vacations, group tours, and <Link href="/corporate-transportation-service" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">corporate business trips</Link> lasting 2 to 15+ days.
               </p>
               <p>
                 What sets our <strong>round trip cab booking</strong> apart is the flexibility and personal touch. Your dedicated driver gets to know your preferences, suggests local attractions, waits while you explore, and ensures a comfortable ride throughout. With a minimum of just 250 km per day (compared to 300 km for one-way), round trip cabs offer better value for travelers who want to explore destinations at their own pace. Popular routes include <Link href="/agra" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">Delhi to Agra</Link>, <Link href="/jaipur" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">Delhi to Jaipur</Link>, <Link href="/shimla" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">Delhi to Shimla</Link>, <Link href="/manali" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">Delhi to Manali</Link>, and the iconic <Link href="/sightseeing/golden-triangle-tour-3-days" className="text-amber-600 hover:text-amber-600 underline underline-offset-2">Golden Triangle circuit</Link>.
@@ -428,9 +434,9 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── JOURNEY STEPS: Vertical timeline with violet connectors ─── */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="inline-block text-sm font-bold text-amber-600 bg-amber-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">How It Works</span>
               <h2 className="text-3xl md:text-4xl font-bold text-white">
                 How do I book a round trip cab?
@@ -460,7 +466,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── HOW TO BOOK: Semantic ordered list (grounds HowTo schema) ─── */}
-        <section className="py-16 px-4 bg-white/5">
+        <section className="py-10 sm:py-16 px-4 bg-white/5">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <span className="inline-block text-sm font-bold text-amber-600 bg-amber-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Step-by-Step</span>
@@ -488,7 +494,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── ROUND TRIP vs ONE-WAY: Visible comparison table (grounds Comparison schema) ─── */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <span className="inline-block text-sm font-bold text-amber-600 bg-amber-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Compare</span>
@@ -536,7 +542,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── BOOK BY ROUTE: Real /round-trip/{slug} internal-link grid ─── */}
-        <section className="py-20 px-4 bg-[#f0ecff]">
+        <section className="py-12 sm:py-20 px-4 bg-[#f0ecff]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <span className="inline-block text-sm font-bold text-amber-600 bg-amber-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Book By Route</span>
@@ -549,7 +555,7 @@ export default function RoundTripCabPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {dataRoundTripRoutes.map((r, idx) => (
-                <Link key={idx} href={`/round-trip/${r.slug}`} className="group block overflow-hidden bg-white/5 rounded-2xl border border-white/10 hover:border-[#FACF2D]/30 hover:shadow-[0_8px_32px_rgba(250,207,45,0.12)] transition-all">
+                <Link key={idx} href={canonicalHref(`/round-trip/${r.slug}`)} className="group block overflow-hidden bg-white/5 rounded-2xl border border-white/10 hover:border-[#FACF2D]/30 hover:shadow-[0_8px_32px_rgba(250,207,45,0.12)] transition-all">
                   <div className="relative h-32 w-full overflow-hidden">
                     <Image src={getCityImage(r.destination)} alt={`${r.origin} to ${r.destination} round trip cab`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/30 to-transparent" />
@@ -578,7 +584,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── MULTI-DAY PACKAGES: Gradient cards with pricing grid ─── */}
-        <section className="py-20 px-4 bg-white/5">
+        <section className="py-12 sm:py-20 px-4 bg-white/5">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-amber-600 bg-amber-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Pricing</span>
@@ -632,7 +638,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── POPULAR ROUTES: Card carousel style ─── */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-amber-600 bg-amber-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Destinations</span>
@@ -646,7 +652,7 @@ export default function RoundTripCabPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {roundTripRoutes.map((route, idx) => (
-                <Link key={idx} href={route.href} className="group block">
+                <Link key={idx} href={canonicalHref(route.href)} className="group block">
                   <div className="bg-white/5 rounded-2xl overflow-hidden shadow-[0_2px_16px_rgba(109,40,217,0.05)] border border-amber-100/40 hover:shadow-[0_8px_32px_rgba(109,40,217,0.12)] hover:border-amber-300/50 transition-all">
                     {/* Top color bar */}
                     <div className="h-1.5 bg-gradient-to-r from-amber-500 via-amber-500 to-amber-500" />
@@ -684,7 +690,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── BENEFITS: Glassmorphism cards on purple gradient section ─── */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-br from-[#0A0A0E] via-[#14100a] to-[#4c1d95]">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden bg-gradient-to-br from-[#0A0A0E] via-[#14100a] to-[#4c1d95]">
           {/* Decorative blur orbs */}
           <div className="absolute top-20 right-10 w-80 h-80 bg-amber-500/20 rounded-full blur-[100px]" />
           <div className="absolute bottom-10 left-20 w-60 h-60 bg-amber-400/15 rounded-full blur-[80px]" />
@@ -715,7 +721,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── COMPARE TRIP TYPES: Side-by-side cards ─── */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <span className="inline-block text-sm font-bold text-amber-600 bg-amber-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Compare</span>
@@ -770,7 +776,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── FAQ: Accordion-style with numbered badges ─── */}
-        <section className="py-20 px-4 bg-white/5">
+        <section className="py-12 sm:py-20 px-4 bg-white/5">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-amber-600 bg-amber-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">FAQ</span>
@@ -801,7 +807,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── DYNAMIC: Travel Guides & Wedding Services ─── */}
-        <section className="py-16 px-4 bg-[#f0ecff]">
+        <section className="py-10 sm:py-16 px-4 bg-[#f0ecff]">
           <div className="max-w-7xl mx-auto space-y-14">
             <div>
               <h2 className="text-2xl font-bold text-white mb-6">Travel Guides</h2>
@@ -829,7 +835,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── INTERLINKING: Comprehensive footer-style grids ─── */}
-        <section className="py-16 px-4 border-t border-amber-100">
+        <section className="py-10 sm:py-16 px-4 border-t border-amber-100">
           <div className="max-w-7xl mx-auto space-y-12">
 
             {/* Related Services */}
@@ -860,11 +866,11 @@ export default function RoundTripCabPage() {
                   { l: "Delhi to Agra Round Trip", h: "/delhi-to-agra" },
                   { l: "Delhi to Jaipur Round Trip", h: "/delhi-to-jaipur" },
                   { l: "Delhi to Shimla Round Trip", h: "/delhi-to-shimla" },
-                  { l: "Delhi to Manali Round Trip", h: "/delhi-to-manali" },
+                  { l: "Delhi to Manali Round Trip", h: "/one-way-cab/delhi-to-manali" },
                   { l: "Delhi to Chandigarh Round Trip", h: "/delhi-to-chandigarh" },
-                  { l: "Delhi to Haridwar Round Trip", h: "/delhi-to-haridwar" },
+                  { l: "Delhi to Haridwar Round Trip", h: "/one-way-cab/delhi-to-haridwar" },
                   { l: "Delhi to Rishikesh Round Trip", h: "/delhi-to-rishikesh" },
-                  { l: "Agra to Jaipur Round Trip", h: "/agra-to-jaipur" },
+                  { l: "Agra to Jaipur Round Trip", h: "/one-way-cab/agra-to-jaipur" },
                   { l: "Delhi to Amritsar Round Trip", h: "/delhi-to-amritsar" },
                   { l: "Delhi to Nainital Round Trip", h: "/delhi-to-nainital" },
                 ].map((r, i) => (
@@ -924,7 +930,7 @@ export default function RoundTripCabPage() {
         </section>
 
         {/* ─── CTA: Gradient glass card ─── */}
-        <section className="py-20 px-4 bg-gradient-to-br from-[#0A0A0E] to-[#2d1b69]">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-[#0A0A0E] to-[#2d1b69]">
           <div className="max-w-3xl mx-auto">
             <div className="bg-white/[0.06] backdrop-blur-2xl rounded-3xl p-10 md:p-14 text-center border border-white/[0.1]">
               <div className="inline-flex p-3 bg-amber-500/15 rounded-xl mb-6 border border-amber-400/20">

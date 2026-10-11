@@ -31,7 +31,7 @@ export default function Page() {
       slug="mini-bus-rental-delhi"
       vehicleName="Mini Bus"
       h1="Mini Bus Rental in Delhi — AC Mini Coaches, Chauffeur-Driven"
-      intro="When a tempo traveller is too small and a full coach is too big, a mini bus is the perfect middle ground. Triveni Cabs offers 32, 40 and 45-seater AC mini coaches for group travel out of Delhi NCR — chauffeur-driven, well-maintained and priced at a transparent per-km rate that includes fuel, the driver and AC. Ideal for group tours, corporate outings, weddings and school trips."
+      intro="When a tempo traveller is too small and a full coach is too big, a mini bus is the perfect middle ground. Triveni Cabs™ offers 32, 40 and 45-seater AC mini coaches for group travel out of Delhi NCR — chauffeur-driven, well-maintained and priced at a transparent per-km rate that includes fuel, the driver and AC. Ideal for group tours, corporate outings, weddings and school trips."
       category="Mini Bus"
       seating="32–45"
       fareRows={[

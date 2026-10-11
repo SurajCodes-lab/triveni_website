@@ -304,6 +304,37 @@ const outstationCityData = {
     relatedCities: ["haridwar", "delhi", "chandigarh", "shimla"],
   },
 
+  // Ahmedabad — the last of the proposal's fifteen cities to get an outstation
+  // page. Every slug below resolves: the five ahmedabad-to-* routes were added
+  // to distanceData alongside this entry, so none of these cards link nowhere.
+  ahmedabad: {
+    slug: "ahmedabad",
+    city: "Ahmedabad",
+    tagline: "Gujarat's Commercial Capital — Gateway to Rajasthan",
+    popularRoutes: [
+      { destination: "Udaipur", distance: 260, fare: 3300, duration: "4h 30m", slug: "ahmedabad-to-udaipur" },
+      { destination: "Mount Abu", distance: 225, fare: 3300, duration: "4h 30m", slug: "ahmedabad-to-mount-abu" },
+      { destination: "Statue of Unity", distance: 200, fare: 3300, duration: "3h 30m", slug: "ahmedabad-to-statue-of-unity" },
+      { destination: "Jaipur", distance: 655, fare: 7205, duration: "10h 30m", slug: "ahmedabad-to-jaipur" },
+      { destination: "Delhi", distance: 950, fare: 10450, duration: "15h", slug: "ahmedabad-to-delhi" },
+    ],
+    vehicleOptions: [
+      { type: "Sedan", model: "Dzire / Etios", seats: 4, perKm: 11, minKm: 300, image: "/images/car/swift_dzire.jpg" },
+      { type: "SUV", model: "Innova / Ertiga", seats: 6, perKm: 15, minKm: 300, image: "/images/car/innova_crysta.jpg" },
+      { type: "Tempo Traveller", model: "Force Traveller 12-26 Seater", seats: 12, perKm: 23, minKm: 300, image: "/images/tempo/17_seater.jpg" },
+    ],
+    oneWayAvailable: true,
+    roundTripDiscount: "15% off return fare",
+    faqs: [
+      { question: "What is the outstation cab fare from Ahmedabad?", answer: "Outstation cabs from Ahmedabad start at ₹11/km (Sedan), ₹15/km (SUV) and ₹23/km (Tempo Traveller), billed on a minimum of 300 km. Ahmedabad to Udaipur works out at roughly ₹3,300 for a sedan and Ahmedabad to Jaipur at approximately ₹7,205. Driver and fuel are included; tolls, parking and state permits are billed at actuals." },
+      { question: "How long does Ahmedabad to Udaipur take by cab?", answer: "About four and a half hours for the 260 km on NH-48, which is four-lane almost the whole way. Shamlaji sits roughly halfway and is the natural meal stop. It is one of the easier long drives in the region and comfortably a same-day trip." },
+      { question: "Can I visit the Statue of Unity as a day trip from Ahmedabad?", answer: "Yes, and it is our most-booked short trip from the city. Kevadia is around 200 km and three to four hours via the expressway to Vadodara. Leave by 6am to reach for opening — the last entry slots for the viewing gallery go early, and tickets are better booked online than at the gate." },
+      { question: "Do you provide inter-state permits for Gujarat to Rajasthan trips?", answer: "Yes. All inter-state permits and border taxes for Gujarat to Rajasthan travel are arranged by us and appear as separate itemised lines on your invoice rather than being folded into the per-km rate. You do not need to deal with anything at the border." },
+      { question: "Is a one-way drop available from Ahmedabad?", answer: "Yes, though it is worth understanding the pricing. A one-way drop is billed at the same per-km rate as a round trip, because the vehicle still has to return to base empty afterwards — that return leg is real cost even though you are not in the vehicle for it. We would rather say so upfront than have it appear as a surprise." },
+      { question: "Which vehicle suits an Ahmedabad to Rajasthan family trip?", answer: "For four passengers a sedan is fine on these highways. For six or more, or for a multi-day Udaipur and Mount Abu circuit with luggage, the SUV is the better call — and for groups above seven the tempo traveller. The Abu Road ghat has 27 km of continuous hairpins, so a larger, higher vehicle is noticeably more comfortable on that climb." },
+    ],
+    relatedCities: ["udaipur", "jodhpur", "jaipur", "delhi"],
+  },
   udaipur: {
     slug: "udaipur",
     city: "Udaipur",

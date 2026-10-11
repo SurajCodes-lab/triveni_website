@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import VehicleDetails from "@/components/VehicleDetails";
 import VehicleHireClient from "@/components/vehicles/VehicleHireClient";
 import AEOHead from '@/components/seo/AEOHead';
+import DataTable from "@/components/seo/DataTable";
 import { vehicleDetails } from "@/utilis/data";
 import { vehicleHirePages, getAllVehicleHireSlugs } from "@/utilis/vehicleHireData";
 import { tightenTitle } from '@/lib/seo/serp-ctr';
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }) {
         type: "website",
         locale: "en_IN",
         url: canonical,
-        siteName: "Triveni Cabs",
+        siteName: "Triveni Cabs™",
         images: [
           {
             url: "https://www.trivenicabs.in/images/car/innova_crysta.jpg",
@@ -95,7 +96,7 @@ export async function generateMetadata({ params }) {
         type: "website",
         locale: "en_IN",
         url: `https://www.trivenicabs.in/vehicles/${slug}`,
-        siteName: "Triveni Cabs",
+        siteName: "Triveni Cabs™",
       },
       robots: { index: true, follow: true },
     };
@@ -139,13 +140,7 @@ function generateVehicleHireStructuredData(vehicle) {
         url: "https://www.trivenicabs.in",
       },
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.7",
-      reviewCount: "320",
-      bestRating: "5",
-      worstRating: "1",
-    },
+    
   });
 
   // FAQ schema
@@ -218,9 +213,36 @@ export default async function VehicleSlugPage({ params }) {
   // Old category slugs - render legacy VehicleDetails component
   const isOldCategory = oldCategorySlugs.includes(slug);
   if (isOldCategory) {
+    const rec = vehicleDetails.find((v) => v.type.toLowerCase().replace(/\s+/g, '-') === slug) || vehicleDetails[0];
+    const label = rec.type.replace(/-/g, ' ');
+    const faqs = [
+      { question: `What is the per km rate for ${label} rental?`, answer: `Our ${label} rental is ${rec.perKm}; the driver is ${String(rec.driverCharges).toLowerCase()}. Outstation trips bill ${rec.perDayLimit}; tolls and parking are extra at actuals.` },
+      { question: `Is a driver included in a ${label} booking?`, answer: `Yes, every ${label} comes with an experienced, licensed chauffeur; the driver is ${String(rec.driverCharges).toLowerCase()}.` },
+      { question: `How many passengers does the ${label} seat?`, answer: `${rec.seating}, with ${(rec.facilities || []).slice(0, 3).join(', ').toLowerCase()}.` },
+      { question: `Are tolls and parking included in the ${label} fare?`, answer: 'No. Tolls, parking and state permits are charged at actuals and itemised on the invoice; fuel and the driver are in the fare.' },
+    ];
+    const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })) };
+    const rows = [
+      { item: 'Seating', value: rec.seating },
+      { item: 'Per-kilometre rate', value: rec.perKm },
+      { item: 'Driver', value: rec.driverCharges },
+      { item: 'Outstation minimum', value: rec.perDayLimit },
+      ...(rec.localSightseeing || []).map((l) => ({ item: `Local package, ${l.duration} / ${l.distance}`, value: l.price })),
+      { item: 'Cancellation', value: rec.cancellationCharge },
+    ];
     return (
       <main>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
         <VehicleDetails slug={slug} />
+        <div className="container mx-auto px-4 pb-12">
+          <DataTable
+            title={`What does a ${label} cost to hire?`}
+            caption={`${label} hire: seating, per-kilometre rate, driver, outstation minimum and local packages`}
+            intro="Fuel and the driver are in the fare; tolls, parking and state permits are extra at actuals."
+            columns={[{ key: 'item', label: 'Item' }, { key: 'value', label: label }]}
+            rows={rows}
+          />
+        </div>
       </main>
     );
   }

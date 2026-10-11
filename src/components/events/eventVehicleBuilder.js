@@ -7,6 +7,7 @@ import {
   getArticleSchema,
   getTodayDate,
 } from "@/lib/seo/speakable-helpers";
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 const SITE_URL = "https://www.trivenicabs.in";
 
@@ -15,7 +16,7 @@ export function buildEventVehicleMetadata(slug) {
   const url = `${SITE_URL}/${d.slug}`;
   const title = `${d.name} on Rent ${d.priceFrom} | AC + Coordinator`;
   const description = `${d.tagline}. ${d.seating}, dedicated event coordinator, GST invoice, 24/7 support. Weddings, corporate events & festivals. Call 7668570551.`;
-  const ogTitle = `${d.name} — ${d.seating}, From ${d.priceFrom} | Triveni Cabs`;
+  const ogTitle = `${d.name} — ${d.seating}, From ${d.priceFrom} | Triveni Cabs™`;
 
   return {
     title,
@@ -38,7 +39,7 @@ export function buildEventVehicleMetadata(slug) {
       type: "website",
       locale: "en_IN",
       url,
-      siteName: "Triveni Cabs",
+      siteName: "Triveni Cabs™",
       images: [
         {
           url: `${SITE_URL}${d.image}`,
@@ -72,7 +73,7 @@ export function buildEventVehicleMetadata(slug) {
 export function buildEventVehicleJsonLd(slug, { aggregateRating, review }) {
   const d = eventVehicles[slug];
   const url = `${SITE_URL}/${d.slug}`;
-  const today = getTodayDate();
+  const today = (getContentUpdatedOn(`/${d.slug}`) || getTodayDate());
   const speakable = getSpeakableSchema([
     ".speakable-headline",
     ".speakable-lead",
@@ -157,10 +158,10 @@ export function buildEventVehicleJsonLd(slug, { aggregateRating, review }) {
           "@id": `${SITE_URL}/#organization`,
           name: "Triveni Cabs",
         },
-        brand: { "@type": "Brand", name: "Triveni Cabs" },
+        brand: { "@type": "Brand", name: "Triveni Cabs™" },
         areaServed: { "@type": "Country", name: "India" },
-        aggregateRating,
-        review,
+        ...(aggregateRating ? { aggregateRating } : {}),
+        ...(review ? { review } : {}),
       },
       {
         "@type": "FAQPage",

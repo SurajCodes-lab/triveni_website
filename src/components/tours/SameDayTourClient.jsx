@@ -1,12 +1,16 @@
 'use client';
 
-import Link from 'next/link';
+import FamilyFacts from '@/components/seo/FamilyFacts';
+import Link from '@/components/ui/JourneyLink';
 import Image from 'next/image';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera, Route, Coffee, Landmark, Compass, Sparkles } from '@/components/ui/icons';
-import { getRelatedTours } from '@/utilis/sameDayTourData';
+// getRelatedTours is NOT imported here. sameDayTourData.js is 129 KB and this
+// is a client component, so all 21 tours shipped to the browser on every one of
+// the 21 pages to render six links. The related tours arrive as a prop.
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { groupDigits } from '@/utilis/pricing';
 
 const iconMap = {
   car: Car,
@@ -17,8 +21,8 @@ const iconMap = {
   check: CheckCircle2,
 };
 
-export default function SameDayTourClient({ tour }) {
-  const related = getRelatedTours(tour.slug, 6);
+export default function SameDayTourClient({ tour, related = [] }) {
+  // Resolved on the server. See the note on the import above.
   const stickyWhatsappText = `I want to book a ${tour.title} from ${tour.origin}. Please share package details and best fare.`;
   const heroImage = tour.heroImage;
   const gallery = tour.galleryImages || [];
@@ -26,7 +30,7 @@ export default function SameDayTourClient({ tour }) {
   return (
     <div className="min-h-screen bg-amber-50/30">
       <SetStickyCta
-        price={`₹${tour.fares.sedan}`}
+        price={`₹${groupDigits(tour.fares.sedan)}`}
         label={`${tour.destination} Day Tour`}
         whatsappText={stickyWhatsappText}
       />
@@ -56,7 +60,7 @@ export default function SameDayTourClient({ tour }) {
           : 'from-orange-950 via-amber-900 to-yellow-900'}`} />
 
         {/* Animated sun glow */}
-        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full animate-pulse" style={{ background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, rgba(251,146,60,0.08) 40%, transparent 70%)' }} />
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, rgba(251,146,60,0.08) 40%, transparent 70%)' }} />
 
         {/* Floating travel dots pattern */}
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #fbbf24 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
@@ -74,9 +78,9 @@ export default function SameDayTourClient({ tour }) {
         </div>
 
         {/* Floating golden orbs */}
-        <div className="absolute top-[10%] left-[8%] w-64 h-64 bg-amber-400/10 rounded-full blur-[80px] animate-pulse" />
+        <div className="absolute top-[10%] left-[8%] w-64 h-64 bg-amber-400/10 rounded-full blur-[80px]" />
         <div className="absolute bottom-[15%] right-[5%] w-80 h-80 bg-orange-500/8 rounded-full blur-[100px]" />
-        <div className="absolute top-[60%] left-[60%] w-40 h-40 bg-yellow-400/10 rounded-full blur-[60px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-[60%] left-[60%] w-40 h-40 bg-yellow-400/10 rounded-full blur-[60px]" style={{ animationDelay: '1s' }} />
 
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
           {/* Vintage stamp badge */}
@@ -98,6 +102,7 @@ export default function SameDayTourClient({ tour }) {
             <span className="block">Same Day</span>
             <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-300" style={{ backgroundSize: '200% auto', animation: 'shimmer 3s linear infinite' }}>{tour.destination} Tour</span>
           </h1>
+              <FamilyFacts family="same-day" data={tour} />
 
           {/* Origin with arrow animation */}
           <div className="flex items-center justify-center gap-3 mb-8">
@@ -105,7 +110,7 @@ export default function SameDayTourClient({ tour }) {
             <span className="text-amber-200 text-2xl md:text-3xl font-bold">{tour.origin}</span>
             <div className="flex items-center gap-1 text-amber-400/40">
               <div className="w-8 h-px bg-amber-400/40" />
-              <ArrowRight className="w-4 h-4 animate-pulse" />
+              <ArrowRight className="w-4 h-4" />
             </div>
             <span className="text-amber-200 text-2xl md:text-3xl font-bold">{tour.destination}</span>
           </div>
@@ -119,7 +124,7 @@ export default function SameDayTourClient({ tour }) {
             {[
               { value: tour.distance.split(' ')[0], label: tour.distance.includes('one way') ? 'km one way' : 'km', color: 'from-amber-400 to-yellow-500' },
               { value: tour.totalDuration.split(' ')[0], label: 'hours total', color: 'from-orange-400 to-amber-500' },
-              { value: `\u20B9${tour.fares.sedan}`, label: 'sedan fare', color: 'from-yellow-400 to-orange-500' },
+              { value: `\u20B9${groupDigits(tour.fares.sedan)}`, label: 'sedan fare', color: 'from-yellow-400 to-orange-500' },
             ].map((stat, i) => (
               <div key={i} className="group relative">
                 <div className={`absolute -inset-0.5 bg-gradient-to-r ${stat.color} rounded-2xl blur-sm opacity-30 group-hover:opacity-60 transition-opacity duration-500`} />
@@ -136,7 +141,7 @@ export default function SameDayTourClient({ tour }) {
             <Link onClick={() => trackPhoneCall('same_day_tour_hero')} href="tel:+917668570551" className="group relative inline-flex items-center justify-center gap-3 min-h-[52px] px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 rounded-2xl shadow-2xl shadow-amber-500/30 group-hover:shadow-amber-500/50 transition-shadow" />
               <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity" />
-              <Phone className="w-5 h-5 relative z-10 text-stone-900 group-hover:animate-pulse" />
+              <Phone className="w-5 h-5 relative z-10 text-stone-900 group-hover:" />
               <span className="relative z-10 text-stone-900">Call: 7668570551</span>
             </Link>
             <Link onClick={() => trackWhatsAppClick('same_day_tour_hero', stickyWhatsappText)} href={`https://wa.me/917668570551?text=${encodeURIComponent(stickyWhatsappText)}`} className="group inline-flex items-center justify-center gap-3 min-h-[52px] bg-white/[0.06] backdrop-blur-2xl text-white px-10 py-5 rounded-2xl font-bold text-lg border border-amber-400/20 hover:bg-white/[0.12] hover:border-amber-400/50 transition-all duration-500">
@@ -169,6 +174,7 @@ export default function SameDayTourClient({ tour }) {
           }
         `}</style>
       </section>
+      <FamilyFacts family="same-day" data={tour} details />
 
       {/* ====================================================================
           QUICK INFO - Postcard-Style Stamp Cards
@@ -204,7 +210,7 @@ export default function SameDayTourClient({ tour }) {
             <div className="grid lg:grid-cols-2 gap-6 items-center">
               <div className="text-center lg:text-left">
                 <h3 className="text-2xl font-black text-white mb-2">Get a free quote for your {tour.destination} day trip</h3>
-                <p className="text-amber-200/70">Sedan from ₹{tour.fares.sedan} &middot; Reply in ~2 minutes &middot; No advance payment</p>
+                <p className="text-amber-200/70">Sedan from ₹{groupDigits(tour.fares.sedan)} &middot; Reply in ~2 minutes &middot; No advance payment</p>
               </div>
               <div className="flex justify-center lg:justify-end">
                 <QuickEnquiryForm fromCity={tour.origin} toCity={tour.destination} pageType="route" />
@@ -302,11 +308,11 @@ export default function SameDayTourClient({ tour }) {
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(251,191,36,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(251,191,36,0.3) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
 
         {/* Floating decorative orbs */}
-        <div className="absolute top-20 right-[10%] w-72 h-72 bg-amber-500/5 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-20 left-[5%] w-96 h-96 bg-orange-500/5 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-20 right-[10%] w-72 h-72 bg-amber-500/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-20 left-[5%] w-96 h-96 bg-orange-500/5 rounded-full blur-[120px]" style={{ animationDelay: '2s' }} />
 
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12 sm:mb-20">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 backdrop-blur-2xl text-amber-300 text-xs font-bold px-6 py-2 rounded-full mb-6 border border-amber-500/20 tracking-[0.25em] uppercase shadow-lg shadow-amber-500/5">
               <Clock className="w-3.5 h-3.5" /> Your Day Unfolds
             </div>
@@ -381,7 +387,7 @@ export default function SameDayTourClient({ tour }) {
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-bold px-5 py-2 rounded-full mb-6 tracking-[0.25em] uppercase border border-amber-200/60">
               <IndianRupee className="w-3.5 h-3.5" /> Transparent Pricing
             </div>
@@ -402,7 +408,6 @@ export default function SameDayTourClient({ tour }) {
                 {plan.popular && (
                   <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-20">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full blur-md opacity-60" />
                       <span className="relative bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2 rounded-full text-xs font-black tracking-[0.2em] uppercase shadow-xl">Most Popular</span>
                     </div>
                   </div>
@@ -461,7 +466,7 @@ export default function SameDayTourClient({ tour }) {
       <section className="py-20 md:py-32 px-4 bg-white relative overflow-hidden">
         <div className="absolute top-10 right-10 w-64 h-64 bg-amber-100/40 rounded-full blur-[80px]" />
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-bold px-5 py-2 rounded-full mb-6 tracking-[0.25em] uppercase border border-amber-200/60">
               <Camera className="w-3.5 h-3.5" /> Sightseeing Highlights
             </div>
@@ -649,7 +654,7 @@ export default function SameDayTourClient({ tour }) {
       ==================================================================== */}
       <section className="py-20 md:py-32 px-4 bg-gradient-to-b from-stone-50 to-amber-50/40">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 sm:mb-16">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800 text-xs font-bold px-5 py-2 rounded-full mb-6 tracking-[0.25em] uppercase border border-amber-200/60">
               Got Questions?
             </div>
@@ -699,7 +704,7 @@ export default function SameDayTourClient({ tour }) {
       {/* ====================================================================
           CROSS-SERVICE LINKS
       ==================================================================== */}
-      <section className="py-16 px-4 bg-gradient-to-b from-white to-amber-50/40">
+      <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-white to-amber-50/40">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl font-black text-stone-900 mb-8 text-center">Explore More Services</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -731,8 +736,8 @@ export default function SameDayTourClient({ tour }) {
         <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
         {/* Glowing orbs */}
-        <div className="absolute top-0 left-[20%] w-80 h-80 bg-yellow-300/15 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-0 right-[15%] w-96 h-96 bg-orange-300/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-0 left-[20%] w-80 h-80 bg-yellow-300/15 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-[15%] w-96 h-96 bg-orange-300/10 rounded-full blur-[120px]" style={{ animationDelay: '1.5s' }} />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-5 py-2 rounded-full mb-8 border border-white/20">

@@ -56,7 +56,7 @@ export const howToReachData = {
       { question: 'What is the best way to reach Delhi from Jaipur?', answer: 'The fastest way is by car via the Delhi-Jaipur Expressway (NH48). The 280 km journey takes 4-5 hours. You can also take a Volvo bus or Shatabdi Express train from Jaipur Junction.' },
       { question: 'How far is Delhi Airport from the city centre?', answer: 'Indira Gandhi International Airport (Terminal 3) is about 16 km from Connaught Place. The Airport Metro Express line connects T3 to New Delhi Railway Station in about 20 minutes.' },
       { question: 'Which is the main railway station in Delhi?', answer: 'New Delhi Railway Station (NDLS) is the main and busiest station, centrally located in Paharganj. However, Hazrat Nizamuddin (NZM) also handles many important trains including Rajdhani services.' },
-      { question: 'Can I book a cab from Delhi Airport to my hotel?', answer: 'Yes, you can pre-book an airport pickup with Triveni Cabs. We offer 24/7 airport transfer service from all three IGI Airport terminals to any location in Delhi NCR.' },
+      { question: 'Can I book a cab from Delhi Airport to my hotel?', answer: 'Yes, you can pre-book an airport pickup with Triveni Cabs™. We offer 24/7 airport transfer service from all three IGI Airport terminals to any location in Delhi NCR.' },
       { question: 'What is the best time to visit Delhi?', answer: 'October to March is the best time to visit Delhi when the weather is pleasant with temperatures between 10-25 degrees Celsius. Avoid May-June when temperatures can exceed 45 degrees.' },
     ],
   },
@@ -114,7 +114,7 @@ export const howToReachData = {
       { question: 'Is there an airport in Agra?', answer: 'Agra has the Kheria Airport (AGR) with limited commercial flights. Most tourists fly into Delhi IGI Airport and take a cab or train to Agra. We offer Delhi Airport to Agra taxi service.' },
       { question: 'How to reach Agra from Jaipur?', answer: 'From Jaipur, drive via NH21 through Bharatpur. The 240 km journey takes 4-5 hours. You can also take a bus from Sindhi Camp Bus Stand in Jaipur to Agra Idgah.' },
       { question: 'Which railway station is closest to Taj Mahal?', answer: 'Agra Cantt Railway Station (AGC) is the closest major station to the Taj Mahal, located about 6 km away. Auto-rickshaws and pre-paid taxis are available outside the station.' },
-      { question: 'Can I do a same-day trip to Agra from Delhi?', answer: 'Yes, a same-day Agra tour from Delhi is very popular. Start early by 6 AM, drive via Yamuna Expressway, visit Taj Mahal, Agra Fort, and return by evening. Book a same-day tour with Triveni Cabs.' },
+      { question: 'Can I do a same-day trip to Agra from Delhi?', answer: 'Yes, a same-day Agra tour from Delhi is very popular. Start early by 6 AM, drive via Yamuna Expressway, visit Taj Mahal, Agra Fort, and return by evening. Book a same-day tour with Triveni Cabs™.' },
     ],
   },
 
@@ -171,7 +171,7 @@ export const howToReachData = {
       { question: 'Does Jaipur have an international airport?', answer: 'Yes, Jaipur International Airport (JAI) handles both domestic and international flights. It has direct connections to Dubai, Bangkok, and Sharjah, plus daily flights to all major Indian cities.' },
       { question: 'How to reach Jaipur from Agra?', answer: 'Drive via NH21 through Bharatpur. The 240 km journey takes 4-5 hours. You can also take a direct bus from Agra Idgah Bus Stand or book a cab for a comfortable journey through the Golden Triangle route.' },
       { question: 'Which is the main railway station in Jaipur?', answer: 'Jaipur Junction (JP) is the main and busiest railway station. It is centrally located and well-connected to all parts of the city via auto-rickshaws, buses, and taxis.' },
-      { question: 'Can I hire a cab for a Jaipur sightseeing tour?', answer: 'Yes, Triveni Cabs offers full-day Jaipur sightseeing tours covering Amber Fort, Hawa Mahal, City Palace, Jantar Mantar, and Nahargarh Fort. Book online or call us for the best rates.' },
+      { question: 'Can I hire a cab for a Jaipur sightseeing tour?', answer: 'Yes, Triveni Cabs™ offers full-day Jaipur sightseeing tours covering Amber Fort, Hawa Mahal, City Palace, Jantar Mantar, and Nahargarh Fort. Book online or call us for the best rates.' },
     ],
   },
 
@@ -336,7 +336,7 @@ export const howToReachData = {
       { question: 'Which airport is nearest to Haridwar?', answer: 'Jolly Grant Airport in Dehradun (DED) is the nearest airport, located 35 km from Haridwar. It has daily flights from Delhi, Mumbai, Bangalore, and other cities. Pre-book a taxi for the airport transfer.' },
       { question: 'How to reach Haridwar from Rishikesh?', answer: 'Haridwar is just 25 km from Rishikesh via NH7. The drive takes 30-45 minutes. Shared autos, buses, and taxis are readily available between the two holy cities.' },
       { question: 'Is Haridwar well-connected by train?', answer: 'Yes, Haridwar Junction (HW) is well-connected with direct trains from Delhi, Mumbai, Kolkata, Lucknow, Ahmedabad, and many other cities. Shatabdi, Rajdhani, and Jan Shatabdi trains run frequently from Delhi.' },
-      { question: 'Can I book a cab from Haridwar for Char Dham Yatra?', answer: 'Yes, Triveni Cabs offers Char Dham Yatra packages from Haridwar covering Yamunotri, Gangotri, Kedarnath, and Badrinath. Both SUVs and Tempo Travellers are available with experienced hill drivers.' },
+      { question: 'Can I book a cab from Haridwar for Char Dham Yatra?', answer: 'Yes, Triveni Cabs™ offers Char Dham Yatra packages from Haridwar covering Yamunotri, Gangotri, Kedarnath, and Badrinath. Both SUVs and Tempo Travellers are available with experienced hill drivers.' },
     ],
   },
 
@@ -391,7 +391,7 @@ export const howToReachData = {
       { question: 'Which is the nearest airport to Rishikesh?', answer: 'Jolly Grant Airport in Dehradun is just 20 km from Rishikesh with daily flights from Delhi, Mumbai, and Bangalore. The airport transfer takes about 30-40 minutes.' },
       { question: 'Is there a direct train to Rishikesh?', answer: 'Rishikesh has a small railway station (RKSH) with limited trains. Most visitors take a train to Haridwar Junction (HW), which has excellent connectivity, and then drive 25 km to Rishikesh.' },
       { question: 'How to reach Rishikesh for white-water rafting?', answer: 'Rafting camps are located between Shivpuri and Rishikesh (16-36 km upstream). Reach Rishikesh by road or train and then take a cab to your rafting starting point. Most rafting operators arrange pickup from Rishikesh town.' },
-      { question: 'Can I book a cab from Rishikesh to Kedarnath?', answer: 'Yes, Triveni Cabs provides cab service from Rishikesh to Kedarnath base camp (Gaurikund/Sonprayag). The drive covers about 220 km and takes 7-8 hours. SUVs are recommended for the mountain roads.' },
+      { question: 'Can I book a cab from Rishikesh to Kedarnath?', answer: 'Yes, Triveni Cabs™ provides cab service from Rishikesh to Kedarnath base camp (Gaurikund/Sonprayag). The drive covers about 220 km and takes 7-8 hours. SUVs are recommended for the mountain roads.' },
     ],
   },
 
@@ -447,7 +447,7 @@ export const howToReachData = {
       { question: 'Which airport serves Varanasi?', answer: 'Lal Bahadur Shastri International Airport (VNS) serves Varanasi, located 26 km from the city centre. It has daily flights from Delhi, Mumbai, Kolkata, Bangalore, and other major cities.' },
       { question: 'How to reach Varanasi from Prayagraj?', answer: 'Varanasi is just 120 km from Prayagraj via NH19. The drive takes 2-3 hours. Frequent trains and buses also connect the two cities. Hire a cab for a comfortable day trip between the cities.' },
       { question: 'Which railway station should I use in Varanasi?', answer: 'Varanasi Junction (BSB) is the main station and closest to the ghats and old city. Pt. Deen Dayal Upadhyaya Junction (DDU), 17 km away, is also used by many trains including Rajdhani Express.' },
-      { question: 'Can I book a cab for Varanasi-Ayodhya-Prayagraj trip?', answer: 'Yes, Triveni Cabs offers multi-city pilgrimage packages covering Varanasi, Ayodhya, and Prayagraj. The combined trip can be done in 3-4 days with comfortable cab service and experienced drivers.' },
+      { question: 'Can I book a cab for Varanasi-Ayodhya-Prayagraj trip?', answer: 'Yes, Triveni Cabs™ offers multi-city pilgrimage packages covering Varanasi, Ayodhya, and Prayagraj. The combined trip can be done in 3-4 days with comfortable cab service and experienced drivers.' },
     ],
   },
 
@@ -502,7 +502,7 @@ export const howToReachData = {
       { question: 'Does Udaipur have an airport?', answer: 'Yes, Maharana Pratap Airport (UDR) at Dabok is 22 km from the city. It has daily flights to Delhi, Mumbai, Jaipur, and other cities operated by IndiGo, SpiceJet, Air India, and Vistara.' },
       { question: 'How to reach Udaipur from Jaipur?', answer: 'Drive via NH48 through Ajmer and Chittorgarh (400 km, 6-7 hours). You can also take RSRTC buses (7-8 hours) or trains like the Mewar Express. Hiring a cab gives you the flexibility to stop at Chittorgarh Fort.' },
       { question: 'Is there a direct train from Delhi to Udaipur?', answer: 'Yes, the Mewar Express (12963) runs daily from Hazrat Nizamuddin to Udaipur City station. The overnight journey takes about 12 hours. Chetak Express is another option from Delhi Sarai Rohilla.' },
-      { question: 'Can I hire a cab for a Rajasthan circuit tour from Udaipur?', answer: 'Yes, Triveni Cabs offers Rajasthan circuit tours starting from Udaipur covering Jodhpur, Jaisalmer, Jaipur, and back. Both sedan and SUV options are available with experienced drivers.' },
+      { question: 'Can I hire a cab for a Rajasthan circuit tour from Udaipur?', answer: 'Yes, Triveni Cabs™ offers Rajasthan circuit tours starting from Udaipur covering Jodhpur, Jaisalmer, Jaipur, and back. Both sedan and SUV options are available with experienced drivers.' },
     ],
   },
 
@@ -609,7 +609,7 @@ export const howToReachData = {
       { question: 'What is the best way to reach Chandigarh from Delhi?', answer: 'The most convenient option is driving via NH44 (250 km, 4-5 hours). Shatabdi Express train takes just 3-3.5 hours from New Delhi station. Volvo buses from Delhi ISBT take about 5 hours.' },
       { question: 'Is Chandigarh Airport international?', answer: 'Yes, Chandigarh International Airport (IXC) has a new international terminal. It handles domestic flights to Delhi, Mumbai, Bangalore, and some international routes. It is also the nearest reliable airport for Shimla and Manali.' },
       { question: 'How to reach Shimla from Chandigarh?', answer: 'Drive via NH5 through Kalka and Solan (115 km, 3-4 hours). HRTC Volvo buses run every 30 minutes from ISBT Sector 43. You can also take the famous Kalka-Shimla Toy Train from Kalka (40 km from Chandigarh).' },
-      { question: 'Can I hire a cab from Chandigarh to Manali?', answer: 'Yes, Triveni Cabs offers Chandigarh to Manali cab service. The 310 km journey via Mandi takes 7-8 hours. Both sedan and SUV options are available with experienced hill drivers.' },
+      { question: 'Can I hire a cab from Chandigarh to Manali?', answer: 'Yes, Triveni Cabs™ offers Chandigarh to Manali cab service. The 310 km journey via Mandi takes 7-8 hours. Both sedan and SUV options are available with experienced hill drivers.' },
       { question: 'Where is the main bus stand in Chandigarh?', answer: 'The main Inter-State Bus Terminal (ISBT) is in Sector 43. It has buses to all major cities including Delhi, Shimla, Manali, Amritsar, and Dharamshala. Sector 17 also has a smaller bus stand for local routes.' },
     ],
   },
@@ -664,7 +664,7 @@ export const howToReachData = {
       { question: 'How far is Dehradun Airport from the city?', answer: 'Jolly Grant Airport (DED) is 30 km from Dehradun city centre. The drive takes about 45 minutes. The airport also serves Rishikesh (20 km) and Haridwar (35 km).' },
       { question: 'How to reach Mussoorie from Dehradun?', answer: 'Mussoorie is just 35 km from Dehradun via the scenic Mussoorie Road. The drive takes 1-1.5 hours through beautiful mountain curves. Shared taxis, buses, and private cabs are all available.' },
       { question: 'Is there a direct train from Delhi to Dehradun?', answer: 'Yes, Shatabdi Express (daily) and Nanda Devi Express (overnight) run from New Delhi to Dehradun. Shatabdi reaches in about 5.5 hours. Jan Shatabdi is a budget alternative.' },
-      { question: 'Can I hire a cab in Dehradun for Char Dham Yatra?', answer: 'Yes, Triveni Cabs provides Char Dham Yatra packages from Dehradun. The complete pilgrimage covering Yamunotri, Gangotri, Kedarnath, and Badrinath takes 10-12 days. SUVs and Tempo Travellers available.' },
+      { question: 'Can I hire a cab in Dehradun for Char Dham Yatra?', answer: 'Yes, Triveni Cabs™ provides Char Dham Yatra packages from Dehradun. The complete pilgrimage covering Yamunotri, Gangotri, Kedarnath, and Badrinath takes 10-12 days. SUVs and Tempo Travellers available.' },
     ],
   },
 
@@ -936,7 +936,7 @@ export const howToReachData = {
       { question: 'Is there an airport in Dharamshala?', answer: 'Gaggal Airport (DHM) is 15 km from Dharamshala with flights from Delhi and Chandigarh. However, flights are seasonal and weather-dependent. Amritsar (200 km) and Chandigarh (240 km) airports are more reliable alternatives.' },
       { question: 'How to reach McLeodganj from Dharamshala?', answer: 'McLeodganj is the upper part of Dharamshala, just 9 km away (20-30 minutes drive). Frequent shared taxis and minibuses run between Dharamshala Bus Stand and McLeodganj throughout the day.' },
       { question: 'Which railway station is nearest to Dharamshala?', answer: 'Pathankot Cantt (PKTC) is the nearest major station, 85 km away (2-3 hours drive). It is well-connected with trains from Delhi, Mumbai, and other cities. The Kangra Valley narrow gauge from Pathankot is a scenic alternative.' },
-      { question: 'Can I book a cab to Dharamshala for Triund Trek?', answer: 'Yes, Triveni Cabs provides cab service to Dharamshala/McLeodganj. The Triund Trek starts from McLeodganj. We can arrange pickup, drop, and local sightseeing covering Bhagsu Waterfall, Namgyal Monastery, and the cricket stadium.' },
+      { question: 'Can I book a cab to Dharamshala for Triund Trek?', answer: 'Yes, Triveni Cabs™ provides cab service to Dharamshala/McLeodganj. The Triund Trek starts from McLeodganj. We can arrange pickup, drop, and local sightseeing covering Bhagsu Waterfall, Namgyal Monastery, and the cricket stadium.' },
     ],
   },
 
@@ -992,7 +992,7 @@ export const howToReachData = {
       { question: 'Is there an airport or railway station near Kasol?', answer: 'The nearest airport is Bhuntar/Kullu-Manali (KUU), 30 km away, with limited flights. The nearest railway stations are Chandigarh (280 km) and Ambala (330 km). Road is the primary way to reach Kasol.' },
       { question: 'How to reach Kasol from Manali?', answer: 'Kasol is 80 km from Manali via Bhuntar. The scenic drive through the Kullu-Parvati valleys takes 2-3 hours. Local buses and taxis are available from Manali Bus Stand.' },
       { question: 'Is the road to Kasol safe?', answer: 'The road from Bhuntar to Kasol along the Parvati Valley is narrow in places but well-maintained. During monsoon (July-September), landslides can occur. Hiring a local driver familiar with the roads is recommended.' },
-      { question: 'Can I book a cab for the Kasol-Kheerganga trek?', answer: 'Triveni Cabs can drop you at Barshaini (15 km from Kasol), the starting point of the Kheerganga trek. The trek is 12 km one way. We can arrange pickup after your trek as well.' },
+      { question: 'Can I book a cab for the Kasol-Kheerganga trek?', answer: 'Triveni Cabs™ can drop you at Barshaini (15 km from Kasol), the starting point of the Kheerganga trek. The trek is 12 km one way. We can arrange pickup after your trek as well.' },
     ],
   },
 
@@ -1105,7 +1105,7 @@ export const howToReachData = {
       { question: 'Does Lucknow have an international airport?', answer: 'Yes, Chaudhary Charan Singh International Airport (LKO) has both domestic and international terminals. It offers flights to Dubai, Muscat, Jeddah, and all major Indian cities with airlines like IndiGo, Air India, and Vistara.' },
       { question: 'How to reach Ayodhya from Lucknow?', answer: 'Ayodhya is just 135 km from Lucknow via NH27 (2.5-3 hours by car). UPSRTC buses run frequently. Many pilgrims hire a cab from Lucknow for a day trip or multi-day pilgrimage covering Ayodhya and Varanasi.' },
       { question: 'Which is the main railway station in Lucknow?', answer: 'Lucknow Charbagh (LKO) is the main and most iconic station, known for its beautiful architecture. It handles most major trains from Delhi, Mumbai, Kolkata, and other cities.' },
-      { question: 'Can I hire a cab for a Lucknow sightseeing tour?', answer: 'Yes, Triveni Cabs offers Lucknow city tours covering Bara Imambara, Chhota Imambara, Rumi Darwaza, Residency, and Hazratganj. We also provide multi-day packages covering Lucknow, Ayodhya, Varanasi, and Prayagraj.' },
+      { question: 'Can I hire a cab for a Lucknow sightseeing tour?', answer: 'Yes, Triveni Cabs™ offers Lucknow city tours covering Bara Imambara, Chhota Imambara, Rumi Darwaza, Residency, and Hazratganj. We also provide multi-day packages covering Lucknow, Ayodhya, Varanasi, and Prayagraj.' },
     ],
   },
 };

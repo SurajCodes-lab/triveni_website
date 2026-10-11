@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("Hotel + Cab Packages — Stay & Travel Bundled");
-  const description = "Hotel + cab packages across North India — stay plus chauffeur-driven car, one booking. Triveni Cabs 7668570551.";
+  const description = "Hotel + cab packages across North India — stay plus chauffeur-driven car, one booking. Triveni Cabs™ 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

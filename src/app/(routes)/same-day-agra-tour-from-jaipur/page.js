@@ -1,4 +1,4 @@
-import { getSameDayTourBySlug } from '@/utilis/sameDayTourData';
+import { getSameDayTourBySlug, getRelatedTours } from '@/utilis/sameDayTourData';
 import SameDayTourClient from '@/components/tours/SameDayTourClient';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
 
@@ -10,7 +10,7 @@ export const metadata = {
   title: tightenTitle('Same Day Agra Tour from Jaipur | ₹5,500 AC Cab | 2026'),
   description: 'Book same day Agra tour from Jaipur by car. Visit Taj Mahal, Agra Fort, Baby Taj via NH21. AC sedan ₹5,500, SUV ₹7,500. Call 7668570551.',
   keywords: 'same day agra tour from jaipur, jaipur to agra one day trip, jaipur to agra cab, jaipur agra same day tour, taj mahal day trip from jaipur',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/same-day-agra-tour-from-jaipur' },
   openGraph: {
@@ -19,7 +19,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/same-day-agra-tour-from-jaipur',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: { card: 'summary_large_image', title: 'Same Day Agra Tour from Jaipur | ₹5,500 AC Cab', description: 'Jaipur to Agra same day tour. Taj Mahal, Agra Fort, Baby Taj. AC sedan ₹5,500. Book now!' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
@@ -51,7 +51,7 @@ export default function SameDayAgraTourFromJaipurPage() {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
     },
     "offers": { "@type": "AggregateOffer", "lowPrice": "5500", "highPrice": "14000", "priceCurrency": "INR" },
   };
@@ -71,7 +71,7 @@ export default function SameDayAgraTourFromJaipurPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tourSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <SameDayTourClient tour={tour} />
+      <SameDayTourClient tour={tour} related={getRelatedTours(tour.slug, 6)} />
     </>
   );
 }

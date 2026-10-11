@@ -10,8 +10,11 @@ import {
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import DirectAnswer from '@/components/content/DirectAnswer';
+import { deriveNearCityAnswer } from '@/utilis/directAnswers';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import ExploreByCabCTA from '@/components/seo/ExploreByCabCTA';
+import { filterClientLinks } from '@/lib/seo/client-route-exists';
 
 /* ── inline keyframes for animations ── */
 const animStyles = `
@@ -50,6 +53,10 @@ export default function PlacesToVisitClient({ data, allCities }) {
     data.destinations.reduce((sum, d) => sum + parseInt(d.distance), 0) / data.destinations.length
   );
 
+  // The short answer, derived from this city's own destination set. Returns
+  // null when the set is too thin to say anything specific.
+  const directAnswer = deriveNearCityAnswer({ city: data.city || data.cityName, destinations: data.destinations });
+
   const otherCities = allCities.filter(c => c.slug !== data.slug);
 
   // Top one-way route links for the commercial CTA block — reuse on-page
@@ -87,7 +94,6 @@ export default function PlacesToVisitClient({ data, allCities }) {
         {/* Floating map pin decorations */}
         <div className="absolute top-[15%] right-[12%] hidden lg:block places-float">
           <div className="relative">
-            <div className="absolute -inset-6 bg-emerald-400/15 rounded-full blur-2xl" />
             <div className="relative w-16 h-16 flex items-center justify-center">
               <MapPin className="w-12 h-12 text-emerald-400/40" />
             </div>
@@ -108,7 +114,6 @@ export default function PlacesToVisitClient({ data, allCities }) {
         <div className="absolute top-1/4 right-[8%] hidden lg:block">
           <div className="relative places-float">
             <div className="absolute -inset-4 rounded-full places-pulse-ring border-2 border-emerald-400/30" />
-            <div className="absolute -inset-2 bg-emerald-400/10 rounded-full blur-xl" />
             <div className="relative bg-gradient-to-br from-emerald-400 via-teal-400 to-green-500 rounded-full w-36 h-36 flex items-center justify-center shadow-2xl shadow-emerald-500/40">
               <div className="absolute inset-[3px] rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
                 <div className="text-center">
@@ -123,7 +128,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
         {/* Diagonal clip bottom */}
         <div className="absolute -bottom-1 left-0 right-0 h-32 bg-white" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 20%, 0 100%)' }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-24">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-24">
           {/* Compass badge */}
           <div className="inline-flex items-center gap-2.5 bg-white/[0.07] backdrop-blur-xl px-6 py-2.5 rounded-full mb-8 border border-emerald-400/20 shadow-lg shadow-emerald-900/20">
             <div className="w-5 h-5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400 flex items-center justify-center">
@@ -146,7 +151,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Link onClick={() => trackPhoneCall('places_to_visit')} href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 text-teal-950 px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-400/50 hover:scale-[1.03] transition-all duration-300">
-              <Phone className="w-5 h-5 group-hover:animate-pulse" /> Call: 7668570551
+              <Phone className="w-5 h-5 group-hover:" /> Call: 7668570551
             </Link>
             <Link onClick={() => trackWhatsAppClick('places_to_visit')} href={`https://wa.me/917668570551?text=I want to explore places near ${data.city}`} className="inline-flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-xl text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:bg-white/10 hover:border-emerald-400/30 transition-all duration-300">
               WhatsApp Us <ArrowRight className="w-5 h-5" />
@@ -162,6 +167,17 @@ export default function PlacesToVisitClient({ data, allCities }) {
           </div>
         </div>
       </section>
+
+      {/* ━━━ SHORT ANSWER ━━━ placed directly after the hero so it is the
+           first prose on the page, for readers and for retrieval alike ━━━ */}
+      {directAnswer && (
+        <DirectAnswer
+          heading={directAnswer.heading}
+          lead={directAnswer.lead}
+          facts={directAnswer.facts}
+          note={directAnswer.note}
+        />
+      )}
 
       {/* ━━━ SEO DESCRIPTION ━━━ */}
       <section className="py-20 md:py-28 px-4 sm:px-6">
@@ -328,7 +344,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
           </div>
 
           {filteredDestinations.length === 0 && (
-            <div className="text-center py-16 text-stone-400">
+            <div className="text-center py-10 sm:py-16 text-stone-400">
               <div className="w-16 h-16 rounded-full bg-stone-100 flex items-center justify-center mx-auto mb-4">
                 <Search className="w-7 h-7 text-stone-300" />
               </div>
@@ -405,7 +421,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-black text-stone-800">
               Why Travellers Choose{' '}
-              <span className="text-transparent bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text">Triveni Cabs</span>
+              <span className="text-transparent bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text">Triveni Cabs™</span>
             </h2>
             <p className="text-stone-500 mt-3 text-lg">Trusted by thousands for outstation trips from {data.city}</p>
           </div>
@@ -518,15 +534,15 @@ export default function PlacesToVisitClient({ data, allCities }) {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {[
-              { label: `${data.city} Outstation Cabs`, href: `/${data.slug}`, icon: Car },
-              { label: `${data.city} Sightseeing Tours`, href: `/sightseeing/${data.slug}`, icon: Map },
-              { label: `${data.city} Airport Taxi`, href: `/airport-service/${data.slug}`, icon: Navigation2 },
-              { label: `${data.city} Wedding Cars`, href: `/wedding/${data.slug}`, icon: Star },
+              { label: `${data.city} Outstation Cabs`, href: data.serviceLinks?.outstation, icon: Car },
+              { label: `${data.city} Sightseeing Tours`, href: data.serviceLinks?.sightseeing, icon: Map },
+              { label: `${data.city} Airport Taxi`, href: data.serviceLinks?.airport, icon: Navigation2 },
+              { label: `${data.city} Wedding Cars`, href: data.serviceLinks?.wedding, icon: Star },
               { label: 'One-Way Cab Booking', href: '/one-way-cab', icon: ArrowRight },
               { label: 'Round Trip Cab', href: '/round-trip-cab', icon: Route },
               { label: 'Tempo Traveller Rental', href: '/tempo-traveller', icon: Users },
-              { label: 'Corporate Transport', href: `/corporate-transportation-service/${data.slug}`, icon: Shield },
-            ].map((link, i) => (
+              { label: 'Corporate Transport', href: data.corporateHref || '/corporate-transportation-service', icon: Shield },
+            ].filter((link) => Boolean(link.href)).map((link, i) => (
               <Link
                 key={i}
                 href={link.href}
@@ -539,6 +555,50 @@ export default function PlacesToVisitClient({ data, allCities }) {
               </Link>
             ))}
           </div>
+
+          {/* Week 48: the guides written for this city's weekend and hill
+              searches. Static map (no data import in a client component);
+              each link is checked against the manifest before it renders. */}
+          {(() => {
+            const NCR = [
+              { href: '/weekend-getaways-near-me', label: 'Weekend getaways near me, by drive time' },
+              { href: '/places-to-visit-near-me', label: 'Places to visit near you: 50 to 300 km from Delhi' },
+              { href: '/hill-stations-near-gurgaon-noida', label: 'Hill stations near Gurgaon and Noida' },
+            ];
+            const GUIDES = {
+              delhi: [...NCR, { href: '/diwali-tour-packages-2026-from-delhi', label: 'Diwali tour packages 2026 from Delhi' }],
+              gurgaon: [{ href: '/weekend-getaways-from-gurgaon-by-car', label: 'Weekend getaways from Gurgaon by car' }, ...NCR],
+              noida: [{ href: '/noida-weekend-trips', label: 'Noida weekend trips: one-day and two-day drives' }, ...NCR],
+              ghaziabad: [{ href: '/ghaziabad-greater-noida-weekend-drives', label: 'Ghaziabad and Greater Noida weekend drives' }, ...NCR],
+              amritsar: [{ href: '/hill-stations-near-amritsar', label: 'Hill stations near Amritsar by road' }, { href: '/tourist-places-within-50-km-of-amritsar-and-haridwar', label: 'Tourist places within 50 km of Amritsar' }, { href: '/best-time-to-visit/amritsar', label: 'Best time to visit Amritsar' }],
+              haridwar: [{ href: '/hill-stations-near-haridwar-rishikesh', label: 'Hill stations near Haridwar and Rishikesh' }, { href: '/tourist-places-within-50-km-of-amritsar-and-haridwar', label: 'Tourist places within 50 km of Haridwar' }, { href: '/delhi-to-rishikesh-shortest-route', label: 'Delhi to Rishikesh: the shortest route' }],
+              rishikesh: [{ href: '/hill-stations-near-haridwar-rishikesh', label: 'Hill stations near Haridwar and Rishikesh' }, { href: '/delhi-to-rishikesh-shortest-route', label: 'Delhi to Rishikesh: the shortest route' }],
+              dehradun: [{ href: '/hill-stations-near-haridwar-rishikesh', label: 'Hill stations near Haridwar and Rishikesh' }],
+              agra: [{ href: '/tourist-places-within-100-km-of-agra', label: 'Tourist places within 100 km of Agra' }, ...NCR.slice(0, 2)],
+              mathura: [{ href: '/tourist-places-within-100-km-of-agra', label: 'Tourist places within 100 km of Agra' }],
+              varanasi: [{ href: '/dev-deepawali-varanasi-2026', label: 'Dev Deepawali in Varanasi 2026' }, { href: '/chhath-puja-varanasi-ghat-guide', label: 'Chhath Puja on the Varanasi ghats' }, { href: '/delhi-to-varanasi-best-route-by-car', label: 'Delhi to Varanasi: the best route by car' }],
+              lucknow: [{ href: '/deepotsav-ayodhya-2026-guide', label: 'Deepotsav in Ayodhya 2026' }, { href: '/delhi-to-varanasi-best-route-by-car', label: 'Delhi to Varanasi: the best route by car' }],
+              jaipur: [{ href: '/pushkar-mela-2026-by-car', label: 'Pushkar Mela 2026 by car from Jaipur' }, { href: '/weekend-getaways-from-gurgaon-by-car', label: 'Weekend getaways from Gurgaon by car' }],
+              chandigarh: [{ href: '/kullu-dussehra-2026-by-car', label: 'Kullu Dussehra 2026: the drive from Chandigarh' }, { href: '/hill-stations-near-amritsar', label: 'Hill stations near Amritsar by road' }, { href: '/how-to-reach-kaza-from-delhi', label: 'How to reach Kaza: Shimla side or Manali side' }],
+              shimla: [{ href: '/how-to-reach-kaza-from-delhi', label: 'How to reach Kaza: Shimla side or Manali side' }, { href: '/kullu-dussehra-2026-by-car', label: 'Kullu Dussehra 2026 by car' }],
+              udaipur: [{ href: '/pushkar-mela-2026-by-car', label: 'Pushkar Mela 2026 by car' }],
+            };
+            const guides = filterClientLinks(GUIDES[data.slug] || []);
+            if (!guides.length) return null;
+            return (
+              <div className="mt-8">
+                <h3 className="text-lg font-bold text-stone-700 mb-4 text-center">Planning guides for {data.city}</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {guides.map((g) => (
+                    <Link key={g.href} href={g.href} className="group flex items-start gap-3 bg-white border border-amber-200 rounded-xl p-4 hover:border-amber-400 hover:shadow-md transition-all duration-300">
+                      <div className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 flex-shrink-0" />
+                      <span className="text-sm font-semibold text-stone-700 group-hover:text-amber-700 transition-colors duration-300">{g.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
 
           {/* Related content pages */}
           {data.relatedContent && data.relatedContent.length > 0 && (
@@ -579,6 +639,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
           <div className="space-y-3">
             {data.faqs.map((faq, i) => (
               <div key={i} className={`border rounded-2xl overflow-hidden transition-all duration-300 ${expandedFaq === i ? 'border-teal-300 shadow-lg shadow-teal-500/10 bg-teal-50/30' : 'border-stone-200 bg-white hover:border-stone-300'}`}>
+                <h3 className="m-0">
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === i ? -1 : i)}
                   className="w-full flex items-center justify-between p-5 md:p-6 text-left"
@@ -588,6 +649,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
                     <ChevronDown className={`w-4 h-4 transition-colors duration-300 ${expandedFaq === i ? 'text-white' : 'text-stone-500'}`} />
                   </div>
                 </button>
+                </h3>
                 {expandedFaq === i && (
                   <div className="px-5 md:px-6 pb-5 md:pb-6 text-stone-600 leading-relaxed border-t border-teal-200/50 pt-4">
                     {faq.answer}
@@ -600,7 +662,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
       </section>
 
       {/* ━━━ RELATED CITY LISTINGS: Map grid ━━━ */}
-      <section className="py-20 px-4 sm:px-6 bg-gradient-to-b from-stone-50 to-white">
+      <section className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-stone-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black text-stone-800">Explore More Cities</h2>
@@ -641,7 +703,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
 
             <div className="relative z-10 text-center">
               <div className="inline-flex items-center gap-2 bg-white/[0.07] backdrop-blur-sm px-4 py-1.5 rounded-full mb-6 border border-white/10">
-                <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <div className="w-2 h-2 rounded-full bg-emerald-400" />
                 <span className="text-emerald-300 font-semibold text-xs uppercase tracking-wider">Ready to Explore?</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight">
@@ -652,7 +714,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link onClick={() => trackPhoneCall('places_to_visit')} href="tel:+917668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 text-teal-950 px-9 py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-400/50 hover:scale-[1.03] transition-all duration-300">
-                  <Phone className="w-5 h-5 group-hover:animate-pulse" /> Call: 7668570551
+                  <Phone className="w-5 h-5 group-hover:" /> Call: 7668570551
                 </Link>
                 <Link onClick={() => trackWhatsAppClick('places_to_visit')} href={`https://wa.me/917668570551?text=I want to explore places near ${data.city}`} className="inline-flex items-center gap-2.5 bg-white/[0.08] backdrop-blur-xl text-white px-9 py-4 rounded-2xl font-bold text-lg border border-white/15 hover:bg-white/12 hover:border-emerald-400/30 transition-all duration-300">
                   WhatsApp Booking <ArrowRight className="w-5 h-5" />

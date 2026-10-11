@@ -3,6 +3,7 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 
 import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const metadata = { title: 'Jodhpur Travel Guide 2026 | Blue City & Mehrangarh Fort', description: 'Complete Jodhpur travel guide 2026. Mehrangarh Fort, Umaid Bhawan Palace, Clock Tower, Bishnoi Village, Marwari food. Book cab 7668570551.', keywords: 'jodhpur travel guide, blue city jodhpur, mehrangarh fort, umaid bhawan palace, jodhpur tourism 2026, marwar capital, clock tower jodhpur', authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs', metadataBase: new URL('https://www.trivenicabs.in'), alternates: { canonical: '/jodhpur-travel-guide' }, openGraph: { title: 'Jodhpur Travel Guide 2026 | Blue City & Mehrangarh Fort', description: 'Everything about visiting Jodhpur. Mehrangarh Fort, Umaid Bhawan, food, transport.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/jodhpur-travel-guide', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg', width: 1200, height: 630, alt: 'Jodhpur Travel Guide 2026' }] }, twitter: { card: 'summary_large_image', title: 'Jodhpur Travel Guide 2026', description: 'Complete Jodhpur guide. Mehrangarh Fort, Blue City, transport.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg'] }, robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } } };
 export const revalidate = 3600;
 
@@ -19,7 +20,7 @@ export default function JodhpurTravelGuidePage() {
     { question: "Is Mehrangarh Fort worth visiting?", answer: "Absolutely! Mehrangarh is one of India&apos;s largest and most magnificent forts, perched 400 feet above the city. The museum has an outstanding collection of royal palanquins, armour, paintings, and textiles. The audio guide (narrated by the royal family) is excellent. Allow 3-4 hours for a complete visit." },
     { question: "What food is Jodhpur famous for?", answer: "Jodhpur is famous for Mirchi Bada (chilli fritters from Shahi Samosa shop), Pyaaz Kachori, Mawa Kachori (sweet stuffed pastry), Dal Bati Churma, and Makhaniya Lassi (saffron-flavoured). The Clock Tower area is a food paradise. Try the legendary Omelette Shop near the clock tower." },
     { question: "What should I buy in Jodhpur?", answer: "Jodhpur is famous for Bandhani (tie-dye) textiles, antique furniture and curios, Rajasthani spices (especially mathania red chillies), Jodhpuri mojari shoes, and lac bangles. Clock Tower market, Nai Sarak, and Tripolia Bazaar are the best shopping areas." },
-    { question: "Is the Bishnoi Village safari worth it?", answer: "Yes, it is a unique cultural experience. The Bishnoi community are India&apos;s original environmentalists, protecting wildlife for over 500 years. The safari includes visits to Bishnoi villages, potters, weavers, and wildlife spotting (blackbuck, chinkaras, demoiselle cranes). Book through Triveni Cabs for reliable transport." },
+    { question: "Is the Bishnoi Village safari worth it?", answer: "Yes, it is a unique cultural experience. The Bishnoi community are India&apos;s original environmentalists, protecting wildlife for over 500 years. The safari includes visits to Bishnoi villages, potters, weavers, and wildlife spotting (blackbuck, chinkaras, demoiselle cranes). Book through Triveni Cabs™ for reliable transport." },
   ];
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqData.map(item => ({ "@type": "Question", "name": item.question, "acceptedAnswer": { "@type": "Answer", "text": item.answer } })) };
   const attractions = [
@@ -154,7 +155,7 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* TABLE OF CONTENTS */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10"><h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3">Table of Contents</h2><p className="text-stone-500">Your chapter-by-chapter guide to the Blue City</p></div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -172,7 +173,7 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* WELCOME */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="relative glass-card-light rounded-3xl p-8 md:p-12">
             <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-500/10 to-transparent rounded-br-full rounded-tl-3xl" />
@@ -193,7 +194,7 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* BEST TIME */}
-      <section className="py-16 px-4 bg-white/70">
+      <section className="py-10 sm:py-16 px-4 bg-white/70">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 1</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-2">Best Time to Visit Jodhpur</h2>
@@ -215,7 +216,7 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* ATTRACTIONS */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 2</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-10">Top Attractions in Jodhpur</h2>
@@ -250,13 +251,13 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* BOOK / SELL */}
-      <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+      <section className="py-10 sm:py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
         <div className="max-w-6xl mx-auto relative">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
               <Car className="w-4 h-4 text-amber-300" />
-              <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+              <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs™</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
             <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
@@ -297,7 +298,7 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* FOOD */}
-      <section className="py-16 px-4 bg-gradient-to-br from-orange-50 to-amber-50">
+      <section className="py-10 sm:py-16 px-4 bg-gradient-to-br from-orange-50 to-amber-50">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 3</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-2">Jodhpur Food Guide</h2>
@@ -315,7 +316,7 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* SHOPPING */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 4</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-10">Shopping in Jodhpur</h2>
@@ -334,12 +335,12 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* TRANSPORT */}
-      <section className="py-16 px-4 bg-white/70">
+      <section className="py-10 sm:py-16 px-4 bg-white/70">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 5</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-8">Getting Around Jodhpur</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[{ mode: "Triveni Cabs (Private Taxi)", price: "&#8377;1,800-3,000/day", desc: "AC car with driver. Essential for Bishnoi Village (25 km), Mandore Gardens, and outskirts. Delhi-Jodhpur one way from &#8377;8,000. Call 7668570551.", highlight: true }, { mode: "Auto-rickshaw", price: "&#8377;30-150/trip", desc: "Available everywhere in the city. Best for Clock Tower to fort trips. Always negotiate fare before boarding. Metered autos are rare.", highlight: false }, { mode: "E-Rickshaw", price: "&#8377;20-80/trip", desc: "Eco-friendly option for short distances in the old city. Slower but cheaper than autos. Good for exploring the blue city lanes at a leisurely pace.", highlight: false }, { mode: "City Bus / Shared Auto", price: "&#8377;10-30/trip", desc: "RSRTC buses connect major points. Shared autos run fixed routes. Very affordable but crowded. Limited comfort for tourists.", highlight: false }].map((t, idx) => (
+            {[{ mode: "Triveni Cabs™ (Private Taxi)", price: "&#8377;1,800-3,000/day", desc: "AC car with driver. Essential for Bishnoi Village (25 km), Mandore Gardens, and outskirts. Delhi-Jodhpur one way from &#8377;8,000. Call 7668570551.", highlight: true }, { mode: "Auto-rickshaw", price: "&#8377;30-150/trip", desc: "Available everywhere in the city. Best for Clock Tower to fort trips. Always negotiate fare before boarding. Metered autos are rare.", highlight: false }, { mode: "E-Rickshaw", price: "&#8377;20-80/trip", desc: "Eco-friendly option for short distances in the old city. Slower but cheaper than autos. Good for exploring the blue city lanes at a leisurely pace.", highlight: false }, { mode: "City Bus / Shared Auto", price: "&#8377;10-30/trip", desc: "RSRTC buses connect major points. Shared autos run fixed routes. Very affordable but crowded. Limited comfort for tourists.", highlight: false }].map((t, idx) => (
               <div key={idx} className={`rounded-2xl p-5 transition-all duration-500 ${t.highlight ? 'glass-card-light border-2 border-amber-400 shadow-lg relative overflow-hidden' : 'glass-card-light hover:border-amber-300/50'}`} style={t.highlight ? { animation: 'pulse-gold 3s ease-in-out infinite' } : {}}>
                 {t.highlight && <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500" style={{ backgroundSize: '200% auto', animation: 'shimmer 3s linear infinite' }} />}
                 <div className="flex items-start justify-between mb-2">
@@ -355,7 +356,7 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* STAY */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">CHAPTER 6</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-10">Where to Stay in Jodhpur</h2>
@@ -373,8 +374,13 @@ export default function JodhpurTravelGuidePage() {
         </div>
       </section>
 
+      {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+      <HowToReachTable city="Jodhpur" citySlug="jodhpur" />
+
+
       {/* FAQ */}
-      <section className="py-16 px-4 bg-white/70">
+      <section className="py-10 sm:py-16 px-4 bg-white/70">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-2"><div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider">APPENDIX</div></div>
           <h2 className="text-3xl font-bold text-stone-800 mb-10">Frequently Asked Questions</h2>
@@ -393,7 +399,7 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* LINKS */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-stone-800 mb-2 text-center">Explore More Destinations</h2>
           <p className="text-stone-500 text-center mb-8 text-sm">Related guides and tour pages</p>
@@ -409,7 +415,7 @@ export default function JodhpurTravelGuidePage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-amber-700 via-amber-600 to-yellow-600" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
         <div className="absolute top-[20%] left-[10%] w-3 h-3 bg-white/20 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />
         <div className="absolute top-[60%] right-[15%] w-2 h-2 bg-white/15 rounded-full" style={{ animation: 'float 8s ease-in-out infinite 2s' }} />

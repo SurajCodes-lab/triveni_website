@@ -78,7 +78,7 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
         <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-slate-950/80 via-slate-950/25 to-transparent lg:w-3/4" />
         <div className="absolute inset-x-0 top-0 z-20 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-28 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-16 sm:pt-28 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav className="mb-8 flex flex-wrap items-center gap-2 text-xs text-white/45" aria-label="Breadcrumb">
             <Link href="/" className="transition-colors hover:text-amber-300">Home</Link>
@@ -347,7 +347,7 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
           <SerifHeading
             eyebrow="Why Choose Us"
             icon={Star}
-            title="Why Triveni Cabs at"
+            title="Why Triveni Cabs™ at"
             highlight={`${stand.name}?`}
             subtitle={`The most trusted cab service at ${stand.name}, ${stand.city}. Here is what makes us different.`}
             tone="dark"
@@ -421,7 +421,7 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
             icon={Route}
             title="Which major bus routes run from"
             highlight={`${stand.name}?`}
-            subtitle="Popular bus routes with premium cab alternatives. Skip the bus, travel in comfort with Triveni Cabs."
+            subtitle="Popular bus routes with premium cab alternatives. Skip the bus, travel in comfort with Triveni Cabs™."
             tone="dark"
           />
 
@@ -467,14 +467,14 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
             </h2>
             <div className="space-y-4 leading-relaxed text-slate-700">
               <p>
-                Arriving at {stand.name} in {stand.city}? Finding reliable transportation after a long bus journey can be challenging, especially during late night hours or peak festival seasons. Triveni Cabs is your trusted partner for comfortable, affordable cab service right from {stand.name} to anywhere in {stand.city} and beyond.
+                Arriving at {stand.name} in {stand.city}? Finding reliable transportation after a long bus journey can be challenging, especially during late night hours or peak festival seasons. Triveni Cabs™ is your trusted partner for comfortable, affordable cab service right from {stand.name} to anywhere in {stand.city} and beyond.
               </p>
               <p>
                 {stand.name} is one of the busiest bus terminals in {stand.city}, served by major operators including {stand.busOperators.join(', ')}. With buses arriving from routes like {stand.majorRoutes.slice(0, 3).join(', ')}, thousands of passengers need reliable onward transportation daily.
               </p>
               <h3 className="font-display-serif pt-4 text-xl font-black text-slate-900">Why Pre-Book Your Cab from {stand.name}?</h3>
               <p>
-                Auto-rickshaws and local taxis at bus stands often overcharge, especially late at night or during festivals. By pre-booking with Triveni Cabs, you get guaranteed fixed fares, a verified driver waiting at the pickup point ({stand.cabWaitingArea}), and a clean air-conditioned vehicle for your comfort after a tiring bus ride.
+                Auto-rickshaws and local taxis at bus stands often overcharge, especially late at night or during festivals. By pre-booking with Triveni Cabs™, you get guaranteed fixed fares, a verified driver waiting at the pickup point ({stand.cabWaitingArea}), and a clean air-conditioned vehicle for your comfort after a tiring bus ride.
               </p>
               <p>
                 Our most popular destinations from {stand.name} include {stand.destinations.slice(0, 4).map(d => `${d.name} (${d.distance}, ${d.fare})`).join(', ')}. Whether you need a quick city transfer or a long-distance outstation trip, we have you covered 24 hours a day, 7 days a week, 365 days a year.
@@ -485,7 +485,7 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
               </p>
               <h3 className="font-display-serif pt-4 text-xl font-black text-slate-900">Outstation Cabs from {stand.name}</h3>
               <p>
-                Beyond city rides, Triveni Cabs also offers outstation cab services from {stand.name}. Popular outstation routes include {stand.majorRoutes.slice(0, 3).join(', ')} and more. All outstation trips come with experienced drivers who are familiar with highway driving and ensure a safe, comfortable journey.
+                Beyond city rides, Triveni Cabs™ also offers outstation cab services from {stand.name}. Popular outstation routes include {stand.majorRoutes.slice(0, 3).join(', ')} and more. All outstation trips come with experienced drivers who are familiar with highway driving and ensure a safe, comfortable journey.
               </p>
             </div>
           </div>
@@ -532,6 +532,7 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
           <div className="grid gap-3 md:grid-cols-2 md:items-start">
             {faqList.map((faq, i) => (
               <div key={i} className={`group overflow-hidden rounded-2xl border bg-white transition-all duration-300 ${openFaq === i ? 'border-amber-400 shadow-[0_16px_50px_-30px_rgba(180,130,10,0.55)]' : 'border-amber-200 hover:border-amber-300'}`}>
+                <h3 className="m-0">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   aria-expanded={openFaq === i}
@@ -543,6 +544,7 @@ export default function BusStandClient({ stand, slug, allStands, faqs }) {
                     <ChevronDown className={`h-4 w-4 ${openFaq === i ? 'text-slate-950' : 'text-amber-600'}`} />
                   </div>
                 </button>
+                </h3>
                 <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === i ? 'max-h-[32rem] pb-6 md:pb-7' : 'max-h-0'}`}>
                   <p className={`px-6 leading-relaxed text-slate-600 md:px-7 ${i === 0 ? 'speakable-faq-first faq-answer-1' : ''}`}>{faq.answer}</p>
                 </div>

@@ -3,13 +3,14 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Udaipur Food Tour 2026 | Dal Baati & Gatte Ki Sabzi'),
   description: 'Udaipur food & culinary tour. Famous Dal Baati, Gatte Ki Sabzi, Kachori, Kulfi, Pani Puri. Street food itinerary, best restaurants, lakeside dining.',
   keywords: 'udaipur food tour, udaipur street food, udaipur famous food, dal baati udaipur, gatte ki sabzi, udaipur restaurants, lakeside dining udaipur, udaipur food guide',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/udaipur-food-tour' },
   openGraph: { title: 'Udaipur Food Tour 2026 | Lake City Culinary Guide by Locals', description: 'Complete Udaipur food guide. Dal Baati, Gatte Ki Sabzi, lakeside dining, best restaurants and street food spots.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/udaipur-food-tour', siteName: 'Triveni Cabs', images: [{ url: '/images/sightseeing/Udaipur/Udaipur_hero_section.jpg', width: 1200, height: 630, alt: 'Udaipur Food Tour Guide' }] },
@@ -185,7 +186,7 @@ export default function UdaipurFoodTourPage() {
         </section>
 
         {/* SEO Prose */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-stone-800">
               Udaipur Food Tour — Royal Cuisine Meets Lakeside Charm
@@ -197,7 +198,7 @@ export default function UdaipurFoodTourPage() {
         </section>
 
         {/* Famous Foods - Glassmorphism Cards */}
-        <section className="py-16 px-4 bg-orange-50/80">
+        <section className="py-10 sm:py-16 px-4 bg-orange-50/80">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3">Famous Foods of Udaipur</h2>
@@ -228,7 +229,7 @@ export default function UdaipurFoodTourPage() {
         </section>
 
         {/* Street Food Itinerary - Premium Timeline */}
-        <section className="py-16 px-4 bg-gradient-to-b from-red-950 via-orange-950 to-red-950">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-red-950 via-orange-950 to-red-950">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-3">Street Food Tour Itinerary</h2>
@@ -267,7 +268,7 @@ export default function UdaipurFoodTourPage() {
         </section>
 
         {/* Best Restaurants - Premium Card Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Best Restaurants in Udaipur</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -296,7 +297,7 @@ export default function UdaipurFoodTourPage() {
         </section>
 
         {/* Markets - Glass Map Cards */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Food Markets to Visit</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -319,7 +320,7 @@ export default function UdaipurFoodTourPage() {
         </section>
 
         {/* Combine with Sightseeing */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-2xl overflow-hidden shadow-xl">
               <div className="bg-gradient-to-r from-red-600 to-orange-600 p-6" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }}>
@@ -342,8 +343,13 @@ export default function UdaipurFoodTourPage() {
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Udaipur" citySlug="udaipur" />
+
+
         {/* FAQ - Expandable-looking Cards */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -361,7 +367,7 @@ export default function UdaipurFoodTourPage() {
         </section>
 
         {/* Interlinks - Interactive Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-8 text-center">More Udaipur Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -383,7 +389,7 @@ export default function UdaipurFoodTourPage() {
         </section>
 
         {/* CTA - Animated Gradient */}
-        <section className="relative py-20 px-4 overflow-hidden">
+        <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-red-700 via-orange-600 to-amber-600" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[10%] w-3 h-3 bg-white/20 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />
           <div className="absolute top-[60%] right-[15%] w-2 h-2 bg-white/15 rounded-full" style={{ animation: 'float 8s ease-in-out infinite 2s' }} />

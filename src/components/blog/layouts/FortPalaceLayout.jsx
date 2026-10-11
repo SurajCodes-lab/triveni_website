@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/icons';
 import DynamicSidebar from '../DynamicSidebar';
 import WhatsAppCTA from '../WhatsAppCTA';
+import { rupeeText } from '@/utilis/pricing';
 
 export default function FortPalaceLayout({ post, relatedLinks }) {
   const [activeTab, setActiveTab] = useState('overview');
@@ -49,7 +50,7 @@ export default function FortPalaceLayout({ post, relatedLinks }) {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 pb-16">
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 pb-10 sm:pb-16">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full">
             <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
@@ -161,14 +162,7 @@ export default function FortPalaceLayout({ post, relatedLinks }) {
             {/* Content */}
             <article className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200">
               <div
-                className="blog-prose prose prose-lg max-w-[70ch] mx-auto
-                  prose-headings:text-slate-900 prose-headings:font-bold
-                  prose-h2:text-3xl prose-h2:pb-3 prose-h2:mb-6
-                  prose-h3:text-2xl prose-h3:text-slate-800
-                  prose-p:text-slate-700 prose-p:leading-relaxed
-                  prose-a:text-amber-700 prose-a:font-semibold hover:prose-a:text-amber-800
-                  prose-li:text-slate-700
-                  prose-strong:text-slate-900"
+                className="blog-prose prose prose-lg max-w-[70ch] mx-auto prose-headings:text-slate-900 prose-headings:font-bold prose-h2:text-3xl prose-h2:pb-3 prose-h2:mb-6 prose-h3:text-2xl prose-h3:text-slate-800 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-amber-700 prose-a:font-semibold hover:prose-a:text-amber-800 prose-li:text-slate-700 prose-strong:text-slate-900"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
@@ -199,7 +193,7 @@ export default function FortPalaceLayout({ post, relatedLinks }) {
                       className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all group"
                     >
                       <h4 className="font-bold text-lg group-hover:text-[#FACF2D]">{tour.name}</h4>
-                      <p className="text-slate-400 text-sm">{tour.price} onwards</p>
+                      <p className="text-slate-400 text-sm">{rupeeText(tour.price)} onwards</p>
                     </Link>
                   ))}
                 </div>

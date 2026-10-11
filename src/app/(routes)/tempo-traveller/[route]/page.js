@@ -1,6 +1,9 @@
 // src/app/tempo-traveller/[route]/page.js
 
 import { tempoFleet, tempoRoutes, localSightseeing, tempoCities, routeDescriptions } from '@/utilis/tempoTravellerData';
+import { NOINDEX_ROBOTS, isNoindexPath } from '@/lib/seo/noindex-families.mjs';
+// Attractions resolved here so touristAttractionsData.js (26 KB) stays server-side.
+import { getAttractionsForCity } from '@/utilis/touristAttractionsData';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -14,6 +17,8 @@ import DynamicTempoRoutesClient from '@/components/DynamicTempoRoutes';
 import { getCorridorLinks } from '@/utilis/corridorLinks';
 import { resolveRouteMetrics } from '@/utilis/routeMetrics';
 import TempoCityClient from '@/components/TempoCityClient';
+import PriorityPageGuide from '@/components/content/PriorityPageGuide';
+import AdventureActivities from '@/components/content/AdventureActivities';
 import ChardhamTempoClient from '@/components/ChardhamTempoClient';
 import AEOHead from '@/components/seo/AEOHead';
 import RelatedLinks from '@/components/seo/RelatedLinks';
@@ -21,6 +26,18 @@ import { getMoneyPageLinks, getSiloHubLinks } from '@/lib/seo/linkingHelper';
 // Server-only: pulls in the large blog dataset, never import from a client component.
 import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+// Shared keyword-cluster builder — the same one the force-urbania and maharaja
+// city pages use, so all three vehicle types target the proposal cluster from
+// one definition instead of three drifting copies.
+import { buildCityKeywordCluster } from '@/utilis/vehicleTypeConfig';
+// NCR locality tier (Noida, Gurgaon, Indirapuram, Delhi Airport, …). The
+// metadata + render live in vehicleCityRoutePage.js so this page and the
+// force-urbania factory share one implementation instead of two copies.
+import {
+  getNcrLocalityParams, ncrLocalityServes, buildNcrLocalityMetadata, renderNcrLocalityPage,
+} from '@/lib/seo/vehicleCityRoutePage';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
+import { BASE_URL } from '@/lib/seo/constants';
 
 // Some routeDescriptions carry prose-y distances ("1000 km (one way via Manali,
 // ~2000 km circuit)") that would eat the whole snippet — keep only the number.
@@ -28,10 +45,28 @@ const compactKm = (d) => {
   const m = /(\d[\d,]*)\s*km/i.exec(d || '');
   return m ? `${m[1]} km` : null;
 };
-const compactTravelTime = (t) => {
-  const s = String(t || '').split('(')[0].trim();
-  return s && s.length <= 20 ? s : null;
-};
+
+// Week 48 (C3): the route description names a total fare, so it has to be the
+// total the page shows. DynamicTempoRoutes computes "distance x 2 x rate" for the
+// seater it selects by default (the fleet's `popular` entry) from the dataset km
+// resolved server-side, falling back to routeDescriptions. This mirrors that
+// exactly and refuses to quote a figure when the client's own parse of a prose
+// distance ("1000 km (one way via Manali, ~2000 km circuit)") would disagree
+// with the clean km, so the snippet can never promise a number the page lacks.
+function buildTempoEstimate({ slug, origin, destination, routeMeta }) {
+  const metrics = resolveRouteMetrics({ slug, origin, destination });
+  const display = metrics.distance || routeMeta?.distance || '';
+  const clean = compactKm(display);
+  if (!clean) return null;
+  const km = parseInt(clean.replace(/,/g, ''), 10);
+  const clientKm = parseFloat(String(display).replace(/[^0-9.]/g, ''));
+  if (!Number.isFinite(km) || km <= 0 || clientKm !== km) return null;
+  const seater = tempoFleet.find((v) => v?.popular) || tempoFleet[0];
+  const rate = parseInt(String(seater?.outstationRate || '').replace(/[^\d]/g, ''), 10);
+  const seats = /^(\d+)/.exec(seater?.name || '');
+  if (!rate || !seats) return null;
+  return { seats: seats[1], km, fare: Math.round(km * 2 * rate) };
+}
 
 // Fare-first meta description: numbers lead, softer segments drop off the end
 // until the line fits inside Google's ~160-char snippet.
@@ -91,7 +126,12 @@ export async function generateStaticParams() {
     route: route.slug
   }));
 
-  return [...cityParams, ...routeParams, ...chardhamParams];
+  // NCR locality + airport pages (Noida, Ghaziabad, Indirapuram, Dwarka,
+  // Karol Bagh, Delhi Airport, …). Kept out of tempoCities on purpose so they
+  // do not generate an origin→destination route matrix.
+  const localityParams = getNcrLocalityParams('tempo-traveller');
+
+  return [...cityParams, ...routeParams, ...chardhamParams, ...localityParams];
 }
 
 export async function generateMetadata({ params }) {
@@ -105,6 +145,12 @@ export async function generateMetadata({ params }) {
       title: tightenTitle('Tempo Traveller Service | Premium Group Travel'),
       description: 'Book premium tempo travellers for comfortable group travel across India.'
     };
+  }
+
+  // NCR locality / airport page — checked first because these slugs are plain
+  // place names and must not fall through to the route parser.
+  if (ncrLocalityServes('tempo-traveller', route)) {
+    return buildNcrLocalityMetadata('tempo-traveller', route);
   }
 
   // Check if it's a Chardham page
@@ -154,10 +200,10 @@ export async function generateMetadata({ params }) {
       title: pageTitle,
       description: pageDescription,
       keywords: chardhamKeywords,
-      applicationName: 'Triveni Cabs',
-      authors: [{ name: 'Triveni Cabs' }],
-      creator: 'Triveni Cabs',
-      publisher: 'Triveni Cabs',
+      applicationName: 'Triveni Cabs™',
+      authors: [{ name: 'Triveni Cabs™' }],
+      creator: 'Triveni Cabs™',
+      publisher: 'Triveni Cabs™',
       metadataBase: new URL('https://www.trivenicabs.in'),
       alternates: {
         canonical: `https://www.trivenicabs.in/tempo-traveller/${route}`,
@@ -168,7 +214,7 @@ export async function generateMetadata({ params }) {
         url: `https://www.trivenicabs.in/tempo-traveller/${route}`,
         type: 'website',
         locale: 'en_IN',
-        siteName: 'Triveni Cabs',
+        siteName: 'Triveni Cabs™',
         images: [
           {
             url: chardhamData.images?.hero || '/images/tempo_hero_section.jpg',
@@ -186,16 +232,7 @@ export async function generateMetadata({ params }) {
         site: '@trivenicabs',
         images: [chardhamData.images?.hero || '/images/tempo_hero_section.jpg'],
       },
-      robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
-      },
+      robots: isNoindexPath(`/tempo-traveller/${route}`) ? NOINDEX_ROBOTS : { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
       category: 'Travel',
     };
   }
@@ -206,16 +243,27 @@ export async function generateMetadata({ params }) {
     const routeCount = tempoRoutes[cityName]?.length || 0;
 
     return {
-      // Title under 60 chars, Description under 155 chars
-      title: `Tempo Traveller in ${cityData.name} | 12-26 Seater ₹23/km`,
+      // Week 49 (Workstream E, plan action 8): the title answers the booking
+      // question with the rate card's day price for a 12-seater (₹23/km on the
+      // 300 km minimum, ₹6,900) instead of the per-kilometre range the page
+      // showed before, which did not match the rate card. Title under 60 chars.
+      title: `Tempo Traveller in ${cityData.name} ₹6,900 a Day, 12-Seater | Hire`,
       description: buildFareFirstDescription([
-        '12-26 seater tempo ₹20-₹31/km',
+        `12-seater tempo traveller in ${cityData.name} ₹6,900 a day (300 km at ₹23/km)`,
+        '17 and 26 seater on request',
         `${routeCount}+ routes from ${cityData.name}`,
-        'driver + fuel included',
-        '4.9★',
+        'driver + fuel included, tolls extra',
         'call 7668570551'
       ]),
-      applicationName: 'Triveni Cabs',
+      // The full SEO-proposal keyword cluster for this city (on rent / in /
+      // rental / hire / booking / book / luxury / price / per km / cheap / AC /
+      // outstation / near me + seater-specific + wedding, corporate and family
+      // intents). Without this the page inherited the 13 generic site-wide
+      // defaults from the root layout, which carried nothing city-specific —
+      // the force-urbania and maharaja city pages already got this cluster
+      // through the shared factory, so tempo was the odd one out.
+      keywords: buildCityKeywordCluster('tempo-traveller', cityData.name),
+      applicationName: 'Triveni Cabs™',
       metadataBase: new URL('https://www.trivenicabs.in'),
       alternates: {
         canonical: `https://www.trivenicabs.in/tempo-traveller/${route}`,
@@ -226,7 +274,7 @@ export async function generateMetadata({ params }) {
         url: `https://www.trivenicabs.in/tempo-traveller/${route}`,
         type: 'website',
         locale: 'en_IN',
-        siteName: 'Triveni Cabs - Tempo Traveller Rental',
+        siteName: 'Triveni Cabs™ - Tempo Traveller Rental',
         images: [
           {
             url: '/images/tempo_hero_section.jpg',
@@ -244,19 +292,7 @@ export async function generateMetadata({ params }) {
         site: '@trivenicabs',
         images: ['/images/tempo_hero_section.jpg'],
       },
-      robots: {
-        index: true,
-        follow: true,
-        nocache: false,
-        googleBot: {
-          index: true,
-          follow: true,
-          noimageindex: false,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
-        },
-      },
+      robots: isNoindexPath(`/tempo-traveller/${route}`) ? NOINDEX_ROBOTS : { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
       category: 'Travel & Transportation',
     };
   }
@@ -273,8 +309,9 @@ export async function generateMetadata({ params }) {
   const [origin, destination] = routeParts;
 
   const formatCityName = (city) => {
+    // Capitalise past an opening bracket too: "(golden Triangle)" read as broken copy.
     return city.split('-').map(word =>
-      word.charAt(0).toUpperCase() + word.slice(1)
+      word.replace(/^(\(?)([a-z])/, (_, open, ch) => open + ch.toUpperCase())
     ).join(' ');
   };
 
@@ -282,24 +319,22 @@ export async function generateMetadata({ params }) {
   const destinationFormatted = formatCityName(destination);
 
   const routeMeta = routeDescriptions[route] || null;
+  // Title and description both come from the factory formula (Week 48, C3) so
+  // every route in the family reads the same way; the page's only contribution
+  // is the fare estimate it will itself render.
   const baseMeta = generateTempoMetadata({
     origin: originFormatted,
     destination: destinationFormatted,
     price: '23/km',
     seats: '12-26',
-    slug: route
+    slug: route,
+    estimate: buildTempoEstimate({ slug: route, origin: originFormatted, destination: destinationFormatted, routeMeta }),
   });
 
   return {
     ...baseMeta,
-    description: buildFareFirstDescription([
-      '12-26 seater tempo from ₹23/km',
-      `${originFormatted} to ${destinationFormatted}${compactKm(routeMeta?.distance) ? ` ${compactKm(routeMeta.distance)}` : ''}`,
-      compactTravelTime(routeMeta?.travelTime),
-      'driver + fuel included',
-      '4.9★',
-      'call 7668570551'
-    ])
+    // Week 47: routes from origins with zero traffic are de-indexed by rule (see noindex-families.mjs).
+    robots: isNoindexPath(`/tempo-traveller/${route}`) ? NOINDEX_ROBOTS : baseMeta.robots,
   };
 }
 
@@ -318,6 +353,12 @@ export default async function TempoTravellerRoutePage({ params }) {
         </div>
       </div>
     );
+  }
+
+  // NCR locality / airport page — shares its implementation with the
+  // force-urbania factory via renderNcrLocalityPage.
+  if (ncrLocalityServes('tempo-traveller', route)) {
+    return renderNcrLocalityPage('tempo-traveller', route);
   }
 
   // Check if it's a Chardham page
@@ -370,6 +411,10 @@ export default async function TempoTravellerRoutePage({ params }) {
     const productSchema = {
       "@context": "https://schema.org",
       "@type": "Product",
+      // Week 53: Google's Merchant listings report treats a missing `image`
+      // as a critical error. This is an asset the page already uses.
+
+      "image": `${BASE_URL}/images/tempo/17_seater.jpg`,
       "name": `${chardhamData.title} Tempo Traveller Package — Triveni Cabs`,
       "description": `${chardhamData.duration} Char Dham tempo traveller charter from ${chardhamData.origin} covering ${dhamLabel}. Available in 12, 16, 17, 20 and 26 seater AC tempo travellers with hill driver, fuel, tolls and parking included.`,
       "brand": { "@type": "Brand", "name": "Triveni Cabs" },
@@ -459,7 +504,7 @@ export default async function TempoTravellerRoutePage({ params }) {
         "availability": "https://schema.org/InStock"
       },
       "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs" },
-      "dateModified": getTodayDate(),
+      "dateModified": (getContentUpdatedOn(`/tempo-traveller/${route}`) || getTodayDate()),
       ...ratingAndReviews
     };
 
@@ -588,7 +633,10 @@ export default async function TempoTravellerRoutePage({ params }) {
     // to the direct-answer lead + first FAQ for voice assistants.
     const cityFaqs = [
       {
-        question: `How much does a tempo traveller cost in ${cityData.name}?`,
+        // Week 49 gap fix: phrased in the export's own words ("tempo
+        // traveller in lucknow") rather than formal site copy, per
+        // Workstream F's "FAQ questions in the searcher's words".
+        question: `Tempo Traveller in ${cityData.name}: how much does it cost?`,
         answer: `Tempo traveller hire in ${cityData.name} starts at ₹23/km for a 12-seater AC tempo and goes up to ₹31/km for a 26-seater Maharaja edition. Local 8-hour/80-km day packages start around ₹6,000. Fares include fuel and driver; tolls, parking and state taxes are extra. Call 7668570551 for an exact ${cityData.name} quote.`
       },
       {
@@ -670,7 +718,7 @@ export default async function TempoTravellerRoutePage({ params }) {
     // (geo coordinates + address) for the GEO entity graph. Null-safe.
     const cityPlaceSchema = getCityPlaceSchema(cityData.slug, {
       idSlug: `tempo-traveller/${route}`,
-      description: `${cityData.name} — served by Triveni Cabs tempo traveller rental with ${cityRoutes.length}+ outstation routes and local group travel.`,
+      description: `${cityData.name} — served by Triveni Cabs™ tempo traveller rental with ${cityRoutes.length}+ outstation routes and local group travel.`,
       image: '/images/tempo_hero_section.jpg'
     });
 
@@ -698,7 +746,8 @@ export default async function TempoTravellerRoutePage({ params }) {
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityPlaceSchema) }} />
         )}
         <AEOHead pageType="tempo" data={{ url: `/tempo-traveller/${route}`, title: `${cityData.name} Tempo Traveller`, city: cityData.name }} />
-        <TempoCityClient data={cityPageData} />
+        <AdventureActivities path={`/tempo-traveller/${route}`} />
+        <TempoCityClient data={cityPageData} planningGuide={<PriorityPageGuide path={`/tempo-traveller/${route}`} />} />
       </>
     );
   }
@@ -719,8 +768,9 @@ export default async function TempoTravellerRoutePage({ params }) {
   const [origin, destination] = routeParts;
 
   const formatCityName = (city) => {
+    // Capitalise past an opening bracket too: "(golden Triangle)" read as broken copy.
     return city.split('-').map(word =>
-      word.charAt(0).toUpperCase() + word.slice(1)
+      word.replace(/^(\(?)([a-z])/, (_, open, ch) => open + ch.toUpperCase())
     ).join(' ');
   };
 
@@ -843,6 +893,10 @@ export default async function TempoTravellerRoutePage({ params }) {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Google's Merchant listings report treats a missing `image`
+    // as a critical error. This is an asset the page already uses.
+
+    "image": `${BASE_URL}/images/tempo/17_seater.jpg`,
     "name": `${originFormatted} to ${destinationFormatted} Tempo Traveller Rental — Triveni Cabs`,
     "description": `Book tempo traveller from ${originFormatted} to ${destinationFormatted}. Available in 12, 14, 17, 20, and 26 seater options. All vehicles AC with pushback seats, music system, and GPS tracking.`,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
@@ -1005,7 +1059,7 @@ export default async function TempoTravellerRoutePage({ params }) {
       "availability": "https://schema.org/InStock"
     },
     "provider": { "@type": "TravelAgency", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs" },
-    "dateModified": getTodayDate(),
+    "dateModified": (getContentUpdatedOn(`/tempo-traveller/${route}`) || getTodayDate()),
     ...getRatingAndReviews(route, 'tempo')
   };
 
@@ -1041,7 +1095,7 @@ export default async function TempoTravellerRoutePage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           ...generateTempoServiceSchema(originFormatted, destinationFormatted, '23', '12-26'),
-          brand: { "@type": "Brand", "name": "Triveni Cabs" },
+          brand: { "@type": "Brand", "name": "Triveni Cabs™" },
           ...getRatingAndReviews(route, 'tempo')
         }) }}
       />
@@ -1050,7 +1104,14 @@ export default async function TempoTravellerRoutePage({ params }) {
       ))}
       <AEOHead pageType="tempo" data={{ url: `/tempo-traveller/${route}`, title: `Tempo Traveller ${originFormatted} to ${destinationFormatted}`, origin: originFormatted, destination: destinationFormatted, city: originFormatted }} />
 
-      <DynamicTempoRoutesClient data={pageData} />
+      {/* routeDescription is looked up here rather than in the client, so the
+          265 KB tempoTravellerData module stays out of the browser bundle. */}
+      <DynamicTempoRoutesClient
+        data={{ ...pageData, routeDescription: routeDescriptions[route] || null }}
+        destinationAttractions={getAttractionsForCity(pageData.destination)}
+      />
+
+      <AdventureActivities path={`/tempo-traveller/${route}`} />
 
       <div className="container mx-auto px-4 pb-12">
         <RelatedLinks

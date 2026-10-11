@@ -11,9 +11,9 @@ export const metadata = {
   title: tightenTitle('Travel Blog India 2026 | Tips & Guides'),
   description: 'Expert India travel guides, destination tips, road trip itineraries & budget hacks. Delhi, Agra, Jaipur, Manali, Kashmir & more. Plan your perfect trip today!',
   keywords: 'travel blog India, India travel tips, destination guides, road trip India, budget travel India, Delhi travel guide, Agra travel tips, Jaipur tourism, North India travel, weekend getaways India, hill station travel, pilgrimage tours India, travel itinerary India, Triveni Cabs blog',
-  authors: [{ name: 'Triveni Cabs Travel Experts' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™ Travel Experts' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   formatDetection: {
     email: false,
     address: false,
@@ -29,7 +29,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/blog',
-    siteName: 'Triveni Cabs - India Travel Blog',
+    siteName: 'Triveni Cabs™ - India Travel Blog',
     images: [
       {
         url: 'https://www.trivenicabs.in/images/blog/travel-blog-india.jpg',
@@ -41,7 +41,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Travel Blog India 2026 | Tips & Guides | Triveni Cabs',
+    title: 'Travel Blog India 2026 | Tips & Guides | Triveni Cabs™',
     description: 'Expert India travel guides, destination tips, road trip itineraries & budget hacks. Plan your perfect trip today!',
     images: ['https://www.trivenicabs.in/images/blog/travel-blog-twitter.jpg'],
     creator: '@TriveniCabs',
@@ -70,6 +70,17 @@ export const metadata = {
     'review_count': '500+',
   }
 };
+
+// Projected once at build time. See the note at the render site below for why.
+const INDEX_FIELDS = ['slug', 'title', 'excerpt', 'image', 'category', 'readTime', 'date'];
+
+const indexPosts = blogPosts
+  .filter((post) => post && post.title && post.slug)
+  .map((post) => {
+    const card = {};
+    for (const field of INDEX_FIELDS) card[field] = post[field];
+    return card;
+  });
 
 export default function BlogPage() {
   // Filter once for reuse
@@ -116,35 +127,19 @@ export default function BlogPage() {
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": validPosts.length,
+      // URL-only ListItems, which is what Google's summary-page carousel spec asks
+      // for: the list page points at the detail pages, and each detail page carries
+      // its own full BlogPosting markup (verified present on /blog/[slug]).
+      //
+      // This previously embedded a complete BlogPosting node per post — headline,
+      // description, image, author, publisher, mainEntityOfPage, keywords — for all
+      // 189 posts, which came to 209 KB of JSON-LD in the served HTML. That is both
+      // heavier and less correct than the documented pattern, since it duplicates
+      // markup Google reads from the article pages themselves.
       "itemListElement": validPosts.map((post, index) => ({
         "@type": "ListItem",
         "position": index + 1,
-        "url": `https://www.trivenicabs.in/blog/${post.slug}`,
-        "item": {
-          "@type": "BlogPosting",
-          "@id": `https://www.trivenicabs.in/blog/${post.slug}#blogposting`,
-          "headline": post.title,
-          "description": post.excerpt,
-          "image": post.image,
-          "datePublished": post.date,
-          "dateModified": post.date,
-          "url": `https://www.trivenicabs.in/blog/${post.slug}`,
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": `https://www.trivenicabs.in/blog/${post.slug}`
-          },
-          "author": {
-            "@type": "Organization",
-            "name": "Triveni Cabs Travel Experts",
-            "url": "https://www.trivenicabs.in"
-          },
-          "publisher": {
-            "@id": "https://www.trivenicabs.in/#organization"
-          },
-          "keywords": post.tags?.join(', ') || "travel India, tourism, destination guide",
-          "articleSection": post.category || "Travel",
-          "inLanguage": "en-IN"
-        }
+        "url": `https://www.trivenicabs.in/blog/${post.slug}`
       }))
     }
   };
@@ -199,8 +194,15 @@ export default function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteStructuredData) }}
       />
 
-      {/* Render Client Component - pass posts as props to avoid importing data in client bundle */}
-      <BlogClient posts={blogPosts} />
+      {/* Only the seven fields the cards actually render are passed down.
+
+          Passing blogPosts whole sent every article's full `content` field into
+          this page's HTML — 2.9 MB of article bodies across 189 posts, none of
+          which the index displays. The served document was 4.6 MB, and the page
+          measured at 8.13 s LCP and 5.64 s FCP against roughly 2.3 s everywhere
+          else on the site. The card component reads exactly: slug, title,
+          excerpt, image, category, readTime, date. */}
+      <BlogClient posts={indexPosts} />
     </>
   );
 }

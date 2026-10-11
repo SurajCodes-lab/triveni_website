@@ -12,9 +12,9 @@ export const metadata = {
   title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['republic day delhi cab 2026', 'republic day parade cab booking', 'kartavya path cab service', '26 january delhi cab', 'republic day sightseeing delhi', 'india gate cab 26 jan', 'republic day airport transfer delhi', 'delhi local cab republic day', 'republic day travel delhi', '26 january taxi service'],
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${slug}`,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Republic Day Delhi Cab Service' }],
   },
   twitter: { card: 'summary_large_image', title: pageTitle, description: pageDesc, creator: '@trivenicabs', site: '@trivenicabs' },
@@ -32,7 +32,7 @@ export const metadata = {
 
 const faqs = [
   { question: 'Are cabs available near Kartavya Path on Republic Day?', answer: 'Yes, but several roads around Kartavya Path (Rajpath) are closed on January 26. Our drivers are familiar with alternate routes and drop-off points closest to the parade viewing area. Book early for guaranteed availability.' },
-  { question: 'Do you charge extra for Republic Day cab bookings?', answer: 'No, Triveni Cabs maintains fixed pricing without surge charges even on Republic Day. Our transparent billing ensures you pay only the quoted fare with no hidden charges.' },
+  { question: 'Do you charge extra for Republic Day cab bookings?', answer: 'No, Triveni Cabs™ maintains fixed pricing without surge charges even on Republic Day. Our transparent billing ensures you pay only the quoted fare with no hidden charges.' },
   { question: 'Can I book a cab for Republic Day Delhi sightseeing?', answer: 'Yes! Our Republic Day special package covers India Gate, Red Fort, Rashtrapati Bhavan, National Museum, and other patriotic landmarks. Available as 4-hour, 8-hour, or full-day packages.' },
   { question: 'Do you provide airport transfers on Republic Day?', answer: 'Yes, 24/7 airport pickup and drop services are available on Republic Day. Flight tracking included. We factor in road closures and traffic diversions to ensure timely service.' },
   { question: 'Is it safe to travel in Delhi on Republic Day with a cab?', answer: 'Absolutely. Security is heightened across Delhi on Republic Day. Our verified drivers know the route restrictions and diversion plans. All vehicles are GPS-tracked for your safety.' },
@@ -45,8 +45,7 @@ export default function RepublicDayPage() {
     "name": "Republic Day 2026 Delhi Cab Service — Triveni Cabs",
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
-    "areaServed": { "@type": "City", "name": "Delhi" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('republic-day-delhi-cab')), "bestRating": "5" }
+    "areaServed": { "@type": "City", "name": "Delhi" }
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",

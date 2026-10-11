@@ -6,7 +6,7 @@ export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Maharaja Tempo Traveller vs Force Urbania — Which to Rent?'),
-  description: 'Maharaja tempo traveller vs Force Urbania: compare seating comfort, ride quality, AC, price per km and best use cases. Pick the right group vehicle with Triveni Cabs. Call 7668570551.',
+  description: 'Maharaja tempo traveller vs Force Urbania: compare seating comfort, ride quality, AC, price per km and best use cases. Pick the right group vehicle with Triveni Cabs™. Call 7668570551.',
   keywords: ['maharaja tempo traveller vs urbania', 'urbania vs tempo traveller', 'force urbania vs maharaja tempo', 'which is better urbania or tempo traveller', 'tempo traveller vs urbania price', 'urbania vs maharaja comfort'],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
@@ -46,12 +46,12 @@ export default function Page() {
         { label: 'Best for maximum seat comfort', left: '✓', right: '—' },
         { label: 'Availability (newer fleet)', left: '—', right: '✓' },
       ]}
-      verdict="Choose the Maharaja tempo traveller when seat comfort and a classic spacious feel matter most — long family tours where everyone wants a captain seat. Choose the Force Urbania when you want a quieter, smoother ride, especially on long or rough Himalayan routes like Char Dham, and a newer vehicle. Both are chauffeur-driven, AC, and priced upfront by Triveni Cabs — and both cost about the same per km. Not sure? Call us with your route and group size and we'll recommend."
+      verdict="Choose the Maharaja tempo traveller when seat comfort and a classic spacious feel matter most — long family tours where everyone wants a captain seat. Choose the Force Urbania when you want a quieter, smoother ride, especially on long or rough Himalayan routes like Char Dham, and a newer vehicle. Both are chauffeur-driven, AC, and priced upfront by Triveni Cabs™ — and both cost about the same per km. Not sure? Call us with your route and group size and we'll recommend."
       faqs={[
         { question: 'Is the Force Urbania more comfortable than a tempo traveller?', answer: 'The Urbania has a smoother, quieter ride thanks to its modern monocoque body — better on rough roads. The Maharaja tempo, however, has more luxurious captain seats. Comfort depends on whether you value ride smoothness (Urbania) or seat luxury (Maharaja).' },
         { question: 'Which is cheaper — Maharaja tempo or Force Urbania?', answer: 'They are close. The Urbania starts at ₹27/km (12-seater) and the Maharaja at ₹27/km (9-seater). For the same seat count the Urbania is usually a little cheaper. See full fares at [Maharaja tempo traveller price](/maharaja-tempo-traveller-price) and [Force Urbania rent price](/force-urbania-rent-price).' },
         { question: 'Which is better for Char Dham / mountain routes?', answer: 'The Force Urbania is generally preferred for Himalayan routes — its suspension handles rough mountain roads better and the cabin is quieter over long stretches. See [Char Dham yatra by tempo traveller](/char-dham-yatra-by-tempo-traveller).' },
-        { question: 'Do both come with a driver and AC?', answer: 'Yes. Every Triveni Cabs tempo traveller and Urbania is chauffeur-driven with AC, and fuel + driver are included in the per-km fare. We are not a self-drive provider.' },
+        { question: 'Do both come with a driver and AC?', answer: 'Yes. Every Triveni Cabs™ tempo traveller and Urbania is chauffeur-driven with AC, and fuel + driver are included in the per-km fare. We are not a self-drive provider.' },
         { question: 'What sizes are available in each?', answer: 'Maharaja: 9, 12 and 17-seater. Urbania: 12 and 17-seater (plus a luxury captain-seat config). For groups over 17, ask about our larger mini buses.' },
       ]}
       relatedLinks={[

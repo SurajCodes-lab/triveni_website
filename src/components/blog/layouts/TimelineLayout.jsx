@@ -1,13 +1,16 @@
-'use client';
-
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 // Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, History, Scroll,
   ChevronRight, Phone, ChevronDown, Milestone, Compass
 } from '@/components/ui/icons';
 import WhatsAppCTA from '../WhatsAppCTA';
+import { rupeeText } from '@/utilis/pricing';
 
 export default function TimelineLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -31,7 +34,7 @@ export default function TimelineLayout({ post, relatedLinks }) {
           </svg>
         </div>
 
-        <div className="relative max-w-6xl mx-auto px-4 py-16">
+        <div className="relative max-w-6xl mx-auto px-4 py-10 sm:py-16">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-slate-400 mb-8">
             <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
@@ -115,14 +118,14 @@ export default function TimelineLayout({ post, relatedLinks }) {
       </div>
 
       {/* Timeline Content Section */}
-      <div className="max-w-5xl mx-auto px-4 py-20">
+      <div className="max-w-5xl mx-auto px-4 py-12 sm:py-20">
         {/* Timeline Line */}
         <div className="relative">
           {/* Center Line */}
           <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#FACF2D] via-amber-500 to-amber-600" />
 
           {/* Timeline Start */}
-          <div className="relative flex items-center justify-center mb-16">
+          <div className="relative flex items-center justify-center mb-10 sm:mb-16">
             <div className="w-16 h-16 bg-[#FACF2D] rounded-full flex items-center justify-center shadow-lg shadow-amber-500/25 z-10">
               <Scroll className="w-7 h-7 text-black" />
             </div>
@@ -131,18 +134,7 @@ export default function TimelineLayout({ post, relatedLinks }) {
           {/* Article Content as Timeline */}
           <article className="relative">
             <div
-              className="blog-prose prose prose-lg max-w-none
-                prose-headings:relative prose-headings:ml-16 lg:prose-headings:ml-0
-                prose-h2:text-2xl prose-h2:font-bold prose-h2:text-slate-900
-                prose-h2:before:content-[''] prose-h2:before:absolute prose-h2:before:-left-12 lg:prose-h2:before:left-1/2
-                prose-h2:before:transform lg:prose-h2:before:-translate-x-1/2 prose-h2:before:-translate-y-1
-                prose-h2:before:w-6 prose-h2:before:h-6 prose-h2:before:bg-[#FACF2D] prose-h2:before:rounded-full
-                prose-h2:before:border-4 prose-h2:before:border-white prose-h2:before:shadow-md
-                prose-h3:text-xl prose-h3:text-slate-800
-                prose-p:text-slate-700 prose-p:leading-relaxed prose-p:ml-16 lg:prose-p:ml-0
-                prose-li:text-slate-700 prose-li:ml-16 lg:prose-li:ml-0
-                prose-a:text-amber-700 prose-a:font-semibold
-                prose-strong:text-slate-900"
+              className="blog-prose prose prose-lg max-w-none prose-headings:relative prose-headings:ml-16 lg:prose-headings:ml-0 prose-h2:text-2xl prose-h2:font-bold prose-h2:text-slate-900 prose-h2:before:content-[''] prose-h2:before:absolute prose-h2:before:-left-12 lg:prose-h2:before:left-1/2 prose-h2:before:transform lg:prose-h2:before:-translate-x-1/2 prose-h2:before:-translate-y-1 prose-h2:before:w-6 prose-h2:before:h-6 prose-h2:before:bg-[#FACF2D] prose-h2:before:rounded-full prose-h2:before:border-4 prose-h2:before:border-white prose-h2:before:shadow-md prose-h3:text-xl prose-h3:text-slate-800 prose-p:text-slate-700 prose-p:leading-relaxed prose-p:ml-16 lg:prose-p:ml-0 prose-li:text-slate-700 prose-li:ml-16 lg:prose-li:ml-0 prose-a:text-amber-700 prose-a:font-semibold prose-strong:text-slate-900"
             >
               {/* Wrapped Content Sections */}
               <div className="space-y-12">
@@ -152,7 +144,7 @@ export default function TimelineLayout({ post, relatedLinks }) {
           </article>
 
           {/* Timeline End */}
-          <div className="relative flex items-center justify-center mt-16">
+          <div className="relative flex items-center justify-center mt-10 sm:mt-16">
             <div className="w-16 h-16 bg-[#FACF2D] rounded-full flex items-center justify-center shadow-lg shadow-amber-500/25 z-10">
               <Milestone className="w-7 h-7 text-black" />
             </div>
@@ -162,7 +154,7 @@ export default function TimelineLayout({ post, relatedLinks }) {
 
       {/* Quick Info Cards */}
       {post.attractionData && (
-        <div className="relative overflow-hidden bg-slate-950 py-16">
+        <div className="relative overflow-hidden bg-slate-950 py-10 sm:py-16">
           <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
           <div className="max-w-5xl mx-auto px-4">
             <h2 className="font-display-serif text-center text-white text-2xl font-bold mb-10">Visitor Information</h2>
@@ -229,7 +221,7 @@ export default function TimelineLayout({ post, relatedLinks }) {
 
       {/* Book Tour CTA */}
       {relatedLinks?.relatedTours?.length > 0 && (
-        <div className="relative overflow-hidden bg-slate-950 ring-1 ring-white/10 py-16">
+        <div className="relative overflow-hidden bg-slate-950 ring-1 ring-white/10 py-10 sm:py-16">
           <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
           <div className="max-w-5xl mx-auto px-4">
             <div className="text-center mb-10">
@@ -251,7 +243,7 @@ export default function TimelineLayout({ post, relatedLinks }) {
                   <h3 className="font-bold text-xl text-white mb-2 group-hover:text-[#FACF2D] transition-colors">
                     {tour.name}
                   </h3>
-                  <p className="text-slate-400">{tour.price} onwards</p>
+                  <p className="text-slate-400">{rupeeText(tour.price)} onwards</p>
                 </Link>
               ))}
             </div>
@@ -276,7 +268,7 @@ export default function TimelineLayout({ post, relatedLinks }) {
       )}
 
       {/* Internal Links Section */}
-      <div className="bg-white py-16">
+      <div className="bg-white py-10 sm:py-16">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-slate-900 text-center mb-10">Explore More</h2>
           <div className="grid md:grid-cols-4 gap-6">

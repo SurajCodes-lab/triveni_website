@@ -1,5 +1,6 @@
 "use client";
 
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -103,6 +104,7 @@ export default function EventVehicleClient({ data, jsonLd }) {
             <h1 className="speakable-headline font-display-serif text-4xl md:text-6xl font-bold text-white leading-[1.05] tracking-tight">
               {data.name}
             </h1>
+              <FamilyFacts family="event-vehicle" data={data} />
             <p className="speakable-lead mt-4 text-lg text-slate-300 max-w-2xl">
               {data.tagline}. From{" "}
               <span className="text-gold-foil font-bold">{data.priceFrom}</span>,
@@ -147,6 +149,7 @@ export default function EventVehicleClient({ data, jsonLd }) {
           </div>
         </div>
       </section>
+      <FamilyFacts family="event-vehicle" data={data} details />
 
       {/* QUOTE FORM — dark */}
       <section className="border-b border-white/10 bg-white/[0.03]">

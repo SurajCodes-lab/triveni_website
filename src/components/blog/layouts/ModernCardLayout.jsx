@@ -28,9 +28,6 @@ export default function ModernCardLayout({ post, relatedLinks }) {
     <div className="min-h-screen bg-gradient-to-b from-[#FACF2D]/10 via-white to-white">
       {/* Decorative Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#FACF2D]/15 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-[#FACF2D]/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 right-1/3 w-80 h-80 bg-amber-200/25 rounded-full blur-3xl" />
       </div>
 
       {/* Floating Header */}
@@ -183,15 +180,7 @@ export default function ModernCardLayout({ post, relatedLinks }) {
           <main className="lg:col-span-8">
             <div className="bg-white rounded-3xl shadow-xl shadow-amber-100/50 p-8 lg:p-12">
               <article
-                className="blog-prose prose prose-lg max-w-[70ch] mx-auto
-                  prose-headings:text-slate-900 prose-headings:font-bold
-                  prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-3
-                  prose-h3:text-xl prose-h3:text-slate-800
-                  prose-p:text-slate-700 prose-p:leading-relaxed
-                  prose-a:text-amber-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:text-amber-800
-                  prose-strong:text-slate-900
-                  prose-li:text-slate-700
-                  prose-blockquote:border-l-[#FACF2D] prose-blockquote:bg-slate-50 prose-blockquote:rounded-r-2xl prose-blockquote:py-4 prose-blockquote:not-italic"
+                className="blog-prose prose prose-lg max-w-[70ch] mx-auto prose-headings:text-slate-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-3 prose-h3:text-xl prose-h3:text-slate-800 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-amber-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:text-amber-800 prose-strong:text-slate-900 prose-li:text-slate-700 prose-blockquote:border-l-[#FACF2D] prose-blockquote:bg-slate-50 prose-blockquote:rounded-r-2xl prose-blockquote:py-4 prose-blockquote:not-italic"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </div>

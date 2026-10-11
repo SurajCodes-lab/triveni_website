@@ -12,9 +12,9 @@ export const metadata = {
   title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['christmas cab packages 2026', 'new year cab booking', 'christmas holiday cab india', 'new year eve cab service', 'christmas travel packages north india', 'holiday season cab booking', 'new year trip cab delhi', 'christmas shimla cab package', 'new year manali cab', 'festive season taxi service'],
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${slug}`,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Christmas New Year Cab Packages' }],
   },
   twitter: { card: 'summary_large_image', title: pageTitle, description: pageDesc, creator: '@trivenicabs', site: '@trivenicabs' },
@@ -31,7 +31,7 @@ export const metadata = {
 };
 
 const faqs = [
-  { question: 'Do you charge surge pricing during Christmas and New Year?', answer: 'No, Triveni Cabs never charges surge pricing. Our rates are fixed and transparent year-round, including festive seasons. Book early to lock in the best rates for your holiday trip.' },
+  { question: 'Do you charge surge pricing during Christmas and New Year?', answer: 'No, Triveni Cabs™ never charges surge pricing. Our rates are fixed and transparent year-round, including festive seasons. Book early to lock in the best rates for your holiday trip.' },
   { question: 'Can I book a cab for a multi-day Christmas or New Year trip?', answer: 'Yes! We offer multi-day packages for Christmas and New Year trips to Shimla, Manali, Jaipur, Agra, and more. Packages include driver accommodation and fuel. Call 7668570551 for custom quotes.' },
   { question: 'Is advance booking required for Christmas/New Year cab packages?', answer: 'We strongly recommend booking at least 7-10 days in advance during the festive season as demand is very high. Early booking also ensures the best vehicle availability and pricing.' },
   { question: 'What vehicles are available for Christmas and New Year trips?', answer: 'We offer AC sedans (Swift Dzire, Etios), SUVs (Innova, Innova Crysta, Ertiga), and tempo travellers for group trips. All vehicles are sanitized and well-maintained.' },
@@ -45,8 +45,7 @@ export default function ChristmasNewYearPage() {
     "name": "Christmas & New Year Cab Packages 2026 — Triveni Cabs",
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
-    "areaServed": { "@type": "Country", "name": "India" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('christmas-new-year-cab-packages')), "bestRating": "5" }
+    "areaServed": { "@type": "Country", "name": "India" }
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",

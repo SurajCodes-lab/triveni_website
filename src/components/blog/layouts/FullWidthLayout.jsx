@@ -1,13 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 // Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, ArrowUp, Eye,
   ChevronRight, Phone, Heart, Bookmark, Plane, Compass
 } from '@/components/ui/icons';
 import WhatsAppCTA from '../WhatsAppCTA';
+import { rupeeText } from '@/utilis/pricing';
 
 export default function FullWidthLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -103,7 +104,7 @@ export default function FullWidthLayout({ post, relatedLinks }) {
       </section>
 
       {/* Excerpt/Lead Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 sm:py-20 px-4 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-2xl md:text-3xl font-light text-slate-700 leading-relaxed">
             {post.excerpt}
@@ -112,20 +113,10 @@ export default function FullWidthLayout({ post, relatedLinks }) {
       </section>
 
       {/* Full-Width Content */}
-      <section className="pb-20">
+      <section className="pb-12 sm:pb-20">
         <article className="max-w-3xl mx-auto px-4">
           <div
-            className="blog-prose prose prose-xl max-w-[70ch] mx-auto
-              prose-p:text-slate-700 prose-p:leading-[1.9] prose-p:text-lg
-              prose-headings:text-slate-900 prose-headings:font-bold prose-headings:tracking-tight
-              prose-h2:text-4xl prose-h2:mt-20 prose-h2:mb-8 prose-h2:text-center
-              prose-h3:text-2xl prose-h3:mt-12
-              prose-a:text-amber-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-slate-900 prose-strong:font-semibold
-              prose-blockquote:border-l-4 prose-blockquote:border-[#FACF2D] prose-blockquote:bg-amber-50 prose-blockquote:rounded-r-xl prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic
-              prose-li:text-slate-700
-              prose-img:rounded-2xl prose-img:shadow-2xl
-            "
+            className="blog-prose prose prose-xl max-w-[70ch] mx-auto prose-p:text-slate-700 prose-p:leading-[1.9] prose-p:text-lg prose-headings:text-slate-900 prose-headings:font-bold prose-headings:tracking-tight prose-h2:text-4xl prose-h2:mt-20 prose-h2:mb-8 prose-h2:text-center prose-h3:text-2xl prose-h3:mt-12 prose-a:text-amber-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-900 prose-strong:font-semibold prose-blockquote:border-l-4 prose-blockquote:border-[#FACF2D] prose-blockquote:bg-amber-50 prose-blockquote:rounded-r-xl prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic prose-li:text-slate-700 prose-img:rounded-2xl prose-img:shadow-2xl"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>
@@ -193,7 +184,7 @@ export default function FullWidthLayout({ post, relatedLinks }) {
 
       {/* Tour CTA Section */}
       {relatedLinks?.relatedTours?.length > 0 && (
-        <section className="relative overflow-hidden py-24 px-4 bg-slate-950 ring-1 ring-white/10">
+        <section className="relative overflow-hidden py-14 sm:py-24 px-4 bg-slate-950 ring-1 ring-white/10">
           <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[4px] bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]" />
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-display-serif text-4xl md:text-5xl font-bold text-white mb-6">
@@ -213,7 +204,7 @@ export default function FullWidthLayout({ post, relatedLinks }) {
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#FACF2D] transition-colors">
                     {tour.name}
                   </h3>
-                  <p className="text-slate-300">{tour.price} onwards</p>
+                  <p className="text-slate-300">{rupeeText(tour.price)} onwards</p>
                 </Link>
               ))}
             </div>
@@ -238,7 +229,7 @@ export default function FullWidthLayout({ post, relatedLinks }) {
       )}
 
       {/* Related Content */}
-      <section className="py-20 px-4 bg-slate-50">
+      <section className="py-12 sm:py-20 px-4 bg-slate-50">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-display-serif text-3xl font-bold text-slate-900 mb-10">More to Explore</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

@@ -6,6 +6,15 @@ import { generateWeddingMetadata } from "@/lib/seo/metadata-factory";
 import AEOHead from '@/components/seo/AEOHead';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getRelatedRoutes } from '@/utilis/linkingHelper';
+import WeddingCityLocal from '@/components/seo/WeddingCityLocal';
+// Week 53: the nineteen wedding city pages were 76.5% alike with a 10.9%
+// unique share. These are the per-city facts that make each page about its
+// own city — season, venue geography, the procession, and which cars the
+// local venues can actually take.
+import { getWeddingCityLocal } from '@/utilis/weddingCityLocal';
+import DirectAnswer from '@/components/content/DirectAnswer';
+import { deriveWeddingCityAnswer } from '@/utilis/directAnswers';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -113,38 +122,21 @@ export default function CityWeddingPage({ params }) {
     ]
   };
 
-  // Event Schema for Wedding Service
-  const eventSchema = {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": `${city.name} Wedding Car Rental Services`,
-    "description": `Professional wedding car rental services in ${city.name} including luxury cars, baraat tempo travellers, and decorated vehicles for all wedding ceremonies.`,
-    "image": "https://www.trivenicabs.in/images/wedding/luxury_car.jpg",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "location": {
-      "@type": "Place",
-      "name": city.name,
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": city.name,
-        "addressCountry": "IN"
-      }
-    },
-    "organizer": {
-      "@type": "Organization",
-      "name": "Triveni Cabs",
-      "url": "https://www.trivenicabs.in"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": `https://www.trivenicabs.in/wedding/${params.city}`,
-      "price": city.priceRange,
-      "priceCurrency": "INR",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2024-01-01"
-    }
-  };
+  // Week 53: an Event node used to sit here, named "<City> Wedding Car Rental
+  // Services" with eventStatus EventScheduled and no startDate. Google's Events
+  // report flagged all 19 of them as invalid for exactly that reason, and the
+  // report was right twice over: the field was missing, and the page does not
+  // describe an event at all. It describes a car-hire service available all
+  // year, which is why there was no date to give.
+  //
+  // Inventing a startDate would have satisfied the validator by asserting a
+  // scheduled event that does not exist — the same class of error as the
+  // composed review markup removed in Week 52. The node is removed instead.
+  // Nothing is lost: the Service node above already describes the offering
+  // correctly, the invalid Event nodes were never eligible for an Events rich
+  // result, and the 139 genuinely dated festival Events elsewhere on the site
+  // are untouched.
+
 
   // Product Schema for Wedding Car Fleet
   const productSchema = {
@@ -164,13 +156,6 @@ export default function CityWeddingPage({ params }) {
       "highPrice": city.priceRange.split('-')[1].trim().split(' ')[0].replace('₹', '').replace(',', ''),
       "offerCount": "5",
       "availability": "https://schema.org/InStock"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount(params.city)),
-      "bestRating": "5",
-      "worstRating": "1"
     }
   };
 
@@ -198,13 +183,6 @@ export default function CityWeddingPage({ params }) {
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       "opens": "00:00",
       "closes": "23:59"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount(params.city)),
-      "bestRating": "5",
-      "worstRating": "1"
     }
   };
 
@@ -222,12 +200,6 @@ export default function CityWeddingPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* Event Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
-      />
-
       {/* Product Schema */}
       <script
         type="application/ld+json"
@@ -241,7 +213,19 @@ export default function CityWeddingPage({ params }) {
       />
 
       <AEOHead pageType="wedding" data={{ url: `/wedding/${params.city}`, title: `${city.name} Wedding Car Rental`, city: city.name }} />
-      <CityWeddingPageClient city={city} citySlug={params.city} />
+      {/* relatedRoutes resolved here — the helper imports sightseeingData.js (1.24 MB). */}
+      <CityWeddingPageClient
+        city={city}
+        citySlug={params.city}
+        relatedRoutes={getRelatedRoutes(city.name)}
+        shortAnswer={(() => {
+          const a = deriveWeddingCityAnswer(city, getWeddingCityLocal(params.city));
+          return a ? (
+            <DirectAnswer heading={a.heading} lead={a.lead} facts={a.facts} note={a.note} />
+          ) : null;
+        })()}
+      />
+      <WeddingCityLocal city={city.name} local={getWeddingCityLocal(params.city)} />
     </>
   );
 }

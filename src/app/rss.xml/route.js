@@ -36,10 +36,10 @@ export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Triveni Cabs — Travel Guides &amp; Road Trip Blog</title>
+    <title>Triveni Cabs™ — Travel Guides &amp; Road Trip Blog</title>
     <link>${BASE}/blog</link>
     <atom:link href="${BASE}/rss.xml" rel="self" type="application/rss+xml"/>
-    <description>Road trips, fares, tolls and travel guides for North India — from the Triveni Cabs booking desk.</description>
+    <description>Road trips, fares, tolls and travel guides for North India — from the Triveni Cabs™ booking desk.</description>
     <language>en-in</language>
     <lastBuildDate>${posts[0] ? new Date(posts[0].date).toUTCString() : new Date().toUTCString()}</lastBuildDate>
 ${items}

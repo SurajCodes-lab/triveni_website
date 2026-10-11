@@ -191,6 +191,10 @@ const FAQSection = ({
                   key={index}
                   className={cn(currentVariant.item)}
                 >
+                  {/* Week 49: the question is a real heading (h3 wrapping the
+                      toggle), so answer engines read it as a question-shaped
+                      sub-heading; the button keeps the accordion behaviour. */}
+                  <h3 className="m-0">
                   <button
                     onClick={() => toggleItem(index)}
                     className={cn(
@@ -212,6 +216,7 @@ const FAQSection = ({
                       aria-hidden="true"
                     />
                   </button>
+                  </h3>
 
                   <div
                     id={`faq-answer-${index}`}

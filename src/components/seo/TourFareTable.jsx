@@ -69,8 +69,8 @@ export default function TourFareTable({ tour, tone = 'dark', className = '' }) {
 
       {/* The table scrolls inside its own container so a narrow screen never
           forces the whole page to scroll sideways. */}
-      <div className="-mx-2 overflow-x-auto px-2">
-        <table className="w-full min-w-[560px] border-collapse text-left text-sm">
+      <div className="-mx-2 sm:overflow-x-auto px-2">
+        <table className="w-full sm:min-w-[560px] border-collapse text-left text-sm rt-stack">
           <caption className="sr-only">
             {tour.name} fares by vehicle type, including seating capacity, luggage
             allowance and who each vehicle suits. Prices are for the complete tour.
@@ -95,19 +95,25 @@ export default function TourFareTable({ tour, tone = 'dark', className = '' }) {
                     </span>
                   )}
                 </th>
-                <td className="px-4 py-3 opacity-90">{r.seats}</td>
-                <td className="px-4 py-3 opacity-90">{r.bags}</td>
-                <td className="px-4 py-3 opacity-90">{r.bestFor}</td>
-                <td className={`px-4 py-3 text-right text-base font-black ${fareColor}`}>{rupees(r.fare)}</td>
+                <td data-label="Seats" className="px-4 py-3 opacity-90">{r.seats}</td>
+                <td data-label="Luggage" className="px-4 py-3 opacity-90">{r.bags}</td>
+                <td data-label="Best for" className="px-4 py-3 opacity-90">{r.bestFor}</td>
+                <td data-label="Total fare" className={`px-4 py-3 text-right text-base font-black ${fareColor}`}>{rupees(r.fare)}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
+      {/* extraKm is a number on most tours but a per-vehicle sentence on some
+          ("Sedan ₹11/km, SUV ₹15/km, …"). Coercing that with Number() rendered
+          the literal "₹NaN per km" on the three Golden Triangle pages, so take
+          the value as written whenever it is not a bare number. */}
       {tour.price.extraKm && (
         <p className="mt-4 text-xs opacity-70">
-          Distance beyond the standard tour route is billed at {rupees(tour.price.extraKm)} per km.
+          {Number.isFinite(Number(tour.price.extraKm))
+            ? <>Distance beyond the standard tour route is billed at {rupees(tour.price.extraKm)} per km.</>
+            : <>Distance beyond the standard tour route is billed at {tour.price.extraKm}.</>}
         </p>
       )}
     </div>

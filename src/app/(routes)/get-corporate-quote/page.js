@@ -8,10 +8,10 @@ export const metadata = {
   description:
     'Request a customized corporate transportation quote. Employee pickup-drop, office shuttles, executive car rental, airport transfers.',
   keywords:
-    'corporate cab quote, employee transport quote, office shuttle pricing, corporate car rental, executive cab service, monthly car rental corporate, employee pickup drop service, corporate transportation India, Triveni Cabs corporate',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+    'corporate cab quote, employee transport quote, office shuttle pricing, corporate car rental, executive cab service, monthly car rental corporate, employee pickup drop service, corporate transportation India, Triveni Cabs™ corporate',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/get-corporate-quote',
@@ -23,7 +23,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/get-corporate-quote',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: '/images/citypage_hero_section_image.jpg',

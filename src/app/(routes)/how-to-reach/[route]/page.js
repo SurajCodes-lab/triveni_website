@@ -1,10 +1,12 @@
 import { notFound } from 'next/navigation';
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import { getHowToReachRoute, getAllHowToReachSlugs, getRelatedHowToReachRoutes } from '@/utilis/howToReachRouteData';
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import HowToReachClient from '@/components/how-to-reach/HowToReachClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import DataTable from '@/components/seo/DataTable';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -45,18 +47,18 @@ export async function generateMetadata({ params }) {
       `${route.origin} to ${route.destination} time`,
       `${route.destination} transport options`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/how-to-reach/${slug}` },
     openGraph: {
-      title: `How to Reach ${route.destination} from ${route.origin} | Compare Car, Bus, Train & Flight \u2014 Triveni Cabs`,
+      title: `How to Reach ${route.destination} from ${route.origin} | Compare Car, Bus, Train & Flight \u2014 Triveni Cabs™`,
       description,
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/how-to-reach/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `How to Reach ${route.destination} from ${route.origin}` }],
     },
     twitter: {
@@ -67,7 +69,7 @@ export async function generateMetadata({ params }) {
       site: '@trivenicabs',
       images: [getOgImageForSlug(slug)],
     },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -118,9 +120,9 @@ export default async function HowToReachRoutePage({ params }) {
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
+        "streetAddress": "366, Dandupura, near Tajganj",
         "addressLocality": "Agra",
-        "addressRegion": "UP",
+        "addressRegion": "Uttar Pradesh",
         "postalCode": "282006",
         "addressCountry": "IN"
       }
@@ -128,13 +130,7 @@ export default async function HowToReachRoutePage({ params }) {
     "areaServed": [
       { "@type": "City", "name": route.origin },
       { "@type": "City", "name": route.destination }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount(slug)),
-      "bestRating": "5"
-    }
+    ]
   };
 
   // JSON-LD: Breadcrumb
@@ -166,6 +162,26 @@ export default async function HowToReachRoutePage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <AEOHead pageType="route" data={{ url: `/how-to-reach/${slug}`, title: `How to Reach ${route.destination} from ${route.origin}`, origin: route.origin, destination: route.destination, city: route.origin }} />
+      {/* Comparison table — "how to reach X" is answered by a table of modes
+          with distance, time and cost. The cards below carry the same facts but
+          are not eligible for a table snippet and leave an assistant to pair
+          four costs against four modes by reading card order. */}
+      <DataTable
+        title={`How to reach ${route.destination} from ${route.origin}`}
+        caption={`Ways to travel from ${route.origin} to ${route.destination}, comparing distance, journey time and typical cost for each mode of transport.`}
+        intro="Costs are typical fares at the time of writing and vary with season and booking window."
+        columns={[
+          { key: 'mode', label: 'Mode' },
+          { key: 'distance', label: 'Distance' },
+          { key: 'duration', label: 'Journey time' },
+          { key: 'costRange', label: 'Typical cost', align: 'right', strong: true },
+        ]}
+        rows={route.travelModes || []}
+        badgeKey="recommended"
+        tone="light"
+        className="bg-slate-50"
+      />
+
       <HowToReachClient route={route} relatedRoutes={relatedRoutes} />
     </>
   );

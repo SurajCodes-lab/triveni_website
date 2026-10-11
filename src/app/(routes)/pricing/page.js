@@ -7,15 +7,16 @@ import { COMPANY_INFO } from '@/lib/seo/constants';
 import { generatePricingTableSchema, generateSpeakableSchema } from '@/lib/seo/aeo-generators';
 import { getArticleSchema, getHowToSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { groupDigits } from '@/utilis/pricing';
 
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Taxi Rates 2026 — Sedan ₹11/km, SUV ₹15/km, Transparent'),
-  description: 'Triveni Cabs pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹20-28/km, Bus ₹30-42/km. No hidden charges. Includes driver, fuel, toll.',
+  description: 'Triveni Cabs™ pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹20-28/km, Bus ₹30-42/km. No hidden charges. Includes driver, fuel, toll.',
   keywords: 'taxi rates India, cab fare calculator, taxi price per km, sedan rental rates, SUV hire price, tempo traveller rates, bus rental cost, outstation taxi fare, airport taxi rates, transparent taxi pricing',
   openGraph: {
-    title: 'Taxi Rates & Pricing — Sedan ₹11/km, SUV ₹15/km | Triveni Cabs',
+    title: 'Taxi Rates & Pricing — Sedan ₹11/km, SUV ₹15/km | Triveni Cabs™',
     description: 'Transparent taxi pricing. Sedan ₹11/km, SUV ₹15/km, Tempo ₹20-28/km. No hidden charges. Get instant fare estimates.',
     url: 'https://www.trivenicabs.in/pricing',
   },
@@ -25,7 +26,7 @@ export const metadata = {
 ,
   twitter: {
     card: 'summary_large_image',
-    title: "Taxi Rates & Pricing — Sedan ₹11/km, SUV ₹15/km | Triveni Cabs",
+    title: "Taxi Rates & Pricing — Sedan ₹11/km, SUV ₹15/km | Triveni Cabs™",
     description: "Transparent taxi pricing. Sedan ₹11/km, SUV ₹15/km, Tempo ₹20-28/km. No hidden charges. Get instant fare estimates.",
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -211,7 +212,7 @@ export default function PricingPage() {
                               <span className="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">Popular</span>
                             )}
                           </div>
-                          <span className={`font-bold text-lg ${colors.text}`}>₹{vehicle.pricePerKm}/km</span>
+                          <span className={`font-bold text-lg ${colors.text}`}>₹{groupDigits(vehicle.pricePerKm)}/km</span>
                         </div>
                         <div className="flex flex-wrap gap-2 text-xs text-gray-600">
                           <span className="flex items-center gap-1">
@@ -219,7 +220,7 @@ export default function PricingPage() {
                             {vehicle.seats} seats
                           </span>
                           <span>Min: {vehicle.minKm} km/day</span>
-                          <span>DA: ₹{vehicle.driverAllowance}/day</span>
+                          <span>DA: ₹{groupDigits(vehicle.driverAllowance)}/day</span>
                         </div>
                         {vehicle.localRate && (
                           <div className="mt-2 text-xs text-gray-500">Local: {vehicle.localRate}</div>
@@ -259,10 +260,10 @@ export default function PricingPage() {
                               </span>
                             </td>
                             <td className="py-4 text-center">
-                              <span className={`font-bold text-lg ${colors.text}`}>₹{vehicle.pricePerKm}</span>
+                              <span className={`font-bold text-lg ${colors.text}`}>₹{groupDigits(vehicle.pricePerKm)}</span>
                             </td>
                             <td className="py-4 text-center text-gray-600">{vehicle.minKm} km</td>
-                            <td className="py-4 text-center text-gray-600">₹{vehicle.driverAllowance}/day</td>
+                            <td className="py-4 text-center text-gray-600">₹{groupDigits(vehicle.driverAllowance)}/day</td>
                           </tr>
                         ))}
                       </tbody>
@@ -298,11 +299,11 @@ export default function PricingPage() {
                 <div className="flex justify-between items-center">
                   <div>
                     <div className="text-xs text-gray-500">Sedan</div>
-                    <div className="font-bold text-amber-600">₹{route.sedanPrice}</div>
+                    <div className="font-bold text-amber-600">₹{groupDigits(route.sedanPrice)}</div>
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-gray-500">SUV</div>
-                    <div className="font-bold text-blue-600">₹{route.suvPrice}</div>
+                    <div className="font-bold text-blue-600">₹{groupDigits(route.suvPrice)}</div>
                   </div>
                 </div>
               </div>
@@ -389,13 +390,13 @@ export default function PricingPage() {
       </section>
 
       {/* SEO Content Section */}
-      <section className="py-16 px-4 bg-white border-t border-gray-100">
+      <section className="py-10 sm:py-16 px-4 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto prose prose-gray prose-lg">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
             Taxi Rates & Car Rental Pricing in India — Transparent Fares with No Hidden Charges
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            Triveni Cabs offers the most competitive and transparent taxi pricing across India. Our sedan cab
+            Triveni Cabs™ offers the most competitive and transparent taxi pricing across India. Our sedan cab
             rates start at just <strong>₹11 per kilometre</strong> for popular models like Swift Dzire, Toyota Etios, and Honda Amaze —
             ideal for couples, solo travellers, and small families. Need more space? Our SUV rentals including
             Maruti Ertiga (from <strong>₹15/km</strong>) and Toyota Innova (from <strong>₹18/km</strong>) are perfect for family road trips and
@@ -448,20 +449,20 @@ export default function PricingPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(getArticleSchema({
             slug: 'pricing',
-            headline: 'Triveni Cabs Taxi Rates 2026 — Transparent Per-KM Pricing',
+            headline: 'Triveni Cabs™ Taxi Rates 2026 — Transparent Per-KM Pricing',
             description: 'Sedan ₹11/km, SUV ₹15/km, Tempo ₹20-28/km, Bus ₹30-42/km. All-inclusive fares with no hidden charges.',
             image: '/images/citypage_hero_section_image.jpg',
             speakableSelectors: ['.speakable-headline', '.speakable-lead']
           }))
         }}
       />
-      {/* HowTo: how Triveni Cabs pricing works */}
+      {/* HowTo: how Triveni Cabs™ pricing works */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(getHowToSchema({
             name: 'How Triveni Cabs Pricing Works',
-            description: 'How to calculate and confirm an all-inclusive cab fare with Triveni Cabs.',
+            description: 'How to calculate and confirm an all-inclusive cab fare with Triveni Cabs™.',
             totalTime: 'PT5M',
             estimatedCost: { currency: 'INR', value: 2999 },
             steps: [
@@ -524,7 +525,7 @@ export default function PricingPage() {
                 "name": "What is the taxi rate per km in India?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Taxi rates in India vary by vehicle type. With Triveni Cabs: Sedan costs ₹11-14/km, SUV costs ₹15-18/km, Tempo Traveller costs ₹20-28/km, and Bus costs ₹30-50/km. All rates include fuel and driver charges."
+                  "text": "Taxi rates in India vary by vehicle type. With Triveni Cabs™: Sedan costs ₹11-14/km, SUV costs ₹15-18/km, Tempo Traveller costs ₹20-28/km, and Bus costs ₹30-50/km. All rates include fuel and driver charges."
                 }
               },
               {
@@ -540,7 +541,7 @@ export default function PricingPage() {
                 "name": "What is included in the taxi fare?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Triveni Cabs fare includes: AC vehicle, experienced driver, fuel charges, driver allowance, GST (5%), and state permits. Toll charges, parking fees, entry fees, and night charges (after 10 PM) are additional."
+                  "text": "Triveni Cabs™ fare includes: AC vehicle, experienced driver, fuel charges, driver allowance, GST (5%), and state permits. Toll charges, parking fees, entry fees, and night charges (after 10 PM) are additional."
                 }
               },
               {

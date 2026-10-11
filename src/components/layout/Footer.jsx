@@ -21,7 +21,7 @@ import { bookingCanonicalRedirects } from '@/lib/seo/booking-canonical-redirects
 const CANONICAL = new Map(bookingCanonicalRedirects.map((r) => [r.source, r.destination]));
 const canonical = (href) => CANONICAL.get(href) || href;
 
-const Footer = () => {
+const Footer = ({ seasonLinks: seasonLinksProp = null }) => {
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
@@ -58,16 +58,16 @@ const Footer = () => {
     { name: "Delhi to Jaipur", href: canonical("/delhi-to-jaipur") },
     { name: "Jaipur to Agra", href: canonical("/jaipur-to-agra") },
     { name: "Delhi to Chandigarh", href: canonical("/delhi-to-chandigarh") },
-    { name: "Delhi to Haridwar", href: canonical("/delhi-to-haridwar") },
+    { name: "Delhi to Haridwar", href: canonical("/one-way-cab/delhi-to-haridwar") },
     { name: "Delhi to Shimla", href: canonical("/delhi-to-shimla") },
-    { name: "Delhi to Manali", href: canonical("/delhi-to-manali") },
+    { name: "Delhi to Manali", href: canonical("/one-way-cab/delhi-to-manali") },
     { name: "Chandigarh to Shimla", href: canonical("/chandigarh-to-shimla") },
     { name: "Chandigarh to Manali", href: canonical("/chandigarh-to-manali") },
     { name: "Delhi to Amritsar", href: canonical("/delhi-to-amritsar") },
     // Exact-match anchors for GSC booking queries stuck at pos 8-25 — the
     // "Cab"/"Taxi" word is intentional here and must not be trimmed to match
     // the shorter style of the entries above.
-    { name: "Delhi to Dehradun Taxi", href: canonical("/delhi-to-dehradun") },
+    { name: "Delhi to Dehradun Taxi", href: canonical("/one-way-cab/delhi-to-dehradun") },
     { name: "Chandigarh to Amritsar Cab", href: canonical("/chandigarh-to-amritsar") },
     { name: "Mussoorie to Delhi Cab", href: canonical("/mussoorie-to-delhi") },
     { name: "Chandigarh to Kasauli Cab", href: canonical("/chandigarh-to-kasauli") },
@@ -104,26 +104,19 @@ const Footer = () => {
     { name: "Haridwar Rishikesh Tour", href: "/sightseeing/haridwar-rishikesh-same-day" }
   ];
 
-  // Aug/Sep 2026 season pages — peak-season money pages; footer link gives them
-  // sitewide equity (they previously had zero internal links from core pages).
-  const seasonLinks = [
-    { name: "Long Weekend Calendar 2026", href: "/long-weekend-calendar-2026" },
-    { name: "Where to Go in August", href: "/where-to-go/august" },
-    { name: "Independence Day Weekend", href: "/independence-day-weekend-packages-2026" },
-    { name: "August Long Weekends", href: "/august-long-weekend-getaways-delhi" },
-    { name: "September Long Weekends", href: "/september-long-weekend-trips-2026" },
-    { name: "Monsoon Road Trips", href: "/monsoon-road-trip-packages" },
-    { name: "Monsoon Hill Stations", href: "/monsoon-hill-station-packages" },
-    { name: "Leh Ladakh Aug-Sep", href: "/leh-ladakh-august-september-trip" },
-    { name: "Spiti Valley in August", href: "/spiti-valley-august-trip" },
-    { name: "Kashmir in September", href: "/kashmir-in-september" },
-    { name: "Kedarnath in September", href: "/kedarnath-september-trip" },
-    { name: "Char Dham September", href: "/chardham-yatra-september-2026" },
-    { name: "Valley of Flowers Trek", href: "/valley-of-flowers-trek-from-delhi" },
-    { name: "Raksha Bandhan Cabs", href: "/raksha-bandhan-cab-service" },
-    { name: "Janmashtami Mathura", href: "/janmashtami-mathura-vrindavan-cab" },
-    { name: "Ganesh Chaturthi", href: "/ganesh-chaturthi-transport" },
-    { name: "Teej in Jaipur", href: "/hariyali-teej-jaipur-cab" }
+  // Season pages for sitewide equity. The list used to be written in here and
+  // was still pointing at August in October; it now arrives resolved by date
+  // from the root layout. See src/utilis/seasonalFooter.js for why.
+  //
+  // The fallback matters: this is a client component, and if it is ever
+  // rendered without the prop the block should still carry useful links rather
+  // than disappear.
+  const seasonLinks = seasonLinksProp && seasonLinksProp.length ? seasonLinksProp : [
+    { name: "Wedding Cars", href: "/wedding" },
+    { name: "Monthly Car Rental", href: "/monthly-car-rental" },
+    { name: "Corporate Travel", href: "/corporate-transportation-service" },
+    { name: "Long Weekend Calendar", href: "/long-weekend-calendar-2026" },
+    { name: "Fare Calculator", href: "/fare-calculator" },
   ];
 
   const eventCities = [
@@ -140,7 +133,16 @@ const Footer = () => {
     { name: "Tempo Traveller", href: "/vehicles/tempo-traveller" },
     { name: "Bus", href: "/vehicles/bus" },
     { name: "Sedan vs SUV", href: "/sedan-vs-suv" },
-    { name: "Tempo vs Bus", href: "/tempo-vs-bus" }
+    { name: "Tempo vs Bus", href: "/tempo-vs-bus" },
+    // Week 49: an audit of every page against every internal link found these
+    // with no inbound link anywhere on the site, which is what "discovered,
+    // currently not indexed" looks like. They are real pages people ask for.
+    { name: "Urbania vs Tempo Traveller", href: "/force-urbania-vs-tempo-traveller" },
+    { name: "Bachelor trip, North India", href: "/bachelor-trip-north-india" },
+    { name: "Rajasthan trip cost", href: "/rajasthan-trip-cost-budget" },
+    { name: "New Year road trips", href: "/new-year-road-trip-packages" },
+    { name: "Durga Puja transport", href: "/durga-puja-travel-transport" },
+    { name: "Maha Shivratri cabs", href: "/maha-shivratri-pilgrimage-cab" }
   ];
 
   const handleFooterLinkClick = (linkName, href) => {
@@ -270,14 +272,14 @@ const Footer = () => {
             <div className="space-y-6 flex items-center flex-col">
               <div className="relative group">
                 <div className="absolute -inset-2 bg-gradient-to-r from-primary to-primary-dark rounded-card-lg blur opacity-25 group-hover:opacity-50 transition duration-normal"></div>
-                <Image src="/images/logo/logo2.webp" alt="Triveni Cabs Logo" width={80} height={80} quality={100} placeholder="blur" blurDataURL={blurDataURL} className="h-20 w-auto relative" />
+                <Image src="/images/logo/logo2-tm.webp" alt="Triveni Cabs™ Logo" width={103} height={36} quality={100} placeholder="blur" blurDataURL={blurDataURL} className="h-9 w-auto relative" />
               </div>
               <p className="text-body-sm text-center leading-relaxed text-gray-300">
                 Your trusted travel partner providing premium transportation services across India since 2015.
               </p>
               <div className="flex items-center justify-center space-x-3" role="group" aria-label="Social media links">
                 <a
-                  href="https://facebook.com/trivenicabs"
+                  href="https://www.facebook.com/trivenicabs"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={socialIconClasses}
@@ -287,7 +289,7 @@ const Footer = () => {
                   <Facebook className="w-5 h-5 text-black" aria-hidden="true" />
                 </a>
                 <a
-                  href="https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo"
+                  href="https://www.instagram.com/cabstriveni"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={socialIconClasses}
@@ -422,7 +424,14 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col items-center md:items-start gap-2">
             <p className="text-body-sm text-gray-300 text-center md:text-left">
-              © {new Date().getFullYear()} Triveni Cabs. All rights reserved.
+              © {new Date().getFullYear()} Triveni Cabs™. All rights reserved.
+            </p>
+            {/* Trademark ownership notice. Kept immediately under the copyright
+                line so the two legal statements read as one block. Swap ™ for ®
+                and "is a trademark of" for "is a registered trademark of" once
+                the application is granted. */}
+            <p className="text-body-xs text-gray-500 text-center md:text-left">
+              Triveni Cabs™ is a trademark of Triveni Cabs™.
             </p>
             <p className="text-body-xs text-gray-500 text-center md:text-left">
               Made with love in India

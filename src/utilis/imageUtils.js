@@ -76,7 +76,7 @@ const CITY_IMAGE_MAP = {
   'jaipur': '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg',
   'jaisalmer': '/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg',
   'jim corbett': '/images/sightseeing/Jim_Corbett/Jim_corbett_hero_section.jpg',
-  'jodhpur': '/images/sightseeing/Jodhpur/Jodhpur_hero_section.jpg',
+  'jodhpur': '/images/sightseeing/Jodhpur/Mehrangarh Fort.jpg',
   'junagadh': '/images/sightseeing/Junagadh/Junagadh_hero_section.jpg',
   'kasauli': '/images/sightseeing/Kasauli/Kasauli_Hero_Section.jpg',
   'kashmir': '/images/sightseeing/Kashmir_Valley/Kashmir_Valley_hero_section.jpg',

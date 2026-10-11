@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
 
   const title = tightenTitle(`${vehicleSpec.name} Hire: ${routeData.origin} to ${routeData.destination} | Rs ${routeData.fare.toLocaleString('en-IN')}`);
   const description = `Hire ${vehicleSpec.name} (${vehicleSpec.type}, ${vehicleSpec.seating} seater) from ${routeData.origin} to ${routeData.destination} at Rs ${routeData.fare.toLocaleString('en-IN')}. ${routeData.distanceKm} km, ${routeData.duration}. AC, experienced driver. Call 7668570551.`;
-  const ogTitle = `${vehicleSpec.name} ${vehicleSpec.seating} Seater: ${routeData.origin} to ${routeData.destination} — Rs ${routeData.fare.toLocaleString('en-IN')} All-Inclusive | Triveni Cabs`;
+  const ogTitle = `${vehicleSpec.name} ${vehicleSpec.seating} Seater: ${routeData.origin} to ${routeData.destination} — Rs ${routeData.fare.toLocaleString('en-IN')} All-Inclusive | Triveni Cabs™`;
 
   return {
     title,
@@ -45,9 +45,9 @@ export async function generateMetadata({ params }) {
       `tempo traveller outstation ${routeData.origin.toLowerCase()}`,
       `best tempo for ${routeData.destination.toLowerCase()} trip`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/${VEHICLE_SLUG}/${slug}` },
     openGraph: {
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/${VEHICLE_SLUG}/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: vehicleSpec.image, width: 1200, height: 630, alt: `${vehicleSpec.name} Hire ${routeData.origin} to ${routeData.destination}` }],
     },
     twitter: {
@@ -93,11 +93,10 @@ export default async function VehicleHirePage({ params }) {
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
       "url": "https://www.trivenicabs.in",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "addressRegion": "UP", "postalCode": "282006", "addressCountry": "IN" }
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "addressRegion": "Uttar Pradesh", "postalCode": "282006", "addressCountry": "IN" }
     },
     "areaServed": [{ "@type": "City", "name": routeData.origin }, { "@type": "City", "name": routeData.destination }],
-    "offers": { "@type": "Offer", "price": routeData.fare.toString(), "priceCurrency": "INR", "availability": "https://schema.org/InStock" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount(slug)), "bestRating": "5" }
+    "offers": { "@type": "Offer", "price": routeData.fare.toString(), "priceCurrency": "INR", "availability": "https://schema.org/InStock" }
   };
 
   const breadcrumbSchema = {

@@ -14,7 +14,7 @@ export const corporateIndustries = {
     color: 'from-blue-500 to-cyan-500',
     tagline: 'Powering IT Workforce Mobility',
     subtitle: 'Trusted by Tech Parks Across North India',
-    description: 'Triveni Cabs provides specialized corporate transportation solutions for IT companies, software firms, and tech startups. We understand the unique challenges of tech workforce mobility - multiple shift timings, flexible work schedules, and the need for reliable, trackable transportation.',
+    description: 'Triveni Cabs™ provides specialized corporate transportation solutions for IT companies, software firms, and tech startups. We understand the unique challenges of tech workforce mobility - multiple shift timings, flexible work schedules, and the need for reliable, trackable transportation.',
 
     challenges: [
       {
@@ -57,9 +57,10 @@ export const corporateIndustries = {
     ],
 
     fleet: [
-      { type: 'Sedan', capacity: '4 pax', useCase: 'Individual executives, leads', price: '₹12-15/km' },
-      { type: 'SUV', capacity: '6-7 pax', useCase: 'Small teams, managers', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Team transport', price: '₹20-28/km' },
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Individual executives, leads', price: '₹11/km' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Small teams, managers', price: '₹15–18/km' },
+      { type: 'Force Urbania', capacity: '10-17 pax', useCase: 'Client visits, offshore team pickups', price: '₹25-30/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Team transport', price: '₹23/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Large team shuttles', price: '₹55-85/km' }
     ],
 
@@ -103,7 +104,7 @@ export const corporateIndustries = {
     color: 'from-purple-500 to-pink-500',
     tagline: '24/7 Transport for Round-the-Clock Operations',
     subtitle: 'Trusted by Leading BPOs for Night Shift Safety',
-    description: 'BPO and call center operations never stop, and neither does our service. Triveni Cabs specializes in providing safe, reliable transportation for the BPO industry with special focus on night shift operations, women employee safety, and rotational shift management.',
+    description: 'BPO and call center operations never stop, and neither does our service. Triveni Cabs™ specializes in providing safe, reliable transportation for the BPO industry with special focus on night shift operations, women employee safety, and rotational shift management.',
 
     challenges: [
       {
@@ -155,9 +156,10 @@ export const corporateIndustries = {
     ],
 
     fleet: [
-      { type: 'Sedan', capacity: '4 pax', useCase: 'Team leads, individual drops', price: '₹12-15/km' },
-      { type: 'SUV', capacity: '6-7 pax', useCase: 'Small groups, managers', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Team transport', price: '₹20-28/km' },
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Team leads, individual drops', price: '₹11/km' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Small groups, managers', price: '₹15–18/km' },
+      { type: 'Force Urbania', capacity: '10-17 pax', useCase: 'Client audits, management visits', price: '₹25-30/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Team transport', price: '₹23/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Large shift batches', price: '₹55-85/km' }
     ],
 
@@ -195,7 +197,7 @@ export const corporateIndustries = {
     color: 'from-green-500 to-teal-500',
     tagline: 'Reliable Transport for Pharma Excellence',
     subtitle: 'Connecting Pharmaceutical Hubs Across North India',
-    description: 'The pharmaceutical industry demands precision and reliability in every operation, including employee transportation. Triveni Cabs provides specialized transport solutions for pharma companies, healthcare facilities, and medical device manufacturers with focus on punctuality and hygiene.',
+    description: 'The pharmaceutical industry demands precision and reliability in every operation, including employee transportation. Triveni Cabs™ provides specialized transport solutions for pharma companies, healthcare facilities, and medical device manufacturers with focus on punctuality and hygiene.',
 
     challenges: [
       {
@@ -238,9 +240,10 @@ export const corporateIndustries = {
     ],
 
     fleet: [
-      { type: 'Sedan', capacity: '4 pax', useCase: 'Managers, QA executives', price: '₹12-15/km' },
-      { type: 'SUV', capacity: '6-7 pax', useCase: 'Plant heads, senior staff', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff transport', price: '₹20-28/km' },
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Managers, QA executives', price: '₹11/km' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Plant heads, senior staff', price: '₹15–18/km' },
+      { type: 'Force Urbania', capacity: '10-17 pax', useCase: 'MR conferences, principal visits', price: '₹25-30/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff transport', price: '₹23/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Worker transport', price: '₹55-85/km' }
     ],
 
@@ -278,7 +281,7 @@ export const corporateIndustries = {
     color: 'from-orange-500 to-red-500',
     tagline: 'Workforce Mobility for Manufacturing Excellence',
     subtitle: 'Moving India\'s Manufacturing Workforce',
-    description: 'Manufacturing success depends on your workforce reaching the factory floor on time, every shift. Triveni Cabs provides large-scale employee transportation for manufacturing plants, handling everything from blue-collar worker transport to management commutes.',
+    description: 'Manufacturing success depends on your workforce reaching the factory floor on time, every shift. Triveni Cabs™ provides large-scale employee transportation for manufacturing plants, handling everything from blue-collar worker transport to management commutes.',
 
     challenges: [
       {
@@ -321,9 +324,10 @@ export const corporateIndustries = {
     ],
 
     fleet: [
-      { type: 'Sedan', capacity: '4 pax', useCase: 'Plant managers, executives', price: '₹12-15/km' },
-      { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior staff, supervisors', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff, operators', price: '₹20-28/km' },
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Plant managers, executives', price: '₹11/km' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior staff, supervisors', price: '₹15–18/km' },
+      { type: 'Force Urbania', capacity: '10-17 pax', useCase: 'Client plant audits, delegations', price: '₹25-30/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff, operators', price: '₹23/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Workers, large teams', price: '₹55-85/km' }
     ],
 
@@ -361,7 +365,7 @@ export const corporateIndustries = {
     color: 'from-indigo-500 to-blue-500',
     tagline: 'Premium Transport for Banking Excellence',
     subtitle: 'Serving India\'s Leading Financial Institutions',
-    description: 'Banking and financial services demand the highest standards of professionalism, reliability, and discretion. Triveni Cabs provides premium corporate transportation for banks, NBFCs, insurance companies, and other financial institutions with focus on executive comfort and security.',
+    description: 'Banking and financial services demand the highest standards of professionalism, reliability, and discretion. Triveni Cabs™ provides premium corporate transportation for banks, NBFCs, insurance companies, and other financial institutions with focus on executive comfort and security.',
 
     challenges: [
       {
@@ -415,8 +419,9 @@ export const corporateIndustries = {
     fleet: [
       { type: 'Premium Sedan', capacity: '4 pax', useCase: 'Executives, branch heads', price: '₹18-25/km' },
       { type: 'Luxury Sedan', capacity: '4 pax', useCase: 'CXOs, senior management', price: 'On Request' },
-      { type: 'Premium SUV', capacity: '6-7 pax', useCase: 'Team visits, client meetings', price: '₹20-28/km' },
-      { type: 'Tempo Traveller', capacity: '12-17 pax', useCase: 'Branch team outings', price: '₹20-24/km' }
+      { type: 'Premium SUV', capacity: '6-7 pax', useCase: 'Team visits, client meetings', price: '₹23/km' },
+      { type: 'Force Urbania', capacity: '10-17 pax', useCase: 'Regional heads, auditor visits', price: '₹25-30/km' },
+      { type: 'Tempo Traveller', capacity: '12-17 pax', useCase: 'Branch team outings', price: '₹23/km' }
     ],
 
     faqs: [
@@ -453,7 +458,7 @@ export const corporateIndustries = {
     color: 'from-red-500 to-pink-500',
     tagline: 'Reliable Transport for Healthcare Heroes',
     subtitle: 'Trusted by Leading Hospitals Across North India',
-    description: 'Healthcare never sleeps, and neither does our transport service. Triveni Cabs provides specialized transportation for hospitals, clinics, diagnostic centers, and healthcare companies. We understand the critical nature of healthcare operations with 24/7 availability, sanitized vehicles, and punctual service for all shift timings.',
+    description: 'Healthcare never sleeps, and neither does our transport service. Triveni Cabs™ provides specialized transportation for hospitals, clinics, diagnostic centers, and healthcare companies. We understand the critical nature of healthcare operations with 24/7 availability, sanitized vehicles, and punctual service for all shift timings.',
 
     challenges: [
       {
@@ -496,9 +501,10 @@ export const corporateIndustries = {
     ],
 
     fleet: [
-      { type: 'Sedan', capacity: '4 pax', useCase: 'Doctors, specialists', price: '₹12-15/km' },
-      { type: 'SUV', capacity: '6-7 pax', useCase: 'Medical teams, HODs', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Nursing staff, technicians', price: '₹20-28/km' },
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Doctors, specialists', price: '₹11/km' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Medical teams, HODs', price: '₹15–18/km' },
+      { type: 'Force Urbania', capacity: '10-17 pax', useCase: 'Visiting consultants, conference panels', price: '₹25-30/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Nursing staff, technicians', price: '₹23/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Large hospital staff', price: '₹55-85/km' }
     ],
 
@@ -536,7 +542,7 @@ export const corporateIndustries = {
     color: 'from-amber-500 to-orange-500',
     tagline: 'Safe Transport for Education Excellence',
     subtitle: 'Trusted by Schools & Universities Across India',
-    description: 'Education institutions need reliable, safe, and punctual transportation for their staff and faculty. Triveni Cabs provides comprehensive transport solutions for schools, colleges, coaching centers, and universities with focus on safety, timeliness, and cost efficiency.',
+    description: 'Education institutions need reliable, safe, and punctual transportation for their staff and faculty. Triveni Cabs™ provides comprehensive transport solutions for schools, colleges, coaching centers, and universities with focus on safety, timeliness, and cost efficiency.',
 
     challenges: [
       {
@@ -579,9 +585,10 @@ export const corporateIndustries = {
     ],
 
     fleet: [
-      { type: 'Sedan', capacity: '4 pax', useCase: 'Principals, HODs', price: '₹12-15/km' },
-      { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior faculty', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Teaching staff groups', price: '₹20-28/km' },
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Principals, HODs', price: '₹11/km' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior faculty', price: '₹15–18/km' },
+      { type: 'Force Urbania', capacity: '10-17 pax', useCase: 'Accreditation panels, guest faculty', price: '₹25-30/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Teaching staff groups', price: '₹23/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Large staff transport', price: '₹55-85/km' }
     ],
 
@@ -619,7 +626,7 @@ export const corporateIndustries = {
     color: 'from-slate-500 to-zinc-600',
     tagline: 'Trusted Partner for Government Mobility',
     subtitle: 'Serving Central & State Government Organizations',
-    description: 'Triveni Cabs provides professional vehicle rental services for government departments, PSUs, and public sector organizations. We are fully compliant with government procurement standards, offer competitive tender pricing, GST-compliant billing, and maintain a large fleet suitable for official duties, VIP movement, and departmental operations.',
+    description: 'Triveni Cabs™ provides professional vehicle rental services for government departments, PSUs, and public sector organizations. We are fully compliant with government procurement standards, offer competitive tender pricing, GST-compliant billing, and maintain a large fleet suitable for official duties, VIP movement, and departmental operations.',
 
     challenges: [
       {
@@ -702,7 +709,7 @@ export const corporateIndustries = {
     color: 'from-yellow-500 to-amber-600',
     tagline: 'Powering E-commerce Workforce Mobility',
     subtitle: 'Serving India\'s Largest E-commerce & Logistics Companies',
-    description: 'The e-commerce and logistics industry operates at lightning speed with massive workforce requirements. Triveni Cabs provides scalable employee transportation for warehouses, fulfillment centers, sorting hubs, and corporate offices of e-commerce and logistics companies with special expertise in handling peak season surges.',
+    description: 'The e-commerce and logistics industry operates at lightning speed with massive workforce requirements. Triveni Cabs™ provides scalable employee transportation for warehouses, fulfillment centers, sorting hubs, and corporate offices of e-commerce and logistics companies with special expertise in handling peak season surges.',
 
     challenges: [
       {
@@ -745,9 +752,10 @@ export const corporateIndustries = {
     ],
 
     fleet: [
-      { type: 'Sedan', capacity: '4 pax', useCase: 'Managers, supervisors', price: '₹12-15/km' },
-      { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior staff, team leads', price: '₹16-20/km' },
-      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff transport', price: '₹20-28/km' },
+      { type: 'Sedan', capacity: '4 pax', useCase: 'Managers, supervisors', price: '₹11/km' },
+      { type: 'SUV', capacity: '6-7 pax', useCase: 'Senior staff, team leads', price: '₹15–18/km' },
+      { type: 'Force Urbania', capacity: '10-17 pax', useCase: 'Vendor delegations, leadership visits', price: '₹25-30/km' },
+      { type: 'Tempo Traveller', capacity: '12-26 pax', useCase: 'Staff transport', price: '₹23/km' },
       { type: 'Bus', capacity: '32-56 pax', useCase: 'Warehouse workers', price: '₹55-85/km' }
     ],
 

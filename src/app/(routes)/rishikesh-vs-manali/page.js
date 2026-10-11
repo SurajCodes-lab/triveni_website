@@ -1,8 +1,9 @@
 import { getCompareBySlug } from '@/utilis/destinationCompareData';
 import DestinationCompareClient from '@/components/compare/DestinationCompareClient';
-import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { buildDestinationCompareMeta } from '@/lib/seo/serp-ctr';
 
 const data = getCompareBySlug('rishikesh-vs-manali');
+const meta = buildDestinationCompareMeta(data);
 
 const images = {
   dest1: {
@@ -18,26 +19,26 @@ const images = {
 export const revalidate = 3600;
 
 export const metadata = {
-  title: tightenTitle(data.title),
-  description: data.metaDescription,
+  title: meta.title,
+  description: meta.description,
   keywords: data.keywords,
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/rishikesh-vs-manali' },
   openGraph: {
-    title: data.title,
-    description: data.metaDescription,
+    title: meta.title,
+    description: meta.description,
     type: 'article',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/rishikesh-vs-manali',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: {
     card: 'summary_large_image',
-    title: data.title,
-    description: data.metaDescription,
+    title: meta.title,
+    description: meta.description,
     creator: '@trivenicabs',
     site: '@trivenicabs',
   },

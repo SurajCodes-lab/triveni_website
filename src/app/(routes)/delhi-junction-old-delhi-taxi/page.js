@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
@@ -37,7 +36,7 @@ const STATION = {
   ],
   faqs: [
     { question: 'How much does a taxi from Old Delhi station to Red Fort cost?', answer: 'A taxi from Delhi Junction (Old Delhi) to Red Fort costs just ₹149. The distance is barely 1 km but navigating through Chandni Chowk traffic on your own with luggage can be challenging. Our AC sedan makes it effortless.' },
-    { question: 'Is it safe to take a taxi from Old Delhi station at night?', answer: 'With Triveni Cabs, yes. All vehicles are GPS tracked, drivers are background-verified, and you receive the driver details (name, phone, vehicle number) before pickup. We handle late-night Old Delhi pickups regularly.' },
+    { question: 'Is it safe to take a taxi from Old Delhi station at night?', answer: 'With Triveni Cabs™, yes. All vehicles are GPS tracked, drivers are background-verified, and you receive the driver details (name, phone, vehicle number) before pickup. We handle late-night Old Delhi pickups regularly.' },
     { question: 'Can I book a taxi from Delhi Junction to IGI Airport?', answer: 'Yes! Delhi Junction to IGI Airport taxi costs ₹699 for AC sedan. The 22 km journey takes 45-75 minutes depending on traffic. We also offer SUVs for larger groups with extra luggage.' },
     { question: 'What is the difference between Old Delhi and New Delhi station?', answer: 'Delhi Junction (DLI) is in Old Delhi near Chandni Chowk and Red Fort. New Delhi station (NDLS) is near Connaught Place and Paharganj. Check your ticket carefully. We serve both stations with fixed-fare taxis.' },
     { question: 'Do you offer Old Delhi sightseeing packages from the station?', answer: 'Yes! Our 4hr/40km package at ₹1,599 covers Red Fort, Jama Masjid, Chandni Chowk, and India Gate. The 8hr/80km package at ₹2,699 covers both Old and New Delhi attractions. Your driver stays with you all day.' },
@@ -50,11 +49,11 @@ export const metadata = {
   description: 'Book taxi from Delhi Junction / Old Delhi Railway Station (DLI). Fixed fares from ₹149 to Red Fort, Chandni Chowk, Airport. AC sedan & SUV, 24/7.',
   keywords: 'old delhi station taxi, delhi junction taxi, DLI station cab, taxi from old delhi to red fort, delhi junction cab booking, old delhi station to airport taxi, chandni chowk station taxi, old delhi railway station cab, DLI to connaught place taxi, old delhi station pickup',
   alternates: { canonical: '/delhi-junction-old-delhi-taxi' },
-  openGraph: { title: 'Old Delhi Station Taxi — Fixed Fare from ₹149 | Triveni Cabs', description: '24/7 taxi from Delhi Junction. Red Fort ₹149, CP ₹249, Airport ₹699. AC vehicles, platform pickup.', type: 'website', url: `${BASE_URL}/delhi-junction-old-delhi-taxi` },
+  openGraph: { title: 'Old Delhi Station Taxi — Fixed Fare from ₹149 | Triveni Cabs™', description: '24/7 taxi from Delhi Junction. Red Fort ₹149, CP ₹249, Airport ₹699. AC vehicles, platform pickup.', type: 'website', url: `${BASE_URL}/delhi-junction-old-delhi-taxi` },
 
   twitter: {
     card: 'summary_large_image',
-    title: "Old Delhi Station Taxi — Fixed Fare from ₹149 | Triveni Cabs",
+    title: "Old Delhi Station Taxi — Fixed Fare from ₹149 | Triveni Cabs™",
     description: "24/7 taxi from Delhi Junction. Red Fort ₹149, CP ₹249, Airport ₹699. AC vehicles, platform pickup.",
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -65,13 +64,13 @@ export default function DelhiJunctionTaxiPage() {
   const cheapest = STATION.destinations.reduce((m, d) => Math.min(m, d.fare), Infinity);
   const highest = STATION.destinations.reduce((m, d) => Math.max(m, d.fare), 0);
   const schemas = [
-    { "@context": "https://schema.org", "@type": "TaxiService", "name": `Triveni Cabs - ${STATION.stationName} Taxi`, "description": STATION.description, "provider": { "@type": "LocalBusiness", "name": COMPANY_INFO.name, "telephone": COMPANY_INFO.phone.primary }, "areaServed": { "@type": "Place", "name": STATION.city }, "offers": { "@type": "AggregateOffer", "lowPrice": cheapest, "highPrice": highest, "priceCurrency": "INR" }, "aggregateRating": { "@type": "AggregateRating", ...AGGREGATE_RATING } },
+    { "@context": "https://schema.org", "@type": "TaxiService", "name": `Triveni Cabs™ - ${STATION.stationName} Taxi`, "description": STATION.description, "provider": { "@type": "LocalBusiness", "name": COMPANY_INFO.name, "telephone": COMPANY_INFO.phone.primary }, "areaServed": { "@type": "Place", "name": STATION.city }, "offers": { "@type": "AggregateOffer", "lowPrice": cheapest, "highPrice": highest, "priceCurrency": "INR" } },
     { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL }, { "@type": "ListItem", "position": 2, "name": `${STATION.stationName} Taxi`, "item": `${BASE_URL}/${STATION.slug}` }] },
     { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": STATION.faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } })) },
   ];
   return (
     <>
-      {schemas.map((s, i) => <Script key={i} id={`schema-${STATION.slug}-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} strategy="afterInteractive" />)}
+      {schemas.map((s, i) => <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} strategy="afterInteractive" />)}
       <AEOHead pageType="station" data={{ url: `/${STATION.slug}`, title: `${STATION.stationName} Taxi Service`, city: STATION.city }} />
       <StationTaxiClient data={STATION} />
     </>

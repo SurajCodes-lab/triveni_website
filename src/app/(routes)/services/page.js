@@ -78,7 +78,7 @@ export const metadata = {
     description: 'Outstation ₹11/km, airport ₹1,500+, wedding ₹15K+, tempo ₹23/km. 50+ cities, 10,000+ rides done. 24/7 support. Book in 2 min.',
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     url: 'https://www.trivenicabs.in/services',
     images: [
       {
@@ -206,13 +206,7 @@ export default function ServicesPage() {
       "@type": "Country",
       "name": "India"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount('services')),
-      "bestRating": "5",
-      "worstRating": "1"
-    },
+    
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Complete Cab Services",

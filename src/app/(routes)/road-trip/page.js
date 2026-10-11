@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("Road Trip Circuits by Car — Multi-Day Itineraries");
-  const description = "Multi-day road trip circuits by car across North India — itineraries, distances, chauffeur. Triveni Cabs 7668570551.";
+  const description = "Multi-day road trip circuits by car across North India — itineraries, distances, chauffeur. Triveni Cabs™ 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

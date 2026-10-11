@@ -45,7 +45,7 @@ export function generateLongTailFaqs({
     },
     {
       question: `Is the ${a} to ${b} taxi available 24 hours?`,
-      answer: `Yes, Triveni Cabs runs ${a} to ${b} taxi service 24×7. Night-driving allowance of ₹250 applies between 10 PM and 6 AM. Call or WhatsApp +91 7668570551 any time — your verified driver typically reaches your pickup within 30-45 minutes for advance bookings.`,
+      answer: `Yes, Triveni Cabs™ runs ${a} to ${b} taxi service 24×7. Night-driving allowance of ₹250 applies between 10 PM and 6 AM. Call or WhatsApp +91 7668570551 any time — your verified driver typically reaches your pickup within 30-45 minutes for advance bookings.`,
     },
     {
       question: `How long does the ${a} to ${b} drive take?`,

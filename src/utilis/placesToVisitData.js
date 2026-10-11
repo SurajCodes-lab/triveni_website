@@ -3,7 +3,70 @@
  * Used by PlacesToVisitClient.jsx
  */
 
-export const placesToVisitPages = {
+import { servedHref } from '@/lib/seo/route-exists';
+// Week 53: ten further cities, with every fare computed from the rate card
+// rather than written. Kept in their own file because the existing nineteen
+// carry hardcoded fare strings and these do not — mixing the two shapes in
+// one file would hide which is which.
+import { placesToVisitWave2 } from './placesToVisitWave2';
+
+/**
+ * Every `bookingSlug` below was written by convention — city slug, "-to-",
+ * destination slug — and 138 of the 260 of them point at a corridor page that
+ * was never built. Measured in Week 53: 124 survive only because a Week 47
+ * broken-link rule folds them onto something real, costing a redirect hop
+ * each, and 14 resolve to nothing at all and were serving a 404 to anyone who
+ * clicked them.
+ *
+ * This pass resolves each one to the page that is actually served:
+ *
+ *   - a real corridor page            -> linked directly
+ *   - a corridor that folds elsewhere -> the page it folds onto, in one hop
+ *   - nothing at all                  -> null
+ *
+ * On null, `PlacesToVisitClient` already falls back to the phone link, which is
+ * a working booking path, and `listUrl` falls back to the page the destination
+ * is described on so the ItemList markup never publishes a dead address.
+ *
+ * Doing it here rather than in the 19 page files means a corridor page built
+ * next month is picked up automatically: these pages are server components that
+ * pass `data` down as props, so the resolved values are what reach the browser.
+ */
+function resolveBookingLinks(pages) {
+  for (const [slug, page] of Object.entries(pages)) {
+    const own = `/places-to-visit-near-${slug}`;
+    // The city's corporate page exists for only nine of the nineteen cities;
+    // the hub always does, and ranks better than most of them anyway.
+    // The service-links row used to synthesise four hrefs from the city slug —
+    // /<slug>, /sightseeing/<slug>, /airport-service/<slug>, /wedding/<slug> —
+    // which is the same convention-by-slug pattern route-exists.js exists to
+    // stop. It happened to hold for the original nineteen cities and broke
+    // immediately on the ten added in Week 53: Faridabad has no sightseeing or
+    // airport page, and four of the ten have no wedding page. Seven links to
+    // nothing, caught before release by the link check rather than by a reader.
+    //
+    // Resolved here and handed down, so a link appears only when its target is
+    // actually served, and appears automatically once one is built.
+    page.corporateHref =
+      servedHref(`/corporate-transportation-service/${page.slug}`) ||
+      '/corporate-transportation-service';
+    page.serviceLinks = {
+      outstation: servedHref(`/${page.slug}`),
+      sightseeing: servedHref(`/sightseeing/${page.slug}`),
+      airport: servedHref(`/airport-service/${page.slug}`),
+      wedding: servedHref(`/wedding/${page.slug}`),
+    };
+    for (const dest of page.destinations || []) {
+      const served = servedHref(dest.bookingSlug);
+      dest.bookingSlug = served;
+      dest.listUrl = served || own;
+    }
+  }
+  return pages;
+}
+
+export const placesToVisitPages = resolveBookingLinks({
+  ...placesToVisitWave2,
 ghaziabad: {
     city: "Ghaziabad",
     slug: "ghaziabad",
@@ -12,7 +75,7 @@ ghaziabad: {
     description: [
       "Ghaziabad, the bustling industrial city on the eastern edge of the National Capital Region, sits at a road-trip crossroads that few NCR towns can match. With the Delhi-Meerut Expressway, NH-9, and NH-34 fanning out in every direction, Ghaziabad puts the Ganga plains, the Braj temple towns, the Taj Mahal, and the Uttarakhand foothills all within a comfortable half-day drive.",
       "For Ghaziabad, Indirapuram, Vaishali, and Raj Nagar residents looking to escape the city, the options run from a quick temple morning at Garhmukteshwar on the Ganga to the spiritual bustle of Haridwar and Rishikesh, the Krishna towns of Mathura and Vrindavan, the tiger country of Jim Corbett, and the cool Mall Roads of Nainital and Mussoorie. Meerut and the Ganga ghats are close enough for an easy half-day outing.",
-      "Triveni Cabs provides doorstep pickup from anywhere in Ghaziabad, Indirapuram, Vasundhara, Vaishali, Kaushambi, and along the Delhi-Meerut Expressway. Our well-maintained sedans and SUVs, driven by experienced highway drivers who know every expressway exit and dhaba, ensure a smooth, comfortable start to your weekend getaway."
+      "Triveni Cabs™ provides doorstep pickup from anywhere in Ghaziabad, Indirapuram, Vasundhara, Vaishali, Kaushambi, and along the Delhi-Meerut Expressway. Our well-maintained sedans and SUVs, driven by experienced highway drivers who know every expressway exit and dhaba, ensure a smooth, comfortable start to your weekend getaway."
     ],
     destinations: [
       { name: "Garhmukteshwar", distance: "60 km", time: "1.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Ganga Ghats, Pilgrimage", description: "The nearest holy Ganga town to Ghaziabad, Garhmukteshwar is famed for its riverside ghats, the Kartik Purnima fair, and a peaceful morning aarti. A perfect quick half-day spiritual outing.", highlights: ["Ganga Ghats", "Mukteshwar Temple", "Kartik Purnima Fair"], bestTime: "Oct-Mar", bookingSlug: "/ghaziabad" },
@@ -36,7 +99,7 @@ ghaziabad: {
       { question: "How much does a cab from Ghaziabad to nearby places cost?", answer: "Cab fares from Ghaziabad start at Rs 2,530 (Sedan) or Rs 3,450 (SUV) for nearby destinations like Mathura, Haridwar, and Agra, based on Rs 11/km with a 300 km minimum. Longer trips like Jaipur or Shimla cost Rs 3,190-3,630 for a Sedan. Toll and parking are extra at actual." },
       { question: "How far is Haridwar from Ghaziabad by cab?", answer: "Haridwar is about 200 km from Ghaziabad and takes 4-4.5 hours by cab. The evening Ganga Aarti at Har Ki Pauri makes it a rewarding spiritual weekend trip, easily combined with nearby Rishikesh." },
       { question: "Which is the nearest hill station to Ghaziabad?", answer: "Nainital (270 km, 6 hrs), Mussoorie (260 km, 6 hrs), and Lansdowne (240 km, 6 hrs) are the nearest hill stations from Ghaziabad. Shimla (330 km, 7 hrs) is a slightly longer drive for a longer weekend." },
-      { question: "Can I get a cab pickup from Indirapuram or Vaishali?", answer: "Yes, Triveni Cabs provides doorstep pickup from anywhere in Ghaziabad, including Indirapuram, Vasundhara, Vaishali, Kaushambi, Raj Nagar, and along the Delhi-Meerut Expressway. Call 7668570551 to book." },
+      { question: "Can I get a cab pickup from Indirapuram or Vaishali?", answer: "Yes, Triveni Cabs™ provides doorstep pickup from anywhere in Ghaziabad, including Indirapuram, Vasundhara, Vaishali, Kaushambi, Raj Nagar, and along the Delhi-Meerut Expressway. Call 7668570551 to book." },
       { question: "What is the best time to plan a road trip from Ghaziabad?", answer: "October to March is ideal for the plains and temple towns like Agra, Mathura, and Garhmukteshwar. For hill stations like Nainital, Mussoorie, and Shimla, March to June offers pleasant weather, while Jim Corbett safaris run best from November to June." },
       { question: "Do you offer round-trip cabs for weekend getaways from Ghaziabad?", answer: "Yes, we offer round-trip packages for all weekend getaways from Ghaziabad. The driver stays with you for the entire trip. Sedan round trips start at Rs 11/km with a 300 km/day minimum, with driver allowance and fuel included." }
     ]
@@ -49,17 +112,17 @@ ghaziabad: {
     description: [
       "Delhi, the bustling capital of India, serves as the perfect launchpad for some of the most memorable road trips in North India. Whether you are craving the serenity of hill stations, the grandeur of historical monuments, or the thrill of wildlife safaris, there is a destination within driving distance that fits every mood and budget.",
       "From the iconic Taj Mahal in Agra (just 3-4 hours away) to the pink-hued streets of Jaipur, from the spiritual ghats of Haridwar to the misty trails of Mussoorie, Delhi offers unmatched connectivity to 20+ incredible destinations. The well-maintained expressways and national highways make these road trips comfortable and time-efficient.",
-      "Triveni Cabs specialises in outstation trips from Delhi with experienced drivers who know every route, rest stop, and shortcut. Whether it is a quick day trip to Neemrana Fort or a long weekend in Shimla, our sedans and SUVs are maintained for highway comfort. Book your cab and let the road trip begin."
+      "Triveni Cabs™ specialises in outstation trips from Delhi with experienced drivers who know every route, rest stop, and shortcut. Whether it is a quick day trip to Neemrana Fort or a long weekend in Shimla, our sedans and SUVs are maintained for highway comfort. Book your cab and let the road trip begin."
     ],
     destinations: [
       { name: "Agra", distance: "230 km", time: "3-4 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Taj Mahal, Heritage", description: "Home to the iconic Taj Mahal, Agra Fort, and Fatehpur Sikri. A must-visit UNESCO World Heritage destination perfect for a day trip or overnight stay.", highlights: ["Taj Mahal", "Agra Fort", "Fatehpur Sikri"], bestTime: "Oct-Mar", bookingSlug: "/delhi-to-agra" },
-      { name: "Jaipur", distance: "280 km", time: "4-5 hours", sedanFare: "3,080", suvFare: "4,200", bestFor: "Forts, Culture", description: "The Pink City dazzles with Amber Fort, Hawa Mahal, and City Palace. A vibrant blend of royal heritage, colourful bazaars, and Rajasthani cuisine.", highlights: ["Amber Fort", "Hawa Mahal", "City Palace"], bestTime: "Oct-Mar", bookingSlug: "/delhi-to-jaipur" },
+      { name: "Jaipur", distance: "280 km", time: "4-5 hours", sedanFare: "3,300", suvFare: "4,200", bestFor: "Forts, Culture", description: "The Pink City dazzles with Amber Fort, Hawa Mahal, and City Palace. A vibrant blend of royal heritage, colourful bazaars, and Rajasthani cuisine.", highlights: ["Amber Fort", "Hawa Mahal", "City Palace"], bestTime: "Oct-Mar", bookingSlug: "/delhi-to-jaipur" },
       { name: "Mathura-Vrindavan", distance: "180 km", time: "3 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Pilgrimage, Temples", description: "The birthplace of Lord Krishna, Mathura and Vrindavan are dotted with ancient temples, colourful ghats, and a deeply spiritual atmosphere.", highlights: ["Krishna Janmabhoomi", "Banke Bihari Temple", "Prem Mandir"], bestTime: "Oct-Mar", bookingSlug: "/delhi-to-mathura" },
       { name: "Neemrana", distance: "120 km", time: "2 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Heritage Hotel, Zipline", description: "The stunning 15th-century Neemrana Fort Palace is now a heritage hotel offering zip-lining, vintage car rides, and panoramic Aravalli views.", highlights: ["Neemrana Fort Palace", "Zip-lining", "Aravalli Views"], bestTime: "Oct-Mar", bookingSlug: "/delhi-to-neemrana" },
-      { name: "Haridwar", distance: "230 km", time: "4-5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Spirituality, Ganga Aarti", description: "One of the seven holiest cities in Hinduism, Haridwar is famous for the mesmerising Ganga Aarti at Har Ki Pauri and sacred river bathing.", highlights: ["Har Ki Pauri", "Ganga Aarti", "Mansa Devi Temple"], bestTime: "Oct-Jun", bookingSlug: "/delhi-to-haridwar" },
+      { name: "Haridwar", distance: "230 km", time: "4-5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Spirituality, Ganga Aarti", description: "One of the seven holiest cities in Hinduism, Haridwar is famous for the mesmerising Ganga Aarti at Har Ki Pauri and sacred river bathing.", highlights: ["Har Ki Pauri", "Ganga Aarti", "Mansa Devi Temple"], bestTime: "Oct-Jun", bookingSlug: "/one-way-cab/delhi-to-haridwar" },
       { name: "Rishikesh", distance: "245 km", time: "5-6 hours", sedanFare: "2,695", suvFare: "3,675", bestFor: "Adventure, Yoga", description: "The Yoga Capital of the World offers white-water rafting, bungee jumping, and serene ashrams along the Ganges. A paradise for adventure seekers.", highlights: ["Laxman Jhula", "River Rafting", "Beatles Ashram"], bestTime: "Sep-May", bookingSlug: "/delhi-to-rishikesh" },
       { name: "Shimla", distance: "350 km", time: "7-8 hours", sedanFare: "3,850", suvFare: "5,250", bestFor: "Hill Station, Colonial", description: "The former summer capital of British India, Shimla charms with its Mall Road, colonial architecture, toy train, and cool mountain weather.", highlights: ["Mall Road", "Ridge", "Toy Train"], bestTime: "Mar-Jun, Dec", bookingSlug: "/delhi-to-shimla" },
-      { name: "Manali", distance: "540 km", time: "10-12 hours", sedanFare: "5,940", suvFare: "8,100", bestFor: "Mountains, Adventure", description: "Nestled in the Kullu Valley, Manali is a gateway to Rohtang Pass, Solang Valley, and Old Manali. Perfect for snow, adventure sports, and honeymoons.", highlights: ["Rohtang Pass", "Solang Valley", "Old Manali"], bestTime: "Oct-Jun", bookingSlug: "/delhi-to-manali" },
+      { name: "Manali", distance: "540 km", time: "10-12 hours", sedanFare: "5,940", suvFare: "8,100", bestFor: "Mountains, Adventure", description: "Nestled in the Kullu Valley, Manali is a gateway to Rohtang Pass, Solang Valley, and Old Manali. Perfect for snow, adventure sports, and honeymoons.", highlights: ["Rohtang Pass", "Solang Valley", "Old Manali"], bestTime: "Oct-Jun", bookingSlug: "/one-way-cab/delhi-to-manali" },
       { name: "Chandigarh", distance: "250 km", time: "4-5 hours", sedanFare: "2,750", suvFare: "3,750", bestFor: "Modern City, Gardens", description: "India's best-planned city designed by Le Corbusier. Visit the Rock Garden, Sukhna Lake, and Rose Garden in this clean, green metropolis.", highlights: ["Rock Garden", "Sukhna Lake", "Rose Garden"], bestTime: "Sep-Mar", bookingSlug: "/delhi-to-chandigarh" },
       { name: "Mussoorie", distance: "290 km", time: "6-7 hours", sedanFare: "3,190", suvFare: "4,350", bestFor: "Hill Station, Views", description: "The Queen of Hills offers stunning Himalayan views from Gun Hill, the charming Mall Road, and the beautiful Kempty Falls.", highlights: ["Gun Hill", "Mall Road", "Kempty Falls"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/delhi-to-mussoorie" },
       { name: "Nainital", distance: "300 km", time: "6-7 hours", sedanFare: "3,300", suvFare: "4,500", bestFor: "Lake, Nature", description: "Built around the stunning Naini Lake, this charming hill station offers boating, cable car rides to Snow View Point, and Naina Devi Temple.", highlights: ["Naini Lake", "Snow View Point", "Mall Road"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/delhi-to-nainital" },
@@ -68,7 +131,7 @@ ghaziabad: {
       { name: "Bharatpur", distance: "185 km", time: "3-4 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Bird Sanctuary, Heritage", description: "Home to Keoladeo National Park (a UNESCO site), Bharatpur attracts birdwatchers from around the world with 350+ bird species including migratory visitors.", highlights: ["Keoladeo National Park", "Bharatpur Palace", "Lohagarh Fort"], bestTime: "Oct-Feb", bookingSlug: "/delhi-to-bharatpur" },
       { name: "Sariska", distance: "200 km", time: "4 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Wildlife, Temples", description: "Sariska Tiger Reserve is a lesser-known alternative to Ranthambore, with tigers, leopards, and the ancient Neelkanth temples inside the park.", highlights: ["Tiger Reserve", "Neelkanth Temples", "Siliserh Lake"], bestTime: "Oct-Jun", bookingSlug: "/delhi-to-sariska" },
       { name: "Kurukshetra", distance: "170 km", time: "3 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Mythology, History", description: "The legendary battlefield of the Mahabharata, Kurukshetra has Brahma Sarovar, Krishna Museum, and the famous Jyotisar where the Bhagavad Gita was delivered.", highlights: ["Brahma Sarovar", "Krishna Museum", "Jyotisar"], bestTime: "Oct-Mar", bookingSlug: "/delhi-to-kurukshetra" },
-      { name: "Dehradun", distance: "260 km", time: "5-6 hours", sedanFare: "2,860", suvFare: "3,900", bestFor: "Gateway City, Nature", description: "The capital of Uttarakhand and gateway to Mussoorie, Dehradun offers Robber's Cave, Sahastradhara, FRI campus, and a pleasant Doon Valley climate.", highlights: ["Robber's Cave", "FRI Campus", "Sahastradhara"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/delhi-to-dehradun" },
+      { name: "Dehradun", distance: "260 km", time: "5-6 hours", sedanFare: "2,860", suvFare: "3,900", bestFor: "Gateway City, Nature", description: "The capital of Uttarakhand and gateway to Mussoorie, Dehradun offers Robber's Cave, Sahastradhara, FRI campus, and a pleasant Doon Valley climate.", highlights: ["Robber's Cave", "FRI Campus", "Sahastradhara"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/one-way-cab/delhi-to-dehradun" },
       { name: "Lansdowne", distance: "260 km", time: "6 hours", sedanFare: "2,860", suvFare: "3,900", bestFor: "Quiet Hill Station", description: "One of the quietest hill stations in Uttarakhand, Lansdowne is an army cantonment town with pine forests, Bhulla Lake, and Tip-n-Top viewpoint.", highlights: ["Bhulla Lake", "Tip-n-Top", "War Memorial"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/delhi-to-lansdowne" },
       { name: "Kasauli", distance: "310 km", time: "5-6 hours", sedanFare: "3,410", suvFare: "4,650", bestFor: "Quiet Retreat, Colonial", description: "A tiny cantonment town in Himachal Pradesh, Kasauli offers peaceful walks through pine and cedar forests, colonial-era churches, and Monkey Point.", highlights: ["Monkey Point", "Christ Church", "Gilbert Trail"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/delhi-to-kasauli" },
       { name: "Amritsar", distance: "450 km", time: "7-8 hours", sedanFare: "4,950", suvFare: "6,750", bestFor: "Golden Temple, History", description: "The spiritual capital of Sikhism, Amritsar is home to the magnificent Golden Temple, the poignant Jallianwala Bagh, and the Wagah Border ceremony.", highlights: ["Golden Temple", "Jallianwala Bagh", "Wagah Border"], bestTime: "Oct-Mar", bookingSlug: "/delhi-to-amritsar" }
@@ -78,7 +141,7 @@ ghaziabad: {
       { question: "Which places near Delhi can I visit in one day?", answer: "For a day trip from Delhi, visit Agra (230 km, 3-4 hrs), Neemrana (120 km, 2 hrs), Mathura-Vrindavan (180 km, 3 hrs), Alwar (160 km, 3 hrs), or Kurukshetra (170 km, 3 hrs). Start early and return by evening." },
       { question: "How much does a cab from Delhi to nearby places cost?", answer: "Cab fares from Delhi start at Rs 2,530 for nearby destinations like Agra, Neemrana, and Mathura (Sedan at Rs 11/km, 300 km minimum). For Shimla or Manali, expect Rs 3,850-5,940 for Sedan." },
       { question: "What is the best time to plan a road trip from Delhi?", answer: "October to March is ideal for plains destinations like Agra and Jaipur. For hill stations like Shimla, Manali, and Mussoorie, March to June offers pleasant weather. Monsoon (Jul-Sep) is best avoided for mountain roads." },
-      { question: "Can I book a one-way cab from Delhi?", answer: "Yes, Triveni Cabs offers one-way cabs from Delhi to all destinations. Pay only for a single direction starting at Rs 11/km (Sedan). Call 7668570551 for instant quotes." },
+      { question: "Can I book a one-way cab from Delhi?", answer: "Yes, Triveni Cabs™ offers one-way cabs from Delhi to all destinations. Pay only for a single direction starting at Rs 11/km (Sedan). Call 7668570551 for instant quotes." },
       { question: "Is it safe to drive from Delhi at night?", answer: "Major expressways like Delhi-Agra Expressway and Delhi-Jaipur NH48 are well-lit and safe at night. However, we recommend starting early morning for hill station trips. All our drivers are experienced with night driving on highways." },
       { question: "Do you provide round-trip cabs for weekend getaways?", answer: "Yes, we offer round-trip packages for all weekend getaways. The driver stays with you for the entire trip. Sedan round trip starts at Rs 11/km with 300 km/day minimum. Driver allowance and fuel included." },
       { question: "Which hill stations near Delhi are best in summer?", answer: "Shimla (350 km), Manali (540 km), Mussoorie (290 km), Nainital (300 km), and Kasauli (310 km) are the best summer escapes from Delhi. Temperatures remain 15-25 degrees Celsius compared to Delhi's 40+ degrees." }
@@ -115,11 +178,11 @@ ghaziabad: {
     description: [
       "Agra, the city of the Taj Mahal, is surrounded by some of the most historically significant and culturally rich destinations in India. From the abandoned Mughal city of Fatehpur Sikri just 40 km away to the royal Gwalior Fort 120 km south, Agra is at the heart of India's golden heritage triangle.",
       "Most visitors to Agra focus solely on the Taj Mahal and Agra Fort, missing out on incredible nearby destinations. The sacred twin cities of Mathura and Vrindavan are just an hour away, the bird paradise of Bharatpur is 55 km, and the stunning Chambal ravines offer a unique wildlife experience within 90 km.",
-      "Triveni Cabs, headquartered in Agra, knows every route from the city like the back of our hand. Our drivers can guide you to hidden gems like Bateshwar temples, the glass bangles of Firozabad, and the Chambal boat safari. Book a cab from Agra and explore the real heart of North India."
+      "Triveni Cabs™, headquartered in Agra, knows every route from the city like the back of our hand. Our drivers can guide you to hidden gems like Bateshwar temples, the glass bangles of Firozabad, and the Chambal boat safari. Book a cab from Agra and explore the real heart of North India."
     ],
     destinations: [
       { name: "Delhi", distance: "230 km", time: "3-4 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Capital City, Monuments", description: "India's capital offers Red Fort, Qutub Minar, India Gate, and Chandni Chowk. A perfect contrast to Agra's Mughal heritage with bustling modern energy.", highlights: ["Red Fort", "India Gate", "Qutub Minar"], bestTime: "Oct-Mar", bookingSlug: "/agra-to-delhi" },
-      { name: "Jaipur", distance: "240 km", time: "4-5 hours", sedanFare: "2,640", suvFare: "3,600", bestFor: "Forts, Culture", description: "The Pink City completes the Golden Triangle with Amber Fort, Hawa Mahal, and City Palace. Rich Rajasthani culture and colourful markets await.", highlights: ["Amber Fort", "Hawa Mahal", "City Palace"], bestTime: "Oct-Mar", bookingSlug: "/agra-to-jaipur" },
+      { name: "Jaipur", distance: "240 km", time: "4-5 hours", sedanFare: "2,640", suvFare: "3,600", bestFor: "Forts, Culture", description: "The Pink City completes the Golden Triangle with Amber Fort, Hawa Mahal, and City Palace. Rich Rajasthani culture and colourful markets await.", highlights: ["Amber Fort", "Hawa Mahal", "City Palace"], bestTime: "Oct-Mar", bookingSlug: "/one-way-cab/agra-to-jaipur" },
       { name: "Mathura", distance: "58 km", time: "1 hour", sedanFare: "2,530", suvFare: "3,450", bestFor: "Krishna Temple, Pilgrimage", description: "The birthplace of Lord Krishna is just an hour from Agra. Visit Krishna Janmabhoomi, Dwarkadhish Temple, and the colourful ghats of the Yamuna.", highlights: ["Krishna Janmabhoomi", "Dwarkadhish Temple", "Vishram Ghat"], bestTime: "Oct-Mar", bookingSlug: "/agra-to-mathura" },
       { name: "Fatehpur Sikri", distance: "40 km", time: "45 min", sedanFare: "2,530", suvFare: "3,450", bestFor: "UNESCO Heritage, Mughal", description: "Emperor Akbar's abandoned capital is a UNESCO World Heritage Site featuring Buland Darwaza, Panch Mahal, and Salim Chishti's Dargah.", highlights: ["Buland Darwaza", "Panch Mahal", "Jodha Bai Palace"], bestTime: "Oct-Mar", bookingSlug: "/agra-to-fatehpur-sikri" },
       { name: "Bharatpur", distance: "55 km", time: "1 hour", sedanFare: "2,530", suvFare: "3,450", bestFor: "Bird Sanctuary, Nature", description: "Keoladeo National Park, a UNESCO World Heritage Site, hosts 350+ bird species. Winter brings thousands of migratory birds from Siberia and Central Asia.", highlights: ["Keoladeo National Park", "Lohagarh Fort", "Deeg Palace"], bestTime: "Oct-Feb", bookingSlug: "/agra-to-bharatpur" },
@@ -136,7 +199,7 @@ ghaziabad: {
     ],
     faqs: [
       { question: "What are the best places to visit near Agra?", answer: "Top places near Agra include Fatehpur Sikri (40 km), Mathura (58 km), Bharatpur (55 km), Vrindavan (65 km), and Gwalior (120 km). All are within 1-3 hours by car." },
-      { question: "Can I do a Golden Triangle tour from Agra?", answer: "Yes, Agra is part of the famous Delhi-Agra-Jaipur Golden Triangle. Book a 3-4 day cab tour with Triveni Cabs covering all three cities. Call 7668570551 for package rates." },
+      { question: "Can I do a Golden Triangle tour from Agra?", answer: "Yes, Agra is part of the famous Delhi-Agra-Jaipur Golden Triangle. Book a 3-4 day cab tour with Triveni Cabs™ covering all three cities. Call 7668570551 for package rates." },
       { question: "How much does a cab cost from Agra to nearby places?", answer: "Most nearby places like Mathura, Fatehpur Sikri, Bharatpur, and Vrindavan are within the 300 km minimum fare of Rs 2,530 (Sedan) or Rs 3,450 (SUV). Toll and parking extra at actual." },
       { question: "Is Agra a good base for exploring nearby cities?", answer: "Absolutely. Agra's central location makes it ideal for day trips to Fatehpur Sikri, Mathura, Vrindavan, Bharatpur, Bateshwar, and Chambal. You can explore a new destination every day." },
       { question: "What is the best time to visit places near Agra?", answer: "October to March is the ideal time. Summers (Apr-Jun) are extremely hot in this region with temperatures exceeding 45 degrees. Monsoon (Jul-Sep) can cause road disruptions." },
@@ -174,7 +237,7 @@ ghaziabad: {
     description: [
       "Jaipur, the Pink City and capital of Rajasthan, is the gateway to India's most colourful and royal destinations. From the sacred town of Pushkar just 2.5 hours away to the blue city of Jodhpur and the lake city of Udaipur, Rajasthan's treasures unfold in every direction from Jaipur.",
       "The state's excellent highway network connects Jaipur to desert forts, wildlife sanctuaries, and holy towns that showcase the real spirit of Rajasthan. Ranthambore's tiger trails are just 3 hours away, the painted havelis of Shekhawati are 3 hours north, and the fairy-tale Chittorgarh Fort is a comfortable day trip.",
-      "Triveni Cabs operates on every major Rajasthan route. Our Rajasthan-experienced drivers double as informal guides, helping you navigate desert roads, find the best dhabas, and catch sunset views at the right vantage points. Explore royal Rajasthan at your own pace with Triveni Cabs."
+      "Triveni Cabs™ operates on every major Rajasthan route. Our Rajasthan-experienced drivers double as informal guides, helping you navigate desert roads, find the best dhabas, and catch sunset views at the right vantage points. Explore royal Rajasthan at your own pace with Triveni Cabs™."
     ],
     destinations: [
       { name: "Pushkar", distance: "145 km", time: "2.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Holy Lake, Camel Fair", description: "One of the holiest cities in Hinduism with the only Brahma Temple in the world. The annual Pushkar Camel Fair attracts visitors globally.", highlights: ["Brahma Temple", "Pushkar Lake", "Camel Fair"], bestTime: "Oct-Mar", bookingSlug: "/jaipur-to-pushkar" },
@@ -191,7 +254,7 @@ ghaziabad: {
       { name: "Bikaner", distance: "330 km", time: "5-6 hours", sedanFare: "3,630", suvFare: "4,950", bestFor: "Desert, Camel Safari", description: "The desert city of Bikaner offers Junagarh Fort, Karni Mata Temple (Rat Temple), and authentic desert culture. Famous for bhujia and rasgulla.", highlights: ["Junagarh Fort", "Karni Mata Temple", "Camel Safari"], bestTime: "Oct-Mar", bookingSlug: "/jaipur-to-bikaner" },
       { name: "Jaisalmer", distance: "560 km", time: "8-9 hours", sedanFare: "6,160", suvFare: "8,400", bestFor: "Desert Fort, Sand Dunes", description: "The Golden City rises from the Thar Desert with its living fort, havelis, and Sam Sand Dunes. Camel safaris at sunset are unforgettable.", highlights: ["Jaisalmer Fort", "Sam Sand Dunes", "Patwon Havelis"], bestTime: "Oct-Mar", bookingSlug: "/jaipur-to-jaisalmer" },
       { name: "Agra", distance: "240 km", time: "4-5 hours", sedanFare: "2,640", suvFare: "3,600", bestFor: "Taj Mahal, Heritage", description: "Complete the Golden Triangle with a trip to the Taj Mahal, Agra Fort, and Fatehpur Sikri. The Delhi-Agra Expressway makes this an easy drive.", highlights: ["Taj Mahal", "Agra Fort", "Fatehpur Sikri"], bestTime: "Oct-Mar", bookingSlug: "/jaipur-to-agra" },
-      { name: "Delhi", distance: "280 km", time: "4-5 hours", sedanFare: "3,080", suvFare: "4,200", bestFor: "Capital, Monuments", description: "India's capital with Red Fort, India Gate, Qutub Minar, and Chandni Chowk. The Jaipur-Delhi NH48 is one of India's best highways.", highlights: ["Red Fort", "India Gate", "Qutub Minar"], bestTime: "Oct-Mar", bookingSlug: "/jaipur-to-delhi" }
+      { name: "Delhi", distance: "280 km", time: "4-5 hours", sedanFare: "3,300", suvFare: "4,200", bestFor: "Capital, Monuments", description: "India's capital with Red Fort, India Gate, Qutub Minar, and Chandni Chowk. The Jaipur-Delhi NH48 is one of India's best highways.", highlights: ["Red Fort", "India Gate", "Qutub Minar"], bestTime: "Oct-Mar", bookingSlug: "/one-way-cab/jaipur-to-delhi" }
     ],
     faqs: [
       { question: "What are the best weekend trips from Jaipur?", answer: "Top weekend trips from Jaipur include Pushkar-Ajmer (145 km), Ranthambore (180 km), Bundi (210 km), Mandawa (170 km), and Chittorgarh (310 km). All make excellent 2-day getaways." },
@@ -232,7 +295,7 @@ ghaziabad: {
     description: [
       "Chandigarh, India's best-planned city, sits at the foothills of the Shivalik range, making it the perfect base for exploring the scenic landscapes of Himachal Pradesh, Punjab, and Haryana. Within hours, you can be in the misty hills of Shimla, the spiritual town of Anandpur Sahib, or the vibrant streets of Amritsar.",
       "The city's strategic location between the plains and the mountains means you have access to both hill station retreats and cultural heritage destinations. Kasauli and Parwanoo are just an hour away for a quick escape, while Manali and Dharamshala offer longer mountain adventures.",
-      "Triveni Cabs provides reliable outstation cab services from Chandigarh with drivers who are experts on mountain roads. Whether you are heading to Shimla for a weekend or Amritsar for the Golden Temple, our well-maintained vehicles ensure a safe and comfortable journey."
+      "Triveni Cabs™ provides reliable outstation cab services from Chandigarh with drivers who are experts on mountain roads. Whether you are heading to Shimla for a weekend or Amritsar for the Golden Temple, our well-maintained vehicles ensure a safe and comfortable journey."
     ],
     destinations: [
       { name: "Shimla", distance: "115 km", time: "3-4 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Hill Station, Colonial", description: "The Queen of Hills with Mall Road, Ridge, Christ Church, and the famous toy train. A classic hill station just 3 hours from Chandigarh.", highlights: ["Mall Road", "Ridge", "Jakhoo Temple"], bestTime: "Mar-Jun, Dec", bookingSlug: "/chandigarh-to-shimla" },
@@ -277,7 +340,7 @@ ghaziabad: {
       { title: "Weekend Getaways from Chandigarh", url: "/weekend-getaways-from-chandigarh-by-car", description: "Hill stations and escapes from Chandigarh" },
       { title: "7-Day Himachal Tour by Car", url: "/7-day-himachal-tour-by-car", description: "Complete Shimla-Manali road trip" },
       { title: "Chandigarh to Shimla Cab", url: "/one-way-cab/chandigarh-to-shimla", description: "One-way taxi to Shimla" },
-      { title: "Chandigarh to Manali Cab", url: "/one-way-cab/chandigarh-to-manali", description: "One-way taxi to Manali" }
+      { title: "Chandigarh to Manali Cab", url: "/chandigarh-to-manali", description: "One-way taxi to Manali" }
     ]
   },
 
@@ -289,7 +352,7 @@ ghaziabad: {
     description: [
       "Lucknow, the City of Nawabs, is surrounded by destinations steeped in spirituality, history, and natural beauty. From the sacred ghats of Varanasi to the ancient Buddhist sites of Sarnath, from the wildlife of Dudhwa to the pilgrimage centres of Ayodhya and Chitrakoot, Lucknow is a gateway to central India's finest experiences.",
       "The Agra-Lucknow Expressway has dramatically reduced travel times, making Agra and the Taj Mahal just 4 hours away. Kanpur, Allahabad (Prayagraj), and Ayodhya are all within comfortable driving distance for day trips or overnight stays.",
-      "Triveni Cabs offers premium outstation services from Lucknow with clean, well-maintained vehicles and professional drivers. Whether you are heading to Varanasi for a spiritual retreat or Dudhwa for a tiger safari, we ensure you travel in comfort and safety."
+      "Triveni Cabs™ offers premium outstation services from Lucknow with clean, well-maintained vehicles and professional drivers. Whether you are heading to Varanasi for a spiritual retreat or Dudhwa for a tiger safari, we ensure you travel in comfort and safety."
     ],
     destinations: [
       { name: "Agra", distance: "330 km", time: "4-5 hours", sedanFare: "3,630", suvFare: "4,950", bestFor: "Taj Mahal, Heritage", description: "The Agra-Lucknow Expressway connects you to the Taj Mahal in just 4 hours. Visit Agra Fort and Fatehpur Sikri for a complete Mughal experience.", highlights: ["Taj Mahal", "Agra Fort", "Fatehpur Sikri"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-agra" },
@@ -298,21 +361,21 @@ ghaziabad: {
       { name: "Prayagraj", distance: "200 km", time: "3-4 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Sangam, Kumbh Mela", description: "The holy Sangam where Ganga, Yamuna, and Saraswati meet. Site of the Kumbh Mela, Anand Bhawan, and Allahabad Fort.", highlights: ["Triveni Sangam", "Anand Bhawan", "Allahabad Fort"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-prayagraj" },
       { name: "Kanpur", distance: "85 km", time: "1.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Industrial City, Leather", description: "UP's industrial capital offers Allen Forest Zoo, Phool Bagh, and the leather markets of Jajmau. A quick day trip from Lucknow.", highlights: ["Allen Forest Zoo", "Phool Bagh", "Massacre Ghat"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-kanpur" },
       { name: "Dudhwa", distance: "230 km", time: "5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Tiger Safari, Wetlands", description: "Dudhwa National Park on the Indo-Nepal border hosts tigers, rhinos, and swamp deer. An offbeat wildlife destination with excellent safari experiences.", highlights: ["Tiger Safari", "Rhino Habitat", "Tharu Villages"], bestTime: "Nov-Jun", bookingSlug: "/lucknow-to-dudhwa" },
-      { name: "Chitrakoot", distance: "280 km", time: "5-6 hours", sedanFare: "3,080", suvFare: "4,200", bestFor: "Pilgrimage, Waterfalls", description: "Where Lord Ram spent 11 years of exile. Chitrakoot's Ram Ghat, waterfalls, and forest hills create a deeply spiritual atmosphere.", highlights: ["Ram Ghat", "Kamadgiri", "Hanuman Dhara"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-chitrakoot" },
+      { name: "Chitrakoot", distance: "280 km", time: "5-6 hours", sedanFare: "3,300", suvFare: "4,200", bestFor: "Pilgrimage, Waterfalls", description: "Where Lord Ram spent 11 years of exile. Chitrakoot's Ram Ghat, waterfalls, and forest hills create a deeply spiritual atmosphere.", highlights: ["Ram Ghat", "Kamadgiri", "Hanuman Dhara"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-chitrakoot" },
       { name: "Sarnath", distance: "310 km", time: "5-6 hours", sedanFare: "3,410", suvFare: "4,650", bestFor: "Buddhist Heritage, Museum", description: "Where Buddha gave his first sermon. Visit the Dhamek Stupa, Ashoka Pillar, and the excellent Archaeological Museum with ancient sculptures.", highlights: ["Dhamek Stupa", "Ashoka Pillar", "Sarnath Museum"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-sarnath" },
       { name: "Naimisharanya", distance: "90 km", time: "2 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Hindu Pilgrimage, Mythology", description: "One of the holiest Hindu pilgrimage sites where sage Vyasa is believed to have narrated the Puranas. A deeply spiritual forest retreat.", highlights: ["Chakra Tirth", "Vyasa Gaddi", "Lalita Devi Temple"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-naimisharanya" },
       { name: "Unnao", distance: "55 km", time: "1 hour", sedanFare: "2,530", suvFare: "3,450", bestFor: "Nawabganj Bird Sanctuary", description: "Home to the Nawabganj Bird Sanctuary with migratory and resident bird species. A peaceful half-day birding trip from Lucknow.", highlights: ["Nawabganj Bird Sanctuary", "Unnao Balaji Temple", "Leather Markets"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-unnao" },
       { name: "Fatehpur Sikri", distance: "290 km", time: "4 hours", sedanFare: "3,190", suvFare: "4,350", bestFor: "Mughal Heritage, UNESCO", description: "Akbar's magnificent abandoned capital with Buland Darwaza, Panch Mahal, and the tomb of Salim Chishti. Best combined with an Agra trip.", highlights: ["Buland Darwaza", "Panch Mahal", "Salim Chishti Tomb"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-fatehpur-sikri" },
       { name: "Delhi", distance: "500 km", time: "6-7 hours", sedanFare: "5,500", suvFare: "7,500", bestFor: "Capital, Monuments", description: "India's capital via the Agra-Lucknow Expressway and Yamuna Expressway. Red Fort, India Gate, and world-class museums await.", highlights: ["Red Fort", "India Gate", "Qutub Minar"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-delhi" },
       { name: "Jhansi", distance: "290 km", time: "5 hours", sedanFare: "3,190", suvFare: "4,350", bestFor: "Rani Lakshmibai, Fort", description: "The city of the brave Rani Lakshmibai offers Jhansi Fort, Rani Mahal, and serves as a gateway to Orchha (18 km from Jhansi).", highlights: ["Jhansi Fort", "Rani Mahal", "Gateway to Orchha"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-jhansi" },
-      { name: "Mathura", distance: "280 km", time: "4 hours", sedanFare: "3,080", suvFare: "4,200", bestFor: "Krishna Birthplace, Temples", description: "The birthplace of Lord Krishna with Krishna Janmabhoomi, Dwarkadhish Temple, and colourful Holi celebrations. Easy access via the expressway.", highlights: ["Krishna Janmabhoomi", "Dwarkadhish Temple", "Goverdhan"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-mathura" },
+      { name: "Mathura", distance: "280 km", time: "4 hours", sedanFare: "3,300", suvFare: "4,200", bestFor: "Krishna Birthplace, Temples", description: "The birthplace of Lord Krishna with Krishna Janmabhoomi, Dwarkadhish Temple, and colourful Holi celebrations. Easy access via the expressway.", highlights: ["Krishna Janmabhoomi", "Dwarkadhish Temple", "Goverdhan"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-mathura" },
       { name: "Sultanpur", distance: "140 km", time: "3 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Historical, Sufi Heritage", description: "An ancient city with historical mosques, Sufi shrines, and the origins of the Sharqi dynasty. A peaceful cultural trip.", highlights: ["Jama Masjid", "Sufi Shrines", "Sultanpur Ruins"], bestTime: "Oct-Mar", bookingSlug: "/lucknow-to-sultanpur" }
     ],
     faqs: [
       { question: "What are the best places to visit near Lucknow?", answer: "Top places near Lucknow include Ayodhya (135 km), Prayagraj (200 km), Varanasi (300 km), Kanpur (85 km), and Dudhwa National Park (230 km)." },
       { question: "How far is Varanasi from Lucknow by cab?", answer: "Varanasi is 300 km from Lucknow, taking 5-6 hours by car via NH31. Cab fare is Rs 3,300 (Sedan) one way. We recommend starting early for a comfortable journey." },
       { question: "Can I visit Ayodhya from Lucknow in one day?", answer: "Yes, Ayodhya is just 135 km (2.5 hours) from Lucknow. Visit Ram Mandir, Hanuman Garhi, and Saryu Ghats in a comfortable day trip. Return by evening." },
-      { question: "Is there a cab service from Lucknow to Agra?", answer: "Yes, Triveni Cabs offers Lucknow to Agra cab service via the Agra-Lucknow Expressway. The 330 km journey takes just 4-5 hours. Sedan fare: Rs 3,630." },
+      { question: "Is there a cab service from Lucknow to Agra?", answer: "Yes, Triveni Cabs™ offers Lucknow to Agra cab service via the Agra-Lucknow Expressway. The 330 km journey takes just 4-5 hours. Sedan fare: Rs 3,630." },
       { question: "What wildlife parks are near Lucknow?", answer: "Dudhwa National Park (230 km) is the nearest tiger reserve. Nawabganj Bird Sanctuary (55 km via Unnao) offers excellent birding. Both are accessible as day or overnight trips." },
       { question: "How do I book an outstation cab from Lucknow?", answer: "Call 7668570551 or WhatsApp with your destination, date, and time. Get an instant quote within 2 minutes. No app needed. Sedan from Rs 11/km, SUV from Rs 15/km." }
     ]
@@ -326,7 +389,7 @@ ghaziabad: {
     description: [
       "Varanasi, the spiritual capital of India and one of the oldest continuously inhabited cities in the world, is surrounded by destinations of deep religious and historical significance. From the Buddhist holy site of Sarnath just 10 km away to the sacred confluence at Prayagraj, every direction from Varanasi leads to a pilgrimage-worthy destination.",
       "Beyond spirituality, the region offers wildlife at Chandraprabha Sanctuary, the historic Chunar Fort overlooking the Ganges, and the Vindhyan landscapes of Mirzapur. The area is also a gateway to exploring Buddhist pilgrimage sites across eastern UP and Bihar.",
-      "Triveni Cabs provides comfortable and reliable outstation services from Varanasi. Our experienced drivers know the local routes, ensuring you reach every destination safely and on time. Book your cab and explore the spiritual heartland of India."
+      "Triveni Cabs™ provides comfortable and reliable outstation services from Varanasi. Our experienced drivers know the local routes, ensuring you reach every destination safely and on time. Book your cab and explore the spiritual heartland of India."
     ],
     destinations: [
       { name: "Sarnath", distance: "10 km", time: "20 min", sedanFare: "2,530", suvFare: "3,450", bestFor: "Buddhist Heritage, Museum", description: "Where Lord Buddha delivered his first sermon. Visit the Dhamek Stupa, Ashoka Pillar, Mulagandha Kuti Vihar, and the Archaeological Museum.", highlights: ["Dhamek Stupa", "Ashoka Pillar", "Archaeological Museum"], bestTime: "Oct-Mar", bookingSlug: "/varanasi-to-sarnath" },
@@ -337,7 +400,7 @@ ghaziabad: {
       { name: "Chunar", distance: "40 km", time: "1 hour", sedanFare: "2,530", suvFare: "3,450", bestFor: "Historic Fort, Ganges View", description: "The ancient Chunar Fort perched on a rocky hilltop overlooking the Ganges has been held by Mughals, Afghans, and the British. A hidden gem near Varanasi.", highlights: ["Chunar Fort", "Ganges View", "Sun Temple"], bestTime: "Oct-Mar", bookingSlug: "/varanasi-to-chunar" },
       { name: "Vindhyachal", distance: "80 km", time: "2 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Shakti Peeth, Pilgrimage", description: "One of the most important Shakti Peeths, Vindhyachal is home to Vindhyavasini Devi temple. Millions visit during Navratri festivals.", highlights: ["Vindhyavasini Temple", "Ashtabhuja Temple", "Kali Khoh"], bestTime: "Oct-Mar", bookingSlug: "/varanasi-to-vindhyachal" },
       { name: "Chandraprabha", distance: "70 km", time: "2 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Wildlife, Waterfalls", description: "Chandraprabha Wildlife Sanctuary offers waterfalls, caves, and forest trails. Rajdari and Devdari waterfalls are the main attractions.", highlights: ["Rajdari Falls", "Devdari Falls", "Wildlife Sanctuary"], bestTime: "Oct-Mar", bookingSlug: "/varanasi-to-chandraprabha" },
-      { name: "Chitrakoot", distance: "280 km", time: "6 hours", sedanFare: "3,080", suvFare: "4,200", bestFor: "Pilgrimage, Nature", description: "Where Lord Ram spent years in exile. Ram Ghat, Kamadgiri parikrama, and Hanuman Dhara waterfall create a spiritually charged atmosphere.", highlights: ["Ram Ghat", "Kamadgiri", "Hanuman Dhara"], bestTime: "Oct-Mar", bookingSlug: "/varanasi-to-chitrakoot" },
+      { name: "Chitrakoot", distance: "280 km", time: "6 hours", sedanFare: "3,300", suvFare: "4,200", bestFor: "Pilgrimage, Nature", description: "Where Lord Ram spent years in exile. Ram Ghat, Kamadgiri parikrama, and Hanuman Dhara waterfall create a spiritually charged atmosphere.", highlights: ["Ram Ghat", "Kamadgiri", "Hanuman Dhara"], bestTime: "Oct-Mar", bookingSlug: "/varanasi-to-chitrakoot" },
       { name: "Ramnagar", distance: "15 km", time: "30 min", sedanFare: "2,530", suvFare: "3,450", bestFor: "Fort, Ramlila", description: "Across the Ganges from Varanasi, Ramnagar Fort is the ancestral home of the Maharaja of Banaras. The month-long Ramlila here is UNESCO-recognised.", highlights: ["Ramnagar Fort", "Ramlila", "Saraswati Bhawan Museum"], bestTime: "Oct-Mar", bookingSlug: "/varanasi-to-ramnagar" },
       { name: "Mirzapur", distance: "65 km", time: "1.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Waterfalls, Carpets", description: "Known for Tanda Falls, Vindhyam mountains, and the famous carpet weaving industry. The Vindhyan landscape is dramatic and photogenic.", highlights: ["Tanda Falls", "Vindhyan Hills", "Carpet Industry"], bestTime: "Oct-Mar", bookingSlug: "/varanasi-to-mirzapur" },
       { name: "Jaunpur", distance: "60 km", time: "1.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Sharqi Architecture, History", description: "The Shiraz of India with magnificent Sharqi-era mosques including Atala Masjid and Jama Masjid. The Shahi Bridge over the Gomti is iconic.", highlights: ["Atala Masjid", "Shahi Bridge", "Jaunpur Fort"], bestTime: "Oct-Mar", bookingSlug: "/varanasi-to-jaunpur" },
@@ -363,7 +426,7 @@ ghaziabad: {
     description: [
       "Dehradun, the capital of Uttarakhand, sits in the picturesque Doon Valley between the Himalayan foothills and the Shivalik range. It serves as the gateway to some of North India's most beloved hill stations, adventure destinations, and spiritual centres.",
       "Mussoorie is just 35 km uphill, Rishikesh and its adventure activities are an hour away, and the charming Himalayan towns of Chakrata, Kanatal, and Dhanaulti offer off-the-beaten-path experiences. Dehradun's location makes it the ideal starting point for Uttarakhand exploration.",
-      "Triveni Cabs operates extensively in Uttarakhand with drivers experienced on mountain roads. From gentle slopes to sharp hairpin bends, our drivers handle every terrain with confidence. Book a cab from Dehradun and discover the magic of Uttarakhand."
+      "Triveni Cabs™ operates extensively in Uttarakhand with drivers experienced on mountain roads. From gentle slopes to sharp hairpin bends, our drivers handle every terrain with confidence. Book a cab from Dehradun and discover the magic of Uttarakhand."
     ],
     destinations: [
       { name: "Mussoorie", distance: "35 km", time: "1-1.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Hill Station, Views", description: "The Queen of Hills is Dehradun's favourite getaway. Mall Road, Gun Hill, Kempty Falls, and Lal Tibba offer stunning Himalayan panoramas.", highlights: ["Mall Road", "Gun Hill", "Kempty Falls"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/dehradun-to-mussoorie" },
@@ -372,7 +435,7 @@ ghaziabad: {
       { name: "Chakrata", distance: "90 km", time: "3 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Offbeat, Trekking", description: "An offbeat cantonment hill station with ancient Deodar forests, Tiger Falls (India's highest direct waterfall), and Budher Caves.", highlights: ["Tiger Falls", "Deodar Forest", "Budher Caves"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/dehradun-to-chakrata" },
       { name: "Dhanaulti", distance: "60 km", time: "2 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Quiet Hill Station, Eco Park", description: "A tranquil hill station between Mussoorie and Chamba with eco parks, Deodar forests, and stunning sunrise views. No commercial chaos.", highlights: ["Eco Park", "Surkanda Devi", "Apple Orchards"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/dehradun-to-dhanaulti" },
       { name: "Kanatal", distance: "78 km", time: "2.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Camping, Adventure", description: "A tiny hamlet known for luxury camping, rappelling, and rock climbing. Kodia Jungle trek and Surkanda Devi temple are nearby attractions.", highlights: ["Luxury Camping", "Kodia Jungle", "Surkanda Devi"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/dehradun-to-kanatal" },
-      { name: "Nainital", distance: "280 km", time: "7 hours", sedanFare: "3,080", suvFare: "4,200", bestFor: "Lake, Nature", description: "The Lake District of India with Naini Lake, Snow View Point, and Naina Devi Temple. A classic Kumaon hill station experience.", highlights: ["Naini Lake", "Snow View Point", "Mall Road"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/dehradun-to-nainital" },
+      { name: "Nainital", distance: "280 km", time: "7 hours", sedanFare: "3,300", suvFare: "4,200", bestFor: "Lake, Nature", description: "The Lake District of India with Naini Lake, Snow View Point, and Naina Devi Temple. A classic Kumaon hill station experience.", highlights: ["Naini Lake", "Snow View Point", "Mall Road"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/dehradun-to-nainital" },
       { name: "Auli", distance: "290 km", time: "8-9 hours", sedanFare: "3,190", suvFare: "4,350", bestFor: "Skiing, Meadows", description: "India's premier skiing destination with Asia's longest cable car. In summer, Auli's Bugyal meadows offer breathtaking Himalayan panoramas.", highlights: ["Skiing", "Cable Car", "Himalayan Views"], bestTime: "Nov-Mar (ski), May-Jun (meadows)", bookingSlug: "/dehradun-to-auli" },
       { name: "Chopta", distance: "210 km", time: "7 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Trekking, Meadows", description: "The Mini Switzerland of India and base for the Tungnath-Chandrashila trek. Tungnath is the highest Shiva temple in the world.", highlights: ["Tungnath Temple", "Chandrashila Peak", "Bugyal Meadows"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/dehradun-to-chopta" },
       { name: "Tehri", distance: "100 km", time: "3 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Lake Sports, Dam", description: "Tehri Dam creates a massive lake offering jet skiing, kayaking, and motorboating. The lake set against Himalayan peaks is stunning.", highlights: ["Tehri Dam", "Water Sports", "Lake Views"], bestTime: "Sep-Jun", bookingSlug: "/dehradun-to-tehri" },
@@ -400,7 +463,7 @@ ghaziabad: {
     description: [
       "Amritsar, the spiritual and cultural heart of Punjab, is not just about the Golden Temple. The city serves as a gateway to the scenic Himalayan foothills, rich Sikh heritage sites, and the vibrant Punjab countryside. From Wagah Border's patriotic ceremony to the hill stations of Himachal, Amritsar offers diverse day-trip options.",
       "The region around Amritsar is steeped in Sikh history with important gurudwaras, forts, and battlefields within easy driving distance. The nearby hill stations of Dalhousie and Dharamshala offer cool mountain retreats, while Pathankot serves as a transit hub to Himachal Pradesh and Jammu.",
-      "Triveni Cabs offers comfortable outstation rides from Amritsar with experienced drivers who know Punjab and Himachal roads well. From the plains to the mountains, travel stress-free with Triveni."
+      "Triveni Cabs™ offers comfortable outstation rides from Amritsar with experienced drivers who know Punjab and Himachal roads well. From the plains to the mountains, travel stress-free with Triveni."
     ],
     destinations: [
       { name: "Wagah Border", distance: "28 km", time: "45 min", sedanFare: "2,530", suvFare: "3,450", bestFor: "Patriotic Ceremony, India-Pak Border", description: "The Wagah-Attari border hosts the famous flag-lowering ceremony every evening. An electrifying display of patriotism that draws thousands daily.", highlights: ["Flag Lowering Ceremony", "Border Gate", "Patriotic Atmosphere"], bestTime: "Year-round", bookingSlug: "/amritsar-to-wagah" },
@@ -437,7 +500,7 @@ ghaziabad: {
     description: [
       "Noida, the rapidly growing IT hub of the National Capital Region, is strategically located with excellent expressway connectivity to some of India's top destinations. The Yamuna Expressway connects you to Agra in just 2.5 hours, while Delhi's southern neighbourhoods are just across the river.",
       "For NCR residents seeking an escape from the urban rush, Noida offers quick access to the spiritual towns of Mathura and Vrindavan, the Taj Mahal, the hills of Uttarakhand, and the heritage cities of Rajasthan. Weekend warriors can reach Mussoorie, Rishikesh, or Jaipur within half a day.",
-      "Triveni Cabs provides doorstep pickup from any location in Noida, Greater Noida, and the Yamuna Expressway corridor. Our drivers know every expressway exit and shortcut to ensure the fastest, most comfortable journey to your destination."
+      "Triveni Cabs™ provides doorstep pickup from any location in Noida, Greater Noida, and the Yamuna Expressway corridor. Our drivers know every expressway exit and shortcut to ensure the fastest, most comfortable journey to your destination."
     ],
     destinations: [
       { name: "Agra", distance: "200 km", time: "2.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Taj Mahal, Heritage", description: "The Yamuna Expressway makes Agra the easiest day trip from Noida. See the Taj Mahal, Agra Fort, and Fatehpur Sikri and be back by dinner.", highlights: ["Taj Mahal", "Agra Fort", "Yamuna Expressway"], bestTime: "Oct-Mar", bookingSlug: "/noida-to-agra" },
@@ -460,7 +523,7 @@ ghaziabad: {
       { question: "What are the best day trips from Noida?", answer: "Agra (200 km via Yamuna Expressway, 2.5 hours), Mathura (145 km, 2 hours), Neemrana (130 km, 2.5 hours), and Bharatpur (155 km, 2.5 hours) are the best day trips." },
       { question: "How long does it take to reach Agra from Noida?", answer: "Agra is just 200 km from Noida via the Yamuna Expressway, taking approximately 2.5 hours. The expressway is smooth and toll-free for the first stretch." },
       { question: "Which hill stations are closest to Noida?", answer: "Mussoorie (275 km, 6 hrs), Nainital (290 km, 6 hrs), Lansdowne (250 km, 6 hrs), and Shimla (340 km, 7-8 hrs) are the nearest hill stations from Noida." },
-      { question: "Can I get a cab pickup from my apartment in Noida?", answer: "Yes, Triveni Cabs provides doorstep pickup from anywhere in Noida, Greater Noida, Noida Extension, and along the Yamuna Expressway. Call 7668570551 to book." },
+      { question: "Can I get a cab pickup from my apartment in Noida?", answer: "Yes, Triveni Cabs™ provides doorstep pickup from anywhere in Noida, Greater Noida, Noida Extension, and along the Yamuna Expressway. Call 7668570551 to book." },
       { question: "How much does a cab from Noida to Agra cost?", answer: "Noida to Agra by cab costs Rs 2,530 (Sedan) or Rs 3,450 (SUV) for one way. The 200 km distance falls within the 300 km minimum billing. Toll extra at actual." },
       { question: "Is there weekend cab service from Noida?", answer: "Yes, we offer round-trip weekend packages from Noida. The driver stays with you for the entire trip. Sedan at Rs 11/km with 300 km/day minimum. Book early for weekends." }
     ]
@@ -474,7 +537,7 @@ ghaziabad: {
     description: [
       "Gurgaon (Gurugram), the corporate powerhouse of the NCR, is perfectly positioned on the Delhi-Jaipur highway with easy access to Rajasthan, Haryana, and the hills of Himachal and Uttarakhand. The NH48 corridor and the KMP Expressway open up dozens of weekend getaway options for busy professionals.",
       "From the heritage retreats of Neemrana and Alwar in Rajasthan to the spiritual towns of Mathura and Vrindavan, and from the hill stations of Shimla and Mussoorie to the wildlife of Sariska, Gurgaon residents are spoiled for choice when it comes to short road trips.",
-      "Triveni Cabs picks you up from any Gurgaon location — DLF, Sohna Road, Golf Course Road, or Cyber City. Our fleet of well-maintained sedans and SUVs with experienced highway drivers ensures a smooth start to your weekend adventure."
+      "Triveni Cabs™ picks you up from any Gurgaon location — DLF, Sohna Road, Golf Course Road, or Cyber City. Our fleet of well-maintained sedans and SUVs with experienced highway drivers ensures a smooth start to your weekend adventure."
     ],
     destinations: [
       { name: "Neemrana", distance: "100 km", time: "1.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Heritage Hotel, Zipline", description: "The 15th-century Neemrana Fort Palace is the closest luxury escape from Gurgaon. Zip-lining, vintage car rides, and Aravalli views.", highlights: ["Neemrana Fort Palace", "Zip-lining", "Heritage Dining"], bestTime: "Oct-Mar", bookingSlug: "/gurgaon-to-neemrana" },
@@ -511,7 +574,7 @@ ghaziabad: {
     description: [
       "Haridwar, one of the seven holiest cities in Hinduism, is the gateway to the Char Dham and the starting point for countless Himalayan adventures. The city where the Ganga enters the plains connects you to Rishikesh's adventure activities, Mussoorie's colonial charm, and the wilderness of Rajaji National Park.",
       "Beyond the immediate Uttarakhand destinations, Haridwar also provides access to the pilgrimage towns of Kedarnath, Badrinath, Yamunotri, and Gangotri. The Char Dham Yatra from Haridwar is one of India's most sacred journeys.",
-      "Triveni Cabs specialises in Uttarakhand routes from Haridwar. Our mountain-experienced drivers handle steep gradients and narrow hill roads with ease, ensuring you focus on the scenery rather than the drive."
+      "Triveni Cabs™ specialises in Uttarakhand routes from Haridwar. Our mountain-experienced drivers handle steep gradients and narrow hill roads with ease, ensuring you focus on the scenery rather than the drive."
     ],
     destinations: [
       { name: "Rishikesh", distance: "20 km", time: "30 min", sedanFare: "2,530", suvFare: "3,450", bestFor: "Adventure, Yoga", description: "Just 20 km from Haridwar, Rishikesh offers white-water rafting, bungee jumping, and world-famous yoga ashrams along the Ganges.", highlights: ["Laxman Jhula", "River Rafting", "Beatles Ashram"], bestTime: "Sep-May", bookingSlug: "/haridwar-to-rishikesh" },
@@ -522,12 +585,12 @@ ghaziabad: {
       { name: "Dhanaulti", distance: "95 km", time: "3 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Quiet Hill Station, Eco Park", description: "A peaceful hill station with eco parks, deodar forests, and mountain views. Less commercialised than Mussoorie.", highlights: ["Eco Park", "Surkanda Devi", "Deodar Forest"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/haridwar-to-dhanaulti" },
       { name: "Lansdowne", distance: "95 km", time: "3 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Quiet Hill Station, Army Town", description: "A cantonment town with pristine forests, Bhulla Lake, and Tip-n-Top viewpoint. One of the least commercialised hill stations.", highlights: ["Bhulla Lake", "Tip-n-Top", "War Memorial"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/haridwar-to-lansdowne" },
       { name: "Chopta", distance: "190 km", time: "6-7 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Trekking, Tungnath", description: "Base for the Tungnath-Chandrashila trek. Tungnath is the highest Shiva temple in the world at 3,680 metres.", highlights: ["Tungnath Temple", "Chandrashila Summit", "Bugyal Meadows"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/haridwar-to-chopta" },
-      { name: "Auli", distance: "280 km", time: "9 hours", sedanFare: "3,080", suvFare: "4,200", bestFor: "Skiing, Meadows", description: "India's premier skiing destination with Asia's longest cable car. Summer reveals stunning alpine meadows and Nanda Devi views.", highlights: ["Skiing", "Cable Car", "Nanda Devi View"], bestTime: "Nov-Mar (ski), May-Jun", bookingSlug: "/haridwar-to-auli" },
+      { name: "Auli", distance: "280 km", time: "9 hours", sedanFare: "3,300", suvFare: "4,200", bestFor: "Skiing, Meadows", description: "India's premier skiing destination with Asia's longest cable car. Summer reveals stunning alpine meadows and Nanda Devi views.", highlights: ["Skiing", "Cable Car", "Nanda Devi View"], bestTime: "Nov-Mar (ski), May-Jun", bookingSlug: "/haridwar-to-auli" },
       { name: "Jim Corbett", distance: "130 km", time: "3.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Tiger Safari, Wildlife", description: "India's oldest national park is a comfortable 3.5-hour drive from Haridwar. Home to Bengal tigers and diverse wildlife.", highlights: ["Tiger Safari", "Dhikala Zone", "Corbett Museum"], bestTime: "Nov-Jun", bookingSlug: "/haridwar-to-jim-corbett" },
       { name: "Nainital", distance: "195 km", time: "5.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Lake, Nature", description: "The Lake District of India with beautiful Naini Lake, Snow View Point, and Naina Devi Temple. A classic Kumaon experience.", highlights: ["Naini Lake", "Snow View Point", "Mall Road"], bestTime: "Mar-Jun, Sep-Nov", bookingSlug: "/haridwar-to-nainital" },
       { name: "Kedarnath", distance: "245 km", time: "8 hours + trek", sedanFare: "2,695", suvFare: "3,675", bestFor: "Char Dham, Pilgrimage", description: "One of the Char Dhams, Kedarnath temple sits at 3,583m. Drive to Gaurikund, then trek 16 km (or take a helicopter).", highlights: ["Kedarnath Temple", "Gaurikund", "Himalayan Trek"], bestTime: "May-Jun, Sep-Oct", bookingSlug: "/haridwar-to-kedarnath" },
       { name: "Badrinath", distance: "320 km", time: "10 hours", sedanFare: "3,520", suvFare: "4,800", bestFor: "Char Dham, Vishnu Temple", description: "One of the holiest Vishnu temples in India, Badrinath is surrounded by spectacular Himalayan peaks. Part of the Char Dham circuit.", highlights: ["Badrinath Temple", "Mana Village", "Tapt Kund"], bestTime: "May-Jun, Sep-Oct", bookingSlug: "/haridwar-to-badrinath" },
-      { name: "Delhi", distance: "230 km", time: "4-5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Capital, Monuments", description: "India's capital connected via NH7. A comfortable 4-5 hour drive from Haridwar through the Shivalik foothills.", highlights: ["Red Fort", "India Gate", "Qutub Minar"], bestTime: "Oct-Mar", bookingSlug: "/haridwar-to-delhi" },
+      { name: "Delhi", distance: "230 km", time: "4-5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Capital, Monuments", description: "India's capital connected via NH7. A comfortable 4-5 hour drive from Haridwar through the Shivalik foothills.", highlights: ["Red Fort", "India Gate", "Qutub Minar"], bestTime: "Oct-Mar", bookingSlug: "/one-way-cab/haridwar-to-delhi" },
       { name: "Chandigarh", distance: "200 km", time: "4 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Modern City, Gardens", description: "India's best-planned city with Rock Garden, Sukhna Lake, and Rose Garden. A scenic drive through the Shivalik range.", highlights: ["Rock Garden", "Sukhna Lake", "Rose Garden"], bestTime: "Sep-Mar", bookingSlug: "/haridwar-to-chandigarh" }
     ],
     faqs: [
@@ -548,7 +611,7 @@ ghaziabad: {
     description: [
       "Shimla, the Queen of Hills and former summer capital of British India, is surrounded by some of Himachal Pradesh's most enchanting destinations. From the adventure town of Kufri just 15 km away to the apple orchards of Narkanda and the ancient town of Sarahan, Shimla is the perfect base for exploring the inner Himalayas.",
       "The region offers everything from snow adventures and trekking to temple visits and wildlife encounters. The Hindustan-Tibet Road from Shimla leads through spectacular mountain scenery to destinations like Rampur, Sarahan, and eventually Kinnaur and Spiti.",
-      "Triveni Cabs provides reliable mountain transport from Shimla with drivers who specialise in Himachal's winding hill roads. Whether you are heading to Kufri for snow or Chail for peace, our vehicles are maintained for mountain conditions."
+      "Triveni Cabs™ provides reliable mountain transport from Shimla with drivers who specialise in Himachal's winding hill roads. Whether you are heading to Kufri for snow or Chail for peace, our vehicles are maintained for mountain conditions."
     ],
     destinations: [
       { name: "Kufri", distance: "15 km", time: "30 min", sedanFare: "2,530", suvFare: "3,450", bestFor: "Snow, Adventure", description: "Shimla's adventure suburb with skiing in winter, horse riding, and yak rides. Mahasu Peak offers 360-degree Himalayan views.", highlights: ["Mahasu Peak", "Skiing", "Himalayan Nature Park"], bestTime: "Nov-Feb (snow), Mar-Jun", bookingSlug: "/shimla-to-kufri" },
@@ -577,6 +640,102 @@ ghaziabad: {
     ]
   },
 
+  jodhpur: {
+    city: "Jodhpur",
+    slug: "jodhpur",
+    heroTitle: "Places to Visit Near Jodhpur",
+    heroSubtitle: "Blue City, Desert Forts and Temple Towns — Book Your Cab",
+    description: [
+      "Jodhpur sits at the edge of the Thar, which makes it the most useful base in western Rajasthan. The desert proper begins west of the city and the Aravalli foothills rise to the south, so two completely different kinds of day trip start from the same hotel doorstep.",
+      "The roads out of Jodhpur are among the easiest in Rajasthan. The Jaisalmer highway runs flat and fast across open desert, Osian's temple complex is barely an hour north, and the marble of Ranakpur sits in a green valley three hours south on the way to Udaipur. Mount Abu, the state's only hill station, is a long but comfortable drive for anyone wanting cooler air.",
+      "Triveni Cabs™ runs these routes daily with drivers who know where the dhabas are worth stopping at, which forts close early, and how long the dune stretch really takes once you leave the highway. Fares below are published sedan rates; larger vehicles are quoted on the same per-kilometre basis."
+    ],
+    destinations: [
+      { name: "Osian", distance: "65 km", time: "1.5 hours", sedanFare: "1,430", suvFare: "1,950", bestFor: "Desert temples, camel camps", description: "An eighth-century temple town often called the Khajuraho of Rajasthan, with Jain and Hindu shrines in honey-coloured sandstone and desert camps on the dunes just beyond.", highlights: ["Sachiya Mata Temple", "Jain temple complex", "Desert camps"], bestTime: "Oct-Mar", bookingSlug: "/jodhpur-to-osian" },
+      { name: "Ranakpur", distance: "160 km", time: "3 hours", sedanFare: "3,520", suvFare: "4,800", bestFor: "Marble Jain temple", description: "The Chaumukha Jain temple, carved from white marble with 1,444 pillars, no two of them alike. Set in a wooded valley that feels nothing like the desert you drove through to reach it.", highlights: ["Chaumukha temple", "1,444 carved pillars", "Aravalli valley"], bestTime: "Oct-Mar", bookingSlug: "/jodhpur-to-ranakpur" },
+      { name: "Kumbhalgarh", distance: "205 km", time: "4 hours", sedanFare: "4,510", suvFare: "6,150", bestFor: "The great wall, hill fort", description: "A fort with the second-longest continuous wall in the world, running 36 km along the Aravalli ridge. Usually paired with Ranakpur on a single long day or an overnight.", highlights: ["36 km fort wall", "Badal Mahal", "Evening light show"], bestTime: "Oct-Mar", bookingSlug: "/jodhpur-to-kumbhalgarh" },
+      { name: "Jaisalmer", distance: "285 km", time: "5-6 hours", sedanFare: "6,270", suvFare: "8,550", bestFor: "Golden fort, sand dunes", description: "The living fort city on the edge of the Thar, with Sam and Khuri dunes beyond it. A flat, fast desert highway makes this one of Rajasthan's easiest long drives.", highlights: ["Sonar Fort", "Sam sand dunes", "Patwon Ki Haveli"], bestTime: "Oct-Mar", bookingSlug: "/jodhpur-to-jaisalmer" },
+      { name: "Mount Abu", distance: "265 km", time: "5-6 hours", sedanFare: "5,830", suvFare: "7,950", bestFor: "Hill station, Dilwara temples", description: "Rajasthan's only hill station, noticeably cooler than the plains, with the Dilwara marble temples and Nakki Lake. The climb up the ghat road is the pleasant part of the drive.", highlights: ["Dilwara Temples", "Nakki Lake", "Sunset Point"], bestTime: "Oct-Mar", bookingSlug: "/jodhpur-to-mount-abu" },
+      { name: "Udaipur", distance: "250 km", time: "5 hours", sedanFare: "5,500", suvFare: "7,500", bestFor: "Lakes, palaces", description: "The lake city, and the natural second stop on a western Rajasthan circuit. Many travellers break the drive at Ranakpur, which sits almost exactly halfway.", highlights: ["Lake Pichola", "City Palace", "Jag Mandir"], bestTime: "Sep-Mar", bookingSlug: "/jodhpur-to-udaipur" },
+      { name: "Bikaner", distance: "250 km", time: "4-5 hours", sedanFare: "5,500", suvFare: "7,500", bestFor: "Junagarh Fort, camel breeding farm", description: "A desert city with an unusually well-preserved fort that was never taken, plus the national camel research centre on its outskirts.", highlights: ["Junagarh Fort", "Camel research centre", "Karni Mata Temple"], bestTime: "Oct-Mar", bookingSlug: "/jodhpur-to-bikaner" },
+      { name: "Pushkar", distance: "190 km", time: "3.5 hours", sedanFare: "4,180", suvFare: "5,700", bestFor: "Holy lake, Brahma Temple", description: "One of the oldest pilgrimage towns in India, built around a lake with ghats on every side and the only significant Brahma temple anywhere.", highlights: ["Brahma Temple", "Pushkar Lake", "Camel Fair"], bestTime: "Oct-Mar", bookingSlug: "/jodhpur-to-pushkar" },
+      { name: "Jaipur", distance: "335 km", time: "5-6 hours", sedanFare: "7,370", suvFare: "10,050", bestFor: "Pink City, forts", description: "The state capital, and the usual entry or exit point for a Rajasthan circuit. The highway is good the whole way and most travellers do it in a single run.", highlights: ["Amber Fort", "Hawa Mahal", "City Palace"], bestTime: "Oct-Mar", bookingSlug: "/jodhpur-to-jaipur" }
+    ],
+    faqs: [
+      { question: "What are the best day trips from Jodhpur?", answer: "Osian (65 km) is the only comfortable return day trip, at about an hour and a half each way, and it combines a temple complex with desert camps. Ranakpur (160 km) is possible as a long day if you leave early. Everything else on this list — Jaisalmer, Mount Abu, Udaipur — is better as an overnight, because the driving alone fills most of a day." },
+      { question: "How long does Jodhpur to Jaisalmer take by car?", answer: "About five to six hours for 285 km. The road is flat, open desert highway and it drives faster than the distance suggests. Most travellers leave Jodhpur mid-morning and reach Jaisalmer in time for sunset at the dunes, which is the main reason to time it that way." },
+      { question: "Can I combine Ranakpur and Kumbhalgarh in one trip?", answer: "Yes, and it is the standard pairing. They are about 50 km apart in the same valley, so a single day covers both if you start by 7am, or you can take them at a gentler pace on the way to Udaipur and stay overnight at Ranakpur or Kumbhalgarh." },
+      { question: "What is the best season for road trips from Jodhpur?", answer: "October to March. The desert is comfortable in those months and the light is good for photography at the forts. April to June reaches well above 40°C and the dune trips in particular become unpleasant; the monsoon brings brief but heavy rain that can slow the smaller roads." },
+      { question: "How much does a cab from Jodhpur cost?", answer: "Published sedan rates start at ₹11 per kilometre with a minimum billable distance on outstation journeys. The fares shown against each destination above are for a one-way sedan. Fuel, driver and tax are included; tolls, parking and state permits are charged at actuals. Call 7668570551 or message on WhatsApp for a written quote." }
+    ],
+    roadTripGuide: {
+      heading: "Western Rajasthan Road Trip Guide from Jodhpur",
+      paragraphs: [
+        "Jodhpur works best as the middle of a circuit rather than the end of one, because two quite different routes leave the city in opposite directions. The desert loop runs west to Jaisalmer on NH-11, flat and fast across open sand, then north-east to Bikaner before turning back. Five to six days covers it at a pace that leaves time at the dunes rather than only on the road.",
+        "The southern loop heads the other way, down NH-62 towards Ranakpur and Kumbhalgarh in the Aravalli valley, on to Udaipur and then west to Mount Abu. Four to five days, and considerably greener than the desert route — it surprises people who expect all of Rajasthan to look the same.",
+        "Whichever you take, start early for anything over 200 km. Rajasthan's highways are good but the last stretch into any fort town is slow, and arriving after dark wastes the view you came for. Carry water on the desert legs: stretches of the Jaisalmer and Bikaner highways run 60 km or more without a reliable stop. And tell us the overnight stops when you book — a circuit quoted as one multi-day journey with the vehicle retained costs less than the same route booked as separate one-way trips."
+      ],
+      highways: [
+        { name: "NH-11 (Jodhpur-Jaisalmer)", description: "285 km of flat desert highway through Pokhran. Drives faster than the distance suggests. Few stops after Pokhran, so fill up and carry water." },
+        { name: "NH-62 (Jodhpur-Udaipur)", description: "250 km south through Pali. Good surface, and the natural halfway break is Ranakpur, which turns the transfer into a sightseeing day." },
+        { name: "NH-125 (Jodhpur-Bikaner)", description: "250 km north across open desert via Nagaur. Quieter than the Jaisalmer road and a useful return leg on a desert circuit." },
+        { name: "NH-58 (Jodhpur-Jaipur)", description: "335 km east through Beawar. The main connection to the rest of Rajasthan and the usual exit from a western circuit." }
+      ]
+    },
+    relatedContent: [
+      { title: "Jodhpur to Jaisalmer Cab", url: "/jodhpur-to-jaisalmer", description: "Desert highway transfer with dune stops" },
+      { title: "Jodhpur to Udaipur Cab", url: "/jodhpur-to-udaipur", description: "Southern route via Ranakpur" },
+      { title: "Jodhpur Wedding Cars", url: "/wedding/jodhpur", description: "Fort and heritage wedding transport" },
+      { title: "Places to Visit Near Jaipur", url: "/places-to-visit-near-jaipur", description: "Royal Rajasthan from the Pink City" }
+    ]
+  },
+  jaisalmer: {
+    city: "Jaisalmer",
+    slug: "jaisalmer",
+    heroTitle: "Places to Visit Near Jaisalmer",
+    heroSubtitle: "Dunes, Desert Villages and the Road Back East — Book Your Cab",
+    description: [
+      "Jaisalmer is the far western end of almost every Rajasthan itinerary, which changes what a day trip from here looks like. Most of what is worth seeing sits within 60 km of the fort, and the long drives are the ones taking you back east.",
+      "The dunes are the obvious draw and there are two of them with quite different characters. Sam is larger, busier and closer to the main road, with camel rides and evening cultural programmes. Khuri is smaller, quieter and better for anyone who wants the desert without a crowd. Between the two sit Kuldhara's abandoned village and the Longewala border post, both short runs on good roads.",
+      "Triveni Cabs™ covers the dune tracks as well as the highways, which matters here: the last stretch to a desert camp is often soft sand, and a vehicle that cannot make it leaves you walking. Fares below are published sedan rates for the highway portion."
+    ],
+    destinations: [
+      { name: "Sam Sand Dunes", distance: "42 km", time: "1 hour", sedanFare: "924", suvFare: "1,260", bestFor: "Camel safari, sunset, desert camps", description: "The best-known dunes in Rajasthan, with camel and jeep safaris and a run of desert camps offering evening music and dinner under the sky. Busiest at sunset, which is also when it is worth being there.", highlights: ["Sunset camel safari", "Desert camps", "Folk performances"], bestTime: "Oct-Mar", bookingSlug: "/jaisalmer-to-sam-sand-dunes" },
+      { name: "Khuri Sand Dunes", distance: "48 km", time: "1 hour", sedanFare: "1,056", suvFare: "1,440", bestFor: "Quieter dunes, village stays", description: "Smaller and far less crowded than Sam, with village homestays and a more domestic feel. The better choice if the point of the trip is silence rather than spectacle.", highlights: ["Village homestays", "Quiet dunes", "Night sky"], bestTime: "Oct-Mar", bookingSlug: "/jaisalmer-to-khuri" },
+      { name: "Kuldhara", distance: "18 km", time: "30 minutes", sedanFare: "396", suvFare: "540", bestFor: "Abandoned village, short trip", description: "A village abandoned overnight in the early nineteenth century and left standing. Compact, atmospheric and easily combined with a dune run in the same afternoon.", highlights: ["Abandoned streets", "Restored temple", "Short detour"], bestTime: "Oct-Mar", bookingSlug: "/jaisalmer-to-kuldhara" },
+      { name: "Longewala", distance: "120 km", time: "2.5 hours", sedanFare: "2,640", suvFare: "3,600", bestFor: "1971 war memorial", description: "The battlefield and memorial from the 1971 war, close to the border. A long straight drive through open desert, usually taken as a half-day return from Jaisalmer.", highlights: ["War memorial", "Preserved tanks", "Desert highway"], bestTime: "Oct-Mar", bookingSlug: "/jaisalmer-to-longewala" },
+      { name: "Jodhpur", distance: "285 km", time: "5-6 hours", sedanFare: "6,270", suvFare: "8,550", bestFor: "Blue City, Mehrangarh", description: "The usual next stop heading east, and the nearest city with reliable rail and air connections. Flat desert highway most of the way.", highlights: ["Mehrangarh Fort", "Blue City lanes", "Jaswant Thada"], bestTime: "Oct-Mar", bookingSlug: "/jaisalmer-to-jodhpur" },
+      { name: "Bikaner", distance: "330 km", time: "6 hours", sedanFare: "7,260", suvFare: "9,900", bestFor: "Junagarh Fort, camel farm", description: "The alternative eastward route, through emptier desert than the Jodhpur road. Worth it for the fort and the camel research centre if you have the day.", highlights: ["Junagarh Fort", "Camel research centre", "Desert highway"], bestTime: "Oct-Mar", bookingSlug: "/jaisalmer-to-bikaner" },
+      { name: "Udaipur", distance: "495 km", time: "8-9 hours", sedanFare: "10,890", suvFare: "14,850", bestFor: "Lakes, palaces", description: "A long single-day drive, and most travellers break it at Jodhpur rather than doing it in one run. Worth planning as two days if the schedule allows.", highlights: ["Lake Pichola", "City Palace", "Break at Jodhpur"], bestTime: "Sep-Mar", bookingSlug: "/jaisalmer-to-udaipur" }
+    ],
+    faqs: [
+      { question: "What are the best day trips from Jaisalmer?", answer: "Almost everything worth seeing is within an hour. Sam dunes (42 km) and Khuri dunes (48 km) are the main ones, Kuldhara's abandoned village is half an hour away, and Longewala is a comfortable half-day return at 120 km. The longer drives from Jaisalmer — Jodhpur, Bikaner, Udaipur — are onward journeys rather than day trips." },
+      { question: "Sam or Khuri — which dunes should I choose?", answer: "Sam if you want the full experience with camel safaris, a cultural programme and a choice of camps; it is larger and busier, particularly at sunset. Khuri if you want quiet, with village homestays and far fewer visitors. Both are about an hour from the fort, so the drive is not the deciding factor." },
+      { question: "Do I need a 4x4 for the desert camps?", answer: "For the main camps at Sam and Khuri, no — the approach roads are tarred and a sedan reaches them comfortably. For camps set deeper into the dunes the last stretch is soft sand and needs a higher vehicle. Tell us which camp you have booked and we will send something that can reach it." },
+      { question: "When should I visit Jaisalmer?", answer: "October to March. Desert days are pleasant and the nights are cold enough to want a jacket, which is part of the appeal at a camp. April to June regularly passes 45°C and the dunes become genuinely unsafe in the afternoon. The Desert Festival falls in February and the town is at its busiest then." },
+      { question: "How much does a cab from Jaisalmer cost?", answer: "Published sedan rates start at ₹11 per kilometre, with a minimum billable distance on outstation journeys and local packages for a half or full day around the dunes. Fuel, driver and tax are included; tolls, parking and permits are at actuals. Call 7668570551 or message on WhatsApp for a written quote." }
+    ],
+    roadTripGuide: {
+      heading: "Making the Most of a Jaisalmer Stop",
+      paragraphs: [
+        "Two nights is the number that works in Jaisalmer. One night means choosing between the fort and the dunes, and three is more than most itineraries need unless you are heading out to Longewala as well. Day one belongs to the fort, the havelis and Gadisar Lake, all of which are walkable from the old city and none of which need a vehicle.",
+        "Day two is the dune afternoon. Leave by about three o'clock for the camel ride and sunset, stay for dinner at the camp, and either come back late or sleep out there. Kuldhara's abandoned village sits directly on the Sam road and takes under an hour to see, so it belongs on the way out rather than as a separate trip.",
+        "Two practical points. Book the desert camp before you book the car, because which camp you choose decides whether the last stretch is tarmac or soft sand and therefore what vehicle can reach it. And if you are continuing to Jodhpur or Udaipur afterwards, say so when booking: a one-way drop with no return leg is priced differently from a return, and the whole circuit is cheaper quoted as a single journey."
+      ],
+      highways: [
+        { name: "NH-11 (Jaisalmer-Jodhpur)", description: "285 km of flat desert highway via Pokhran. The main road in and out, and the fastest connection to rail and air." },
+        { name: "Sam dunes road", description: "42 km west on a tarred road. A sedan reaches the main camps comfortably; camps set deeper into the dunes need a higher vehicle for the final sand stretch." },
+        { name: "Khuri dunes road", description: "48 km south-west. Quieter than Sam, with village homestays rather than large camps, and the same surface conditions." },
+        { name: "NH-11 (Jaisalmer-Bikaner)", description: "330 km north-east across emptier desert. The alternative eastward route, worth it for Junagarh Fort if you have the day." }
+      ]
+    },
+    relatedContent: [
+      { title: "Jaisalmer to Jodhpur Cab", url: "/jaisalmer-to-jodhpur", description: "Desert highway transfer east" },
+      { title: "Jaisalmer Travel Guide", url: "/jaisalmer-travel-guide", description: "Fort, havelis and when to visit" },
+      { title: "Jaisalmer Wedding Cars", url: "/wedding/jaisalmer", description: "Desert and fort wedding transport" },
+      { title: "Places to Visit Near Jodhpur", url: "/places-to-visit-near-jodhpur", description: "Western Rajasthan from the Blue City" }
+    ]
+  },
   udaipur: {
     city: "Udaipur",
     slug: "udaipur",
@@ -585,7 +744,7 @@ ghaziabad: {
     description: [
       "Udaipur, the City of Lakes and one of India's most romantic destinations, is surrounded by some of Rajasthan's finest forts, temples, and natural wonders. From the legendary Chittorgarh Fort just 2 hours away to the Jain temples of Ranakpur, Udaipur is a gateway to the authentic Mewar experience.",
       "The Aravalli Hills that cradle Udaipur also harbour wildlife sanctuaries, ancient step wells, and tribal villages that offer a side of Rajasthan most tourists never see. Kumbhalgarh's Great Wall of India, Mount Abu's Dilwara Temples, and Nathdwara's Shrinathji Temple are all within easy reach.",
-      "Triveni Cabs provides comfortable Rajasthan road trips from Udaipur with experienced drivers who know every fort, temple, and hidden viewpoint in the Aravalli region. Explore royal Mewar at your own pace."
+      "Triveni Cabs™ provides comfortable Rajasthan road trips from Udaipur with experienced drivers who know every fort, temple, and hidden viewpoint in the Aravalli region. Explore royal Mewar at your own pace."
     ],
     destinations: [
       { name: "Chittorgarh", distance: "115 km", time: "2 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Fort, Rajput Valour", description: "India's largest fort and a symbol of Rajput courage. Vijay Stambh, Padmini Palace, and Kirti Stambh sit within its 700-acre walls.", highlights: ["Vijay Stambh", "Padmini Palace", "Kirti Stambh"], bestTime: "Oct-Mar", bookingSlug: "/udaipur-to-chittorgarh" },
@@ -622,7 +781,7 @@ ghaziabad: {
     description: [
       "Mathura, the birthplace of Lord Krishna, sits at the heart of the Braj region surrounded by sacred towns, Mughal heritage, and important pilgrimage centres. Vrindavan is just 15 km away, Agra and the Taj Mahal are under an hour, and Govardhan Hill is a short drive for the parikrama.",
       "The Braj Mandal (Braj region) around Mathura encompasses 12 sacred forests, 24 groves, and countless temples associated with Krishna's divine play. This makes Mathura unique - most nearby destinations are deeply connected to the same spiritual tradition.",
-      "Triveni Cabs, headquartered in nearby Agra, provides the most knowledgeable drivers for the Mathura-Braj circuit. Our drivers can guide you through the Braj 84 Kos Parikrama route, temple timings, and the best darshan strategies."
+      "Triveni Cabs™, headquartered in nearby Agra, provides the most knowledgeable drivers for the Mathura-Braj circuit. Our drivers can guide you through the Braj 84 Kos Parikrama route, temple timings, and the best darshan strategies."
     ],
     destinations: [
       { name: "Vrindavan", distance: "15 km", time: "30 min", sedanFare: "2,530", suvFare: "3,450", bestFor: "Temples, Krishna", description: "The land where Krishna spent his youth, Vrindavan has 5,000+ temples. Banke Bihari, ISKCON, Prem Mandir, and Rangji Temple are must-visits.", highlights: ["Banke Bihari Temple", "ISKCON Temple", "Prem Mandir"], bestTime: "Oct-Mar", bookingSlug: "/mathura-to-vrindavan" },
@@ -639,7 +798,7 @@ ghaziabad: {
       { name: "Bateshwar", distance: "65 km", time: "1.5 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "Ancient Temples, Photography", description: "101 ancient Shiva temples along the Yamuna with a famous cattle fair. One of the most photogenic and offbeat sites in UP.", highlights: ["101 Shiva Temples", "Yamuna Ghats", "Cattle Fair"], bestTime: "Oct-Mar", bookingSlug: "/mathura-to-bateshwar" },
       { name: "Chambal", distance: "80 km", time: "2 hours", sedanFare: "2,530", suvFare: "3,450", bestFor: "River Safari, Wildlife", description: "The Chambal river hosts boat safaris for gharials, river dolphins, and 300+ bird species. A unique eco-tourism experience.", highlights: ["Boat Safari", "Gharial Spotting", "River Dolphins"], bestTime: "Oct-Mar", bookingSlug: "/mathura-to-chambal" },
       { name: "Aligarh", distance: "55 km", time: "1 hour", sedanFare: "2,530", suvFare: "3,450", bestFor: "University, Heritage", description: "Home to Aligarh Muslim University with its stunning campus, Aligarh Fort, and India's lock manufacturing industry.", highlights: ["AMU Campus", "Aligarh Fort", "Lock Markets"], bestTime: "Oct-Mar", bookingSlug: "/mathura-to-aligarh" },
-      { name: "Lucknow", distance: "280 km", time: "4 hours", sedanFare: "3,080", suvFare: "4,200", bestFor: "Nawabi Culture, Food", description: "The City of Nawabs via the Agra-Lucknow Expressway. Bara Imambara, Rumi Darwaza, and legendary kebabs await.", highlights: ["Bara Imambara", "Rumi Darwaza", "Lucknowi Kebabs"], bestTime: "Oct-Mar", bookingSlug: "/mathura-to-lucknow" }
+      { name: "Lucknow", distance: "280 km", time: "4 hours", sedanFare: "3,300", suvFare: "4,200", bestFor: "Nawabi Culture, Food", description: "The City of Nawabs via the Agra-Lucknow Expressway. Bara Imambara, Rumi Darwaza, and legendary kebabs await.", highlights: ["Bara Imambara", "Rumi Darwaza", "Lucknowi Kebabs"], bestTime: "Oct-Mar", bookingSlug: "/mathura-to-lucknow" }
     ],
     faqs: [
       { question: "What places can I visit near Mathura?", answer: "Vrindavan (15 km), Govardhan (26 km), Agra (58 km), Barsana (50 km), Bharatpur (40 km), and Nandgaon (50 km) are the closest and best destinations." },
@@ -659,7 +818,7 @@ ghaziabad: {
     description: [
       "Rishikesh, the Yoga Capital of the World and adventure hub of North India, is a gateway to the Himalayan wonders of Uttarakhand. Nestled along the Ganges at the foothills of the Himalayas, Rishikesh connects you to spiritual Haridwar in just 20 km, the hill station of Mussoorie in 70 km, and deeper Himalayan destinations beyond.",
       "From here, the road climbs towards Chopta's alpine meadows, Auli's ski slopes, and the sacred Char Dham circuit. The region also offers hidden waterfalls, quiet forest retreats in Kanatal and Dhanaulti, and wildlife encounters in Rajaji National Park.",
-      "Triveni Cabs provides mountain-ready vehicles for Rishikesh trips with drivers experienced on Uttarakhand's winding hill roads. Whether you want a quick trip to Haridwar for the Ganga Aarti or a multi-day Himalayan adventure, we have you covered."
+      "Triveni Cabs™ provides mountain-ready vehicles for Rishikesh trips with drivers experienced on Uttarakhand's winding hill roads. Whether you want a quick trip to Haridwar for the Ganga Aarti or a multi-day Himalayan adventure, we have you covered."
     ],
     destinations: [
       { name: "Haridwar", distance: "20 km", time: "30 min", sedanFare: "2,530", suvFare: "3,450", bestFor: "Ganga Aarti, Spirituality", description: "One of India's holiest cities, just 20 km from Rishikesh. The evening Ganga Aarti at Har Ki Pauri is an absolutely mesmerising experience.", highlights: ["Har Ki Pauri", "Ganga Aarti", "Mansa Devi Temple"], bestTime: "Oct-Jun", bookingSlug: "/rishikesh-to-haridwar" },
@@ -687,4 +846,4 @@ ghaziabad: {
       { question: "How do I book a Char Dham cab from Rishikesh?", answer: "Call 7668570551 for Char Dham packages from Rishikesh. We provide a dedicated car and driver for the full 10-12 day yatra. Sedan and SUV options available." }
     ]
   },
-};
+});

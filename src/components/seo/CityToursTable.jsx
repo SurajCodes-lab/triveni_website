@@ -46,8 +46,8 @@ export default function CityToursTable({ city, tours, limit = 12, className = ''
           fuel, tolls, parking and the driver. Lowest-priced first.
         </p>
 
-        <div className="-mx-2 overflow-x-auto px-2">
-          <table className="w-full min-w-[560px] border-collapse text-left text-sm">
+        <div className="-mx-2 sm:overflow-x-auto px-2">
+          <table className="w-full sm:min-w-[560px] border-collapse text-left text-sm rt-stack">
             <caption className="sr-only">
               Sightseeing tours in {cityLabel} compared by duration, number of stops
               covered and starting fare. Fares are for the whole tour, not per kilometre.

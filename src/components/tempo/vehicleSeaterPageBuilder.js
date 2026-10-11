@@ -11,6 +11,8 @@ import {
   getTodayDate,
 } from "@/lib/seo/speakable-helpers";
 import { tightenDescription } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
+import { groupDigits } from '@/utilis/pricing';
 
 const SITE_URL = "https://www.trivenicabs.in";
 
@@ -18,18 +20,18 @@ export function buildVehicleSeaterMetadata(typeSlug, seatsKey) {
   const d = getVehicleSeaterData(typeSlug, seatsKey);
   if (!d) return {};
   const url = `${SITE_URL}/${d.slug}`;
-  const title = d.meta.title.replace(/\s*\|\s*Triveni Cabs\s*$/, "");
+  const title = d.meta.title.replace(/\s*\|\s*Triveni Cabs™\s*$/, "");
   // Google renders ~155-160 chars; several seater descriptions ran past 260.
   const description = tightenDescription(d.meta.description);
-  const ogTitle = `${d.name} on Rent — ${d.capacity}, From ₹${d.perKm}/km | Triveni Cabs`;
+  const ogTitle = `${d.name} on Rent — ${d.capacity}, From ₹${groupDigits(d.perKm)}/km | Triveni Cabs™`;
 
   return {
     title,
     description,
     keywords: d.meta.keywords,
-    authors: [{ name: "Triveni Cabs" }],
-    creator: "Triveni Cabs",
-    publisher: "Triveni Cabs",
+    authors: [{ name: "Triveni Cabs™" }],
+    creator: "Triveni Cabs™",
+    publisher: "Triveni Cabs™",
     metadataBase: new URL(SITE_URL),
     alternates: { canonical: `/${d.slug}` },
     openGraph: {
@@ -38,7 +40,7 @@ export function buildVehicleSeaterMetadata(typeSlug, seatsKey) {
       type: "website",
       locale: "en_IN",
       url,
-      siteName: "Triveni Cabs",
+      siteName: "Triveni Cabs™",
       images: [
         {
           url: `${SITE_URL}${d.image}`,
@@ -73,7 +75,7 @@ export function buildVehicleSeaterJsonLd(typeSlug, seatsKey, { aggregateRating, 
   const d = getVehicleSeaterData(typeSlug, seatsKey);
   if (!d) return {};
   const url = `${SITE_URL}/${d.slug}`;
-  const today = getTodayDate();
+  const today = (getContentUpdatedOn(`/${d.slug}`) || getTodayDate());
   const speakable = getSpeakableSchema([
     ".speakable-headline",
     ".speakable-lead",
@@ -91,7 +93,7 @@ export function buildVehicleSeaterJsonLd(typeSlug, seatsKey, { aggregateRating, 
       },
       {
         name: "Get a transparent quote",
-        text: `Receive an instant per-km quote (from ₹${d.perKm}/km) with inclusions and any toll or driver-allowance details — no hidden charges.`,
+        text: `Receive an instant per-km quote (from ₹${groupDigits(d.perKm)}/km) with inclusions and any toll or driver-allowance details — no hidden charges.`,
       },
       {
         name: "Confirm your booking",
@@ -107,7 +109,7 @@ export function buildVehicleSeaterJsonLd(typeSlug, seatsKey, { aggregateRating, 
   const article = getArticleSchema({
     slug: d.slug,
     headline: `${d.name} on Rent — Capacity, Pricing & Booking Guide`,
-    description: `Complete guide to hiring a ${d.name.toLowerCase()}: seating capacity, per-km pricing from ₹${d.perKm}/km, what's included, popular routes and how to book.`,
+    description: `Complete guide to hiring a ${d.name.toLowerCase()}: seating capacity, per-km pricing from ₹${groupDigits(d.perKm)}/km, what's included, popular routes and how to book.`,
     image: d.image,
     datePublished: "2026-08-12",
     dateModified: today,
@@ -127,7 +129,7 @@ export function buildVehicleSeaterJsonLd(typeSlug, seatsKey, { aggregateRating, 
         "@id": `${url}#webpage`,
         url,
         name: `${d.name} on Rent`,
-        description: `Hire a ${d.name.toLowerCase()} (${d.capacity}) from ₹${d.perKm}/km with AC and an experienced driver.`,
+        description: `Hire a ${d.name.toLowerCase()} (${d.capacity}) from ₹${groupDigits(d.perKm)}/km with AC and an experienced driver.`,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         breadcrumb: { "@id": `${url}#breadcrumb` },
         inLanguage: "en-IN",
@@ -175,7 +177,7 @@ export function buildVehicleSeaterJsonLd(typeSlug, seatsKey, { aggregateRating, 
           "@id": `${SITE_URL}/#organization`,
           name: "Triveni Cabs",
         },
-        brand: { "@type": "Brand", name: "Triveni Cabs" },
+        brand: { "@type": "Brand", name: "Triveni Cabs™" },
         areaServed: [
           { "@type": "State", name: "Delhi NCR" },
           { "@type": "State", name: "Uttar Pradesh" },
@@ -184,16 +186,16 @@ export function buildVehicleSeaterJsonLd(typeSlug, seatsKey, { aggregateRating, 
           { "@type": "State", name: "Himachal Pradesh" },
           { "@type": "State", name: "Punjab" },
         ],
-        aggregateRating,
-        review,
+        ...(aggregateRating ? { aggregateRating } : {}),
+        ...(review ? { review } : {}),
       },
       {
         "@type": "Product",
         "@id": `${url}#product`,
         name: `${d.name} — Triveni Cabs`,
-        description: `${d.name} (${d.capacity}) for hire across North India. AC, premium seats and an experienced driver from ₹${d.perKm}/km.`,
+        description: `${d.name} (${d.capacity}) for hire across North India. AC, premium seats and an experienced driver from ₹${groupDigits(d.perKm)}/km.`,
         image: `${SITE_URL}${d.image}`,
-        brand: { "@type": "Brand", name: "Triveni Cabs" },
+        brand: { "@type": "Brand", name: "Triveni Cabs™" },
         category: `${d.type} Rental`,
         offers: {
           "@type": "Offer",
@@ -213,8 +215,8 @@ export function buildVehicleSeaterJsonLd(typeSlug, seatsKey, { aggregateRating, 
             name: "Triveni Cabs",
           },
         },
-        aggregateRating,
-        review,
+        ...(aggregateRating ? { aggregateRating } : {}),
+        ...(review ? { review } : {}),
       },
     ],
   };

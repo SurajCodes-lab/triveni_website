@@ -1,5 +1,6 @@
 'use client';
 
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -56,6 +57,7 @@ export default function HotelCabPackageClient({ pkg, relatedPackages }) {
                 {pkg.destination}<br />
                 <span className="text-gold-foil">{pkg.duration}</span>
               </h1>
+              <FamilyFacts family="packages" data={pkg} />
               <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">
                 Complete tour with hotel stay, AC cab, sightseeing & transfers
               </p>
@@ -102,7 +104,7 @@ export default function HotelCabPackageClient({ pkg, relatedPackages }) {
                 <div className="flex -space-x-1">
                   {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 text-[#FACF2D] fill-[#FACF2D]" />)}
                 </div>
-                <span className="text-[11px] text-white/40 font-medium">4.9 &middot; 10,000+ reviews</span>
+                <span className="text-[11px] text-white/40 font-medium">4.9 &middot; </span>
               </div>
             </div>
             <QuickEnquiryForm toCity={pkg.destination} pageType="hotel-package" />
@@ -110,6 +112,7 @@ export default function HotelCabPackageClient({ pkg, relatedPackages }) {
           </div>
         </div>
       </section>
+      <FamilyFacts family="packages" data={pkg} details />
 
       {/* ━━━ DARK STRIP: Package overview stats ━━━ */}
       <section className="bg-slate-900 py-6 sm:py-8 px-4 sm:px-6">

@@ -1,5 +1,6 @@
 "use client";
 
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -101,9 +102,10 @@ export default function CorporateComboClient({ data, jsonLd }) {
               <span className="text-base">{item.icon || "🏢"}</span> {item.name} · {city.name}
             </div>
             <h1 className="speakable-headline font-display-serif mt-5 text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight">
-              {item.name} transport
+              {item.name} transport{' '}
               <span className="block mt-2 text-gold-foil">in {city.name}</span>
             </h1>
+              <FamilyFacts family="corporate" data={data} />
             <p className="speakable-lead mt-5 text-lg text-slate-300/90 max-w-2xl leading-relaxed">{intro}</p>
             <div className="mt-7 flex flex-col sm:flex-row flex-wrap gap-3">
               <GoldCta href={`tel:${PHONE}`} onClick={() => trackPhoneCall("corpcombo_hero")}>
@@ -163,6 +165,7 @@ export default function CorporateComboClient({ data, jsonLd }) {
           </div>
         </div>
       </section>
+      <FamilyFacts family="corporate" data={data} details />
 
       {/* ===== INTRO + QUOTE — warm light band ===== */}
       <section className="text-slate-900" style={{ backgroundColor: WARM }}>
@@ -372,6 +375,7 @@ export default function CorporateComboClient({ data, jsonLd }) {
                     : "border-white/10 bg-white/5 backdrop-blur-xl"
                 }`}
               >
+                <h3 className="m-0">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
                   className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left"
@@ -382,6 +386,7 @@ export default function CorporateComboClient({ data, jsonLd }) {
                     className={`w-5 h-5 text-amber-300 shrink-0 transition-transform ${openFaq === i ? "rotate-180" : ""}`}
                   />
                 </button>
+                </h3>
                 {openFaq === i && <div className="px-5 pb-5 text-slate-300 leading-relaxed">{f.answer}</div>}
               </div>
             ))}

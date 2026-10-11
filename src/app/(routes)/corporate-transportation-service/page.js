@@ -50,6 +50,7 @@ import {
   Star
 } from '@/components/ui/icons';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 export const revalidate = 3600;
 
@@ -81,9 +82,9 @@ export const metadata = {
     'employee transport Gurgaon Noida',
     'business travel car hire'
   ].join(', '),
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/corporate-transportation-service',
@@ -97,7 +98,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/corporate-transportation-service',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
@@ -109,7 +110,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Corporate Transportation Service ₹11/km | Triveni Cabs',
+    title: 'Corporate Transportation Service ₹11/km | Triveni Cabs™',
     description: 'Employee transport, executive cars & airport transfers from ₹11/km. Monthly cab contracts, GST invoice, account manager, 24/7 ops. Get an enterprise quote.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -174,7 +175,7 @@ export default function CorporateTransportationPage() {
     },
     "sameAs": [
       "https://www.facebook.com/trivenicabs",
-      "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo",
+      "https://www.instagram.com/cabstriveni",
       "https://twitter.com/trivenicabs",
       "https://www.linkedin.com/company/trivenicabs"
     ],
@@ -226,14 +227,7 @@ export default function CorporateTransportationPage() {
         "closes": "23:59"
       }
     ],
-    "priceRange": "$$",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount('corporate-transportation-service')),
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    "priceRange": "₹₹"
   };
 
   const serviceSchema = {
@@ -384,7 +378,7 @@ export default function CorporateTransportationPage() {
     description: 'A complete guide to corporate transportation in North India: services, fleet, contract models, GST compliance, women-safety protocols, MIS reporting and how to set up an employee transport contract.',
     image: ogImage,
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn('/corporate-transportation-service') || getTodayDate()),
     authorName: 'editorial',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
   });
@@ -448,7 +442,7 @@ export default function CorporateTransportationPage() {
           <div className="absolute bottom-32 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px]" />
 
           {/* Content */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12 sm:py-20">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left Content */}
               <div className="space-y-8">
@@ -585,7 +579,7 @@ export default function CorporateTransportationPage() {
               Corporate transportation (also called employee transportation or ETS) is a managed mobility
               service where a single vendor handles a company’s entire commute and travel needs — daily
               employee pick-up &amp; drop, executive travel, airport transfers and event logistics — under
-              one contract with GST invoicing. Triveni Cabs operates a 500+ vehicle fleet across Delhi NCR,
+              one contract with GST invoicing. Triveni Cabs™ operates a 500+ vehicle fleet across Delhi NCR,
               Jaipur, Chandigarh, Agra, Dehradun, Noida, Gurgaon, Lucknow and Haridwar, with police-verified
               drivers, live GPS tracking, a dedicated account manager, monthly MIS reports and a guaranteed
               30-minute backup vehicle. Rates start at ₹11/km.
@@ -632,7 +626,7 @@ export default function CorporateTransportationPage() {
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-cyan-500/30">
                 <Briefcase className="w-5 h-5 text-white" />
                 <span className="text-white font-semibold text-sm tracking-wider uppercase">Our Services</span>
@@ -652,7 +646,6 @@ export default function CorporateTransportationPage() {
               <div className="lg:col-span-2 group relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 p-10 min-h-[400px]">
                 {/* Animated Background Pattern */}
                 <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-3xl" />
                   <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/20 rounded-full blur-2xl" style={{ animationDelay: '1s' }} />
                 </div>
 
@@ -760,7 +753,7 @@ export default function CorporateTransportationPage() {
         {/* Cities Section */}
         <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-indigo-100 px-5 py-2 rounded-full mb-6">
                 <MapPin className="w-4 h-4 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Service Locations</span>
@@ -850,7 +843,7 @@ export default function CorporateTransportationPage() {
         {/* Industry Solutions Section */}
         <section className="py-16 md:py-24 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-cyan-100 px-5 py-2 rounded-full mb-6">
                 <Building2 className="w-4 h-4 text-cyan-600" />
                 <span className="text-cyan-700 font-semibold text-sm tracking-wider uppercase">Industry Solutions</span>
@@ -887,7 +880,7 @@ export default function CorporateTransportationPage() {
         {/* Use Case Solutions Section */}
         <section className="py-16 md:py-24 px-4 bg-slate-50">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-blue-100 px-5 py-2 rounded-full mb-6">
                 <Briefcase className="w-4 h-4 text-blue-600" />
                 <span className="text-blue-700 font-semibold text-sm tracking-wider uppercase">Service Types</span>
@@ -1161,10 +1154,9 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* SLA & Backup Vehicle Guarantee */}
-        <section className="py-20 px-4 bg-slate-900">
+        <section className="py-12 sm:py-20 px-4 bg-slate-900">
           <div className="max-w-6xl mx-auto">
             <div className="relative rounded-3xl bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 p-10 md:p-12 overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
               <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
                 <div>
                   <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-xl px-4 py-2 rounded-full mb-5 border border-white/20">
@@ -1242,9 +1234,8 @@ export default function CorporateTransportationPage() {
 
           <div className="max-w-7xl mx-auto relative z-10">
             {/* Section Header with Glow Effect */}
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 sm:mb-20">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                 <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                   <Sparkles className="w-6 h-6 text-cyan-300" />
                   <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">The Triveni Advantage</span>
@@ -1254,7 +1245,7 @@ export default function CorporateTransportationPage() {
               <h2 className="font-display-serif text-5xl md:text-7xl font-bold text-white mt-10 mb-6 leading-tight">
                 Why Choose
                 <span className="block mt-2 text-gold-foil">
-                  Triveni Cabs?
+                  Triveni Cabs™?
                 </span>
               </h2>
               <p className="text-xl text-slate-400 max-w-2xl mx-auto">
@@ -1326,13 +1317,6 @@ export default function CorporateTransportationPage() {
                     'bg-pink-500/10 border-pink-400/30 group-hover:border-pink-400/60'
                   }`}>
                     {/* Corner Accent */}
-                    <div className={`absolute top-0 right-0 w-24 h-24 rounded-full blur-3xl opacity-30 ${
-                      idx === 0 ? 'bg-blue-400' :
-                      idx === 1 ? 'bg-indigo-400' :
-                      idx === 2 ? 'bg-violet-400' :
-                      idx === 3 ? 'bg-purple-400' :
-                      'bg-pink-400'
-                    }`} />
 
                     {/* Number Badge */}
                     <div className={`absolute top-6 right-6 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-black ${
@@ -1370,7 +1354,7 @@ export default function CorporateTransportationPage() {
             </div>
 
             {/* Bottom CTA Strip */}
-            <div className="mt-16 relative">
+            <div className="mt-10 sm:mt-16 relative">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-indigo-500/20 rounded-3xl blur-xl" />
               <div className="relative flex flex-col md:flex-row items-center justify-between gap-6 bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
                 <div className="flex items-center gap-4">
@@ -1405,7 +1389,7 @@ export default function CorporateTransportationPage() {
         {/* FAQ Section - Open Cards Design */}
         <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-purple-100 px-6 py-3 rounded-full mb-6">
                 <HeadphonesIcon className="w-5 h-5 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Got Questions?</span>
@@ -1448,7 +1432,7 @@ export default function CorporateTransportationPage() {
             </div>
 
             {/* Contact CTA below FAQ */}
-            <div className="mt-16 text-center">
+            <div className="mt-10 sm:mt-16 text-center">
               <p className="text-slate-600 mb-4">Still have questions?</p>
               <Link
                 href="tel:+917668570551"
@@ -1463,7 +1447,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Explore Our Services Section */}
-        <section className="py-16 bg-slate-900">
+        <section className="py-10 sm:py-16 bg-slate-900">
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-white mb-8">Explore Our Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1474,7 +1458,7 @@ export default function CorporateTransportationPage() {
                 </Link>
               ))}
             </div>
-            <h2 className="text-3xl font-bold text-white mb-8 mt-16">Travel Guides</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 mt-10 sm:mt-16">Travel Guides</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {getGeneralContent().map((item, index) => (
                 <Link key={index} href={item.url} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-cyan-500/30 hover:bg-white/10 transition-all duration-300">
@@ -1487,7 +1471,7 @@ export default function CorporateTransportationPage() {
         </section>
 
         {/* Related Corporate Resources — contextual internal linking */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-3 text-center">
               Related Corporate Resources
@@ -1536,7 +1520,7 @@ export default function CorporateTransportationPage() {
             backgroundSize: '40px 40px'
           }} />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 py-14 sm:py-24">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left Content */}
               <div>
@@ -1554,7 +1538,7 @@ export default function CorporateTransportationPage() {
                 </h2>
 
                 <p className="text-xl text-slate-400 mb-10 leading-relaxed">
-                  Start your corporate transportation partnership with Triveni Cabs. Flexible contracts, transparent pricing, and dedicated support.
+                  Start your corporate transportation partnership with Triveni Cabs™. Flexible contracts, transparent pricing, and dedicated support.
                 </p>
 
                 {/* Features Row */}

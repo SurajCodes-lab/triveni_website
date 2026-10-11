@@ -979,13 +979,13 @@ import {
         {
           duration: "8 hours",
           distance: "80 km",
-          price: "₹1600",
+          price: "₹1,600",
           inclusive: ["Fuel", "Driver allowance", "Vehicle charges"],
         },
         {
           duration: "12 hours",
           distance: "120 km",
-          price: "₹2600",
+          price: "₹2,600",
           inclusive: ["Fuel", "Driver allowance", "Vehicle charges"],
         },
       ],
@@ -1025,13 +1025,13 @@ import {
         {
           duration: "8 hours",
           distance: "80 km",
-          price: "₹2500",
+          price: "₹2,500",
           inclusive: ["Fuel", "Driver allowance", "Vehicle charges"],
         },
         {
           duration: "12 hours",
           distance: "120 km",
-          price: "₹3500",
+          price: "₹3,500",
           inclusive: ["Fuel", "Driver allowance", "Vehicle charges"],
         },
       ],

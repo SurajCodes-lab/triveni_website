@@ -30,7 +30,7 @@ export default function Page() {
     <NearMePage
       slug="tempo-traveller-hire-near-me"
       h1="Tempo Traveller Hire Near You — 9 to 26 Seater AC Group Cabs"
-      intro="Travelling with a group? Triveni Cabs rents tempo travellers and Force Urbania minibuses from 9 to 26 seats — perfect for family tours, office outings, pilgrimage trips and wedding baraat. Pushback seats, powerful AC, ample luggage space and a verified driver, all at an upfront per-km fare with no hidden charges."
+      intro="Travelling with a group? Triveni Cabs™ rents tempo travellers and Force Urbania minibuses from 9 to 26 seats — perfect for family tours, office outings, pilgrimage trips and wedding baraat. Pushback seats, powerful AC, ample luggage space and a verified driver, all at an upfront per-km fare with no hidden charges."
       fareChips={[
         { label: '9–12 Seater', value: '₹23/km' },
         { label: '16–20 Seater', value: '₹25–28/km' },

@@ -8,9 +8,9 @@ export const metadata = {
   title: tightenTitle('Prayagraj Sangam Tour from Delhi | 2-3 Day Package ₹10,500'),
   description: 'Book Prayagraj Triveni Sangam tour from Delhi. 630km, 2-3 day packages. Sangam boat ride, Hanuman Mandir, Anand Bhawan. Sedan from ₹10,500. Call 7668570551.',
   keywords: 'prayagraj sangam tour, tour package india, sightseeing tour, triveni cabs',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/prayagraj-sangam-tour' },
   openGraph: {
@@ -18,7 +18,7 @@ export const metadata = {
     description: 'Prayagraj Sangam pilgrimage from Delhi. Sacred confluences, boat ride, temples. AC cab from ₹10,500. Book now.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/prayagraj-sangam-tour',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: {
     card: 'summary_large_image',
@@ -35,7 +35,7 @@ export default function PrayagrajSangamTour() {
     "serviceType": "Prayagraj Triveni Sangam Pilgrimage Tour",
     "name": "Prayagraj Sangam Tour from Delhi",
     "description": "Pilgrimage tour to Prayagraj Triveni Sangam from Delhi. 630km, 2-3 day packages with AC vehicles, boat ride assistance.",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
+    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
     "areaServed": { "@type": "City", "name": "Delhi" },
     "offers": { "@type": "Offer", "price": "10500", "priceCurrency": "INR", "description": "Sedan package, 2-3 days" }
   };
@@ -103,14 +103,11 @@ export default function PrayagrajSangamTour() {
         <section className="relative min-h-[90vh] overflow-hidden bg-gradient-to-br from-cyan-950 via-blue-950 to-violet-950">
           {/* Flowing river-like gradient mesh */}
           <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-0 left-0 w-2/3 h-1/2 bg-gradient-to-br from-cyan-600/15 to-transparent rounded-full blur-3xl" />
-            <div className="absolute top-1/3 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-blue-600/15 to-transparent rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-1/4 w-1/2 h-1/3 bg-gradient-to-t from-violet-600/15 to-transparent rounded-full blur-3xl" />
           </div>
           {/* Subtle wave pattern overlay */}
           <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'20\' viewBox=\'0 0 100 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 10 Q25 0 50 10 Q75 20 100 10\' fill=\'none\' stroke=\'white\' stroke-width=\'1\'/%3E%3C/svg%3E")' }} />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 pt-20 pb-36">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 pt-12 sm:pt-20 pb-20 sm:pb-36">
             <nav className="mb-8" aria-label="Breadcrumb">
               <ol className="inline-flex items-center space-x-2 text-sm">
                 <li><Link href="/" className="text-white/60 hover:text-white transition-colors">Home</Link></li>
@@ -162,7 +159,6 @@ export default function PrayagrajSangamTour() {
               <div className="flex justify-center">
                 <div className="relative w-80 h-80 md:w-96 md:h-96">
                   {/* Outer glow */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-violet-500/10 blur-xl" />
 
                   {/* Three river arcs converging to center */}
                   <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" fill="none">
@@ -250,7 +246,7 @@ export default function PrayagrajSangamTour() {
         </div>
 
         {/* About Triveni Sangam — Three river cards converging */}
-        <section className="py-16 px-4 bg-gradient-to-b from-slate-50 to-white">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-slate-50 to-white">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-slate-800">About Triveni Sangam</h2>
@@ -282,7 +278,7 @@ export default function PrayagrajSangamTour() {
         </section>
 
         {/* Route Details — Glassmorphic stat cards over gradient */}
-        <section className="py-16 px-4 bg-gradient-to-r from-cyan-50 via-blue-50 to-violet-50">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-r from-cyan-50 via-blue-50 to-violet-50">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-slate-800">Delhi to Prayagraj Route Details</h2>
@@ -312,7 +308,7 @@ export default function PrayagrajSangamTour() {
         </section>
 
         {/* Packages — Flowing card grid with gradient accents per package */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-slate-800">Tour Packages & Pricing</h2>
@@ -355,7 +351,7 @@ export default function PrayagrajSangamTour() {
         </section>
 
         {/* Attractions — Bento grid with colored left borders */}
-        <section className="py-16 px-4 bg-gradient-to-b from-white to-slate-50">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-white to-slate-50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-slate-800">Places to Visit in Prayagraj</h2>
@@ -386,7 +382,7 @@ export default function PrayagrajSangamTour() {
         </section>
 
         {/* Day-wise Itinerary — Vertical timeline with river-color gradient */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-slate-800">Suggested 3-Day Itinerary</h2>
@@ -421,7 +417,7 @@ export default function PrayagrajSangamTour() {
         </section>
 
         {/* FAQ — With river-colored numbered badges */}
-        <section className="py-16 px-4 bg-gradient-to-b from-white to-slate-50">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-white to-slate-50">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-slate-800">Frequently Asked Questions</h2>
@@ -449,10 +445,10 @@ export default function PrayagrajSangamTour() {
         </section>
 
         {/* === INTERLINKS: Pilgrimage Tours + Cross-Category === */}
-        <section className="py-16 px-4 bg-gradient-to-b from-slate-50 to-blue-50/20">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-slate-50 to-blue-50/20">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">Explore More Pilgrimage Tours</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours/kashi-vishwanath-darshan", title: "Kashi Vishwanath Darshan", sub: "Just 120 km from Prayagraj", price: "₹5,500" },
                 { href: "/ayodhya-ram-mandir-tour-from-delhi", title: "Ayodhya Ram Mandir from Delhi", sub: "Combine with Prayagraj (160 km)", price: "₹8,500" },
@@ -474,7 +470,7 @@ export default function PrayagrajSangamTour() {
 
             {/* Cross-Category: Related Services */}
             <h3 className="text-xl font-bold text-slate-800 mb-6 text-center">Related Services You May Need</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours", title: "All Religious Tours", desc: "Char Dham, Vaishno Devi, Kashi & 10+ pilgrimages" },
                 { href: "/ayodhya-ram-mandir-tour-from-agra", title: "Ayodhya Tour from Agra", desc: "400 km — combine Agra sightseeing with Ayodhya" },
@@ -496,7 +492,7 @@ export default function PrayagrajSangamTour() {
 
             {/* Geographic Cluster: Nearby Pilgrimages */}
             <h3 className="text-xl font-bold text-slate-800 mb-6 text-center">Nearby Pilgrimage Destinations</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours/kashi-vishwanath-darshan", label: "Kashi Vishwanath (120 km)" },
                 { href: "/ayodhya-ram-mandir-tour-from-delhi", label: "Ayodhya Ram Mandir (160 km)" },
@@ -525,10 +521,10 @@ export default function PrayagrajSangamTour() {
                       { href: "/delhi-to-varanasi", label: "Delhi to Varanasi Cab" },
                       { href: "/delhi-to-lucknow", label: "Delhi to Lucknow Cab" },
                       { href: "/delhi-to-jaipur", label: "Delhi to Jaipur Cab" },
-                      { href: "/delhi-to-haridwar", label: "Delhi to Haridwar" },
+                      { href: "/one-way-cab/delhi-to-haridwar", label: "Delhi to Haridwar" },
                       { href: "/delhi-to-chandigarh", label: "Delhi to Chandigarh" },
                       { href: "/agra-to-lucknow", label: "Agra to Lucknow Cab" },
-                      { href: "/delhi-to-manali", label: "Delhi to Manali Cab" },
+                      { href: "/one-way-cab/delhi-to-manali", label: "Delhi to Manali Cab" },
                     ].map((r, i) => (
                       <li key={i}><Link href={r.href} className="text-sm text-slate-600 hover:text-blue-600 transition-colors">{r.label}</Link></li>
                     ))}
@@ -589,10 +585,8 @@ export default function PrayagrajSangamTour() {
         </section>
 
         {/* CTA: Triple-river gradient with glassmorphic price card */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-br from-cyan-800 via-blue-800 to-violet-900">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden bg-gradient-to-br from-cyan-800 via-blue-800 to-violet-900">
           {/* Flowing background elements */}
-          <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-br from-cyan-500/10 to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-1/2 h-full bg-gradient-to-tl from-violet-500/10 to-transparent rounded-full blur-3xl" />
           {/* Wave pattern */}
           <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'80\' height=\'20\' viewBox=\'0 0 80 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 10 Q20 0 40 10 Q60 20 80 10\' fill=\'none\' stroke=\'white\' stroke-width=\'1\'/%3E%3C/svg%3E")' }} />
 

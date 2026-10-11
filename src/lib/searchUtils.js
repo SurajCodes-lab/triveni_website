@@ -22,7 +22,7 @@ function normalize(name) {
   return name?.trim().toLowerCase().replace(/\s+/g, ' ') || '';
 }
 
-// Parse price string like "₹2,760" or "₹2760" to number
+// Parse price string like "₹2,760" or "₹2,760" to number
 function parsePrice(priceStr) {
   if (!priceStr) return 0;
   return parseInt(priceStr.replace(/[₹,]/g, ''), 10) || 0;

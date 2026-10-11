@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import DataTable from '@/components/seo/DataTable';
 import AEOHead from '@/components/seo/AEOHead';
 import { getWeddingCarModel, getAllWeddingCarModelSlugs } from '@/utilis/weddingCarModels';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
@@ -17,26 +18,69 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
+/**
+ * The cheapest published day rate for a car model page, read from its own
+ * models table.
+ *
+ * Week 52 — the October export put these four pages at positions 6.7 to 10.1
+ * and 1.3% to 2.3% CTR, while the queries reaching them convert far better than
+ * that when the listing matches: "audi booking for marriage price" returns
+ * 9.86% at position 4.45, "bmw on rent for marriage price" 3.91%, "mercedes
+ * booking for marriage price" 4.29%. Every one of those queries contains the
+ * word "price", and the titles were spending their space on model numbers —
+ * "BMW Wedding Car Rental | BMW 5 Series, 7 Series" — which is the one thing
+ * the searcher did not ask for.
+ *
+ * The wedding city pages already do this correctly ("Wedding Car Rental in
+ * Ayodhya from ₹4,999") and convert at 6% to 11% where they rank.
+ *
+ * The figure is computed rather than written in, so the title can never drift
+ * from the price table beneath it. It had already drifted in the descriptions:
+ * BMW and Audi both read "Starting Rs 15,000" while their tables began at
+ * ₹12,000.
+ */
+function startingRate(carModel) {
+  const rates = (carModel.models || [])
+    .map((m) => String(m.pricePerDay || '').match(/₹\s?([\d,]+)/))
+    .filter(Boolean)
+    .map((m) => Number(m[1].replace(/,/g, '')))
+    .filter((n) => Number.isFinite(n) && n > 0);
+  if (!rates.length) return null;
+  return Math.min(...rates);
+}
+
+function carMetaTitle(carModel) {
+  const rate = startingRate(carModel);
+  if (!rate) return carModel.metaTitle;
+  const price = '₹' + rate.toLocaleString('en-IN');
+  // Prefer the brand's own rental phrasing, with the price where the model
+  // numbers used to be. Falls back to the written title if the computed one
+  // would run past the display budget.
+  const base = carModel.title || carModel.name;
+  const withPrice = `${base} from ${price}/day`;
+  return withPrice.length <= 58 ? withPrice : carModel.metaTitle;
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const carModel = getWeddingCarModel(slug);
 
   if (!carModel) {
-    return { title: 'Car Not Found | Triveni Cabs' };
+    return { title: 'Car Not Found | Triveni Cabs™' };
   }
 
   return {
-    title: carModel.metaTitle,
+    title: carMetaTitle(carModel),
     description: carModel.metaDescription,
     alternates: {
       canonical: `https://www.trivenicabs.in/wedding/cars/${slug}`,
     },
     openGraph: {
-      title: carModel.metaTitle,
+      title: carMetaTitle(carModel),
       description: carModel.metaDescription,
       type: 'website',
       locale: 'en_IN',
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: carModel.heroImage, width: 1200, height: 630, alt: carModel.title }]
     },
     twitter: {
@@ -135,7 +179,7 @@ export default async function WeddingCarModelPage({ params }) {
           {/* Diagonal gold accent line */}
           <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-amber-500/20 to-transparent transform rotate-12 translate-x-[40vw]" />
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-24">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-14 sm:py-24">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-white/40 mb-12">
               <Link href="/" className="hover:text-white/80 transition-colors">Home</Link>
@@ -224,12 +268,24 @@ export default async function WeddingCarModelPage({ params }) {
 
         </section>
 
+        {/* Week 49: the model table, from the models this page already publishes with their per-day prices. */}
+        {Array.isArray(carModel.models) && carModel.models.length > 1 && (
+          <section className="mx-auto max-w-6xl px-4 py-10">
+            <DataTable
+              title={`Which ${carModel.brand || carModel.name} for which wedding moment, and what does it cost per day?`}
+              caption={`${carModel.name}: models, seats, per-day price as published and best use`}
+              intro="Per-day prices as published on this page; decoration and chauffeur included, fuel and tolls as quoted."
+              columns={[{ key: 'model', label: 'Model', strong: true }, { key: 'type', label: 'Type' }, { key: 'capacity', label: 'Seats' }, { key: 'price', label: 'Per day', align: 'right' }, { key: 'ideal', label: 'Best for' }]}
+              rows={carModel.models.map((m) => ({ model: m.name, type: m.type || '', capacity: m.capacity || '', price: m.pricePerDay || '', ideal: m.ideal || '' }))}
+            />
+          </section>
+        )}
         {/* ===== MODEL LINEUP: Bento Grid Showroom ===== */}
-        <section className="py-28 px-4 bg-slate-950 relative">
+        <section className="py-16 sm:py-28 px-4 bg-slate-950 relative">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black" />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="flex items-end justify-between mb-16">
+            <div className="flex items-end justify-between mb-10 sm:mb-16">
               <div>
                 <span className={`text-xs font-bold ${colors.accent} tracking-[0.3em] uppercase`}>The Lineup</span>
                 <h2 className="text-5xl md:text-6xl font-black text-white mt-3">
@@ -302,7 +358,7 @@ export default async function WeddingCarModelPage({ params }) {
         </section>
 
         {/* ===== WHY THIS BRAND: Split Feature Showcase ===== */}
-        <section className="py-28 px-4 relative overflow-hidden">
+        <section className="py-16 sm:py-28 px-4 relative overflow-hidden">
           <div className={`absolute inset-0 bg-gradient-to-b ${colors.light}`} />
           {/* Diagonal accent */}
           <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${colors.primary}`} />
@@ -373,13 +429,13 @@ export default async function WeddingCarModelPage({ params }) {
         </section>
 
         {/* ===== FAQ: Magazine Q&A Layout ===== */}
-        <section className="py-28 px-4 bg-slate-950 relative">
+        <section className="py-16 sm:py-28 px-4 bg-slate-950 relative">
           <div className="absolute inset-0 opacity-[0.02]" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
 
           <div className="max-w-6xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className={`text-xs font-bold ${colors.accent} tracking-[0.3em] uppercase`}>Knowledge Base</span>
               <h2 className="text-5xl md:text-6xl font-black text-white mt-3">
                 Frequently Asked
@@ -447,7 +503,7 @@ export default async function WeddingCarModelPage({ params }) {
         </section>
 
         {/* ===== RELATED SERVICES: Cross-Category Links ===== */}
-        <section className="py-24 px-4 bg-slate-950 relative">
+        <section className="py-14 sm:py-24 px-4 bg-slate-950 relative">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black" />
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-14">
@@ -485,7 +541,7 @@ export default async function WeddingCarModelPage({ params }) {
         </section>
 
         {/* ===== POPULAR LINKS: Footer-Style Grid ===== */}
-        <section className="py-16 px-4 bg-slate-950 border-t border-white/5">
+        <section className="py-10 sm:py-16 px-4 bg-slate-950 border-t border-white/5">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Popular Wedding Cities */}
@@ -571,11 +627,9 @@ export default async function WeddingCarModelPage({ params }) {
         <section className="relative overflow-hidden">
           <div className={`absolute inset-0 bg-gradient-to-r ${colors.primary}`} />
           {/* Geometric shapes */}
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-black/20 rounded-full blur-3xl" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-px bg-white/10 rotate-12" />
 
-          <div className="relative z-10 max-w-5xl mx-auto px-4 py-20 text-center">
+          <div className="relative z-10 max-w-5xl mx-auto px-4 py-12 sm:py-20 text-center">
             <Crown className="w-12 h-12 text-white/80 mx-auto mb-6" />
             <h2 className="font-display-serif text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
               Reserve Your {carModel.brand}

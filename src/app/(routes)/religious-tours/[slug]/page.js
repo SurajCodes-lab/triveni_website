@@ -3,6 +3,8 @@ import { getTourBySlug, getAllTourSlugs } from '@/utilis/religiousTourData';
 import ReligiousTourClient from '@/components/religious/ReligiousTourClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import DataTable from '@/components/seo/DataTable';
+import ArrivalGuide from '@/components/content/ArrivalGuide';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -40,7 +42,7 @@ export async function generateMetadata({ params }) {
   return {
     title: pageTitle,
     description: pageDescription,
-    authors: [{ name: 'Triveni Cabs' }],
+    authors: [{ name: 'Triveni Cabs™' }],
     alternates: {
       canonical: `https://www.trivenicabs.in/religious-tours/${resolvedParams.slug}`
     },
@@ -49,7 +51,7 @@ export async function generateMetadata({ params }) {
       description: pageDescription,
       type: 'website',
       locale: 'en_IN',
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [
         {
           url: tour.images.hero,
@@ -86,6 +88,12 @@ export default async function ReligiousTourPage({ params }) {
   if (!tour) {
     notFound();
   }
+
+  // These tours carry `title` (with a dash-separated strapline) and no `name`.
+  // The itinerary table below used `tour.name` and rendered the literal word
+  // "undefined" on all 13 pages. Derive the short name the same way
+  // generateMetadata does, so the two stay in step.
+  const tourName = tour.title.split('–')[0].trim();
 
   // Structured data for SEO
   const structuredData = {
@@ -155,6 +163,34 @@ export default async function ReligiousTourPage({ params }) {
       />
       <AEOHead pageType="tour" data={{ url: `/religious-tours/${resolvedParams.slug}`, title: tour.title || '' }} />
       <ReligiousTourClient tour={tour} />
+
+      {/* These two blocks used to render above ReligiousTourClient, which is
+          where the hero and the h1 live. The measured effect was that the page
+          opened with a day-by-day itinerary table and the pilgrim had to scroll
+          past 3,112px — almost four phone screens — before reaching the title
+          of the page they had just opened. Reading order now matches the page's
+          own hierarchy: title and hero first, then the detail. */}
+      {/* Day-by-day itinerary as a table. "Day wise Char Dham itinerary" is a
+          real query shape, and a numbered list of days is precisely what a table
+          renders well and what an assistant can extract without guessing which
+          description belongs to which day. */}
+      <DataTable
+        title={`${tourName} — day-by-day itinerary`}
+        caption={`Day-by-day itinerary for the ${tourName}, listing what happens on each day of the tour.`}
+        columns={[
+          { key: 'dayLabel', label: 'Day' },
+          { key: 'title', label: 'Where' },
+          { key: 'description', label: 'What happens' },
+        ]}
+        rows={(tour.itinerary || []).map((d) => ({ ...d, dayLabel: `Day ${d.day}` }))}
+        tone="light"
+        className="bg-slate-50"
+      />
+
+      {/* "How to reach" was addressed on none of these thirteen pages. It is the
+          first question a pilgrim asks and the one a cab service should answer. */}
+      <ArrivalGuide slug={resolvedParams.slug} />
+
     </>
   );
 }

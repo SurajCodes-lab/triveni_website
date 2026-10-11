@@ -1,14 +1,15 @@
+import { groupDigits } from '@/utilis/pricing';
 // src/utilis/taxiFareData.js - Complete data for 18 city taxi fare pages
 // Base Rates: Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km | Minimum Fare: ₹300
 
 function generateFaqs(city, baseFare, comparisonWithOla) {
   return [
-    { question: `What is the taxi fare per km in ${city}?`, answer: `Taxi fare in ${city} starts at ₹${baseFare.sedan}/km for an AC Sedan, ₹${baseFare.suv}/km for SUV (Innova/Ertiga), and ₹${baseFare.tempo}/km for Tempo Traveller. Triveni Cabs offers the most affordable rates with no surge pricing, unlike Ola/Uber that charge ${comparisonWithOla.ola}.` },
-    { question: `How much does a cab cost for a full day in ${city}?`, answer: `A full-day cab (8 hrs/80 km) in ${city} costs approximately ₹2,000-2,500 for Sedan, ₹2,800-3,500 for SUV. Extra km is charged at ₹${baseFare.sedan}/km (Sedan) or ₹${baseFare.suv}/km (SUV). Toll and parking extra at actual.` },
-    { question: `Is Triveni Cabs cheaper than Ola/Uber in ${city}?`, answer: `Yes, Triveni Cabs is significantly cheaper. We charge ₹${baseFare.sedan}/km for Sedan vs Ola/Uber's ${comparisonWithOla.ola}. That's a savings of up to ${comparisonWithOla.savings} on every ride. Plus, we have no surge pricing during peak hours or rain.` },
-    { question: `Are there any hidden charges in ${city} taxi fare?`, answer: `No hidden charges with Triveni Cabs. Our fare includes driver allowance, fuel, and AC. Only toll charges and state tax (if applicable) are extra at actual. We don't charge booking fees, convenience fees, or peak-hour surcharges.` },
-    { question: `What types of cabs are available in ${city}?`, answer: `We offer three vehicle categories in ${city}: Sedan (Swift Dzire/Etios) at ₹${baseFare.sedan}/km, SUV (Innova/Ertiga) at ₹${baseFare.suv}/km, and Tempo Traveller (12-20 seater) at ₹${baseFare.tempo}/km. All vehicles are AC, GPS-tracked, and well-maintained.` },
-    { question: `How do I book the cheapest taxi in ${city}?`, answer: `Call Triveni Cabs at 7668570551 or WhatsApp us for the cheapest taxi in ${city}. Book directly to avoid app commissions. We offer flat rates with no surge pricing, making us ${comparisonWithOla.savings} cheaper than ride-hailing apps on average.` },
+    { question: `What is the taxi fare per km in ${city}?`, answer: `Taxi fare in ${city} starts at ₹${groupDigits(baseFare.sedan)}/km for an AC Sedan, ₹${groupDigits(baseFare.suv)}/km for SUV (Innova/Ertiga), and ₹${groupDigits(baseFare.tempo)}/km for Tempo Traveller. Triveni Cabs™ offers the most affordable rates with no surge pricing, unlike Ola/Uber that charge ${comparisonWithOla.ola}.` },
+    { question: `How much does a cab cost for a full day in ${city}?`, answer: `A full-day cab (8 hrs/80 km) in ${city} costs approximately ₹2,000-2,500 for Sedan, ₹2,800-3,500 for SUV. Extra km is charged at ₹${groupDigits(baseFare.sedan)}/km (Sedan) or ₹${groupDigits(baseFare.suv)}/km (SUV). Toll and parking extra at actual.` },
+    { question: `Is Triveni Cabs™ cheaper than Ola/Uber in ${city}?`, answer: `Yes, Triveni Cabs™ is significantly cheaper. We charge ₹${groupDigits(baseFare.sedan)}/km for Sedan vs Ola/Uber's ${comparisonWithOla.ola}. That's a savings of up to ${comparisonWithOla.savings} on every ride. Plus, we have no surge pricing during peak hours or rain.` },
+    { question: `Are there any hidden charges in ${city} taxi fare?`, answer: `No hidden charges with Triveni Cabs™. Our fare includes driver allowance, fuel, and AC. Only toll charges and state tax (if applicable) are extra at actual. We don't charge booking fees, convenience fees, or peak-hour surcharges.` },
+    { question: `What types of cabs are available in ${city}?`, answer: `We offer three vehicle categories in ${city}: Sedan (Swift Dzire/Etios) at ₹${groupDigits(baseFare.sedan)}/km, SUV (Innova/Ertiga) at ₹${groupDigits(baseFare.suv)}/km, and Tempo Traveller (12-20 seater) at ₹${groupDigits(baseFare.tempo)}/km. All vehicles are AC, GPS-tracked, and well-maintained.` },
+    { question: `How do I book the cheapest taxi in ${city}?`, answer: `Call Triveni Cabs™ at 7668570551 or WhatsApp us for the cheapest taxi in ${city}. Book directly to avoid app commissions. We offer flat rates with no surge pricing, making us ${comparisonWithOla.savings} cheaper than ride-hailing apps on average.` },
   ];
 }
 

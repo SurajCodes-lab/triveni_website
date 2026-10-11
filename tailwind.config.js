@@ -67,10 +67,11 @@ module.exports = {
       },
 
       // ============================================
-      // FONT FAMILY - Self-hosted Inter via next/font
+      // FONT FAMILY - Native system stack avoids a render-blocking web-font
+      // request on every one of the site's generated pages.
       // ============================================
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
 
       // ============================================

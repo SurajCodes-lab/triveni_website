@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("Round Trip Cab Routes — Same Cab Both Ways");
-  const description = "Round-trip cab routes across North India — same car both ways, transparent two-way fares, driver waiting included. Triveni Cabs 7668570551.";
+  const description = "Round-trip cab routes across North India — same car both ways, transparent two-way fares, driver waiting included. Triveni Cabs™ 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

@@ -8,10 +8,10 @@ export const metadata = {
   title: tightenTitle('India Road Trip Guide for International Tourists 2026'),
   description: 'Comprehensive India road trip guide for foreign tourists. Visa, currency, safety, etiquette, best routes, hiring a driver vs self-drive, cultural tips.',
   keywords: 'india road trip guide for international tourists, india travel guide for foreigners, road trip india tips, driving in india guide, india tourist information',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/india-road-trip-guide-for-tourists' },
-  openGraph: { title: 'India Road Trip Guide for International Tourists 2026', description: 'Everything you need to know about road trips in India. Visa, safety, routes, driver hire.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/india-road-trip-guide-for-tourists', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'India Road Trip Guide for International Tourists 2026', description: 'Everything you need to know about road trips in India. Visa, safety, routes, driver hire.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/india-road-trip-guide-for-tourists', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'India Road Trip Guide for Tourists 2026' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -104,14 +104,14 @@ export default function IndiaRoadTripGuidePage() {
           <div className="absolute inset-0 bg-gradient-to-br from-stone-950 via-amber-950/30 to-stone-950" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-orange-500/8 via-transparent to-transparent" />
-          <div className="absolute top-20 left-20 w-[350px] h-[350px] bg-amber-500/10 rounded-full blur-[140px] animate-pulse" />
-          <div className="absolute bottom-10 right-20 w-[280px] h-[280px] bg-orange-500/8 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-20 left-20 w-[350px] h-[350px] bg-amber-500/10 rounded-full blur-[140px]" />
+          <div className="absolute bottom-10 right-20 w-[280px] h-[280px] bg-orange-500/8 rounded-full blur-[120px]" style={{ animationDelay: '2s' }} />
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(251,191,36,0.3) 1px, transparent 0)`,
             backgroundSize: '40px 40px'
           }} />
 
-          <div className="max-w-6xl mx-auto px-4 py-20 relative z-10 text-center">
+          <div className="max-w-6xl mx-auto px-4 py-12 sm:py-20 relative z-10 text-center">
             <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 backdrop-blur-xl px-6 py-3 rounded-full border border-amber-500/30 mb-8">
               <MapPin className="w-5 h-5 text-amber-400" />
               <span className="text-amber-300 font-bold text-sm tracking-wider uppercase">The Complete India Travel Handbook</span>
@@ -143,7 +143,7 @@ export default function IndiaRoadTripGuidePage() {
         </section>
 
         {/* Content Sections */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute top-[30%] right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[200px]" />
           <div className="absolute bottom-[20%] left-0 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[150px]" />
           <div className="max-w-4xl mx-auto space-y-16 relative z-10">
@@ -169,7 +169,7 @@ export default function IndiaRoadTripGuidePage() {
         </section>
 
         {/* Related Pages */}
-        <section className="py-16 px-4 bg-stone-900/30">
+        <section className="py-10 sm:py-16 px-4 bg-stone-900/30">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-2xl font-bold text-center mb-8 text-white">Plan Your India Trip</h2>
             <div className="grid md:grid-cols-3 gap-4">
@@ -196,10 +196,10 @@ export default function IndiaRoadTripGuidePage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[200px]" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
                 Frequently Asked
                 <span className="block text-transparent bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">Questions</span>
@@ -222,14 +222,14 @@ export default function IndiaRoadTripGuidePage() {
         {/* CTA */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-amber-950/40 to-stone-900" />
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/15 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/15 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px]" style={{ animationDelay: '1s' }} />
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(251,191,36,0.3) 1px, transparent 0)`,
             backgroundSize: '30px 30px'
           }} />
 
-          <div className="relative z-10 max-w-4xl mx-auto px-4 py-24 text-center">
+          <div className="relative z-10 max-w-4xl mx-auto px-4 py-14 sm:py-24 text-center">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               Ready to Explore
               <span className="block text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">India?</span>

@@ -1,10 +1,12 @@
 import { notFound } from 'next/navigation';
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import { getBusVsCabRoute, getAllBusVsCabSlugs, getRelatedBusVsCabRoutes } from '@/utilis/busVsCabData';
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import BusVsCabClient from '@/components/bus-vs-cab/BusVsCabClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { groupDigits } from '@/utilis/pricing';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -22,8 +24,8 @@ export async function generateMetadata({ params }) {
   }
 
   const title = tightenTitle(`Bus vs Cab: ${route.origin} to ${route.destination} | Cost & Time Comparison 2026`);
-  const description = `${route.origin} to ${route.destination} — Bus (₹${route.busOptions[0].cost}-₹${route.busOptions[route.busOptions.length - 1].cost}) vs Cab (${route.cabOptions.sedan.fare}). Compare cost, time, comfort for solo/family. Save ${route.comparison.timeSaved}. Call 7668570551.`;
-  const ogTitle = `Bus vs Cab: ${route.origin} to ${route.destination} — Which is Cheaper & Faster? | 2026 Guide | Triveni Cabs`;
+  const description = `${route.origin} to ${route.destination} — Bus (₹${groupDigits(route.busOptions[0].cost)}-₹${groupDigits(route.busOptions[route.busOptions.length - 1].cost)}) vs Cab (${route.cabOptions.sedan.fare}). Compare cost, time, comfort for solo/family. Save ${route.comparison.timeSaved}. Call 7668570551.`;
+  const ogTitle = `Bus vs Cab: ${route.origin} to ${route.destination} — Which is Cheaper & Faster? | 2026 Guide | Triveni Cabs™`;
 
   return {
     title,
@@ -45,9 +47,9 @@ export async function generateMetadata({ params }) {
       `${route.origin.toLowerCase()} ${route.destination.toLowerCase()} bus timing`,
       `${route.origin.toLowerCase()} to ${route.destination.toLowerCase()} cab booking`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/bus-vs-cab/${slug}` },
     openGraph: {
@@ -56,7 +58,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/bus-vs-cab/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `Bus vs Cab: ${route.origin} to ${route.destination}` }],
     },
     twitter: {
@@ -67,7 +69,7 @@ export async function generateMetadata({ params }) {
       site: '@trivenicabs',
       images: [getOgImageForSlug(slug)],
     },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -97,9 +99,9 @@ export default async function BusVsCabPage({ params }) {
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
+        "streetAddress": "366, Dandupura, near Tajganj",
         "addressLocality": "Agra",
-        "addressRegion": "UP",
+        "addressRegion": "Uttar Pradesh",
         "postalCode": "282006",
         "addressCountry": "IN"
       }
@@ -114,12 +116,6 @@ export default async function BusVsCabPage({ params }) {
       "highPrice": route.cabOptions.suv.fareRaw.toString(),
       "priceCurrency": "INR",
       "offerCount": "2"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount(slug)),
-      "bestRating": "5"
     }
   };
 

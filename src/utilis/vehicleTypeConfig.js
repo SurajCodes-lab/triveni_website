@@ -10,6 +10,7 @@
 // not 34 thin near-duplicate pages. Anti-cannibalization by design.
 
 import { vehicleTypeData, VEHICLE_TYPE_ORDER } from '@/utilis/vehicleTypeData';
+import { groupDigits } from '@/utilis/pricing';
 
 // Per-type Tailwind gradient used for fleet-card accents / pricing text.
 // Chosen to feel distinct from the city-driven hero gradient.
@@ -60,6 +61,18 @@ const KW_TOKEN = {
   'maharaja-tempo-traveller': 'maharaja tempo traveller',
 };
 
+// Colloquial names for the same vehicle. People do not consistently use the
+// manufacturer's wording: a Force Urbania is very commonly searched as
+// "urbania tempo traveller" or just "urbania", and the SEO Expansion Proposal
+// lists "Urbania Tempo Traveller {city}" as its own line item. These aliases
+// belong on the SAME canonical page as the primary token — they are the same
+// intent under a different name, not a reason for a second URL.
+const KW_ALIASES = {
+  'tempo-traveller': [],
+  'force-urbania': ['urbania tempo traveller', 'urbania'],
+  'maharaja-tempo-traveller': ['maharaja tempo', 'maharaja urbania'],
+};
+
 // Build a tempoFleet-shaped array from a type's seaters so the existing
 // premium fleet grid renders unchanged for any vehicle type.
 function buildFleet(typeSlug) {
@@ -73,7 +86,8 @@ function buildFleet(typeSlug) {
       id: i + 1,
       name: `${s.name} ${t.type}`,
       capacity: s.capacity,
-      outstationRate: `₹${s.perKm}/km`,
+      luggage: s.luggage,
+      outstationRate: `₹${groupDigits(s.perKm)}/km`,
       localRate: `₹${low.toLocaleString('en-IN')}-${high.toLocaleString('en-IN')}/Day`,
       features: t.features.slice(0, 4),
       image: s.image,
@@ -94,7 +108,7 @@ function buildTableRows(typeSlug) {
   return t.seaters.map((s) => ({
     v: `${s.name} ${t.type}`,
     s: String(s.seats - 1) + '-' + String(s.seats),
-    r: `₹${s.perKm}/km`,
+    r: `₹${groupDigits(s.perKm)}/km`,
     b: s.seats === popularSeats ? 'Most popular — groups' : s.blurb,
   }));
 }
@@ -118,11 +132,27 @@ function buildCityKeywordCluster(typeSlug, cityName) {
   const token = KW_TOKEN[typeSlug];
   const c = cityName.toLowerCase();
   const seaterKw = t.seaters.map((s) => `${s.name.toLowerCase()} ${t.type.toLowerCase()} ${c}`);
+  // Word order matters here and both directions are real queries. "hire tempo
+  // traveller delhi" and "tempo traveller hire delhi" are typed by different
+  // people in comparable volume, and the proposal lists the noun-first form
+  // ("Force Urbania Hire Delhi") explicitly — so carry both rather than
+  // assuming one implies the other.
+  const aliasKw = (KW_ALIASES[typeSlug] || []).flatMap((a) => [
+    `${a} ${c}`,
+    `${a} on rent in ${c}`,
+    `${a} price ${c}`,
+  ]);
   return [
     `${token} on rent in ${c}`,
+    `${token} on rent ${c}`,
     `${token} ${c}`,
+    // "tempo traveller in delhi" — the preposition form. The proposal lists it
+    // as its own line item and it is a distinct query from the bare
+    // "tempo traveller delhi", so it cannot be assumed to be covered by it.
+    `${token} in ${c}`,
     `${token} rental ${c}`,
     `hire ${token} ${c}`,
+    `${token} hire ${c}`,
     `${token} booking ${c}`,
     `book ${token} ${c}`,
     `luxury ${token} ${c}`,
@@ -131,12 +161,57 @@ function buildCityKeywordCluster(typeSlug, cityName) {
     `cheap ${token} ${c}`,
     `ac ${token} ${c}`,
     `outstation ${token} ${c}`,
+    // Geo-qualified near-me. This is safe to hold here and does NOT compete
+    // with the canonical /tempo-traveller-hire-near-me page, which targets the
+    // bare, un-qualified "near me" query. "tempo traveller near me delhi" is a
+    // different search: the user has already named the city.
+    `${token} near me ${c}`,
     ...seaterKw,
     `${token} airport transfer ${c}`,
     `${token} for wedding ${c}`,
     `${token} for corporate events ${c}`,
     `${token} for family tour ${c}`,
     `best ${token} ${c}`,
+    ...aliasKw,
+  ];
+}
+
+/**
+ * Keyword cluster for one (vehicle type x NCR locality).
+ *
+ * Deliberately narrower than the city cluster. A locality page is answering a
+ * hyperlocal, transactional question — "get me a vehicle in Indirapuram" — so
+ * it targets rental/hire/booking/price/AC/near-me plus the local occasion
+ * terms, and drops the outstation and seater-specific variants that belong to
+ * the city and seater hub pages. Keeping the clusters distinct is what stops a
+ * locality page from competing with its own parent city page.
+ *
+ * `extra` carries page-specific phrasings — on the airport page that is where
+ * the "IGI airport" and "from IGI airport" variants live, so all three
+ * phrasings of that one intent are served by a single URL.
+ */
+function buildLocalityKeywordCluster(typeSlug, placeName, extra = []) {
+  const token = KW_TOKEN[typeSlug];
+  const p = placeName.toLowerCase();
+  return [
+    `${token} ${p}`,
+    `${token} on rent in ${p}`,
+    `${token} rental ${p}`,
+    `hire ${token} ${p}`,
+    `${token} booking ${p}`,
+    `book ${token} ${p}`,
+    `${token} price ${p}`,
+    `${token} per km rate ${p}`,
+    `ac ${token} ${p}`,
+    `luxury ${token} ${p}`,
+    `cheap ${token} ${p}`,
+    `${token} near me ${p}`,
+    `${token} for wedding ${p}`,
+    `${token} for corporate ${p}`,
+    `${token} airport transfer ${p}`,
+    `${token} hire in ${p} delhi ncr`,
+    `group transport ${p}`,
+    ...extra,
   ];
 }
 
@@ -198,6 +273,7 @@ for (const slug of VEHICLE_TYPE_ORDER) {
     highPrice,
     popularSeater: POPULAR_SEATER[slug],
     buildCityKeywordCluster: (city) => buildCityKeywordCluster(slug, city),
+    buildLocalityKeywordCluster: (place, extra) => buildLocalityKeywordCluster(slug, place, extra),
   };
 }
 
@@ -209,4 +285,4 @@ export function getAllVehicleTypeSlugs() {
   return VEHICLE_TYPE_ORDER.slice();
 }
 
-export { buildCityKeywordCluster };
+export { buildCityKeywordCluster, buildLocalityKeywordCluster };

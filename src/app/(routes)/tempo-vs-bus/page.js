@@ -5,6 +5,7 @@ import { Users, Fuel, Car, Check, X, ArrowRight, Phone, MapPin } from "@/compone
 import { getRatingAndReviews } from "@/lib/seo/review-helpers";
 import { getComparisonSchema, getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from "@/lib/seo/speakable-helpers";
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 const SLUG = "tempo-vs-bus";
 const SITE = "https://www.trivenicabs.in";
@@ -19,7 +20,7 @@ export const metadata = {
     "Tempo traveller vs bus for group travel: capacity, price per km, comfort & best-for. Verdict: tempo for 12-26, bus for 30-55. Tempo ₹25/km. Call 7668570551.",
   keywords:
     "tempo vs bus, tempo traveller vs bus, tempo or bus for group travel, which is better tempo or bus, tempo traveller vs bus rental, tempo vs bus price comparison, tempo vs bus for trip, group travel comparison india, tempo traveller bus difference, best vehicle for large group, tempo vs bus cost per person, bus vs tempo for tour, 17 seater tempo vs 35 seater bus, tempo or bus for pilgrimage, tempo or bus for hill station",
-  authors: [{ name: "Triveni Cabs" }],
+  authors: [{ name: "Triveni Cabs™" }],
   metadataBase: new URL(SITE),
   alternates: { canonical: PAGE_URL, languages: { "en-IN": `/${SLUG}` } },
   openGraph: {
@@ -29,7 +30,7 @@ export const metadata = {
     type: "article",
     locale: "en_IN",
     url: PAGE_URL,
-    siteName: "Triveni Cabs",
+    siteName: "Triveni Cabs™",
     images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Tempo Traveller vs Bus — side-by-side group travel comparison" }],
   },
   twitter: {
@@ -130,7 +131,7 @@ function buildSchemas() {
       { name: "Check the terrain", text: "Hill stations and narrow roads rule out a bus — choose a tempo traveller." },
       { name: "Weigh luggage and amenities", text: "Need a washroom or huge cargo hold for a long highway tour? A luxury bus delivers." },
       { name: "Compare per-head cost", text: "A near-full bus is cheaper per person for 30+ travellers; a tempo wins for smaller groups." },
-      { name: "Book with Triveni Cabs", text: "Call 7668570551 or WhatsApp to confirm vehicle, AC and driver for your dates." },
+      { name: "Book with Triveni Cabs™", text: "Call 7668570551 or WhatsApp to confirm vehicle, AC and driver for your dates." },
     ],
   });
 
@@ -141,7 +142,7 @@ function buildSchemas() {
       "An experience-based comparison of tempo travellers and buses covering capacity, per-km price, comfort, luggage and the right pick for your group size and route.",
     image: OG_IMAGE,
     datePublished: "2024-06-01",
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/${SLUG}`) || getTodayDate()),
     speakableSelectors: [".speakable-headline", ".speakable-lead", ".speakable-faq-first"],
   });
 
@@ -155,10 +156,9 @@ function buildSchemas() {
       "AC tempo traveller (12-26 seater) and bus (28-55 seater) hire with professional drivers for group tours, pilgrimage, weddings, school and corporate travel across North India.",
     "url": PAGE_URL,
     "areaServed": { "@type": "Country", "name": "India" },
-    "brand": { "@type": "Brand", "name": "Triveni Cabs" },
-    "provider": { "@type": "TravelAgency", "@id": SITE + "/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551" },
-    "aggregateRating": rr.aggregateRating,
-    "review": rr.review,
+    "brand": { "@type": "Brand", "name": "Triveni Cabs™" },
+    "provider": { "@type": "TravelAgency", "@id": SITE + "/#organization", "name": "Triveni Cabs™", "telephone": "+91-7668570551" },
+
   };
 
   const speakable = {
@@ -167,7 +167,7 @@ function buildSchemas() {
     "@id": PAGE_URL + "#webpage",
     "name": "Tempo Traveller vs Bus",
     "url": PAGE_URL,
-    "dateModified": getTodayDate(),
+    "dateModified": (getContentUpdatedOn(`/${SLUG}`) || getTodayDate()),
     "speakable": getSpeakableSchema([".speakable-headline", ".speakable-lead", ".speakable-faq-first"]),
   };
 
@@ -237,7 +237,7 @@ export default function TempoVsBusPage() {
 
       <div className="min-h-screen bg-gray-50">
         {/* Hero */}
-        <section className="py-16 bg-gradient-to-br from-gray-900 to-gray-800">
+        <section className="py-10 sm:py-16 bg-gradient-to-br from-gray-900 to-gray-800">
           <div className="max-w-6xl mx-auto px-4 text-center">
             <nav className="flex justify-center mb-6" aria-label="Breadcrumb">
               <ol className="flex items-center space-x-2 text-sm text-gray-400">

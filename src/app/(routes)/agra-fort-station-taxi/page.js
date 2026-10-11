@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import { COMPANY_INFO, BASE_URL } from '@/lib/seo/constants';
 import StationTaxiClient from '@/components/railway/StationTaxiClient';
 import AEOHead from '@/components/seo/AEOHead';
@@ -57,9 +56,9 @@ export const metadata = {
   keywords: 'agra fort station taxi, agra fort railway station cab, AF station taxi, taxi from agra fort station to taj mahal, agra fort station cab booking, agra fort to fatehpur sikri taxi, agra fort station pickup, agra fort station to kinari bazaar cab, agra fort railway taxi fare, AF station cab service',
   alternates: { canonical: '/agra-fort-station-taxi' },
   openGraph: {
-    title: 'Agra Fort Station Taxi — Fixed Fare from ₹149 | Triveni Cabs',
+    title: 'Agra Fort Station Taxi — Fixed Fare from ₹149 | Triveni Cabs™',
     description: '24/7 taxi from Agra Fort station. Taj Mahal ₹199, Agra Fort ₹149, Fatehpur Sikri ₹899. Platform pickup.',
-    type: 'website', url: `${BASE_URL}/agra-fort-station-taxi`, siteName: 'Triveni Cabs', locale: 'en_IN',
+    type: 'website', url: `${BASE_URL}/agra-fort-station-taxi`, siteName: 'Triveni Cabs™', locale: 'en_IN',
     images: [{ url: '/images/sightseeing/Agra/agra_fort.jpg', width: 1200, height: 630, alt: 'Agra Fort Station Taxi — Triveni Cabs' }],
   },
   twitter: { card: 'summary_large_image', title: 'Agra Fort Station Taxi — from ₹149', description: 'Fixed-fare taxi from AF station. Agra Fort ₹149, Taj ₹199.', images: ['/images/sightseeing/Agra/agra_fort.jpg'], creator: '@trivenicabs' },
@@ -71,7 +70,7 @@ export default function AgraFortStationTaxiPage() {
   const reviewCount = stationReviewCount(STATION.slug);
   const reviews = getStationReviews(STATION.stationName, cheapest);
   const schemas = [
-    { "@context": "https://schema.org", "@type": "TaxiService", "@id": `${BASE_URL}/${STATION.slug}#taxi-service`, "name": `Triveni Cabs - ${STATION.stationName} Taxi`, "description": STATION.description, "provider": { "@id": `${BASE_URL}/#localbusiness` }, "areaServed": { "@type": "Place", "name": STATION.city }, "offers": { "@type": "AggregateOffer", "lowPrice": cheapest, "highPrice": highest, "priceCurrency": "INR", "offerCount": STATION.destinations.length.toString() }, "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": reviewCount.toString(), "bestRating": "5" }, "review": reviews.slice(0, 3).map(r => ({ "@type": "Review", "author": { "@type": "Person", "name": r.name }, "datePublished": r.date, "reviewRating": { "@type": "Rating", "ratingValue": r.rating.toString(), "bestRating": "5" }, "reviewBody": r.text })) },
+    { "@context": "https://schema.org", "@type": "TaxiService", "@id": `${BASE_URL}/${STATION.slug}#taxi-service`, "name": `Triveni Cabs™ - ${STATION.stationName} Taxi`, "description": STATION.description, "provider": { "@id": `${BASE_URL}/#localbusiness` }, "areaServed": { "@type": "Place", "name": STATION.city }, "offers": { "@type": "AggregateOffer", "lowPrice": cheapest, "highPrice": highest, "priceCurrency": "INR", "offerCount": STATION.destinations.length.toString() } },
     { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
       { "@type": "ListItem", "position": 2, "name": "Railway Station Taxi", "item": `${BASE_URL}/railway-station-taxi` },
@@ -83,7 +82,7 @@ export default function AgraFortStationTaxiPage() {
   ];
   return (
     <>
-      {schemas.map((s, i) => <Script key={i} id={`schema-${STATION.slug}-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} strategy="afterInteractive" />)}
+      {schemas.map((s, i) => <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} strategy="afterInteractive" />)}
       <AEOHead pageType="station" data={{ url: `/${STATION.slug}`, title: `${STATION.stationName} Taxi Service`, city: STATION.city }} />
       <StationTaxiClient data={STATION} />
     </>

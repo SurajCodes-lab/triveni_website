@@ -21,7 +21,7 @@ export const metadata = {
       'Work out any one-way or round-trip fare in seconds. Sedan ₹11/km · SUV ₹15–18 · Tempo ₹20–28 · Bus ₹30+. No hidden charges.',
     url: `${BASE}/fare-calculator`,
     type: 'website',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -88,7 +88,7 @@ export default function FareCalculatorPage() {
               <QuickAnswer
                 tone="dark"
                 question="How much does a taxi cost per km in India?"
-                answer="With Triveni Cabs a sedan costs ₹11/km, an SUV ₹15–18/km, a tempo traveller ₹20–28/km depending on seater, and a 22–56 seater bus from ₹30/km — all-inclusive of fuel, driver and GST. Outstation trips bill a 250–300 km/day minimum, and tempo/bus one-way trips are charged as round trips."
+                answer="With Triveni Cabs™ a sedan costs ₹11/km, an SUV ₹15–18/km, a tempo traveller ₹20–28/km depending on seater, and a 22–56 seater bus from ₹30/km — all-inclusive of fuel, driver and GST. Outstation trips bill a 250–300 km/day minimum, and tempo/bus one-way trips are charged as round trips."
                 facts={[
                   { label: 'Sedan', value: '₹11/km' },
                   { label: 'SUV', value: '₹15–18/km' },
@@ -138,7 +138,7 @@ export default function FareCalculatorPage() {
             <div className="mt-5 hidden overflow-hidden rounded-2xl border border-white/10 md:block">
               <table className="w-full text-sm">
                 <caption className="sr-only">
-                  Triveni Cabs per-kilometre rate card, 2026
+                  Triveni Cabs™ per-kilometre rate card, 2026
                 </caption>
                 <thead>
                   <tr className="bg-white/5 text-left">

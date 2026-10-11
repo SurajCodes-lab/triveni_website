@@ -1,5 +1,6 @@
 'use client';
 
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,6 +17,8 @@ import ScrollReveal from '@/components/shared/ScrollReveal';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
 import FleetShowcase from '@/components/shared/FleetShowcase';
+import DataTable from '@/components/seo/DataTable';
+import { groupDigits } from '@/utilis/pricing';
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>;
 
@@ -36,9 +39,30 @@ export default function CityTaxiFareClient({ city, relatedCities }) {
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-slate-900">
       <SetStickyCta
-        price={`₹${city.baseFare.sedan}/km`}
+        price={`₹${groupDigits(city.baseFare.sedan)}/km`}
         label={`${city.city} Taxi`}
         whatsappText={whatsappMsg}
+      />
+
+      {/* Popular fare table. "Taxi fare in X" is a lookup query, and a lookup
+          is exactly what a table answers. The cards below stay as the visual product. */}
+      <DataTable
+        title={`Popular taxi fares in ${city.city}`}
+        caption={`Common taxi journeys in ${city.city} with road distance and the fixed fare for each.`}
+        intro="Fixed fares with no surge. Fuel, driver and AC included; parking and tolls at actual."
+        columns={[
+          { key: 'from', label: 'From' },
+          { key: 'to', label: 'To' },
+          { key: 'distanceLabel', label: 'Distance' },
+          { key: 'fareLabel', label: 'Fare', align: 'right', strong: true },
+        ]}
+        rows={(city.popularFares || []).map((f) => ({
+          ...f,
+          distanceLabel: typeof f.distance === 'number' ? `${f.distance} km` : f.distance,
+          fareLabel: typeof f.fare === 'number' ? `₹${f.fare.toLocaleString('en-IN')}` : f.fare,
+        }))}
+        tone="light"
+        className="bg-slate-50"
       />
 
       {/* ━━━ HERO: Pricing dashboard cinematic ━━━ */}
@@ -63,9 +87,10 @@ export default function CityTaxiFareClient({ city, relatedCities }) {
                 <span className="text-[11px] font-bold text-[#FACF2D] uppercase tracking-widest">Fare Calculator 2026</span>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
-                {city.city}<br />
+                {city.city}{' '}<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FACF2D] to-emerald-400">Taxi Fare</span>
               </h1>
+              <FamilyFacts family="taxi-fare" data={city} />
               <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg">
                 No surge pricing. Save up to <span className="text-emerald-400 font-bold">{city.comparisonWithOla.savings}</span> vs Ola/Uber.
               </p>
@@ -236,7 +261,7 @@ export default function CityTaxiFareClient({ city, relatedCities }) {
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
             <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-1">Save More</p>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">Triveni Cabs vs Ola/Uber</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">Triveni Cabs™ vs Ola/Uber</h2>
           </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-4">
@@ -244,7 +269,7 @@ export default function CityTaxiFareClient({ city, relatedCities }) {
             <ScrollReveal>
               <div className="relative bg-white rounded-2xl border-2 border-[#FACF2D] shadow-lg p-6 pt-8">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2"><span className="bg-emerald-500 text-white text-[9px] font-black uppercase tracking-widest px-4 py-1 rounded-full">Winner</span></div>
-                <h3 className="text-lg font-black text-slate-900 mb-1">Triveni Cabs</h3>
+                <h3 className="text-lg font-black text-slate-900 mb-1">Triveni Cabs™</h3>
                 <p className="text-4xl font-black text-slate-900 mb-4">{city.comparisonWithOla.triveni}</p>
                 {['No surge pricing ever', 'Flat rate, rain or shine', 'No booking fees', 'Free cancellation', 'Direct driver contact', 'AC guaranteed'].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 mb-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" /><span className="text-sm text-slate-700">{item}</span></div>

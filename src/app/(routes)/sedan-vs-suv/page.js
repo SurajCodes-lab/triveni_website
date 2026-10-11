@@ -19,7 +19,7 @@ export const metadata = {
     type: "article",
     locale: "en_IN",
     url: "https://www.trivenicabs.in/sedan-vs-suv",
-    siteName: "Triveni Cabs"
+    siteName: "Triveni Cabs™"
   }
 ,
   twitter: {
@@ -120,7 +120,7 @@ export default function SedanVsSuvPage() {
 
       <div className="min-h-screen bg-gray-50">
         {/* Hero */}
-        <section className="py-16 bg-gradient-to-br from-gray-900 to-gray-800">
+        <section className="py-10 sm:py-16 bg-gradient-to-br from-gray-900 to-gray-800">
           <div className="max-w-6xl mx-auto px-4 text-center">
             <nav className="flex justify-center mb-6" aria-label="Breadcrumb">
               <ol className="flex items-center space-x-2 text-sm text-gray-400">

@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import AEOHead from '@/components/seo/AEOHead';
+import CorporateFleetTable from '@/components/seo/CorporateFleetTable';
+import CorporateFleetPhotos from '@/components/seo/CorporateFleetPhotos';
 import {
   getIndustryBySlug,
   getAllIndustrySlugs
@@ -30,6 +32,7 @@ import {
   Star
 } from '@/components/ui/icons';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 // Generate static params for all industries
 export async function generateStaticParams() {
@@ -51,9 +54,9 @@ export async function generateMetadata({ params }) {
   return {
     title: industry.metaTitle,
     description: industry.metaDescription,
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: {
       canonical: `/corporate-transportation-service/industry/${slug}`,
@@ -64,7 +67,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/corporate-transportation-service/industry/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [
         {
           url: industry.heroImage,
@@ -136,7 +139,7 @@ export default async function IndustryPage({ params }) {
     description: industry.metaDescription || industry.description,
     image: industry.heroImage,
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/corporate-transportation-service/industry/${slug}`) || getTodayDate()),
     authorName: 'editorial',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
   });
@@ -199,7 +202,7 @@ export default async function IndustryPage({ params }) {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px]" style={{ animationDelay: '2s' }} />
 
           {/* Content */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12 sm:py-20">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-white/70 mb-8">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -213,7 +216,6 @@ export default async function IndustryPage({ params }) {
               {/* Left Content */}
               <div className="space-y-8">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <span className="text-4xl">{industry.icon}</span>
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">{industry.name}</span>
@@ -338,9 +340,8 @@ export default async function IndustryPage({ params }) {
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-30" />
                   <div className="relative inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-cyan-500/30">
                     <Building2 className="w-5 h-5 text-white" />
                     <span className="text-white font-semibold text-sm tracking-wider uppercase">Industry Challenges</span>
@@ -437,6 +438,10 @@ export default async function IndustryPage({ params }) {
           </section>
         )}
 
+        {/* Week 49: the fleet-and-rate table, from the corporate fleet records. */}
+        <CorporateFleetPhotos context={industry && industry.name ? `${industry.name.toLowerCase()} transport` : 'corporate travel'} />
+        <CorporateFleetTable context="corporate travel" />
+
         {/* Service Cities Section - Premium Cards */}
         {industry.serviceCities && industry.serviceCities.length > 0 && (
           <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
@@ -448,9 +453,8 @@ export default async function IndustryPage({ params }) {
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <MapPin className="w-6 h-6 text-cyan-300" />
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Service Coverage</span>
@@ -516,9 +520,8 @@ export default async function IndustryPage({ params }) {
             <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[150px]" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-30" />
                   <div className="relative inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-cyan-500/30">
                     <Sparkles className="w-5 h-5 text-white" />
                     <span className="text-white font-semibold text-sm tracking-wider uppercase">Features</span>
@@ -580,7 +583,7 @@ export default async function IndustryPage({ params }) {
         {industry.faqs && industry.faqs.length > 0 && (
           <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] relative overflow-hidden">
             <div className="max-w-5xl mx-auto relative z-10">
-              <div className="text-center mb-20">
+              <div className="text-center mb-12 sm:mb-20">
                 <div className="inline-flex items-center gap-2 bg-white/70 ring-1 ring-amber-900/10 px-6 py-3 rounded-full mb-6">
                   <HelpCircle className="w-5 h-5 text-indigo-600" />
                   <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Got Questions?</span>
@@ -623,7 +626,7 @@ export default async function IndustryPage({ params }) {
               </div>
 
               {/* Contact CTA */}
-              <div className="mt-16 text-center">
+              <div className="mt-10 sm:mt-16 text-center">
                 <p className="text-slate-600 mb-4">Still have questions?</p>
                 <Link
                   href="tel:+917668570551"
@@ -654,7 +657,7 @@ export default async function IndustryPage({ params }) {
             backgroundSize: '40px 40px'
           }} />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 py-14 sm:py-24">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left Content */}
               <div>

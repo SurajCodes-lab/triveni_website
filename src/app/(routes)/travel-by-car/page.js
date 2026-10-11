@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("Travel by Car — Route Guides for North India");
-  const description = "Car travel route guides across North India: drive time, stops and chauffeur-driven cab options. Triveni Cabs 7668570551.";
+  const description = "Car travel route guides across North India: drive time, stops and chauffeur-driven cab options. Triveni Cabs™ 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

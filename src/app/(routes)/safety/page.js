@@ -6,22 +6,22 @@ export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Safety Standards 2026 | Verified Drivers, GPS, Women Safe'),
-  description: 'Triveni Cabs safety: background-checked drivers, GPS tracking, SOS support, 24/7 helpline, sanitized vehicles, women safety features. 100% verified fleet.',
+  description: 'Triveni Cabs™ safety: background-checked drivers, GPS tracking, SOS support, 24/7 helpline, sanitized vehicles, women safety features. 100% verified fleet.',
   keywords: 'safe cab service, safe taxi India, verified cab drivers, GPS tracked cab, women safe cab, cab safety features, safe taxi service, cab driver verification, vehicle safety standards, cab SOS feature, safe travel India, trusted cab company, verified taxi service, cab safety protocols, safe cab for women, night safe taxi, sanitized cab, clean cab service, safe outstation cab, safe airport taxi',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/safety',
   },
   openGraph: {
-    title: 'Safety Standards | Verified Drivers | GPS Tracking | Triveni Cabs',
+    title: 'Safety Standards | Verified Drivers | GPS Tracking | Triveni Cabs™',
     description: 'Your safety is non-negotiable. Background-checked drivers, GPS tracking, SOS support, sanitized vehicles, and women safety features.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/safety',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: '/images/about/about_banner.webp',
@@ -33,7 +33,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Safety Standards | Verified Drivers | GPS Tracking | Triveni Cabs',
+    title: 'Safety Standards | Verified Drivers | GPS Tracking | Triveni Cabs™',
     description: 'Background-checked drivers, GPS tracking, SOS support, sanitized vehicles. Your safety is our priority.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -75,7 +75,7 @@ export default function SafetyPage() {
     "email": "cabstriveni@gmail.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "366 Dandupura near Tajganj",
+      "streetAddress": "366, Dandupura, near Tajganj",
       "addressLocality": "Agra",
       "addressRegion": "Uttar Pradesh",
       "postalCode": "282006",
@@ -98,7 +98,7 @@ export default function SafetyPage() {
 
   const faqData = [
     {
-      question: "How does Triveni Cabs verify its drivers?",
+      question: "How does Triveni Cabs™ verify its drivers?",
       answer: "Every driver undergoes a 5-step verification: police background check, driving license validation, address verification, driving skill test, and personal interview. Drivers must have 5+ years of experience. Re-verification happens annually."
     },
     {
@@ -212,7 +212,7 @@ export default function SafetyPage() {
             <Shield className="w-[500px] h-[500px] text-white" />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 grid lg:grid-cols-2 gap-16 items-center">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 py-12 sm:py-20 grid lg:grid-cols-2 gap-16 items-center">
             {/* Left: Content */}
             <div>
               <div className="inline-flex items-center gap-2 bg-sky-500/10 backdrop-blur-md px-5 py-2 rounded-full mb-8 border border-sky-400/20">
@@ -228,7 +228,7 @@ export default function SafetyPage() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-300/80 mb-8 max-w-lg leading-relaxed">
-                Every driver verified. Every vehicle tracked. Every trip monitored. Your safety is the foundation of every journey with Triveni Cabs.
+                Every driver verified. Every vehicle tracked. Every trip monitored. Your safety is the foundation of every journey with Triveni Cabs™.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -270,17 +270,17 @@ export default function SafetyPage() {
         </section>
 
         {/* ─── SEO Prose Section ─── */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-[#0a1628] mb-6 text-center">
               Your Safety Is the Foundation of Every Journey
             </h2>
             <div className="prose prose-lg max-w-none text-slate-700 space-y-4">
               <p>
-                At <strong>Triveni Cabs</strong>, passenger safety is not an afterthought — it is the very foundation on which we have built our reputation. Since 2015, we have completed over <strong>10,000 safe trips</strong> across North India, earning a <Link href="/reviews" className="text-sky-600 hover:text-cyan-600 underline underline-offset-2">4.8-star safety rating from 2,847+ verified customers</Link>. Every ride you take with us is backed by a multi-layered <strong>safe cab service</strong> framework that covers driver verification, vehicle maintenance, real-time GPS tracking, emergency response, and dedicated women safety features.
+                At <strong>Triveni Cabs™</strong>, passenger safety is not an afterthought — it is the very foundation on which we have built our reputation. Since 2015, we have completed over <strong>10,000 safe trips</strong> across North India, earning a <Link href="/reviews" className="text-sky-600 hover:text-cyan-600 underline underline-offset-2">4.8-star safety rating from 2,847+ verified customers</Link>. Every ride you take with us is backed by a multi-layered <strong>safe cab service</strong> framework that covers driver verification, vehicle maintenance, real-time GPS tracking, emergency response, and dedicated women safety features.
               </p>
               <p>
-                What does this mean in practice? It means every <strong>Triveni Cabs driver</strong> undergoes a rigorous 6-step verification process — police background check, driving license validation with the Regional Transport Office, address verification, a practical driving skill test, medical fitness screening, and a personal behavioral interview. Drivers must have a minimum of 5 years of professional driving experience, and they are re-verified annually. Any driver with a complaint ratio above 2% is immediately retrained or removed from the fleet.
+                What does this mean in practice? It means every <strong>Triveni Cabs™ driver</strong> undergoes a rigorous 6-step verification process — police background check, driving license validation with the Regional Transport Office, address verification, a practical driving skill test, medical fitness screening, and a personal behavioral interview. Drivers must have a minimum of 5 years of professional driving experience, and they are re-verified annually. Any driver with a complaint ratio above 2% is immediately retrained or removed from the fleet.
               </p>
               <p>
                 Our <Link href="/vehicles" className="text-sky-600 hover:text-cyan-600 underline underline-offset-2">vehicle fleet</Link> safety standards are equally uncompromising. Every car is <strong>GPS-tracked in real time</strong> from our <Link href="/agra" className="text-sky-600 hover:text-cyan-600 underline underline-offset-2">Agra</Link> control room. Vehicles undergo monthly maintenance checks covering brakes, tires, engine, AC, lights, and suspension. No vehicle older than 5 years operates in our fleet. After every trip, vehicles are thoroughly sanitized — door handles, seat belts, dashboard, steering, and AC vents are disinfected, with deep cleaning and fumigation performed weekly.
@@ -293,7 +293,7 @@ export default function SafetyPage() {
         </section>
 
         {/* ─── DRIVER VERIFICATION: Bento grid with numbered steps ─── */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-sky-600 bg-sky-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Driver Safety</span>
@@ -329,7 +329,7 @@ export default function SafetyPage() {
         </section>
 
         {/* ─── VEHICLE SAFETY: Dark inset section with icon grid ─── */}
-        <section className="relative py-24 px-4 overflow-hidden bg-[#0a1628]">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden bg-[#0a1628]">
           <div className="absolute inset-0 opacity-[0.04]" style={{
             backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)',
             backgroundSize: '24px 24px'
@@ -367,7 +367,7 @@ export default function SafetyPage() {
         </section>
 
         {/* ─── PASSENGER SAFETY: Card grid with individual accent colors ─── */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-teal-600 bg-teal-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Passenger Protection</span>
@@ -405,7 +405,7 @@ export default function SafetyPage() {
         </section>
 
         {/* ─── WOMEN SAFETY: Gradient accent section ─── */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 rounded-3xl p-8 md:p-12 border border-purple-100/50">
               <div className="text-center mb-10">
@@ -440,7 +440,7 @@ export default function SafetyPage() {
         </section>
 
         {/* ─── HYGIENE PROTOCOL: Checklist with neumorphic feel ─── */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <span className="inline-block text-sm font-bold text-emerald-600 bg-emerald-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Hygiene</span>
@@ -477,7 +477,7 @@ export default function SafetyPage() {
         </section>
 
         {/* ─── EMERGENCY SUPPORT: Centered card with gradient border ─── */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-2xl mx-auto">
             <div className="rounded-3xl p-1 bg-gradient-to-br from-sky-500 via-cyan-500 to-teal-500">
               <div className="bg-[#0a1628] rounded-[22px] p-10 md:p-14 text-center">
@@ -507,7 +507,7 @@ export default function SafetyPage() {
         </section>
 
         {/* ─── FAQ: Clean cards with blue accents ─── */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-sky-600 bg-sky-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">FAQ</span>
@@ -538,7 +538,7 @@ export default function SafetyPage() {
         </section>
 
         {/* ─── INTERLINKING: Comprehensive footer-style grids ─── */}
-        <section className="py-16 px-4 bg-white border-t border-slate-100">
+        <section className="py-10 sm:py-16 px-4 bg-white border-t border-slate-100">
           <div className="max-w-7xl mx-auto space-y-12">
 
             {/* Related Services */}
@@ -601,7 +601,7 @@ export default function SafetyPage() {
               <div className="flex flex-wrap gap-2">
                 {[
                   { l: "Pricing & Fare Chart", h: "/pricing" }, { l: "Vehicle Fleet", h: "/vehicles" },
-                  { l: "Customer Reviews", h: "/reviews" }, { l: "About Triveni Cabs", h: "/about" },
+                  { l: "Customer Reviews", h: "/reviews" }, { l: "About Triveni Cabs™", h: "/about" },
                   { l: "Corporate Service", h: "/corporate-transportation-service" }, { l: "Contact Us", h: "/contact" },
                   { l: "Tempo Traveller", h: "/tempo-traveller" }, { l: "All Routes", h: "/routes" },
                 ].map((q, i) => (
@@ -613,12 +613,12 @@ export default function SafetyPage() {
         </section>
 
         {/* ─── CTA: Glass card on dark bg ─── */}
-        <section className="py-20 px-4 bg-[#0a1628]">
+        <section className="py-12 sm:py-20 px-4 bg-[#0a1628]">
           <div className="max-w-3xl mx-auto">
             <div className="bg-white/[0.04] backdrop-blur-2xl rounded-3xl p-10 md:p-14 text-center border border-white/[0.08]">
               <ShieldCheck className="w-12 h-12 text-sky-400 mx-auto mb-6" />
               <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-                Travel Safe with Triveni Cabs
+                Travel Safe with Triveni Cabs™
               </h2>
               <p className="text-slate-400 mb-8 text-lg max-w-xl mx-auto">
                 100% verified drivers, GPS tracked vehicles, 24/7 emergency support

@@ -309,8 +309,20 @@ const postLeadEvent = (body) => {
   } catch { /* never block UX */ }
 };
 
+// When a WhatsApp intent was last recorded, by any call site. The site-wide
+// interceptor uses this to record intent ONLY for links that have no tracking
+// handler of their own — checked after the click finishes dispatching, so a link
+// that tracks itself is never counted twice. Deliberately set for the repeat-click
+// path too: a repeat means a handler did run, so no fallback is wanted there.
+let lastWhatsAppIntentAt = 0;
+
+/** True if any WhatsApp intent was recorded in the last `withinMs` milliseconds. */
+export const whatsAppIntentRecentlyRecorded = (withinMs = 1000) =>
+  lastWhatsAppIntentAt > 0 && Date.now() - lastWhatsAppIntentAt < withinMs;
+
 export const trackWhatsAppClick = (location, message = '', context = '') => {
   if (isBot()) return '';
+  lastWhatsAppIntentAt = Date.now();
   const pagePath = typeof window !== 'undefined' ? window.location.pathname : 'ssr';
   const dedupKey = `wa_${pagePath}_${location}`;
   if (hasFiredThisSession(dedupKey)) {

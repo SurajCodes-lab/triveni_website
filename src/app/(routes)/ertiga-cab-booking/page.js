@@ -31,7 +31,7 @@ export default function Page() {
       slug="ertiga-cab-booking"
       vehicleName="Maruti Ertiga"
       h1="Ertiga Cab Booking — Spacious 6+1 SUV at ₹15/km"
-      intro="The Maruti Ertiga is the sweet spot between a sedan and a full SUV — it seats 6 plus the driver, has three rows of AC and decent luggage space, yet stays affordable. Triveni Cabs books it chauffeur-driven at ₹15/km with fuel, driver and AC all included, making it our most popular choice for small families and budget outstation trips."
+      intro="The Maruti Ertiga is the sweet spot between a sedan and a full SUV — it seats 6 plus the driver, has three rows of AC and decent luggage space, yet stays affordable. Triveni Cabs™ books it chauffeur-driven at ₹15/km with fuel, driver and AC all included, making it our most popular choice for small families and budget outstation trips."
       category="SUV"
       seating="6 + 1"
       fareRows={[

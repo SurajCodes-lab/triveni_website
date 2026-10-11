@@ -9,9 +9,9 @@ export const metadata = {
   title: tightenTitle('Chandigarh vs Mohali 2026 | Real Estate, Lifestyle, IT Hub Comparison'),
   description: 'Detailed Chandigarh vs Mohali comparison 2026. Real estate, lifestyle, IT hub, food, transport, schools, infrastructure. Which is better to live or visit?',
   keywords: 'chandigarh vs mohali, mohali vs chandigarh, mohali real estate, chandigarh tricity, mohali it hub, chandigarh lifestyle, where to live tricity',
-  authors: [{ name: 'Triveni Cabs Editorial' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™ Editorial' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/chandigarh-vs-mohali' },
   openGraph: {
@@ -20,7 +20,7 @@ export const metadata = {
     type: 'article',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/chandigarh-vs-mohali',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg', width: 1200, height: 630, alt: 'Chandigarh vs Mohali Comparison' }],
   },
   twitter: {
@@ -131,7 +131,7 @@ export default function ChandigarhVsMohaliPage() {
         </section>
 
         {/* COMPARISON TABLE */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-blue-700 font-bold text-sm tracking-widest uppercase">14-Point Comparison</span>
@@ -164,7 +164,7 @@ export default function ChandigarhVsMohaliPage() {
         </section>
 
         {/* WHO SHOULD CHOOSE WHAT */}
-        <section className="py-20 px-4 bg-slate-50">
+        <section className="py-12 sm:py-20 px-4 bg-slate-50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Who Should Choose Which?</h2>
@@ -206,7 +206,7 @@ export default function ChandigarhVsMohaliPage() {
         </section>
 
         {/* FAQ */}
-        <section className="faq-section py-20 px-4">
+        <section className="faq-section py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Chandigarh vs Mohali FAQs</h2>
@@ -226,7 +226,7 @@ export default function ChandigarhVsMohaliPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 px-4 bg-gradient-to-r from-blue-600 to-indigo-600">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-r from-blue-600 to-indigo-600">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-3xl md:text-4xl font-black mb-4">Tour Both Cities — One Day Plan</h2>
             <p className="text-lg mb-8 opacity-90">Book a tricity cab to cover Chandigarh + Mohali + Panchkula in one comprehensive day. ₹2,500-3,500 hourly cab.</p>

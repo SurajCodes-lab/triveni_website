@@ -244,7 +244,7 @@ export const delhiToAgraRoute = {
     {
       name: "Taj Mahal",
       timings: "Sunrise to Sunset (Closed on Fridays)",
-      entryFee: "₹50 for Indians, ₹1100 for foreigners",
+      entryFee: "₹50 for Indians, ₹1,100 for foreigners",
       description: "One of the Seven Wonders of the World"
     },
     {
@@ -273,7 +273,8 @@ export const delhiToAgraRoute = {
     "Wear comfortable shoes for sightseeing",
     "Stay hydrated during the journey",
     "Taj Mahal is closed on Fridays"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to agra bus",
@@ -685,7 +686,8 @@ export const delhiToJaipurRoute = {
     "Bargain at local markets",
     "Stay hydrated during sightseeing",
     "Hire a guide for better historical insights"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to jaipur bus",
@@ -1074,7 +1076,7 @@ export const delhiToUdaipurRoute = {
     {
       name: "Lake Pichola",
       timings: "Open all day",
-      entryFee: "Boat ride: ₹400-₹1000",
+      entryFee: "Boat ride: ₹400-₹1,000",
       description: "Scenic artificial lake with island palaces"
     },
     {
@@ -1097,7 +1099,8 @@ export const delhiToUdaipurRoute = {
     "Pre-book hotel near City Palace",
     "Try boat ride during sunset",
     "Visit local handicraft markets"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to udaipur bus",
@@ -1492,7 +1495,7 @@ export const delhiToJaisalmerRoute = {
     {
       name: "Sam Sand Dunes",
       timings: "Best at sunrise and sunset",
-      entryFee: "Camel safari: ₹500-₹1500",
+      entryFee: "Camel safari: ₹500-₹1,500",
       description: "Iconic desert experience with dunes"
     },
     {
@@ -1509,7 +1512,8 @@ export const delhiToJaisalmerRoute = {
     "Wear light, comfortable clothing",
     "Don't miss sunset at dunes",
     "Try local Rajasthani thali"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to jaisalmer bus",
@@ -1921,7 +1925,8 @@ export const delhiToJodhpurRoute = {
     "Shop for handicrafts",
     "Visit fort in morning",
     "Book heritage hotel for authentic experience"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to jodhpur bus",
@@ -2333,7 +2338,8 @@ export const delhiToMountAbuRoute = {
     "Try local Gujarati food",
     "Enjoy boat ride at Nakki Lake",
     "Visit sunset point for panoramic views"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to mount-abu bus",
@@ -2745,7 +2751,8 @@ export const delhiToHaridwarRoute = {
     "Try local prasad and street food",
     "Take holy dip early morning",
     "Avoid peak pilgrimage season if possible"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to haridwar bus",
@@ -3157,7 +3164,8 @@ export const delhiToRishikeshRoute = {
     "Rishikesh is alcohol and meat-free",
     "Stay in riverside ashram for experience",
     "Visit cafes near Laxman Jhula"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to rishikesh bus",
@@ -3569,7 +3577,8 @@ export const delhiToDehradunRoute = {
     "Use Dehradun as base for nearby trips",
     "Shop at Paltan Bazaar",
     "Visit early morning for peaceful experience"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to dehradun bus",
@@ -3981,7 +3990,8 @@ export const delhiToMussoorieRoute = {
     "Book hotel on Mall Road side",
     "Avoid monsoon season (July-August)",
     "Take cable car to Gun Hill"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to mussoorie bus",
@@ -4393,7 +4403,8 @@ export const delhiToNainitalRoute = {
     "Try local Kumaoni cuisine",
     "Carry warm clothes",
     "Visit nearby Bhimtal and Naukuchiatal"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to nainital bus",
@@ -4776,13 +4787,13 @@ export const delhiToJimCorbettRoute = {
     {
       name: "Dhikala Zone",
       timings: "6:00 AM to 11:00 AM, 2:00 PM to 6:00 PM",
-      entryFee: "₹5000-₹10000 (including safari)",
+      entryFee: "₹5,000-₹10,000 (including safari)",
       description: "Best zone for tiger sighting"
     },
     {
       name: "Bijrani Zone",
       timings: "6:00 AM to 11:00 AM, 2:00 PM to 5:00 PM",
-      entryFee: "₹3000-₹6000",
+      entryFee: "₹3,000-₹6,000",
       description: "Popular zone near Ramnagar"
     },
     {
@@ -4805,7 +4816,8 @@ export const delhiToJimCorbettRoute = {
     "Follow forest guide instructions",
     "Stay in jungle resorts for experience",
     "Winter mornings are best for sighting"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to jim-corbett bus",
@@ -5217,7 +5229,8 @@ export const delhiToLansdowneRoute = {
     "Enjoy peaceful walks in forests",
     "Limited mobile connectivity",
     "Carry cash as ATMs are limited"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to lansdowne bus",
@@ -5606,7 +5619,7 @@ export const delhiToManaliRoute = {
     {
       name: "Solang Valley",
       timings: "9:00 AM to 6:00 PM",
-      entryFee: "Activities: ₹500-₹3000",
+      entryFee: "Activities: ₹500-₹3,000",
       description: "Adventure sports and skiing destination"
     },
     {
@@ -5629,7 +5642,8 @@ export const delhiToManaliRoute = {
     "Try river rafting in Beas",
     "Stay in Old Manali for cafes",
     "Acclimatize before high-altitude activities"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to manali bus",
@@ -6041,7 +6055,8 @@ export const delhiToShimlaRoute = {
     "Walk on Mall Road in evening",
     "Avoid long weekends",
     "Try local apple products"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to shimla bus",
@@ -6453,7 +6468,8 @@ export const delhiToKasolRoute = {
     "Try Israeli cuisine",
     "Respect local culture",
     "Carry trekking gear"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to kasol bus",
@@ -6865,7 +6881,8 @@ export const delhiToDharamshalaRoute = {
     "Respect monastery rules",
     "Trek to Triund for sunrise",
     "Carry warm clothes"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to dharamshala bus",
@@ -7277,7 +7294,8 @@ export const delhiToDalhousieRoute = {
     "Walk on Mall Road",
     "Try local Himachali cuisine",
     "Book heritage hotels"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to dalhousie bus",
@@ -7689,7 +7707,8 @@ export const delhiToLehLadakhRoute = {
     "Get Inner Line Permit for restricted areas",
     "Book accommodation in advance",
     "Hire experienced driver familiar with terrain"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to leh-ladakh bus",
@@ -8101,7 +8120,8 @@ export const delhiToAyodhyaRoute = {
     "Attend evening aarti at Saryu River",
     "Respect religious sentiments",
     "Try local Awadhi cuisine"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to ayodhya bus",
@@ -8513,7 +8533,8 @@ export const jaipurToDelhiRoute = {
     "Try Delhi street food at Chandni Chowk",
     "Book accommodation near metro stations",
     "Use public transport in Delhi"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaipur to delhi bus",
@@ -8896,7 +8917,7 @@ export const jaipurToAgraRoute = {
     {
       name: "Taj Mahal",
       timings: "Sunrise to Sunset (Closed on Fridays)",
-      entryFee: "₹50 for Indians, ₹1100 for foreigners",
+      entryFee: "₹50 for Indians, ₹1,100 for foreigners",
       description: "One of the Seven Wonders of the World"
     },
     {
@@ -8925,7 +8946,8 @@ export const jaipurToAgraRoute = {
     "Avoid Fridays (Taj is closed)",
     "Try Agra's famous petha sweet",
     "Hire authorized guides at monuments"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaipur to agra bus",
@@ -9314,7 +9336,7 @@ export const jaipurToUdaipurRoute = {
     {
       name: "Lake Pichola",
       timings: "Open all day",
-      entryFee: "Boat ride: ₹400-₹1000",
+      entryFee: "Boat ride: ₹400-₹1,000",
       description: "Scenic lake with island palaces"
     },
     {
@@ -9337,7 +9359,8 @@ export const jaipurToUdaipurRoute = {
     "Try traditional Rajasthani thali",
     "Shop at local handicraft markets",
     "Attend cultural shows at hotels"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaipur to udaipur bus",
@@ -9732,7 +9755,7 @@ export const jaipurToJaisalmerRoute = {
     {
       name: "Sam Sand Dunes",
       timings: "Best at sunrise and sunset",
-      entryFee: "Camel safari: ₹500-₹1500",
+      entryFee: "Camel safari: ₹500-₹1,500",
       description: "Iconic desert dunes experience"
     },
     {
@@ -9749,7 +9772,8 @@ export const jaipurToJaisalmerRoute = {
     "Don't miss desert sunset",
     "Try local Rajasthani cuisine",
     "Shop for handicrafts in fort"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaipur to jaisalmer bus",
@@ -10161,7 +10185,8 @@ export const jaipurToJodhpurRoute = {
     "Explore blue houses in old city",
     "Shop for handicrafts and textiles",
     "Book heritage hotel for experience"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaipur to jodhpur bus",
@@ -10573,7 +10598,8 @@ export const jaipurToMountAbuRoute = {
     "Try local Gujarati cuisine",
     "Enjoy boating at Nakki Lake",
     "Visit sunset point for views"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaipur to mount-abu bus",
@@ -10985,7 +11011,8 @@ export const jaipurToPushkarRoute = {
     "Visit during camel fair (November)",
     "Try vegetarian Rajasthani food",
     "Shop for handicrafts and jewelry"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaipur to pushkar bus",
@@ -11368,7 +11395,7 @@ export const jaipurToRanthamboreRoute = {
     {
       name: "Ranthambore National Park",
       timings: "6:00 AM to 10:00 AM, 2:30 PM to 6:00 PM",
-      entryFee: "₹1500-₹3500 (including safari)",
+      entryFee: "₹1,500-₹3,500 (including safari)",
       description: "Famous tiger reserve"
     },
     {
@@ -11397,7 +11424,8 @@ export const jaipurToRanthamboreRoute = {
     "Carry binoculars and camera",
     "Stay in jungle resorts",
     "Winter offers best visibility"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaipur to ranthambore bus",
@@ -11809,7 +11837,8 @@ export const jaipurToAjmerRoute = {
     "Respect religious sentiments",
     "Visit Ana Sagar in evening",
     "Shop at Dargah Bazaar"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaipur to ajmer bus",
@@ -12221,7 +12250,8 @@ export const jaipurToBharatpurRoute = {
     "Winter brings Siberian birds",
     "Combine with Agra trip (55 km away)",
     "Book forest lodge inside park"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaipur to bharatpur bus",
@@ -12633,7 +12663,8 @@ export const agraToDelhiRoute = {
     "Try street food at Chandni Chowk",
     "Book hotels near metro connectivity",
     "Carry valid ID for all attractions"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "agra to delhi bus",
@@ -13045,7 +13076,8 @@ export const agraToJaipurRoute = {
     "Shop at Johari Bazaar",
     "Book heritage hotel for experience",
     "Visit forts in morning hours"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "agra to jaipur bus",
@@ -13457,7 +13489,8 @@ export const agraToMathuraVrindavanRoute = {
     "Try famous Mathura peda sweets",
     "Avoid carrying leather items",
     "Visit during Holi for unique experience"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "agra to mathura-vrindavan bus",
@@ -13869,7 +13902,8 @@ export const agraToLucknowRoute = {
     "Try famous Awadhi biryani",
     "Attend evening sound & light show",
     "Book hotels in Hazratganj area"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "agra to lucknow bus",
@@ -14281,7 +14315,8 @@ export const agraToAyodhyaRoute = {
     "Attend evening Saryu aarti",
     "Try local Awadhi cuisine",
     "Respect religious sentiments"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "agra to ayodhya bus",
@@ -14693,7 +14728,8 @@ export const agraToVaranasiRoute = {
     "Visit Sarnath Buddhist site",
     "Try Banarasi paan and lassi",
     "Book hotel near ghats"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "agra to varanasi bus",
@@ -15105,7 +15141,8 @@ export const agraToPrayagrajRoute = {
     "Try local chaat and sweets",
     "Book hotels in Civil Lines",
     "Respect pilgrimage sentiments"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "agra to prayagraj bus",
@@ -15517,7 +15554,8 @@ export const agraToGayaRoute = {
     "Dress modestly for temples",
     "Join meditation sessions",
     "Try Tibetan monastery food"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "agra to gaya bus",
@@ -15929,7 +15967,8 @@ export const agraToBharatpurRoute = {
     "Carry binoculars and camera",
     "Winter best for Siberian birds",
     "Combine with Agra sightseeing"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "agra to bharatpur bus",
@@ -16341,7 +16380,8 @@ export const agraToFatehpurSikriRoute = {
     "Wear comfortable walking shoes",
     "Hire authorized guide",
     "Carry water and sunscreen"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "agra to fatehpur-sikri bus",
@@ -16753,7 +16793,8 @@ export const haridwarToRishikeshRoute = {
     "Book yoga classes in advance",
     "No alcohol or meat in Rishikesh",
     "Visit riverside cafes near Laxman Jhula"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to rishikesh bus",
@@ -17165,7 +17206,8 @@ export const haridwarToKedarnathRoute = {
     "Trek is 16 km from Gaurikund",
     "Hire ponies or palanquins if needed",
     "Check weather before travel"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to kedarnath bus",
@@ -17577,7 +17619,8 @@ export const haridwarToBadrinathRoute = {
     "Visit Mana village and Vasudhara Falls",
     "Take holy bath in Tapt Kund",
     "Check road conditions before travel"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to badrinath bus",
@@ -17989,7 +18032,8 @@ export const haridwarToGangotriRoute = {
     "Book hotels in Gangotri or Uttarkashi",
     "Road may close in winter",
     "Hire local guides for treks"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to gangotri bus",
@@ -18401,7 +18445,8 @@ export const haridwarToYamunotriRoute = {
     "Book accommodation in advance",
     "Start trek early morning",
     "Check weather and road conditions"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to yamunotri bus",
@@ -18813,7 +18858,8 @@ export const haridwarToMussoorieRoute = {
     "Take cable car to Gun Hill",
     "Avoid monsoon season",
     "Carry light woolens"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to mussoorie bus",
@@ -19196,13 +19242,13 @@ export const haridwarToAuliRoute = {
     {
       name: "Auli Ski Resort",
       timings: "9:00 AM to 5:00 PM",
-      entryFee: "Skiing: ₹500-₹3000",
+      entryFee: "Skiing: ₹500-₹3,000",
       description: "Premier skiing slopes with equipment rental"
     },
     {
       name: "Auli Ropeway",
       timings: "8:00 AM to 5:00 PM",
-      entryFee: "₹1000 return",
+      entryFee: "₹1,000 return",
       description: "Asia's longest cable car from Joshimath"
     },
     {
@@ -19225,7 +19271,8 @@ export const haridwarToAuliRoute = {
     "Take ropeway from Joshimath",
     "Visit Joshimath temples",
     "Check snow conditions before travel"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to auli bus",
@@ -19637,7 +19684,8 @@ export const haridwarToChoptaRoute = {
     "Visit Deoria Tal for sunrise",
     "Book camps or GMVN lodge",
     "Limited mobile connectivity"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to chopta bus",
@@ -20049,7 +20097,8 @@ export const haridwarToDelhiRoute = {
     "Book hotels near metro stations",
     "Try Delhi street food",
     "Carry valid ID for attractions"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to delhi bus",
@@ -20461,7 +20510,8 @@ export const haridwarToDehradunRoute = {
     "Visit Paltan Bazaar for shopping",
     "Carry light jacket",
     "Combine with Haridwar pilgrimage"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to dehradun bus",
@@ -20850,7 +20900,7 @@ export const chandigarhToManaliRoute = {
     {
       name: "Solang Valley",
       timings: "9:00 AM to 6:00 PM",
-      entryFee: "Activities: ₹500-₹3000",
+      entryFee: "Activities: ₹500-₹3,000",
       description: "Adventure sports and skiing hub"
     },
     {
@@ -20873,7 +20923,8 @@ export const chandigarhToManaliRoute = {
     "Stay in Old Manali for cafes",
     "Pre-book hotels during peak season",
     "Check road conditions before travel"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to manali bus",
@@ -21285,7 +21336,8 @@ export const chandigarhToShimlaRoute = {
     "Try toy train from Kalka",
     "Carry light woolens",
     "Avoid long weekends for less crowd"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to shimla bus",
@@ -21697,7 +21749,8 @@ export const chandigarhToKulluManaliRoute = {
     "Buy local woolens and shawls",
     "Taste Kullu trout fish",
     "Camp by riverside in Kasol"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to kullu-manali bus",
@@ -22109,7 +22162,8 @@ export const chandigarhToKasolRoute = {
     "Trek to Kheerganga or Tosh",
     "Respect local culture",
     "Pack trekking gear"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to kasol bus",
@@ -22521,7 +22575,8 @@ export const chandigarhToDharamshalaRoute = {
     "Trek to Triund for sunrise",
     "Respect monastery timings",
     "Carry warm clothes"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to dharamshala bus",
@@ -22933,7 +22988,8 @@ export const chandigarhToDalhousieRoute = {
     "Try Himachali cuisine",
     "Carry warm clothes",
     "Visit in off-season for peace"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to dalhousie bus",
@@ -23345,7 +23401,8 @@ export const chandigarhToMcLeodGanjRoute = {
     "Visit monasteries early morning",
     "Attend teachings if available",
     "Carry rain gear and woolens"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to mcleod-ganj bus",
@@ -23757,7 +23814,8 @@ export const chandigarhToSpitiValleyRoute = {
     "Limited mobile connectivity",
     "Carry sufficient cash",
     "Respect local culture and monasteries"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to spiti-valley bus",
@@ -24169,7 +24227,8 @@ export const chandigarhToLehLadakhRoute = {
     "Get Inner Line Permits in advance",
     "Book accommodations ahead",
     "Check road conditions and weather"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to leh-ladakh bus",
@@ -24581,7 +24640,8 @@ export const chandigarhToAmritsarRoute = {
     "Taste Amritsari kulcha and lassi",
     "Cover head at Golden Temple",
     "Shop at Hall Bazaar"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to amritsar bus",
@@ -24993,7 +25053,8 @@ export const udaipurToJodhpurRoute = {
     "Explore blue houses in old city",
     "Shop for textiles and handicrafts",
     "Book heritage hotel in Jodhpur"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "udaipur to jodhpur bus",
@@ -25388,7 +25449,7 @@ export const udaipurToJaisalmerRoute = {
     {
       name: "Sam Sand Dunes",
       timings: "Best at sunrise and sunset",
-      entryFee: "Camel safari: ₹500-₹1500",
+      entryFee: "Camel safari: ₹500-₹1,500",
       description: "Desert safari experience"
     },
     {
@@ -25405,7 +25466,8 @@ export const udaipurToJaisalmerRoute = {
     "Don't miss sunset at sand dunes",
     "Try local Rajasthani food",
     "Shop for handicrafts in fort"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "udaipur to jaisalmer bus",
@@ -25817,7 +25879,8 @@ export const udaipurToMountAbuRoute = {
     "Try Gujarati cuisine",
     "Enjoy boating at Nakki Lake",
     "Visit sunset point for views"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "udaipur to mount-abu bus",
@@ -26212,7 +26275,7 @@ export const jodhpurToJaisalmerRoute = {
     {
       name: "Sam Sand Dunes",
       timings: "Best at sunrise and sunset",
-      entryFee: "Camel safari: ₹500-₹1500",
+      entryFee: "Camel safari: ₹500-₹1,500",
       description: "Iconic desert dunes"
     },
     {
@@ -26229,7 +26292,8 @@ export const jodhpurToJaisalmerRoute = {
     "Visit sand dunes at sunset",
     "Try local Rajasthani cuisine",
     "Explore fort streets on foot"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jodhpur to jaisalmer bus",
@@ -26618,7 +26682,7 @@ export const jodhpurToUdaipurRoute = {
     {
       name: "Lake Pichola",
       timings: "Open all day",
-      entryFee: "Boat ride: ₹400-₹1000",
+      entryFee: "Boat ride: ₹400-₹1,000",
       description: "Scenic lake with island palaces"
     },
     {
@@ -26641,7 +26705,8 @@ export const jodhpurToUdaipurRoute = {
     "Try traditional Rajasthani thali",
     "Shop at local markets",
     "Attend cultural shows at hotels"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jodhpur to udaipur bus",
@@ -27053,7 +27118,8 @@ export const jodhpurToMountAbuRoute = {
     "Try Gujarati cuisine",
     "Enjoy boating at Nakki Lake",
     "Visit viewpoints for panoramic views"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jodhpur to mount-abu bus",
@@ -27465,7 +27531,8 @@ export const jaisalmerToBikanerRoute = {
     "Visit camel farm in evening",
     "Shop for leather items",
     "Taste local Rajasthani snacks"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaisalmer to bikaner bus",
@@ -27854,7 +27921,7 @@ export const jaisalmerToUdaipurRoute = {
     {
       name: "Lake Pichola",
       timings: "Open all day",
-      entryFee: "Boat ride: ₹400-₹1000",
+      entryFee: "Boat ride: ₹400-₹1,000",
       description: "Beautiful lake with palaces"
     },
     {
@@ -27877,7 +27944,8 @@ export const jaisalmerToUdaipurRoute = {
     "Visit Monsoon Palace",
     "Try Rajasthani thali",
     "Shop at local markets"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaisalmer to udaipur bus",
@@ -28289,7 +28357,8 @@ export const jaisalmerToJodhpurRoute = {
     "Explore blue houses area",
     "Shop for textiles",
     "Book heritage hotel"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaisalmer to jodhpur bus",
@@ -28701,7 +28770,8 @@ export const jaisalmerToDelhiRoute = {
     "Visit monuments in Old Delhi",
     "Try street food at Chandni Chowk",
     "Book hotel near metro station"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "jaisalmer to delhi bus",
@@ -29096,7 +29166,7 @@ export const delhiToKulluManaliRoute = {
     {
       name: "Solang Valley",
       timings: "9:00 AM to 6:00 PM",
-      entryFee: "Activities: ₹500-₹3000",
+      entryFee: "Activities: ₹500-₹3,000",
       description: "Adventure sports hub"
     },
     {
@@ -29113,7 +29183,8 @@ export const delhiToKulluManaliRoute = {
     "Try river rafting on Beas",
     "Buy local woolens and shawls",
     "Pre-book Rohtang Pass permit"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to kullu-manali bus",
@@ -29496,7 +29567,7 @@ export const delhiToBirBillingRoute = {
     {
       name: "Billing Paragliding Site",
       timings: "9:00 AM to 5:00 PM",
-      entryFee: "Paragliding: ₹2500-₹3500",
+      entryFee: "Paragliding: ₹2,500-₹3,500",
       description: "World's second-best paragliding site"
     },
     {
@@ -29525,7 +29596,8 @@ export const delhiToBirBillingRoute = {
     "Visit cafes with mountain views",
     "Try Tibetan cuisine",
     "Check weather for paragliding"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to bir-billing bus",
@@ -29908,13 +29980,13 @@ export const delhiToSolangValleyRoute = {
     {
       name: "Solang Valley Ski Resort",
       timings: "9:00 AM to 6:00 PM",
-      entryFee: "Activities: ₹500-₹3000",
+      entryFee: "Activities: ₹500-₹3,000",
       description: "Skiing and snow activities"
     },
     {
       name: "Solang Ropeway",
       timings: "9:00 AM to 6:00 PM",
-      entryFee: "₹700-₹1000 return",
+      entryFee: "₹700-₹1,000 return",
       description: "Cable car to mountain top"
     },
     {
@@ -29926,7 +29998,7 @@ export const delhiToSolangValleyRoute = {
     {
       name: "Adventure Activity Zone",
       timings: "9:00 AM to 6:00 PM",
-      entryFee: "Per activity: ₹300-₹1500",
+      entryFee: "Per activity: ₹300-₹1,500",
       description: "Paragliding, zorbing, ATVs"
     }
   ],
@@ -29937,7 +30009,8 @@ export const delhiToSolangValleyRoute = {
     "Try multiple adventure activities",
     "Visit Rohtang Pass if open",
     "Stay in Manali for accommodation"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to solang-valley bus",
@@ -30349,7 +30422,8 @@ export const delhiToSpitiValleyRoute = {
     "Book homestays in advance",
     "Limited mobile connectivity",
     "Respect local monasteries"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to spiti-valley bus",
@@ -30761,7 +30835,8 @@ export const chandigarhToKazaRoute = {
     "Minimal mobile connectivity",
     "Carry sufficient cash",
     "Respect Buddhist culture"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "chandigarh to kaza bus",
@@ -31156,7 +31231,7 @@ export const haridwarToRanikhetRoute = {
     {
       name: "Ranikhet Golf Course",
       timings: "7:00 AM to 6:00 PM",
-      entryFee: "₹500-₹1000",
+      entryFee: "₹500-₹1,000",
       description: "Asia's highest golf course"
     },
     {
@@ -31173,7 +31248,8 @@ export const haridwarToRanikhetRoute = {
     "Carry warm clothes",
     "Limited commercialization",
     "Respect cantonment rules"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to ranikhet bus",
@@ -31585,7 +31661,8 @@ export const haridwarToNainitalRoute = {
     "Try local Kumaoni cuisine",
     "Visit nearby Bhimtal",
     "Carry warm clothes"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "haridwar to nainital bus",
@@ -31980,7 +32057,7 @@ export const delhiToRanikhetRoute = {
     {
       name: "Ranikhet Golf Course",
       timings: "7:00 AM to 6:00 PM",
-      entryFee: "₹500-₹1000",
+      entryFee: "₹500-₹1,000",
       description: "High-altitude golf course"
     },
     {
@@ -31997,7 +32074,8 @@ export const delhiToRanikhetRoute = {
     "Carry woolens year-round",
     "Respect military area rules",
     "Limited nightlife and commercialization"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to ranikhet bus",
@@ -32409,7 +32487,8 @@ export const delhiToAmritsarRoute = {
     "Try Amritsari kulcha and lassi",
     "Cover head at Golden Temple",
     "Shop at Hall Bazaar"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "delhi to amritsar bus",
@@ -32821,7 +32900,8 @@ export const ahmedabadToUdaipurRoute = {
     "Book boat rides in advance during peak season",
     "Try traditional Rajasthani thali in Udaipur",
     "Visit lakeside restaurants for romantic dining"
-  ],
+  ]
+,
   seoKeywords: {
     primary: [
         "ahmedabad to udaipur bus",
@@ -33450,7 +33530,7 @@ export const busRouteDescriptions = {
     travelTime: '6-7 hours',
     distance: '240 km',
     bestSeason: 'September to November, February to May (rafting season)',
-    highlights: 'The Delhi to Rishikesh bus route takes groups to the Yoga and Adventure Capital of the World. The journey follows the same corridor as Haridwar, continuing 25 km further along the Ganges. Rishikesh offers river rafting, bungee jumping, Beatles Ashram, Laxman Jhula, and riverside yoga sessions, perfect for corporate team-building and adventure groups.',
+    highlights: 'A hired coach from Delhi takes your group to Rishikesh with the same driver and coach for the whole trip, on the same corridor as Haridwar and 25 km beyond it; the coach parks at the Tapovan end, because the jhulas are footbridges and the old town is on foot. The Delhi to Rishikesh bus route takes groups to the Yoga and Adventure Capital of the World. The journey follows the same corridor as Haridwar, continuing 25 km further along the Ganges. Rishikesh offers river rafting, bungee jumping, Beatles Ashram, Laxman Jhula, and riverside yoga sessions, perfect for corporate team-building and adventure groups.',
     stops: ['Meerut (rest)', 'Muzaffarnagar', 'Roorkee', 'Haridwar (Ganga darshan)', 'Rishikesh'],
     busTypes: 'For adventure groups, 22-35 seater buses offer flexibility for reaching rafting camps. Large 45+ seater coaches can park at Rishikesh ISBT while groups use smaller vehicles for rafting camps.',
     travelTips: 'Book rafting in advance for groups of 20+. Many adventure camps offer group discounts. Beatles Ashram (Chaurasi Kutia) requires entry tickets. Laxman Jhula area has narrow roads not suitable for large buses.',
@@ -33486,7 +33566,7 @@ export const busRouteDescriptions = {
     travelTime: '7-8 hours',
     distance: '290 km',
     bestSeason: 'March to June, September to November',
-    highlights: 'The Delhi to Mussoorie bus journey leads to the Queen of Hills via Dehradun. The scenic 35 km hill climb from Dehradun features hairpin bends with spectacular Doon Valley views. Kempty Falls, Gun Hill, Company Garden, and Mall Road are popular group destinations. The colonial charm and mountain air make this ideal for weekend getaways.',
+    highlights: 'A hired coach from Delhi takes your group to Mussoorie with the same driver and coach for the whole trip, but only a 22 to 25 seater can climb the 35 km hill road from Dehradun; a larger group travels in a big coach to Dehradun and switches to mini buses for the climb, which is arranged in the same booking. The Delhi to Mussoorie bus journey leads to the Queen of Hills via Dehradun. The scenic 35 km hill climb from Dehradun features hairpin bends with spectacular Doon Valley views. Kempty Falls, Gun Hill, Company Garden, and Mall Road are popular group destinations. The colonial charm and mountain air make this ideal for weekend getaways.',
     stops: ['Meerut (rest)', 'Muzaffarnagar', 'Roorkee', 'Dehradun (refreshments)', 'Mussoorie'],
     busTypes: 'Only 22-25 seater mini buses can navigate the steep Dehradun-Mussoorie hill road. For larger groups, use a big bus till Dehradun and switch to multiple smaller vehicles for the 35 km hill ascent.',
     travelTips: 'Large buses (35+ seater) cannot go to Mussoorie due to the narrow, steep mountain road. Vehicle permits required for Mussoorie green zone. Mall Road is pedestrian-only; bus parking at Library end or Picture Palace end.',
@@ -33872,7 +33952,7 @@ export const busRouteDescriptions = {
     travelTime: '8-9 hours',
     distance: '250 km',
     bestSeason: 'May to June, September to October (temple open May-November)',
-    highlights: 'The Haridwar to Kedarnath bus route is one of India\'s holiest pilgrimage corridors, carrying devotees to one of the twelve Jyotirlingas at 3,583 metres in the Garhwal Himalayas. Travel via Rishikesh, Devprayag (where Alaknanda and Bhagirathi form the Ganges), Rudraprayag, and Guptkashi to Gaurikund—the road-head from where the 16 km trek or pony/helicopter ride to Kedarnath Temple begins. The rebuilt temple, devastated in the 2013 floods but now fully restored with the massive rock that protected it still visible, is a powerful sight. The route passes through five Prayags (sacred confluences) and stunning river valleys. Essential for Char Dham yatra groups, temple trust pilgrimages, and community spiritual journeys. Note that larger buses face restrictions on the narrow mountain roads beyond Rishikesh.',
+    highlights: 'There is no bus that reaches Kedarnath itself: every vehicle, public or hired, ends at Gaurikund (the road-head beyond Sonprayag), and the last 16 km to the temple are on foot, by pony or by helicopter. A hired coach from Haridwar takes your group to the road-head with the same driver and coach waiting for the return, which is what most yatra groups of twenty or more book; smaller groups take a Tempo Traveller. The Haridwar to Kedarnath bus route is one of India\'s holiest pilgrimage corridors, carrying devotees to one of the twelve Jyotirlingas at 3,583 metres in the Garhwal Himalayas. Travel via Rishikesh, Devprayag (where Alaknanda and Bhagirathi form the Ganges), Rudraprayag, and Guptkashi to Gaurikund—the road-head from where the 16 km trek or pony/helicopter ride to Kedarnath Temple begins. The rebuilt temple, devastated in the 2013 floods but now fully restored with the massive rock that protected it still visible, is a powerful sight. The route passes through five Prayags (sacred confluences) and stunning river valleys. Essential for Char Dham yatra groups, temple trust pilgrimages, and community spiritual journeys. Note that larger buses face restrictions on the narrow mountain roads beyond Rishikesh.',
     stops: ['Rishikesh (morning aarti)', 'Devprayag (Ganges confluence, sacred)', 'Rudraprayag (Alaknanda-Mandakini confluence)', 'Guptkashi (overnight halt option)', 'Gaurikund (trek start to Kedarnath)'],
     roadConditions: 'Haridwar to Rishikesh is a flat 25 km road. Beyond Rishikesh, the road becomes a narrow mountain highway along river valleys. Only buses up to 22-25 seats are advisable due to narrow sections, hairpin bends, and occasional landslide-prone stretches. Larger groups must use multiple smaller vehicles. Road conditions deteriorate significantly after monsoon rains.',
   },

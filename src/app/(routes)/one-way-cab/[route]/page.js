@@ -1,9 +1,13 @@
 import { notFound } from 'next/navigation';
+import PriorityPageGuide from '@/components/content/PriorityPageGuide';
+import { NOINDEX_ROBOTS, isNoindexPath } from '@/lib/seo/noindex-families.mjs';
 import Link from 'next/link';
 import { getOneWayRoute, getAllOneWayRouteSlugs, getRelatedRoutes, cityToGeoSlug } from '@/utilis/oneWayCabData';
 import { getReviews, getExtendedFaqs } from '@/utilis/oneWayCabEnrichment';
 import OneWayCabRouteClient from '@/components/oneway/OneWayCabRouteClient';
+import { getRoadParagraph } from '@/utilis/roadParagraphs';
 import { getCorridorLinks } from '@/utilis/corridorLinks';
+import { getSeasonalCorridorCallout } from '@/utilis/seasonalCorridors';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import RelatedLinks from '@/components/seo/RelatedLinks';
@@ -14,6 +18,7 @@ import { getArticleSchema, getSpeakableSchema, getCityPlaceSchema, getComparison
 import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
 import { BookOpen, Clock, ArrowRight } from '@/components/ui/icons';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { BASE_URL } from '@/lib/seo/constants';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -52,7 +57,7 @@ export async function generateMetadata({ params }) {
   // "how much / how far / how long" before the click. Parentheticals are
   // stripped from route.time to keep the whole line inside ~160 characters.
   const snippetTime = String(route.time).replace(/\s*\([^)]*\)\s*/g, ' ').trim();
-  const description = `Sedan ${route.oneWayFares.sedan} · ${route.distance} · ${snippetTime} · fuel, driver & AC included · 4.9★ Triveni Cabs. Doorstep pickup, no return fare.`;
+  const description = `Sedan ${route.oneWayFares.sedan} · ${route.distance} · ${snippetTime} · fuel, driver & AC included · 4.9★ Triveni Cabs™. Doorstep pickup, no return fare.`;
 
   const keywords = [
     `one way cab ${route.from} to ${route.to}`,
@@ -83,9 +88,9 @@ export async function generateMetadata({ params }) {
     title,
     description,
     keywords,
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/one-way-cab/${slug}` },
     openGraph: {
@@ -94,7 +99,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/one-way-cab/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: ogImage, width: 1200, height: 630, alt: `One Way Cab ${route.from} to ${route.to} — Triveni Cabs` }],
     },
     twitter: {
@@ -105,7 +110,7 @@ export async function generateMetadata({ params }) {
       site: '@trivenicabs',
       images: [ogImage],
     },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+    robots: isNoindexPath(`/one-way-cab/${slug}`) ? NOINDEX_ROBOTS : { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
   };
 }
 
@@ -160,12 +165,6 @@ export default async function OneWayCabRoutePage({ params }) {
       "highPrice": (Math.max(route.distanceNum, 300) * 18).toString(),
       "priceCurrency": "INR",
       "offerCount": "3"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": reviewCount.toString(),
-      "bestRating": "5"
     }
   };
 
@@ -197,6 +196,10 @@ export default async function OneWayCabRoutePage({ params }) {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Google's Merchant listings report treats a missing `image`
+    // as a critical error. This is an asset the page already uses.
+
+    "image": `${BASE_URL}/images/car/swift_dzire.jpg`,
     "name": `One Way Cab ${route.from} to ${route.to}`,
     "description": `One way cab service from ${route.from} to ${route.to}. ${route.distance} via ${route.highway}. ${route.time} travel time.`,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
@@ -225,20 +228,7 @@ export default async function OneWayCabRoutePage({ params }) {
         "availability": "https://schema.org/InStock",
         "url": `https://www.trivenicabs.in/one-way-cab/${slug}`
       }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": reviewCount.toString(),
-      "bestRating": "5"
-    },
-    "review": reviews.slice(0, 3).map(r => ({
-      "@type": "Review",
-      "author": { "@type": "Person", "name": r.name },
-      "datePublished": r.date,
-      "reviewRating": { "@type": "Rating", "ratingValue": r.rating.toString(), "bestRating": "5" },
-      "reviewBody": r.text
-    }))
+    ]
   };
 
   // JSON-LD: TripAction (origin-destination for Google Knowledge Graph). When the
@@ -335,23 +325,31 @@ export default async function OneWayCabRoutePage({ params }) {
     ],
   });
 
+  // Emit one connected graph instead of eleven independent JSON-LD scripts.
+  // This cuts HTML/script parsing overhead on all 180 route pages while keeping
+  // every entity available to search engines and answer engines.
+  const schemaNodes = [
+    serviceSchema, breadcrumbSchema, faqSchema, productSchema, tripSchema,
+    howToSchema, articleSchema, touristTripSchema, comparisonSchema, geoPlaceNodes,
+  ].flat().filter(Boolean).map((node) => {
+    const { ['@context']: _context, ...withoutContext } = node;
+    return withoutContext;
+  });
+  const schemaGraph = { '@context': 'https://schema.org', '@graph': schemaNodes };
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(tripSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(touristTripSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonSchema) }} />
-      {geoPlaceNodes.map((node, i) => (
-        <script key={`geo-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(node) }} />
-      ))}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaGraph) }} />
       <AEOHead pageType="route" data={{ url: `/one-way-cab/${slug}`, title: `One Way Cab ${route.from} to ${route.to}`, origin: route.from, destination: route.to, city: route.from }} />
 
-      <OneWayCabRouteClient route={route} relatedRoutes={relatedRoutes} corridorLinks={getCorridorLinks(slug, 'one-way-cab')} />
+      <OneWayCabRouteClient
+        planningGuide={<PriorityPageGuide path={`/one-way-cab/${slug}`} />}
+        route={route}
+        relatedRoutes={relatedRoutes}
+        corridorLinks={getCorridorLinks(slug, 'one-way-cab')}
+        seasonalCallout={getSeasonalCorridorCallout({ destination: route.to, origin: route.from })}
+        roadParagraph={getRoadParagraph(slug)}
+      />
 
       {/* Internal-link panel for adjacent commercial pages from the origin
           city. relatedRoutes are already rendered inside the client component

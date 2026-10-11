@@ -1,11 +1,11 @@
 // Triveni Cabs Service Worker - Offline Support & Caching
-const CACHE_NAME = 'triveni-cabs-v1';
+const CACHE_NAME = 'triveni-cabs-v2';
 const OFFLINE_URL = '/offline.html';
 
 // Assets to pre-cache for offline functionality
 const PRECACHE_ASSETS = [
   OFFLINE_URL,
-  '/images/logo/logo2.webp',
+  '/images/logo/logo2-tm.webp',
   '/favicon-32x32.png',
 ];
 

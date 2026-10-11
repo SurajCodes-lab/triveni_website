@@ -5,6 +5,8 @@ import CityTaxiFareClient from '@/components/taxi-fare/CityTaxiFareClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { groupDigits } from '@/utilis/pricing';
+import { BASE_URL } from '@/lib/seo/constants';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -21,9 +23,9 @@ export async function generateMetadata({ params }) {
     return { title: 'Taxi Fare Not Found' };
   }
 
-  const title = tightenTitle(`Taxi Fare in ${cityData.city} | ₹${cityData.baseFare.sedan}/km | Fare Calculator 2026`);
-  const description = `${cityData.city} taxi fare starts at ₹${cityData.baseFare.sedan}/km for Sedan, ₹${cityData.baseFare.suv}/km for SUV. Compare with Ola/Uber — save ${cityData.comparisonWithOla.savings}. No surge pricing. Popular route fares, surcharges & fare calculator. Call 7668570551.`;
-  const ogTitle = `${cityData.city} Taxi Fare Guide 2026 — ₹${cityData.baseFare.sedan}/km Sedan | Save ${cityData.comparisonWithOla.savings} vs Ola/Uber | Triveni Cabs`;
+  const title = tightenTitle(`Taxi Fare in ${cityData.city} | ₹${groupDigits(cityData.baseFare.sedan)}/km | Fare Calculator 2026`);
+  const description = `${cityData.city} taxi fare starts at ₹${groupDigits(cityData.baseFare.sedan)}/km for Sedan, ₹${groupDigits(cityData.baseFare.suv)}/km for SUV. Compare with Ola/Uber — save ${cityData.comparisonWithOla.savings}. No surge pricing. Popular route fares, surcharges & fare calculator. Call 7668570551.`;
+  const ogTitle = `${cityData.city} Taxi Fare Guide 2026 — ₹${groupDigits(cityData.baseFare.sedan)}/km Sedan | Save ${cityData.comparisonWithOla.savings} vs Ola/Uber | Triveni Cabs™`;
 
   return {
     title,
@@ -45,9 +47,9 @@ export async function generateMetadata({ params }) {
       `best taxi service ${cityData.city.toLowerCase()}`,
       `${cityData.city.toLowerCase()} taxi fare comparison`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/taxi-fare/${slug}` },
     openGraph: {
@@ -56,7 +58,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/taxi-fare/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `Taxi Fare in ${cityData.city}` }],
     },
     twitter: {
@@ -87,8 +89,8 @@ export default async function TaxiFarePage({ params }) {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": `Taxi Service in ${cityData.city}`,
-    "name": `${cityData.city} Taxi Fare — ₹${cityData.baseFare.sedan}/km`,
-    "description": `Affordable taxi service in ${cityData.city}. Sedan from ₹${cityData.baseFare.sedan}/km, SUV from ₹${cityData.baseFare.suv}/km. No surge pricing.`,
+    "name": `${cityData.city} Taxi Fare — ₹${groupDigits(cityData.baseFare.sedan)}/km`,
+    "description": `Affordable taxi service in ${cityData.city}. Sedan from ₹${groupDigits(cityData.baseFare.sedan)}/km, SUV from ₹${groupDigits(cityData.baseFare.suv)}/km. No surge pricing.`,
     "provider": {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
@@ -97,9 +99,9 @@ export default async function TaxiFarePage({ params }) {
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
+        "streetAddress": "366, Dandupura, near Tajganj",
         "addressLocality": "Agra",
-        "addressRegion": "UP",
+        "addressRegion": "Uttar Pradesh",
         "postalCode": "282006",
         "addressCountry": "IN"
       }
@@ -111,12 +113,6 @@ export default async function TaxiFarePage({ params }) {
       "highPrice": "5000",
       "priceCurrency": "INR",
       "offerCount": "3"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount(slug)),
-      "bestRating": "5"
     }
   };
 
@@ -124,8 +120,12 @@ export default async function TaxiFarePage({ params }) {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Google's Merchant listings report treats a missing `image`
+    // as a critical error. This is an asset the page already uses.
+
+    "image": `${BASE_URL}/images/car/swift_dzire.jpg`,
     "name": `${cityData.city} Taxi Service`,
-    "description": `Book taxi in ${cityData.city} at ₹${cityData.baseFare.sedan}/km. Sedan, SUV, Tempo Traveller available.`,
+    "description": `Book taxi in ${cityData.city} at ₹${groupDigits(cityData.baseFare.sedan)}/km. Sedan, SUV, Tempo Traveller available.`,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "offers": [
       {
@@ -152,13 +152,7 @@ export default async function TaxiFarePage({ params }) {
         "unitText": "per km",
         "availability": "https://schema.org/InStock"
       }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount(slug)),
-      "bestRating": "5"
-    }
+    ]
   };
 
   // JSON-LD: Breadcrumb

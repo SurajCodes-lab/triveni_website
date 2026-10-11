@@ -16,6 +16,11 @@ import { getArticleSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/sp
 import { getAllIndustries } from '@/utilis/corporateIndustryData';
 import { getAllUseCases } from '@/utilis/corporateUseCaseData';
 import AEOHead from '@/components/seo/AEOHead';
+import CorporateFleetTable from '@/components/seo/CorporateFleetTable';
+import CorporateCityLocal from '@/components/seo/CorporateCityLocal';
+// Week 53: the nine city hubs were 97.7% identical to one another. These are
+// the per-city operational facts that make each page about its own city.
+import { getCorporateCityLocal } from '@/utilis/corporateCityLocal';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -44,6 +49,7 @@ import {
   Zap
 } from '@/components/ui/icons';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 // Generate static params for all cities
 export async function generateStaticParams() {
@@ -65,9 +71,9 @@ export async function generateMetadata({ params }) {
   return {
     title: cityData.metaTitle,
     description: cityData.metaDescription,
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: {
       canonical: `/corporate-transportation-service/${city}`,
@@ -78,7 +84,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/corporate-transportation-service/${city}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [
         {
           url: cityData.heroImage || '/images/corporate/corporate-hero.jpg',
@@ -157,7 +163,7 @@ export default async function CorporateCityPage({ params }) {
     description: cityData.metaDescription,
     image: cityData.heroImage,
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/corporate-transportation-service/${city}`) || getTodayDate()),
     authorName: 'editorial',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
   });
@@ -217,7 +223,7 @@ export default async function CorporateCityPage({ params }) {
           <div className="absolute bottom-32 left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px]" />
 
           {/* Content */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12 sm:py-20">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-slate-400 mb-8">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -236,9 +242,9 @@ export default async function CorporateCityPage({ params }) {
                 </div>
 
                 <h1 className="speakable-headline font-display-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]">
-                  Corporate
+                  Corporate{' '}
                   <span className="block mt-2 text-gold-foil">
-                    Transportation
+                    Transportation{' '}
                   </span>
                   <span className="block mt-2 text-4xl md:text-5xl lg:text-6xl font-light text-white/80">in {cityData.name}</span>
                 </h1>
@@ -292,7 +298,6 @@ export default async function CorporateCityPage({ params }) {
               <div className="hidden lg:block">
                 <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 relative overflow-hidden">
                   {/* Decorative */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-full blur-2xl" />
 
                   <div className="relative">
                     <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
@@ -404,7 +409,6 @@ export default async function CorporateCityPage({ params }) {
                       'bg-gradient-to-br from-purple-600 to-pink-600'
                     }`}
                   >
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl" />
                     <div className="relative">
                       <div className="text-5xl mb-4">{service.icon}</div>
                       <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
@@ -420,6 +424,8 @@ export default async function CorporateCityPage({ params }) {
           </div>
         </section>
 
+        <CorporateCityLocal city={cityData.name} local={getCorporateCityLocal(city)} />
+
         {/* Fleet Section */}
         <section className="py-16 md:py-24 px-4 bg-slate-900 relative overflow-hidden">
           {/* Background Pattern */}
@@ -434,7 +440,7 @@ export default async function CorporateCityPage({ params }) {
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl px-5 py-2 rounded-full mb-6 border border-white/20">
                 <Car className="w-4 h-4 text-cyan-400" />
                 <span className="text-cyan-300 font-semibold text-sm tracking-wider uppercase">Premium Fleet</span>
@@ -491,7 +497,7 @@ export default async function CorporateCityPage({ params }) {
         {/* Services Detail Section */}
         <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white to-slate-50">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-indigo-100 px-5 py-2 rounded-full mb-6">
                 <Briefcase className="w-4 h-4 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Our Services</span>
@@ -535,13 +541,13 @@ export default async function CorporateCityPage({ params }) {
         </section>
 
         {/* Benefits Section */}
+        {/* Week 49: the fleet-and-rate table, from the same fleet records the cards above render. */}
+        <CorporateFleetTable city={cityData.name} />
         <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 relative overflow-hidden">
           {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
                 Why Companies in {cityData.name} Choose Us
               </h2>
@@ -570,7 +576,7 @@ export default async function CorporateCityPage({ params }) {
         {/* FAQ Section - Open Cards */}
         <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-white via-slate-50 to-white">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-purple-100 px-6 py-3 rounded-full mb-6">
                 <HeadphonesIcon className="w-5 h-5 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Got Questions?</span>
@@ -634,7 +640,7 @@ export default async function CorporateCityPage({ params }) {
           <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/30 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[150px]" />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 py-14 sm:py-24">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-xl px-5 py-2.5 rounded-full mb-8 border border-cyan-400/30">
@@ -650,7 +656,7 @@ export default async function CorporateCityPage({ params }) {
                 </h2>
 
                 <p className="text-xl text-slate-400 mb-10 leading-relaxed">
-                  Start your corporate transportation partnership with Triveni Cabs in {cityData.name}. Flexible contracts, transparent pricing, and dedicated support.
+                  Start your corporate transportation partnership with Triveni Cabs™ in {cityData.name}. Flexible contracts, transparent pricing, and dedicated support.
                 </p>
 
                 <div className="grid grid-cols-3 gap-6">

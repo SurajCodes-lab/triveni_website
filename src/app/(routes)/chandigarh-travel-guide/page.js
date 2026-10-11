@@ -3,6 +3,7 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 
 export const revalidate = 3600;
 
@@ -10,9 +11,9 @@ export const metadata = {
   title: tightenTitle('Chandigarh Travel Guide 2026 | City Beautiful — Attractions, Food, Transport'),
   description: 'Complete Chandigarh travel guide. Rock Garden, Sukhna Lake, Capitol Complex, Sector 17, Pinjore Gardens, food, shopping, day trips, monthly weather. Call 7668570551.',
   keywords: 'chandigarh travel guide, chandigarh tourism, rock garden chandigarh, sukhna lake, capitol complex le corbusier, sector 17, things to do in chandigarh, chandigarh attractions, city beautiful guide',
-  authors: [{ name: 'Triveni Cabs Editorial' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™ Editorial' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/chandigarh-travel-guide' },
   openGraph: {
@@ -21,7 +22,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/chandigarh-travel-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg', width: 1200, height: 630, alt: 'Chandigarh Travel Guide 2026 — City Beautiful' }],
   },
   twitter: {
@@ -47,9 +48,9 @@ export default function ChandigarhTravelGuidePage() {
 
   const faqData = [
     { question: "How many days do I need in Chandigarh?", answer: "1-2 days are sufficient for Chandigarh's main attractions. Day 1: Rock Garden, Sukhna Lake, Sector 17. Day 2: Capitol Complex, Pinjore Gardens, Cactus Garden, Le Corbusier Centre. For weekend getaways extending to Kasauli, Shimla, or Amritsar, plan 3-4 days from Chandigarh as base." },
-    { question: "Is Chandigarh safe for solo travellers?", answer: "Yes, Chandigarh is one of India's safest cities. The grid-based sector layout makes navigation easy, public transport is well-organized, and the city has consistently ranked among India's safest in NCRB data. Solo female travellers report comfortable experiences. Use prepaid cabs or Triveni Cabs for late-night transfers." },
+    { question: "Is Chandigarh safe for solo travellers?", answer: "Yes, Chandigarh is one of India's safest cities. The grid-based sector layout makes navigation easy, public transport is well-organized, and the city has consistently ranked among India's safest in NCRB data. Solo female travellers report comfortable experiences. Use prepaid cabs or Triveni Cabs™ for late-night transfers." },
     { question: "What is the best time to visit Chandigarh?", answer: "October to March is ideal with pleasant 10-25°C weather. November-February offers crisp mornings perfect for Rock Garden walks and Sukhna Lake jogs. April-June is hot (35-42°C). July-September brings monsoon making the Sukhna Wildlife Sanctuary and surrounding hills lush but humid." },
-    { question: "How do I get from Delhi to Chandigarh?", answer: "By car: 4.5-5 hours via NH44 (250 km). Triveni Cabs Sedan Rs 4,200 one-way, Innova Rs 6,000. By train: Shatabdi Express (3.5 hrs), Vande Bharat (3 hrs). By flight: Chandigarh Airport (IXC), 1 hour from Delhi. By bus: Volvo (4-5 hrs) from ISBT Kashmere Gate." },
+    { question: "How do I get from Delhi to Chandigarh?", answer: "By car: 4.5-5 hours via NH44 (250 km). Triveni Cabs™ Sedan Rs 4,200 one-way, Innova Rs 6,000. By train: Shatabdi Express (3.5 hrs), Vande Bharat (3 hrs). By flight: Chandigarh Airport (IXC), 1 hour from Delhi. By bus: Volvo (4-5 hrs) from ISBT Kashmere Gate." },
     { question: "What food is Chandigarh famous for?", answer: "Chandigarh celebrates Punjabi cuisine: butter chicken, dal makhani, sarson da saag with makki di roti, and tandoori platters. Iconic spots include Pal Dhaba (kebabs), Sindhi Sweets (jalebi & samosa), Chawla's Chicken, Hot Millions garlic toast, and the cafes of Sector 17. Lassi at Brijwasi is unmissable." },
     { question: "What should I buy in Chandigarh?", answer: "Sector 17 Plaza for branded shopping, Sector 22 for budget bazaars, Elante Mall (Industrial Area) for premium brands, Sector 19 (Fancy Bazaar) for traditional Punjabi wear. Specialties: Phulkari embroidery (dupattas, jackets), Punjabi jutti (handcrafted leather shoes), parandas (hair tassels), Patiala salwars." },
     { question: "Is Chandigarh expensive to visit?", answer: "Chandigarh is moderately-priced. Budget: Rs 1,500-3,000 per day (hostels, dhabas, autos). Mid-range: Rs 4,000-7,500 per day (3-star hotels, restaurants, private cab). Luxury: Rs 12,000+ per day (Taj/JW Marriott, fine dining). Most attractions have nominal entry (Rs 30-150)." },
@@ -159,7 +160,7 @@ export default function ChandigarhTravelGuidePage() {
         </section>
 
         {/* TOP ATTRACTIONS */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-amber-600 font-bold text-sm tracking-widest uppercase">Top Attractions</span>
@@ -195,7 +196,7 @@ export default function ChandigarhTravelGuidePage() {
         </section>
 
         {/* BEST TIME TO VISIT */}
-        <section className="py-20 px-4 bg-slate-50">
+        <section className="py-12 sm:py-20 px-4 bg-slate-50">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-amber-600 font-bold text-sm tracking-widest uppercase">Best Time to Visit</span>
@@ -232,7 +233,7 @@ export default function ChandigarhTravelGuidePage() {
         </section>
 
         {/* FOOD & SHOPPING TEASERS */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
             <div className="bg-gradient-to-br from-amber-50 to-rose-50 rounded-3xl p-8 border border-amber-100">
               <Coffee className="w-12 h-12 text-amber-700 mb-4" />
@@ -250,7 +251,7 @@ export default function ChandigarhTravelGuidePage() {
         </section>
 
         {/* GETTING THERE */}
-        <section className="py-20 px-4 bg-slate-50">
+        <section className="py-12 sm:py-20 px-4 bg-slate-50">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-amber-600 font-bold text-sm tracking-widest uppercase">Getting There</span>
@@ -260,7 +261,7 @@ export default function ChandigarhTravelGuidePage() {
               <div className="bg-white rounded-3xl p-6 shadow-md">
                 <Car className="w-10 h-10 text-amber-700 mb-3" />
                 <h3 className="text-xl font-bold text-slate-900 mb-2">By Cab (Recommended)</h3>
-                <p className="text-slate-600 text-sm mb-3">Triveni Cabs Sedan ₹4,200, SUV ₹6,000, Tempo ₹11,000 one-way. 4.5-5 hrs via NH44 Delhi-Chandigarh Expressway. Door-to-door, no transfers.</p>
+                <p className="text-slate-600 text-sm mb-3">Triveni Cabs™ Sedan ₹4,200, SUV ₹6,000, Tempo ₹11,000 one-way. 4.5-5 hrs via NH44 Delhi-Chandigarh Expressway. Door-to-door, no transfers.</p>
                 <Link href="/delhi-to-chandigarh" className="text-amber-700 font-semibold text-sm hover:underline">Book cab →</Link>
               </div>
               <div className="bg-white rounded-3xl p-6 shadow-md">
@@ -278,7 +279,7 @@ export default function ChandigarhTravelGuidePage() {
         </section>
 
         {/* WEEKEND GETAWAYS */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-amber-600 font-bold text-sm tracking-widest uppercase">Beyond the City</span>
@@ -307,8 +308,13 @@ export default function ChandigarhTravelGuidePage() {
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Chandigarh" citySlug="chandigarh" />
+
+
         {/* FAQ */}
-        <section className="faq-section py-20 px-4 bg-slate-50">
+        <section className="faq-section py-12 sm:py-20 px-4 bg-slate-50">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-amber-600 font-bold text-sm tracking-widest uppercase">Common Questions</span>
@@ -329,7 +335,7 @@ export default function ChandigarhTravelGuidePage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-4 bg-gradient-to-r from-amber-600 to-rose-600">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-r from-amber-600 to-rose-600">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-4xl md:text-5xl font-black mb-4">Ready to Explore Chandigarh?</h2>
             <p className="text-xl mb-8 opacity-90">Book a comfortable AC cab from Delhi or any nearby city. Door-to-door, fixed fare, verified driver.</p>

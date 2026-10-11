@@ -3,6 +3,7 @@ import RentalPackageClient from '@/components/rental/RentalPackageClient';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getHowToSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 const rental = getRentalBySlug('full-day-cab-rental');
 
@@ -10,10 +11,10 @@ export const metadata = {
   title: tightenTitle('Full Day Cab Rental | 8 Hours 80 km from Rs 2,500'),
   description: 'Book full day cab rental for 8 hours 80 km. Sedan Rs 2,500, SUV Rs 3,500, Innova Rs 4,500. Sightseeing, business, weddings. Call 7668570551.',
   keywords: 'full day cab rental, 8 hour cab rental, cab for full day, full day taxi hire, day cab with driver, sightseeing cab rental, full day car hire',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/full-day-cab-rental' },
-  openGraph: { title: 'Full Day Cab Rental | 8 Hrs 80 km from Rs 2,500', description: 'Full day cab with driver. 8 hours, 80 km. From Rs 2,500.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/full-day-cab-rental', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Full Day Cab Rental | 8 Hrs 80 km from Rs 2,500', description: 'Full day cab with driver. 8 hours, 80 km. From Rs 2,500.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/full-day-cab-rental', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Full Day Cab Rental | Rs 2,500', description: 'Full day cab rental. 8 hours 80 km. Sedan, SUV, Innova.' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -28,7 +29,7 @@ export default function FullDayCabRentalPage() {
     description: 'Full-day cab rental fares by vehicle, what is included, and how to book a dedicated 8-hour car with driver across North India.',
     image: '/images/about/about_banner.webp',
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn('/full-day-cab-rental') || getTodayDate()),
     authorName: 'editorial',
     speakableSelectors: ['.speakable-headline', '.speakable-lead'],
   });

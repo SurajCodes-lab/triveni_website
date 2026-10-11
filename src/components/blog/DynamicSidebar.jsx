@@ -9,13 +9,14 @@
 // All conditional blocks, links and analytics preserved from v1.
 // ============================================================================
 
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 // Centralized icon imports for better bundle optimization
 import {
   MapPin, Phone, MessageCircle, Clock, ArrowRight,
   Compass, Star, Tag, BookOpen, Plane,
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { rupeeText } from '@/utilis/pricing';
 
 // Highway lane marking — the recurring v2 divider motif.
 const LANE = 'bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18px_34px)]';
@@ -84,7 +85,7 @@ export default function DynamicSidebar({ post, relatedLinks, theme = 'blue' }) {
                   {tour.name}
                 </h4>
                 <div className="mt-1 flex items-center justify-between">
-                  <span className="text-xs text-white/45">{tour.price}</span>
+                  <span className="text-xs text-white/45">{rupeeText(tour.price)}</span>
                   <ArrowRight className="h-4 w-4 text-[#FACF2D] opacity-0 transition-opacity group-hover:opacity-100" />
                 </div>
               </Link>

@@ -281,6 +281,32 @@ export const weddingCityData = {
     priceRange: "₹8,000 - ₹50,000 per day",
     popularCars: ["BMW 7 Series", "Vintage Rolls Royce", "Mercedes S-Class", "Royal Vintage Cars", "Decorated Camel Cart (on request)"]
   },
+  jaisalmer: {
+    name: "Jaisalmer",
+    slug: "jaisalmer",
+    description: "Desert wedding car rental in Jaisalmer - the Golden City. Decorated cars for fort and dune weddings, 4x4 vehicles for Sam and Khuri sand-dune ceremonies, baraat tempo travellers for guests arriving from Jodhpur. Sonar Fort and desert-camp coverage with drivers who know the dune tracks.",
+    keywords: "wedding car rental jaisalmer, desert wedding car jaisalmer, destination wedding car jaisalmer, sand dune wedding transport, jaisalmer fort wedding car, baraat car jaisalmer, decorated wedding car jaisalmer, wedding car hire jaisalmer, jaisalmer wedding car with driver, sam dunes wedding transport, khuri dunes wedding car, jodhpur to jaisalmer wedding car, jaisalmer guest transfer wedding, desert camp wedding car, golden city wedding car, rajasthani desert wedding transport, luxury wedding car jaisalmer, vintage car rental jaisalmer, jaisalmer wedding car packages, affordable wedding car jaisalmer",
+    popularVenues: [
+      { name: "Suryagarh Jaisalmer", area: "Kahala Phata" },
+      { name: "The Serai", area: "Bherwa, Chandan" },
+      { name: "Jaisalmer Marriott Resort & Spa", area: "Police Line Road" },
+      { name: "Sam Sand Dunes desert camps", area: "Sam" }
+    ],
+    nearbyDestinations: [
+      { name: "Jodhpur", distance: "285 km", time: "5-6 hours" },
+      { name: "Bikaner", distance: "330 km", time: "6-7 hours" },
+      { name: "Udaipur", distance: "495 km", time: "8-9 hours" }
+    ],
+    specialties: [
+      "Desert and sand-dune wedding transport",
+      "Fort and heritage haveli wedding coverage",
+      "Guest convoys from Jodhpur airport and railway station",
+      "4x4 vehicles for dune-camp access",
+      "Multi-day desert wedding logistics"
+    ],
+    priceRange: "₹9,000 - ₹55,000 per day",
+    popularCars: ["BMW 7 Series", "Audi A8", "Mercedes S-Class", "Toyota Fortuner", "Decorated Innova Crysta"]
+  },
   udaipur: {
     name: "Udaipur",
     slug: "udaipur",

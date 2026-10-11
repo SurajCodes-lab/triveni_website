@@ -296,7 +296,7 @@ export const corporateTransportBlogs = [
       text: "Get Employee Transport Quote",
       url: "/corporate-transportation-service",
       description: "Dedicated employee transport solutions",
-      price: "Starting ₹12/km"
+      price: "Starting ₹11/km"
     },
     content: `
       <article class="blog-content">
@@ -827,7 +827,7 @@ export const corporateTransportBlogs = [
       text: "Book Airport Transfer",
       url: "/corporate-transportation-service",
       description: "Premium airport transfer services",
-      price: "Starting ₹1500"
+      price: "Starting ₹1,500"
     },
     content: `
       <article class="blog-content">

@@ -9,10 +9,10 @@ export const metadata = {
   title: tightenTitle('Safe Travel Tips India for Foreign Tourists 2026'),
   description: 'Comprehensive safety guide for foreign tourists in India 2026. Transportation safety, health tips, scam awareness, emergency numbers, women safety.',
   keywords: 'safe travel tips india for foreign tourists, india safety guide, india travel safety, is india safe for tourists, india solo travel safety, women safety india',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/safe-travel-india-for-tourists' },
-  openGraph: { title: 'Safe Travel Tips India for Foreign Tourists 2026', description: 'Complete safety guide: transport, health, scams, emergency numbers, women & solo safety.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/safe-travel-india-for-tourists', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Safe Travel Tips India for Foreign Tourists 2026', description: 'Complete safety guide: transport, health, scams, emergency numbers, women & solo safety.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/safe-travel-india-for-tourists', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Safe Travel India Guide for Tourists 2026' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -21,7 +21,7 @@ const safetyTopics = [
   {
     title: 'Transportation Safety', icon: Shield, color: 'amber',
     tips: [
-      { heading: 'Hire a Verified Private Driver', text: 'The safest way to travel in India is with a pre-booked, verified private driver. Companies like Triveni Cabs provide GPS-tracked vehicles, background-checked drivers, and 24/7 support. This eliminates risks from random taxis or ride-hailing in unfamiliar areas.' },
+      { heading: 'Hire a Verified Private Driver', text: 'The safest way to travel in India is with a pre-booked, verified private driver. Companies like Triveni Cabs™ provide GPS-tracked vehicles, background-checked drivers, and 24/7 support. This eliminates risks from random taxis or ride-hailing in unfamiliar areas.' },
       { heading: 'Avoid Unmarked Taxis', text: 'Never take unmarked or unofficial taxis at airports or stations. Use pre-paid taxi counters at airports, or better yet, pre-book your pickup. If using Uber/Ola (Indian ride-hail), verify the car number and driver photo before getting in.' },
       { heading: 'Train Travel Safety', text: 'Indian Railways is generally safe. Book AC classes (1AC, 2AC, 3AC) for comfortable and secure travel. Keep valuables in locked bags. Night trains: choose upper berths for security. The IRCTC app is the official booking platform.' },
       { heading: 'Road Safety', text: 'Indian traffic follows different norms. Seat belts in cars, helmets on bikes are mandatory. Avoid driving yourself — local traffic patterns require experience. Pedestrians should be cautious crossing roads (use zebra crossings and watch both directions).' },
@@ -62,7 +62,7 @@ const safetyTopics = [
       { heading: 'Police', text: '100. Tourist Police are available in Delhi, Agra, Jaipur, Mumbai, Goa, and other tourist hubs. They speak basic English and are trained to assist foreign visitors.' },
       { heading: 'Ambulance', text: '108 (government ambulance, free). Private ambulances are also available in major cities. For serious medical emergencies, our drivers will take you to the nearest hospital directly.' },
       { heading: 'Your Embassy', text: 'Keep your embassy contact number saved. Major embassies in Delhi: US (+91-11-2419-8000), UK (+91-11-2419-2100), Australia (+91-11-4139-9900), Canada (+91-11-4178-2000), Germany (+91-11-4419-9199).' },
-      { heading: 'Triveni Cabs Helpline', text: '+91-7668570551 — Available 24/7 for all our customers. WhatsApp: wa.me/917668570551. Our English-speaking support team can coordinate with local authorities, hospitals, and your embassy if needed.' },
+      { heading: 'Triveni Cabs™ Helpline', text: '+91-7668570551 — Available 24/7 for all our customers. WhatsApp: wa.me/917668570551. Our English-speaking support team can coordinate with local authorities, hospitals, and your embassy if needed.' },
     ]
   },
   {
@@ -148,14 +148,14 @@ export default function SafeTravelIndiaPage() {
         <section className="relative min-h-[70vh] flex items-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-stone-950 via-amber-950/30 to-stone-950" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent" />
-          <div className="absolute top-10 left-1/3 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-orange-500/8 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-10 left-1/3 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[150px]" />
+          <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-orange-500/8 rounded-full blur-[120px]" style={{ animationDelay: '2s' }} />
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(251,191,36,0.3) 1px, transparent 0)`,
             backgroundSize: '40px 40px'
           }} />
 
-          <div className="max-w-6xl mx-auto px-4 py-20 relative z-10 text-center">
+          <div className="max-w-6xl mx-auto px-4 py-12 sm:py-20 relative z-10 text-center">
             <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 backdrop-blur-xl px-6 py-3 rounded-full border border-amber-500/30 mb-8">
               <Shield className="w-5 h-5 text-amber-400" />
               <span className="text-amber-300 font-bold text-sm tracking-wider uppercase">Expert-Verified Travel Safety Guide</span>
@@ -181,12 +181,12 @@ export default function SafeTravelIndiaPage() {
             <span>Police: 100</span>
             <span>Ambulance: 108</span>
             <span>Women Helpline: 181</span>
-            <span className="text-amber-300">Triveni Cabs: +91-7668570551</span>
+            <span className="text-amber-300">Triveni Cabs™: +91-7668570551</span>
           </div>
         </section>
 
         {/* Safety Topics */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute top-[20%] right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[200px]" />
           <div className="max-w-4xl mx-auto space-y-16 relative z-10">
             {safetyTopics.map((topic, i) => (
@@ -211,7 +211,7 @@ export default function SafeTravelIndiaPage() {
         </section>
 
         {/* Trust Section */}
-        <section className="py-20 px-4 bg-stone-900/30 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-stone-900/30 relative overflow-hidden">
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[150px]" />
           <div className="max-w-5xl mx-auto text-center relative z-10">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 px-6 py-3 rounded-full mb-6 border border-amber-500/30">
@@ -220,7 +220,7 @@ export default function SafeTravelIndiaPage() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               Travel Safer with
-              <span className="block text-transparent bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">Triveni Cabs</span>
+              <span className="block text-transparent bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">Triveni Cabs™</span>
             </h2>
             <p className="text-stone-400 mb-12 max-w-2xl mx-auto text-lg">
               Hiring a private driver is the single best safety decision you can make for your India trip.
@@ -244,7 +244,7 @@ export default function SafeTravelIndiaPage() {
         </section>
 
         {/* Related Pages */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-2xl font-bold text-center mb-8 text-white">Plan Your Safe India Trip</h2>
             <div className="grid md:grid-cols-3 gap-4">
@@ -271,10 +271,10 @@ export default function SafeTravelIndiaPage() {
         </section>
 
         {/* FAQ */}
-        <section className="faq-section py-20 px-4 relative overflow-hidden">
+        <section className="faq-section py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[200px]" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
                 Frequently Asked
                 <span className="block text-transparent bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">Questions</span>
@@ -297,14 +297,14 @@ export default function SafeTravelIndiaPage() {
         {/* CTA */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-amber-950/40 to-stone-900" />
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/15 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/15 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px]" style={{ animationDelay: '1s' }} />
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(251,191,36,0.3) 1px, transparent 0)`,
             backgroundSize: '30px 30px'
           }} />
 
-          <div className="relative z-10 max-w-4xl mx-auto px-4 py-24 text-center">
+          <div className="relative z-10 max-w-4xl mx-auto px-4 py-14 sm:py-24 text-center">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               Travel India
               <span className="block text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">Safely with Us</span>

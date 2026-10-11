@@ -8,9 +8,9 @@ export const metadata = {
   title: tightenTitle('Holi Special Mathura Vrindavan Cab Service 2026 | Book Early'),
   description: 'Book Holi special cab from Delhi to Mathura Vrindavan 2026. Sedan from ₹3,500, SUV ₹5,000. Lathmar Holi Barsana, Phalen ki Holi Vrindavan. AC vehicles.',
   keywords: 'holi cab mathura, holi vrindavan cab, holi special cab service, delhi to mathura holi cab, barsana holi cab, holi 2026 cab booking, mathura vrindavan taxi, holi festival transport',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/holi-mathura-vrindavan-cab-service' },
   openGraph: {
@@ -18,7 +18,7 @@ export const metadata = {
     description: 'Celebrate Holi in Mathura-Vrindavan. Cab from Delhi starting ₹3,500. AC sedan, SUV, Tempo Traveller. Book now.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/holi-mathura-vrindavan-cab-service',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: {
     card: 'summary_large_image',
@@ -36,7 +36,7 @@ export default function HoliMathuraVrindavanCabPage() {
     "serviceType": "Holi Festival Transport Service",
     "name": "Holi Special Mathura Vrindavan Cab Service",
     "description": "Book Holi special cab from Delhi to Mathura and Vrindavan. Experience Lathmar Holi, Barsana Holi, and Banke Bihari Temple celebrations.",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
+    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
     "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Mathura" }, { "@type": "City", "name": "Vrindavan" }],
     "offers": { "@type": "AggregateOffer", "lowPrice": "3500", "highPrice": "10000", "priceCurrency": "INR" }
   };

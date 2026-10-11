@@ -9,10 +9,14 @@ import {
   Sparkles, Navigation, ChevronRight, Zap, Shield, MapPinned
 } from '@/components/ui/icons';
 import { motion } from 'framer-motion';
-import { cityRoutesData, defaultRoutes } from "@/utilis/cityRoutesData";
-import { phoneNumber } from "@/utilis/data";
+// cityRoutesData is NOT imported here. It is 605 KB and this is a client
+// component, so the whole map of every city's routes was shipped to the browser
+// to read one key out of it. That one key's value arrives as a prop.
+import { phoneNumber } from '@/utilis/contact';
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { canonicalClientHref } from '@/lib/seo/client-route-exists';
+import { groupDigits } from '@/utilis/pricing';
 
 // Helper function to create route slug
 function createRouteSlug(cityName, destination) {
@@ -29,15 +33,13 @@ const destinationIcons = {
   'default': '📍'
 };
 
-const CityRoutes = ({ cityName }) => {
+const CityRoutes = ({ cityName, routesForCity = [] }) => {
   const [activeTab, setActiveTab] = useState('oneWay');
   const [hoveredRoute, setHoveredRoute] = useState(null);
   const [showAllRoutes, setShowAllRoutes] = useState(true); // Show all routes by default
 
-  const routes = useMemo(() =>
-    cityRoutesData[cityName] || defaultRoutes[cityName] || [],
-    [cityName]
-  );
+  // Resolved on the server. See the note on the import above.
+  const routes = routesForCity;
 
   const handleWhatsApp = useCallback((destination) => {
     trackWhatsAppClick('city_routes', '', destination);
@@ -46,7 +48,7 @@ const CityRoutes = ({ cityName }) => {
   }, [cityName, activeTab]);
 
   const getStartingPrice = useCallback((route) => {
-    if (!route.prices || route.prices.length === 0) return "2,760";
+    if (!route.prices || route.prices.length === 0) return "3,300";
     const carPrices = route.prices.filter(p =>
       p.vehicle && (p.vehicle.includes('Sedan') || p.vehicle.includes('SUV'))
     );
@@ -60,7 +62,10 @@ const CityRoutes = ({ cityName }) => {
 
   const routesToDisplay = useMemo(() => {
     if (!routes || !Array.isArray(routes)) return [];
-    return showAllRoutes ? routes : routes.slice(0, 8);
+    // Mobile stacks these one per row, so eight cards was about ten screens of
+    // scrolling before the next section. Four is still a genuine choice, and the
+    // "show all" toggle below is unchanged for anyone who wants the full list.
+    return showAllRoutes ? routes : routes.slice(0, 4);
   }, [routes, showAllRoutes]);
 
   const getDestinationIcon = (destination) => {
@@ -89,7 +94,7 @@ const CityRoutes = ({ cityName }) => {
   }
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-8 sm:py-12 md:py-16">
       {/* Section Header */}
       <div className="text-center mb-10">
         <motion.div
@@ -176,9 +181,9 @@ const CityRoutes = ({ cityName }) => {
               <div className="h-1.5 bg-gradient-to-r from-[#FACF2D] via-yellow-400 to-[#D4A017]" />
 
               {/* Card Content */}
-              <div className="p-5">
+              <div className="p-4 sm:p-5">
                 {/* Destination Header */}
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-3 sm:mb-4">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl transition-all duration-300 ${
                       hoveredRoute === index
@@ -208,7 +213,7 @@ const CityRoutes = ({ cityName }) => {
 
                 {/* Tags */}
                 {route.tags && route.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 mb-4">
+                  <div className="hidden sm:flex flex-wrap gap-1.5 mb-4">
                     {route.tags.slice(0, 2).map((tag, idx) => (
                       <span
                         key={idx}
@@ -221,12 +226,12 @@ const CityRoutes = ({ cityName }) => {
                 )}
 
                 {/* Price Section */}
-                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 rounded-xl p-4 mb-4">
+                <div className="bg-gradient-to-br from-slate-50 to-slate-100/50 rounded-xl p-3 sm:p-4 mb-3 sm:mb-4">
                   <div className="flex items-end justify-between">
                     <div>
                       <p className="text-xs text-slate-500 mb-1">Starting from</p>
                       <div className="flex items-baseline gap-1">
-                        <span className="text-2xl font-black text-slate-900">₹{getStartingPrice(route)}</span>
+                        <span className="text-2xl font-black text-slate-900">₹{groupDigits(getStartingPrice(route))}</span>
                         <span className="text-xs text-slate-400">/{activeTab === 'roundTrip' ? 'round trip' : 'one way'}</span>
                       </div>
                     </div>
@@ -240,7 +245,7 @@ const CityRoutes = ({ cityName }) => {
                 {/* Action Buttons */}
                 <div className="flex gap-2">
                   <Link
-                    href={`/${createRouteSlug(cityName, route.destination)}`}
+                    href={canonicalClientHref(`/${createRouteSlug(cityName, route.destination)}`)}
                     className="flex-1 bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                   >
                     View Details
@@ -301,8 +306,6 @@ const CityRoutes = ({ cityName }) => {
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-40 h-40 bg-[#FACF2D] rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-60 h-60 bg-[#FACF2D] rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-10">

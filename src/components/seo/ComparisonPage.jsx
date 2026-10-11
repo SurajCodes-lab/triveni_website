@@ -80,7 +80,7 @@ export default function ComparisonPage({
       </section>
 
       {/* COMPARE TABLE */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="overflow-x-auto rounded-2xl border border-slate-200">
             <table className="w-full text-left">
@@ -124,14 +124,14 @@ export default function ComparisonPage({
       )}
 
       {/* FAQ + RELATED */}
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-3xl mx-auto">
           <FAQSection faqs={faqs} title={`${title} — FAQs`} />
         </div>
       </section>
 
       {relatedLinks.length > 0 && (
-        <section className="px-4 pb-16">
+        <section className="px-4 pb-10 sm:pb-16">
           <div className="max-w-5xl mx-auto">
             <RelatedLinks heading="Related" links={relatedLinks} tone="slate" />
           </div>
@@ -139,7 +139,7 @@ export default function ComparisonPage({
       )}
 
       {/* CTA */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <ArrowRight className="h-10 w-10 text-slate-900/80 mx-auto mb-5" />

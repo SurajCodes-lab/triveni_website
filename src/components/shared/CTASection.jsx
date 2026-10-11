@@ -1,5 +1,7 @@
-"use client";
-
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 import Link from "next/link";
 import { ArrowRight, Phone, Shield, CheckCircle, Headphones } from "@/components/ui/icons";
 
@@ -17,7 +19,7 @@ export default function CTASection({
       <div className="relative max-w-2xl mx-auto px-4 text-center">
         <p className="text-xs font-semibold text-[#FACF2D] uppercase tracking-widest mb-2">Get Started</p>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">{heading}</h2>
-        <p className="text-white/45 text-base mb-7 max-w-lg mx-auto">{subheading}</p>
+        <p className="text-slate-300 text-base mb-7 max-w-lg mx-auto">{subheading}</p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
           <a href="https://wa.me/917668570551?text=Hello!%20I%27m%20interested%20in%20booking.%20Can%20you%20provide%20a%20free%20quote%3F" target="_blank" rel="noopener noreferrer">
@@ -38,7 +40,7 @@ export default function CTASection({
             { icon: CheckCircle, text: 'Instant Confirmation' },
             { icon: Headphones, text: '24/7 Support' },
           ].map((b, i) => (
-            <div key={i} className="flex items-center gap-1.5 text-xs text-white/35">
+            <div key={i} className="flex items-center gap-1.5 text-xs text-slate-300">
               <b.icon className="w-3.5 h-3.5 text-[#FACF2D]/50" />
               <span>{b.text}</span>
             </div>

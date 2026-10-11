@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Sunrise, Camera, Route, Coffee } from '@/components/ui/icons';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { groupDigits } from '@/utilis/pricing';
 
 export const revalidate = 3600;
 
@@ -8,9 +9,9 @@ export const metadata = {
   title: tightenTitle('Same Day Agra Tour from Delhi | ₹4,500 AC Cab | 2026'),
   description: 'Book same day Agra tour from Delhi by car. Taj Mahal, Agra Fort, Baby Taj visit. AC sedan ₹4,500, SUV ₹6,500. Yamuna Expressway. Call 7668570551.',
   keywords: 'same day agra tour from delhi, delhi to agra one day trip, agra tour from delhi by car, delhi agra same day tour, taj mahal day trip from delhi',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/same-day-agra-tour-from-delhi' },
   openGraph: {
@@ -19,7 +20,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/same-day-agra-tour-from-delhi',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Same Day Agra Tour from Delhi - Taj Mahal Visit' }],
   },
   twitter: {
@@ -66,7 +67,7 @@ export default function SameDayAgraTourFromDelhiPage() {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
     },
     "offers": { "@type": "AggregateOffer", "lowPrice": "4500", "highPrice": "12000", "priceCurrency": "INR" },
   };
@@ -110,7 +111,7 @@ export default function SameDayAgraTourFromDelhiPage() {
   ];
 
   const included = ["AC cab (round trip Delhi-Agra-Delhi)", "Experienced driver familiar with Agra", "Yamuna Expressway toll charges", "Parking at all monuments", "Driver allowance & night charges", "Water bottles in vehicle"];
-  const excluded = ["Monument entry tickets (Taj Mahal ₹50 Indian / ₹1100 Foreign)", "Meals and refreshments", "Tour guide charges (₹500-800)", "Personal expenses and shopping", "Camera charges at monuments", "Any additional sightseeing not in itinerary"];
+  const excluded = ["Monument entry tickets (Taj Mahal ₹50 Indian / ₹1,100 Foreign)", "Meals and refreshments", "Tour guide charges (₹500-800)", "Personal expenses and shopping", "Camera charges at monuments", "Any additional sightseeing not in itinerary"];
 
   return (
     <>
@@ -143,7 +144,6 @@ export default function SameDayAgraTourFromDelhiPage() {
             {/* Ornamental Top Badge */}
             <div className="flex justify-center mb-6">
               <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 rounded-full blur-sm opacity-40" />
                 <div className="relative bg-amber-900/40 backdrop-blur-xl px-8 py-2.5 rounded-full border border-amber-400/30">
                   <span className="text-amber-200 font-semibold text-sm tracking-[0.2em] uppercase">Delhi to Agra Day Trip 2026</span>
                 </div>
@@ -178,7 +178,7 @@ export default function SameDayAgraTourFromDelhiPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="tel:+917668570551" className="group inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-stone-900 px-8 py-4 rounded-full font-bold text-lg shadow-2xl shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-105 transition-all">
-                <Phone className="w-5 h-5 group-hover:animate-pulse" /> Call: 7668570551
+                <Phone className="w-5 h-5 group-hover:" /> Call: 7668570551
               </Link>
               <Link href="https://wa.me/917668570551?text=I want to book a same day Agra tour from Delhi" className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-xl text-white px-8 py-4 rounded-full font-bold text-lg border border-amber-400/20 hover:bg-white/10 hover:border-amber-400/40 transition-all">
                 WhatsApp Booking
@@ -217,7 +217,7 @@ export default function SameDayAgraTourFromDelhiPage() {
         </section>
 
         {/* === OVERVIEW: Split Layout with Ornamental Side === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
               {/* Left: Decorative Summary Card */}
@@ -273,13 +273,13 @@ export default function SameDayAgraTourFromDelhiPage() {
         </section>
 
         {/* === ITINERARY: Mughal Timeline with Arch Connectors === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-amber-950 to-stone-950 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-amber-950 to-stone-950 relative overflow-hidden">
           {/* Decorative Pattern Overlay */}
           <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23fbbf24\' fill-opacity=\'1\'%3E%3Cpath d=\'M20 0L40 20L20 40L0 20Z\' fill=\'none\' stroke=\'%23fbbf24\' stroke-width=\'0.5\'/%3E%3C/g%3E%3C/svg%3E")' }} />
           <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-[120px]" />
 
           <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-block bg-amber-500/10 backdrop-blur-sm text-amber-300 text-xs font-bold px-4 py-1.5 rounded-full mb-4 border border-amber-500/20 tracking-wider uppercase">Your Day Unfolds</div>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
                 Detailed <span className="text-transparent bg-gradient-to-r from-amber-300 to-yellow-200 bg-clip-text">Tour Itinerary</span>
@@ -317,7 +317,7 @@ export default function SameDayAgraTourFromDelhiPage() {
         </section>
 
         {/* === PRICING: Mughal Arch-Topped Cards === */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-300/30 to-transparent" />
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
@@ -343,7 +343,7 @@ export default function SameDayAgraTourFromDelhiPage() {
                       <h3 className="text-xl font-bold text-stone-800 mb-1">{plan.vehicle}</h3>
                       <p className="text-stone-400 text-sm mb-5">{plan.capacity}</p>
                       <div className="mb-6">
-                        <span className="text-5xl font-extrabold text-stone-900">₹{plan.price}</span>
+                        <span className="text-5xl font-extrabold text-stone-900">₹{groupDigits(plan.price)}</span>
                         <span className="text-stone-400 text-sm ml-1">/round trip</span>
                       </div>
                       <ul className="space-y-3 mb-6">
@@ -365,7 +365,7 @@ export default function SameDayAgraTourFromDelhiPage() {
         </section>
 
         {/* === INCLUDED/EXCLUDED: Ornamental Split Panel === */}
-        <section className="py-20 px-4 bg-gradient-to-br from-amber-50 via-white to-yellow-50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-amber-50 via-white to-yellow-50">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-12 text-center">What&apos;s Included & Excluded</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -406,7 +406,7 @@ export default function SameDayAgraTourFromDelhiPage() {
         </section>
 
         {/* === TIPS: Bento Grid Layout === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-wider uppercase">Local Tips</div>
@@ -456,7 +456,7 @@ export default function SameDayAgraTourFromDelhiPage() {
         </section>
 
         {/* === FAQ: Stacked Cards with Ornamental Accent === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-stone-50 to-amber-50/30">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-stone-50 to-amber-50/30">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-wider uppercase">Got Questions?</div>
@@ -477,7 +477,7 @@ export default function SameDayAgraTourFromDelhiPage() {
         </section>
 
         {/* === INTERLINKS: Hexagonal Grid === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-900 mb-10 text-center">Explore More Agra Tours</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -506,7 +506,7 @@ export default function SameDayAgraTourFromDelhiPage() {
         </section>
 
         {/* === CTA: Grand Mughal Banner === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-700 via-amber-600 to-yellow-600" />
           <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
           <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-[80px]" />

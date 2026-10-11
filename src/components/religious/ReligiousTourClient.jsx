@@ -12,7 +12,7 @@ import {
   Sun, MapPinned
 } from '@/components/ui/icons';
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
-import { phoneNumber } from '@/utilis/data';
+import { phoneNumber } from '@/utilis/contact';
 import Link from 'next/link';
 
 // SEO Components
@@ -63,8 +63,6 @@ const ReligiousTourClient = ({ tour }) => {
         </div>
 
         {/* Animated Orbs */}
-        <div className="absolute top-20 left-5 md:left-10 w-32 h-32 md:w-64 md:h-64 bg-gradient-to-br from-orange-400/40 to-amber-500/40 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-40 right-5 md:right-20 w-48 h-48 md:w-96 md:h-96 bg-gradient-to-br from-yellow-400/30 to-orange-400/30 rounded-full blur-3xl" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center pt-16 md:pt-0">
@@ -230,8 +228,6 @@ const ReligiousTourClient = ({ tour }) => {
 
       {/* ABOUT THIS JOURNEY SECTION */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-white via-orange-50/30 to-amber-50/30 relative overflow-hidden">
-        <div className="absolute top-10 right-10 w-32 h-32 bg-orange-300/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-40 h-40 bg-amber-300/20 rounded-full blur-3xl" />
 
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -340,8 +336,6 @@ const ReligiousTourClient = ({ tour }) => {
 
       {/* SACRED DESTINATIONS SECTION */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-amber-50/30 via-white to-orange-50/30 relative overflow-hidden">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-amber-300/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-orange-300/20 rounded-full blur-3xl" />
 
         <div className="max-w-7xl mx-auto px-4">
           {/* Section Header */}
@@ -407,7 +401,6 @@ const ReligiousTourClient = ({ tour }) => {
 
       {/* ITINERARY SECTION */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-orange-50/30 via-white to-amber-50/30 relative overflow-hidden">
-        <div className="absolute top-10 right-10 w-32 h-32 bg-orange-300/20 rounded-full blur-3xl" />
 
         <div className="max-w-5xl mx-auto px-4">
           {/* Section Header */}
@@ -476,7 +469,6 @@ const ReligiousTourClient = ({ tour }) => {
 
       {/* INCLUSIONS SECTION */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-green-50/30 via-white to-teal-50/30 relative overflow-hidden">
-        <div className="absolute bottom-10 left-10 w-40 h-40 bg-green-300/20 rounded-full blur-3xl" />
 
         <div className="max-w-6xl mx-auto px-4">
           {/* Section Header */}
@@ -516,7 +508,6 @@ const ReligiousTourClient = ({ tour }) => {
 
       {/* WHY CHOOSE US SECTION */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-teal-50/30 via-white to-orange-50/30 relative overflow-hidden">
-        <div className="absolute top-10 right-10 w-32 h-32 bg-teal-300/20 rounded-full blur-3xl" />
 
         <div className="max-w-7xl mx-auto px-4">
           {/* Section Header */}
@@ -527,7 +518,7 @@ const ReligiousTourClient = ({ tour }) => {
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-800">
-              Why Choose Triveni Cabs
+              Why Choose Triveni Cabs™
             </h2>
 
             <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">

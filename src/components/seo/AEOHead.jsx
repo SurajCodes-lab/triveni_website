@@ -18,12 +18,14 @@
 
 import { BASE_URL, COMPANY_INFO, AGGREGATE_RATING } from '@/lib/seo/constants';
 import { getDeterministicReviewCount } from '@/lib/seo/review-helpers';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
-function buildSpeakableSchema(url, title) {
+function buildSpeakableSchema(url, title, updatedOn) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: title,
+    ...(updatedOn ? { dateModified: updatedOn } : {}),
     url: url?.startsWith('http') ? url : `${BASE_URL}${url}`,
     speakable: {
       '@type': 'SpeakableSpecification',
@@ -55,7 +57,7 @@ function buildHowToSchema(pageType, data) {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: `How to Book ${isTour ? 'a Tour' : 'a Cab'} with Triveni Cabs${data.city ? ` in ${data.city}` : ''}`,
-    description: `Step-by-step guide to book ${tripDesc} with Triveni Cabs.`,
+    description: `Step-by-step guide to book ${tripDesc} with Triveni Cabs™.`,
     totalTime: 'PT5M',
     step: [
       { '@type': 'HowToStep', position: 1, name: 'Choose Service', text: `Visit trivenicabs.in or call ${COMPANY_INFO.phone.display} to select your service.` },
@@ -100,13 +102,6 @@ function buildLocalServiceSchema(city, serviceType) {
       '@type': 'City',
       name: city,
       containedInPlace: { '@type': 'Country', name: 'India' }
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ...AGGREGATE_RATING,
-      // Deterministic per-page count instead of the brand-level 10K aggregate —
-      // avoids identical inflated reviewCount on every AEOHead page.
-      reviewCount: getDeterministicReviewCount(`${serviceType}-${city}`.toLowerCase().replace(/\s+/g, '-'))
     }
   };
 }
@@ -116,7 +111,7 @@ export default function AEOHead({ pageType = 'route', data = {} }) {
 
   // 1. Page-specific Speakable schema
   if (data.url) {
-    schemas.push(buildSpeakableSchema(data.url, data.title || ''));
+    schemas.push(buildSpeakableSchema(data.url, data.title || '', getContentUpdatedOn(data.url) || data.updatedOn));
   }
 
   // 2. HowTo schema for booking pages
@@ -130,6 +125,9 @@ export default function AEOHead({ pageType = 'route', data = {} }) {
     if (localSchema) schemas.push(localSchema);
   }
 
+  // Week 49: the visible "last updated" line lives in the root layout
+  // (PageUpdatedLine), so it reaches the templates that never render AEOHead;
+  // the WebPage markup here carries the same date from the same record.
   if (schemas.length === 0) return null;
 
   return (

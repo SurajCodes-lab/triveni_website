@@ -1,3 +1,5 @@
+import SightseeingFacts from '@/components/sightseeing/SightseeingFacts';
+import AdventureActivities from '@/components/content/AdventureActivities';
 // src/app/sightseeing/[slug]/page.js
 
 import { getTourBySlug, getAllTours, getToursByCity, getCitiesWithTours } from '@/utilis/sightseeingData';
@@ -19,8 +21,13 @@ import { generateTourFAQs } from '@/lib/seo/faq-generator';
 import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
 import Script from 'next/script';
 import AEOHead from '@/components/seo/AEOHead';
+import CityFaresTable from '@/components/seo/CityFaresTable';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import { getSiloHubLinks, getCityTopicalLinks } from '@/lib/seo/linkingHelper';
+// Aliased is unnecessary here — these names do not clash with the lib/seo import
+// above. They pull in sightseeingData.js (1.24 MB), which is exactly why they are
+// called here rather than inside the client component.
+import { getRelatedToursByCity, getRelatedContent, getNearbyDestinations } from '@/utilis/linkingHelper';
 // May 2026 SEO overhaul: per-slug real reviews replace hardcoded fake review counts
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 // June 2026 deep AEO/GEO: Speakable + Article + HowTo + Comparison + per-attraction geo
@@ -33,6 +40,9 @@ import {
   getTodayDate
 } from '@/lib/seo/speakable-helpers';
 import { tightenTitle, tightenDescription } from '@/lib/seo/serp-ctr';
+import { canonicalHref } from '@/lib/seo/route-exists';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
+import SightseeingPlanningGuide from '@/components/sightseeing/SightseeingPlanningGuide';
 
 /* ------------------------------------------------------------------ *
  * Money-page linking (Week 41)
@@ -166,7 +176,7 @@ function MoneyLinksBand({ cityLabel, links }) {
           {links.map(({ href, anchor }) => (
             <li key={href}>
               <Link
-                href={href}
+                href={canonicalHref(href)}
                 className="group inline-flex items-center gap-2 text-emerald-300 hover:text-emerald-200 hover:underline py-1"
               >
                 <span aria-hidden="true" className="text-teal-400 transition-transform group-hover:translate-x-0.5">→</span>
@@ -483,11 +493,7 @@ export default async function SightseeingDetailPage({ params }) {
                     "availability": "https://schema.org/InStock"
                   },
                   ...(tour.reviews && {
-                    "aggregateRating": {
-                      "@type": "AggregateRating",
-                      "ratingValue": tour.reviews.averageRating.toString(),
-                      "reviewCount": tour.reviews.totalReviews.toString()
-                    }
+                    
                   })
                 }
               }))
@@ -604,11 +610,25 @@ export default async function SightseeingDetailPage({ params }) {
         />
 
         <AEOHead pageType="tour" data={{ url: `/sightseeing/${slug}`, title: `${cityName} Sightseeing Tours`, city: cityName }} />
-        <CityToursPage city={slug} />
+        {/* Tours resolved here so the 1.24 MB sightseeing dataset stays
+            out of the browser bundle. */}
+        <CityToursPage
+          city={slug}
+          initialTours={getToursByCity(slug)}
+          nearbyDestinations={getNearbyDestinations(slug, 6)}
+          relatedContent={getRelatedContent(slug)}
+        />
+        <SightseeingPlanningGuide city={slug} />
+        {getToursByCity(slug).length < 2 && (
+          <div className="container mx-auto px-4 pb-10">
+            <CityFaresTable city={cityName} citySlug={slug} />
+          </div>
+        )}
         <MoneyLinksBand
           cityLabel={cityName}
           links={buildMoneyLinks(slug, { excludeSightseeingHub: true })}
         />
+        <AdventureActivities path={`/sightseeing/${slug}`} />
       </>
     );
   }
@@ -652,9 +672,9 @@ export default async function SightseeingDetailPage({ params }) {
             "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
             "image": {
               "@type": "ImageObject",
-              "url": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`,
+              "url": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || '/images/sightseeing/Sightseeingpage_hero_section_image.jpg'}`,
               "caption": tour.name,
-              "contentUrl": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`
+              "contentUrl": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || '/images/sightseeing/Sightseeingpage_hero_section_image.jpg'}`
             },
             "touristType": [
               "Families",
@@ -702,8 +722,7 @@ export default async function SightseeingDetailPage({ params }) {
               "validFrom": new Date().toISOString(),
               "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString()
             },
-            "aggregateRating": realRR.aggregateRating,
-            "review": realRR.review,
+
             "duration": tour.duration,
             ...(tour.itinerary && {
               "itinerary": tour.itinerary.map((item, index) => ({
@@ -795,7 +814,7 @@ export default async function SightseeingDetailPage({ params }) {
             image: tour.heroImage,
             authorName: 'editorial',
             datePublished: '2026-01-01',
-            dateModified: getTodayDate(),
+            dateModified: (getContentUpdatedOn(`/sightseeing/${slug}`) || getTodayDate()),
             speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-answer']
           }))
         }}
@@ -807,7 +826,7 @@ export default async function SightseeingDetailPage({ params }) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(getHowToSchema({
             name: `How to Book the ${tour.name} Sightseeing Tour`,
-            description: `Step-by-step guide to booking the ${tour.duration} ${tour.name} with Triveni Cabs — choose a vehicle, confirm on WhatsApp, and pay with no large advance.`,
+            description: `Step-by-step guide to booking the ${tour.duration} ${tour.name} with Triveni Cabs™ — choose a vehicle, confirm on WhatsApp, and pay with no large advance.`,
             totalTime: 'PT5M',
             estimatedCost: { currency: 'INR', value: lowestPrice },
             steps: [
@@ -872,7 +891,7 @@ export default async function SightseeingDetailPage({ params }) {
         const cityPlace = getCityPlaceSchema(cityKey, {
           idSlug: `sightseeing/${slug}`,
           image: tour.heroImage,
-          description: `${tour.name} departs from and explores this destination with Triveni Cabs.`
+          description: `${tour.name} departs from and explores this destination with Triveni Cabs™.`
         });
         return cityPlace ? (
           <script
@@ -924,7 +943,7 @@ export default async function SightseeingDetailPage({ params }) {
                 "latitude": tour.coordinates.latitude,
                 "longitude": tour.coordinates.longitude
               },
-              "image": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`,
+              "image": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || '/images/sightseeing/Sightseeingpage_hero_section_image.jpg'}`,
               "url": `https://www.trivenicabs.in/sightseeing/${slug}`
             })
           }}
@@ -949,9 +968,9 @@ export default async function SightseeingDetailPage({ params }) {
               "availableLanguage": ["English", "Hindi"]
             },
             "sameAs": [
-              "https://twitter.com/TriveniCabs",
-              "https://www.facebook.com/TriveniCabs",
-              "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo"
+              "https://twitter.com/trivenicabs",
+              "https://www.facebook.com/trivenicabs",
+              "https://www.instagram.com/cabstriveni"
             ]
           })
         }}
@@ -966,7 +985,7 @@ export default async function SightseeingDetailPage({ params }) {
             "@type": "Product",
             "name": tour.name,
             "description": tour.fullDescription,
-            "image": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`,
+            "image": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || '/images/sightseeing/Sightseeingpage_hero_section_image.jpg'}`,
             "brand": {
               "@type": "Brand",
               "name": "Triveni Cabs"
@@ -988,8 +1007,7 @@ export default async function SightseeingDetailPage({ params }) {
               "url": `https://www.trivenicabs.in/sightseeing/${slug}`,
               "priceValidUntil": new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString()
             },
-            "aggregateRating": realRR.aggregateRating,
-            "review": realRR.review,
+
             "category": tour.category,
             // SKU/MPN: short deterministic identifier under Google's 40-char Merchant Listing limit
             // (was raw slug — long sightseeing slugs triggered GSC "Invalid string length in field 'sku'")
@@ -1073,7 +1091,7 @@ export default async function SightseeingDetailPage({ params }) {
             "@type": "Event",
             "name": tour.name,
             "description": tour.shortDescription,
-            "image": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`,
+            "image": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || '/images/sightseeing/Sightseeingpage_hero_section_image.jpg'}`,
             "startDate": new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
             "endDate": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
             "eventStatus": "https://schema.org/EventScheduled",
@@ -1117,7 +1135,7 @@ export default async function SightseeingDetailPage({ params }) {
               "@type": "VideoObject",
               "name": `${tour.name} - Tour Preview`,
               "description": tour.shortDescription,
-              "thumbnailUrl": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || `/images/tours/${slug}.jpg`}`,
+              "thumbnailUrl": tour.heroImage?.startsWith('http') ? tour.heroImage : `https://www.trivenicabs.in${tour.heroImage || '/images/sightseeing/Sightseeingpage_hero_section_image.jpg'}`,
               "uploadDate": new Date().toISOString(),
               "contentUrl": tour.videoUrl,
               "embedUrl": tour.videoUrl
@@ -1135,7 +1153,16 @@ export default async function SightseeingDetailPage({ params }) {
           server-rendered, and every string the block contained was verified
           present in the visible HTML without it. */}
 
-      <SightseeingDetailClient tour={tour} cityLabel={tourCityLabel} />
+      {/* Related tours and content resolved here so the 1.24 MB sightseeing
+          dataset stays out of the browser bundle on all 170 tour pages. */}
+      <SightseeingDetailClient
+        tour={tour}
+        cityLabel={tourCityLabel}
+        richContent={<SightseeingFacts tour={tour} city={tourCitySlug} />}
+        relatedTours={getRelatedToursByCity(tourCitySlug || tour.name.split(' ')[0], tour.slug, 4)}
+        relatedContent={getRelatedContent(tourCitySlug || tour.name.split(' ')[0])}
+      />
+      <SightseeingPlanningGuide city={tourCitySlug} tourSlug={tour.slug} />
 
       {/* Money links — booking pages for the city this tour belongs to.
           Resolved from the sightseeingData grouping (not the tour name) and
@@ -1167,12 +1194,13 @@ export default async function SightseeingDetailPage({ params }) {
           ) : null;
         })()}
         <RelatedLinks
-          heading="Other Triveni Cabs services"
+          heading="Other Triveni Cabs™ services"
           links={getSiloHubLinks('sightseeing', 6)}
           ariaLabel="Other service categories"
           tone="slate"
         />
       </div>
+      <AdventureActivities path={`/sightseeing/${slug}`} />
     </>
   );
 }

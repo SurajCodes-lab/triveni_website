@@ -1,4 +1,6 @@
-import { fareFor, isLocalPackageRoute, rupees } from './pricing';
+import { fareFor, isLocalPackageRoute, rupees, PER_KM } from './pricing';
+import { buildReverseDistanceRoutes } from './distanceReverse';
+import { groupDigits } from '@/utilis/pricing';
 
 // src/utilis/distanceData.js - Complete data for 100 distance & travel guide pages
 // Pricing: outstation Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km (min 300 km billing).
@@ -11,11 +13,13 @@ import { fareFor, isLocalPackageRoute, rupees } from './pricing';
 function calcFares(distanceKm) {
   const sedan = fareFor(distanceKm, 'sedan').amount;
   const suv = fareFor(distanceKm, 'suv').amount;
+  const innova = fareFor(distanceKm, 'innova').amount;
   const tempo = fareFor(distanceKm, 'tempo').amount;
   return {
     cabFares: {
       sedan: rupees(sedan),
       suv: rupees(suv),
+      innova: rupees(innova),
       tempo: rupees(tempo),
     },
     sedanRaw: sedan,
@@ -42,6 +46,7 @@ function generateFaqs(origin, dest, distKm, duration, highway, fares, bestTime, 
   // would make the FAQ answers contradict the fare table on the same page.
   const sedanFare = fares.cabFares.sedan;
   const suvFare = fares.cabFares.suv;
+  const innovaFare = fares.cabFares.innova;
   const tempoFare = fares.cabFares.tempo;
   const isLocal = fares.localPackage;
   const fuelCost = calcFuelCost(distKm);
@@ -51,8 +56,8 @@ function generateFaqs(origin, dest, distKm, duration, highway, fares, bestTime, 
   return [
     { question: `What is the distance from ${origin} to ${dest} by road?`, answer: `The road distance from ${origin} to ${dest} is approximately ${distKm} km via ${highway}. By air the straight-line distance is shorter, but ${distKm} km is the actual driving distance you cover by car, cab or bus.` },
     { question: `How long does it take to drive from ${origin} to ${dest}?`, answer: `The drive from ${origin} to ${dest} takes approximately ${duration} via ${highway} in normal traffic. Starting early morning (5-6 AM) helps you avoid city congestion and reduces total travel time.` },
-    { question: `How much does a cab from ${origin} to ${dest} cost?`, answer: `A cab from ${origin} to ${dest} starts at ${sedanFare} for an AC sedan (Swift Dzire/Etios). An SUV (Innova Crysta/Ertiga) starts at ${suvFare} and a 12-seater Tempo Traveller from ${tempoFare}. ${isLocal ? `At ${distKm} km this is a local trip, so it is quoted on our 4 hr / 40 km package rather than the outstation minimum — distance beyond 40 km is added at the per-km rate.` : 'Outstation trips are billed on a 300 km per day minimum.'} Toll and state tax are extra at actual.` },
-    { question: `What is the cab fare for an SUV or Innova from ${origin} to ${dest}?`, answer: `An SUV such as the Innova Crysta or Ertiga from ${origin} to ${dest} starts at ${suvFare} for the ${distKm} km trip${isLocal ? ', quoted on our 4 hr / 40 km local package with extra distance billed at ₹15/km' : ', billed at ₹15/km'}. SUVs are ideal for families of 6-7 and for hill or rough-road sections.` },
+    { question: `How much does a cab from ${origin} to ${dest} cost?`, answer: `A cab from ${origin} to ${dest} starts at ${sedanFare} for an AC sedan (Swift Dzire/Etios). An Ertiga SUV starts at ${suvFare}, an Innova Crysta at ${innovaFare}, and a 12-seater Tempo Traveller from ${tempoFare}. ${isLocal ? `At ${distKm} km this is a local trip, so it is quoted on our 4 hr / 40 km package rather than the outstation minimum — distance beyond 40 km is added at the per-km rate.` : 'Outstation trips are billed on a 300 km per day minimum.'} Toll and state tax are extra at actual.` },
+    { question: `What is the cab fare for an SUV or Innova from ${origin} to ${dest}?`, answer: `An Ertiga SUV from ${origin} to ${dest} starts at ${suvFare} and an Innova Crysta at ${innovaFare} for the ${distKm} km trip. ${isLocal ? `These fares use our 4 hr / 40 km local package, with extra distance billed at ₹${groupDigits(PER_KM.ertiga)}/km for Ertiga and ₹${groupDigits(PER_KM.innova)}/km for Innova.` : `The published rates are ₹${groupDigits(PER_KM.ertiga)}/km for Ertiga and ₹${groupDigits(PER_KM.innova)}/km for Innova, with the outstation minimum applied.`} Ertiga seats 6 passengers and Innova seats 7; both are options for families and hill or rough-road sections.` },
     { question: `What is the best route from ${origin} to ${dest}?`, answer: `The recommended and fastest route from ${origin} to ${dest} is via ${highway}. ${stopsText} Our drivers know all alternative routes and pick the optimal path based on live traffic, road work and weather.` },
     { question: `How much toll do you pay from ${origin} to ${dest}?`, answer: `Toll charges from ${origin} to ${dest} depend on the highway plazas on ${highway} and are paid at actual via FASTag. The driver handles all toll payments and they are added transparently to your final bill — there are no hidden charges.` },
     { question: `What is the approximate fuel cost from ${origin} to ${dest}?`, answer: `If you self-drive, expect roughly ₹${fuelCost.toLocaleString('en-IN')} in petrol/diesel one-way for ${origin} to ${dest} (based on about 14 km/l). Booking a Triveni cab includes fuel in the fare, so you only pay toll and state tax extra.` },
@@ -60,7 +65,7 @@ function generateFaqs(origin, dest, distKm, duration, highway, fares, bestTime, 
     { question: `What is the best time to travel from ${origin} to ${dest}?`, answer: `${bestTime} For the smoothest drive, start early in the day to avoid traffic and reach ${dest} with daylight to spare.` },
     { question: `What are the best stops en route from ${origin} to ${dest}?`, answer: `${stopsText} These make convenient halts for food, fuel, restrooms and photos, breaking up the ${distKm} km journey comfortably.` },
     { question: `Is a one-way or round-trip cab better from ${origin} to ${dest}?`, answer: `If you only need a single drop, a one-way cab from ${origin} to ${dest} is cheaper because you do not pay for the return run. Choose a round trip when you want the same car and driver to wait and bring you back — it works out economical for same-day return.` },
-    { question: `What vehicles are available for ${origin} to ${dest}, and is night travel safe?`, answer: `Triveni Cabs offers AC Sedan, SUV (Innova/Ertiga) and 12-seater Tempo Traveller for ${origin} to ${dest}, all GPS-tracked with verified drivers. Daytime travel is recommended, but our experienced drivers handle night drives on the ${highway} safely too.` },
+    { question: `What vehicles are available for ${origin} to ${dest}, and is night travel safe?`, answer: `Triveni Cabs™ offers AC Sedan, SUV (Innova/Ertiga) and 12-seater Tempo Traveller for ${origin} to ${dest}, all GPS-tracked with verified drivers. Daytime travel is recommended, but our experienced drivers handle night drives on the ${highway} safely too.` },
   ];
 }
 
@@ -191,6 +196,80 @@ function createRoute({ slug, origin, destination, distanceKm, duration, highway,
 }
 
 export const distanceRoutes = {
+  // ═══════════════════════════════════════════
+  // AHMEDABAD ORIGIN ROUTES
+  //
+  // Added to complete Ahmedabad's coverage against the client SEO proposal.
+  // Ahmedabad was the one city of the fifteen that had vehicle landing pages
+  // but no airport or outstation page, which left /outstation-cabs/ahmedabad
+  // with nowhere to link its popular routes — the outstation client falls back
+  // to /distance/{slug} for any route without a one-way page, so these entries
+  // are what stop those links 404ing.
+  //
+  // The northbound corridor (Udaipur, Mount Abu, Jaipur, Delhi) is the part
+  // that sits inside the normal North India service area; Kevadia is included
+  // because it is far and away the highest-intent short trip out of the city.
+  // ═══════════════════════════════════════════
+  "ahmedabad-to-udaipur": createRoute({
+    slug: "ahmedabad-to-udaipur", origin: "Ahmedabad", destination: "Udaipur", distanceKm: 260, duration: "4-5 hours",
+    highway: "NH-48", majorStops: ["Himatnagar", "Shamlaji", "Dungarpur"],
+    tollPlazas: [
+      { name: "Dahegam Toll", km: 45, cost: 90 }, { name: "Shamlaji Toll", km: 130, cost: 110 },
+      { name: "Dungarpur Toll", km: 200, cost: 95 },
+    ],
+    roadCondition: "Four-lane divided highway for almost the entire run and one of the easier long drives in the region. The stretch through the Aravalli foothills past Shamlaji is winding but well surfaced.",
+    bestTime: "October to March. The pre-monsoon months of April to June are punishing on this route as it crosses open country with little shade.",
+    localTip: "Shamlaji, roughly halfway, is the natural meal stop and has clean facilities. Leaving Ahmedabad before 7am gets you clear of the city before the Naroda industrial traffic builds.",
+    relatedRoutes: ["ahmedabad-to-mount-abu", "mount-abu-to-udaipur", "udaipur-to-jaipur", "ahmedabad-to-jaipur"],
+  }),
+  "ahmedabad-to-mount-abu": createRoute({
+    slug: "ahmedabad-to-mount-abu", origin: "Ahmedabad", destination: "Mount Abu", distanceKm: 225, duration: "4-5 hours",
+    highway: "NH-27 & Abu Road ghat", majorStops: ["Mehsana", "Palanpur", "Abu Road"],
+    tollPlazas: [
+      { name: "Mehsana Toll", km: 70, cost: 100 }, { name: "Palanpur Toll", km: 140, cost: 115 },
+    ],
+    roadCondition: "Fast dual carriageway as far as Abu Road, then a 27 km climb of continuous hairpin bends up to the plateau. The ghat is well maintained but slow, and it is the part that decides your arrival time.",
+    bestTime: "October to March, and again in the monsoon when the hillside is green. Mount Abu is Rajasthan's only hill station so it fills up over long weekends.",
+    localTip: "Budget a full hour for the Abu Road climb regardless of what the map says. Passengers prone to travel sickness should sit forward — the bends are relentless.",
+    relatedRoutes: ["ahmedabad-to-udaipur", "mount-abu-to-udaipur", "jaipur-to-mount-abu", "ahmedabad-to-jaipur"],
+  }),
+  "ahmedabad-to-jaipur": createRoute({
+    slug: "ahmedabad-to-jaipur", origin: "Ahmedabad", destination: "Jaipur", distanceKm: 655, duration: "10-11 hours",
+    highway: "NH-48", majorStops: ["Himatnagar", "Udaipur", "Chittorgarh", "Bhilwara", "Ajmer"],
+    tollPlazas: [
+      { name: "Shamlaji Toll", km: 130, cost: 110 }, { name: "Chittorgarh Toll", km: 380, cost: 145 },
+      { name: "Bhilwara Toll", km: 460, cost: 120 }, { name: "Kishangarh Toll", km: 580, cost: 155 },
+    ],
+    roadCondition: "NH-48 runs four to six lanes the whole way and is in genuinely good condition. The distance rather than the surface is what makes this a long day.",
+    bestTime: "October to March. This is a desert-edge corridor and the summer heat between Chittorgarh and Ajmer is severe.",
+    localTip: "At eleven hours this is honestly better broken overnight at Udaipur than driven in one push — you get a night by the lake for the cost of one hotel, and nobody arrives in Jaipur exhausted.",
+    relatedRoutes: ["ahmedabad-to-udaipur", "udaipur-to-jaipur", "ahmedabad-to-delhi", "jaipur-to-mount-abu"],
+  }),
+  "ahmedabad-to-delhi": createRoute({
+    slug: "ahmedabad-to-delhi", origin: "Ahmedabad", destination: "Delhi", distanceKm: 950, duration: "14-16 hours",
+    highway: "NH-48", majorStops: ["Udaipur", "Chittorgarh", "Ajmer", "Jaipur", "Gurgaon"],
+    tollPlazas: [
+      { name: "Shamlaji Toll", km: 130, cost: 110 }, { name: "Chittorgarh Toll", km: 380, cost: 145 },
+      { name: "Kishangarh Toll", km: 580, cost: 155 }, { name: "Shahjahanpur Toll", km: 790, cost: 185 },
+      { name: "Kherki Daula Toll", km: 920, cost: 130 },
+    ],
+    roadCondition: "Excellent highway throughout — NH-48 is one of the best long corridors in the country. The only genuinely slow section is the final approach through Gurgaon into Delhi.",
+    bestTime: "October to March. Avoid attempting it in one day during May and June.",
+    localTip: "We would not run this as a single-day drive with passengers on board. Two days with a night at Udaipur or Jaipur is the sane way to do it, and a second driver is required if you insist on going straight through.",
+    relatedRoutes: ["ahmedabad-to-jaipur", "ahmedabad-to-udaipur", "delhi-to-jaipur", "jodhpur-to-delhi"],
+  }),
+  "ahmedabad-to-statue-of-unity": createRoute({
+    slug: "ahmedabad-to-statue-of-unity", origin: "Ahmedabad", destination: "Statue of Unity", distanceKm: 200, duration: "3-4 hours",
+    highway: "NE-1 & NH-64", majorStops: ["Nadiad", "Vadodara", "Rajpipla"],
+    tollPlazas: [
+      { name: "Vasad Toll", km: 65, cost: 105 }, { name: "Vadodara Bypass Toll", km: 110, cost: 90 },
+    ],
+    roadCondition: "Expressway as far as Vadodara, then a well-built state highway to Kevadia that was upgraded for the monument. Comfortable throughout.",
+    bestTime: "October to February. The viewing gallery and the surrounding gardens are best in the morning before the heat.",
+    localTip: "Leave by 6am to reach for opening — the site closes to new entries well before dusk and the last gallery slots go early. Tickets are worth booking online rather than at the gate.",
+    relatedRoutes: ["ahmedabad-to-udaipur", "ahmedabad-to-mount-abu", "ahmedabad-to-jaipur"],
+  }),
+
   // ═══════════════════════════════════════════
   // DELHI ORIGIN ROUTES (30 routes)
   // ═══════════════════════════════════════════
@@ -774,7 +853,7 @@ export const distanceRoutes = {
   }),
   "haridwar-to-mussoorie": createRoute({
     slug: "haridwar-to-mussoorie", origin: "Haridwar", destination: "Mussoorie", distanceKm: 90, duration: "2.5-3 hours",
-    highway: "Via Dehradun", majorStops: ["Dehradun"],
+    highway: "Dehradun", majorStops: ["Dehradun"],
     roadCondition: "Good road to Dehradun, then scenic mountain climb to Mussoorie.",
     bestTime: "March to June, October to November.",
     localTip: "The Dehradun to Mussoorie mountain road has spectacular valley views.",
@@ -798,7 +877,7 @@ export const distanceRoutes = {
   }),
   "dehradun-to-nainital": createRoute({
     slug: "dehradun-to-nainital", origin: "Dehradun", destination: "Nainital", distanceKm: 290, duration: "7-8 hours",
-    highway: "Via Haridwar & Haldwani", majorStops: ["Haridwar", "Kotdwar", "Haldwani"],
+    highway: "Haridwar & Haldwani", majorStops: ["Haridwar", "Kotdwar", "Haldwani"],
     roadCondition: "Mix of highway and mountain roads. Scenic but long drive.",
     bestTime: "March to June, September to November.",
     localTip: "This is a long mountain drive. Consider a halt at Haridwar to break the journey.",
@@ -862,7 +941,7 @@ export const distanceRoutes = {
   }),
   "udaipur-to-jaisalmer": createRoute({
     slug: "udaipur-to-jaisalmer", origin: "Udaipur", destination: "Jaisalmer", distanceKm: 530, duration: "8-9 hours",
-    highway: "Via Jodhpur", majorStops: ["Ranakpur", "Jodhpur", "Pokhran"],
+    highway: "Jodhpur", majorStops: ["Ranakpur", "Jodhpur", "Pokhran"],
     roadCondition: "Good highway via Jodhpur. Desert terrain after Jodhpur.",
     bestTime: "October to March. Desert Festival in February.",
     localTip: "Break the journey at Jodhpur for Mehrangarh Fort visit. Jaisalmer Fort is a living fort (people still live inside).",
@@ -1024,7 +1103,7 @@ export const distanceRoutes = {
   }),
   "mussoorie-to-delhi": createRoute({
     slug: "mussoorie-to-delhi", origin: "Mussoorie", destination: "Delhi", distanceKm: 290, duration: "6-7 hours",
-    highway: "Via Dehradun & NH-334", majorStops: ["Dehradun", "Roorkee", "Meerut"],
+    highway: "Dehradun & NH-334", majorStops: ["Dehradun", "Roorkee", "Meerut"],
     roadCondition: "Mountain road to Dehradun, then excellent highway to Delhi.",
     bestTime: "Year-round.",
     localTip: "Stop at Dehradun for breakfast at Kumar's or Orchard. Delhi-Meerut Expressway makes the last stretch fast.",
@@ -1048,7 +1127,7 @@ export const distanceRoutes = {
   }),
   "kasol-to-delhi": createRoute({
     slug: "kasol-to-delhi", origin: "Kasol", destination: "Delhi", distanceKm: 520, duration: "11-12 hours",
-    highway: "Via Bhuntar, Mandi & NH-44", majorStops: ["Bhuntar", "Mandi", "Chandigarh"],
+    highway: "Bhuntar, Mandi & NH-44", majorStops: ["Bhuntar", "Mandi", "Chandigarh"],
     roadCondition: "Narrow mountain roads near Kasol, then good highway after Mandi.",
     bestTime: "March to November. Avoid monsoon landslide risks.",
     localTip: "Start very early (4-5 AM) for this long drive. Consider a halt at Chandigarh to break the journey.",
@@ -1228,6 +1307,14 @@ export const distanceRoutes = {
   }),
 };
 
+// Week 49: the return leg. 80 of the 126 corridors above are published in one
+// direction only, while the export shows both directions asked. The reverse
+// record is derived from the forward one — same road, same kilometres, same
+// plazas measured from the other end, stops in the other order — so the site
+// answers "Dehradun to Delhi distance" with the same facts it already holds.
+// A hand-written record always wins over a derived one.
+const reverseRoutes = buildReverseDistanceRoutes(distanceRoutes);
+
 // Helper functions for route pages
 // Slugify a city display name ("Greater Noida" -> "greater-noida") so it can be
 // matched against the _CITY_PLACES geo map in speakable-helpers.
@@ -1241,22 +1328,30 @@ export function cityToGeoSlug(cityName) {
 }
 
 export function getDistanceRoute(slug) {
-  return distanceRoutes[slug] || null;
+  return distanceRoutes[slug] || reverseRoutes[slug] || null;
 }
 
 export function getAllDistanceRouteSlugs() {
-  return Object.keys(distanceRoutes);
+  return [...Object.keys(distanceRoutes), ...Object.keys(reverseRoutes)];
 }
 
 export function getRelatedDistanceRoutes(slug) {
-  const route = distanceRoutes[slug];
+  const route = distanceRoutes[slug] || reverseRoutes[slug];
   if (!route) return [];
-  return route.relatedRoutes
-    .map(rs => distanceRoutes[rs])
+  // Week 49: the return leg of the same corridor is the most closely related
+  // page there is, and it is what a reader who has just looked up the outward
+  // distance asks for next. It leads the list in both directions, so every
+  // derived page has an inbound link from a page that is already indexed.
+  const parts = String(slug).split('-to-');
+  const twin = parts.length === 2 ? `${parts[1]}-to-${parts[0]}` : null;
+  const twinRoute = twin ? (distanceRoutes[twin] || reverseRoutes[twin]) : null;
+  const rest = (route.relatedRoutes || [])
+    .map(rs => distanceRoutes[rs] || reverseRoutes[rs])
     .filter(Boolean)
-    .slice(0, 6);
+    .filter(r => !twinRoute || r.slug !== twinRoute.slug);
+  return (twinRoute ? [twinRoute, ...rest] : rest).slice(0, 6);
 }
 
 export function getDistanceRouteCount() {
-  return Object.keys(distanceRoutes).length;
+  return Object.keys(distanceRoutes).length + Object.keys(reverseRoutes).length;
 }

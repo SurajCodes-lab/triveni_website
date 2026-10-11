@@ -31112,7 +31112,7 @@ export const highValueKeywordsByPage = {
     "delhi to jaipur car charges",
     "rent taxi delhi to jaipur"
   ],
-  "/delhi-to-haridwar": [
+  "/one-way-cab/delhi-to-haridwar": [
     "delhi to haridwar cab booking",
     "delhi to haridwar taxi online",
     "delhi to haridwar car online",
@@ -31162,7 +31162,7 @@ export const highValueKeywordsByPage = {
     "rent taxi delhi to shimla",
     "rent car delhi to shimla"
   ],
-  "/delhi-to-manali": [
+  "/one-way-cab/delhi-to-manali": [
     "delhi to manali cab booking",
     "delhi to manali taxi online",
     "delhi to manali cab fare",
@@ -31188,7 +31188,7 @@ export const highValueKeywordsByPage = {
     "hire car delhi to amritsar",
     "rent car delhi to amritsar"
   ],
-  "/delhi-to-dehradun": [
+  "/one-way-cab/delhi-to-dehradun": [
     "delhi to dehradun taxi booking",
     "delhi to dehradun car online",
     "cab from delhi to dehradun",
@@ -31315,7 +31315,7 @@ export const highValueKeywordsByPage = {
     "rent taxi agra to delhi",
     "rent car agra to delhi"
   ],
-  "/agra-to-jaipur": [
+  "/one-way-cab/agra-to-jaipur": [
     "agra jaipur cab",
     "agra jaipur taxi"
   ],
@@ -31340,7 +31340,7 @@ export const highValueKeywordsByPage = {
     "agra gwalior taxi"
   ],
   "/agra-to-fatehpur-sikri": [],
-  "/jaipur-to-delhi": [
+  "/one-way-cab/jaipur-to-delhi": [
     "jaipur to delhi cab",
     "jaipur to delhi car",
     "jaipur delhi cab",
@@ -31553,7 +31553,7 @@ export const highValueKeywordsByPage = {
     "rishikesh mussoorie cab",
     "rishikesh mussoorie taxi"
   ],
-  "/haridwar-to-delhi": [
+  "/one-way-cab/haridwar-to-delhi": [
     "haridwar to delhi cab",
     "haridwar to delhi taxi",
     "haridwar to delhi car",
@@ -32698,7 +32698,7 @@ export const transactionalKeywordsByPage = {
     "delhi to jaipur drop cab",
     "delhi to jaipur drop taxi"
   ],
-  "/delhi-to-haridwar": [
+  "/one-way-cab/delhi-to-haridwar": [
     "delhi to haridwar cab booking",
     "delhi to haridwar taxi booking",
     "delhi to haridwar car booking",
@@ -32854,7 +32854,7 @@ export const transactionalKeywordsByPage = {
     "delhi to shimla drop cab",
     "delhi to shimla drop taxi"
   ],
-  "/delhi-to-manali": [
+  "/one-way-cab/delhi-to-manali": [
     "delhi to manali cab booking",
     "delhi to manali taxi booking",
     "delhi to manali car booking",
@@ -32958,7 +32958,7 @@ export const transactionalKeywordsByPage = {
     "delhi to amritsar drop cab",
     "delhi to amritsar drop taxi"
   ],
-  "/delhi-to-dehradun": [
+  "/one-way-cab/delhi-to-dehradun": [
     "delhi to dehradun cab booking",
     "delhi to dehradun taxi booking",
     "delhi to dehradun car booking",
@@ -33374,7 +33374,7 @@ export const transactionalKeywordsByPage = {
     "agra to delhi drop cab",
     "agra to delhi drop taxi"
   ],
-  "/agra-to-jaipur": [
+  "/one-way-cab/agra-to-jaipur": [
     "agra to jaipur cab booking",
     "agra to jaipur taxi booking",
     "agra to jaipur car booking",
@@ -33738,7 +33738,7 @@ export const transactionalKeywordsByPage = {
     "agra to fatehpur sikri drop cab",
     "agra to fatehpur sikri drop taxi"
   ],
-  "/jaipur-to-delhi": [
+  "/one-way-cab/jaipur-to-delhi": [
     "jaipur to delhi cab booking",
     "jaipur to delhi taxi booking",
     "jaipur to delhi car booking",
@@ -35402,7 +35402,7 @@ export const transactionalKeywordsByPage = {
     "rishikesh to mussoorie drop cab",
     "rishikesh to mussoorie drop taxi"
   ],
-  "/haridwar-to-delhi": [
+  "/one-way-cab/haridwar-to-delhi": [
     "haridwar to delhi cab booking",
     "haridwar to delhi taxi booking",
     "haridwar to delhi car booking",

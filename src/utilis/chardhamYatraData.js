@@ -541,7 +541,7 @@ function generateWhyChoose(vehicleType) {
 
   const vehicleSpecific = {
     sedan: [
-      { title: 'Most Economical Option', desc: 'At just ₹12/km, the Swift Dzire is the most budget-friendly way to complete Char Dham Yatra. Save on travel to spend more on darshan and accommodation.' },
+      { title: 'Most Economical Option', desc: 'At just ₹11/km, the Swift Dzire is the most budget-friendly way to complete Char Dham Yatra. Save on travel to spend more on darshan and accommodation.' },
       { title: 'Fuel Efficiency Champion', desc: '22-28 km/l mileage means fewer fuel stops and lower cost. On a 3000+ km Char Dham circuit, the savings are significant compared to larger vehicles.' },
     ],
     ertiga: [
@@ -881,8 +881,8 @@ const vehicleHubPages = [
     origin: 'delhi',
     destination: 'chardham',
     title: 'Char Dham Yatra by Sedan — Most Affordable Option',
-    seoTitle: 'Char Dham Yatra by Sedan 2026 | Swift Dzire ₹12/km | Budget Yatra',
-    seoDesc: 'Cheapest Char Dham Yatra by sedan car. Swift Dzire at ₹12/km. AC, experienced driver. Perfect for couple/solo. From ₹38,400. Call 7668570551.',
+    seoTitle: 'Char Dham Yatra by Sedan 2026 | Swift Dzire ₹11/km | Budget Yatra',
+    seoDesc: 'Cheapest Char Dham Yatra by sedan car. Swift Dzire at ₹11/km. AC, experienced driver. Perfect for couple/solo. From ₹38,400. Call 7668570551.',
     seoKeywords: ['chardham yatra by sedan', 'sedan for chardham', 'cheap car chardham yatra', 'budget chardham by car', 'dzire chardham yatra'],
   }),
   generateRoute({
@@ -908,7 +908,7 @@ const delhiRoutePages = [
     destination: 'chardham',
     title: 'Delhi to Char Dham Yatra by Car — All Vehicle Options',
     seoTitle: 'Delhi to Char Dham Yatra by Car 2026 | 12 Days | From ₹38,400',
-    seoDesc: 'Book car from Delhi to Char Dham Yatra. Sedan ₹12/km, Ertiga ₹15/km, Innova ₹18/km, Fortuner ₹25/km. 12-day package with driver. Call 7668570551.',
+    seoDesc: 'Book car from Delhi to Char Dham Yatra. Sedan ₹11/km, Ertiga ₹15/km, Innova ₹18/km, Fortuner ₹25/km. 12-day package with driver. Call 7668570551.',
     seoKeywords: ['delhi to chardham by car', 'delhi to chardham yatra car', 'car from delhi to chardham', 'delhi chardham car package'],
   }),
   generateRoute({
@@ -952,7 +952,7 @@ const delhiRoutePages = [
     destination: 'kedarnath',
     title: 'Delhi to Kedarnath by Car — Sedan, SUV, Innova',
     seoTitle: 'Delhi to Kedarnath by Car 2026 | 6 Days | From ₹11,040',
-    seoDesc: 'Book car from Delhi to Kedarnath. 6-day package. Sedan ₹12/km, Innova ₹18/km, Fortuner ₹25/km. Experienced mountain driver. Call 7668570551.',
+    seoDesc: 'Book car from Delhi to Kedarnath. 6-day package. Sedan ₹11/km, Innova ₹18/km, Fortuner ₹25/km. Experienced mountain driver. Call 7668570551.',
     seoKeywords: ['delhi to kedarnath by car', 'car delhi to kedarnath', 'delhi kedarnath car package', 'kedarnath by car from delhi'],
   }),
   generateRoute({
@@ -974,7 +974,7 @@ const delhiRoutePages = [
     destination: 'badrinath',
     title: 'Delhi to Badrinath by Car — Sedan, SUV, Innova',
     seoTitle: 'Delhi to Badrinath by Car 2026 | 6 Days | From ₹12,720',
-    seoDesc: 'Book car from Delhi to Badrinath. 6-day package. Sedan ₹12/km, Innova ₹18/km, Fortuner ₹25/km. Experienced driver. Call 7668570551.',
+    seoDesc: 'Book car from Delhi to Badrinath. 6-day package. Sedan ₹11/km, Innova ₹18/km, Fortuner ₹25/km. Experienced driver. Call 7668570551.',
     seoKeywords: ['delhi to badrinath by car', 'car delhi to badrinath', 'delhi badrinath car package', 'badrinath by car from delhi'],
   }),
 ];
@@ -989,7 +989,7 @@ const haridwarRoutePages = [
     destination: 'chardham',
     title: 'Haridwar to Char Dham Yatra by Car — All Options',
     seoTitle: 'Haridwar to Char Dham by Car 2026 | 10 Days | From ₹32,400',
-    seoDesc: 'Book car from Haridwar for Char Dham Yatra. Shortest route! Sedan ₹12/km, Innova ₹18/km. 10-day package with driver. Call 7668570551.',
+    seoDesc: 'Book car from Haridwar for Char Dham Yatra. Shortest route! Sedan ₹11/km, Innova ₹18/km. 10-day package with driver. Call 7668570551.',
     seoKeywords: ['haridwar to chardham by car', 'car from haridwar to chardham', 'haridwar chardham car package', 'chardham from haridwar by car'],
   }),
   generateRoute({
@@ -1155,7 +1155,7 @@ const dhamPages = [
     destination: 'badrinath',
     title: 'Badrinath Yatra by Car — Complete Travel Guide 2026',
     seoTitle: 'Badrinath Yatra by Car 2026 | Sedan, Innova, Bus | Complete Guide',
-    seoDesc: 'Plan Badrinath Yatra by car. Vehicle options, pricing, route map. Sedan ₹12/km, Innova ₹18/km, Fortuner ₹25/km. Call 7668570551 to book.',
+    seoDesc: 'Plan Badrinath Yatra by car. Vehicle options, pricing, route map. Sedan ₹11/km, Innova ₹18/km, Fortuner ₹25/km. Call 7668570551 to book.',
     seoKeywords: ['badrinath by car', 'badrinath yatra car', 'car to badrinath', 'badrinath car rental', 'how to reach badrinath by car'],
   }),
   generateRoute({
@@ -1220,8 +1220,8 @@ const packagePages = [
     vehicleType: 'sedan',
     origin: 'delhi',
     destination: 'chardham',
-    title: 'Budget Char Dham Yatra Package — Sedan at ₹12/km',
-    seoTitle: 'Budget Char Dham Yatra 2026 | Sedan ₹12/km | Cheapest Package',
+    title: 'Budget Char Dham Yatra Package — Sedan at ₹11/km',
+    seoTitle: 'Budget Char Dham Yatra 2026 | Sedan ₹11/km | Cheapest Package',
     seoDesc: 'Most affordable Char Dham Yatra by sedan car. Just ₹12/km. Perfect for couples & solo. 12-day package from ₹38,400. Call 7668570551.',
     seoKeywords: ['budget chardham yatra', 'cheap chardham package', 'affordable chardham by car', 'low cost chardham yatra', 'sedan chardham package'],
   }),
@@ -1471,7 +1471,7 @@ export const registrationSteps = [
 // --- 14g. How-to-book steps (HowTo schema source on hub) ---
 export const howToBookSteps = [
   { name: 'Pick your circuit & origin', text: 'Decide Char Dham, Do Dham or a single Dham, and your starting city (Delhi, Haridwar, Rishikesh or Dehradun). Haridwar/Rishikesh save 1–2 days versus Delhi.' },
-  { name: 'Choose your vehicle', text: 'Select Sedan (₹12/km), Ertiga (₹15/km), Innova Crysta (₹18/km), Fortuner (₹25/km) or a 22–56 seater bus based on group size and budget.' },
+  { name: 'Choose your vehicle', text: 'Select Sedan (₹11/km), Ertiga (₹15/km), Innova Crysta (₹18/km), Fortuner (₹25/km) or a 22–56 seater bus based on group size and budget.' },
   { name: 'Get a transparent quote', text: 'Call 7668570551 or WhatsApp us with dates and passenger count. We share an all-inclusive fare (vehicle, fuel, driver, tolls) with no hidden charges.' },
   { name: 'Confirm with advance', text: 'Block your vehicle for the 2026 season with a small advance. Early booking is advised for May–June peak slots.' },
   { name: 'Complete Yatra registration', text: 'We assist you with the mandatory Char Dham online registration and biometric verification at Haridwar/Rishikesh at no extra cost.' },
@@ -1483,7 +1483,7 @@ export const peopleAlsoAsk = [
   { q: 'How many days are enough for Char Dham Yatra by car?', a: 'A complete Char Dham Yatra by car needs 10–12 days from Delhi, or 9–10 days from Haridwar/Rishikesh. The circuit covers about 3,200 km round trip from Delhi with daytime-only mountain driving, so the days cannot be safely compressed much further.' },
   { q: 'What is the total distance of Char Dham Yatra?', a: 'From Delhi, the full Char Dham circuit (Yamunotri → Gangotri → Kedarnath → Badrinath and back) is roughly 3,200 km round trip. From Haridwar it is about 2,700 km and from Rishikesh about 2,600 km.' },
   { q: 'Is Char Dham Yatra suitable for senior citizens?', a: 'Yes. Badrinath and Gangotri have direct road access. For Kedarnath (16 km trek) and Yamunotri (5 km trek), seniors can use ponies, palki/doli or helicopter. Carry a medical fitness certificate for travellers above 75 and keep altitude in mind (Kedarnath 3,583 m).' },
-  { q: 'Do I need registration for Char Dham Yatra 2026?', a: 'Yes, online Char Dham Yatra registration plus biometric verification is mandatory for all pilgrims in 2026. Registration is free on the official Uttarakhand portal; Triveni Cabs assists you through the process at no extra charge.' },
+  { q: 'Do I need registration for Char Dham Yatra 2026?', a: 'Yes, online Char Dham Yatra registration plus biometric verification is mandatory for all pilgrims in 2026. Registration is free on the official Uttarakhand portal; Triveni Cabs™ assists you through the process at no extra charge.' },
   { q: 'Which Dham should I visit first?', a: 'The traditional clockwise order is Yamunotri, then Gangotri, then Kedarnath, and finally Badrinath. This sequence follows the geography of the Garhwal Himalayas and is the route our itineraries are built around.' },
   { q: 'What is the difference between Char Dham and Chota Char Dham?', a: 'In Uttarakhand, "Char Dham" usually refers to the Chota Char Dham — Yamunotri, Gangotri, Kedarnath and Badrinath. The original "Char Dham" of India (by Adi Shankaracharya) is Badrinath, Dwarka, Puri and Rameshwaram. This page covers the Uttarakhand Garhwal circuit.' },
 ];

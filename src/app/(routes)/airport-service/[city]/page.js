@@ -1,3 +1,7 @@
+import { getTerminalsForCity } from '@/utilis/airportTerminalData';
+import { getDistanceRoute } from '@/utilis/distanceData';
+import { routeExists } from '@/lib/seo/route-exists';
+import { airportOnwardLinks } from '@/lib/seo/airport-onward-links';
 import { notFound } from "next/navigation";
 import CityAirportServiceClient from "@/components/airport/CityAirportServiceClient";
 import { getCityData, getAllCitySlugs } from "@/utilis/airportCityData";
@@ -8,6 +12,9 @@ import AEOHead from '@/components/seo/AEOHead';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import { getMoneyPageLinks } from '@/lib/seo/linkingHelper';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import DirectAnswer from '@/components/content/DirectAnswer';
+import { deriveAirportCityAnswer } from '@/utilis/directAnswers';
+import { fareFor } from '@/utilis/pricing';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -47,9 +54,9 @@ function getCityReviewCount(slug) {
 }
 
 const CITY_REVIEWERS = [
-  { name: "Aarav Singh", body: "Triveni Cabs driver waited with a nameboard at the arrival gate even though my flight was delayed by 90 minutes. Fixed fare honoured, no surge. Booked again next trip." },
+  { name: "Aarav Singh", body: "Triveni Cabs™ driver waited with a nameboard at the arrival gate even though my flight was delayed by 90 minutes. Fixed fare honoured, no surge. Booked again next trip." },
   { name: "Meera Iyer", body: "Booked a late-night airport pickup. Driver was punctual, AC sedan was clean, and the meet & greet at the terminal made arrival stress-free for my elderly parents." },
-  { name: "Vikram Kapoor", body: "Used Triveni Cabs for an airport-to-hotel transfer. Transparent pricing, professional driver, luggage help included. Far better than prepaid taxi counter rates." }
+  { name: "Vikram Kapoor", body: "Used Triveni Cabs™ for an airport-to-hotel transfer. Transparent pricing, professional driver, luggage help included. Far better than prepaid taxi counter rates." }
 ];
 
 export default function CityAirportPage({ params }) {
@@ -94,19 +101,7 @@ export default function CityAirportPage({ params }) {
       "availability": "https://schema.org/InStock",
       "validFrom": "2024-01-01"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(cityReviewCount),
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": CITY_REVIEWERS.map(r => ({
-      "@type": "Review",
-      "author": { "@type": "Person", "name": r.name },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": r.body
-    })),
+
     "hoursAvailable": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -162,8 +157,21 @@ export default function CityAirportPage({ params }) {
       <AEOHead pageType="airport" data={{ url: `/airport-service/${params.city}`, title: `${city.name} Airport Taxi Service`, city: city.name }} />
 
       <CityAirportServiceClient
+        shortAnswer={(() => {
+          const a = deriveAirportCityAnswer(city, fareFor);
+          return a ? (
+            <DirectAnswer heading={a.heading} lead={a.lead} facts={a.facts} note={a.note} />
+          ) : null;
+        })()}
         city={city}
+        onwardLinks={airportOnwardLinks(city)}
         citySlug={params.city}
+        terminalRows={getTerminalsForCity(params.city).map(t => ({terminalCode:t.terminalCode,terminalType:t.terminalType,meetingPoint:t.meetingPoint || t.pickupPoint,waitInfo:t.waitInfo}))}
+        corridorRows={(city.routes || []).map(label => {
+          const slug = label.toLowerCase().replace(/\s+/g, '-');
+          const road = getDistanceRoute(slug);
+          return road && routeExists(`/distance/${slug}`) ? {label,distance:`${road.distance.km} km`,duration:road.duration,href:`/distance/${slug}`} : null;
+        }).filter(Boolean)}
         cityTours={(sightseeingTours[params.city] || []).filter(t => t.slug.startsWith(params.city)).slice(0, 6)}
       />
 

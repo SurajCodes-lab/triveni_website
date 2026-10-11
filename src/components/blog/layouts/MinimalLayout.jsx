@@ -1,5 +1,7 @@
-'use client';
-
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 import Image from 'next/image';
 import Link from 'next/link';
 // Centralized icon imports for better bundle optimization
@@ -82,7 +84,7 @@ export default function MinimalLayout({ post, relatedLinks }) {
       </section>
 
       {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 pb-20">
+      <div className="max-w-6xl mx-auto px-4 pb-12 sm:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Main Content */}
           <main className="lg:col-span-8">
@@ -110,15 +112,7 @@ export default function MinimalLayout({ post, relatedLinks }) {
 
             {/* Article */}
             <article
-              className="blog-prose prose prose-lg max-w-[70ch] mx-auto
-                prose-headings:text-slate-900 prose-headings:font-bold
-                prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-                prose-h3:text-xl
-                prose-p:text-slate-700 prose-p:leading-relaxed
-                prose-a:text-amber-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
-                prose-strong:text-slate-900
-                prose-li:text-slate-700
-                prose-blockquote:border-l-[#FACF2D] prose-blockquote:bg-slate-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:not-italic"
+              className="blog-prose prose prose-lg max-w-[70ch] mx-auto prose-headings:text-slate-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-amber-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-900 prose-li:text-slate-700 prose-blockquote:border-l-[#FACF2D] prose-blockquote:bg-slate-50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:not-italic"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 

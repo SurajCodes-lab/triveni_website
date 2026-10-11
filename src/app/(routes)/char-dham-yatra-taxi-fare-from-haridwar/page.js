@@ -94,7 +94,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display-serif text-3xl font-bold text-slate-900 text-center mb-2">Per-km taxi fare (from Haridwar)</h2>
           <p className="text-center text-slate-500 max-w-2xl mx-auto mb-8">Fuel, driver allowance and AC are included. Toll, parking and driver night allowance (₹300/night on multi-day yatras) are extra at actual. Minimum 300 km/day billing applies.</p>
@@ -112,7 +112,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-slate-50">
+      <section className="py-10 sm:py-16 px-4 bg-slate-50">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display-serif text-3xl font-bold text-slate-900 text-center mb-10">9-day Char Dham itinerary from Haridwar</h2>
           <ol className="relative border-l-2 border-amber-200 ml-3 space-y-6">
@@ -128,7 +128,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           <div>
             <h2 className="font-display-serif text-2xl font-bold text-slate-900 mb-6">What&apos;s included</h2>
@@ -149,7 +149,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 px-4">
+      <section className="py-10 sm:py-16 px-4">
         <div className="max-w-3xl mx-auto">
           <FAQSection faqs={[
             { question: 'How much does the Char Dham yatax cost by taxi from Haridwar?', answer: 'It depends on vehicle and exact route. The full ~1,700 km circuit is roughly ₹45,000 in an Ertiga SUV, ₹54,000 in an Innova Crysta, and ₹81,000 in a 12-seater Urbania — including fuel, driver and AC. Toll, parking and stays are extra at actual. Call for an exact quote.' },
@@ -161,7 +161,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="px-4 pb-16">
+      <section className="px-4 pb-10 sm:pb-16">
         <div className="max-w-5xl mx-auto">
           <RelatedLinks heading="Related pilgrimage pages" links={[
             { href: '/pilgrimage-cabs', anchor: 'Pilgrimage cabs hub' },
@@ -173,7 +173,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h2 className="font-display-serif text-3xl md:text-5xl font-bold text-slate-950 mb-4">Book your Char Dham yatra</h2>

@@ -12,7 +12,7 @@ const faqCategories = [
     faqs: [
       {
         q: "How much does a cab from Delhi to Agra cost?",
-        a: "A sedan (Swift Dzire) from Delhi to Agra costs approximately ₹2,760 for a one-way trip (230 km). SUV (Toyota Innova) costs around ₹3,588, and a Tempo Traveller starts at ₹4,968. All fares include fuel, driver charges, and AC. Toll and parking are extra."
+        a: "A sedan (Swift Dzire) from Delhi to Agra costs approximately ₹3,300 for a one-way trip (230 km). SUV (Toyota Innova) costs around ₹3,588, and a Tempo Traveller starts at ₹4,968. All fares include fuel, driver charges, and AC. Toll and parking are extra."
       },
       {
         q: "What is your per-km rate for outstation cabs?",
@@ -20,7 +20,7 @@ const faqCategories = [
       },
       {
         q: "Do you charge for return trips on one-way bookings?",
-        a: "No. Triveni Cabs offers genuine one-way pricing — you only pay for the distance you travel. Unlike many competitors who charge round-trip rates for one-way journeys, we calculate the exact one-way distance and apply our per-km rate. This saves you 40-50% compared to round-trip pricing."
+        a: "No. Triveni Cabs™ offers genuine one-way pricing — you only pay for the distance you travel. Unlike many competitors who charge round-trip rates for one-way journeys, we calculate the exact one-way distance and apply our per-km rate. This saves you 40-50% compared to round-trip pricing."
       },
       {
         q: "Is there any advance payment required?",
@@ -31,7 +31,7 @@ const faqCategories = [
         a: "Our fare includes: fuel charges, driver allowance, AC throughout the journey, and vehicle maintenance. Excluded: toll taxes, state border taxes, parking charges, and night charges (if applicable, ₹300/night for journeys after 10 PM). There are absolutely no hidden charges."
       },
       {
-        q: "How do I book a cab with Triveni Cabs?",
+        q: "How do I book a cab with Triveni Cabs™?",
         a: "You can book through 3 easy methods: (1) Call us directly at 7668570551, (2) WhatsApp your trip details to +91-7668570551, or (3) Fill the enquiry form on our website. We confirm your booking within 5 minutes with driver details and vehicle number."
       }
     ]
@@ -41,7 +41,7 @@ const faqCategories = [
     icon: "car",
     faqs: [
       {
-        q: "What types of vehicles does Triveni Cabs offer?",
+        q: "What types of vehicles does Triveni Cabs™ offer?",
         a: "We offer 6 vehicle categories: Sedan (Swift Dzire, Honda Amaze — 4 passengers), SUV (Toyota Innova, Maruti Ertiga — 6-7 passengers), Luxury (Toyota Innova Crysta, Mercedes — 4-6 passengers), Tempo Traveller (12, 17, 20, 26 seater), Mini Bus (22-35 seater), and Volvo Bus (45-56 seater). All vehicles are AC-equipped and well-maintained."
       },
       {
@@ -63,7 +63,7 @@ const faqCategories = [
     icon: "map",
     faqs: [
       {
-        q: "Which cities does Triveni Cabs operate in?",
+        q: "Which cities does Triveni Cabs™ operate in?",
         a: "We operate across 50+ cities in North India including Delhi, Agra, Jaipur, Chandigarh, Shimla, Manali, Amritsar, Haridwar, Rishikesh, Dehradun, Udaipur, Jodhpur, Varanasi, Lucknow, Ayodhya, Ahmedabad, Mathura, Vrindavan, Mussoorie, Nainital, and Dharamshala. We cover all major routes in Rajasthan, Uttarakhand, Himachal Pradesh, Punjab, and UP."
       },
       {
@@ -76,7 +76,7 @@ const faqCategories = [
       },
       {
         q: "Is your taxi service available 24/7?",
-        a: "Yes, Triveni Cabs operates 24 hours a day, 7 days a week, 365 days a year. Whether it's an early morning airport pickup at 3 AM or a late-night emergency trip, we're always available. Call 7668570551 anytime to book."
+        a: "Yes, Triveni Cabs™ operates 24 hours a day, 7 days a week, 365 days a year. Whether it's an early morning airport pickup at 3 AM or a late-night emergency trip, we're always available. Call 7668570551 anytime to book."
       }
     ]
   },
@@ -86,7 +86,7 @@ const faqCategories = [
     faqs: [
       {
         q: "Are your drivers verified and professional?",
-        a: "Every Triveni Cabs driver undergoes thorough verification including police background check, license verification, and driving skills assessment. Our drivers have an average experience of 8+ years and are trained in customer service, safety protocols, and route knowledge. We also provide women-safe cab service with female-friendly drivers."
+        a: "Every Triveni Cabs™ driver undergoes thorough verification including police background check, license verification, and driving skills assessment. Our drivers have an average experience of 8+ years and are trained in customer service, safety protocols, and route knowledge. We also provide women-safe cab service with female-friendly drivers."
       },
       {
         q: "What if I need to cancel my booking?",
@@ -98,7 +98,7 @@ const faqCategories = [
       },
       {
         q: "What is your customer rating?",
-        a: "Triveni Cabs has a 4.9-star rating based on 10,000+ customer reviews. We're proud of our 98% customer satisfaction rate. Our reviews consistently highlight professional drivers, clean vehicles, transparent pricing, and punctual service."
+        a: "Triveni Cabs™ has a 4.9-star rating based on 10,000+ customer reviews. We're proud of our 98% customer satisfaction rate. Our reviews consistently highlight professional drivers, clean vehicles, transparent pricing, and punctual service."
       }
     ]
   },
@@ -137,17 +137,17 @@ export const metadata = {
     canonical: "https://www.trivenicabs.in/faq",
   },
   openGraph: {
-    title: "Frequently Asked Questions — Triveni Cabs",
-    description: "Everything you need to know about booking a cab with Triveni Cabs. Pricing, vehicles, routes, safety, and special services explained.",
+    title: "Frequently Asked Questions — Triveni Cabs™",
+    description: "Everything you need to know about booking a cab with Triveni Cabs™. Pricing, vehicles, routes, safety, and special services explained.",
     type: "website",
     url: "https://www.trivenicabs.in/faq",
-    siteName: "Triveni Cabs",
+    siteName: "Triveni Cabs™",
   },
 
   twitter: {
     card: 'summary_large_image',
-    title: "Frequently Asked Questions — Triveni Cabs",
-    description: "Everything you need to know about booking a cab with Triveni Cabs. Pricing, vehicles, routes, safety, and special services explained.",
+    title: "Frequently Asked Questions — Triveni Cabs™",
+    description: "Everything you need to know about booking a cab with Triveni Cabs™. Pricing, vehicles, routes, safety, and special services explained.",
     creator: '@trivenicabs',
     site: '@trivenicabs',
   },
@@ -178,8 +178,8 @@ export default function FAQPage() {
 
   const articleSchema = getArticleSchema({
     slug: 'faq',
-    headline: 'Triveni Cabs FAQ — Cab Booking Questions Answered',
-    description: 'Answers to common questions about taxi booking, pricing, vehicles, routes, and safety with Triveni Cabs across 50+ cities in India.',
+    headline: 'Triveni Cabs™ FAQ — Cab Booking Questions Answered',
+    description: 'Answers to common questions about taxi booking, pricing, vehicles, routes, and safety with Triveni Cabs™ across 50+ cities in India.',
     image: '/images/about/about_banner.webp',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
   });

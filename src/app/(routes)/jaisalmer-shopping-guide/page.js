@@ -1,17 +1,18 @@
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, ArrowRight, ShoppingBag, Gem, Tag, Landmark, Crown, Percent, IndianRupee } from '@/components/ui/icons';
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Jaisalmer Shopping Guide 2026 | Mirror Work & Desert Crafts'),
   description: 'Jaisalmer shopping guide. Mirror work embroidery, leather mojaris, patchwork textiles, silver jewelry, Rajasthani paintings, camel leather products.',
   keywords: 'jaisalmer shopping guide, shopping in jaisalmer, jaisalmer fort market, sadar bazaar jaisalmer, jaisalmer mirror work, jaisalmer leather mojaris, rajasthani crafts jaisalmer, jaisalmer souvenirs',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/jaisalmer-shopping-guide' },
   openGraph: {
@@ -20,7 +21,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/jaisalmer-shopping-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Jaisalmer/Jaisalmer_hero_section.jpg', width: 1200, height: 630, alt: 'Jaisalmer Shopping Guide' }],
   },
   twitter: {
@@ -244,7 +245,7 @@ export default function JaisalmerShoppingGuidePage() {
         </section>
 
         {/* Shopping Categories */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3 text-center">What to Buy in Jaisalmer</h2>
             <p className="text-stone-500 text-center mb-14">The Golden City offers desert crafts and Rajasthani artisan treasures</p>
@@ -288,7 +289,7 @@ export default function JaisalmerShoppingGuidePage() {
         </section>
 
         {/* Market Areas */}
-        <section className="py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-3 text-center">Best Shopping Areas in Jaisalmer</h2>
             <p className="text-purple-200/60 text-center mb-14">Four distinct markets in the Golden City of the Thar Desert</p>
@@ -321,7 +322,7 @@ export default function JaisalmerShoppingGuidePage() {
         </section>
 
         {/* Bargaining Tips */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-3 text-center">Bargaining Tips from Locals</h2>
             <p className="text-stone-500 text-center mb-12">Eight rules that save our tourists money every single day</p>
@@ -339,7 +340,7 @@ export default function JaisalmerShoppingGuidePage() {
         </section>
 
         {/* Combo */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-3xl overflow-hidden">
               <div className="bg-gradient-to-r from-purple-700 via-fuchsia-600 to-purple-700 px-6 py-5" style={{ backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite' }}>
@@ -371,21 +372,26 @@ export default function JaisalmerShoppingGuidePage() {
         </section>
 
         {/* SEO Content */}
-        <section className="py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-8 text-center">Shopping in Jaisalmer: The Golden City&apos;s Desert Treasures</h2>
             <div className="glass-card-light rounded-3xl p-8 md:p-10">
               <div className="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
               <p>Jaisalmer&apos;s shopping experience is inseparable from its extraordinary setting. The city rises from the Thar Desert like a golden mirage -- a 12th-century sandstone fort surrounded by havelis, temples, and bazaars that have been trading desert crafts for nearly a thousand years. Shopping inside Jaisalmer Fort, where medieval lanes are lined with mirror work and jewelry shops, is an experience you simply cannot have anywhere else in India.</p>
               <p>The city&apos;s craft traditions are deeply rooted in its geography and history. Mirror work evolved as a desert embellishment -- the tiny mirrors reflected light and heat. Camel leather products exist because the Thar Desert&apos;s dromedaries provide the raw material. The patchwork textiles display colours drawn from desert sunsets, spice markets, and Rajput court splendour. And the silver jewelry carries designs from centuries of Rajputana royalty and tribal tradition.</p>
-              <p>While Jaisalmer&apos;s main markets are walkable, a cab is essential for exploring beyond the fort and town. Our Triveni Cabs drivers can take you to artisan villages in the desert, the Sam Sand Dunes for a sunset safari, or nearby Kuldhara (abandoned village). For the drive to Jaisalmer from Jodhpur, Jaipur, or Udaipur, we ensure a comfortable journey through some of Rajasthan&apos;s most dramatic desert landscapes.</p>
+              <p>While Jaisalmer&apos;s main markets are walkable, a cab is essential for exploring beyond the fort and town. Our Triveni Cabs™ drivers can take you to artisan villages in the desert, the Sam Sand Dunes for a sunset safari, or nearby Kuldhara (abandoned village). For the drive to Jaisalmer from Jodhpur, Jaipur, or Udaipur, we ensure a comfortable journey through some of Rajasthan&apos;s most dramatic desert landscapes.</p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Jaisalmer" citySlug="jaisalmer" />
+
+
         {/* FAQ */}
-        <section className="py-20 px-4 bg-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-12 text-center">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -405,7 +411,7 @@ export default function JaisalmerShoppingGuidePage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-10 text-center">More Jaisalmer &amp; Rajasthan Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -430,7 +436,7 @@ export default function JaisalmerShoppingGuidePage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-800 via-violet-700 to-fuchsia-800" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[15%] w-2 h-2 bg-white/30 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite' }} />
           <div className="absolute top-[40%] right-[20%] w-1.5 h-1.5 bg-white/20 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite 1s' }} />

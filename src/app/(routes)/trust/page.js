@@ -20,29 +20,29 @@ export const revalidate = 3600;
 const PAGE_URL = `${BASE_URL}/trust`;
 
 export const metadata = {
-  title: tightenTitle("Trust & Credentials | Triveni Cabs — Verified Since 2015"),
+  title: tightenTitle("Trust & Credentials | Triveni Cabs™ — Verified Since 2015"),
   description:
-    "Triveni Cabs trust signals: founder Pankaj Singh Gaur, since 2015, 50,000+ trips, verified drivers, full insurance. Read who runs Triveni Cabs and why North India travellers trust us.",
+    "Triveni Cabs™ trust signals: founder Pankaj Singh Gaur, since 2015, 50,000+ trips, verified drivers, full insurance. Read who runs Triveni Cabs™ and why North India travellers trust us.",
   keywords: [
-    "Triveni Cabs trust",
-    "Triveni Cabs founder",
+    "Triveni Cabs™ trust",
+    "Triveni Cabs™ founder",
     "Pankaj Singh Gaur Triveni",
-    "Triveni Cabs verified",
-    "Triveni Cabs reviews",
+    "Triveni Cabs™ verified",
+    "Triveni Cabs™ reviews",
     "trusted taxi service India",
     "verified cab service",
-    "Triveni Cabs insurance",
+    "Triveni Cabs™ insurance",
     "Agra taxi operator since 2015",
   ],
   alternates: { canonical: PAGE_URL },
   openGraph: {
-    title: "Trust & Credentials — Triveni Cabs",
+    title: "Trust & Credentials — Triveni Cabs™",
     description:
       "Founder bio, editorial team, GSTIN, insurance, awards, and press. Built on transparency since 2015.",
     url: PAGE_URL,
     type: "website",
     locale: "en_IN",
-    siteName: "Triveni Cabs",
+    siteName: "Triveni Cabs™",
     images: [
       {
         url: "/images/about_page_hero_section.jpg",
@@ -54,7 +54,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trust & Credentials — Triveni Cabs",
+    title: "Trust & Credentials — Triveni Cabs™",
     description: "Founder, team, certifications, and insurance — built on transparency since 2015.",
     images: ["/images/about_page_hero_section.jpg"],
     creator: "@TriveniCabs",
@@ -69,19 +69,19 @@ export const metadata = {
 
 const TRUST_FAQS = [
   {
-    q: "Who runs Triveni Cabs?",
+    q: "Who runs Triveni Cabs™?",
     a:
-      "Triveni Cabs is founded and run by Pankaj Singh Gaur, who started the company in 2015 after years of operating outstation taxi service from Agra. He personally vets every guide and lead driver in the fleet.",
+      "Triveni Cabs™ is founded and run by Pankaj Singh Gaur, who started the company in 2015 after years of operating outstation taxi service from Agra. He personally vets every guide and lead driver in the fleet.",
   },
   {
-    q: "How long has Triveni Cabs been operating?",
+    q: "How long has Triveni Cabs™ been operating?",
     a:
-      "Triveni Cabs has been operating since 2015 — eleven years as of 2026. We have completed more than 50,000 verified trips across 46 North India cities.",
+      "Triveni Cabs™ has been operating since 2015 — eleven years as of 2026. We have completed more than 50,000 verified trips across 46 North India cities.",
   },
   {
     q: "Are your drivers verified?",
     a:
-      "All Triveni Cabs drivers hold valid commercial driving licences and RTO permits for the states they operate in. We require a minimum of 5 years of commercial driving experience and run a background check before onboarding.",
+      "All Triveni Cabs™ drivers hold valid commercial driving licences and RTO permits for the states they operate in. We require a minimum of 5 years of commercial driving experience and run a background check before onboarding.",
   },
   {
     q: "Is the vehicle and passenger insured?",
@@ -89,9 +89,9 @@ const TRUST_FAQS = [
       "Yes. Every vehicle in our fleet carries comprehensive insurance plus passenger insurance covering each seat on every booking.",
   },
   {
-    q: "Where can I read independent reviews of Triveni Cabs?",
+    q: "Where can I read independent reviews of Triveni Cabs™?",
     a:
-      "Independent verified reviews appear on Google (search 'Triveni Cabs Agra'), Tripadvisor, and Justdial. We display our 4.9 / 5 aggregate from over 10,000 verified bookings.",
+      "Independent verified reviews appear on Google (search 'Triveni Cabs™ Agra'), Tripadvisor, and Justdial. We display our 4.9 / 5 aggregate from over 10,000 verified bookings.",
   },
 ];
 
@@ -141,8 +141,8 @@ export default function TrustPage() {
 
   const articleSchema = getArticleSchema({
     slug: 'trust',
-    headline: 'Trust & Credentials — Triveni Cabs, Verified Since 2015',
-    description: 'Triveni Cabs trust signals: founder Pankaj Singh Gaur, 50,000+ trips since 2015, verified drivers, RTO permits, and full insurance.',
+    headline: 'Trust & Credentials — Triveni Cabs™, Verified Since 2015',
+    description: 'Triveni Cabs™ trust signals: founder Pankaj Singh Gaur, 50,000+ trips since 2015, verified drivers, RTO permits, and full insurance.',
     image: '/images/about_page_hero_section.jpg',
     datePublished: '2015-01-01',
     authorName: 'editorial',
@@ -176,21 +176,21 @@ export default function TrustPage() {
             Trust &amp; Credentials
           </h1>
           <p className="speakable-lead text-lg text-slate-700 leading-relaxed">
-            Triveni Cabs has operated outstation taxi service from Agra since 2015. This page concentrates
+            Triveni Cabs™ has operated outstation taxi service from Agra since 2015. This page concentrates
             the trust signals — founder, editorial team, certifications, insurance, awards, and press — that
             every traveller and every AI assistant needs to verify before booking a 4-figure trip.
           </p>
         </header>
 
-        <div className="container mx-auto px-4 max-w-4xl pb-16">
+        <div className="container mx-auto px-4 max-w-4xl pb-10 sm:pb-16">
 
           {/* SECTION: Founder */}
           <section aria-labelledby="founder-h2" className="mt-12">
             <h2 id="founder-h2" className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-              Who runs Triveni Cabs?
+              Who runs Triveni Cabs™?
             </h2>
             <p className="direct-answer text-slate-800 leading-relaxed mb-4">
-              Triveni Cabs is founded and run by <strong>{FOUNDER_AUTHOR.name}</strong>, based in Agra,
+              Triveni Cabs™ is founded and run by <strong>{FOUNDER_AUTHOR.name}</strong>, based in Agra,
               Uttar Pradesh. He started the company in 2015 after years of operating local outstation
               taxi service from Agra. He personally vets every lead driver and certified guide in the
               fleet before they are onboarded.
@@ -215,12 +215,12 @@ export default function TrustPage() {
               How long have you been operating?
             </h2>
             <p className="direct-answer text-slate-800 leading-relaxed">
-              Triveni Cabs has been operating since 2015 — eleven years as of 2026. We have completed more
+              Triveni Cabs™ has been operating since 2015 — eleven years as of 2026. We have completed more
               than 50,000 verified trips across 46 North India cities. Our home base remains Agra, where
               the company is registered and where our operations desk runs 24×7.
             </p>
             <ul className="mt-4 space-y-2 list-disc list-inside text-slate-700">
-              <li><strong>2015</strong> — Pankaj Singh Gaur founds Triveni Cabs in Agra.</li>
+              <li><strong>2015</strong> — Pankaj Singh Gaur founds Triveni Cabs™ in Agra.</li>
               <li><strong>2017</strong> — Expanded to Delhi NCR airport transfers (IGI T1/T2/T3).</li>
               <li><strong>2019</strong> — Added Tempo Traveller fleet for group travel.</li>
               <li><strong>2022</strong> — Crossed 25,000 verified trips milestone.</li>
@@ -236,7 +236,7 @@ export default function TrustPage() {
               What permits and driver checks do you maintain?
             </h2>
             <p className="direct-answer text-slate-800 leading-relaxed">
-              Triveni Cabs holds valid RTO commercial vehicle permits in every state we operate in.
+              Triveni Cabs™ holds valid RTO commercial vehicle permits in every state we operate in.
               Where applicable for tour packages, we work with Ministry of Tourism-recognised guide
               partners.
             </p>
@@ -265,7 +265,7 @@ export default function TrustPage() {
               Who writes the content you publish?
             </h2>
             <p className="direct-answer text-slate-800 leading-relaxed mb-6">
-              Pricing, route, and city-guide content is written and verified by the Triveni Cabs editorial
+              Pricing, route, and city-guide content is written and verified by the Triveni Cabs™ editorial
               and operations teams. Every fare is checked against current fleet pricing weekly. Every
               landmark, distance, and timing claim is cross-checked with our on-ground drivers.
             </p>
@@ -286,7 +286,7 @@ export default function TrustPage() {
               Where can I read independent reviews?
             </h2>
             <p className="direct-answer text-slate-800 leading-relaxed">
-              Triveni Cabs holds a 4.9 / 5 average across more than 10,000 verified Google reviews.
+              Triveni Cabs™ holds a 4.9 / 5 average across more than 10,000 verified Google reviews.
               Independent feedback is also visible on Tripadvisor and Justdial. We invite every
               customer to leave a verified review after their trip.
             </p>

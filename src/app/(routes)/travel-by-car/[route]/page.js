@@ -28,16 +28,19 @@ export async function generateMetadata({ params }) {
 
   const originLower = route.origin.toLowerCase();
   const destLower = route.destination.toLowerCase();
-  // Week 43 — answer-box defence: lead with the end-to-end cost of the drive
-  // (toll + fuel), which no SERP feature supplies. See src/lib/seo/serp-ctr.js.
-  const { title, description } = buildTravelByCarMeta(route, slug);
-  const ogTitle = `${route.origin} to ${route.destination} Road Trip Guide — ${route.totalDistance} km Drive | Cab from ${route.cabFares.sedan} | Triveni Cabs`;
+  // Week 48 (C3) — the listing answers the question and names the price: the
+  // page's own sedan fare leads, road condition and stops follow, and the km
+  // and hours the Maps panel already prints are demoted to the end of the
+  // description. Formula lives in src/lib/seo/serp-ctr.js so all 40 routes move
+  // together.
+  const { title, description } = buildTravelByCarMeta(route);
+  const ogTitle = `${route.origin} to ${route.destination} Road Trip Guide: ${route.totalDistance} km Drive | Cab from ${route.cabFares.sedan} | Triveni Cabs™`;
 
   return {
     // Title carries no brand suffix of its own: the root layout appends
-    // '%s | Triveni Cabs'. serp-ctr budgets the content half at 45 chars
-    // (TITLE_BUDGET) so the rendered title lands inside Google's ~60-char
-    // truncation instead of being cut mid-phrase.
+    // '%s | Triveni Cabs'. buildTravelByCarMeta picks the longest variant that
+    // fits DISPLAY_BUDGET (58 chars of content), so the fare is always inside
+    // Google's ~60-char cut and only "& Stops" or the brand can be trimmed.
     title: title,
     description,
     keywords: [
@@ -57,9 +60,9 @@ export async function generateMetadata({ params }) {
       `${originLower} to ${destLower} taxi fare`,
       `how to drive ${originLower} to ${destLower}`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/travel-by-car/${slug}` },
     openGraph: {
@@ -68,7 +71,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/travel-by-car/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `${route.origin} to ${route.destination} Road Trip Guide` }],
     },
     twitter: {
@@ -134,9 +137,9 @@ export default async function TravelByCarPage({ params }) {
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
+        "streetAddress": "366, Dandupura, near Tajganj",
         "addressLocality": "Agra",
-        "addressRegion": "UP",
+        "addressRegion": "Uttar Pradesh",
         "postalCode": "282006",
         "addressCountry": "IN"
       }

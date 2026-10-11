@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, useId } from 'react';
 import { MapPin, ChevronDown } from '@/components/ui/icons';
 
 const POPULAR_CITIES = ['Delhi', 'Agra', 'Jaipur', 'Chandigarh', 'Shimla', 'Manali', 'Haridwar', 'Amritsar', 'Rishikesh', 'Dehradun', 'Varanasi', 'Udaipur'];
@@ -12,6 +12,18 @@ export default function CityAutocomplete({ label, value, onChange, cities = [], 
   const inputRef = useRef(null);
   const dropdownRef = useRef(null);
   const containerRef = useRef(null);
+  const inputId = useId();
+  const listId = `${inputId}-options`;
+  const editingSelection = useRef(false);
+
+  // Keep the displayed city in sync when the parent swaps or resets the route.
+  useEffect(() => {
+    if (editingSelection.current) {
+      editingSelection.current = false;
+      return;
+    }
+    setQuery(value || '');
+  }, [value]);
 
   // When searching: filter all cities. When empty: show popular first, then all others
   const filtered = query.trim()
@@ -51,7 +63,10 @@ export default function CityAutocomplete({ label, value, onChange, cities = [], 
     setQuery(e.target.value);
     setIsOpen(true);
     setHighlightIndex(-1);
-    if (!e.target.value.trim()) {
+    // Editing a chosen city invalidates that selection until another is picked.
+    // Do not submit the previously selected route behind a different visible name.
+    if (value) {
+      editingSelection.current = true;
       onChange('');
     }
   };
@@ -94,7 +109,7 @@ export default function CityAutocomplete({ label, value, onChange, cities = [], 
   return (
     <div ref={containerRef} className="relative w-full">
       {label && (
-        <label className="block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wider">{label}</label>
+        <label htmlFor={inputId} className="block text-xs font-medium text-gray-600 mb-1 uppercase tracking-wider">{label}</label>
       )}
       <div className="relative">
         <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
@@ -102,6 +117,7 @@ export default function CityAutocomplete({ label, value, onChange, cities = [], 
         </div>
         <input
           ref={inputRef}
+          id={inputId}
           type="text"
           value={query}
           onChange={handleInputChange}
@@ -113,6 +129,8 @@ export default function CityAutocomplete({ label, value, onChange, cities = [], 
           role="combobox"
           aria-expanded={isOpen}
           aria-haspopup="listbox"
+          aria-controls={isOpen && filtered.length ? listId : undefined}
+          aria-activedescendant={isOpen && highlightIndex >= 0 && filtered[highlightIndex] ? `${listId}-${highlightIndex}` : undefined}
         />
         <ChevronDown className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </div>
@@ -120,6 +138,8 @@ export default function CityAutocomplete({ label, value, onChange, cities = [], 
       {isOpen && filtered.length > 0 && (
         <div
           ref={dropdownRef}
+          id={listId}
+          aria-label={label || 'Cities'}
           className="absolute z-50 mt-1 w-full bg-white border border-gray-200 rounded-xl shadow-xl max-h-72 overflow-y-auto"
           role="listbox"
         >
@@ -140,6 +160,7 @@ export default function CityAutocomplete({ label, value, onChange, cities = [], 
                 )}
                 <button
                   data-option
+                  id={`${listId}-${idx}`}
                   type="button"
                   role="option"
                   aria-selected={highlightIndex === idx}

@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("Best Time to Visit — North India Destination Guides");
-  const description = "Best time to visit North India destinations — weather, seasons, festivals. Plan and book a cab. Triveni Cabs 7668570551.";
+  const description = "Best time to visit North India destinations — weather, seasons, festivals. Plan and book a cab. Triveni Cabs™ 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

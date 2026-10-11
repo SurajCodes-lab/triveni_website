@@ -1,3 +1,4 @@
+import { groupDigits } from '@/utilis/pricing';
 // src/utilis/vehicleTypeData.js
 // Data for the three "vehicle type" hub pages built to demo the new design
 // system before it is templated across the city-wise SEO landing pages from
@@ -324,7 +325,7 @@ export const vehicleTypeData = {
     tagline:
       "The new-generation Force van — high roof, flat floor, captain seats. The corporate-preferred upgrade from the Tempo Traveller.",
     intro:
-      "The Force Urbania is the modern replacement for the old Tempo Traveller. Built on Force Motors' next-generation van platform, it brings a high roof, flat walk-through floor, luxury captain seats and rear climate control — the features corporate clients, delegations and premium families now ask for by name. Available in 10, 12, 13 and 17 seater layouts, the Urbania rides flatter and quieter than a traditional tempo, which means less fatigue on long Delhi–Jaipur, Delhi–Manali or airport-transfer drives. Outstation trips start at ₹25/km with the same transparent, itemised pricing Triveni Cabs is known for.",
+      "The Force Urbania is the modern replacement for the old Tempo Traveller. Built on Force Motors' next-generation van platform, it brings a high roof, flat walk-through floor, luxury captain seats and rear climate control — the features corporate clients, delegations and premium families now ask for by name. Available in 10, 12, 13 and 17 seater layouts, the Urbania rides flatter and quieter than a traditional tempo, which means less fatigue on long Delhi–Jaipur, Delhi–Manali or airport-transfer drives. Outstation trips start at ₹25/km with the same transparent, itemised pricing Triveni Cabs™ is known for.",
     idealFor: [
       "Executive transport & corporate delegations",
       "MICE groups & conference shuttles",
@@ -454,7 +455,7 @@ export const vehicleTypeData = {
     tagline:
       "The top of the Tempo range — wide reclining Maharaja seats, ambient cabin and zoned AC for weddings, corporate events and long luxury tours.",
     intro:
-      "The Maharaja Tempo Traveller is the luxury top of the Tempo range. It keeps the dependable Force Traveller platform underneath but upgrades the cabin with extra-wide, fully-reclining captain seats, footrests, premium quilted upholstery, ambient lighting and zoned climate control. It is the vehicle booked for weddings, corporate galas, VIP family tours and long pilgrimage runs where comfort and presentation matter as much as the destination. Outstation trips start at ₹26/km, with the same transparent, itemised pricing Triveni Cabs is known for.",
+      "The Maharaja Tempo Traveller is the luxury top of the Tempo range. It keeps the dependable Force Traveller platform underneath but upgrades the cabin with extra-wide, fully-reclining captain seats, footrests, premium quilted upholstery, ambient lighting and zoned climate control. It is the vehicle booked for weddings, corporate galas, VIP family tours and long pilgrimage runs where comfort and presentation matter as much as the destination. Outstation trips start at ₹26/km, with the same transparent, itemised pricing Triveni Cabs™ is known for.",
     idealFor: [
       "Wedding baraat & guest transport",
       "Corporate galas & VIP events",
@@ -527,13 +528,13 @@ export function getVehicleSeaterData(typeSlug, seatsKey) {
     `The ${seater.name} is the ${seater.seats}-seater variant of the ${type.type}. ` +
     `It ${seater.blurb.toLowerCase()} — seating ${seater.capacity.toLowerCase()} with room for ${seater.luggage.toLowerCase()}. ` +
     `Like every vehicle in this fleet it is fully air-conditioned with an experienced, verified driver included. ` +
-    `Outstation trips start at ₹${seater.perKm}/km on a transparent, itemised quote — no surge, no hidden charges.`;
+    `Outstation trips start at ₹${groupDigits(seater.perKm)}/km on a transparent, itemised quote — no surge, no hidden charges.`;
 
   const specs = [
     ["Seating capacity", seater.capacity],
     ["Recommended group size", `${Math.max(2, seater.seats - 2)} – ${seater.seats - 1} people`],
     ["Vehicle model", type.model],
-    ["Outstation rate", `From ₹${seater.perKm}/km (min 250 km/day)`],
+    ["Outstation rate", `From ₹${groupDigits(seater.perKm)}/km (min 250 km/day)`],
     ["Luggage capacity", seater.luggage],
     ["Air conditioning", "Fully AC, front + rear vents"],
     ["Driver", "Experienced, verified, uniformed — included"],
@@ -544,7 +545,7 @@ export function getVehicleSeaterData(typeSlug, seatsKey) {
     {
       question: `How much does the ${seater.name} cost per km?`,
       answer:
-        `The ${seater.name} starts at ₹${seater.perKm}/km for outstation trips with a 250 km/day minimum. Tolls, parking, state tax and the driver allowance for overnight trips are charged at actuals and quoted upfront. Local same-city packages are also available.`,
+        `The ${seater.name} starts at ₹${groupDigits(seater.perKm)}/km for outstation trips with a 250 km/day minimum. Tolls, parking, state tax and the driver allowance for overnight trips are charged at actuals and quoted upfront. Local same-city packages are also available.`,
     },
     {
       question: `How many people can the ${seater.name} seat?`,
@@ -554,9 +555,9 @@ export function getVehicleSeaterData(typeSlug, seatsKey) {
   ];
 
   const title =
-    `${seater.name} on Rent ₹${seater.perKm}/km — AC + Driver | Triveni Cabs`;
+    `${seater.name} on Rent ₹${groupDigits(seater.perKm)}/km — AC + Driver | Triveni Cabs™`;
   const description =
-    `Hire a ${lower} (${seater.capacity}) from ₹${seater.perKm}/km. ${type.tagline} AC, experienced driver, transparent pricing. Call 7668570551.`;
+    `Hire a ${lower} (${seater.capacity}) from ₹${groupDigits(seater.perKm)}/km. ${type.tagline} AC, experienced driver, transparent pricing. Call 7668570551.`;
 
   return {
     ...seater,
@@ -578,7 +579,7 @@ export function getVehicleSeaterData(typeSlug, seatsKey) {
 
     stats: [
       { value: `${seater.seats} seats`, label: seater.capacity },
-      { value: `₹${seater.perKm}/km`, label: "Outstation rate" },
+      { value: `₹${groupDigits(seater.perKm)}/km`, label: "Outstation rate" },
       { value: "4.9★", label: "Average rating" },
       { value: "24/7", label: "Booking & support" },
     ],

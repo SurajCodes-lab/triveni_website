@@ -1,12 +1,19 @@
 import { notFound } from 'next/navigation';
 import { getDistanceRoute, getAllDistanceRouteSlugs, getRelatedDistanceRoutes, cityToGeoSlug } from '@/utilis/distanceData';
 import DistanceGuideClient from '@/components/distance/DistanceGuideClient';
+import { getRoadParagraph } from '@/utilis/roadParagraphs';
 import { getCorridorLinks } from '@/utilis/corridorLinks';
+import { getSeasonalCorridorCallout } from '@/utilis/seasonalCorridors';
+import { canonicalLink } from '@/lib/seo/canonical-link';
+import { servedHref } from '@/lib/seo/route-exists';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getArticleSchema, getHowToSchema, getComparisonSchema, getTodayDate, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { buildDistanceMeta, enrichRouteWithToll } from '@/lib/seo/serp-ctr';
+import { aliasFaq, aliasKeywords } from '@/lib/seo/place-aliases';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
+import { groupDigits } from '@/utilis/pricing';
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -27,16 +34,35 @@ export async function generateMetadata({ params }) {
   // Week 43 — answer-box defence. The previous title led with the km figure,
   // which is exactly what Google's distance panel already shows above us; these
   // pages carried 2,898,687 impressions at 0.14% CTR while /toll-cost pages hit
-  // 4.10% on queries Google cannot answer inline. buildDistanceMeta keeps the
-  // exact-match keyword but makes the *promise* toll + fare instead of the km.
-  // See src/lib/seo/serp-ctr.js for the position-controlled evidence.
+  // 4.10% on queries Google cannot answer inline.
+  // Week 48 (C3) — the title now answers the price with its unit ("Cab from
+  // ₹3,300 One Way") plus the measured toll or the SUV fare, and the
+  // description leads with that answer before the km/drive-time proof.
+  // See buildDistanceMeta in src/lib/seo/serp-ctr.js for the formula and the
+  // position-controlled evidence.
+  // Week 52 — the trip-planning pilots were overriding the title above with a
+  // plain "<A> to <B> Distance: <km> km". That is the one title this family must
+  // not use: it repeats the single number Google's distance panel has already
+  // shown the searcher, so the listing offers no reason to click.
+  //
+  // The 6 Oct export measured the cost. Those ten slugs are the biggest pages
+  // in the family — 795,147 impressions, 30% of all distance impressions — and
+  // they ran at 0.127% CTR against 0.160% for the 109 pages that kept the
+  // answer-box title, despite ranking in the same 5.7-9.0 band. The override
+  // was suppressing the better title on precisely the pages with the most to
+  // gain.
+  //
+  // The on-page trip-planning advice those ten pages carry is unaffected; it is
+  // rendered by DistanceGuideClient and remains the reason they were piloted.
+  // Only the metadata override is gone, so every distance page now leads with
+  // the km figure plus the drive time and fare the panel does not carry.
   const { title, description, ogTitle } = buildDistanceMeta(route, slug);
 
   return {
     // Title carries no brand suffix of its own: the root layout appends
-    // '%s | Triveni Cabs'. serp-ctr budgets the content half at 45 chars
-    // (TITLE_BUDGET) so the rendered title lands inside Google's ~60-char
-    // truncation instead of being cut mid-phrase.
+    // '%s | Triveni Cabs'. serp-ctr fits the content half inside DISPLAY_BUDGET
+    // (58 chars) via tightenTitle, so the rendered title lands inside Google's
+    // ~60-char truncation instead of being cut mid-phrase.
     title: title,
     description,
     keywords: [
@@ -55,10 +81,11 @@ export async function generateMetadata({ params }) {
       `${route.origin.toLowerCase()} ${route.destination.toLowerCase()} distance`,
       `${route.origin.toLowerCase()} to ${route.destination.toLowerCase()} travel guide`,
       `${route.origin.toLowerCase()} to ${route.destination.toLowerCase()} taxi`,
-    ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+          ...aliasKeywords(route.origin, route.destination),
+],
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/distance/${slug}` },
     openGraph: {
@@ -67,7 +94,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/distance/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `${route.origin} to ${route.destination} Distance Guide` }],
     },
     twitter: {
@@ -94,12 +121,20 @@ export default async function DistanceGuidePage({ params }) {
   }
 
   const relatedRoutes = getRelatedDistanceRoutes(slug);
+  // Week 49: the other name people type. Where an end of the corridor has a
+  // common second name (Banaras for Varanasi, Allahabad for Prayagraj), the
+  // page answers under both rather than leaving a second page to be built for
+  // the same journey.
+  const aliasQuestion = aliasFaq(route.origin, route.destination);
+  const routeForClient = aliasQuestion
+    ? { ...route, faqs: [...(route.faqs || []), aliasQuestion] }
+    : route;
 
   // Deterministic rating + 3 named Reviews (50-180 reviewCount). Replaces the
   // previous hardcoded reviewCount: "10000" which Google flags as schema spam.
   const ratingAndReviews = getRatingAndReviews(slug, 'city');
   const ogImage = getOgImageForSlug(slug);
-  const today = getTodayDate();
+  const today = (getContentUpdatedOn(`/distance/${slug}`) || getTodayDate());
 
   // GEO: resolve origin + destination to real-world Place/City entities with
   // GeoCoordinates from the shared _CITY_PLACES map. Null-safe.
@@ -140,7 +175,7 @@ export default async function DistanceGuidePage({ params }) {
     "@type": "Service",
     "serviceType": `Cab Service ${route.origin} to ${route.destination}`,
     "name": `${route.origin} to ${route.destination} Cab — ${route.distance.km} km`,
-    "description": `Book AC cab from ${route.origin} to ${route.destination}. ${route.distance.km} km, ${route.duration} via ${route.highway}. Sedan from ₹${route.sedanRaw}.`,
+    "description": `Book AC cab from ${route.origin} to ${route.destination}. ${route.distance.km} km, ${route.duration} via ${route.highway}. Sedan from ₹${groupDigits(route.sedanRaw)}.`,
     "provider": {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
@@ -149,9 +184,9 @@ export default async function DistanceGuidePage({ params }) {
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
+        "streetAddress": "366, Dandupura, near Tajganj",
         "addressLocality": "Agra",
-        "addressRegion": "UP",
+        "addressRegion": "Uttar Pradesh",
         "postalCode": "282006",
         "addressCountry": "IN"
       }
@@ -219,7 +254,7 @@ export default async function DistanceGuidePage({ params }) {
     steps: [
       { name: 'Choose your travel mode', text: `Decide between a private cab (most flexible, ${route.duration}), train, bus, or flight. For door-to-door comfort and freedom to stop en route, a cab from ${route.origin} to ${route.destination} is the most convenient choice.` },
       { name: 'Pick the best route', text: `Travel via ${route.highway} — the fastest and best-maintained route from ${route.origin} to ${route.destination}, covering ${route.distance.km} km (${route.distance.miles} miles).` },
-      { name: 'Book your cab and start early', text: `Book an AC sedan from ${route.cabFares.sedan}, SUV, or Tempo Traveller with Triveni Cabs on 7668570551. Start early morning (5-6 AM) to avoid traffic and reach ${route.destination} comfortably.` },
+      { name: 'Book your cab and start early', text: `Book an AC sedan from ${route.cabFares.sedan}, SUV, or Tempo Traveller with Triveni Cabs™ on 7668570551. Start early morning (5-6 AM) to avoid traffic and reach ${route.destination} comfortably.` },
       { name: 'Pay toll at actual and arrive', text: `Tolls on the route are paid at actual via FASTag and added transparently to your bill. Sit back, enjoy the ${route.duration} drive, and arrive in ${route.destination}.` },
     ],
   });
@@ -246,7 +281,23 @@ export default async function DistanceGuidePage({ params }) {
         <script key={`geo-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(node) }} />
       ))}
       <AEOHead pageType="route" data={{ url: `/distance/${slug}`, title: `${route.origin} to ${route.destination} Distance`, origin: route.origin, destination: route.destination, city: route.origin }} />
-      <DistanceGuideClient route={route} relatedRoutes={relatedRoutes} corridorLinks={getCorridorLinks(slug, 'distance')} />
+      <DistanceGuideClient
+        route={routeForClient}
+        relatedRoutes={relatedRoutes}
+        corridorLinks={getCorridorLinks(slug, 'distance')}
+        seasonalCallout={getSeasonalCorridorCallout({
+          destination: route.destination,
+          origin: route.origin,
+          // servedHref rather than canonicalLink: canonicalLink follows the
+            // booking-canonical redirects but never checks that the result was
+            // built, so three routes with a oneWaySlug and no one-way page --
+            // Bodh Gaya, Gaya and Prayagraj to Varanasi -- were linking at a 404.
+            // servedHref returns null there, and the callout already renders
+            // without a booking link.
+            bookingHref: route.oneWaySlug ? servedHref(`/one-way-cab/${route.oneWaySlug}`) : null,
+        })}
+        roadParagraph={getRoadParagraph(slug)}
+      />
     </>
   );
 }

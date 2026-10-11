@@ -29,8 +29,8 @@ const iconMap = {
 
 export default function QuotableStats({
   stats,
-  title = "Triveni Cabs at a Glance",
-  source = "Source: Triveni Cabs Official Data",
+  title = "Triveni Cabs™ at a Glance",
+  source = "Source: Triveni Cabs™ Official Data",
   lastUpdated,
   variant = 'grid' // grid, horizontal, compact
 }) {
@@ -111,7 +111,7 @@ export default function QuotableStats({
           <p className="text-white/40 text-xs max-w-2xl mx-auto">
             <cite>
               Statistics based on verified booking data and customer reviews.
-              Triveni Cabs provides transparent, reliable taxi services across North India.
+              Triveni Cabs™ provides transparent, reliable taxi services across North India.
               Last updated: {new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}.
             </cite>
           </p>

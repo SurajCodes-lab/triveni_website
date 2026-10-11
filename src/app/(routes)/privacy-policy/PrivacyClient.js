@@ -58,7 +58,7 @@ export default function PrivacyClient() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
-      <section className="relative bg-slate-950 py-16 overflow-hidden">
+      <section className="relative bg-slate-950 py-10 sm:py-16 overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FACF2D] via-amber-400 to-orange-400" />
         <div className="absolute -top-16 right-[15%] w-64 h-64 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
@@ -86,7 +86,7 @@ export default function PrivacyClient() {
           <AnimatedSection className="mb-10">
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8">
               <p className="text-gray-700 leading-relaxed">
-                This Privacy Policy describes how <strong>Triveni Cabs</strong> (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;)
+                This Privacy Policy describes how <strong>Triveni Cabs™</strong> (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;)
                 collects, uses, and protects information when you use our website <strong>trivenicabs.in</strong> and
                 our taxi, car rental, and tour services operating across India. By using our services, you agree
                 to the collection and use of information in accordance with this policy.
@@ -302,7 +302,7 @@ export default function PrivacyClient() {
             </p>
 
             <div className="bg-gray-50 rounded-lg p-6 mt-6">
-              <h3 className="font-semibold text-gray-900 mb-4">Triveni Cabs</h3>
+              <h3 className="font-semibold text-gray-900 mb-4">Triveni Cabs™</h3>
 
               <div className="space-y-3">
                 <div className="flex items-center gap-3">

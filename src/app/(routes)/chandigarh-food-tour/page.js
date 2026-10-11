@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, Coffee, ArrowRight, Calendar, Utensils, IndianRupee } from '@/components/ui/icons';
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 
 export const revalidate = 3600;
 
@@ -9,9 +10,9 @@ export const metadata = {
   title: tightenTitle('Chandigarh Food Tour 2026 | Pal Dhaba, Sindhi Sweets, Sector 17 Cafes'),
   description: 'Complete Chandigarh food tour. Pal Dhaba kebabs, Sindhi Sweets jalebi, Chawla\'s Chicken, Hot Millions garlic toast, Brijwasi lassi, Kulcha Land, Sector 17 cafes.',
   keywords: 'chandigarh food tour, pal dhaba chandigarh, sindhi sweets chandigarh, chawla chicken, sector 17 cafes, best food in chandigarh, punjabi food chandigarh, where to eat chandigarh',
-  authors: [{ name: 'Triveni Cabs Editorial' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™ Editorial' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/chandigarh-food-tour' },
   openGraph: {
@@ -20,7 +21,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/chandigarh-food-tour',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg', width: 1200, height: 630, alt: 'Chandigarh Food Tour 2026' }],
   },
   twitter: {
@@ -131,7 +132,7 @@ export default function ChandigarhFoodTourPage() {
         </section>
 
         {/* 8 ICONIC SPOTS */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-orange-700 font-bold text-sm tracking-widest uppercase">The Big 8</span>
@@ -154,7 +155,7 @@ export default function ChandigarhFoodTourPage() {
         </section>
 
         {/* SECTOR-BY-SECTOR MAP */}
-        <section className="py-20 px-4 bg-orange-50">
+        <section className="py-12 sm:py-20 px-4 bg-orange-50">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-orange-700 font-bold text-sm tracking-widest uppercase">Sector-by-Sector</span>
@@ -175,8 +176,13 @@ export default function ChandigarhFoodTourPage() {
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Chandigarh" citySlug="chandigarh" />
+
+
         {/* FAQ */}
-        <section className="faq-section py-20 px-4">
+        <section className="faq-section py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Chandigarh Food FAQs</h2>
@@ -196,7 +202,7 @@ export default function ChandigarhFoodTourPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 px-4 bg-gradient-to-r from-orange-600 to-rose-600">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-r from-orange-600 to-rose-600">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-3xl md:text-4xl font-black mb-4">Tour Chandigarh&apos;s Best Food in One Day</h2>
             <p className="text-lg mb-8 opacity-90">Hire a cab + food-savvy driver to navigate sectors efficiently. Skip parking hassles. Cover 6+ iconic spots in one day.</p>

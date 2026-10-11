@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Home, Phone, Car, MapPin, ArrowRight, Search } from '@/components/ui/icons';
 
 export const metadata = {
-  title: 'Page Not Found | Triveni Cabs',
+  title: 'Page Not Found',
   description: 'The page you are looking for does not exist. Browse our car rental services, tour packages, and popular routes across India.',
   robots: 'noindex, follow',
 };
@@ -19,7 +19,7 @@ export default function NotFound() {
   const popularRoutes = [
     { name: 'Delhi to Agra', href: '/delhi-to-agra' },
     { name: 'Delhi to Jaipur', href: '/delhi-to-jaipur' },
-    { name: 'Delhi to Manali', href: '/delhi-to-manali' },
+    { name: 'Delhi to Manali', href: '/one-way-cab/delhi-to-manali' },
     { name: 'Delhi to Shimla', href: '/delhi-to-shimla' },
     { name: 'Delhi to Chandigarh', href: '/delhi-to-chandigarh' },
     { name: 'Jaipur to Udaipur', href: '/jaipur-to-udaipur' },

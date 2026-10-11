@@ -4,6 +4,7 @@
  */
 
 import { COMPANY_INFO, BASE_URL, SITE_CONFIG, AGGREGATE_RATING, PRICING, SERVICE_AREAS } from './constants';
+import { groupDigits } from '@/utilis/pricing';
 
 /**
  * Generate Speakable Schema for voice search optimization
@@ -80,7 +81,7 @@ export function generateBookingHowToSchema(context = {}) {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: `How to Book a ${serviceType === 'tour' ? 'Sightseeing Tour' : 'Cab'} with Triveni Cabs`,
-    description: `Complete step-by-step guide to book ${origin && destination ? `a taxi from ${origin} to ${destination}` : 'reliable cab service'} with Triveni Cabs. Easy booking, transparent pricing, verified drivers.`,
+    description: `Complete step-by-step guide to book ${origin && destination ? `a taxi from ${origin} to ${destination}` : 'reliable cab service'} with Triveni Cabs™. Easy booking, transparent pricing, verified drivers.`,
     image: `${BASE_URL}/images/how-to-book-cab.webp`,
     totalTime: 'PT5M',
     estimatedCost: {
@@ -211,10 +212,7 @@ export function generateEntityDefinitionSchema() {
       height: 60
     },
     sameAs: Object.values(COMPANY_INFO.social),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ...AGGREGATE_RATING
-    },
+    
     priceRange: '₹₹',
     currenciesAccepted: 'INR',
     paymentAccepted: 'Cash, UPI, Card, Bank Transfer',
@@ -276,10 +274,10 @@ export function generateQuotableStats(context = {}) {
       supportAvailability: '24/7'
     },
     pricing: {
-      sedanPerKm: `₹${PRICING.sedan.minPrice}-${PRICING.sedan.maxPrice}`,
-      suvPerKm: `₹${PRICING.suv.minPrice}-${PRICING.suv.maxPrice}`,
-      tempoPerKm: `₹${PRICING.tempoTraveller.minPrice}-${PRICING.tempoTraveller.maxPrice}`,
-      busPerKm: `₹${PRICING.bus.minPrice}-${PRICING.bus.maxPrice}`,
+      sedanPerKm: `₹${groupDigits(PRICING.sedan.minPrice)}-${PRICING.sedan.maxPrice}`,
+      suvPerKm: `₹${groupDigits(PRICING.suv.minPrice)}-${PRICING.suv.maxPrice}`,
+      tempoPerKm: `₹${groupDigits(PRICING.tempoTraveller.minPrice)}-${PRICING.tempoTraveller.maxPrice}`,
+      busPerKm: `₹${groupDigits(PRICING.bus.minPrice)}-${PRICING.bus.maxPrice}`,
       localMinimum: '₹1,500 (4 hrs/40 km)',
       airportStarting: '₹800'
     },
@@ -328,36 +326,36 @@ export function generateDirectAnswerContent(question, context = {}) {
   const answerTemplates = {
     // Route-related questions
     'cost': {
-      shortAnswer: `A cab from ${origin} to ${destination} costs ₹${price} onwards for a sedan.`,
-      fullAnswer: `The taxi fare from ${origin} to ${destination} starts at ₹${price} for a sedan (4-seater). SUV costs approximately ₹${Math.round(price * 1.3)} and Tempo Traveller around ₹${Math.round(price * 1.8)}. Price includes driver allowance, tolls, and all taxes.`,
-      source: `Triveni Cabs - Updated ${new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}`
+      shortAnswer: `A cab from ${origin} to ${destination} costs ₹${groupDigits(price)} onwards for a sedan.`,
+      fullAnswer: `The taxi fare from ${origin} to ${destination} starts at ₹${groupDigits(price)} for a sedan (4-seater). SUV costs approximately ₹${groupDigits(Math.round(price * 1.3))} and Tempo Traveller around ₹${groupDigits(Math.round(price * 1.8))}. Price includes driver allowance, tolls, and all taxes.`,
+      source: `Triveni Cabs™ - Updated ${new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}`
     },
     'distance': {
       shortAnswer: `The distance from ${origin} to ${destination} is approximately ${distance} km by road.`,
       fullAnswer: `${origin} to ${destination} distance is ${distance} km via the most common route. The journey takes approximately ${duration} by taxi, depending on traffic and road conditions.`,
-      source: 'Triveni Cabs Route Data'
+      source: 'Triveni Cabs™ Route Data'
     },
     'time': {
       shortAnswer: `It takes approximately ${duration} to travel from ${origin} to ${destination} by taxi.`,
       fullAnswer: `The journey from ${origin} to ${destination} typically takes ${duration} by car. Travel time may vary based on traffic, weather, and route chosen. Starting early morning (5-7 AM) often results in faster travel times.`,
-      source: 'Triveni Cabs Travel Time Estimates'
+      source: 'Triveni Cabs™ Travel Time Estimates'
     },
     'booking': {
-      shortAnswer: `Book a cab with Triveni Cabs by calling ${COMPANY_INFO.phone.display} or WhatsApp at ${COMPANY_INFO.phone.whatsapp}.`,
-      fullAnswer: `To book a taxi with Triveni Cabs: 1) Call ${COMPANY_INFO.phone.display}, 2) WhatsApp ${COMPANY_INFO.phone.whatsapp}, 3) Fill the online booking form at trivenicabs.in, or 4) Email ${COMPANY_INFO.email.bookings}. Booking takes less than 5 minutes with instant confirmation.`,
-      source: 'Triveni Cabs Booking'
+      shortAnswer: `Book a cab with Triveni Cabs™ by calling ${COMPANY_INFO.phone.display} or WhatsApp at ${COMPANY_INFO.phone.whatsapp}.`,
+      fullAnswer: `To book a taxi with Triveni Cabs™: 1) Call ${COMPANY_INFO.phone.display}, 2) WhatsApp ${COMPANY_INFO.phone.whatsapp}, 3) Fill the online booking form at trivenicabs.in, or 4) Email ${COMPANY_INFO.email.bookings}. Booking takes less than 5 minutes with instant confirmation.`,
+      source: 'Triveni Cabs™ Booking'
     },
     // Tour-related questions
     'tour_cost': {
-      shortAnswer: `The ${tourName} costs ₹${price} onwards per vehicle.`,
-      fullAnswer: `${tourName} starts at ₹${price}. This includes AC vehicle, experienced driver, fuel, parking, and tolls. Entry tickets are usually extra. The tour can be customized based on your preferences.`,
-      source: `Triveni Cabs Tours - ${city}`
+      shortAnswer: `The ${tourName} costs ₹${groupDigits(price)} onwards per vehicle.`,
+      fullAnswer: `${tourName} starts at ₹${groupDigits(price)}. This includes AC vehicle, experienced driver, fuel, parking, and tolls. Entry tickets are usually extra. The tour can be customized based on your preferences.`,
+      source: `Triveni Cabs™ Tours - ${city}`
     },
     // General questions
     'best_time': {
       shortAnswer: `The best time to visit ${city || destination} is October to March for pleasant weather.`,
       fullAnswer: `October to March offers the best weather for visiting ${city || destination}. Summer (April-June) can be hot but less crowded. Monsoon (July-September) has occasional rain but lush greenery. Each season has unique experiences to offer.`,
-      source: 'Triveni Cabs Travel Guide'
+      source: 'Triveni Cabs™ Travel Guide'
     }
   };
 
@@ -374,9 +372,9 @@ export function generateCitationBlocks(pageType, data = {}) {
   // Company authority block
   blocks.push({
     type: 'authority',
-    title: 'About Triveni Cabs',
-    content: `Triveni Cabs is a trusted taxi service provider operating across ${SERVICE_AREAS.length} cities in North India since ${COMPANY_INFO.foundingDate}. With ${AGGREGATE_RATING.reviewCount}+ customer reviews and a ${AGGREGATE_RATING.ratingValue}/5 rating, we specialize in outstation taxi, sightseeing tours, airport transfers, and corporate transportation.`,
-    citation: 'Source: Triveni Cabs Official'
+    title: 'About Triveni Cabs™',
+    content: `Triveni Cabs™ is a trusted taxi service provider operating across ${SERVICE_AREAS.length} cities in North India since ${COMPANY_INFO.foundingDate}. With ${AGGREGATE_RATING.reviewCount}+ customer reviews and a ${AGGREGATE_RATING.ratingValue}/5 rating, we specialize in outstation taxi, sightseeing tours, airport transfers, and corporate transportation.`,
+    citation: 'Source: Triveni Cabs™ Official'
   });
 
   // Page-specific blocks
@@ -384,8 +382,8 @@ export function generateCitationBlocks(pageType, data = {}) {
     blocks.push({
       type: 'route_info',
       title: `${data.origin} to ${data.destination} Taxi Information`,
-      content: `Distance: ${data.distance} km | Duration: ${data.duration} | Starting fare: ₹${data.price} (Sedan) | Available 24/7 | One-way and round-trip options`,
-      citation: 'Source: Triveni Cabs Route Database'
+      content: `Distance: ${data.distance} km | Duration: ${data.duration} | Starting fare: ₹${groupDigits(data.price)} (Sedan) | Available 24/7 | One-way and round-trip options`,
+      citation: 'Source: Triveni Cabs™ Route Database'
     });
   }
 
@@ -393,8 +391,8 @@ export function generateCitationBlocks(pageType, data = {}) {
     blocks.push({
       type: 'tour_info',
       title: data.tourName,
-      content: `Duration: ${data.duration} | Starting price: ₹${data.price} | Includes: AC vehicle, experienced driver, all permits | Customizable itinerary available`,
-      citation: 'Source: Triveni Cabs Tour Packages'
+      content: `Duration: ${data.duration} | Starting price: ₹${groupDigits(data.price)} | Includes: AC vehicle, experienced driver, all permits | Customizable itinerary available`,
+      citation: 'Source: Triveni Cabs™ Tour Packages'
     });
   }
 
@@ -402,8 +400,8 @@ export function generateCitationBlocks(pageType, data = {}) {
   blocks.push({
     type: 'pricing',
     title: 'Transparent Pricing Policy',
-    content: `All Triveni Cabs fares include: base fare, driver allowance (trips >300km), toll charges, state permits, and applicable taxes. No hidden charges. Parking fees at destinations, if any, are additional.`,
-    citation: 'Source: Triveni Cabs Pricing Policy'
+    content: `All Triveni Cabs™ fares include: base fare, driver allowance (trips >300km), toll charges, state permits, and applicable taxes. No hidden charges. Parking fees at destinations, if any, are additional.`,
+    citation: 'Source: Triveni Cabs™ Pricing Policy'
   });
 
   return blocks;
@@ -466,7 +464,7 @@ export function generateVoiceOptimizedFAQs(pageType, data = {}) {
     route: [
       {
         question: `How much is a taxi from ${origin} to ${destination}?`,
-        answer: `A taxi from ${origin} to ${destination} costs ${price} rupees onwards for a sedan with Triveni Cabs. SUVs start at ${Math.round(price * 1.3)} rupees. All fares include driver allowance and tolls.`,
+        answer: `A taxi from ${origin} to ${destination} costs ${price} rupees onwards for a sedan with Triveni Cabs™. SUVs start at ${Math.round(price * 1.3)} rupees. All fares include driver allowance and tolls.`,
         voiceAnswer: `A taxi from ${origin} to ${destination} starts at ${price} rupees for a sedan. This includes driver allowance, tolls, and taxes with no hidden charges.`
       },
       {
@@ -483,7 +481,7 @@ export function generateVoiceOptimizedFAQs(pageType, data = {}) {
     tour: [
       {
         question: `How much does ${tourName} cost?`,
-        answer: `${tourName} starts at ${price} rupees per vehicle. This includes AC car, driver, fuel, parking, and toll charges with Triveni Cabs.`,
+        answer: `${tourName} starts at ${price} rupees per vehicle. This includes AC car, driver, fuel, parking, and toll charges with Triveni Cabs™.`,
         voiceAnswer: `${tourName} starts at ${price} rupees. This includes an AC vehicle, experienced driver, fuel, parking, and toll charges.`
       },
       {
@@ -500,8 +498,8 @@ export function generateVoiceOptimizedFAQs(pageType, data = {}) {
       },
       {
         question: `Is airport pickup available 24/7 in ${city}?`,
-        answer: `Yes, Triveni Cabs provides 24/7 airport pickup and drop service in ${city}. Drivers track your flight for timely arrival.`,
-        voiceAnswer: `Yes, Triveni Cabs offers round-the-clock airport pickup in ${city}. Your driver will track your flight arrival time.`
+        answer: `Yes, Triveni Cabs™ provides 24/7 airport pickup and drop service in ${city}. Drivers track your flight for timely arrival.`,
+        voiceAnswer: `Yes, Triveni Cabs™ offers round-the-clock airport pickup in ${city}. Your driver will track your flight arrival time.`
       }
     ],
     city: [
@@ -527,15 +525,15 @@ export function generatePeopleAlsoAsk(pageType, data = {}) {
     route: [
       {
         question: `Is ${origin} to ${destination} taxi safe at night?`,
-        answer: `Yes, Triveni Cabs provides safe night travel from ${origin} to ${destination}. All drivers are police-verified with GPS-tracked vehicles and 24/7 monitoring. SOS support is available throughout the journey.`
+        answer: `Yes, Triveni Cabs™ provides safe night travel from ${origin} to ${destination}. All drivers are police-verified with GPS-tracked vehicles and 24/7 monitoring. SOS support is available throughout the journey.`
       },
       {
         question: `What is the cheapest way to travel from ${origin} to ${destination}?`,
-        answer: `The most affordable option is a shared sedan taxi at ₹${price}. For groups, a tempo traveller (₹${Math.round(price * 1.8)} for 12 people) offers the lowest per-person cost. Booking in advance ensures best rates.`
+        answer: `The most affordable option is a shared sedan taxi at ₹${groupDigits(price)}. For groups, a tempo traveller (₹${groupDigits(Math.round(price * 1.8))} for 12 people) offers the lowest per-person cost. Booking in advance ensures best rates.`
       },
       {
         question: `Can I get a one-way taxi from ${origin} to ${destination}?`,
-        answer: `Yes, Triveni Cabs offers one-way taxi from ${origin} to ${destination} starting at ₹${price}. You only pay for the distance traveled with no return fare charges. Available in sedan, SUV, and tempo traveller.`
+        answer: `Yes, Triveni Cabs™ offers one-way taxi from ${origin} to ${destination} starting at ₹${groupDigits(price)}. You only pay for the distance traveled with no return fare charges. Available in sedan, SUV, and tempo traveller.`
       },
       {
         question: `What is the best route from ${origin} to ${destination}?`,
@@ -549,17 +547,17 @@ export function generatePeopleAlsoAsk(pageType, data = {}) {
       },
       {
         question: `Can I customize ${tourName}?`,
-        answer: `Absolutely. Triveni Cabs offers fully customizable tours. You can add or remove attractions, extend duration, include meal stops, or combine with nearby destinations. Call +91 7668570551 for a custom itinerary and quote.`
+        answer: `Absolutely. Triveni Cabs™ offers fully customizable tours. You can add or remove attractions, extend duration, include meal stops, or combine with nearby destinations. Call +91 7668570551 for a custom itinerary and quote.`
       }
     ],
     city: [
       {
         question: `Which is the best taxi service in ${city}?`,
-        answer: `Triveni Cabs is among the top-rated taxi services in ${city} with a 4.8/5 customer rating. We offer 24/7 availability, transparent pricing from ₹11/km, verified drivers, and GPS-tracked vehicles across all vehicle types.`
+        answer: `Triveni Cabs™ is among the top-rated taxi services in ${city} with a 4.8/5 customer rating. We offer 24/7 availability, transparent pricing from ₹11/km, verified drivers, and GPS-tracked vehicles across all vehicle types.`
       },
       {
         question: `How to book a cheap taxi in ${city}?`,
-        answer: `Book affordable taxis in ${city} with Triveni Cabs starting at ₹11/km for sedans. Call +91 7668570551, WhatsApp, or book online for instant confirmation. Advance booking and round trips offer additional savings.`
+        answer: `Book affordable taxis in ${city} with Triveni Cabs™ starting at ₹11/km for sedans. Call +91 7668570551, WhatsApp, or book online for instant confirmation. Advance booking and round trips offer additional savings.`
       }
     ]
   };
@@ -613,10 +611,6 @@ export function generateServiceAreaBusinessSchema() {
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       opens: '00:00',
       closes: '23:59'
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ...AGGREGATE_RATING
     }
   };
 }
@@ -630,17 +624,17 @@ export function generateDefinitionContent(term, context = {}) {
     'outstation_taxi': {
       term: 'Outstation Taxi',
       definition: 'An outstation taxi is a cab booked for intercity travel, typically covering distances over 100 km one way. It includes a dedicated driver, AC vehicle, and all-inclusive pricing covering fuel, tolls, and permits.',
-      example: 'For example, a Delhi to Agra outstation taxi covers 230 km and costs from ₹2,999 with Triveni Cabs.'
+      example: 'For example, a Delhi to Agra outstation taxi covers 230 km and costs from ₹2,999 with Triveni Cabs™.'
     },
     'tempo_traveller': {
       term: 'Tempo Traveller',
       definition: 'A tempo traveller is a large passenger vehicle with 12 to 26 seats, commonly used in India for group travel, pilgrimages, and family trips. It features pushback seats, AC, and ample luggage space.',
-      example: 'Triveni Cabs offers tempo travellers from ₹23/km with professional drivers for outstation and local trips.'
+      example: 'Triveni Cabs™ offers tempo travellers from ₹23/km with professional drivers for outstation and local trips.'
     },
     'airport_transfer': {
       term: 'Airport Transfer Service',
       definition: 'An airport transfer is a pre-booked taxi service for pickup or drop-off at an airport. It includes flight tracking, meet-and-greet, luggage assistance, and fixed pricing with no surge charges.',
-      example: 'Triveni Cabs provides 24/7 airport transfers across 50+ cities starting from ₹800 per trip.'
+      example: 'Triveni Cabs™ provides 24/7 airport transfers across 50+ cities starting from ₹800 per trip.'
     },
     'local_sightseeing': {
       term: 'Local Sightseeing Tour',
@@ -650,12 +644,12 @@ export function generateDefinitionContent(term, context = {}) {
     'wedding_car': {
       term: 'Wedding Car Rental',
       definition: 'Wedding car rental provides decorated luxury vehicles for wedding ceremonies, including bridal entry, baraat procession, and guest transportation. Vehicles include BMW, Mercedes, Audi, and vintage cars with uniformed chauffeurs.',
-      example: 'Triveni Cabs offers wedding car packages from ₹4,999/day with customizable decoration options.'
+      example: 'Triveni Cabs™ offers wedding car packages from ₹4,999/day with customizable decoration options.'
     },
     'corporate_cab': {
       term: 'Corporate Cab Service',
       definition: 'A corporate cab service provides dedicated transportation for businesses, including employee shuttles, executive car rentals, airport transfers for clients, and event transportation. Monthly contracts offer 15-25% savings.',
-      example: 'Triveni Cabs corporate packages start at ₹11/km with dedicated fleet management and GPS tracking.'
+      example: 'Triveni Cabs™ corporate packages start at ₹11/km with dedicated fleet management and GPS tracking.'
     }
   };
 
@@ -681,7 +675,7 @@ export function generatePricingTableSchema(vehicleData = []) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Table',
-    about: 'Triveni Cabs Vehicle Rates',
+    about: 'Triveni Cabs™ Vehicle Rates',
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: data.length,
@@ -691,7 +685,7 @@ export function generatePricingTableSchema(vehicleData = []) {
         item: {
           '@type': 'Offer',
           name: item.vehicle,
-          description: `${item.seats} seater, ₹${item.pricePerKm}/km, min ${item.minKm} km/day`,
+          description: `${item.seats} seater, ₹${groupDigits(item.pricePerKm)}/km, min ${item.minKm} km/day`,
           price: item.pricePerKm,
           priceCurrency: 'INR',
           priceSpecification: {
@@ -778,10 +772,6 @@ export function generateLocalServiceEventSchema(city, serviceType = 'taxi') {
         priceCurrency: 'INR',
         unitText: serviceType === 'wedding' ? 'per day' : 'per kilometer'
       }
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ...AGGREGATE_RATING
     }
   };
 }

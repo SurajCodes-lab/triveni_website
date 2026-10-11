@@ -7,6 +7,38 @@ import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
 import { motion } from 'framer-motion';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
+/**
+ * Turn an office's human-readable timings into a schema.org opening-hours
+ * string, or null when it cannot be read confidently.
+ *
+ * "24/7 Available", "24/7 Open", "Open all day"  ->  Mo-Su 00:00-23:59
+ * "9:00 AM to 5:00 PM", "10 AM - 8 PM"           ->  Mo-Su 09:00-17:00
+ * anything else                                  ->  null (key omitted)
+ */
+function scheduleFor(timings) {
+  const t = String(timings || '').trim();
+  if (!t) return null;
+  if (/24\s*[/x×]\s*7|all day|round the clock/i.test(t)) return 'Mo-Su 00:00-23:59';
+
+  const m = t.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?\s*(?:to|-|–)\s*(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?/i);
+  if (!m) return null;
+  const to24 = (h, min, mer) => {
+    let hh = Number(h);
+    if (!Number.isFinite(hh)) return null;
+    const M = (mer || '').toUpperCase();
+    if (M === 'PM' && hh < 12) hh += 12;
+    if (M === 'AM' && hh === 12) hh = 0;
+    if (hh > 23) return null;
+    return String(hh).padStart(2, '0') + ':' + String(Number(min || 0)).padStart(2, '0');
+  };
+  // A missing meridiem on the opening time takes the closing one, which is how
+  // "10 AM - 8 PM" and "9 to 5" are meant to read.
+  const open = to24(m[1], m[2], m[3] || m[6]);
+  const close = to24(m[4], m[5], m[6] || m[3]);
+  if (!open || !close) return null;
+  return 'Mo-Su ' + open + '-' + close;
+}
+
 const OfficeCard = ({ office, cityName, isOrigin = false, index }) => {
   const handleCall = useCallback(() => {
     trackPhoneCall('office_locations');
@@ -29,7 +61,10 @@ const OfficeCard = ({ office, cityName, isOrigin = false, index }) => {
     "@type": "LocalBusiness",
     "name": office.name,
     "description": `Taxi service office in ${cityName} for cab booking, outstation trips and local tours.`,
-    "telephone": `+91${office.contact.phone}`,
+    // Matches COMPANY_INFO.phone.primary. Concatenating without the separator
+    // produced a second telephone format in the markup (343 nodes), which is
+    // exactly the inconsistency a local listing is matched on.
+    "telephone": `+91-${office.contact.phone}`,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": office.address,
@@ -37,7 +72,12 @@ const OfficeCard = ({ office, cityName, isOrigin = false, index }) => {
       "postalCode": office.pincode,
       "addressCountry": "IN"
     },
-    "openingHours": office.timings === "24/7 Open" ? "Mo-Su 00:00-23:59" : office.timings,
+    // openingHours must be a schema.org opening-hours string. The previous
+    // ternary only recognised the exact text "24/7 Open", so every other value
+    // in the office data went out verbatim: 343 nodes shipped
+    // "openingHours": "24/7 Available", which is free text, not a time spec.
+    // Anything unrecognised is now omitted rather than emitted invalid.
+    ...(scheduleFor(office.timings) ? { "openingHours": scheduleFor(office.timings) } : {}),
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": office.coordinates?.lat,
@@ -272,8 +312,6 @@ const OfficeLocations = ({ originCity, destinationCity, offices }) => {
           <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-2xl overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 left-0 w-40 h-40 bg-[#FACF2D] rounded-full blur-3xl" />
-              <div className="absolute bottom-0 right-0 w-60 h-60 bg-[#FACF2D] rounded-full blur-3xl" />
             </div>
 
             <div className="relative p-6 md:p-8">

@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 import { Phone, MapPin, Shield, Users, Star, ChevronRight, ChevronDown, CheckCircle2, Calendar, ArrowRight, IndianRupee, Tent, Flame, Music, HelpCircle, Zap, UsersRound, Route } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { filterClientLinks } from '@/lib/seo/client-route-exists';
 
 /* Verified destination hero photos (public/images/) */
 const HERO_IMAGES = {
@@ -446,7 +447,7 @@ export default function FriendsTripClient({ data }) {
             ))}
           </div>
 
-          <h2 className="font-display-serif mb-10 mt-16 text-2xl font-bold sm:text-3xl md:text-4xl">Group Safety</h2>
+          <h2 className="font-display-serif mb-10 mt-10 sm:mt-16 text-2xl font-bold sm:text-3xl md:text-4xl">Group Safety</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {data.safetyFeatures.map((feature, i) => (
               <div key={i} className="flex items-start gap-4 rounded-2xl border border-amber-900/10 bg-white p-5 shadow-sm">
@@ -541,7 +542,10 @@ export default function FriendsTripClient({ data }) {
                 { href: '/tour-package', label: 'Tour Packages from Delhi' },
                 { href: '/outstation-cabs', label: 'Outstation Cab Service' },
               ];
-              return links.map((link, i) => (
+              // Week 48: the synthesised links only resolve for a destination that
+              // has those pages — Spiti Valley, Jibhi, Tirthan Valley do not
+              // (/spiti-valley-travel-guide, /sightseeing/jibhi …). Drop the rest.
+              return filterClientLinks(links).map((link, i) => (
                 <Link key={i} href={link.href} className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-colors hover:border-[#FACF2D]/30 hover:bg-white/10">
                   <ArrowRight className="h-4 w-4 flex-shrink-0 text-[#FACF2D] transition-transform group-hover:translate-x-1" />
                   <span className="text-sm font-medium text-orange-50/85 transition-colors group-hover:text-white">{link.label}</span>

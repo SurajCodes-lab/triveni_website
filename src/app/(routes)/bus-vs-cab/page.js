@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("Bus vs Cab — Honest Route-by-Route Comparison");
-  const description = "Bus vs cab comparison for North India routes — cost, time, comfort. Decide and book. Triveni Cabs 7668570551.";
+  const description = "Bus vs cab comparison for North India routes — cost, time, comfort. Decide and book. Triveni Cabs™ 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

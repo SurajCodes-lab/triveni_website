@@ -8,22 +8,22 @@ export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle("About Us — India's Most Trusted Cab Service Since 2015"),
-  description: "Triveni Cabs — 500+ vehicles, 50+ cities, 10,000+ happy customers. Safe, reliable travel across India with transparent pricing & 24/7 support.",
+  description: "Triveni Cabs™ — 500+ vehicles, 50+ cities, 10,000+ happy customers. Safe, reliable travel across India with transparent pricing & 24/7 support.",
   keywords: "Triveni Cabs about, Pankaj Singh Gaur, cab service founder, India travel company, trusted cab service, reliable taxi India, professional drivers, customer focused travel, transparent pricing cabs, safe travel India, premium cab service, 24/7 support taxi, airport transfer India, outstation cab booking, taxi company India, car rental company, travel agency India, transportation service",
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: "https://www.trivenicabs.in/about",
   },
   openGraph: {
-    title: "About Us | Triveni Cabs - India's Most Trusted Cab Service",
-    description: "Discover Triveni Cabs - 500+ premium vehicles, 50+ cities, 10,000+ happy customers. Safe, reliable, and affordable travel across India with transparent pricing and 24/7 support.",
+    title: "About Us | Triveni Cabs™ - India's Most Trusted Cab Service",
+    description: "Discover Triveni Cabs™ - 500+ premium vehicles, 50+ cities, 10,000+ happy customers. Safe, reliable, and affordable travel across India with transparent pricing and 24/7 support.",
     type: "website",
     locale: "en_IN",
     url: "https://www.trivenicabs.in/about",
-    siteName: "Triveni Cabs",
+    siteName: "Triveni Cabs™",
     images: [
       {
         url: "/images/about_page_hero_section.jpg",
@@ -35,7 +35,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us | Triveni Cabs - India's Most Trusted Cab Service",
+    title: "About Us | Triveni Cabs™ - India's Most Trusted Cab Service",
     description: "500+ vehicles, 50+ cities, 10,000+ happy customers. Safe, reliable, and affordable travel across India with 24/7 support.",
     creator: '@TriveniCabs',
     site: '@TriveniCabs',
@@ -114,17 +114,11 @@ export default function AboutPage() {
       }
     ],
     "sameAs": [
-      "https://twitter.com/TriveniCabs",
-      "https://www.facebook.com/TriveniCabs",
-      "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo"
+      "https://twitter.com/trivenicabs",
+      "https://www.facebook.com/trivenicabs",
+      "https://www.instagram.com/cabstriveni"
     ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount('about')),
-      "bestRating": "5",
-      "worstRating": "1"
-    },
+    
     "areaServed": {
       "@type": "Country",
       "name": "India"
@@ -165,8 +159,8 @@ export default function AboutPage() {
   // for E-E-A-T, with Speakable voice-search hooks tied to the hero H1 + lead.
   const articleSchema = getArticleSchema({
     slug: 'about',
-    headline: "About Triveni Cabs — India's Most Trusted Cab Service",
-    description: "The story behind Triveni Cabs: founder Pankaj Singh Gaur, 500+ vehicles, 50+ cities, and 10,000+ happy customers across India.",
+    headline: "About Triveni Cabs™ — India's Most Trusted Cab Service",
+    description: "The story behind Triveni Cabs™: founder Pankaj Singh Gaur, 500+ vehicles, 50+ cities, and 10,000+ happy customers across India.",
     image: '/images/about_page_hero_section.jpg',
     datePublished: '2015-01-01',
     authorName: 'founder',

@@ -6,7 +6,7 @@ export const religiousTours = [
     subtitle: "Uttarakhand",
     tagline: "Your Partner in Faith & Comfort",
     description: "The Char Dham Yatra is one of India's most sacred pilgrimages, believed to wash away sins and lead the soul toward salvation. Located high in the Garhwal Himalayas of Uttarakhand, the Char Dham includes Yamunotri, Gangotri, Kedarnath, and Badrinath — each temple dedicated to a different deity and divine energy.",
-    spiritualSignificance: "Embark on this 10- to 12-day spiritual expedition with Triveni Cabs, where every mile combines devotion, comfort, and safety.",
+    spiritualSignificance: "Embark on this 10- to 12-day spiritual expedition with Triveni Cabs™, where every mile combines devotion, comfort, and safety.",
 
     duration: "10 – 12 Days",
     route: "Delhi → Haridwar → Yamunotri → Gangotri → Kedarnath → Badrinath → Delhi",
@@ -112,7 +112,7 @@ export const religiousTours = [
     subtitle: "Uttarakhand",
     tagline: "Experience Peace, Purity & the Power of the Ganga",
     description: "The twin spiritual towns of Haridwar and Rishikesh are where the holy River Ganga first enters the plains from the Himalayas. These sacred destinations have been attracting saints, yogis, and seekers for thousands of years.",
-    spiritualSignificance: "With Triveni Cabs, embark on a serene 2-day journey to witness the divine Ganga Aarti at Har Ki Pauri, explore ancient temples, and embrace peace through yoga and meditation in Rishikesh — the 'Yoga Capital of the World.'",
+    spiritualSignificance: "With Triveni Cabs™, embark on a serene 2-day journey to witness the divine Ganga Aarti at Har Ki Pauri, explore ancient temples, and embrace peace through yoga and meditation in Rishikesh — the 'Yoga Capital of the World.'",
 
     duration: "2 Days",
     route: "Delhi → Haridwar → Rishikesh → Delhi",
@@ -242,7 +242,7 @@ export const religiousTours = [
     subtitle: "Katra, Jammu",
     tagline: "Travel with Faith, Comfort & Devotion",
     description: "The Vaishno Devi Yatra is among the most sacred pilgrimages in India, dedicated to Maa Vaishno Devi, who resides in a holy cave nestled in the Trikuta Hills of Jammu. Every year, millions of devotees make this spiritual journey to seek the blessings of the Divine Mother, symbolizing strength, devotion, and protection.",
-    spiritualSignificance: "With Triveni Cabs, you can experience this sacred yatra with peace of mind, comfortable travel, and personalized assistance at every step — from pickup at your doorstep to darshan arrangements in Katra.",
+    spiritualSignificance: "With Triveni Cabs™, you can experience this sacred yatra with peace of mind, comfortable travel, and personalized assistance at every step — from pickup at your doorstep to darshan arrangements in Katra.",
 
     duration: "2 – 3 Days",
     route: "Delhi → Jammu → Katra → Vaishno Devi → Delhi",
@@ -378,7 +378,7 @@ export const religiousTours = [
     subtitle: "Varanasi, Uttar Pradesh",
     tagline: "Explore the Divine City of Lord Shiva",
     description: "Kashi (Varanasi), the city of Lord Shiva, is one of the world's oldest living cities and a symbol of India's eternal spirituality. The sacred Kashi Vishwanath Temple, one of the 12 Jyotirlingas, stands majestically on the banks of the Ganga and attracts devotees from all over the world.",
-    spiritualSignificance: "With Triveni Cabs, experience the holy ghats, divine rituals, and ancient heritage of Kashi with complete comfort and guided assistance.",
+    spiritualSignificance: "With Triveni Cabs™, experience the holy ghats, divine rituals, and ancient heritage of Kashi with complete comfort and guided assistance.",
 
     duration: "2 – 3 Days",
     route: "Delhi → Varanasi → Sarnath → Delhi",
@@ -521,7 +521,7 @@ export const religiousTours = [
     subtitle: "Uttar Pradesh",
     tagline: "Relive the Eternal Leelas of Lord Krishna",
     description: "Walk through the divine paths where Lord Krishna spent His childhood — from Mathura, His birthplace, to the sacred groves of Vrindavan and Barsana. Every temple, every chant here radiates devotion and love.",
-    spiritualSignificance: "With Triveni Cabs, experience the land of Lord Krishna's eternal pastimes, visit the holiest temples, and immerse yourself in the divine atmosphere of Braj Bhoomi.",
+    spiritualSignificance: "With Triveni Cabs™, experience the land of Lord Krishna's eternal pastimes, visit the holiest temples, and immerse yourself in the divine atmosphere of Braj Bhoomi.",
 
     duration: "1 – 2 Days",
     route: "Delhi → Mathura → Vrindavan → Barsana → Govardhan → Delhi",
@@ -657,7 +657,7 @@ export const religiousTours = [
     subtitle: "Ayodhya, Uttar Pradesh",
     tagline: "Witness the Glory of Shri Ram Janmabhoomi",
     description: "The Ayodhya Ram Mandir Yatra is one of the most trending pilgrimages in India today. Following the grand inauguration of the magnificent Shri Ram Janmabhoomi Temple, millions of devotees from across the country are visiting Ayodhya to seek the blessings of Lord Ram at His birthplace.",
-    spiritualSignificance: "With Triveni Cabs, travel from Delhi to Ayodhya in complete comfort. Our experienced drivers ensure a safe and devotional journey to the sacred city where Lord Ram was born, combining faith with modern travel convenience.",
+    spiritualSignificance: "With Triveni Cabs™, travel from Delhi to Ayodhya in complete comfort. Our experienced drivers ensure a safe and devotional journey to the sacred city where Lord Ram was born, combining faith with modern travel convenience.",
 
     duration: "5 – 6 Days",
     route: "Delhi → Lucknow → Ayodhya → Prayagraj → Delhi",
@@ -765,7 +765,7 @@ export const religiousTours = [
     subtitle: "Jammu & Kashmir",
     tagline: "Journey to the Sacred Cave of Lord Shiva",
     description: "The Amarnath Yatra is one of the holiest Hindu pilgrimages, dedicated to Lord Shiva. Devotees trek to the sacred Amarnath Cave at 3,888 meters altitude in the Himalayas to witness the naturally formed ice Shivling — a divine manifestation believed to wax and wane with the moon.",
-    spiritualSignificance: "With Triveni Cabs, travel from Delhi or Jammu to the base camp in complete comfort. Our experienced mountain drivers and comprehensive support ensure your focus remains on devotion while we handle every travel detail.",
+    spiritualSignificance: "With Triveni Cabs™, travel from Delhi or Jammu to the base camp in complete comfort. Our experienced mountain drivers and comprehensive support ensure your focus remains on devotion while we handle every travel detail.",
 
     duration: "7 – 8 Days",
     route: "Delhi → Jammu → Pahalgam/Baltal → Amarnath Cave → Jammu → Delhi",
@@ -877,7 +877,7 @@ export const religiousTours = [
     subtitle: "Mathura-Vrindavan, Uttar Pradesh",
     tagline: "Walk the Divine Path of Krishna's Leelas",
     description: "The Braj 84 Kos Parikrama is an ancient pilgrimage circuit covering 84 kos (approximately 252 km) around the sacred Braj region — the land of Lord Krishna's childhood pastimes. This yatra encompasses Mathura, Vrindavan, Govardhan, Barsana, Nandgaon, Gokul, and numerous other holy sites.",
-    spiritualSignificance: "With Triveni Cabs, complete the sacred Braj 84 Kos Parikrama in comfort. Our drivers know every temple, every kund, and every sacred spot in the Braj circuit, ensuring you don't miss any holy site on this divine journey.",
+    spiritualSignificance: "With Triveni Cabs™, complete the sacred Braj 84 Kos Parikrama in comfort. Our drivers know every temple, every kund, and every sacred spot in the Braj circuit, ensuring you don't miss any holy site on this divine journey.",
 
     duration: "3 – 4 Days",
     route: "Mathura → Vrindavan → Govardhan → Barsana → Nandgaon → Gokul → Mathura",
@@ -986,7 +986,7 @@ export const religiousTours = [
     subtitle: "Pan-India",
     tagline: "Seek Blessings at All 12 Sacred Shiva Shrines",
     description: "The 12 Jyotirlinga Tour is the ultimate pilgrimage for Lord Shiva devotees, covering all twelve sacred Jyotirlinga temples spread across India — from Somnath in Gujarat to Kedarnath in Uttarakhand, from Rameshwaram in Tamil Nadu to Vaidyanath in Jharkhand. Each Jyotirlinga is a manifestation of Lord Shiva's infinite light.",
-    spiritualSignificance: "With Triveni Cabs, embark on this once-in-a-lifetime spiritual odyssey visiting all 12 Jyotirlingas. Our pan-India network of experienced drivers, comfortable vehicles, and 24/7 support makes this epic journey safe, comfortable, and deeply spiritual.",
+    spiritualSignificance: "With Triveni Cabs™, embark on this once-in-a-lifetime spiritual odyssey visiting all 12 Jyotirlingas. Our pan-India network of experienced drivers, comfortable vehicles, and 24/7 support makes this epic journey safe, comfortable, and deeply spiritual.",
 
     duration: "15 – 20 Days",
     route: "Delhi → Somnath → Nageshwar → Trimbakeshwar → Bhimashankar → Grishneshwar → Aundha Nagnath → Mahakaleshwar → Omkareshwar → Kedarnath → Kashi Vishwanath → Vaidyanath → Rameshwaram → Delhi",
@@ -1107,7 +1107,7 @@ export const religiousTours = [
     subtitle: "Himachal Pradesh",
     tagline: "Seek Blessings of the Nine Sacred Devis",
     description: "The Nau Devi Tour covers nine sacred Devi (Goddess) temples in the beautiful hills of Himachal Pradesh. This powerful Shakti pilgrimage takes devotees through stunning mountain landscapes to seek blessings at Chintpurni, Jwalamukhi, Kangra Devi, Chamunda Devi, Naina Devi, and other revered Shakti Peeths.",
-    spiritualSignificance: "With Triveni Cabs, travel through the scenic Himachal hills visiting all nine Devi temples in comfort. Our hill-trained drivers navigate the winding mountain roads safely while you focus on devotion and divine blessings.",
+    spiritualSignificance: "With Triveni Cabs™, travel through the scenic Himachal hills visiting all nine Devi temples in comfort. Our hill-trained drivers navigate the winding mountain roads safely while you focus on devotion and divine blessings.",
 
     duration: "5 – 6 Days",
     route: "Delhi → Chandigarh → Naina Devi → Chintpurni → Jwalamukhi → Kangra Devi → Chamunda Devi → Bajreshwari → Brajeshwari → Delhi",
@@ -1215,7 +1215,7 @@ export const religiousTours = [
     subtitle: "Amritsar, Punjab",
     tagline: "Experience the Divine Serenity of Harmandir Sahib",
     description: "The Golden Temple (Harmandir Sahib) in Amritsar is the holiest shrine of Sikhism and one of the most visited spiritual sites in the world. Its stunning gold-plated architecture reflected in the sacred Amrit Sarovar (Pool of Nectar) creates an unforgettable sight of divine beauty.",
-    spiritualSignificance: "With Triveni Cabs, experience the spiritual grandeur of the Golden Temple along with the patriotic fervor of Wagah Border. Our comfortable transport ensures you can focus entirely on the divine atmosphere and langar (community meal) experience.",
+    spiritualSignificance: "With Triveni Cabs™, experience the spiritual grandeur of the Golden Temple along with the patriotic fervor of Wagah Border. Our comfortable transport ensures you can focus entirely on the divine atmosphere and langar (community meal) experience.",
 
     duration: "2 – 3 Days",
     route: "Delhi → Amritsar → Wagah Border → Delhi",
@@ -1321,7 +1321,7 @@ export const religiousTours = [
     subtitle: "Uttarakhand",
     tagline: "Trek to the Highest Gurudwara in the World",
     description: "Hemkund Sahib is one of the most revered Sikh pilgrimage sites, located at an altitude of 4,329 meters in the Chamoli district of Uttarakhand. The sacred Gurudwara sits beside a glacial lake surrounded by seven snow-capped peaks. Guru Gobind Singh Ji is believed to have meditated here in a previous life.",
-    spiritualSignificance: "With Triveni Cabs, travel from Delhi through scenic Haridwar and Joshimath to Govindghat — the gateway to Hemkund Sahib. Our mountain-experienced drivers ensure safe travel through the dramatic Himalayan roads.",
+    spiritualSignificance: "With Triveni Cabs™, travel from Delhi through scenic Haridwar and Joshimath to Govindghat — the gateway to Hemkund Sahib. Our mountain-experienced drivers ensure safe travel through the dramatic Himalayan roads.",
 
     duration: "6 – 7 Days",
     route: "Delhi → Haridwar → Joshimath → Govindghat → Ghangaria → Hemkund Sahib → Delhi",
@@ -1432,7 +1432,7 @@ export const religiousTours = [
     subtitle: "Uttarakhand",
     tagline: "Visit the Five Holy River Confluences of the Ganga",
     description: "The Panch Prayag (Five Confluences) Tour covers the five sacred points in Uttarakhand where tributaries merge to form the holy River Ganga — Vishnuprayag, Nandprayag, Karnaprayag, Rudraprayag, and Devprayag. Each confluence holds immense spiritual significance and is associated with different deities and legends.",
-    spiritualSignificance: "With Triveni Cabs, journey through the stunning Garhwal Himalayas visiting all five sacred confluences. Our experienced mountain drivers know every turn of these roads, ensuring you experience the spiritual and natural beauty of each prayag in complete safety.",
+    spiritualSignificance: "With Triveni Cabs™, journey through the stunning Garhwal Himalayas visiting all five sacred confluences. Our experienced mountain drivers know every turn of these roads, ensuring you experience the spiritual and natural beauty of each prayag in complete safety.",
 
     duration: "7 – 8 Days",
     route: "Delhi → Haridwar → Devprayag → Rudraprayag → Karnaprayag → Nandprayag → Vishnuprayag → Badrinath → Delhi",

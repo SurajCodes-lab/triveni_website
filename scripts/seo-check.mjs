@@ -31,7 +31,12 @@ import { bookingCanonicalRedirects } from '../src/lib/seo/booking-canonical-redi
 const REDIRECTED = new Set(bookingCanonicalRedirects.map((r) => r.source));
 
 const ROOT = '.next/server/app';
-const BRAND = 'Triveni Cabs';
+// The brand carries its trademark mark since the TM application was filed, and
+// the layout template appends '| Triveni Cabs™'. BRAND has to include the mark:
+// otherwise `title.endsWith(SUFFIX)` never matches, the suffix is left on the
+// content string, and every page on the site reports both a doubled brand and
+// an inflated title length.
+const BRAND = 'Triveni Cabs™';
 const SUFFIX = ` | ${BRAND}`;
 
 /** Content chars visible before Google truncates the rendered title (~60 incl. brand). */

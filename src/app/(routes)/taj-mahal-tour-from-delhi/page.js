@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCircle2, ArrowRight, IndianRupee, Route, Camera } from '@/components/ui/icons';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { groupDigits } from '@/utilis/pricing';
 
 export const revalidate = 3600;
 
@@ -8,9 +9,9 @@ export const metadata = {
   title: tightenTitle('Taj Mahal Tour from Delhi by Car | ₹4,500 | 2026'),
   description: 'Private car tour from Delhi to Taj Mahal. Yamuna Expressway, 3-3.5 hrs. Sedan ₹4,500, SUV ₹6,500. Multiple itinerary options. Call 7668570551.',
   keywords: 'taj mahal tour from delhi, delhi to taj mahal by car, private car taj mahal delhi, delhi to agra expressway tour, taj mahal private tour',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/taj-mahal-tour-from-delhi' },
   openGraph: {
@@ -19,7 +20,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/taj-mahal-tour-from-delhi',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Taj Mahal Tour from Delhi by Private Car' }],
   },
   twitter: {
@@ -53,7 +54,7 @@ export default function TajMahalTourFromDelhiPage() {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
     },
     "offers": { "@type": "AggregateOffer", "lowPrice": "4500", "highPrice": "12000", "priceCurrency": "INR" },
   };
@@ -202,7 +203,7 @@ export default function TajMahalTourFromDelhiPage() {
         </section>
 
         {/* === ROUTE MAP: Vertical Step Journey === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Your Journey</div>
@@ -244,7 +245,7 @@ export default function TajMahalTourFromDelhiPage() {
         </section>
 
         {/* === ITINERARY OPTIONS: Three Gradient Cards === */}
-        <section className="py-20 px-4 bg-gradient-to-br from-amber-50 via-stone-50 to-yellow-50/30">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-amber-50 via-stone-50 to-yellow-50/30">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Choose Your Experience</div>
@@ -284,7 +285,7 @@ export default function TajMahalTourFromDelhiPage() {
         </section>
 
         {/* === OVERVIEW === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-wider uppercase">About This Tour</div>
             <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-8 leading-tight">
@@ -323,7 +324,7 @@ export default function TajMahalTourFromDelhiPage() {
         </section>
 
         {/* === VEHICLE OPTIONS: Neumorphic Cards === */}
-        <section className="py-20 px-4 bg-stone-100">
+        <section className="py-12 sm:py-20 px-4 bg-stone-100">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Choose Your Ride</div>
@@ -340,7 +341,7 @@ export default function TajMahalTourFromDelhiPage() {
                   )}
                   <div className={`text-sm font-semibold mb-1 ${v.recommended ? 'text-stone-800' : 'text-stone-400'}`}>{v.type}</div>
                   <div className={`text-xs mb-4 ${v.recommended ? 'text-stone-700' : 'text-stone-500'}`}>{v.model}</div>
-                  <div className={`text-4xl font-black mb-1 ${v.recommended ? 'text-stone-900' : 'text-stone-900'}`}>₹{v.price}</div>
+                  <div className={`text-4xl font-black mb-1 ${v.recommended ? 'text-stone-900' : 'text-stone-900'}`}>₹{groupDigits(v.price)}</div>
                   <div className={`text-sm mb-5 ${v.recommended ? 'text-stone-700' : 'text-stone-500'}`}>{v.passengers} passengers</div>
                   <div className="space-y-2 mb-6">
                     {v.features.map((f, j) => (
@@ -360,7 +361,7 @@ export default function TajMahalTourFromDelhiPage() {
         </section>
 
         {/* === FAQs: Alternating Side Cards === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Got Questions?</div>
@@ -388,7 +389,7 @@ export default function TajMahalTourFromDelhiPage() {
         </section>
 
         {/* === INTERLINKS === */}
-        <section className="py-20 px-4 bg-stone-100/50">
+        <section className="py-12 sm:py-20 px-4 bg-stone-100/50">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-900 text-center mb-10">
               Related <span className="text-transparent bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text">Agra Tours</span>
@@ -418,7 +419,7 @@ export default function TajMahalTourFromDelhiPage() {
         </section>
 
         {/* === CTA: Road-Themed Banner === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900" />
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cline x1=\'50\' y1=\'0\' x2=\'50\' y2=\'100\' stroke=\'%23fbbf24\' stroke-width=\'2\' stroke-dasharray=\'8,12\'/%3E%3C/svg%3E")' }} />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/10 rounded-full blur-[120px]" />

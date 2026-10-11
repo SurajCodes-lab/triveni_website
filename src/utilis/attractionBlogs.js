@@ -161,14 +161,14 @@ export const attractionBlogPosts = [
     attractionData: {
       location: "Agra, Uttar Pradesh, India",
       entryFee: {
-        indian: "₹50",
-        foreign: "₹1,050",
-        saarc: "₹540",
+        indian: "₹50 (+₹200 for the main mausoleum, optional)",
+        foreign: "₹1,100 (+₹200 for the main mausoleum, optional)",
+        saarc: "₹540 (+₹200 for the main mausoleum, optional)",
         children: "Free (below 15 years)"
       },
       timings: {
-        open: "Sunrise (6:00 AM)",
-        close: "Sunset (6:30 PM)",
+        open: "30 minutes before sunrise",
+        close: "30 minutes before sunset",
         closedOn: "Friday"
       },
       bestTimeToVisit: {
@@ -190,7 +190,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Agra/Agra_Hero_section.jpg",
     date: "2026-01-20",
     readTime: "12 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
     metaTitle: "Taj Mahal Complete Guide 2026 - History, Timings, Entry Fees",
@@ -245,7 +245,7 @@ export const attractionBlogPosts = [
       <h3>Ticket Prices (2026)</h3>
       <ul>
         <li><strong>Indian Citizens:</strong> ₹50 per person</li>
-        <li><strong>Foreign Tourists:</strong> ₹1,050 per person</li>
+        <li><strong>Foreign Tourists:</strong> ₹1,100 per person</li>
         <li><strong>SAARC/BIMSTEC Citizens:</strong> ₹540 per person</li>
         <li><strong>Children:</strong> Free (below 15 years)</li>
       </ul>
@@ -406,7 +406,7 @@ export const attractionBlogPosts = [
       <p>Yes, you can book tickets online at the official ASI website. However, our <a href="/same-day-agra-tour-from-delhi" class="text-blue-600 hover:underline">tour packages</a> include skip-the-line tickets, saving you time and hassle.</p>
 
       <h3>What is the entry fee for Taj Mahal?</h3>
-      <p>₹50 for Indian citizens, ₹1,050 for foreign tourists, and free for children below 15 years.</p>
+      <p>₹50 for Indian citizens, ₹1,100 for foreign tourists, and free for children below 15 years.</p>
 
       <h3>Is photography allowed in Taj Mahal?</h3>
       <p>Photography is allowed in outdoor areas and gardens, but NOT inside the main mausoleum chamber where the tombs are located.</p>
@@ -619,7 +619,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Delhi/Delhi_hero_section.jpg",
     date: "2026-01-20",
     readTime: "11 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
     metaTitle: "Red Fort Delhi Timings & Entry Fee (2026) | Closed Monday",
@@ -964,7 +964,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Jaipur/amber_fort.jpg",
     date: "2026-01-20",
     readTime: "12 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
     metaTitle: "Amber Fort Jaipur Timings & Entry Fee (2026) | Open 8 AM",
@@ -975,7 +975,7 @@ export const attractionBlogPosts = [
       { question: "What are Amer Fort timings?", answer: "Amer Fort (also spelled Amber Fort) is open every day from 8:00 AM to 5:30 PM, with last entry at 5:00 PM. It has no weekly closing day. The evening light-and-sound show is a separate ticket and starts around 7:00 PM, with the exact time shifting by season." },
       { question: "What is the Amer Fort ticket price?", answer: "Amer Fort ticket price is ₹100 for Indian visitors and ₹500 for foreign tourists. With an audio guide it is ₹200 for Indians and ₹550 for foreigners. Children below 15 enter free. A Jaipur composite ticket (₹300 Indians, ₹1,000 foreigners) covers Amer Fort, Hawa Mahal, Jantar Mantar and Nahargarh Fort for two days." },
       { question: "What is the best time to visit Amer Fort?", answer: "Arrive between 8 and 10 AM. The morning light is best for photographs, the Sheesh Mahal is far less crowded, and elephant rides operate only in the early hours. October to March is the most comfortable season. Allow 2.5 to 3 hours for a complete visit." },
-      { question: "How far is Amer Fort from Jaipur city?", answer: "Amer Fort is 11 km from Jaipur city centre, about a 30-minute drive via the Amer Road. It is 25 km from Jaipur International Airport and 11 km from Jaipur Railway Station. A Triveni Cabs sedan covers Amer, Jaigarh and Nahargarh in one day — call 7668570551." }
+      { question: "How far is Amer Fort from Jaipur city?", answer: "Amer Fort is 11 km from Jaipur city centre, about a 30-minute drive via the Amer Road. It is 25 km from Jaipur International Airport and 11 km from Jaipur Railway Station. A Triveni Cabs™ sedan covers Amer, Jaigarh and Nahargarh in one day — call 7668570551." }
     ],
 
     content: `
@@ -1085,7 +1085,7 @@ export const attractionBlogPosts = [
       <p>Arrive between 8 and 10 AM. The morning light is best for photographs, the Sheesh Mahal is far less crowded, and elephant rides operate only in the early hours. October to March is the most comfortable season. Allow 2.5 to 3 hours for a complete visit.</p>
 
       <h3>How far is Amer Fort from Jaipur city?</h3>
-      <p>Amer Fort is 11 km from Jaipur city centre, about a 30-minute drive via the Amer Road. It is 25 km from Jaipur International Airport and 11 km from Jaipur Railway Station. A Triveni Cabs sedan covers Amer, Jaigarh and Nahargarh in one day — call 7668570551.</p>
+      <p>Amer Fort is 11 km from Jaipur city centre, about a 30-minute drive via the Amer Road. It is 25 km from Jaipur International Airport and 11 km from Jaipur Railway Station. A Triveni Cabs™ sedan covers Amer, Jaigarh and Nahargarh in one day — call 7668570551.</p>
 
       <div class="bg-gradient-to-r from-pink-600 to-orange-600 text-white p-8 rounded-xl my-8">
         <h3 class="text-2xl font-bold mb-4">🎯 Ready to Explore Amber Fort?</h3>
@@ -1272,7 +1272,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Amritsar, Punjab", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Early morning or evening" }, howToReach: { fromDelhi: "450 km by road", nearestAirport: "Amritsar Airport (11 km)", nearestRailway: "Amritsar Junction (2 km)" }, timeNeeded: "3-4 hours", coordinates: { latitude: 31.6200, longitude: 74.8765 } },
-    image: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg", date: "2026-01-20", readTime: "11 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Amritsar/Amristar_hero_section.jpg", date: "2026-01-20", readTime: "11 min", author: "Triveni Cabs™ Travel Team", featured: true, views: 0,
     metaTitle: "Golden Temple Amritsar Timings, Free Entry & Langar (2026)", metaDescription: "Golden Temple open 24 hours daily, free entry, free langar round the clock. Dress code, best time, langar & how to reach. 2 km from Amritsar Junction.",
     quickAnswer: "The Golden Temple (Harmandir Sahib), Amritsar is open 24 hours a day, every day, with free entry for all visitors. The free community langar (kitchen) also runs round the clock. Cover your head, remove footwear, and visit early morning or late evening for the most peaceful darshan—it is 2 km from Amritsar Junction.",
     content: `
@@ -1616,7 +1616,7 @@ export const attractionBlogPosts = [
     relatedBlogs: [{ title: "Red Fort Delhi Complete Guide", slug: "red-fort-delhi-complete-guide-2026" }],
     primaryCTA: { text: "Book Delhi Tour", url: "/sightseeing/delhi-full-day-city-tour", description: "Qutub Minar & 8+ attractions", price: "₹2,500", features: ["Hotel Pickup", "AC Car", "Expert Guide"] },
     attractionData: { location: "Mehrauli, New Delhi", entryFee: { indian: "₹35", foreign: "₹550", children: "Free (below 15)" }, timings: { open: "7:00 AM", close: "5:00 PM", closedOn: "Open all days" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (7-10 AM)" }, howToReach: { fromNewDelhi: "15 km", nearestAirport: "IGI Airport (12 km)", nearestRailway: "New Delhi Station (15 km)", nearestMetro: "Qutub Minar Metro (Yellow Line)" }, timeNeeded: "1.5-2 hours", coordinates: { latitude: 28.5244, longitude: 77.1855 } },
-    image: "/images/sightseeing/Delhi/Outub_Minar.jpg", date: "2026-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Delhi/Outub_Minar.jpg", date: "2026-01-20", readTime: "10 min", author: "Triveni Cabs™ Travel Team", featured: true, views: 0,
     metaTitle: "Qutub Minar Delhi Timings & Entry Fee (2026) | Open 7 AM", metaDescription: "Qutub Minar open daily 7 AM–5 PM. Entry ₹35 Indians, ₹550 foreigners, under-15 free. Nearest metro Qutub Minar (Yellow Line). History, tips & Delhi tours.",
     quickAnswer: "Qutub Minar, Delhi is open daily from 7:00 AM to 5:00 PM, with no weekly closing day. Entry costs ₹35 for Indians and ₹550 for foreign tourists; children under 15 enter free. The nearest metro is Qutub Minar (Yellow Line), and mornings are the best time to beat the crowds.",
     content: `
@@ -1926,7 +1926,7 @@ export const attractionBlogPosts = [
     id: 106,
     slug: "hawa-mahal-jaipur-complete-guide-2026",
     title: "Hawa Mahal Timings & Entry Fee (2026) | Palace of Winds",
-    excerpt: "Hawa Mahal is open daily 9 AM–5 PM; entry ₹50 (Indians) / ₹200. Visit 9–11 AM for the best pink-facade photos. 953 windows, history & Jaipur city tours.",
+    excerpt: "Hawa Mahal is open daily 9 AM–5 PM; entry ₹100 (Indians) / ₹600 since the 1 Jan 2026 revision. Visit 9–11 AM for the best pink-facade photos. 953 windows, history & Jaipur city tours.",
 
     city: "jaipur",
     attractionType: "palace", // Uses FortPalaceLayout
@@ -2084,12 +2084,12 @@ export const attractionBlogPosts = [
       "wheelchair accessible",
       "photography allowed"
     ],
-    attractionData: { location: "Hawa Mahal Rd, Badi Choupad, Jaipur", entryFee: { indian: "₹50", foreign: "₹200", children: "Free (below 15)" }, timings: { open: "9:00 AM", close: "5:00 PM", closedOn: "Open all days" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) for best photos" }, howToReach: { fromJaipur: "City center", nearestAirport: "Jaipur Airport (12 km)", nearestRailway: "Jaipur Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 26.9239, longitude: 75.8267 } },
-    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg", date: "2026-01-20", readTime: "9 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
-    metaTitle: "Hawa Mahal Jaipur Timings & Entry Fee (2026) | Open 9 AM", metaDescription: "Hawa Mahal open daily 9 AM–5 PM. Entry ₹50 Indians, ₹200 foreigners. Best photos 9–11 AM. 953 windows, history, how to reach & Jaipur city tours.",
-    quickAnswer: "Hawa Mahal (Palace of Winds), Jaipur is open daily from 9:00 AM to 5:00 PM. Entry costs ₹50 for Indians and ₹200 for foreign tourists. Arrive between 9 and 11 AM for the best photographs of the pink facade lit by the morning sun—it sits right in Jaipur's city centre near Badi Chaupar.",
+    attractionData: { location: "Hawa Mahal Rd, Badi Choupad, Jaipur", entryFee: { indian: "₹100", foreign: "₹600", children: "Free (below 15)" }, timings: { open: "9:00 AM", close: "5:00 PM", closedOn: "Open all days" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) for best photos" }, howToReach: { fromJaipur: "City center", nearestAirport: "Jaipur Airport (12 km)", nearestRailway: "Jaipur Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 26.9239, longitude: 75.8267 } },
+    image: "/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg", date: "2026-01-20", readTime: "9 min", author: "Triveni Cabs™ Travel Team", featured: true, views: 0,
+    metaTitle: "Hawa Mahal Jaipur Timings & Entry Fee (2026) | Open 9 AM", metaDescription: "Hawa Mahal open daily 9 AM–5 PM. Entry ₹100 Indians, ₹600 foreigners. Best photos 9–11 AM. 953 windows, history, how to reach & Jaipur city tours.",
+    quickAnswer: "Hawa Mahal (Palace of Winds), Jaipur is open daily from 9:00 AM to 5:00 PM. Entry costs ₹100 for Indians and ₹600 for foreign tourists under the Rajasthan fee revision effective 1 January 2026; confirm the current rate at the counter before you travel. Arrive between 9 and 11 AM for the best photographs of the pink facade lit by the morning sun—it sits right in Jaipur's city centre near Badi Chaupar.",
     faqs: [
-      { question: "What is the Hawa Mahal ticket price?", answer: "Hawa Mahal ticket price is ₹50 for Indian tourists and ₹200 for foreign tourists. Children below 15 years enter free (Indian nationals). A composite ticket covering multiple monuments is available for ₹300 (Indian) / ₹1,000 (Foreign)." },
+      { question: "What is the Hawa Mahal ticket price?", answer: "Hawa Mahal ticket price is ₹100 for Indian tourists and ₹600 for foreign tourists, following the Rajasthan monument fee revision effective 1 January 2026. Children below 15 years enter free (Indian nationals). A composite ticket covering multiple monuments is available for ₹300 (Indian) / ₹1,000 (Foreign)." },
       { question: "What are Hawa Mahal timings?", answer: "Hawa Mahal is open from 9:00 AM to 5:00 PM on all days. There is no weekly off. Best time to visit is early morning (9-11 AM) or late afternoon (4-5 PM) for optimal lighting and fewer crowds." },
       { question: "What is the best time of day to visit Hawa Mahal?", answer: "Early morning between 9:00-11:00 AM is the best time to visit. The soft morning sunlight creates perfect photography conditions, and the palace is less crowded. Late afternoon (4-5 PM) is also good for golden hour photography." },
       { question: "How long does it take to visit Hawa Mahal?", answer: "A complete visit to Hawa Mahal takes approximately 45 minutes to 1 hour. This includes time to explore the museum, climb to the top floor, take photos, and enjoy the views." },
@@ -2141,8 +2141,8 @@ export const attractionBlogPosts = [
 
       <h3>Entry Fees:</h3>
       <ul class="list-disc list-inside mb-4">
-        <li><strong>Indian Tourists:</strong> ₹50 per person</li>
-        <li><strong>Foreign Tourists:</strong> ₹200 per person</li>
+        <li><strong>Indian Tourists:</strong> ₹100 per person</li>
+        <li><strong>Foreign Tourists:</strong> ₹600 per person</li>
         <li><strong>Children:</strong> Free for children below 15 years (Indian nationals)</li>
         <li><strong>Photography:</strong> Included in entry fee (commercial photography requires special permission)</li>
         <li><strong>Composite Ticket:</strong> Available for ₹300 (Indian) / ₹1,000 (Foreign) covering Hawa Mahal, Amber Fort, Jantar Mantar, Nahargarh Fort, and more - valid for 2 days</li>
@@ -2289,7 +2289,7 @@ export const attractionBlogPosts = [
 
       <ul class="list-disc list-inside mb-4">
         <li><strong><a href="/blog/city-palace-jaipur-complete-guide-2026" class="text-blue-600 hover:underline">City Palace</a> (500 meters, 5-minute walk):</strong> Magnificent royal residence with museums. Entry: ₹75 (Indian) / ₹300 (Foreign). Must-visit!</li>
-        <li><strong>Jantar Mantar (700 meters, 8-minute walk):</strong> UNESCO World Heritage astronomical observatory. Entry: ₹50 (Indian) / ₹200 (Foreign)</li>
+        <li><strong>Jantar Mantar (700 meters, 8-minute walk):</strong> UNESCO World Heritage astronomical observatory. Entry: ₹100 (Indian) / ₹600 (Foreign) since 1 Jan 2026</li>
         <li><strong>Johari Bazaar (300 meters):</strong> Famous jewelry market, perfect for shopping traditional Rajasthani jewelry</li>
         <li><strong>Bapu Bazaar (1 km):</strong> Textiles, handicrafts, and souvenirs at reasonable prices</li>
         <li><strong>Tripolia Bazaar (600 meters):</strong> Lac bangles, brassware, and traditional items</li>
@@ -2341,7 +2341,7 @@ export const attractionBlogPosts = [
       <h2>Frequently Asked Questions (FAQs)</h2>
 
       <h3>1. What is the Hawa Mahal ticket price?</h3>
-      <p>Hawa Mahal ticket price is ₹50 for Indian tourists and ₹200 for foreign tourists. Children below 15 years enter free (Indian nationals). A composite ticket covering multiple monuments is available for ₹300 (Indian) / ₹1,000 (Foreign).</p>
+      <p>Hawa Mahal ticket price is ₹100 for Indian tourists and ₹600 for foreign tourists, following the Rajasthan monument fee revision effective 1 January 2026. Children below 15 years enter free (Indian nationals). A composite ticket covering multiple monuments is available for ₹300 (Indian) / ₹1,000 (Foreign).</p>
 
       <h3>2. What are Hawa Mahal timings?</h3>
       <p>Hawa Mahal is open from 9:00 AM to 5:00 PM on all days. There is no weekly off. Best time to visit is early morning (9-11 AM) or late afternoon (4-5 PM) for optimal lighting and fewer crowds.</p>
@@ -2445,7 +2445,7 @@ export const attractionBlogPosts = [
     relatedBlogs: [{ title: "Taj Mahal Complete Guide", slug: "taj-mahal-complete-guide-2026" }],
     primaryCTA: { text: "Book Agra Tour", url: "/same-day-agra-tour-from-delhi", description: "Taj Mahal + Agra Fort", price: "₹3,500", features: ["Hotel Pickup", "Skip-the-line", "Expert Guide"] },
     attractionData: { location: "Agra, Uttar Pradesh", entryFee: { indian: "₹40", foreign: "₹550", children: "Free (below 15)" }, timings: { open: "6:00 AM", close: "6:00 PM", closedOn: "Friday" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (6-9 AM)" }, howToReach: { fromDelhi: "233 km", nearestAirport: "Agra Airport (13 km)", nearestRailway: "Agra Cantt (6 km)" }, timeNeeded: "2 hours", coordinates: { latitude: 27.1795, longitude: 78.0211 } },
-    image: "/images/sightseeing/Agra/agra_fort.jpg", date: "2026-01-20", readTime: "10 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Agra/agra_fort.jpg", date: "2026-01-20", readTime: "10 min", author: "Triveni Cabs™ Travel Team", featured: true, views: 0,
     metaTitle: "Agra Fort Guide 2026 - Timings, Fees & Tours", metaDescription: "Agra Fort complete guide: UNESCO site, Mughal fortress with Taj Mahal views. Book Agra day tours!",
     content: `
       <div class="blog-intro">
@@ -2843,7 +2843,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Rajpath, New Delhi", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Evening (5-8 PM) when illuminated" }, howToReach: { fromNewDelhi: "3 km", nearestAirport: "IGI Airport (15 km)", nearestRailway: "New Delhi Station (3 km)", nearestMetro: "Central Secretariat Metro" }, timeNeeded: "1 hour", coordinates: { latitude: 28.6129, longitude: 77.2295 } },
-    image: "/images/sightseeing/Delhi/India_Gate.jpg", date: "2026-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Delhi/India_Gate.jpg", date: "2026-01-20", readTime: "8 min", author: "Triveni Cabs™ Travel Team", featured: true, views: 0,
     metaTitle: "India Gate Delhi Timings & Entry (2026) | Open 24/7, Free", metaDescription: "India Gate is open 24 hours daily with free entry. Best visited 5–8 PM when illuminated. Nearest metro Central Secretariat. Boat rides, street food & Delhi tours.",
     quickAnswer: "India Gate, Delhi is open 24 hours a day, all week, and entry is free for everyone. The war memorial and the eternal flame look their best in the evening, roughly 5 PM to 8 PM, when the arch is illuminated. The nearest metro is Central Secretariat, about 3 km from New Delhi station.",
     faqs: [
@@ -2852,7 +2852,7 @@ export const attractionBlogPosts = [
       { question: "What is India Gate opening time?", answer: "There is no fixed opening time at India Gate because the memorial stays open 24 hours. Early morning between 6 AM and 8 AM is the quietest slot for photographs, and the evening from 5 PM onwards is the liveliest, once the arch is lit." },
       { question: "Is there an entry fee for India Gate?", answer: "No. Entry to India Gate is free for Indian and foreign visitors alike, and there is no ticket for the lawns or for the National War Memorial beside it. You only pay for parking, boating at the nearby ponds, and street food." },
       { question: "How much time do you need at India Gate?", answer: "About one hour is enough to walk up to the arch, see the eternal flame at the National War Memorial, and stroll the lawns. Most Delhi city tours pair India Gate with Rashtrapati Bhavan and Parliament House on the same drive along Kartavya Path." },
-      { question: "Which is the nearest metro station to India Gate?", answer: "Central Secretariat is the nearest metro station to India Gate, on the Yellow and Violet lines. India Gate is roughly 3 km from New Delhi Railway Station and 15 km from IGI Airport. A Triveni Cabs sedan from anywhere in Delhi starts at Rs 11/km — call 7668570551." }
+      { question: "Which is the nearest metro station to India Gate?", answer: "Central Secretariat is the nearest metro station to India Gate, on the Yellow and Violet lines. India Gate is roughly 3 km from New Delhi Railway Station and 15 km from IGI Airport. A Triveni Cabs™ sedan from anywhere in Delhi starts at Rs 11/km — call 7668570551." }
     ],
     content: `
       <div class="blog-intro">
@@ -3045,7 +3045,7 @@ export const attractionBlogPosts = [
       <p>About one hour is enough to walk up to the arch, see the eternal flame at the National War Memorial, and stroll the lawns. Most Delhi city tours pair India Gate with Rashtrapati Bhavan and Parliament House on the same drive along Kartavya Path.</p>
 
       <h3>Which is the nearest metro station to India Gate?</h3>
-      <p>Central Secretariat is the nearest metro station to India Gate, on the Yellow and Violet lines. India Gate is roughly 3 km from New Delhi Railway Station and 15 km from IGI Airport. A Triveni Cabs sedan from anywhere in Delhi starts at Rs 11/km — call 7668570551.</p>
+      <p>Central Secretariat is the nearest metro station to India Gate, on the Yellow and Violet lines. India Gate is roughly 3 km from New Delhi Railway Station and 15 km from IGI Airport. A Triveni Cabs™ sedan from anywhere in Delhi starts at Rs 11/km — call 7668570551.</p>
 
       <h3>Is there parking at India Gate?</h3>
       <p>Limited street parking is available nearby. It's recommended to use metro or hire a cab, especially on busy evenings and weekends.</p>
@@ -3109,7 +3109,7 @@ export const attractionBlogPosts = [
     relatedBlogs: [],
     primaryCTA: { text: "Book Delhi Tour", url: "/sightseeing/delhi-full-day-city-tour", description: "Lotus Temple & Delhi attractions", price: "₹2,500", features: ["Hotel Pickup", "AC Car", "Expert Guide"] },
     attractionData: { location: "Lotus Temple Rd, Bahapur, New Delhi", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "9:00 AM", close: "5:30 PM", closedOn: "Monday" }, bestTimeToVisit: { season: "October to March", timeOfDay: "Morning (9-11 AM) or evening (4-5:30 PM)" }, howToReach: { fromNewDelhi: "10 km", nearestAirport: "IGI Airport (15 km)", nearestRailway: "Hazrat Nizamuddin (8 km)", nearestMetro: "Kalkaji Mandir Metro" }, timeNeeded: "45 min - 1 hour", coordinates: { latitude: 28.5535, longitude: 77.2588 } },
-    image: "/images/sightseeing/Delhi/Lotus Temple.jpg", date: "2026-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: true, views: 0,
+    image: "/images/sightseeing/Delhi/Lotus Temple.jpg", date: "2026-01-20", readTime: "8 min", author: "Triveni Cabs™ Travel Team", featured: true, views: 0,
     metaTitle: "Lotus Temple Delhi Timings & Free Entry (2026) | Closed Mon", metaDescription: "Lotus Temple open 9 AM–7 PM (9 AM–5:30 PM winter), closed Mondays, free entry. Nearest metro Kalkaji Mandir. Best time, dress code & visit tips inside.",
     quickAnswer: "Lotus Temple (Bahai House of Worship) is open 9:00 AM to 7:00 PM in summer and 9:00 AM to 5:30 PM in winter, and stays closed every Monday. Entry is completely free for all visitors. The nearest metro is Kalkaji Mandir (Violet/Magenta Line); early morning or sunset is the best time to visit.",
     faqs: [
@@ -3448,7 +3448,7 @@ export const attractionBlogPosts = [
       "photography allowed"
     ],
     attractionData: { location: "Apollo Bandar, Colaba, Mumbai", entryFee: { indian: "Free", foreign: "Free", children: "Free" }, timings: { open: "24 hours", close: "24 hours", closedOn: "Never" }, bestTimeToVisit: { season: "November to February", timeOfDay: "Evening (5-7 PM) for sunset" }, howToReach: { fromMumbaiCentral: "10 km", nearestAirport: "Mumbai Airport (30 km)", nearestRailway: "CST Station (3 km)" }, timeNeeded: "1 hour", coordinates: { latitude: 18.9220, longitude: 72.8347 } },
-    image: "/images/spots/gateway.webp", date: "2026-01-20", readTime: "8 min", author: "Triveni Cabs Travel Team", featured: false, views: 0,
+    image: "/images/spots/gateway.webp", date: "2026-01-20", readTime: "8 min", author: "Triveni Cabs™ Travel Team", featured: false, views: 0,
     metaTitle: "Gateway of India Mumbai Guide 2026 - Timings & Tours", metaDescription: "Gateway of India Mumbai: iconic monument, Elephanta Caves ferry, sunset views, colonial architecture!",
     content: `
       <div class="blog-intro">
@@ -3784,7 +3784,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Jaipur/city_palace.jpg",
     date: "2026-01-20",
     readTime: "12 min",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -4259,7 +4259,7 @@ export const attractionBlogPosts = [
     image: "/images/packages/rajasthan.webp",
     date: "2026-01-20",
     readTime: "13 min",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -4722,7 +4722,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Chittorgarh/chittogarh_hero_section.jpg",
     date: "2026-01-20",
     readTime: "14 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -5287,7 +5287,7 @@ export const attractionBlogPosts = [
     image: "/images/packages/rajasthan.webp",
     date: "2026-01-20",
     readTime: "13 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -5855,7 +5855,7 @@ export const attractionBlogPosts = [
     image: "/images/packages/rajasthan.webp",
     date: "2026-01-20",
     readTime: "12 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -5926,7 +5926,7 @@ export const attractionBlogPosts = [
       <h3>Entry Fees</h3>
       <ul>
         <li><strong>Indian Nationals:</strong> ₹70 per person</li>
-        <li><strong>Foreign Tourists:</strong> ₹200 per person</li>
+        <li><strong>Foreign Tourists:</strong> ₹600 per person</li>
         <li><strong>Children:</strong> Below 10 years - Free</li>
         <li><strong>Camera Fee:</strong> ₹50 extra (still cameras allowed outside palace)</li>
         <li><strong>Audio Guide:</strong> ₹200 (available in multiple languages)</li>
@@ -6438,7 +6438,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Delhi/Humayun's_Tomb.jpg",
     date: "2026-01-20",
     readTime: "11 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -6923,7 +6923,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Fatehpur_Sikri/Fatehpur_Sikri_hero_section.jpg",
     date: "2026-01-20",
     readTime: "12 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -7382,7 +7382,7 @@ export const attractionBlogPosts = [
 
     date: "2026-01-20",
     readTime: "12 min",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: false,
     views: 0,
 
@@ -7659,7 +7659,7 @@ export const attractionBlogPosts = [
     id: 119,
     slug: "nahargarh-fort-jaipur-complete-guide-2026",
     title: "Nahargarh Fort Timings & Entry Fee (2026) | Best Sunset Point",
-    excerpt: "Nahargarh Fort is open daily 10 AM–5:30 PM (till ~9 PM peak season), entry ₹50/₹200. Jaipur's best sunset point—go 4–6 PM. Madhavendra Palace, cafes & how to reach.",
+    excerpt: "Nahargarh Fort is open daily 10 AM–5:30 PM (till ~9 PM peak season), entry ₹100/₹600 since 1 Jan 2026. Jaipur's best sunset point—go 4–6 PM. Madhavendra Palace, cafes & how to reach.",
 
     category: "Attractions",
     tags: ["Attractions", "Jaipur", "Forts", "Sunset Views", "Rajasthan", "Romance"],
@@ -7745,8 +7745,8 @@ export const attractionBlogPosts = [
     attractionData: {
       location: "Aravalli Hills, Jaipur, Rajasthan",
       entryFee: {
-        indian: "₹50",
-        foreign: "₹200",
+        indian: "₹100",
+        foreign: "₹600",
         camera: "₹30 (video: ₹70)"
       },
       timings: {
@@ -7775,16 +7775,16 @@ export const attractionBlogPosts = [
 
     date: "2026-01-20",
     readTime: "12 min",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: false,
     views: 0,
 
     metaTitle: "Nahargarh Fort Jaipur Timings & Entry Fee (2026) | Sunset",
-    metaDescription: "Nahargarh Fort open daily 10 AM–5:30 PM (₹50 Indians, ₹200 foreigners). Jaipur's best sunset point—visit 4–6 PM. Rooftop cafes, night views & how to reach.",
-    quickAnswer: "Nahargarh Fort, Jaipur is open daily from 10:00 AM to 5:30 PM (extended to about 9:00 PM in peak season). Entry costs ₹50 for Indians and ₹200 for foreign tourists. It is the city's best sunset point—arrive by 4–6 PM—and sits roughly 6 km from central Jaipur.",
+    metaDescription: "Nahargarh Fort open daily 10 AM–5:30 PM (₹100 Indians, ₹600 foreigners). Jaipur's best sunset point—visit 4–6 PM. Rooftop cafes, night views & how to reach.",
+    quickAnswer: "Nahargarh Fort, Jaipur is open daily from 10:00 AM to 5:30 PM (extended to about 9:00 PM in peak season). Entry costs ₹100 for Indians and ₹600 for foreign tourists. It is the city's best sunset point—arrive by 4–6 PM—and sits roughly 6 km from central Jaipur.",
 
     faqs: [
-      { question: "What is the Nahargarh Fort ticket price?", answer: "Nahargarh Fort ticket price is ₹50 for Indian visitors and ₹200 for foreign tourists. A still camera is ₹30 and video is ₹70. The Jaipur composite ticket (₹300 Indians, ₹1,000 foreigners) also covers Nahargarh and works out cheaper if you are seeing three or more monuments." },
+      { question: "What is the Nahargarh Fort ticket price?", answer: "Nahargarh Fort ticket price is ₹100 for Indian visitors and ₹600 for foreign tourists, following the Rajasthan monument fee revision effective 1 January 2026. A still camera is ₹30 and video is ₹70. The Jaipur composite ticket (₹300 Indians, ₹1,000 foreigners) also covers Nahargarh and works out cheaper if you are seeing three or more monuments." },
       { question: "What are Nahargarh Fort timings?", answer: "Nahargarh Fort is open every day from 10:00 AM to 5:30 PM, extended to about 9:00 PM in peak season (October-March) for night views over Jaipur. There is no weekly closing day. The rooftop cafes inside keep their own hours, usually later than the fort itself." },
       { question: "What is the best time to visit Nahargarh Fort?", answer: "The best time is during sunset hours (4:00-6:30 PM), especially between October-March when the weather is pleasant and extended timings are available." },
       { question: "How far is Nahargarh Fort from Jaipur city?", answer: "Nahargarh Fort is just 6 km from Jaipur city center, reachable in 20-25 minutes via the scenic Nahargarh Fort Road." },
@@ -7879,8 +7879,8 @@ export const attractionBlogPosts = [
 
       <h3>Entry Fee (2026)</h3>
       <ul>
-        <li><strong>Indian Nationals:</strong> ₹50 per person</li>
-        <li><strong>Foreign Tourists:</strong> ₹200 per person</li>
+        <li><strong>Indian Nationals:</strong> ₹100 per person</li>
+        <li><strong>Foreign Tourists:</strong> ₹600 per person</li>
         <li><strong>Students (with ID):</strong> ₹10 (Indian), ₹40 (Foreign)</li>
         <li><strong>Still Camera:</strong> ₹30</li>
         <li><strong>Video Camera:</strong> ₹70</li>
@@ -8008,7 +8008,7 @@ export const attractionBlogPosts = [
         </tr>
         <tr>
           <td class="border border-gray-300 p-3">Entry Fee</td>
-          <td class="border border-gray-300 p-3">₹50 (Indian)</td>
+          <td class="border border-gray-300 p-3">₹100 (Indian)</td>
           <td class="border border-gray-300 p-3">₹100 (Indian)</td>
           <td class="border border-gray-300 p-3">₹35 (Indian)</td>
         </tr>
@@ -8027,7 +8027,7 @@ export const attractionBlogPosts = [
       <h2>Frequently Asked Questions</h2>
 
       <h3>What is the Nahargarh Fort ticket price?</h3>
-      <p>Nahargarh Fort ticket price is ₹50 for Indian visitors and ₹200 for foreign tourists. A still camera is ₹30 and video is ₹70. The Jaipur composite ticket (₹300 Indians, ₹1,000 foreigners) also covers Nahargarh and works out cheaper if you are seeing three or more monuments.</p>
+      <p>Nahargarh Fort ticket price is ₹100 for Indian visitors and ₹600 for foreign tourists, following the Rajasthan monument fee revision effective 1 January 2026. A still camera is ₹30 and video is ₹70. The Jaipur composite ticket (₹300 Indians, ₹1,000 foreigners) also covers Nahargarh and works out cheaper if you are seeing three or more monuments.</p>
 
       <h3>What are Nahargarh Fort timings?</h3>
       <p>Nahargarh Fort is open every day from 10:00 AM to 5:30 PM, extended to about 9:00 PM in peak season (October-March) for night views over Jaipur. There is no weekly closing day. The rooftop cafes inside keep their own hours, usually later than the fort itself.</p>
@@ -8297,7 +8297,7 @@ export const attractionBlogPosts = [
 
     date: "2026-01-20",
     readTime: "12 min",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -9063,7 +9063,7 @@ export const attractionBlogPosts = [
     date: "2026-01-20",
     dateModified: "2026-01-20",
     readTime: "15 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -9346,12 +9346,14 @@ export const attractionBlogPosts = [
         <li><a href="/blog/jim-corbett-complete-guide-2026" class="text-blue-600 hover:underline">Jim Corbett National Park Guide 2026</a></li>
         <li><a href="/sightseeing" class="text-blue-600 hover:underline">View All Tour Packages</a></li>
       </ul>
+
+      <p class="text-gray-700 leading-relaxed mb-4"><strong>Read next:</strong> <a href="/blog/nainital-lake-district-complete-travel-guide-2026" class="text-blue-600 hover:underline">Nainital: Lake District</a> for the lake-by-lake boating and viewpoint detail this guide doesn't go into.</p>
     `,
 
     date: "2026-01-20",
     dateModified: "2026-01-20",
     readTime: "12 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -9624,12 +9626,14 @@ export const attractionBlogPosts = [
         <li><a href="/blog/jim-corbett-complete-guide-2026" class="text-blue-600 hover:underline">Jim Corbett National Park Guide 2026</a></li>
         <li><a href="/sightseeing" class="text-blue-600 hover:underline">View All Tour Packages</a></li>
       </ul>
+
+      <p class="text-gray-700 leading-relaxed mb-4"><strong>Read next:</strong> <a href="/blog/mussoorie-queen-of-hills-complete-travel-guide-2026" class="text-blue-600 hover:underline">Mussoorie: Queen of Hills</a> for the Mall Road and Camel's Back Road walking detail this guide doesn't go into.</p>
     `,
 
     date: "2026-01-20",
     dateModified: "2026-01-20",
     readTime: "12 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -9922,7 +9926,7 @@ export const attractionBlogPosts = [
     date: "2026-01-20",
     dateModified: "2026-01-20",
     readTime: "14 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -10210,7 +10214,7 @@ export const attractionBlogPosts = [
     date: "2026-01-20",
     dateModified: "2026-01-20",
     readTime: "14 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -10517,7 +10521,7 @@ export const attractionBlogPosts = [
     date: "2026-01-20",
     dateModified: "2026-01-20",
     readTime: "15 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 0,
 
@@ -10528,7 +10532,7 @@ export const attractionBlogPosts = [
     id: 301,
     slug: "akshardham-temple-delhi-guide-2026",
     title: "Akshardham Temple Timings, Ticket Price & Show (2026)",
-    excerpt: "Akshardham is open 10 AM–8 PM (last entry 6:30 PM), closed Mondays, with free temple entry. Exhibition ticket ₹250. Nearest metro Akshardham. Prices, dress code & tips.",
+    excerpt: "Akshardham is open 10 AM to last entry 6:30 PM, closed Mondays, with free temple entry. Exhibition ticket ₹260. Nearest metro Akshardham. Prices, dress code & tips.",
 
     city: "delhi",
     attractionType: "temple",
@@ -10585,12 +10589,12 @@ export const attractionBlogPosts = [
       location: "NH 24, Akshardham Setu, New Delhi, Delhi 110092",
       entryFee: {
         temple: "Free",
-        exhibition: "₹250 (Adults), ₹150 (Children)",
-        musicalFountain: "₹90 (Adults), ₹60 (Children)"
+        exhibition: "₹260 (adults 12+), ₹210 (seniors 60+), ₹160 (children 4–11)",
+        musicalFountain: "₹110 (adults), ₹80 (children 4–11)"
       },
       timings: {
         open: "10:00 AM",
-        close: "8:00 PM (Entry closes at 6:30 PM)",
+        close: "Last entry 6:30 PM",
         closedOn: "Monday",
         musicalFountain: "7:30 PM (vary by season)"
       },
@@ -10613,17 +10617,17 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Delhi/Akshardham_Temple.jpg",
     date: "2026-01-22",
     readTime: "12 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 850,
     metaTitle: "Akshardham Delhi Timings & Ticket Price (2026) | Closed Mon",
-    metaDescription: "Akshardham open 10 AM–8 PM, last entry 6:30 PM, closed Monday. Free temple entry, exhibition ticket ₹250 adults. Water show, dress code & how to reach.",
-    quickAnswer: "Swaminarayan Akshardham, Delhi is open 10:00 AM to 8:00 PM with last entry at 6:30 PM, and stays closed every Monday. Temple darshan is free; the exhibitions are ticketed at ₹250 for adults and ₹150 for children, and the Sahaj Anand water show runs around 7:30 PM. The nearest metro is Akshardham (Blue Line), a 5-minute walk away.",
+    metaDescription: "Akshardham open 10 AM–8 PM, last entry 6:30 PM, closed Monday. Free temple entry, exhibition ticket ₹260 adults. Water show, dress code & how to reach.",
+    quickAnswer: "Swaminarayan Akshardham, Delhi is open from 10:00 AM with last entry at 6:30 PM, and stays closed every Monday. Temple darshan is free; the exhibitions are ticketed at ₹260 for adults and ₹160 for children, and the Sahaj Anand water show runs around 7:30 PM. The nearest metro is Akshardham (Blue Line), a 5-minute walk away.",
 
     faqs: [
-      { question: "What are Akshardham temple timings?", answer: "Akshardham Delhi is open 10:00 AM to 8:00 PM and stays closed every Monday. Last entry into the complex is 6:30 PM. The ticketed exhibitions run 11:00 AM to 6:00 PM and the Sahaj Anand water show begins around 7:30 PM, with timings varying slightly by season." },
-      { question: "What is the Akshardham ticket price?", answer: "Entry to the Akshardham temple itself is free. The exhibitions are ticketed at ₹250 for adults, ₹200 for senior citizens and ₹150 for children. The Sahaj Anand musical fountain show is a separate ticket at ₹90." },
-      { question: "Is Akshardham open on Monday?", answer: "No. Akshardham is closed every Monday, including most public holidays that fall on a Monday. It is open Tuesday to Sunday from 10:00 AM to 8:00 PM, with last entry at 6:30 PM." },
+      { question: "What are Akshardham temple timings?", answer: "Akshardham Delhi opens at 10:00 AM with last entry at 6:30 PM and stays closed every Monday. Last entry into the complex is 6:30 PM. The ticketed exhibitions run 11:00 AM to 6:00 PM and the Sahaj Anand water show begins around 7:30 PM, with timings varying slightly by season." },
+      { question: "What is the Akshardham ticket price?", answer: "Entry to the Akshardham temple itself is free. The exhibitions are ticketed at ₹260 for adults, ₹200 for senior citizens and ₹160 for children. The Sahaj Anand musical fountain show is a separate ticket at ₹110." },
+      { question: "Is Akshardham open on Monday?", answer: "No. Akshardham is closed every Monday, including most public holidays that fall on a Monday. It is open Tuesday to Sunday from 10:00 AM, with last entry at 6:30 PM." },
       { question: "How much time is needed to visit Akshardham?", answer: "Plan 4 to 5 hours at Akshardham if you want to see the exhibitions and stay for the evening water show. A temple darshan and a walk through the gardens alone takes about 2 hours. Arriving by 3 PM covers everything comfortably in one visit." },
       { question: "Which is the nearest metro station to Akshardham?", answer: "Akshardham Metro Station on the Blue Line is a 300-metre walk from the entrance. The complex is about 10 km from Connaught Place, 5 km from Anand Vihar Terminal and 11 km from New Delhi Railway Station. Note that phones, cameras and bags are not allowed inside — use the free cloakroom." }
     ],
@@ -10670,23 +10674,23 @@ export const attractionBlogPosts = [
       <h2>Timings and Prices</h2>
       <ul>
         <li><strong>Entry to Complex:</strong> Free.</li>
-        <li><strong>Temple Darshan:</strong> 10:00 AM to 8:00 PM.</li>
+        <li><strong>Temple Darshan:</strong> 10:00 AM, last entry 6:30 PM.</li>
         <li><strong>Exhibitions:</strong> 11:00 AM to 6:00 PM.</li>
-        <li><strong>Ticket Cost (Exhibitions):</strong> Adults: ₹250 | Children: ₹150 | Seniors: ₹200.</li>
-        <li><strong>Water Show:</strong> Starts at Sunset (usually 7:30 PM). Tickets: ₹90.</li>
+        <li><strong>Ticket Cost (Exhibitions):</strong> Adults: ₹260 | Children: ₹160 | Seniors: ₹200.</li>
+        <li><strong>Water Show:</strong> Starts at Sunset (usually 7:30 PM). Tickets: ₹110.</li>
         <li><strong>Closed:</strong> Every Monday.</li>
       </ul>
 
       <h2>Frequently Asked Questions</h2>
 
       <h3>What are Akshardham temple timings?</h3>
-      <p>Akshardham Delhi is open 10:00 AM to 8:00 PM and stays closed every Monday. Last entry into the complex is 6:30 PM. The ticketed exhibitions run 11:00 AM to 6:00 PM and the Sahaj Anand water show begins around 7:30 PM, with timings varying slightly by season.</p>
+      <p>Akshardham Delhi opens at 10:00 AM with last entry at 6:30 PM and stays closed every Monday. Last entry into the complex is 6:30 PM. The ticketed exhibitions run 11:00 AM to 6:00 PM and the Sahaj Anand water show begins around 7:30 PM, with timings varying slightly by season.</p>
 
       <h3>What is the Akshardham ticket price?</h3>
-      <p>Entry to the Akshardham temple itself is free. The exhibitions are ticketed at ₹250 for adults, ₹200 for senior citizens and ₹150 for children. The Sahaj Anand musical fountain show is a separate ticket at ₹90.</p>
+      <p>Entry to the Akshardham temple itself is free. The exhibitions are ticketed at ₹260 for adults, ₹200 for senior citizens and ₹160 for children. The Sahaj Anand musical fountain show is a separate ticket at ₹110.</p>
 
       <h3>Is Akshardham open on Monday?</h3>
-      <p>No. Akshardham is closed every Monday, including most public holidays that fall on a Monday. It is open Tuesday to Sunday from 10:00 AM to 8:00 PM, with last entry at 6:30 PM.</p>
+      <p>No. Akshardham is closed every Monday, including most public holidays that fall on a Monday. It is open Tuesday to Sunday from 10:00 AM, with last entry at 6:30 PM.</p>
 
       <h3>How much time is needed to visit Akshardham?</h3>
       <p>Plan 4 to 5 hours at Akshardham if you want to see the exhibitions and stay for the evening water show. A temple darshan and a walk through the gardens alone takes about 2 hours. Arriving by 3 PM covers everything comfortably in one visit.</p>
@@ -10793,7 +10797,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Delhi/Outub_Minar.jpg",
     date: "2026-01-23",
     readTime: "10 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 790,
     metaTitle: "Qutub Minar Delhi Guide: History, Timings & Iron Pillar Mystery",
@@ -10929,7 +10933,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Jaipur/city_palace.jpg",
     date: "2026-01-24",
     readTime: "11 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 600,
     metaTitle: "City Palace Jaipur Guide 2026: Entry Fee, Timings & Museum",
@@ -10969,7 +10973,7 @@ export const attractionBlogPosts = [
       <p>City Palace has a tiered ticketing system:</p>
       <ul>
         <li><strong>General Entry (Museum & Courtyards):</strong> Approx ₹300 (Indian), ₹700 (Foreigner). Covers Mubarak Mahal and courtyards.</li>
-        <li><strong>Royal Grandeur Tour:</strong> Approx ₹2000+. This includes a guided tour of the private Chandra Mahal floors. Highly recommended if you want to see the famous "Blue Room".</li>
+        <li><strong>Royal Grandeur Tour:</strong> Approx ₹2,000+. This includes a guided tour of the private Chandra Mahal floors. Highly recommended if you want to see the famous "Blue Room".</li>
         <li><strong>Night Visit:</strong> The palace lights up beautifully at night. A separate ticket allows entry after sunset.</li>
       </ul>
 
@@ -11041,7 +11045,7 @@ export const attractionBlogPosts = [
         indian: "₹50",
         foreign: "₹550",
         student: "₹10 (Indian), ₹100 (Foreign)",
-        elephantRide: "₹1100 (per couple)",
+        elephantRide: "₹1,100 (per couple)",
         lightShow: "₹200 (English), ₹100 (Hindi)"
       },
       timings: {
@@ -11069,7 +11073,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Jaipur/amber_fort.jpg",
     date: "2026-01-25",
     readTime: "13 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 950,
     metaTitle: "Amber Fort Jaipur 2026 Guide: Elephant Ride, History &",
@@ -11100,7 +11104,7 @@ export const attractionBlogPosts = [
       <p>A popular way to reach the fort entrance is on elephant back.</p>
       <ul>
         <li><strong>Timings:</strong> 7:30 AM to 11:30 AM only.</li>
-        <li><strong>Cost:</strong> Approx ₹1100 for two people.</li>
+        <li><strong>Cost:</strong> Approx ₹1,100 for two people.</li>
         <li><strong>Note:</strong> Due to animal welfare concerns, many tourists now prefer taking a jeep (approx ₹500) or walking up the cobbled path (15-20 mins) which offers great views.</li>
       </ul>
 
@@ -11208,7 +11212,7 @@ export const attractionBlogPosts = [
     image: "/images/sightseeing/Agra/agra_fort.jpg",
     date: "2026-01-26",
     readTime: "11 min read",
-    author: "Triveni Cabs Travel Team",
+    author: "Triveni Cabs™ Travel Team",
     featured: true,
     views: 700,
     metaTitle: "Agra Fort Guide 2026: History, Timings & Shah Jahan's Prison",

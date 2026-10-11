@@ -14,6 +14,8 @@ import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
 import FleetShowcase from '@/components/shared/FleetShowcase';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import DataTable from '@/components/seo/DataTable';
+import { groupDigits } from '@/utilis/pricing';
 
 const WA = <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>;
 
@@ -93,7 +95,7 @@ export default function BusVsCabClient({ route, relatedRoutes }) {
               </div>
 
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-[0.95] tracking-tight mb-3">
-                {route.origin} <span className="text-white/30">to</span><br />
+                {route.origin} <span className="text-white/30">to</span>{' '}<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">{route.destination}</span>
               </h1>
               <p className="text-white/40 text-sm sm:text-base max-w-lg">{route.distanceKm} km -- Save {route.comparison.timeSaved} by cab</p>
@@ -147,6 +149,23 @@ export default function BusVsCabClient({ route, relatedRoutes }) {
           </div>
         </div>
       </section>
+
+      {/* Bus options table — this page exists to compare bus against cab, and
+          the bus side has several tiers a reader needs to weigh individually. */}
+      <DataTable
+        title={`Bus options from ${route.origin} to ${route.destination}`}
+        caption={`Bus services from ${route.origin} to ${route.destination} compared by class, journey time, fare and how often they run.`}
+        intro="Bus fares are typical published prices and vary by operator and season."
+        columns={[
+          { key: 'type', label: 'Bus type' },
+          { key: 'duration', label: 'Journey time' },
+          { key: 'frequency', label: 'Frequency' },
+          { key: 'cost', label: 'Fare', align: 'right', strong: true },
+        ]}
+        rows={(route.busOptions || []).map((b) => ({ ...b, cost: typeof b.cost === 'number' ? `₹${b.cost.toLocaleString('en-IN')}` : b.cost }))}
+        tone="dark"
+        className="bg-slate-900"
+      />
 
       {/* ━━━ SCORE BARS: Visual metric comparison ━━━ */}
       <section className="bg-slate-900 py-8 sm:py-10 px-4 sm:px-6">
@@ -326,8 +345,8 @@ export default function BusVsCabClient({ route, relatedRoutes }) {
                 <div className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm ${cabPerPerson <= busPerPerson ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30' : 'bg-blue-500/20 text-blue-300 border border-blue-500/30'}`}>
                   <Trophy className="w-5 h-5" />
                   {cabPerPerson <= busPerPerson
-                    ? `Cab wins! Save \u20B9${(busPerPerson - cabPerPerson) * selectedPassengers} total`
-                    : `Bus is \u20B9${cabPerPerson - busPerPerson}/person cheaper`}
+                    ? `Cab wins! Save \u20B9${groupDigits((busPerPerson - cabPerPerson) * selectedPassengers)} total`
+                    : `Bus is \u20B9${groupDigits(cabPerPerson - busPerPerson)}/person cheaper`}
                 </div>
               </div>
 

@@ -23,9 +23,9 @@ export const revalidate = 3600;
 export const metadata = {
   title: tightenTitle('Corporate Cab vs Ola/Uber 2026 | Complete Comparison'),
   description: 'In-depth comparison: Dedicated corporate cab service vs Ola/Uber for business. Fixed rates vs surge pricing, dedicated drivers vs random, GST invoicing.',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/corporate-cab-vs-aggregators',
@@ -39,7 +39,7 @@ export const metadata = {
     type: 'article',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/corporate-cab-vs-aggregators',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
@@ -50,7 +50,7 @@ export const metadata = {
     ],
     publishedTime: '2024-01-01T00:00:00.000Z',
     modifiedTime: new Date().toISOString(),
-    authors: ['Triveni Cabs'],
+    authors: ['Triveni Cabs™'],
     section: 'Corporate Transportation'
   },
   twitter: {
@@ -207,7 +207,7 @@ export default function ComparisonPage() {
     },
     "sameAs": [
       "https://www.facebook.com/trivenicabs",
-      "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo",
+      "https://www.instagram.com/cabstriveni",
       "https://twitter.com/trivenicabs",
       "https://www.linkedin.com/company/trivenicabs"
     ]
@@ -286,7 +286,7 @@ export default function ComparisonPage() {
 
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="relative py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+        <section className="relative py-12 sm:py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
           {/* Background Effects */}
           <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[150px]" />
@@ -352,9 +352,9 @@ export default function ComparisonPage() {
         </section>
 
         {/* Comparison Tables */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6">
                 Feature-by-Feature <span className="text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">Comparison</span>
               </h2>
@@ -376,7 +376,7 @@ export default function ComparisonPage() {
                   {/* Table Header */}
                   <div className="grid grid-cols-4 gap-4 mb-4 pb-4 border-b border-slate-200">
                     <div className="font-semibold text-slate-700">Feature</div>
-                    <div className="text-center font-semibold text-cyan-600">Triveni Cabs</div>
+                    <div className="text-center font-semibold text-cyan-600">Triveni Cabs™</div>
                     <div className="text-center font-semibold text-slate-500">Aggregators</div>
                     <div className="font-semibold text-slate-700 hidden md:block">Details</div>
                   </div>
@@ -413,9 +413,9 @@ export default function ComparisonPage() {
         </section>
 
         {/* Why Choose Triveni */}
-        <section className="py-20 px-4 bg-slate-900">
+        <section className="py-12 sm:py-20 px-4 bg-slate-900">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-white/10 px-5 py-2 rounded-full mb-6 border border-white/20">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400" />
                 <span className="text-cyan-300 font-semibold text-sm tracking-wider uppercase">The Triveni Advantage</span>
@@ -441,7 +441,7 @@ export default function ComparisonPage() {
         </section>
 
         {/* Cost Comparison Example */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
@@ -484,7 +484,7 @@ export default function ComparisonPage() {
                 </div>
 
                 <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-white/90 mb-2">With Triveni Cabs</h3>
+                  <h3 className="text-xl font-bold text-white/90 mb-2">With Triveni Cabs™</h3>
                   <div className="text-4xl font-black text-white">₹2-2.5 Lakhs</div>
                   <div className="text-white/70">per month (fixed)</div>
                 </div>
@@ -518,7 +518,7 @@ export default function ComparisonPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 bg-gradient-to-r from-cyan-500 to-blue-600">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-r from-cyan-500 to-blue-600">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
               Ready to Make the Switch?

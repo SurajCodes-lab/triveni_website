@@ -31,7 +31,7 @@ export default function Page() {
       slug="force-urbania-rent-per-km"
       vehicleName="Force Urbania"
       h1="Force Urbania Rent per KM — Modern Group Van, All-Inclusive"
-      intro="The Force Urbania is the new-generation van replacing the old tempo traveller — quieter, more comfortable, better suspension and modern AC. Triveni Cabs rents it chauffeur-driven for groups of 12 to 17, at an upfront per-km rate that includes fuel, the driver and AC. The smart pick for corporate outings, family tours and pilgrimage groups who want comfort without the old-tempo rattles."
+      intro="The Force Urbania is the new-generation van replacing the old tempo traveller — quieter, more comfortable, better suspension and modern AC. Triveni Cabs™ rents it chauffeur-driven for groups of 12 to 17, at an upfront per-km rate that includes fuel, the driver and AC. The smart pick for corporate outings, family tours and pilgrimage groups who want comfort without the old-tempo rattles."
       category="Van"
       seating="12–17"
       fareRows={[

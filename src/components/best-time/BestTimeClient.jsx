@@ -1,5 +1,6 @@
 'use client';
 
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -66,6 +67,7 @@ export default function BestTimeClient({ data, relatedDestinations }) {
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[0.95] tracking-tight">
                 {data.destination}
               </h1>
+              <FamilyFacts family="best-time" data={data} />
               <p className="text-white/40 mt-4 text-sm sm:text-base max-w-lg leading-relaxed">{data.overview}</p>
 
               <div className="flex flex-wrap gap-3 mt-6">

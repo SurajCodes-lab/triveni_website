@@ -23,7 +23,7 @@ const howToReachRoutes = {
           "Long drive",
           "Mountain roads need experienced driver"
         ],
-        "details": "Delhi to Manali via NH-44 and NH-3 through Chandigarh, Bilaspur, Mandi, Kullu Valley. Triveni Cabs provides experienced hill drivers."
+        "details": "Delhi to Manali via NH-44 and NH-3 through Chandigarh, Bilaspur, Mandi, Kullu Valley. Triveni Cabs™ provides experienced hill drivers."
       },
       {
         "mode": "By Bus",
@@ -2023,7 +2023,7 @@ const howToReachRoutes = {
       },
       {
         "question": "Golden Triangle?",
-        "answer": "Delhi-Agra-Jaipur. Triveni Cabs offers packages."
+        "answer": "Delhi-Agra-Jaipur. Triveni Cabs™ offers packages."
       }
     ],
     "relatedRoutes": [

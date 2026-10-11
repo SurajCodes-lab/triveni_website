@@ -3,15 +3,16 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Varanasi Shopping Guide 2026 | Banarasi Silk, Brassware & Crafts'),
   description: 'Varanasi shopping guide. Banarasi silk sarees, brassware, wooden toys, Rudraksha beads, gulabi minakari. Vishwanath Gali, Thatheri Bazaar, Chowk.',
   keywords: 'varanasi shopping guide, shopping in varanasi, banarasi silk saree, varanasi brassware, thatheri bazaar, vishwanath gali shopping, rudraksha beads varanasi',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/varanasi-shopping-guide' },
   openGraph: {
@@ -20,7 +21,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/varanasi-shopping-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Varanasi/varanasi_hero_section.jpg', width: 1200, height: 630, alt: 'Varanasi Shopping Guide' }],
   },
   twitter: {
@@ -245,7 +246,7 @@ export default function VaranasiShoppingGuidePage() {
         </section>
 
         {/* Shopping Categories */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3 text-center">What to Buy in Varanasi</h2>
             <p className="text-stone-500 text-center mb-14">Six centuries of weaving, forging, and sacred craft traditions</p>
@@ -289,7 +290,7 @@ export default function VaranasiShoppingGuidePage() {
         </section>
 
         {/* Market Areas */}
-        <section className="py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-3 text-center">Best Shopping Areas in Varanasi</h2>
             <p className="text-purple-200/60 text-center mb-14">Ancient lanes and bazaars where Kashi&apos;s craftsmen have traded for centuries</p>
@@ -322,7 +323,7 @@ export default function VaranasiShoppingGuidePage() {
         </section>
 
         {/* Bargaining Tips */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-3 text-center">Bargaining Tips from Locals</h2>
             <p className="text-stone-500 text-center mb-12">Eight rules that save our tourists money every single day</p>
@@ -340,7 +341,7 @@ export default function VaranasiShoppingGuidePage() {
         </section>
 
         {/* Combo */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-3xl overflow-hidden">
               <div className="bg-gradient-to-r from-purple-700 via-fuchsia-600 to-purple-700 px-6 py-5" style={{ backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite' }}>
@@ -372,21 +373,26 @@ export default function VaranasiShoppingGuidePage() {
         </section>
 
         {/* SEO Content */}
-        <section className="py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-8 text-center">Shopping in Varanasi: Where Sacred Meets Artisanal</h2>
             <div className="glass-card-light rounded-3xl p-8 md:p-10">
               <div className="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
               <p>Varanasi is not just a spiritual capital -- it is one of India&apos;s oldest continuous centers of artisanal production. The city&apos;s weavers have been producing Banarasi silk for over 600 years, creating what many consider the finest textile on earth. When you shop in Varanasi, you are directly supporting living heritage -- families that have passed down their weaving, metalworking, and toy-making crafts across dozens of generations.</p>
               <p>The shopping experience in Varanasi is unlike anywhere else in India. The narrow galis (lanes) of the old city are a sensory immersion -- the clang of brass hammers in Thatheri Bazaar, the shimmer of silk in Vishwanath Gali, and the aroma of paan at Chowk. These are not sanitized tourist markets but authentic working bazaars where locals shop daily. Prices reflect this authenticity -- a genuine handloom Banarasi saree bought from a weaver&apos;s workshop here can cost 40-60% less than the same saree in a Delhi or Mumbai showroom.</p>
-              <p>For the most rewarding shopping experience, hire a local cab for the day. Varanasi&apos;s old city lanes are too narrow for cars, but our Triveni Cabs drivers can park at strategic points (Godowlia, Lanka) while you explore the bazaars on foot. They know the genuine weaver families, the best brass artisans, and can help you avoid the tourist markup at ghat-adjacent shops. A cab also lets you visit the weaver colonies in Sarai Mohana or Alaipura -- slightly outside the old city -- where the finest Banarasi silk is actually made.</p>
+              <p>For the most rewarding shopping experience, hire a local cab for the day. Varanasi&apos;s old city lanes are too narrow for cars, but our Triveni Cabs™ drivers can park at strategic points (Godowlia, Lanka) while you explore the bazaars on foot. They know the genuine weaver families, the best brass artisans, and can help you avoid the tourist markup at ghat-adjacent shops. A cab also lets you visit the weaver colonies in Sarai Mohana or Alaipura -- slightly outside the old city -- where the finest Banarasi silk is actually made.</p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Varanasi" citySlug="varanasi" />
+
+
         {/* FAQ */}
-        <section className="py-20 px-4 bg-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-12 text-center">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -406,7 +412,7 @@ export default function VaranasiShoppingGuidePage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-10 text-center">More Varanasi & UP Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -434,7 +440,7 @@ export default function VaranasiShoppingGuidePage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-800 via-violet-700 to-fuchsia-800" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[15%] w-2 h-2 bg-white/30 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite' }} />
           <div className="absolute top-[40%] right-[20%] w-1.5 h-1.5 bg-white/20 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite 1s' }} />

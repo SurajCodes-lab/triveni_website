@@ -14,6 +14,8 @@ import InclusionBadges from '@/components/shared/InclusionBadges';
 import SectionDivider from '@/components/shared/SectionDivider';
 import FleetShowcase from '@/components/shared/FleetShowcase';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { canonicalHref } from '@/lib/seo/route-exists';
+import { BASE_URL } from '@/lib/seo/constants';
 
 export const revalidate = 3600;
 
@@ -21,11 +23,11 @@ export const metadata = {
   title: tightenTitle('One Way Cab Service 2026 | Save 50% | Sedan ₹11/km | Book Now'),
   description: 'Book one way cab service and save up to 50% vs round trip. Sedan ₹11/km, SUV ₹15/km. Delhi-Agra, Delhi-Jaipur & 200+ one way routes. Call 7668570551.',
   keywords: 'one way cab, one way taxi, one way cab service, one way cab booking, one way taxi service, one way drop, single direction cab, one way cab Delhi, one way cab Agra, one way cab Jaipur, one way outstation cab, cheap one way cab, affordable one way taxi, one way cab near me, one way cab rates, Delhi to Agra one way, Delhi to Jaipur one way, one way intercity cab, one way cab fare, best one way cab service',
-  authors: [{ name: 'Triveni Cabs' }], creator: 'Triveni Cabs', publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }], creator: 'Triveni Cabs™', publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/one-way-cab' },
   openGraph: { title: 'One Way Cab Service | Save 50% | 200+ Routes | Triveni Cabs', description: 'Book one way cabs and save up to 50%. Sedan ₹11/km, SUV ₹15/km. 200+ one-way routes across India.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/one-way-cab', siteName: 'Triveni Cabs', images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'One Way Cab Service - Triveni Cabs' }] },
-  twitter: { card: 'summary_large_image', title: 'One Way Cab Service | Save 50% vs Round Trip | Triveni Cabs', description: 'Pay only for one direction. Sedan ₹11/km. 200+ one-way routes. Call 7668570551.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/citypage_hero_section_image.jpg'] },
+  twitter: { card: 'summary_large_image', title: 'One Way Cab Service | Save 50% vs Round Trip | Triveni Cabs™', description: 'Pay only for one direction. Sedan ₹11/km. 200+ one-way routes. Call 7668570551.', creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/citypage_hero_section_image.jpg'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
 
@@ -96,6 +98,8 @@ export default function OneWayCabPage() {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Merchant listings treats a missing `image` as critical.
+    "image": `${BASE_URL}/images/car/swift_dzire.jpg`,
     "name": "One Way Cab Booking — Triveni Cabs (Sedan, SUV, Tempo Traveller)",
     "description": "One way cab fleet across 200+ Indian routes. Sedan from ₹11/km, SUV ₹15/km, Tempo Traveller from ₹23/km. Pay only one direction, save up to 50% vs round trip, doorstep pickup, FASTag included.",
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
@@ -119,10 +123,14 @@ export default function OneWayCabPage() {
 
   // Build the internal-link grid from REAL /one-way-cab/{slug} routes — any
   // missing slug is auto-dropped so we never emit a broken link.
+  // Ordered by the searches the one-way pages actually receive (the 12 Sep
+  // export): Dehradun, Haridwar and Nainital first, then the return legs.
   const featuredOneWaySlugs = [
-    'delhi-to-agra', 'delhi-to-jaipur', 'delhi-to-chandigarh', 'delhi-to-haridwar',
-    'delhi-to-shimla', 'delhi-to-manali', 'delhi-to-amritsar', 'delhi-to-rishikesh',
-    'agra-to-jaipur', 'jaipur-to-udaipur', 'delhi-to-dehradun', 'delhi-to-nainital',
+    'delhi-to-dehradun', 'delhi-to-haridwar', 'delhi-to-nainital', 'jaipur-to-delhi',
+    'chandigarh-to-delhi', 'delhi-to-manali', 'haridwar-to-delhi', 'chandigarh-to-manali',
+    'lucknow-to-delhi', 'vrindavan-to-delhi', 'delhi-to-shimla', 'delhi-to-agra',
+    'delhi-to-jaipur', 'delhi-to-chandigarh', 'delhi-to-amritsar', 'delhi-to-rishikesh',
+    'agra-to-jaipur', 'jaipur-to-udaipur',
   ];
   const allOneWaySlugs = new Set(getAllOneWayRouteSlugs());
   const dataOneWayRoutes = featuredOneWaySlugs
@@ -143,13 +151,13 @@ export default function OneWayCabPage() {
     .sort((a, b) => a.from.localeCompare(b.from) || a.to.localeCompare(b.to));
 
   const routes = [
-    { from: "Delhi", to: "Agra", km: "230", ow: "₹2,530", rt: "₹5,060", save: "₹2,530", href: "/delhi-to-agra" },
-    { from: "Delhi", to: "Jaipur", km: "280", ow: "₹3,080", rt: "₹6,160", save: "₹3,080", href: "/delhi-to-jaipur" },
-    { from: "Delhi", to: "Chandigarh", km: "250", ow: "₹2,750", rt: "₹5,500", save: "₹2,750", href: "/delhi-to-chandigarh" },
-    { from: "Delhi", to: "Haridwar", km: "230", ow: "₹2,530", rt: "₹5,060", save: "₹2,530", href: "/delhi-to-haridwar" },
+    { from: "Delhi", to: "Agra", km: "230", ow: "₹3,300", rt: "₹5,060", save: "₹1,760", href: "/delhi-to-agra" },
+    { from: "Delhi", to: "Jaipur", km: "280", ow: "₹3,300", rt: "₹6,160", save: "₹2,860", href: "/delhi-to-jaipur" },
+    { from: "Delhi", to: "Chandigarh", km: "250", ow: "₹3,300", rt: "₹5,500", save: "₹2,200", href: "/delhi-to-chandigarh" },
+    { from: "Delhi", to: "Haridwar", km: "230", ow: "₹3,300", rt: "₹5,060", save: "₹1,760", href: "/one-way-cab/delhi-to-haridwar" },
     { from: "Delhi", to: "Shimla", km: "350", ow: "₹3,850", rt: "₹7,700", save: "₹3,850", href: "/delhi-to-shimla" },
-    { from: "Agra", to: "Jaipur", km: "240", ow: "₹2,640", rt: "₹5,280", save: "₹2,640", href: "/agra-to-jaipur" },
-    { from: "Delhi", to: "Manali", km: "540", ow: "₹5,940", rt: "₹11,880", save: "₹5,940", href: "/delhi-to-manali" },
+    { from: "Agra", to: "Jaipur", km: "240", ow: "₹3,300", rt: "₹5,280", save: "₹1,980", href: "/one-way-cab/agra-to-jaipur" },
+    { from: "Delhi", to: "Manali", km: "540", ow: "₹5,940", rt: "₹11,880", save: "₹5,940", href: "/one-way-cab/delhi-to-manali" },
     { from: "Delhi", to: "Amritsar", km: "450", ow: "₹4,950", rt: "₹9,900", save: "₹4,950", href: "/delhi-to-amritsar" },
     { from: "Jaipur", to: "Udaipur", km: "395", ow: "₹4,345", rt: "₹8,690", save: "₹4,345", href: "/jaipur-to-udaipur" },
   ];
@@ -178,7 +186,7 @@ export default function OneWayCabPage() {
           <div className="absolute top-1/4 left-[8%] w-72 h-72 bg-[#FACF2D]/15 rounded-full blur-[120px] pointer-events-none" />
           <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#FACF2D] to-transparent z-10" />
 
-          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20 grid lg:grid-cols-2 gap-10 items-center w-full">
+          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20 grid lg:grid-cols-2 gap-10 items-center w-full">
             <div>
               <div className="inline-flex items-center gap-2 bg-[#FACF2D]/15 backdrop-blur-sm px-5 py-2 rounded-full mb-8 border border-[#FACF2D]/25">
                 <IndianRupee className="w-4 h-4 text-[#FACF2D]" />
@@ -208,7 +216,7 @@ export default function OneWayCabPage() {
         <SocialProofStrip theme="dark" />
 
         {/* ─── OVERVIEW: SEO prose content section ─── */}
-        <section className="py-20 px-4 sm:px-6 relative">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 relative">
           <div className="max-w-4xl mx-auto">
             {/* Direct-answer lead box — voice/AI answer target (.speakable-lead) */}
             <div className="speakable-lead bg-white/5 rounded-2xl border border-[#FACF2D]/25/70 shadow-[0_4px_24px_rgba(16,185,129,0.06)] p-6 md:p-8 mb-12">
@@ -221,15 +229,15 @@ export default function OneWayCabPage() {
             </h2>
             <div className="space-y-5 text-slate-300 text-lg leading-relaxed">
               <p>Tired of paying for a return trip you will never take? Our <strong className="text-white">one-way cab service</strong> lets you book an intercity taxi for a single direction — Delhi to Agra, Jaipur to Udaipur, Chandigarh to Manali, or any of 500+ routes across North India. You pay only for the kilometres you travel, saving up to 50% compared to traditional round-trip cab fares.</p>
-              <p>Triveni Cabs pioneered affordable <strong className="text-white">one-way taxi booking</strong> in the Agra-Delhi-Jaipur triangle. Starting at just ₹11 per kilometre for sedans, our transparent pricing model includes driver allowance, fuel, and basic insurance. Toll charges, state taxes, and parking are charged at actual — displayed clearly before you confirm. No hidden charges, no surge pricing, no unpleasant surprises at the end of your journey.</p>
-              <p>Our <strong className="text-white">one-way cab booking</strong> is perfect for one-sided trips: relocating between cities, catching a flight from a different city, attending a wedding or event, or simply travelling where you do not need a return ride. With 300 km minimum billing and a verified, professional driver at the wheel, every one-way trip with Triveni Cabs is safe, comfortable, and budget-friendly.</p>
+              <p>Triveni Cabs™ pioneered affordable <strong className="text-white">one-way taxi booking</strong> in the Agra-Delhi-Jaipur triangle. Starting at just ₹11 per kilometre for sedans, our transparent pricing model includes driver allowance, fuel, and basic insurance. Toll charges, state taxes, and parking are charged at actual — displayed clearly before you confirm. No hidden charges, no surge pricing, no unpleasant surprises at the end of your journey.</p>
+              <p>Our <strong className="text-white">one-way cab booking</strong> is perfect for one-sided trips: relocating between cities, catching a flight from a different city, attending a wedding or event, or simply travelling where you do not need a return ride. With 300 km minimum billing and a verified, professional driver at the wheel, every one-way trip with Triveni Cabs™ is safe, comfortable, and budget-friendly.</p>
               <p>Students moving to college, professionals relocating for work, tourists heading from Delhi to the Taj Mahal, families travelling for festivals — thousands of travellers book <strong className="text-white">one-way cabs</strong> with us every month. Call or WhatsApp 7668570551 for an instant quote on your route.</p>
             </div>
           </div>
         </section>
 
         {/* ─── SAVINGS TABLE ─── */}
-        <section className="py-20 px-4 sm:px-6 -mt-4">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 -mt-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <span className="text-[#FACF2D] font-semibold text-sm tracking-widest uppercase">See The Difference</span>
@@ -245,7 +253,7 @@ export default function OneWayCabPage() {
                 <div className="col-span-3 px-4 py-4 font-bold text-sm text-center">You Save</div>
               </div>
               {routes.map((r, i) => (
-                <Link key={i} href={r.href} className="group block">
+                <Link key={i} href={canonicalHref(r.href)} className="group block">
                   <div className={`grid grid-cols-12 border-b border-white/10 hover:bg-white/[0.03] transition-colors ${i % 2 ? 'bg-white/[0.03]' : ''}`}>
                     <div className="col-span-3 px-5 py-4 font-bold text-white group-hover:text-[#FACF2D] transition-colors flex items-center gap-1">{r.from} <ArrowRight className="w-3 h-3 text-slate-500" /> {r.to}</div>
                     <div className="col-span-2 px-4 py-4 text-center text-slate-400">{r.km} km</div>
@@ -261,7 +269,7 @@ export default function OneWayCabPage() {
         </section>
 
         {/* ─── ONE-WAY vs ROUND TRIP: Visible comparison table (grounds Comparison schema) ─── */}
-        <section className="py-20 px-4 sm:px-6 bg-white/[0.03]">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 bg-white/[0.03]">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-[#FACF2D] font-semibold text-sm tracking-widest uppercase">Compare</span>
@@ -304,7 +312,7 @@ export default function OneWayCabPage() {
         </section>
 
         {/* ─── HOW ONE-WAY SAVES YOU MONEY ─── */}
-        <section className="py-20 px-4 sm:px-6">
+        <section className="py-12 sm:py-20 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-[#FACF2D] font-semibold text-sm tracking-widest uppercase">The Maths</span>
@@ -320,7 +328,7 @@ export default function OneWayCabPage() {
 
         {/* ─── POPULAR ONE-WAY ROUTES: Real /one-way-cab/{slug} internal-link grid ─── */}
         {dataOneWayRoutes.length > 0 && (
-          <section className="py-20 px-4 sm:px-6 bg-white/[0.03]">
+          <section className="py-12 sm:py-20 px-4 sm:px-6 bg-white/[0.03]">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-12">
                 <span className="text-[#FACF2D] font-semibold text-sm tracking-widest uppercase">Book By Route</span>
@@ -329,7 +337,7 @@ export default function OneWayCabPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {dataOneWayRoutes.map((r, idx) => (
-                  <Link key={idx} href={`/one-way-cab/${r.slug}`} className="group block overflow-hidden bg-white/5 rounded-2xl border border-white/10 hover:border-[#FACF2D]/30 hover:shadow-[0_8px_32px_rgba(250,207,45,0.1)] transition-all">
+                  <Link key={idx} href={canonicalHref(`/one-way-cab/${r.slug}`)} className="group block overflow-hidden bg-white/5 rounded-2xl border border-white/10 hover:border-[#FACF2D]/30 hover:shadow-[0_8px_32px_rgba(250,207,45,0.1)] transition-all">
                     <div className="relative h-32 w-full overflow-hidden">
                       <Image src={getCityImage(r.to)} alt={`${r.from} to ${r.to} one way cab`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/30 to-transparent" />
@@ -355,7 +363,7 @@ export default function OneWayCabPage() {
         )}
 
         {/* ─── ALL ROUTES DIRECTORY: inbound link to every route page ─── */}
-        <section className="py-16 px-4 sm:px-6">
+        <section className="py-10 sm:py-16 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-10">
               <span className="text-[#FACF2D] font-semibold text-sm tracking-widest uppercase">Complete Coverage</span>
@@ -364,7 +372,7 @@ export default function OneWayCabPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-1">
               {allRoutesDirectory.map((r) => (
-                <Link key={r.slug} href={`/one-way-cab/${r.slug}`} className="flex items-baseline justify-between gap-2 text-sm text-slate-300 hover:text-[#FACF2D] py-1.5 border-b border-white/5 transition-colors">
+                <Link key={r.slug} href={canonicalHref(`/one-way-cab/${r.slug}`)} className="flex items-baseline justify-between gap-2 text-sm text-slate-300 hover:text-[#FACF2D] py-1.5 border-b border-white/5 transition-colors">
                   <span className="truncate">{r.from} to {r.to}</span>
                   <span className="text-slate-500 whitespace-nowrap text-xs">{r.sedan}</span>
                 </Link>
@@ -374,7 +382,7 @@ export default function OneWayCabPage() {
         </section>
 
         {/* ─── HOW IT WORKS: Vertical numbered steps ─── */}
-        <section className="py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-white/[0.03]">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-white/[0.03]">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-14">
               <span className="text-[#FACF2D] font-semibold text-sm tracking-widest uppercase">Easy Process</span>
@@ -400,7 +408,7 @@ export default function OneWayCabPage() {
         </section>
 
         {/* ─── CHOOSE GUIDE ─── */}
-        <section className="py-20 px-4 sm:px-6 bg-white/[0.03]">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 bg-white/[0.03]">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14"><h2 className="text-4xl md:text-5xl font-black">Which Is Right For You?</h2></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -444,7 +452,7 @@ export default function OneWayCabPage() {
         <SectionDivider color="gray" className="my-4" />
 
         {/* ─── BENEFITS ─── */}
-        <section className="py-20 px-4 sm:px-6">
+        <section className="py-12 sm:py-20 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <span className="text-[#FACF2D] font-semibold text-sm tracking-widest uppercase">Why One-Way</span>
@@ -470,7 +478,7 @@ export default function OneWayCabPage() {
         </section>
 
         {/* ─── FAQ ─── */}
-        <section className="py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-white/[0.03]">
+        <section className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-white/[0.03]">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <span className="text-[#FACF2D] font-semibold text-sm tracking-widest uppercase">Questions?</span>
@@ -491,12 +499,12 @@ export default function OneWayCabPage() {
         </section>
 
         {/* ─── SEO Prose Section with Contextual Links ─── */}
-        <section className="py-16 px-4 sm:px-6">
+        <section className="py-10 sm:py-16 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-6 text-center">One-Way Cab Service — Pay Only for the Distance You Travel</h2>
             <div className="space-y-4 text-slate-300 text-lg leading-relaxed">
               <p>
-                Why pay for a <Link href="/round-trip-cab" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">round trip</Link> when you only need to travel one direction? Triveni Cabs&#39; <strong className="text-white">one-way cab service</strong> lets you save up to 50% on intercity travel. With <Link href="/reviews" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">4.8-star ratings from 2,847+ customers</Link>, our one-way cabs cover 200+ routes across <Link href="/delhi" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">Delhi</Link>, <Link href="/agra" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">Agra</Link>, <Link href="/jaipur" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">Jaipur</Link>, <Link href="/chandigarh" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">Chandigarh</Link>, and beyond.
+                Why pay for a <Link href="/round-trip-cab" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">round trip</Link> when you only need to travel one direction? Triveni Cabs™&#39; <strong className="text-white">one-way cab service</strong> lets you save up to 50% on intercity travel. With <Link href="/reviews" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">4.8-star ratings from 2,847+ customers</Link>, our one-way cabs cover 200+ routes across <Link href="/delhi" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">Delhi</Link>, <Link href="/agra" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">Agra</Link>, <Link href="/jaipur" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">Jaipur</Link>, <Link href="/chandigarh" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">Chandigarh</Link>, and beyond.
               </p>
               <p>
                 Every one-way cab comes with a <Link href="/safety" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">verified professional driver</Link>, AC vehicle, GPS tracking, and zero hidden charges. Sedan at ₹11/km, SUV at ₹15/km — check the <Link href="/pricing" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">full fare chart</Link> or read our <Link href="/blog/delhi-to-agra-cab-fare-guide-2026" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">Delhi to Agra cab fare guide</Link> for a detailed cost breakdown. Need a cab for your entire trip instead? Our <Link href="/outstation-cabs" className="text-[#FACF2D] hover:text-[#FACF2D] underline underline-offset-2">outstation cab service</Link> covers 500+ routes.
@@ -509,7 +517,7 @@ export default function OneWayCabPage() {
         </section>
 
         {/* ─── DYNAMIC: Travel Guides & Wedding Services ─── */}
-        <section className="py-16 px-4 sm:px-6 bg-white/[0.03]">
+        <section className="py-10 sm:py-16 px-4 sm:px-6 bg-white/[0.03]">
           <div className="max-w-7xl mx-auto space-y-14">
             <div>
               <h2 className="text-2xl font-bold text-white mb-6">Travel Guides</h2>
@@ -537,7 +545,7 @@ export default function OneWayCabPage() {
         </section>
 
         {/* ─── INTERLINKS: Comprehensive footer-style grids ─── */}
-        <section className="py-16 px-4 sm:px-6 border-t border-white/10">
+        <section className="py-10 sm:py-16 px-4 sm:px-6 border-t border-white/10">
           <div className="max-w-7xl mx-auto space-y-12">
 
             {/* Related Services */}
@@ -568,11 +576,11 @@ export default function OneWayCabPage() {
                   { l: "Delhi to Agra One-Way", h: "/delhi-to-agra" },
                   { l: "Delhi to Jaipur One-Way", h: "/delhi-to-jaipur" },
                   { l: "Delhi to Chandigarh One-Way", h: "/delhi-to-chandigarh" },
-                  { l: "Delhi to Haridwar One-Way", h: "/delhi-to-haridwar" },
+                  { l: "Delhi to Haridwar One-Way", h: "/one-way-cab/delhi-to-haridwar" },
                   { l: "Delhi to Shimla One-Way", h: "/delhi-to-shimla" },
-                  { l: "Delhi to Manali One-Way", h: "/delhi-to-manali" },
+                  { l: "Delhi to Manali One-Way", h: "/one-way-cab/delhi-to-manali" },
                   { l: "Delhi to Amritsar One-Way", h: "/delhi-to-amritsar" },
-                  { l: "Agra to Jaipur One-Way", h: "/agra-to-jaipur" },
+                  { l: "Agra to Jaipur One-Way", h: "/one-way-cab/agra-to-jaipur" },
                   { l: "Jaipur to Udaipur One-Way", h: "/jaipur-to-udaipur" },
                   { l: "Delhi to Rishikesh One-Way", h: "/delhi-to-rishikesh" },
                 ].map((r, i) => (
@@ -630,7 +638,7 @@ export default function OneWayCabPage() {
         </section>
 
         {/* ─── CTA ─── */}
-        <section className="py-20 px-4 sm:px-6">
+        <section className="py-12 sm:py-20 px-4 sm:px-6">
           <div className="max-w-5xl mx-auto">
             <div className="bg-gradient-to-br from-[#FACF2D] to-amber-600 rounded-[2rem] p-10 md:p-16 text-center relative overflow-hidden">
               <div className="absolute top-0 right-0 w-72 h-72 bg-[#FACF2D]/10 rounded-full blur-[100px]" />

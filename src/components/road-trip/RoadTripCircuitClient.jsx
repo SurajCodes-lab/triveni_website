@@ -16,6 +16,7 @@ import FaqAccordion from '@/components/shared/FaqAccordion';
 import CTASection from '@/components/shared/CTASection';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { clientRouteExists } from '@/lib/seo/client-route-exists';
 
 const INCLUSIONS = [
   { icon: Car, label: 'AC Vehicle', desc: 'Well-maintained sedan or SUV with AC' },
@@ -81,7 +82,7 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 lg:gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-amber-500/15 backdrop-blur-md px-4 py-1.5 rounded-full border border-amber-400/25 mb-5">
-                <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
                 <Compass className="w-3.5 h-3.5 text-amber-300" />
                 <span className="text-[11px] font-bold text-amber-200 uppercase tracking-widest">Circuit Explorer</span>
               </div>
@@ -194,8 +195,14 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
             <Link href="/road-trip" className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-full transition-colors">
               <Compass className="w-3.5 h-3.5" /> All road trip circuits
             </Link>
-            {trip.stops.slice(0, 3).map((stop, i) => (
-              <Link key={i} href={`/best-time-to-visit/${stop.city.toLowerCase().split(/[-/]/)[0].trim().replace(/\s+/g, '-')}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-full transition-colors">
+            {/* Week 48: only stops that have a best-time page — Kasauli, Bundi,
+                Nalagarh, Neemrana, Prayagraj … have none and used to 404 here. */}
+            {trip.stops
+              .map((stop) => ({ stop, href: `/best-time-to-visit/${stop.city.toLowerCase().split(/[-/]/)[0].trim().replace(/\s+/g, '-')}` }))
+              .filter(({ href }) => clientRouteExists(href))
+              .slice(0, 3)
+              .map(({ stop, href }, i) => (
+              <Link key={i} href={href} className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-full transition-colors">
                 <MapPin className="w-3.5 h-3.5" /> Best time for {stop.city}
               </Link>
             ))}
@@ -468,7 +475,7 @@ export default function RoadTripCircuitClient({ trip, relatedTrips }) {
         </section>
       )}
 
-      <CTASection heading="Ready for This Road Trip?" subheading={`Book your ${trip.name} circuit with Triveni Cabs. ${trip.totalDistance} km, ${trip.totalDays} days, from \u20B9${trip.totalCost.sedan.toLocaleString('en-IN')}.`} />
+      <CTASection heading="Ready for This Road Trip?" subheading={`Book your ${trip.name} circuit with Triveni Cabs™. ${trip.totalDistance} km, ${trip.totalDays} days, from \u20B9${trip.totalCost.sedan.toLocaleString('en-IN')}.`} />
     </div>
   );
 }

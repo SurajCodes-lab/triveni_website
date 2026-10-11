@@ -20,7 +20,7 @@ TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 BACKUP_DIR="/home/ubuntu/triveni-backup-cro-${TIMESTAMP}"
 HOMEPAGE="https://www.trivenicabs.in/"
 SAMPLE_IMG="https://www.trivenicabs.in/images/sightseeing/Agra/Taj_mahal.jpg"
-CONCURRENCY=3
+CONCURRENCY="${DEPLOY_CONCURRENCY:-3}"
 
 SSH_OPTS=(-i "$KEY" -o StrictHostKeyChecking=no -o ServerAliveInterval=15 -o ServerAliveCountMax=4 -o ConnectTimeout=30)
 

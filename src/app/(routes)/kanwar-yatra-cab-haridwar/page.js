@@ -9,9 +9,9 @@ export const metadata = {
   title: tightenTitle('Kanwar Yatra Cab to Haridwar 2026 | AC Vehicle ₹4,000'),
   description: 'Book Kanwar Yatra cab to Haridwar from Delhi, Noida, Ghaziabad. AC sedan, SUV, Tempo Traveller. Safe transport for Kanwariyas. Group discounts. Call 7668570551.',
   keywords: 'kanwar yatra cab haridwar, kanwar cab service, kanwar taxi, kanwar transport, book cab kanwar, book cab online, taxi service india, triveni cabs',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/kanwar-yatra-cab-haridwar' },
   openGraph: {
@@ -19,7 +19,7 @@ export const metadata = {
     description: 'Kanwar Yatra transport from Delhi/NCR to Haridwar. AC cabs, Tempo Travellers, group buses. Safety features for yatra. Book now.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/kanwar-yatra-cab-haridwar',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: {
     card: 'summary_large_image',
@@ -37,7 +37,7 @@ export default function KanwarYatraCabHaridwar() {
     "name": "Kanwar Yatra Cab to Haridwar — Triveni Cabs",
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "description": "Specialized transport service for Kanwar Yatra from Delhi, Noida, Ghaziabad to Haridwar. AC vehicles, Tempo Travellers, and group buses available.",
-    "provider": { "@type": "LocalBusiness", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
+    "provider": { "@type": "LocalBusiness", "@id": "https://www.trivenicabs.in/#organization", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" } },
     "areaServed": [
       { "@type": "City", "name": "Delhi" },
       { "@type": "City", "name": "Noida" },
@@ -92,11 +92,8 @@ export default function KanwarYatraCabHaridwar() {
           {/* Water/wave pattern overlay */}
           <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 20 Q10 10 20 20 Q30 30 40 20\' fill=\'none\' stroke=\'white\' stroke-width=\'1\'/%3E%3C/svg%3E")' }} />
           {/* Glowing orbs */}
-          <div className="absolute top-20 left-20 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-32 right-10 w-80 h-80 bg-indigo-500/15 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-amber-400/10 rounded-full blur-2xl" />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 pt-24 pb-32">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 pt-14 sm:pt-24 pb-16 sm:pb-32">
             <nav className="mb-8" aria-label="Breadcrumb">
               <ol className="inline-flex items-center space-x-2 text-sm">
                 <li><Link href="/" className="text-white/60 hover:text-white transition-colors">Home</Link></li>
@@ -185,7 +182,7 @@ export default function KanwarYatraCabHaridwar() {
         </div>
 
         {/* Route Pricing — Bold Table with indigo header accent */}
-        <section className="py-16 px-4 bg-gradient-to-b from-orange-50/50 to-white">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-orange-50/50 to-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-bold mb-4 border border-indigo-200">
@@ -232,7 +229,7 @@ export default function KanwarYatraCabHaridwar() {
         </section>
 
         {/* Safety: Grid with Shiva-indigo accent border */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-stone-800">Safety Features for Kanwar Yatra</h2>
@@ -260,7 +257,7 @@ export default function KanwarYatraCabHaridwar() {
         </section>
 
         {/* Vehicle Options — Horizontal scroll cards with distinct styling per vehicle */}
-        <section className="py-16 px-4 bg-gradient-to-b from-white to-orange-50/30">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-white to-orange-50/30">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-stone-800">Vehicle Options for Kanwar Yatra</h2>
@@ -303,7 +300,7 @@ export default function KanwarYatraCabHaridwar() {
         </section>
 
         {/* How It Works — Zigzag layout with icons */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-stone-800">How Kanwar Yatra Transport Works</h2>
@@ -345,14 +342,14 @@ export default function KanwarYatraCabHaridwar() {
         </section>
 
         {/* === SEO PROSE: E-E-A-T Rich Content Section === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-white to-orange-50/30">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-white to-orange-50/30">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-stone-900 mb-8">
-              Why Triveni Cabs for <span className="text-transparent bg-gradient-to-r from-indigo-600 to-orange-500 bg-clip-text">Kanwar Yatra Transport to Haridwar</span>
+              Why Triveni Cabs™ for <span className="text-transparent bg-gradient-to-r from-indigo-600 to-orange-500 bg-clip-text">Kanwar Yatra Transport to Haridwar</span>
             </h2>
             <div className="prose prose-lg max-w-none text-stone-600 space-y-4">
               <p>
-                Kanwar Yatra is one of the most sacred pilgrimages in Hinduism — millions of Shiva devotees walk or drive from across North India to collect holy Ganga jal from Haridwar during the month of Shravan. Triveni Cabs has been providing <strong>Kanwar Yatra cab service from Delhi and NCR to Haridwar since 2016</strong>, and we understand the unique needs of kanwariyas — from midnight departures to kanwar-sized vehicle space.
+                Kanwar Yatra is one of the most sacred pilgrimages in Hinduism — millions of Shiva devotees walk or drive from across North India to collect holy Ganga jal from Haridwar during the month of Shravan. Triveni Cabs™ has been providing <strong>Kanwar Yatra cab service from Delhi and NCR to Haridwar since 2016</strong>, and we understand the unique needs of kanwariyas — from midnight departures to kanwar-sized vehicle space.
               </p>
               <p>
                 With <strong>2,000+ successful Kanwar Yatra trips</strong> completed, our drivers are deeply familiar with the yatra route, the seasonal road diversions imposed by authorities during peak Shravan weeks, and the fastest way to reach Har Ki Pauri ghat for Ganga jal collection. Every vehicle in our Kanwar Yatra fleet is <Link href="/safety" className="text-orange-600 hover:text-indigo-600 underline underline-offset-2">GPS-tracked with real-time monitoring</Link>, and our 24/7 helpline ensures your family knows your location throughout the sacred journey.
@@ -386,7 +383,7 @@ export default function KanwarYatraCabHaridwar() {
         </section>
 
         {/* FAQ with indigo/orange alternating accent */}
-        <section className="py-16 px-4 bg-gradient-to-b from-white to-stone-50">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-white to-stone-50">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-black text-stone-800">Kanwar Yatra Cab FAQs</h2>
@@ -411,10 +408,10 @@ export default function KanwarYatraCabHaridwar() {
         </section>
 
         {/* === INTERLINKS: Pilgrimage Tours + Cross-Category === */}
-        <section className="py-16 px-4 bg-gradient-to-b from-stone-50 to-orange-50/20">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-stone-50 to-orange-50/20">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-8 text-center">Explore More Pilgrimage Tours</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours/haridwar-rishikesh-ganga-darshan", title: "Haridwar-Rishikesh Tour", sub: "Complete Ganga darshan package", price: "₹5,500" },
                 { href: "/religious-tours/char-dham-yatra", title: "Char Dham Yatra", sub: "Ultimate Himalayan pilgrimage", price: "₹22,000" },
@@ -436,7 +433,7 @@ export default function KanwarYatraCabHaridwar() {
 
             {/* Cross-Category: Related Services */}
             <h3 className="text-xl font-bold text-stone-800 mb-6 text-center">Related Services You May Need</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours", title: "All Religious Tours", desc: "Char Dham, Vaishno Devi, Kashi & 10+ pilgrimages" },
                 { href: "/ayodhya-ram-mandir-tour-from-delhi", title: "Ayodhya Ram Mandir from Delhi", desc: "530 km pilgrimage to Lord Ram's birthplace" },
@@ -457,7 +454,7 @@ export default function KanwarYatraCabHaridwar() {
 
             {/* Geographic Cluster: Nearby Pilgrimages */}
             <h3 className="text-xl font-bold text-stone-800 mb-6 text-center">Nearby Pilgrimage Destinations</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10 sm:mb-16">
               {[
                 { href: "/religious-tours/haridwar-rishikesh-ganga-darshan", label: "Haridwar-Rishikesh Tour" },
                 { href: "/religious-tours/char-dham-yatra", label: "Char Dham Yatra" },
@@ -482,8 +479,8 @@ export default function KanwarYatraCabHaridwar() {
                   <h4 className="font-bold text-stone-700 text-sm mb-3 uppercase tracking-wider">Popular Routes</h4>
                   <ul className="space-y-1.5">
                     {[
-                      { href: "/delhi-to-haridwar", label: "Delhi to Haridwar Cab" },
-                      { href: "/delhi-to-manali", label: "Delhi to Manali Cab" },
+                      { href: "/one-way-cab/delhi-to-haridwar", label: "Delhi to Haridwar Cab" },
+                      { href: "/one-way-cab/delhi-to-manali", label: "Delhi to Manali Cab" },
                       { href: "/delhi-to-shimla", label: "Delhi to Shimla Cab" },
                       { href: "/delhi-to-agra", label: "Delhi to Agra Cab" },
                       { href: "/delhi-to-jaipur", label: "Delhi to Jaipur Cab" },
@@ -550,7 +547,7 @@ export default function KanwarYatraCabHaridwar() {
         </section>
 
         {/* CTA: Dramatic indigo-to-saffron gradient with water wave accents */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-br from-indigo-900 via-indigo-800 to-orange-700">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden bg-gradient-to-br from-indigo-900 via-indigo-800 to-orange-700">
           {/* Decorative waves */}
           <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 30 Q15 15 30 30 Q45 45 60 30\' fill=\'none\' stroke=\'white\' stroke-width=\'1.5\'/%3E%3C/svg%3E")' }} />
           <div className="absolute bottom-0 left-0 right-0">

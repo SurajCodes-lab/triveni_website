@@ -66,16 +66,16 @@ function getHighlights(record) {
 const PLAN_TRIP_LINKS = {
   agra: [
     { kind: 'Sightseeing', label: 'Agra Sightseeing Tours', href: '/sightseeing/agra' },
-    { kind: 'One-way', label: 'Delhi to Agra Cab', href: '/one-way-cab/delhi-to-agra' },
+    { kind: 'One-way', label: 'Delhi to Agra Cab', href: '/delhi-to-agra' },
     { kind: 'One-way', label: 'Agra to Jaipur Cab', href: '/one-way-cab/agra-to-jaipur' },
-    { kind: 'Round trip', label: 'Delhi to Agra Round Trip', href: '/round-trip/delhi-to-agra' },
+    { kind: 'Round trip', label: 'Delhi to Agra Round Trip', href: '/delhi-to-agra' },
     { kind: 'City hub', label: 'Agra Taxi Service', href: '/agra' },
   ],
   delhi: [
     { kind: 'Sightseeing', label: 'Delhi Sightseeing Tours', href: '/sightseeing/delhi' },
-    { kind: 'One-way', label: 'Delhi to Agra Cab', href: '/one-way-cab/delhi-to-agra' },
-    { kind: 'One-way', label: 'Delhi to Jaipur Cab', href: '/one-way-cab/delhi-to-jaipur' },
-    { kind: 'Round trip', label: 'Delhi to Jaipur Round Trip', href: '/round-trip/delhi-to-jaipur' },
+    { kind: 'One-way', label: 'Delhi to Agra Cab', href: '/delhi-to-agra' },
+    { kind: 'One-way', label: 'Delhi to Jaipur Cab', href: '/delhi-to-jaipur' },
+    { kind: 'Round trip', label: 'Delhi to Jaipur Round Trip', href: '/delhi-to-jaipur' },
     { kind: 'City hub', label: 'Delhi Taxi Service', href: '/delhi' },
   ],
   jaipur: [
@@ -89,8 +89,8 @@ const PLAN_TRIP_LINKS = {
     { kind: 'Sightseeing', label: 'Delhi Sightseeing Tours', href: '/sightseeing/delhi' },
     { kind: 'Sightseeing', label: 'Agra Sightseeing Tours', href: '/sightseeing/agra' },
     { kind: 'Sightseeing', label: 'Jaipur Sightseeing Tours', href: '/sightseeing/jaipur' },
-    { kind: 'Round trip', label: 'Delhi to Agra Round Trip', href: '/round-trip/delhi-to-agra' },
-    { kind: 'Round trip', label: 'Delhi to Jaipur Round Trip', href: '/round-trip/delhi-to-jaipur' },
+    { kind: 'Round trip', label: 'Delhi to Agra Round Trip', href: '/delhi-to-agra' },
+    { kind: 'Round trip', label: 'Delhi to Jaipur Round Trip', href: '/delhi-to-jaipur' },
   ],
 };
 
@@ -127,7 +127,7 @@ export default function ToursWithGuideClient({
   languageAvailability = [],
   bookingSteps = [],
 }) {
-  const waText = `Hi Triveni Cabs, I want to book the "${record.headline}". Bundled fare: ${fmt(record.bundledFare)}. Please share availability.`;
+  const waText = `Hi Triveni Cabs™, I want to book the "${record.headline}". Bundled fare: ${fmt(record.bundledFare)}. Please share availability.`;
   const waMsg = encodeURIComponent(waText);
 
   // Calculate savings vs separate booking (10% markup assumed when booked apart)
@@ -300,20 +300,18 @@ export default function ToursWithGuideClient({
             { label: 'Duration', value: record.duration },
           ]}
           lastReviewed={record.lastReviewed}
-          source="Triveni Cabs licensed-guide partnership data"
+          source="Triveni Cabs™ licensed-guide partnership data"
           className="shadow-[0_30px_80px_-30px_rgba(251,191,36,0.3)]"
         />
       </section>
 
       {/* ============= PRICE CARD + MONUMENT GRID ============= */}
-      <section id="price" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 scroll-mt-20">
+      <section id="price" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-16 scroll-mt-20">
         <div className="grid lg:grid-cols-12 gap-8">
           {/* Price card */}
           <aside className="lg:col-span-4 lg:sticky lg:top-24 self-start">
             <div className="relative overflow-hidden rounded-[1.6rem] border border-amber-400/30 bg-gradient-to-br from-[#1a1408] via-slate-950 to-slate-900 p-7 shadow-[0_30px_80px_-20px_rgba(251,191,36,0.35)]">
               {/* Decorative blooms */}
-              <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full bg-amber-400/20 blur-3xl" />
-              <div className="absolute -bottom-20 -left-16 w-40 h-40 rounded-full bg-emerald-400/10 blur-3xl" />
               <CornerOrnaments />
 
               {savings > 500 && (
@@ -337,7 +335,7 @@ export default function ToursWithGuideClient({
               {/* Booking pulse — social-proof urgency */}
               <div className="mt-4 flex items-center gap-2 rounded-lg bg-emerald-400/10 border border-emerald-300/25 px-3 py-2">
                 <span className="relative flex h-2.5 w-2.5 shrink-0">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
                 </span>
                 <span className="text-[11px] font-bold text-emerald-100 leading-tight">
@@ -398,7 +396,7 @@ export default function ToursWithGuideClient({
       </section>
 
       {/* ============= ITINERARY ============= */}
-      <section id="itinerary" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+      <section id="itinerary" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-20">
         <SectionTitle eyebrow="The day, hour by hour" title="Day-by-day itinerary" sub="Built around monument opening hours, guide handover and rest breaks." />
         <div className="mt-10 space-y-7">
           {(record.itinerary || []).map((d, i) => (
@@ -406,7 +404,6 @@ export default function ToursWithGuideClient({
               key={i}
               className="relative rounded-[1.6rem] border border-amber-400/15 bg-gradient-to-br from-slate-900/80 via-slate-950 to-slate-900/40 p-6 md:p-9 backdrop-blur-sm overflow-hidden"
             >
-              <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-amber-400/[0.08] blur-3xl" />
               <div className="flex items-center gap-5 mb-6">
                 <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-300 to-yellow-500 flex items-center justify-center font-black text-[#1a1408] text-xl shadow-[0_12px_30px_-8px_rgba(251,191,36,0.55)]">
                   {i + 1}
@@ -453,7 +450,7 @@ export default function ToursWithGuideClient({
       <ArchDivider />
 
       {/* ============= VEHICLE + GUIDE PROFILE ============= */}
-      <section id="vehicle" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 scroll-mt-20">
+      <section id="vehicle" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-16 scroll-mt-20">
         <div className="grid lg:grid-cols-12 gap-8">
           {/* Vehicle */}
           <div className="lg:col-span-7 rounded-[1.6rem] border border-amber-400/15 bg-slate-900/40 overflow-hidden shadow-[0_20px_50px_-25px_rgba(0,0,0,0.7)]">
@@ -488,7 +485,6 @@ export default function ToursWithGuideClient({
 
           {/* Guide profile card */}
           <div className="lg:col-span-5 relative rounded-[1.6rem] border border-emerald-300/25 bg-gradient-to-br from-emerald-950 via-slate-950 to-slate-900 p-7 overflow-hidden">
-            <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full bg-emerald-400/15 blur-3xl" />
             <CornerOrnaments emerald />
 
             {/* Avatar + handle */}
@@ -536,7 +532,7 @@ export default function ToursWithGuideClient({
 
       {/* ============= VEHICLE COMPARISON TABLE ============= */}
       {vehicleComparison.length > 1 && (
-        <section id="compare" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+        <section id="compare" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-20">
           <SectionTitle
             eyebrow="Pick the right ride"
             title={`Which vehicle for the ${record.city.split(' →')[0].trim()} tour?`}
@@ -547,11 +543,10 @@ export default function ToursWithGuideClient({
       )}
 
       {/* ============= INCLUSIONS / EXCLUSIONS ============= */}
-      <section id="includes" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+      <section id="includes" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-20">
         <SectionTitle eyebrow="No surprise fees" title="What's included · what's not" />
         <div className="grid md:grid-cols-2 gap-6 mt-10">
           <div className="relative rounded-[1.4rem] border border-emerald-300/30 bg-gradient-to-br from-emerald-950/60 via-slate-950 to-slate-900 p-7 overflow-hidden">
-            <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-emerald-400/15 blur-2xl" />
             <p className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-emerald-200 mb-4">
               <span className="w-7 h-7 rounded-full bg-emerald-400/20 border border-emerald-300/40 flex items-center justify-center text-emerald-200">
                 <Icon name="check" className="w-3.5 h-3.5" />
@@ -568,7 +563,6 @@ export default function ToursWithGuideClient({
             </ul>
           </div>
           <div className="relative rounded-[1.4rem] border border-rose-300/20 bg-gradient-to-br from-rose-950/40 via-slate-950 to-slate-900 p-7 overflow-hidden">
-            <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-rose-400/10 blur-2xl" />
             <p className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-rose-200 mb-4">
               <span className="w-7 h-7 rounded-full bg-rose-400/15 border border-rose-300/30 flex items-center justify-center text-rose-200">
                 <Icon name="x" className="w-3.5 h-3.5" />
@@ -588,13 +582,13 @@ export default function ToursWithGuideClient({
       </section>
 
       {/* ============= MID INLINE CTA ============= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
         <InlineCTA
           theme="guide"
           headline={`Ready to book ${record.headline.split('—')[0].trim()}?`}
           sub={`Bundled fare ${fmt(record.bundledFare)} · ${record.duration} · Licensed ${record.guideLanguage || 'English'}-speaking guide`}
           context={`tours-with-guide-${record.slug}`}
-          waMessage={`Hi Triveni Cabs, I want to book the ${record.headline}. Please share availability and final quote.`}
+          waMessage={`Hi Triveni Cabs™, I want to book the ${record.headline}. Please share availability and final quote.`}
           variant="full"
           showPrice
           priceFrom={fmt(record.bundledFare)}
@@ -602,7 +596,7 @@ export default function ToursWithGuideClient({
       </section>
 
       {/* ============= THINGS TO DO ============= */}
-      <section id="things" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+      <section id="things" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-20">
         <SectionTitle eyebrow="Beyond the monuments" title={`Things to do in ${record.city.split(' →')[0].trim()}`} sub="Curated by our city operations team for after-tour evenings." />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           {things.map((t, i) => (
@@ -610,7 +604,6 @@ export default function ToursWithGuideClient({
               key={i}
               className="group relative overflow-hidden rounded-2xl border border-amber-400/10 bg-gradient-to-br from-slate-900/80 to-slate-900/40 p-6 hover:border-amber-300/40 transition"
             >
-              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl bg-amber-400/0 group-hover:bg-amber-400/15 transition" />
               <span className="inline-flex w-8 h-8 items-center justify-center rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 text-[11px] font-black mb-3">{i + 1}</span>
               <p className="text-base font-black text-amber-100 mb-2">{t.title}</p>
               <p className="text-sm text-slate-300/95 leading-relaxed">{t.desc}</p>
@@ -620,7 +613,7 @@ export default function ToursWithGuideClient({
       </section>
 
       {/* ============= PICKUP POINTS ============= */}
-      <section id="pickup" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+      <section id="pickup" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-20">
         <SectionTitle eyebrow="Where we pick you up" title={`Pickup in ${(record.pickupCity || record.city).split(' →')[0].trim()}`} />
         <div className="mt-10 grid md:grid-cols-2 gap-3">
           {pickups.map((p, i) => (
@@ -639,7 +632,7 @@ export default function ToursWithGuideClient({
 
       {/* ============= GUIDE LANGUAGE AVAILABILITY ============= */}
       {languageAvailability.length > 0 && (
-        <section id="languages" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+        <section id="languages" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-20">
           <SectionTitle
             eyebrow="Speak your language"
             title={`${record.guideLanguage || 'English'} & other licensed guide languages`}
@@ -675,7 +668,7 @@ export default function ToursWithGuideClient({
 
       {/* ============= HOW TO BOOK ============= */}
       {bookingSteps.length > 0 && (
-        <section id="howto" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+        <section id="howto" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-20">
           <SectionTitle
             eyebrow="Booking in minutes"
             title={`How to book the ${record.city.split(' →')[0].trim()} guided tour`}
@@ -699,7 +692,7 @@ export default function ToursWithGuideClient({
       )}
 
       {/* ============= FAQ ============= */}
-      <section id="faq" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+      <section id="faq" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-20">
         <SectionTitle eyebrow="Frequently asked" title="Everything travellers ask" />
         <div className="mt-10 space-y-3">
           {faqs.map((f, i) => (
@@ -718,13 +711,13 @@ export default function ToursWithGuideClient({
       </section>
 
       {/* ============= REVIEWS ============= */}
-      <section id="reviews" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-20">
+      <section id="reviews" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-20">
         <ReviewsBlock reviews={reviews} reviewCount={reviewCount} />
       </section>
 
       {/* ============= RELATED TOURS ============= */}
       {related.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="More from this section" title="Related tours" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
             {related.map((t) => (
@@ -765,9 +758,8 @@ export default function ToursWithGuideClient({
       <PlanYourTrip cityKey={record.cityKey} />
 
       {/* ============= REASSURANCE BAND ============= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
         <div className="relative overflow-hidden rounded-[1.6rem] border border-amber-400/15 bg-gradient-to-br from-[#1a1408]/60 via-slate-950 to-slate-900/40 p-6 sm:p-8">
-          <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full bg-amber-400/[0.08] blur-3xl" />
           <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-amber-300/80 text-center mb-5">Why book Triveni</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
             <ReassuranceItem icon="badge" title="GST registered" sub="Compliant invoice" />
@@ -779,13 +771,13 @@ export default function ToursWithGuideClient({
       </section>
 
       {/* ============= FINAL BANNER CTA ============= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pb-24">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pb-14 sm:pb-24">
         <InlineCTA
           theme="guide"
           headline="Lock in your guide-included tour today"
           sub={`Same bundled fare on call, WhatsApp or web — ${fmt(record.bundledFare)}, no surprise charges, license proof at confirmation.`}
           context={`tours-with-guide-final-${record.slug}`}
-          waMessage={`Hi Triveni Cabs, I'm ready to book "${record.headline}" for ${fmt(record.bundledFare)}.`}
+          waMessage={`Hi Triveni Cabs™, I'm ready to book "${record.headline}" for ${fmt(record.bundledFare)}.`}
           variant="banner"
         />
       </section>
@@ -965,7 +957,7 @@ function MinistryCrest({ language }) {
       </div>
       {language && (
         <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/35 bg-emerald-400/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-emerald-200">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" /> {language}-speaking
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-300" /> {language}-speaking
         </span>
       )}
     </div>
@@ -977,7 +969,6 @@ function HeroVisuals({ record }) {
   const labels = record.monuments || [];
   return (
     <div className="relative h-[420px] sm:h-[480px] lg:h-[520px] w-full mt-8 lg:mt-0">
-      <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/15 via-transparent to-emerald-500/10 blur-3xl rounded-full" />
       {/* Main feature image */}
       <div className="absolute top-0 right-0 w-[78%] aspect-[4/5] rounded-2xl overflow-hidden ring-1 ring-amber-300/20 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
         <Image
@@ -1164,7 +1155,7 @@ function InlineLeadForm({ record }) {
       pageType: 'tours_with_guide',
       toCity: record.headline || '',
     });
-    const msg = `Hi Triveni Cabs, I'd like to book "${record.headline}" (bundled ${typeof record.bundledFare === 'number' ? `₹${record.bundledFare.toLocaleString('en-IN')}` : record.bundledFare}).\n\nName: ${name}\nWhatsApp: ${phone}\nPreferred date: ${date || 'flexible'}\n\nPlease confirm availability and final fare.`;
+    const msg = `Hi Triveni Cabs™, I'd like to book "${record.headline}" (bundled ${typeof record.bundledFare === 'number' ? `₹${record.bundledFare.toLocaleString('en-IN')}` : record.bundledFare}).\n\nName: ${name}\nWhatsApp: ${phone}\nPreferred date: ${date || 'flexible'}\n\nPlease confirm availability and final fare.`;
     const url = `https://wa.me/${INTL_PHONE}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank', 'noopener');
   };
@@ -1260,7 +1251,7 @@ function PlanYourTrip({ cityKey }) {
   if (!links?.length) return null;
   const area = PLAN_TRIP_AREA[cityKey] || 'your route';
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
       <SectionTitle
         eyebrow="Plan your trip"
         title="Travelling without a guide?"

@@ -15,6 +15,7 @@ import {
   CheckCircle
 } from '@/components/ui/icons';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { groupDigits } from '@/utilis/pricing';
 
 /**
  * Fare Calculator - Interactive tool for instant fare estimates
@@ -296,7 +297,7 @@ const FareCalculator = ({
             aria-label="Select vehicle or seater"
           >
             {availableVehicles.map(v => (
-              <option key={v.id} value={v.id}>{v.name} — ₹{v.pricePerKm}/km</option>
+              <option key={v.id} value={v.id}>{v.name} — ₹{groupDigits(v.pricePerKm)}/km</option>
             ))}
           </select>
         </div>
@@ -312,7 +313,7 @@ const FareCalculator = ({
             <p className="text-sm text-gray-600">Estimated Fare ({fareDetails.vehicle.name})</p>
             <p className="text-2xl font-bold text-amber-600">₹{fareDetails.totalFare.toLocaleString()}</p>
             <p className="text-xs text-gray-500">
-              {fareDetails.distance} km | ₹{fareDetails.pricePerKm}/km
+              {fareDetails.distance} km | ₹{groupDigits(fareDetails.pricePerKm)}/km
               {tripType !== 'roundtrip' && /^(tempo|bus)/.test(fareDetails.vehicle.id) && ' · billed both ways'}
             </p>
             <div className="mt-2 flex gap-2">
@@ -460,7 +461,7 @@ const FareCalculator = ({
                         <Users className="w-3 h-3" aria-hidden="true" />
                         {vehicle.seats} seats
                       </div>
-                      <div className="text-amber-600 font-bold text-sm sm:text-base mt-1">₹{vehicle.pricePerKm}/km</div>
+                      <div className="text-amber-600 font-bold text-sm sm:text-base mt-1">₹{groupDigits(vehicle.pricePerKm)}/km</div>
                     </button>
                   ))}
                 </div>
@@ -486,7 +487,7 @@ const FareCalculator = ({
                           <Users className="w-3 h-3" />
                           {vehicle.seats} seats
                         </div>
-                        <div className="text-amber-600 font-bold text-sm sm:text-base mt-1">₹{vehicle.pricePerKm}/km</div>
+                        <div className="text-amber-600 font-bold text-sm sm:text-base mt-1">₹{groupDigits(vehicle.pricePerKm)}/km</div>
                       </button>
                     ))}
                   </div>
@@ -543,16 +544,16 @@ const FareCalculator = ({
                 {/* Fare Breakdown */}
                 <div className="space-y-1.5 sm:space-y-2 mb-3 sm:mb-4 text-sm sm:text-base">
                   <div className="flex justify-between">
-                    <span>Base Fare ({fareDetails.billableKm} km × ₹{fareDetails.pricePerKm})</span>
+                    <span>Base Fare ({fareDetails.billableKm} km × ₹{groupDigits(fareDetails.pricePerKm)})</span>
                     <span>₹{fareDetails.baseFare.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Driver Allowance</span>
-                    <span>₹{fareDetails.driverAllowance}</span>
+                    <span>₹{groupDigits(fareDetails.driverAllowance)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Toll (Estimated)</span>
-                    <span>₹{fareDetails.tollEstimate}</span>
+                    <span>₹{groupDigits(fareDetails.tollEstimate)}</span>
                   </div>
                   <div className="border-t border-white/30 pt-2 flex justify-between text-lg sm:text-xl font-bold">
                     <span>Total Estimate</span>

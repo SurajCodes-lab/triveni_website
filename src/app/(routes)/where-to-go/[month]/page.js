@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import { getMonthData, getAllMonthSlugs, getAdjacentMonths } from '@/utilis/monthlyCalendarData';
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import MonthlyCalendarClient from '@/components/monthly-calendar/MonthlyCalendarClient';
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }) {
   const monthTail = `Weather, crowd levels, budget and cab fares. Call 7668570551.`;
   const monthHead = `Best places to visit in ${data.month} 2026: ${topDest} & more.`;
   const description = `${tightenDescription(monthHead, DESC_BUDGET - monthTail.length - 1)} ${monthTail}`;
-  const ogTitle = `Where to Go in ${data.month} 2026 — ${data.destinations.length} Best Destinations with Cab Service | Triveni Cabs`;
+  const ogTitle = `Where to Go in ${data.month} 2026 — ${data.destinations.length} Best Destinations with Cab Service | Triveni Cabs™`;
 
   return {
     title,
@@ -47,19 +48,19 @@ export async function generateMetadata({ params }) {
       `${data.month.toLowerCase()} road trip destinations`,
       `seasonal travel guide india ${data.month.toLowerCase()}`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/where-to-go/${slug}` },
     openGraph: {
       title: ogTitle, description, type: 'website', locale: 'en_IN',
       url: `https://www.trivenicabs.in/where-to-go/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: `Best Places to Visit in ${data.month}` }],
     },
     twitter: { card: 'summary_large_image', title: ogTitle, description, creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/citypage_hero_section_image.jpg'] },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -77,8 +78,7 @@ export default async function WhereToGoPage({ params }) {
     "name": `Best Places to Visit in ${data.month} — India Travel Guide`,
     "description": `Top ${data.destinations.length} destinations to visit in ${data.month}: ${data.destinations.map(d => d.name).join(', ')}. Complete weather, cost, and festival guide.`,
     "touristType": "Leisure Travelers",
-    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "addressRegion": "UP", "postalCode": "282006", "addressCountry": "IN" } },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount(slug)), "bestRating": "5" }
+    "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "email": "cabstriveni@gmail.com", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "addressRegion": "Uttar Pradesh", "postalCode": "282006", "addressCountry": "IN" } }
   };
 
   const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.trivenicabs.in" }, { "@type": "ListItem", "position": 2, "name": "Where to Go", "item": "https://www.trivenicabs.in/where-to-go" }, { "@type": "ListItem", "position": 3, "name": data.month, "item": `https://www.trivenicabs.in/where-to-go/${slug}` } ] };

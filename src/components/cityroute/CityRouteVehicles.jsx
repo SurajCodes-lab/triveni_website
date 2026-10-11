@@ -1,3 +1,7 @@
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 // src/components/cityroute/CityRouteVehicles.jsx
 //
 // Redesigned vehicle grid for the city-route page — premium, mobile-first,
@@ -6,7 +10,6 @@
 //
 // vehicles: [{ name, image, seats, price, ratePerKm?, features?[], popular? }]
 
-'use client';
 
 import VehicleCard from '@/components/ui/VehicleCard';
 import AuroraHeading from '@/components/ui/AuroraHeading';

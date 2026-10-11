@@ -28,7 +28,7 @@ const newBlogsWeek39 = [
       text: "Book Delhi to Manali Cab",
       link: "/one-way-cab/delhi-to-manali"
     },
-    content: `<p class="blog-lead">The <strong>Delhi to Manali road trip</strong> covers roughly 535 km and takes 12-14 hours of driving via Chandigarh, Bilaspur and Mandi. The fastest route is NH-44 to Chandigarh, then NH-3 (Kiratpur-Manali highway) through Bilaspur, Sundernagar, Mandi and the Aut tunnel. Most travellers leave Delhi late evening to reach Manali by next morning, or drive through the day with stops. Book a <a href="/one-way-cab/delhi-to-manali" class="text-blue-600 hover:underline font-semibold">Delhi to Manali one-way cab</a> if you are heading further into Himachal, or a <a href="/round-trip/delhi-to-manali" class="text-blue-600 hover:underline font-semibold">round-trip cab</a> for a return holiday.</p>
+    content: `<p class="blog-lead">The <strong>Delhi to Manali road trip</strong> covers roughly 535 km and takes 12-14 hours of driving via Chandigarh, Bilaspur and Mandi. The fastest route is NH-44 to Chandigarh, then NH-3 (Kiratpur-Manali highway) through Bilaspur, Sundernagar, Mandi and the Aut tunnel. Most travellers leave Delhi late evening to reach Manali by next morning, or drive through the day with stops. Book a <a href="/one-way-cab/delhi-to-manali" class="text-blue-600 hover:underline font-semibold">Delhi to Manali one-way cab</a> if you are heading further into Himachal, or a <a href="/one-way-cab/delhi-to-manali" class="text-blue-600 hover:underline font-semibold">round-trip cab</a> for a return holiday.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Delhi to Manali Route at a Glance</h2>
 <table class="w-full border-collapse border border-gray-300 my-6">
@@ -82,7 +82,7 @@ const newBlogsWeek39 = [
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">How long does the Delhi to Manali drive take?</h3>
 <p class="text-gray-700 leading-relaxed mb-4">Plan for 12-14 hours including short breaks. Overnight departures often feel faster because the plains section clears quickly at night.</p>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Is one-way or round-trip cheaper to Manali?</h3>
-<p class="text-gray-700 leading-relaxed mb-4">For cars, a one-way drop is cheaper if you are not returning immediately. For Tempo Travellers and buses, one-way and round-trip cost the same. See our <a href="/round-trip/delhi-to-manali" class="text-blue-600 hover:underline font-semibold">round-trip Manali page</a> to compare.</p>
+<p class="text-gray-700 leading-relaxed mb-4">For cars, a one-way drop is cheaper if you are not returning immediately. For Tempo Travellers and buses, one-way and round-trip cost the same. See our <a href="/one-way-cab/delhi-to-manali" class="text-blue-600 hover:underline font-semibold">round-trip Manali page</a> to compare.</p>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Which vehicle is best for Manali?</h3>
 <p class="text-gray-700 leading-relaxed mb-4">An Innova Crysta for families and a 12-17 seater Tempo Traveller for groups - both handle hill roads well.</p>`,
     city: "Manali",
@@ -375,9 +375,9 @@ const newBlogsWeek39 = [
     ],
     primaryCTA: {
       text: "Book Delhi to Jaipur Cab",
-      link: "/one-way-cab/delhi-to-jaipur"
+      link: "/delhi-to-jaipur"
     },
-    content: `<p class="blog-lead">A <strong>Delhi to Jaipur day trip</strong> is entirely doable: the distance is about 280 km and the drive takes roughly 5 hours each way on NH-48 (the Delhi-Jaipur Expressway). Leave Delhi by 5-6 AM, spend 6-7 hours sightseeing in Jaipur, and return by night. For a relaxed pace, a one-night stay is better, but a well-planned same-day visit covers Amber Fort, City Palace and Hawa Mahal. Book a <a href="/one-way-cab/delhi-to-jaipur" class="text-blue-600 hover:underline font-semibold">Delhi to Jaipur cab</a> or add a guided <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline font-semibold">Jaipur sightseeing</a> tour.</p>
+    content: `<p class="blog-lead">A <strong>Delhi to Jaipur day trip</strong> is entirely doable: the distance is about 280 km and the drive takes roughly 5 hours each way on NH-48 (the Delhi-Jaipur Expressway). Leave Delhi by 5-6 AM, spend 6-7 hours sightseeing in Jaipur, and return by night. For a relaxed pace, a one-night stay is better, but a well-planned same-day visit covers Amber Fort, City Palace and Hawa Mahal. Book a <a href="/delhi-to-jaipur" class="text-blue-600 hover:underline font-semibold">Delhi to Jaipur cab</a> or add a guided <a href="/sightseeing/jaipur" class="text-blue-600 hover:underline font-semibold">Jaipur sightseeing</a> tour.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Route & Distance</h2>
 <table class="w-full border-collapse border border-gray-300 my-6">
@@ -416,7 +416,7 @@ const newBlogsWeek39 = [
 <tr><td class="border border-gray-300 px-4 py-2">Innova Crysta</td><td class="border border-gray-300 px-4 py-2">Rs 18/km</td><td class="border border-gray-300 px-4 py-2">6-7</td></tr>
 <tr><td class="border border-gray-300 px-4 py-2">Tempo Traveller (12)</td><td class="border border-gray-300 px-4 py-2">Rs 23/km</td><td class="border border-gray-300 px-4 py-2">12</td></tr>
 </tbody></table>
-<p class="text-gray-700 leading-relaxed mb-4">Fares are billed at the per-km rate with an outstation minimum of 250-300 km per day. A round-trip day tour is usually the most convenient way to see Jaipur and return the same day. If you plan to continue to Agra or Udaipur, a one-way drop makes more sense - compare on our <a href="/one-way-cab/delhi-to-jaipur" class="text-blue-600 hover:underline font-semibold">Delhi to Jaipur cab page</a>.</p>
+<p class="text-gray-700 leading-relaxed mb-4">Fares are billed at the per-km rate with an outstation minimum of 250-300 km per day. A round-trip day tour is usually the most convenient way to see Jaipur and return the same day. If you plan to continue to Agra or Udaipur, a one-way drop makes more sense - compare on our <a href="/delhi-to-jaipur" class="text-blue-600 hover:underline font-semibold">Delhi to Jaipur cab page</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Frequently Asked Questions</h2>
 <h3 class="text-xl font-bold text-gray-900 mt-8 mb-4">Can you do Delhi to Jaipur and back in one day?</h3>
@@ -868,9 +868,9 @@ const newBlogsWeek39 = [
     ],
     primaryCTA: {
       text: "Book Delhi to Rishikesh Cab",
-      link: "/one-way-cab/delhi-to-rishikesh"
+      link: "/delhi-to-rishikesh"
     },
-    content: `<p class="blog-lead">Delhi to <strong>Haridwar is about 220 km and Rishikesh about 240 km</strong>, a 5-6 hour drive on NH-334/NH-7 via Meerut and Roorkee. Together they make the ideal weekend getaway from Delhi - Haridwar for the Ganga Aarti at Har Ki Pauri and Rishikesh for temples, yoga and river rafting. You can cover both in two days. Book a <a href="/one-way-cab/delhi-to-rishikesh" class="text-blue-600 hover:underline font-semibold">Delhi to Rishikesh cab</a> or a <a href="/one-way-cab/delhi-to-haridwar" class="text-blue-600 hover:underline font-semibold">Delhi to Haridwar cab</a>.</p>
+    content: `<p class="blog-lead">Delhi to <strong>Haridwar is about 220 km and Rishikesh about 240 km</strong>, a 5-6 hour drive on NH-334/NH-7 via Meerut and Roorkee. Together they make the ideal weekend getaway from Delhi - Haridwar for the Ganga Aarti at Har Ki Pauri and Rishikesh for temples, yoga and river rafting. You can cover both in two days. Book a <a href="/delhi-to-rishikesh" class="text-blue-600 hover:underline font-semibold">Delhi to Rishikesh cab</a> or a <a href="/one-way-cab/delhi-to-haridwar" class="text-blue-600 hover:underline font-semibold">Delhi to Haridwar cab</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Route & Distance</h2>
 <table class="w-full border-collapse border border-gray-300 my-6">
@@ -954,7 +954,7 @@ const newBlogsWeek39 = [
       text: "Plan 7-Day Himachal Tour",
       link: "/7-day-himachal-tour-by-car"
     },
-    content: `<p class="blog-lead">A classic <strong>Delhi to Shimla-Manali Himachal trip</strong> covers roughly 1,150 km round trip over 6-7 days, and the main cost driver is your vehicle. At canonical per-km rates, transport ranges from a budget sedan at Rs 11/km to a spacious Tempo Traveller at Rs 20-28/km, on top of stays and food. The typical loop is Delhi to Shimla (350 km), Shimla to Manali (250 km), then Manali back to Delhi (535 km). Use our <a href="/7-day-himachal-tour-by-car" class="text-blue-600 hover:underline font-semibold">7-day Himachal tour by car</a> for a ready itinerary or a <a href="/one-way-cab/delhi-to-shimla" class="text-blue-600 hover:underline font-semibold">Delhi to Shimla cab</a> to start.</p>
+    content: `<p class="blog-lead">A classic <strong>Delhi to Shimla-Manali Himachal trip</strong> covers roughly 1,150 km round trip over 6-7 days, and the main cost driver is your vehicle. At canonical per-km rates, transport ranges from a budget sedan at Rs 11/km to a spacious Tempo Traveller at Rs 20-28/km, on top of stays and food. The typical loop is Delhi to Shimla (350 km), Shimla to Manali (250 km), then Manali back to Delhi (535 km). Use our <a href="/7-day-himachal-tour-by-car" class="text-blue-600 hover:underline font-semibold">7-day Himachal tour by car</a> for a ready itinerary or a <a href="/delhi-to-shimla" class="text-blue-600 hover:underline font-semibold">Delhi to Shimla cab</a> to start.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-6">Route & Distances</h2>
 <table class="w-full border-collapse border border-gray-300 my-6">

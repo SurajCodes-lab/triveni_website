@@ -119,7 +119,7 @@ function generateFaqs(vehicleName, vehicleType, origin, destination, distanceKm,
   return [
     {
       question: `How much does it cost to hire a ${vehicleName} from ${origin} to ${destination}?`,
-      answer: `Hiring a ${vehicleName} from ${origin} to ${destination} costs approximately Rs ${fare.toLocaleString('en-IN')} for the ${distanceKm} km journey (minimum billing: ${minKm} km at Rs ${perKm}/km). This all-inclusive fare covers fuel, the driver, all tolls, and state permits. Call Triveni Cabs at 7668570551 for an exact, no-surge quote.`,
+      answer: `Hiring a ${vehicleName} from ${origin} to ${destination} costs approximately Rs ${fare.toLocaleString('en-IN')} for the ${distanceKm} km journey (minimum billing: ${minKm} km at Rs ${perKm}/km). This all-inclusive fare covers fuel, the driver, all tolls, and state permits. Call Triveni Cabs™ at 7668570551 for an exact, no-surge quote.`,
     },
     {
       question: `What is the per km rate for a ${vehicleName} on the ${origin} to ${destination} route?`,
@@ -135,11 +135,11 @@ function generateFaqs(vehicleName, vehicleType, origin, destination, distanceKm,
     },
     {
       question: `What is included in the ${vehicleName} hire from ${origin} to ${destination}?`,
-      answer: `Your ${vehicleName} hire includes AC vehicle, experienced driver, fuel charges, toll taxes, state permits, and night halt charges. Parking at tourist spots and monument entry tickets are additional. All Triveni Cabs vehicles are GPS-tracked for your safety.`,
+      answer: `Your ${vehicleName} hire includes AC vehicle, experienced driver, fuel charges, toll taxes, state permits, and night halt charges. Parking at tourist spots and monument entry tickets are additional. All Triveni Cabs™ vehicles are GPS-tracked for your safety.`,
     },
     {
       question: `Can I book a one-way ${vehicleName} from ${origin} to ${destination}?`,
-      answer: `Yes, Triveni Cabs offers both one-way and round-trip ${vehicleName} hire from ${origin} to ${destination}. One-way trips are charged at Rs ${perKm}/km with a minimum of 300 km billing. A round trip costs approximately Rs ${roundTripFare.toLocaleString('en-IN')} with a 10% return discount. Book via call at 7668570551 or WhatsApp for instant confirmation.`,
+      answer: `Yes, Triveni Cabs™ offers both one-way and round-trip ${vehicleName} hire from ${origin} to ${destination}. One-way trips are charged at Rs ${perKm}/km with a minimum of 300 km billing. A round trip costs approximately Rs ${roundTripFare.toLocaleString('en-IN')} with a 10% return discount. Book via call at 7668570551 or WhatsApp for instant confirmation.`,
     },
     {
       question: `How many passengers can travel in a ${vehicleName} from ${origin} to ${destination}?`,
@@ -147,7 +147,7 @@ function generateFaqs(vehicleName, vehicleType, origin, destination, distanceKm,
     },
     {
       question: `How do I book a ${vehicleName} from ${origin} to ${destination}?`,
-      answer: `Booking takes under two minutes: call or WhatsApp Triveni Cabs at 7668570551 with your travel date and pickup address, confirm the Rs ${fare.toLocaleString('en-IN')} fare, and pay a small advance to lock the ${vehicleName}. You receive driver details before the trip — no app download or sign-up needed.`,
+      answer: `Booking takes under two minutes: call or WhatsApp Triveni Cabs™ at 7668570551 with your travel date and pickup address, confirm the Rs ${fare.toLocaleString('en-IN')} fare, and pay a small advance to lock the ${vehicleName}. You receive driver details before the trip — no app download or sign-up needed.`,
     },
     {
       question: `Is the driver and fuel included in the ${vehicleName} ${origin} to ${destination} fare?`,
@@ -176,7 +176,7 @@ function getFareBreakdown(perKm, distanceKm, fare) {
 // How-to booking steps (HowTo schema + on-page)
 function getBookingSteps(vehicleName, origin, destination, fare) {
   return [
-    { name: 'Call or WhatsApp', text: `Contact Triveni Cabs at 7668570551 with your ${origin} to ${destination} travel date, pickup address, and passenger count.` },
+    { name: 'Call or WhatsApp', text: `Contact Triveni Cabs™ at 7668570551 with your ${origin} to ${destination} travel date, pickup address, and passenger count.` },
     { name: 'Confirm the fare', text: `Get the all-inclusive ${vehicleName} fare of Rs ${fare.toLocaleString('en-IN')} confirmed in writing on WhatsApp — no surge, no hidden charges.` },
     { name: 'Pay a small advance', text: `Lock the ${vehicleName} for your date with a small advance via UPI, card, or bank transfer. The balance is paid at trip end.` },
     { name: 'Receive driver details', text: `Get the assigned driver's name, photo, and vehicle number before the trip, plus a live GPS tracking link for safety.` },
@@ -186,7 +186,7 @@ function getBookingSteps(vehicleName, origin, destination, fare) {
 
 // Direct-answer lead sentence (speakable / AI answer)
 function getDirectAnswer(vehicleName, vehicleType, origin, destination, distanceKm, duration, fare, perKm, seating) {
-  return `Hiring a ${vehicleName} on rent from ${origin} to ${destination} costs Rs ${fare.toLocaleString('en-IN')} all-inclusive for the ${distanceKm} km, ${duration} journey. The fare covers an AC ${vehicleType.toLowerCase()} that seats ${seating}, an experienced driver, fuel, and all tolls at Rs ${perKm}/km. Book instantly with Triveni Cabs on 7668570551.`;
+  return `Hiring a ${vehicleName} on rent from ${origin} to ${destination} costs Rs ${fare.toLocaleString('en-IN')} all-inclusive for the ${distanceKm} km, ${duration} journey. The fare covers an AC ${vehicleType.toLowerCase()} that seats ${seating}, an experienced driver, fuel, and all tolls at Rs ${perKm}/km. Book instantly with Triveni Cabs™ on 7668570551.`;
 }
 
 // Known slug sets for safe interlinking (verified against oneWayCabData.js + distanceData.js)
@@ -304,7 +304,7 @@ function getWhyVehicle(vehicleType, info) {
       { title: "Powerful Performance", desc: `The 2.8L diesel engine produces 204 PS, making ${isMountain ? 'high-altitude climbs and overtaking on mountain roads' : 'highway overtakes'} effortless and safe.` },
     ],
     "ertiga": [
-      { title: "Best Value for Money", desc: `At Rs 13/km, the Ertiga offers the most affordable 7-seater option for ${dest}. Budget-friendly without compromising on comfort.` },
+      { title: "Best Value for Money", desc: `At Rs 15/km, the Ertiga offers the most affordable 7-seater option for ${dest}. Budget-friendly without compromising on comfort.` },
       { title: "Fuel Efficient", desc: `With Petrol/CNG options, the Ertiga delivers excellent mileage on the ${dist} km route, keeping your overall trip cost low.` },
       { title: "Comfortable Seating", desc: `All 7 seats have adequate legroom for the ${info.duration} journey. Perfect for families who want comfort at an affordable price.` },
       { title: "City and Highway Ready", desc: `The Ertiga compact dimensions and smooth handling make it equally adept at navigating ${dest} city traffic and cruising on the highway.` },

@@ -18,6 +18,8 @@ import AEOHead from '@/components/seo/AEOHead';
 // Server-only: pulls in the large blog dataset, never import from a client component.
 import { getRelatedBlogPosts } from '@/lib/seo/blogLinkHelper';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
+import { BASE_URL } from '@/lib/seo/constants';
 
 // Keep only the numeric part of a distance / duration so a long-form value
 // cannot eat the whole snippet.
@@ -338,6 +340,10 @@ export default async function BusRoutePage({ params }) {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Google's Merchant listings report treats a missing `image`
+    // as a critical error. This is an asset the page already uses.
+
+    "image": `${BASE_URL}/images/bus/45_SEATER_BUS.jpg`,
     "name": `${originFormatted} to ${destinationFormatted} Bus Rental — Triveni Cabs`,
     "description": `Book luxury buses from ${originFormatted} to ${destinationFormatted}. Available in 22, 25, 27, 32, 35, 41, 45, 49, 52, and 56 seater options. All buses equipped with AC, reclining seats, entertainment systems, and GPS tracking.`,
     "brand": {
@@ -509,7 +515,7 @@ export default async function BusRoutePage({ params }) {
     description: `How to charter a bus from ${originFormatted} to ${destinationFormatted}: 22-56 seater AC coach fares from ₹30/km${routeData.distance !== 'Contact for details' ? `, ${routeData.distance} distance` : ''}, what is included, and how to book for weddings, corporate and group tours.`,
     image: '/images/bus/hero_section_image.webp',
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/bus-routes/${route}`) || getTodayDate()),
     authorName: 'editorial',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
   });
@@ -544,7 +550,7 @@ export default async function BusRoutePage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           ...generateBusServiceSchema(originFormatted, destinationFormatted, '30', '22-56'),
-          brand: { "@type": "Brand", "name": "Triveni Cabs" },
+          brand: { "@type": "Brand", "name": "Triveni Cabs™" },
           ...getRatingAndReviews(route, 'bus')
         }) }}
       />
@@ -572,7 +578,7 @@ export default async function BusRoutePage({ params }) {
         <RelatedLinks
           heading="Related services"
           links={getSiloHubLinks('bus', 6)}
-          ariaLabel="Other Triveni Cabs services"
+          ariaLabel="Other Triveni Cabs™ services"
           tone="slate"
         />
         {busBlogLinks.length > 0 && (

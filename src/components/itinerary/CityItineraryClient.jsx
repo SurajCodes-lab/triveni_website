@@ -1,6 +1,7 @@
 'use client';
 
-import Link from 'next/link';
+import FamilyFacts from '@/components/seo/FamilyFacts';
+import Link from '@/components/ui/JourneyLink';
 import Image from 'next/image';
 import { Phone, MapPin, Clock, Car, CheckCircle2, Calendar, ArrowRight, IndianRupee, Star, Shield, Users, ChevronDown, Camera, Route, Coffee, Sunrise, HelpCircle, Hotel, Compass, Bookmark, ChevronRight, CalendarDays, MapPinned, Ticket, Check } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
@@ -19,11 +20,11 @@ const animStyles = `
 @keyframes dash-flow{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-20}}
 @keyframes calendar-flip{0%{transform:rotateX(0)}50%{transform:rotateX(-10deg)}100%{transform:rotateX(0)}}
 @keyframes expand-line{0%{width:0}100%{width:100%}}
-.animate-shimmer{background-size:200% 100%;animation:shimmer 3s linear infinite}
-.animate-float{animation:float 6s ease-in-out infinite}
-.animate-float-slow{animation:float-slow 8s ease-in-out infinite}
-.animate-pulse-glow{animation:pulse-glow 3s ease-in-out infinite}
-.animate-gradient-x{background-size:200% 200%;animation:gradient-x 4s ease infinite}
+.{background-size:200% 100%;animation:shimmer 3s linear infinite}
+.{animation:float 6s ease-in-out infinite}
+.{animation:float-slow 8s ease-in-out infinite}
+.{animation:pulse-glow 3s ease-in-out infinite}
+.{background-size:200% 200%;animation:gradient-x 4s ease infinite}
 .animate-calendar-flip{animation:calendar-flip 4s ease-in-out infinite}
 `;
 
@@ -69,7 +70,7 @@ export default function CityItineraryClient({ data }) {
           ═══════════════════════════════════════════════ */}
       <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden">
         {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/50 via-amber-950 to-yellow-900/40 animate-gradient-x" />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/50 via-amber-950 to-yellow-900/40" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-600/15 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-yellow-600/10 via-transparent to-transparent" />
 
@@ -77,18 +78,18 @@ export default function CityItineraryClient({ data }) {
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         {/* Floating calendar decorative elements */}
-        <div className="absolute top-16 left-[8%] w-20 h-20 rounded-2xl border border-orange-500/20 bg-orange-500/5 backdrop-blur-sm animate-float opacity-40 hidden lg:flex items-center justify-center">
+        <div className="absolute top-16 left-[8%] w-20 h-20 rounded-2xl border border-orange-500/20 bg-orange-500/5 backdrop-blur-sm opacity-40 hidden lg:flex items-center justify-center">
           <CalendarDays className="w-8 h-8 text-orange-400/50" />
         </div>
-        <div className="absolute top-40 right-[10%] w-16 h-16 rounded-xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-sm animate-float-slow opacity-30 hidden lg:flex items-center justify-center" style={{ animationDelay: '2s' }}>
+        <div className="absolute top-40 right-[10%] w-16 h-16 rounded-xl border border-yellow-500/20 bg-yellow-500/5 backdrop-blur-sm opacity-30 hidden lg:flex items-center justify-center" style={{ animationDelay: '2s' }}>
           <MapPinned className="w-6 h-6 text-yellow-400/50" />
         </div>
-        <div className="absolute bottom-20 left-[15%] w-14 h-14 rounded-lg border border-amber-500/20 bg-amber-500/5 backdrop-blur-sm animate-float opacity-25 hidden lg:flex items-center justify-center" style={{ animationDelay: '4s' }}>
+        <div className="absolute bottom-20 left-[15%] w-14 h-14 rounded-lg border border-amber-500/20 bg-amber-500/5 backdrop-blur-sm opacity-25 hidden lg:flex items-center justify-center" style={{ animationDelay: '4s' }}>
           <Ticket className="w-5 h-5 text-amber-400/50" />
         </div>
 
         {/* Glowing orbs */}
-        <div className="absolute top-20 left-10 w-80 h-80 bg-orange-500/15 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute top-20 left-10 w-80 h-80 bg-orange-500/15 rounded-full blur-[100px]" />
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-yellow-500/10 rounded-full blur-[120px]" style={{ animationDelay: '1.5s' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-[150px]" />
 
@@ -103,17 +104,18 @@ export default function CityItineraryClient({ data }) {
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
             <div className="flex-1">
               {/* Animated badge */}
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 border border-orange-500/30 rounded-full px-5 py-2 mb-6 animate-pulse-glow">
-                <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 border border-orange-500/30 rounded-full px-5 py-2 mb-6">
+                <div className="w-2 h-2 rounded-full bg-orange-400" />
                 <Calendar className="w-4 h-4 text-orange-300" />
                 <span className="text-sm font-semibold text-amber-200 tracking-wide">{data.days}-Day Curated Itinerary</span>
               </div>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-black mb-5 leading-[0.95] tracking-tight">
-                <span className="bg-gradient-to-r from-orange-300 via-yellow-200 to-yellow-300 bg-clip-text text-transparent animate-gradient-x">{data.city}</span>
+                <span className="bg-gradient-to-r from-orange-300 via-yellow-200 to-yellow-300 bg-clip-text text-transparent">{data.city}</span>
                 <br />
                 <span className="text-white/90">in {data.days} Day{data.days > 1 ? 's' : ''}</span>
               </h1>
+              <FamilyFacts family="itinerary" data={data} />
 
               <p className="text-lg md:text-xl text-white/50 mb-8 max-w-lg leading-relaxed font-light">
                 Your complete day-by-day travel planner with private AC cab. Every stop timed, every place covered.
@@ -121,10 +123,10 @@ export default function CityItineraryClient({ data }) {
 
               <div className="flex flex-wrap gap-4">
                 <a onClick={() => trackPhoneCall('city_itinerary')} href="tel:7668570551" className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-orange-600 via-yellow-600 to-orange-600 bg-[length:200%_auto] hover:bg-right text-white font-bold px-7 py-4 rounded-2xl transition-all duration-500 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-105">
-                  <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call 7668570551
+                  <Phone className="w-5 h-5 group-hover:" /> Call 7668570551
                 </a>
                 <a onClick={() => trackWhatsAppClick('city_itinerary')} href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2.5 bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold px-7 py-4 rounded-2xl transition-all duration-500 shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:scale-105">
-                  <WhatsAppIcon className="w-5 h-5 group-hover:animate-bounce" /> WhatsApp
+                  <WhatsAppIcon className="w-5 h-5 group-hover:" /> WhatsApp
                 </a>
               </div>
 
@@ -138,7 +140,7 @@ export default function CityItineraryClient({ data }) {
             </div>
 
             {/* Floating Price Card — Calendar/Day-planner style */}
-            <div className="w-full lg:w-auto animate-float-slow">
+            <div className="w-full lg:w-auto">
               <div className="relative bg-white/[0.06] backdrop-blur-2xl rounded-3xl border border-white/[0.12] p-7 min-w-[300px] shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-500 hover:border-orange-500/30">
                 {/* Calendar header strip */}
                 <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-orange-500 via-yellow-500 to-amber-500 rounded-b-full" />
@@ -176,6 +178,7 @@ export default function CityItineraryClient({ data }) {
           </div>
         </div>
       </section>
+      <FamilyFacts family="itinerary" data={data} details />
 
       {/* ═══════════════════════════════════════════════
           QUICK STATS — Horizontal stat bar with glow
@@ -626,8 +629,7 @@ export default function CityItineraryClient({ data }) {
           <div className="relative bg-gradient-to-br from-orange-600/15 via-yellow-600/10 to-amber-600/15 backdrop-blur-2xl rounded-[2rem] border border-orange-500/20 p-10 md:p-16 overflow-hidden shadow-2xl shadow-orange-500/10">
             {/* Decorative elements */}
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-orange-500 via-yellow-500 to-yellow-500" />
-            <div className="absolute top-10 left-10 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl animate-pulse" />
-            <div className="absolute bottom-10 right-10 w-32 h-32 bg-yellow-500/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute bottom-10 right-10 w-32 h-32 bg-yellow-500/10 rounded-full blur-2xl" style={{ animationDelay: '1s' }} />
 
             <div className="relative z-10">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-orange-400 mb-4">Start Your Journey</p>
@@ -641,10 +643,10 @@ export default function CityItineraryClient({ data }) {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a onClick={() => trackPhoneCall('city_itinerary')} href="tel:7668570551" className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-orange-600 via-yellow-600 to-orange-600 bg-[length:200%_auto] hover:bg-right text-white font-bold px-10 py-4.5 rounded-2xl transition-all duration-500 shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-105 text-base">
-                  <Phone className="w-5 h-5 group-hover:animate-bounce" /> Call 7668570551
+                  <Phone className="w-5 h-5 group-hover:" /> Call 7668570551
                 </a>
                 <a onClick={() => trackWhatsAppClick('city_itinerary')} href="https://wa.me/917668570551" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2.5 bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold px-10 py-4.5 rounded-2xl transition-all duration-500 shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:scale-105 border border-emerald-500/30 text-base">
-                  <WhatsAppIcon className="w-5 h-5 group-hover:animate-bounce" /> WhatsApp Us
+                  <WhatsAppIcon className="w-5 h-5 group-hover:" /> WhatsApp Us
                 </a>
               </div>
 

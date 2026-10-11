@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/icons";
 import { motion } from "framer-motion";
 import { trackFormSubmission, trackWhatsAppClick, trackPhoneCall, trackFormInteraction, trackBooking } from "@/utilis/analytics";
+import { groupDigits } from '@/utilis/pricing';
 
 const BookingForm = ({ slug, packageInfo }) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -74,7 +75,7 @@ const BookingForm = ({ slug, packageInfo }) => {
     message += `📍 *Route:* ${packageInfo.startingPoint} to ${packageInfo.destination}\n`;
     message += `💰 *Price:* ${packageInfo.price} per person\n`;
     message += `👥 *Total Travelers:* ${formData.passengerCount}\n`;
-    message += `💵 *Total Amount:* ₹${totalAmount}\n\n`;
+    message += `💵 *Total Amount:* ₹${groupDigits(totalAmount)}\n\n`;
 
     message += `📞 *Contact Information:*\n`;
     message += `👤 *Name:* ${formData.contactInfo.name}\n`;
@@ -163,7 +164,7 @@ const BookingForm = ({ slug, packageInfo }) => {
     <div className="min-h-screen">
       {/* Hero Banner */}
       <nav
-        className="relative bg-cover bg-center bg-no-repeat text-sm text-gray-600 py-32"
+        className="relative bg-cover bg-center bg-no-repeat text-sm text-gray-600 py-16 sm:py-32"
         aria-label="Breadcrumb"
         style={{ backgroundImage: `url('${packageInfo.image}')` }}
       >
@@ -180,9 +181,13 @@ const BookingForm = ({ slug, packageInfo }) => {
               </div>
             </li>
           </ol>
-          <h1 className="text-3xl tracking-[0.07rem] md:text-3xl max-sm:text-2xl font-bold text-white mt-8">
+          {/* h2, not h1. This form is embedded inside pages that already have
+              their own h1 — the tour-package booking pages were shipping two,
+              one specific to the tour and this generic one. Two h1 elements
+              split the clearest signal the page gives about its subject. */}
+          <h2 className="text-3xl tracking-[0.07rem] md:text-3xl max-sm:text-2xl font-bold text-white mt-8">
             Book Your Taxi Online — Instant Cab Booking
-          </h1>
+          </h2>
         </div>
       </nav>
 

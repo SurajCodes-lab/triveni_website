@@ -22,7 +22,7 @@ export const honeymoonTripData = {
       { question: "Which is the most romantic destination for honeymoon by car from Delhi?", answer: "Shimla-Manali combo is the most popular (snow, valleys, cozy hotels). Kashmir is the most romantic overall. Udaipur offers royal lakeside romance. Mussoorie is perfect for a quick 2-3 day romantic getaway." },
       { question: "What type of car is best for a honeymoon trip?", answer: "We recommend a sedan (Swift Dzire or Honda Amaze) for couples as it offers privacy, comfort, and lower cost. For couples who prefer SUV comfort, the Innova Crysta is available. The sedan feels more intimate for two." },
       { question: "Do you offer honeymoon packages with hotel bookings?", answer: "We primarily offer cab services, but we can recommend and help book couple-friendly hotels at all destinations. Many couples prefer to book their own romantic stays. We ensure our driver is discreet and professional." },
-      { question: "What is included in the decorated car package?", answer: "The Rs 2,000 decorated car package includes: fresh flower decoration on car bonnet and inside, just married ribbon banner, welcome flower bouquet, complimentary water bottles and chocolates, and a congratulations card from Triveni Cabs." },
+      { question: "What is included in the decorated car package?", answer: "The Rs 2,000 decorated car package includes: fresh flower decoration on car bonnet and inside, just married ribbon banner, welcome flower bouquet, complimentary water bottles and chocolates, and a congratulations card from Triveni Cabs™." },
     ],
   },
   "shimla-manali": {

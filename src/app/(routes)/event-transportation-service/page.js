@@ -51,6 +51,7 @@ import {
   HelpCircle
 } from '@/components/ui/icons';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 export const revalidate = 3600;
 
@@ -81,9 +82,9 @@ export const metadata = {
     'event transport delhi ncr',
     'multi-city event transport'
   ].join(', '),
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/event-transportation-service',
@@ -97,7 +98,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/event-transportation-service',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: '/images/sightseeing/Delhi/Delhi_hero_section.jpg',
@@ -173,7 +174,7 @@ export default function EventTransportationPage() {
     },
     "sameAs": [
       "https://www.facebook.com/trivenicabs",
-      "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo",
+      "https://www.instagram.com/cabstriveni",
       "https://twitter.com/trivenicabs",
       "https://www.linkedin.com/company/trivenicabs"
     ],
@@ -225,14 +226,7 @@ export default function EventTransportationPage() {
         "closes": "23:59"
       }
     ],
-    "priceRange": "$$",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount('event-transportation-service')),
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    "priceRange": "₹₹"
   }; // LocalBusiness brand-level reviewCount kept (legitimate aggregate per Apr 2026 audit)
 
   const serviceSchema = {
@@ -351,8 +345,8 @@ export default function EventTransportationPage() {
   // Comparison schema: Triveni vs typical event vendors (Table + Article for featured snippets).
   const comparisonSchemas = getComparisonSchema({
     slug: pageSlug,
-    title: 'Event Transportation: Triveni Cabs vs Typical Event Vendors',
-    description: 'Feature-by-feature comparison of Triveni Cabs event transportation versus typical local single-city event vendors across account management, GST invoicing, pricing model, fleet coordination, driver verification and backup SLA.',
+    title: 'Event Transportation: Triveni Cabs™ vs Typical Event Vendors',
+    description: 'Feature-by-feature comparison of Triveni Cabs™ event transportation versus typical local single-city event vendors across account management, GST invoicing, pricing model, fleet coordination, driver verification and backup SLA.',
     rows: eventVsTypicalVendor,
     mentions: ['Wedding transportation', 'Corporate event transport', 'MICE transport', 'GST invoice', 'Festival shuttle']
   });
@@ -361,10 +355,10 @@ export default function EventTransportationPage() {
   const articleSchema = getArticleSchema({
     slug: pageSlug,
     headline: 'Event Transportation Service in India — Wedding, Corporate, MICE & Festival Group Transport',
-    description: 'A complete guide to event transportation in North India: event types, fleet capacity, transparent pricing, how to book, multi-city coverage, planning checklist and how Triveni Cabs compares to typical event vendors.',
+    description: 'A complete guide to event transportation in North India: event types, fleet capacity, transparent pricing, how to book, multi-city coverage, planning checklist and how Triveni Cabs™ compares to typical event vendors.',
     image: ogImage,
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn('/event-transportation-service') || getTodayDate()),
     authorName: 'editorial',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
   });
@@ -471,12 +465,11 @@ export default function EventTransportationPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px]" style={{ animationDelay: '2s' }} />
 
           {/* Content */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12 sm:py-20">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left Content */}
               <div className="space-y-8">
                 <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                   <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                     <Calendar className="w-6 h-6 text-cyan-300" />
                     <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Event Transportation</span>
@@ -644,9 +637,8 @@ export default function EventTransportationPage() {
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-30" />
                 <div className="relative inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-cyan-500/30">
                   <Calendar className="w-5 h-5 text-white" />
                   <span className="text-white font-semibold text-sm tracking-wider uppercase">Events We Serve</span>
@@ -737,9 +729,8 @@ export default function EventTransportationPage() {
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 sm:mb-20">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                 <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                   <Sparkles className="w-6 h-6 text-cyan-300" />
                   <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Our Services</span>
@@ -800,7 +791,7 @@ export default function EventTransportationPage() {
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-100/50 rounded-full blur-[120px]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 sm:mb-20">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-cyan-500/30">
                 <Car className="w-5 h-5 text-white" />
                 <span className="text-white font-semibold text-sm tracking-wider uppercase">Event Fleet</span>
@@ -881,7 +872,7 @@ export default function EventTransportationPage() {
             </div>
 
             {/* Fleet CTA */}
-            <div className="mt-16 text-center">
+            <div className="mt-10 sm:mt-16 text-center">
               <Link
                 href="tel:+917668570551"
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] transition-all duration-300"
@@ -901,7 +892,7 @@ export default function EventTransportationPage() {
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-cyan-500/20 backdrop-blur-xl px-6 py-3 rounded-full mb-6 border border-cyan-400/30">
                 <Briefcase className="w-5 h-5 text-cyan-400" />
                 <span className="text-cyan-300 font-semibold text-sm tracking-wider uppercase">Specialized Services</span>
@@ -956,7 +947,7 @@ export default function EventTransportationPage() {
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-100/50 rounded-full blur-[120px]" />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 sm:mb-20">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 px-6 py-3 rounded-full mb-6 shadow-lg shadow-blue-500/30">
                 <MapPin className="w-5 h-5 text-white" />
                 <span className="text-white font-semibold text-sm tracking-wider uppercase">Service Locations</span>
@@ -1033,9 +1024,8 @@ export default function EventTransportationPage() {
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 sm:mb-20">
               <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur-xl opacity-50" />
                 <div className="relative inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-xl px-8 py-4 rounded-full border border-cyan-400/50 shadow-lg shadow-cyan-500/20">
                   <Sparkles className="w-6 h-6 text-cyan-300" />
                   <span className="text-cyan-200 font-bold text-sm tracking-[0.2em] uppercase">Why Choose Us</span>
@@ -1268,10 +1258,10 @@ export default function EventTransportationPage() {
                 <span className="text-sm font-bold tracking-wider uppercase">9-Point Comparison</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-                Triveni Cabs vs <span className="text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">Typical Event Vendors</span>
+                Triveni Cabs™ vs <span className="text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text">Typical Event Vendors</span>
               </h2>
               <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                See how Triveni Cabs differs from typical local event vendors across the 9 dimensions that matter most for event success.
+                See how Triveni Cabs™ differs from typical local event vendors across the 9 dimensions that matter most for event success.
               </p>
             </div>
             {/* Mobile: stacked comparison cards */}
@@ -1296,7 +1286,7 @@ export default function EventTransportationPage() {
                 <thead className="bg-gradient-to-r from-slate-900 to-slate-800 text-white">
                   <tr>
                     <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide">Feature</th>
-                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide bg-cyan-700/30">Triveni Cabs</th>
+                    <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide bg-cyan-700/30">Triveni Cabs™</th>
                     <th scope="col" className="px-6 py-4 text-sm font-bold tracking-wide">Typical Event Vendor</th>
                   </tr>
                 </thead>
@@ -1323,7 +1313,7 @@ export default function EventTransportationPage() {
         {/* FAQ Section */}
         <section className="py-16 md:py-24 px-4 bg-[#FFF6DC] relative overflow-hidden">
           <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 sm:mb-20">
               <div className="inline-flex items-center gap-2 bg-white/70 ring-1 ring-amber-900/10 px-6 py-3 rounded-full mb-6">
                 <HelpCircle className="w-5 h-5 text-indigo-600" />
                 <span className="text-indigo-700 font-semibold text-sm tracking-wider uppercase">Got Questions?</span>
@@ -1356,7 +1346,7 @@ export default function EventTransportationPage() {
               ))}
             </div>
 
-            <div className="mt-16 text-center">
+            <div className="mt-10 sm:mt-16 text-center">
               <p className="text-slate-600 mb-4">Still have questions?</p>
               <Link
                 href="tel:+917668570551"
@@ -1371,7 +1361,7 @@ export default function EventTransportationPage() {
         </section>
 
         {/* Explore Related Services Section */}
-        <section className="py-16 bg-slate-900">
+        <section className="py-10 sm:py-16 bg-slate-900">
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-white mb-8">Wedding Transportation</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1382,7 +1372,7 @@ export default function EventTransportationPage() {
                 </Link>
               ))}
             </div>
-            <h2 className="text-3xl font-bold text-white mb-8 mt-16">Cab Services</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 mt-10 sm:mt-16">Cab Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {getServicePages().map((item, index) => (
                 <Link key={index} href={item.url} className="group bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-cyan-500/30 hover:bg-white/10 transition-all duration-300">
@@ -1392,7 +1382,7 @@ export default function EventTransportationPage() {
               ))}
             </div>
 
-            <h2 className="text-3xl font-bold text-white mb-8 mt-16">Group &amp; Corporate Transport</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 mt-10 sm:mt-16">Group &amp; Corporate Transport</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 { title: 'Corporate Transportation', url: '/corporate-transportation-service', description: 'Employee, executive & conference fleets with GST invoicing' },
@@ -1407,7 +1397,7 @@ export default function EventTransportationPage() {
               ))}
             </div>
 
-            <h2 className="text-3xl font-bold text-white mb-8 mt-16">Vehicles for Events</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 mt-10 sm:mt-16">Vehicles for Events</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
                 { title: 'Luxury Bus for Events', url: '/luxury-bus-for-events', description: '27-49 seater AC coaches for large guest movement' },
@@ -1435,7 +1425,7 @@ export default function EventTransportationPage() {
             backgroundSize: '40px 40px'
           }} />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 py-14 sm:py-24">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-xl px-5 py-2.5 rounded-full mb-8 border border-cyan-400/30">

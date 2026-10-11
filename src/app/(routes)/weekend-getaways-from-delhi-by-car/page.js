@@ -3,6 +3,9 @@ import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar, Hear
 import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
 import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema, getComparisonSchema } from '@/utilis/tripSchemaHelper';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+// servedHref: two destination slugs here are redirect sources, so the ItemList
+// markup was publishing a URL that 301s instead of the page actually served.
+import { servedHref } from '@/lib/seo/route-exists';
 
 const SLUG = 'weekend-getaways-from-delhi-by-car';
 
@@ -12,15 +15,15 @@ export const metadata = {
   title: tightenTitle('Top 20 Weekend Getaways from Delhi by Car 2026'),
   description: 'Best weekend trips from Delhi by car in 2026. Distance, drive time, costs & itineraries for Agra, Jaipur, Rishikesh, Mussoorie & 16 more.',
   keywords: 'weekend trips from delhi by car 2026, weekend getaways from delhi, short trips from delhi, road trips from delhi, weekend destinations near delhi, places to visit near delhi by car',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/weekend-getaways-from-delhi-by-car' },
   openGraph: {
     title: 'Top 20 Weekend Getaways from Delhi by Car 2026 | Drive & Explore',
-    description: 'Plan the perfect weekend escape from Delhi. 20 destinations with distance, costs & tips. AC cabs from ₹9/km.',
+    description: 'Plan the perfect weekend escape from Delhi. 20 destinations with distance, costs & tips. AC cabs from ₹11/km.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/weekend-getaways-from-delhi-by-car',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: { card: 'summary_large_image', title: 'Top 20 Weekend Getaways from Delhi by Car 2026', description: 'Plan the perfect weekend escape from Delhi. 20 destinations with distance, costs & tips.' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
@@ -52,7 +55,7 @@ const destinations = [
 const faqData = [
   { question: 'What is the cheapest weekend getaway from Delhi by car?', answer: 'Neemrana (120 km, ₹2,500 sedan) and Damdama Lake (60 km, ₹1,500 sedan) are the most budget-friendly options. Both are under 2.5 hours from Delhi and perfect for a quick overnight escape.' },
   { question: 'Which weekend trip from Delhi is best for couples?', answer: 'Mussoorie, Nainital, and Jaipur top the list for romantic getaways. Mussoorie offers scenic walks and waterfalls, Nainital has lakeside charm, and Jaipur offers royal palace stays and fine dining.' },
-  { question: 'Can I hire a cab from Delhi for a weekend trip?', answer: 'Yes! Triveni Cabs offers outstation cabs from Delhi starting at ₹9/km for sedans and ₹12/km for SUVs. All-inclusive pricing covers fuel, driver allowance, and tolls. Call 7668570551 to book.' },
+  { question: 'Can I hire a cab from Delhi for a weekend trip?', answer: 'Yes! Triveni Cabs™ offers outstation cabs from Delhi starting at ₹11/km for sedans and ₹11/km for SUVs. All-inclusive pricing covers fuel, driver allowance, and tolls. Call 7668570551 to book.' },
   { question: 'Which hill station is closest to Delhi for a weekend trip?', answer: 'Mussoorie (290 km, 6 hrs) and Kasauli (300 km, 5.5 hrs) are the closest popular hill stations. For a shorter drive, Neemrana Fort (120 km) in Rajasthan offers elevated fort-palace stays.' },
   { question: 'What are the best monsoon weekend getaways from Delhi?', answer: 'Rishikesh, Lansdowne, and Jim Corbett are beautiful during monsoon (Jul-Sep). The lush greenery and cool temperatures make them ideal. Avoid Shimla and Manali during heavy rains due to landslide risks.' },
   { question: 'Is it better to drive or hire a cab for weekend trips from Delhi?', answer: 'Hiring a cab is recommended for comfort and safety. Our experienced drivers know the routes, handle mountain driving expertly, and you can relax and enjoy the scenery instead of navigating traffic.' },
@@ -73,7 +76,7 @@ export default function WeekendGetawaysFromDelhiPage() {
   const serviceSchema = buildStaticService({
     slug: SLUG,
     name: 'Weekend Getaway Cab Service from Delhi',
-    description: 'Outstation weekend cab service from Delhi to 20+ destinations. AC sedans from Rs 9/km, SUVs from Rs 12/km, all-inclusive of fuel, toll and driver allowance.',
+    description: 'Outstation weekend cab service from Delhi to 20+ destinations. AC sedans from Rs 11/km, SUVs from Rs 11/km, all-inclusive of fuel, toll and driver allowance.',
     lowPrice: 1500,
     highPrice: 11000,
   });
@@ -92,7 +95,7 @@ export default function WeekendGetawaysFromDelhiPage() {
     estimatedCost: { currency: 'INR', value: 1500 },
     steps: [
       { name: 'Pick a destination by drive time', text: 'Choose a quick escape under 3.5 hours (Neemrana, Mathura, Alwar), a medium 3.5-5.5 hour trip (Jaipur, Rishikesh, Jim Corbett) or a longer hill drive (Mussoorie, Shimla, Nainital).' },
-      { name: 'Choose your vehicle', text: 'A sedan suits 2-3 travellers from Rs 9/km; an SUV (Innova/Ertiga) fits families of 4-6 from Rs 12/km; a Tempo Traveller covers groups of 8-12.' },
+      { name: 'Choose your vehicle', text: 'A sedan suits 2-3 travellers from Rs 11/km; an SUV (Innova/Ertiga) fits families of 4-6 from Rs 11/km; a Tempo Traveller covers groups of 8-12.' },
       { name: 'Get an all-inclusive quote', text: 'Call or WhatsApp 7668570551 with your destination, dates and group size. Fares include fuel, tolls, parking and driver allowance with no hidden charges.' },
       { name: 'Confirm and travel', text: 'No advance payment required. Your verified driver reaches your Delhi NCR doorstep at the scheduled time for the weekend trip.' },
     ],
@@ -124,7 +127,7 @@ export default function WeekendGetawaysFromDelhiPage() {
     "@context": "https://schema.org", "@type": "ItemList",
     "name": "Top 20 Weekend Getaways from Delhi by Car",
     "numberOfItems": 20,
-    "itemListElement": destinations.map((dest, i) => ({ "@type": "ListItem", "position": i + 1, "name": dest.name, "url": `https://www.trivenicabs.in${dest.slug}` }))
+    "itemListElement": destinations.map((dest, i) => ({ "@type": "ListItem", "position": i + 1, "name": dest.name, "url": `https://www.trivenicabs.in${servedHref(dest.slug) || dest.slug}` }))
   };
 
   const quickDestinations = destinations.filter(d => parseFloat(d.duration) <= 3.5);
@@ -158,11 +161,11 @@ export default function WeekendGetawaysFromDelhiPage() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/15 rounded-full blur-[120px]" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-green-500/10 rounded-full blur-[150px]" />
 
-          <div className="max-w-7xl mx-auto px-4 relative z-10 py-20">
+          <div className="max-w-7xl mx-auto px-4 relative z-10 py-12 sm:py-20">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm px-5 py-2.5 rounded-full mb-8">
-                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full" />
                   <span className="text-emerald-300 text-sm font-medium tracking-wide uppercase">20 Handpicked Destinations</span>
                 </div>
                 <h1 className="speakable-headline text-5xl md:text-7xl font-black mb-6 leading-[0.9] tracking-tight">
@@ -173,7 +176,7 @@ export default function WeekendGetawaysFromDelhiPage() {
                   <span className="text-stone-400 text-4xl md:text-5xl">from Delhi by Car</span>
                 </h1>
                 <p className="speakable-lead text-stone-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed">
-                  The best weekend getaways from Delhi by car include Agra (230 km), Jaipur (280 km), Rishikesh (250 km) and Mussoorie (290 km). Triveni Cabs runs all-inclusive outstation cabs from Rs 9/km (sedan) and Rs 12/km (SUV) covering fuel, tolls and driver allowance — from 1.5-hour quick escapes to 7-hour hill adventures.
+                  The best weekend getaways from Delhi by car include Agra (230 km), Jaipur (280 km), Rishikesh (250 km) and Mussoorie (290 km). Triveni Cabs™ runs all-inclusive outstation cabs from Rs 11/km (sedan) and Rs 11/km (SUV) covering fuel, tolls and driver allowance — from 1.5-hour quick escapes to 7-hour hill adventures.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <a href="tel:7668570551" className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-bold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40">
@@ -206,9 +209,9 @@ export default function WeekendGetawaysFromDelhiPage() {
         </section>
 
         {/* Drive Time Zone Selector - Bento Grid */}
-        <section className="py-20 px-4 bg-gradient-to-b from-stone-950 to-stone-900">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-stone-950 to-stone-900">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="text-emerald-400 text-sm font-bold tracking-[0.2em] uppercase">Choose Your Adventure</span>
               <h2 className="text-4xl md:text-5xl font-black mt-3 text-white">Pick by Drive Time</h2>
             </div>
@@ -237,12 +240,12 @@ export default function WeekendGetawaysFromDelhiPage() {
         </section>
 
         {/* All Destinations - Dark Map-pin Grid */}
-        <section className="py-20 px-4 bg-stone-900 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-stone-900 relative overflow-hidden">
           {/* Subtle grid pattern */}
           <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="text-emerald-400 text-sm font-bold tracking-[0.2em] uppercase">Complete Directory</span>
               <h2 className="text-4xl md:text-5xl font-black mt-3 text-white">All 20 Destinations</h2>
               <p className="text-stone-400 mt-4 max-w-2xl mx-auto">Sorted by popularity. Tap any destination for details, pricing, and booking.</p>
@@ -302,10 +305,10 @@ export default function WeekendGetawaysFromDelhiPage() {
         </section>
 
         {/* Why Choose Us - Glassmorphism Cards */}
-        <section className="py-20 px-4 bg-gradient-to-b from-stone-900 to-stone-950 relative">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-stone-900 to-stone-950 relative">
           <div className="absolute top-0 left-1/4 w-80 h-80 bg-emerald-500/10 rounded-full blur-[120px]" />
           <div className="max-w-6xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="text-emerald-400 text-sm font-bold tracking-[0.2em] uppercase">The Triveni Advantage</span>
               <h2 className="text-4xl font-black mt-3 text-white">Why Road Trippers Choose Us</h2>
             </div>
@@ -329,7 +332,7 @@ export default function WeekendGetawaysFromDelhiPage() {
         </section>
 
         {/* Travel Tips - Unique Card Design */}
-        <section className="py-20 px-4 bg-stone-950">
+        <section className="py-12 sm:py-20 px-4 bg-stone-950">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-emerald-400 text-sm font-bold tracking-[0.2em] uppercase">Pro Tips</span>
@@ -351,7 +354,7 @@ export default function WeekendGetawaysFromDelhiPage() {
         </section>
 
         {/* Explore More - Journey Links */}
-        <section className="py-16 px-4 bg-stone-900">
+        <section className="py-10 sm:py-16 px-4 bg-stone-900">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl font-black text-center mb-10 text-white">Explore More Road Trips</h2>
             <div className="grid md:grid-cols-3 gap-4">
@@ -380,7 +383,7 @@ export default function WeekendGetawaysFromDelhiPage() {
         </section>
 
         {/* Related Guides */}
-        <section className="py-16 px-4 bg-stone-950">
+        <section className="py-10 sm:py-16 px-4 bg-stone-950">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl font-bold text-center mb-3 text-white">Travel Guides & Resources</h2>
             <p className="text-stone-500 text-center mb-10 text-sm">Helpful guides for planning your road trip from Delhi</p>
@@ -402,7 +405,7 @@ export default function WeekendGetawaysFromDelhiPage() {
         </section>
 
         {/* Dynamic: Cab Services & Wedding */}
-        <section className="py-16 px-4 bg-stone-900">
+        <section className="py-10 sm:py-16 px-4 bg-stone-900">
           <div className="max-w-6xl mx-auto space-y-14">
             <div>
               <h2 className="text-2xl font-bold text-white mb-6">Cab Services</h2>
@@ -430,9 +433,9 @@ export default function WeekendGetawaysFromDelhiPage() {
         </section>
 
         {/* FAQ - Accordion Style */}
-        <section className="py-20 px-4 bg-stone-950">
+        <section className="py-12 sm:py-20 px-4 bg-stone-950">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="text-emerald-400 text-sm font-bold tracking-[0.2em] uppercase">Got Questions?</span>
               <h2 className="text-4xl font-black mt-3 text-white">Frequently Asked Questions</h2>
             </div>
@@ -453,7 +456,7 @@ export default function WeekendGetawaysFromDelhiPage() {
         </section>
 
         {/* CTA - Gradient Mesh */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-900 to-green-900" />
           <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-400/20 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-400/20 rounded-full blur-[120px]" />
@@ -461,7 +464,7 @@ export default function WeekendGetawaysFromDelhiPage() {
             <h2 className="text-4xl md:text-6xl font-black mb-6">
               <span className="text-transparent bg-gradient-to-r from-emerald-200 to-teal-200 bg-clip-text">Plan Your Escape</span>
             </h2>
-            <p className="text-emerald-100/70 text-xl mb-10">AC cabs from ₹9/km. Door-step pickup from anywhere in Delhi NCR.</p>
+            <p className="text-emerald-100/70 text-xl mb-10">AC cabs from ₹11/km. Door-step pickup from anywhere in Delhi NCR.</p>
             <div className="flex flex-wrap justify-center gap-5">
               <a href="tel:7668570551" className="inline-flex items-center gap-3 bg-white text-stone-900 font-black px-10 py-5 rounded-2xl hover:bg-emerald-100 transition-colors shadow-2xl shadow-white/10">
                 <Phone className="w-5 h-5" />

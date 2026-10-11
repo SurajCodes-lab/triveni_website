@@ -3,15 +3,16 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Jaipur Food Tour 2026 | Dal Baati Churma & Pyaaz Kachori'),
   description: 'Jaipur food & culinary tour. Famous Dal Baati Churma, Pyaaz Kachori, Laal Maas, Ghewar, Lassi. Street food itinerary, best restaurants. By Jaipur locals.',
   keywords: 'jaipur food tour, jaipur street food, jaipur famous food, dal baati churma, pyaaz kachori jaipur, laal maas, ghewar jaipur, jaipur food guide, rajasthani food jaipur',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/jaipur-food-tour' },
   openGraph: {
@@ -20,7 +21,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/jaipur-food-tour',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg', width: 1200, height: 630, alt: 'Jaipur Food Tour Guide' }],
   },
   twitter: {
@@ -217,21 +218,21 @@ export default function JaipurFoodTourPage() {
         </section>
 
         {/* SEO Prose */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-stone-800">
               Jaipur Food Tour — A Royal Feast in the Pink City
             </h2>
             <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
               <p>Jaipur is not just about palaces and forts — it is a <strong className="text-stone-800">culinary treasure trove of Rajasthani cuisine</strong> where food traditions have been perfected over centuries. The Pink City&apos;s food culture is deeply rooted in the desert landscape of Rajasthan, where scarcity of water and fresh vegetables led to the invention of ingenious recipes using dried lentils, ghee, buttermilk, and desert beans. The result is one of India&apos;s most distinctive and flavourful regional cuisines.</p>
-              <p>Our <strong className="text-stone-800">Jaipur food tour by car</strong> takes you through the winding lanes of Johari Bazaar for legendary sweets at LMB, to Station Road for Rawat&apos;s Pyaaz Kachori, down MI Road for the original Lassiwala&apos;s creamy lassi, and into heritage restaurants for royal Rajasthani thalis. Your Triveni Cabs driver navigates the bustling Pink City streets so you can focus entirely on eating.</p>
+              <p>Our <strong className="text-stone-800">Jaipur food tour by car</strong> takes you through the winding lanes of Johari Bazaar for legendary sweets at LMB, to Station Road for Rawat&apos;s Pyaaz Kachori, down MI Road for the original Lassiwala&apos;s creamy lassi, and into heritage restaurants for royal Rajasthani thalis. Your Triveni Cabs™ driver navigates the bustling Pink City streets so you can focus entirely on eating.</p>
               <p>The best time for a <strong className="text-stone-800">Jaipur street food tour</strong> is October to March when the weather is pleasant for outdoor exploration. During the monsoon season (July-August), don&apos;t miss the seasonal Ghewar — a honeycomb-shaped sweet that Jaipur is famous for. Whether you&apos;re a vegetarian or a meat lover craving fiery Laal Maas, Jaipur&apos;s food scene has something extraordinary for every palate.</p>
             </div>
           </div>
         </section>
 
         {/* Famous Foods - Glassmorphism Cards */}
-        <section className="py-16 px-4 bg-orange-50/80">
+        <section className="py-10 sm:py-16 px-4 bg-orange-50/80">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3">Famous Foods of Jaipur</h2>
@@ -262,7 +263,7 @@ export default function JaipurFoodTourPage() {
         </section>
 
         {/* Street Food Itinerary - Premium Timeline */}
-        <section className="py-16 px-4 bg-gradient-to-b from-red-950 via-orange-950 to-red-950">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-red-950 via-orange-950 to-red-950">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-3">Street Food Tour Itinerary</h2>
@@ -301,7 +302,7 @@ export default function JaipurFoodTourPage() {
         </section>
 
         {/* Best Restaurants - Premium Card Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Best Restaurants in Jaipur</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -330,7 +331,7 @@ export default function JaipurFoodTourPage() {
         </section>
 
         {/* Markets - Glass Map Cards */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Food Markets to Visit</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -353,7 +354,7 @@ export default function JaipurFoodTourPage() {
         </section>
 
         {/* Combine with Sightseeing */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-2xl overflow-hidden shadow-xl">
               <div className="bg-gradient-to-r from-red-600 to-orange-600 p-6" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }}>
@@ -386,8 +387,13 @@ export default function JaipurFoodTourPage() {
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Jaipur" citySlug="jaipur" />
+
+
         {/* FAQ - Expandable-looking Cards */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -405,7 +411,7 @@ export default function JaipurFoodTourPage() {
         </section>
 
         {/* Interlinks - Interactive Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-8 text-center">More Jaipur Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -427,7 +433,7 @@ export default function JaipurFoodTourPage() {
         </section>
 
         {/* CTA - Animated Gradient */}
-        <section className="relative py-20 px-4 overflow-hidden">
+        <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-red-700 via-orange-600 to-amber-600" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[10%] w-3 h-3 bg-white/20 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />
           <div className="absolute top-[60%] right-[15%] w-2 h-2 bg-white/15 rounded-full" style={{ animation: 'float 8s ease-in-out infinite 2s' }} />

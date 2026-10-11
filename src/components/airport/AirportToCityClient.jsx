@@ -15,6 +15,7 @@ import {
   RouteArc, Barcode, getAccent, HeroPhoto,
 } from '@/components/airport/AirportKit';
 import { getCityImage } from '@/utilis/imageUtils';
+import { groupDigits } from '@/utilis/pricing';
 
 const PHONE = '+917668570551';
 const wa = (text) => `https://wa.me/917668570551?text=${encodeURIComponent(text)}`;
@@ -41,10 +42,10 @@ export default function AirportToCityClient({ airport, city, distance, duration,
 
   return (
     <AirportShell accent={accent}>
-      <SetStickyCta price={`₹${fare}`} label={`${airport} → ${city}`} whatsappText={heroWa} />
+      <SetStickyCta price={`₹${groupDigits(fare)}`} label={`${airport} → ${city}`} whatsappText={heroWa} />
 
       {/* ══ HERO ══ */}
-      <section className="relative overflow-hidden px-4 pt-24 pb-16 md:pb-24">
+      <section className="relative overflow-hidden px-4 pt-14 sm:pt-24 pb-16 md:pb-24">
         <HeroPhoto src={getCityImage(city)} />
         <AirportBackdrop variant="full" />
         <div className="relative z-10 mx-auto max-w-7xl">
@@ -63,14 +64,14 @@ export default function AirportToCityClient({ airport, city, distance, duration,
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
                 Pre-booked transfer with flight tracking, meet &amp; greet at arrivals, and a guaranteed fixed fare of
-                <strong className="text-[color:var(--air-accent)]"> ₹{fare}</strong>.
+                <strong className="text-[color:var(--air-accent)]"> ₹{groupDigits(fare)}</strong>.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3">
                 {[
                   { icon: MapPin, l: 'Distance', v: distance },
                   { icon: Clock, l: 'Duration', v: duration },
-                  { icon: Car, l: 'Sedan Fare', v: `₹${fare}` },
+                  { icon: Car, l: 'Sedan Fare', v: `₹${groupDigits(fare)}` },
                 ].map((s) => (
                   <div key={s.l} className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-5 py-3 backdrop-blur-xl">
                     <s.icon className="h-5 w-5 text-[color:var(--air-accent)]" />
@@ -124,7 +125,7 @@ export default function AirportToCityClient({ airport, city, distance, duration,
       </section>
 
       {/* ══ FLIGHT TRACKING ══ */}
-      <section className="relative overflow-hidden px-4 py-16">
+      <section className="relative overflow-hidden px-4 py-10 sm:py-16">
         <AirportBackdrop variant="grid" />
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="rounded-3xl border border-[color:var(--air-accent)]/15 bg-white/[0.03] p-8 backdrop-blur-xl md:p-12">
@@ -157,7 +158,7 @@ export default function AirportToCityClient({ airport, city, distance, duration,
       </section>
 
       {/* ══ VEHICLES ══ */}
-      <section className="relative px-4 py-16">
+      <section className="relative px-4 py-10 sm:py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
             <SectionKicker center>Cabin Class</SectionKicker>
@@ -186,7 +187,7 @@ export default function AirportToCityClient({ airport, city, distance, duration,
                     <div className="flex items-center gap-2 text-slate-300"><Luggage className="h-4 w-4 text-[color:var(--air-accent)]" /> {v.bags} bags</div>
                   </div>
                   <div className="mt-5 flex items-end justify-between">
-                    <div><div className="text-[10px] uppercase tracking-widest text-slate-500">Fixed fare</div><div className="font-mono text-2xl font-black text-[color:var(--air-accent)]">₹{Math.round(fare * v.mult)}</div></div>
+                    <div><div className="text-[10px] uppercase tracking-widest text-slate-500">Fixed fare</div><div className="font-mono text-2xl font-black text-[color:var(--air-accent)]">₹{groupDigits(Math.round(fare * v.mult))}</div></div>
                     <Barcode />
                   </div>
                   <a href={wa(`Hi, I want to book a ${v.name} from ${airport} to ${city}. Please confirm.`)} target="_blank" rel="noopener noreferrer"
@@ -202,7 +203,7 @@ export default function AirportToCityClient({ airport, city, distance, duration,
       </section>
 
       {/* ══ INCLUDES ══ */}
-      <section className="relative px-4 py-16">
+      <section className="relative px-4 py-10 sm:py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
             <SectionKicker center>Every Ride Includes</SectionKicker>
@@ -221,7 +222,7 @@ export default function AirportToCityClient({ airport, city, distance, duration,
 
       {/* ══ FAQ ══ */}
       {faqs.length > 0 && (
-        <section className="relative px-4 py-16">
+        <section className="relative px-4 py-10 sm:py-16">
           <div className="mx-auto max-w-3xl">
             <div className="mb-10 text-center">
               <SectionKicker center>Traveller Help</SectionKicker>
@@ -244,14 +245,14 @@ export default function AirportToCityClient({ airport, city, distance, duration,
       )}
 
       {/* ══ CTA ══ */}
-      <section className="relative overflow-hidden px-4 py-20">
+      <section className="relative overflow-hidden px-4 py-12 sm:py-20">
         <AirportBackdrop variant="full" />
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <FlightStatusPill label="Now Boarding" className="mx-auto" />
           <h2 className="mt-6 text-4xl font-black leading-tight text-white md:text-5xl">
             Ready to book your <span className="bg-gradient-to-r from-[var(--air-accent)] to-[var(--air-accent2)] bg-clip-text text-transparent">{airport} → {city}</span> cab?
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-slate-300">Fixed fare ₹{fare} · flight tracking · 24/7 availability · verified drivers.</p>
+          <p className="mx-auto mt-5 max-w-xl text-lg text-slate-300">Fixed fare ₹{groupDigits(fare)} · flight tracking · 24/7 availability · verified drivers.</p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <a href={`tel:${PHONE}`} onClick={() => trackPhoneCall('airport_to_city_cta')}
               className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl px-9 py-4 text-lg font-bold text-black transition-transform hover:scale-[1.02]"

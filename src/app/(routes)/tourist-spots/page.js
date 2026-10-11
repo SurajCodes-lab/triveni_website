@@ -12,9 +12,9 @@ export const metadata = {
   title: tightenTitle('Tourist Spots India 2026 | Forts, Palaces, Lakes & Heritage'),
   description: 'Explore top tourist spots across Jaipur, Udaipur, Jodhpur. Amber Fort, Hawa Mahal, Lake Pichola, Mehrangarh Fort & more. Cab from Rs 11/km. Call 7668570551.',
   keywords: 'tourist spots india, jaipur tourist places, udaipur tourist spots, jodhpur sightseeing, rajasthan tourism, famous places india, heritage sites india, forts palaces india',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/tourist-spots' },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/tourist-spots',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: {
     card: 'summary_large_image',
@@ -133,7 +133,7 @@ export default function TouristSpotsPage() {
       "telephone": "+91-7668570551",
     },
     "areaServed": { "@type": "Country", "name": "India" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('tourist-spots')), "bestRating": "5" },
+    
   };
 
   const faqData = [
@@ -346,7 +346,7 @@ export default function TouristSpotsPage() {
         ))}
 
         {/* ======= VEHICLE OPTIONS ======= */}
-        <section className="py-20 px-4 bg-gradient-to-br from-slate-900 to-slate-950">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-slate-900 to-slate-950">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 bg-[#FACF2D]/10 px-5 py-2 rounded-full mb-5 border border-[#FACF2D]/20">
@@ -394,14 +394,14 @@ export default function TouristSpotsPage() {
         </section>
 
         {/* ======= FAQ SECTION ======= */}
-        <section className="py-20 px-4 bg-slate-950">
+        <section className="py-12 sm:py-20 px-4 bg-slate-950">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Frequently Asked Questions
               </h2>
               <p className="text-lg text-gray-400">
-                Everything you need to know about sightseeing with Triveni Cabs
+                Everything you need to know about sightseeing with Triveni Cabs™
               </p>
             </div>
 
@@ -422,10 +422,8 @@ export default function TouristSpotsPage() {
         </section>
 
         {/* ======= CTA SECTION ======= */}
-        <section className="py-20 px-4 bg-gradient-to-br from-[#FACF2D] to-amber-500 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-[#FACF2D] to-amber-500 relative overflow-hidden">
           {/* Decorative elements */}
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-orange-500/20 rounded-full blur-3xl" />
 
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">

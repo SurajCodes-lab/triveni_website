@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const route = getRouteBySlug(slug);
   if (!route) {
-    return { title: 'Char Dham Yatra by Car | Triveni Cabs', description: 'Book car, SUV, bus for Char Dham Yatra 2026. Best prices, experienced drivers. Call 7668570551.' };
+    return { title: 'Char Dham Yatra by Car | Triveni Cabs™', description: 'Book car, SUV, bus for Char Dham Yatra 2026. Best prices, experienced drivers. Call 7668570551.' };
   }
 
   const baseUrl = 'https://www.trivenicabs.in';
@@ -67,7 +67,7 @@ export async function generateMetadata({ params }) {
       title: route.seo.title,
       description: route.seo.description,
       url: canonicalUrl,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [
         {
           url: `${baseUrl}${route.images.hero}`,
@@ -129,7 +129,7 @@ function generateSchemas(route) {
     '@context': 'https://schema.org',
     '@type': 'TouristTrip',
     name: `${route.title} by Triveni Cabs`,
-    brand: { '@type': 'Brand', name: 'Triveni Cabs' },
+    brand: { '@type': 'Brand', name: 'Triveni Cabs™' },
     description: route.seo.description,
     url: pageUrl,
     touristType: 'Pilgrim',
@@ -236,7 +236,7 @@ function generateSchemas(route) {
     extraSchema = {
       ...getHowToSchema({
         name: `How to Plan ${route.title}`,
-        description: `Step-by-step guide to booking and registering for ${route.destination} Yatra 2026 by ${route.vehicle.name} with Triveni Cabs.`,
+        description: `Step-by-step guide to booking and registering for ${route.destination} Yatra 2026 by ${route.vehicle.name} with Triveni Cabs™.`,
         totalTime: 'PT15M',
         estimatedCost: route.priceNum > 0 ? { currency: 'INR', value: route.priceNum } : null,
         steps: registrationSteps,

@@ -29,7 +29,7 @@ import {
 
 const PHONE_DISPLAY = "+91 76685 70551";
 const PHONE_TEL = "tel:+917668570551";
-const WA_TEXT = "Hi Triveni Cabs, I want to book a cab";
+const WA_TEXT = "Hi Triveni Cabs™, I want to book a cab";
 const WA_LINK = `https://wa.me/917668570551?text=${encodeURIComponent(WA_TEXT)}`;
 // Alternative WhatsApp desk — published on the contact page ONLY (user request).
 const WA_ALT_DISPLAY = "+91 89235 34551";
@@ -155,7 +155,7 @@ const HOURS = [
 
 const FAQS = [
   {
-    q: "How can I book a cab with Triveni Cabs?",
+    q: "How can I book a cab with Triveni Cabs™?",
     a: "Call +91 76685 70551, send a WhatsApp message, fill the enquiry form on this page, or email cabstriveni@gmail.com. Phone and WhatsApp are answered 24 hours a day, every day.",
   },
   {
@@ -163,7 +163,7 @@ const FAQS = [
     a: "Booking support on phone and WhatsApp runs 24x7. Our Agra office is open for walk-in visits between 9:00 AM and 6:00 PM.",
   },
   {
-    q: "Which cities does Triveni Cabs operate in?",
+    q: "Which cities does Triveni Cabs™ operate in?",
     a: "We run across 50+ cities in North and Central India, including Delhi, Agra, Jaipur, Chandigarh, Shimla, Manali, Amritsar, Dehradun, Rishikesh, Haridwar, Jodhpur, Udaipur, Ayodhya and Ahmedabad, plus outstation trips from all of them.",
   },
   {
@@ -310,8 +310,6 @@ export default function ContactClient() {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/25" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950 to-transparent" />
           {/* Headlight wash */}
-          <div className="absolute -left-32 top-0 h-72 w-72 rounded-full bg-[#FACF2D]/15 blur-3xl sm:h-96 sm:w-96" />
-          <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-[#FACF2D]/10 blur-3xl" />
         </div>
 
         <div className="relative mx-auto w-full max-w-6xl px-4 pb-14 pt-6 sm:px-6 sm:pb-20 sm:pt-10 lg:pb-24">
@@ -339,7 +337,7 @@ export default function ContactClient() {
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-[#FACF2D]/30 bg-[#FACF2D]/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em] text-[#FACF2D] sm:text-xs">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FACF2D] opacity-70 motion-reduce:animate-none" />
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-[#FACF2D] opacity-70 motion-reduce:animate-none" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-[#FACF2D]" />
                 </span>
                 Booking desk open 24x7
@@ -366,7 +364,7 @@ export default function ContactClient() {
               <div className="mt-3 flex flex-wrap items-center gap-2.5">
                 <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-300">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70 motion-reduce:animate-none" />
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-70 motion-reduce:animate-none" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                   </span>
                   {desk ? `${desk.time} IST — ${desk.msg}` : "The India desk is awake"}
@@ -447,7 +445,7 @@ export default function ContactClient() {
                   {lastRoute && (
                     <a
                       href={`https://wa.me/917668570551?text=${encodeURIComponent(
-                        `Hi Triveni Cabs, I was checking ${lastRoute.from} to ${lastRoute.to} — please share the fare and availability.`
+                        `Hi Triveni Cabs™, I was checking ${lastRoute.from} to ${lastRoute.to} — please share the fare and availability.`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -590,7 +588,7 @@ export default function ContactClient() {
                 <div className="flex gap-3.5">
                   <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#FACF2D]" />
                   <address className="not-italic">
-                    <p className="text-sm font-bold text-white">Triveni Cabs</p>
+                    <p className="text-sm font-bold text-white">Triveni Cabs™</p>
                     <p className="mt-1 text-sm leading-relaxed text-white/55">
                       366, Dandupura, near Tajganj,
                       <br />
@@ -669,7 +667,7 @@ export default function ContactClient() {
                   until scrolled into view. Address and pin are the same place. */}
               <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
                 <iframe
-                  title="Triveni Cabs office map — 366 Dandupura, near Tajganj, Agra 282006"
+                  title="Triveni Cabs™ office map — 366 Dandupura, near Tajganj, Agra 282006"
                   src="https://maps.google.com/maps?q=366+Dandupura+near+Tajganj+Agra+Uttar+Pradesh+282006&z=15&output=embed"
                   className="h-64 w-full border-0 sm:h-72"
                   loading="lazy"
@@ -686,10 +684,10 @@ export default function ContactClient() {
                 lead="Only the physical office keeps daytime hours. Phone and WhatsApp run through the night."
               />
 
-              <div className={`mt-6 overflow-x-auto ${GLASS}`}>
-                <table className="w-full min-w-[18rem] text-left text-sm">
+              <div className={`mt-6 sm:overflow-x-auto ${GLASS}`}>
+                <table className="w-full min-w-[18rem] text-left text-sm rt-stack">
                   <caption className="sr-only">
-                    Triveni Cabs contact channel availability
+                    Triveni Cabs™ contact channel availability
                   </caption>
                   <thead className="border-b border-white/10 text-[11px] uppercase tracking-[0.15em] text-white/40">
                     <tr>
@@ -858,7 +856,6 @@ export default function ContactClient() {
 
       {/* ----------------------------------------------------------- END BAND */}
       <section className="relative overflow-hidden border-t border-white/5 py-14 sm:py-20">
-        <div className="absolute left-1/2 top-0 h-64 w-[36rem] max-w-full -translate-x-1/2 rounded-full bg-[#FACF2D]/10 blur-3xl" />
 
         <div className="relative mx-auto w-full max-w-3xl px-4 text-center sm:px-6">
           <span

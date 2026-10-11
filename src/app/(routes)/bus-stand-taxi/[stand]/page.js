@@ -1,14 +1,26 @@
 import { busStands, busStandSlugs, getBusStandBySlug, getStandFaqs } from '@/utilis/busStandData';
 import BusStandClient from '@/components/busstand/BusStandClient';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 import { COMPANY_INFO, AGGREGATE_RATING, BASE_URL } from '@/lib/seo/constants';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getArticleSchema, getCityPlaceSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
+import DataTable from '@/components/seo/DataTable';
 import AEOHead from '@/components/seo/AEOHead';
-import { tightenTitle, tightenDescription, DESC_BUDGET } from '@/lib/seo/serp-ctr';
+import { tightenTitle, pickTitle, DISPLAY_BUDGET, DESC_BUDGET } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 export const revalidate = 3600;
 export const dynamicParams = false;
+
+/** "Lucknow Alambagh" -> "Lucknow Alambagh Bus Stand"; "ISBT Anand Vihar" and "Haridwar Bus Stand" stay as they are. */
+const HAS_STAND_WORD = /\b(ISBT|Bus Stand)\b/i;
+function standLabel(stand) {
+  return HAS_STAND_WORD.test(stand.name) ? stand.name : `${stand.name} Bus Stand`;
+}
+
+/** "Taj Mahal (East Gate)" -> "Taj Mahal" for the title; the description keeps the full name. */
+function shortDestName(name) {
+  return String(name || '').replace(/\s*\([^)]*\)/g, '').trim();
+}
 
 export async function generateStaticParams() {
   return busStandSlugs.map((stand) => ({ stand }));
@@ -19,37 +31,70 @@ export async function generateMetadata({ params }) {
   const stand = getBusStandBySlug(slug);
   if (!stand) return {};
 
-  const lowestFare = stand.destinations.reduce((min, d) => {
-    const num = parseInt(String(d.fare).replace(/[^\d]/g, ''));
-    return num && num < min ? num : min;
-  }, Infinity);
-  const fareDisplay = lowestFare < Infinity ? `\u20B9${lowestFare}` : 'Lowest Fare';
-  const topDest = stand.destinations.slice(0, 3).map(d => d.name).join(', ');
-  const title = tightenTitle(`${stand.name} Taxi from ${fareDisplay} | Fixed Fare | 24/7`);
-  const standTail = `Fixed fares, no surge, meet at the bus stand exit. Call 7668570551.`;
-  const standHead = `Taxi from ${stand.name}, ${stand.city} starting ${fareDisplay}. AC sedan/SUV to ${topDest} & more.`;
-  const description = `${tightenDescription(standHead, DESC_BUDGET - standTail.length - 1)} ${standTail}`;
+  /*
+   * Week 48 C3 (GSC: 25,389 impressions, 0.24% CTR at position 7.5).
+   *
+   * The old listing was "<Stand> Taxi from ₹130 | Fixed Fare | 24/7". Three
+   * things were wrong with it at that position: "from ₹130" was the cheapest
+   * figure in the fare table (the 3 km hop to the railway station) with no
+   * destination attached, so it answered nothing -- and it contradicted the
+   * "Starting Fare" the page itself shows, which is destinations[0]; "Fixed
+   * Fare | 24/7" is filler every competitor also claims; and stands such as
+   * "Lucknow Alambagh" never said "bus stand", the phrase the searcher types.
+   *
+   * The new formula answers the question in the SERP: taxi from <this bus
+   * stand>, to <the marquee destination>, for <the exact fare the first fare
+   * card on the page shows>. Sedan fares only, matching the page footnote.
+   */
+  const label = standLabel(stand);
+  const where = stand.name.toLowerCase().includes(stand.city.toLowerCase()) ? label : `${label}, ${stand.city}`;
+  const hero = stand.destinations[0];
+  const heroDest = hero ? shortDestName(hero.name) : '';
+
+  const title = tightenTitle(
+    hero
+      ? pickTitle([
+          `Taxi from ${label}: ${heroDest} ${hero.fare}`,
+          `Taxi from ${stand.name}: ${heroDest} ${hero.fare}`,
+          `${stand.name} Taxi: ${heroDest} ${hero.fare}`,
+        ], DISPLAY_BUDGET)
+      : `Taxi from ${label}`,
+    DISPLAY_BUDGET
+  );
+
+  // Every clause is something the page renders: the fare cards (AC sedan, fixed),
+  // the "driver meets you at the bus stand exit, 24/7" line and the no-surge,
+  // no-hidden-charges promise. Three fares are listed where the budget allows,
+  // falling back to two, then one, so no page ever cuts mid-sentence.
+  const fareList = (n) => stand.destinations.slice(0, n).map((d) => `${d.name} ${d.fare}`).join(', ');
+  const descTail = 'Driver waits at the bus stand exit 24/7, no surge, no hidden charges. Call 7668570551.';
+  const description = hero
+    ? pickTitle(
+        [3, 2, 1].map((n) => `Taxi from ${where}: ${fareList(n)}, fixed AC sedan fares. ${descTail}`),
+        DESC_BUDGET
+      )
+    : `Taxi from ${where}. ${descTail}`;
 
   return {
     title,
     description,
     keywords: `${stand.name} cab, ${stand.name} taxi, cab from ${stand.name.toLowerCase()}, taxi service ${stand.name.toLowerCase()}, ${stand.city.toLowerCase()} bus stand taxi, ${slug} cab service, ISBT ${stand.city.toLowerCase()} cab`,
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/bus-stand-taxi/${slug}` },
     openGraph: {
-      title: `${stand.name} Cab & Taxi Service | Triveni Cabs`,
+      title: `${stand.name} Cab & Taxi Service | Triveni Cabs™`,
       description,
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/bus-stand-taxi/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${stand.name} Cab Service | Triveni Cabs`,
+      title: `${stand.name} Cab Service | Triveni Cabs™`,
       description,
       creator: '@trivenicabs',
       site: '@trivenicabs',
@@ -89,7 +134,7 @@ export default async function BusStandPage({ params }) {
       "telephone": "+91-7668570551",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
+        "streetAddress": "366, Dandupura, near Tajganj",
         "addressLocality": "Agra",
         "postalCode": "282006",
         "addressCountry": "IN",
@@ -99,7 +144,7 @@ export default async function BusStandPage({ params }) {
         "latitude": "27.1751",
         "longitude": "78.0421"
       },
-      "priceRange": "$$",
+      "priceRange": "₹₹",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -148,7 +193,7 @@ export default async function BusStandPage({ params }) {
       "addressCountry": "IN"
     },
     "areaServed": stand.city,
-    "priceRange": "$$",
+    "priceRange": "₹₹",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -170,6 +215,10 @@ export default async function BusStandPage({ params }) {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Google's Merchant listings report treats a missing `image`
+    // as a critical error. This is an asset the page already uses.
+
+    "image": `${BASE_URL}/images/car/swift_dzire.jpg`,
     "name": `${stand.name} Cab & Taxi Service`,
     "description": `Book taxi from ${stand.name}, ${stand.city}. AC sedan & SUV, fixed fares, 24/7, ${stand.destinations.length}+ destinations.`,
     "brand": { "@type": "Brand", "name": COMPANY_INFO.name },
@@ -210,7 +259,7 @@ export default async function BusStandPage({ params }) {
     description: `Complete guide to booking a taxi from ${stand.name}, ${stand.city}: fixed fares to ${topDestNames} & more, prepaid pickup point, night availability, vehicle options and verified drivers.`,
     image: '/images/triveni-cabs-og.jpg',
     datePublished: '2026-01-01',
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/bus-stand-taxi/${slug}`) || getTodayDate()),
     authorName: 'editorial',
     type: 'Article',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
@@ -220,7 +269,7 @@ export default async function BusStandPage({ params }) {
   const citySlug = stand.city.toLowerCase().replace(/\s+/g, '-');
   const cityPlaceSchema = getCityPlaceSchema(citySlug, {
     idSlug: `bus-stand-taxi/${slug}`,
-    description: `${stand.name} (${stand.area}) bus terminal in ${stand.city}, India. Triveni Cabs provides 24/7 fixed-fare taxi pickup at this bus stand.`
+    description: `${stand.name} (${stand.area}) bus terminal in ${stand.city}, India. Triveni Cabs™ provides 24/7 fixed-fare taxi pickup at this bus stand.`
   });
 
   // Bus-native GEO: represent the actual stand as a BusStation transit entity,
@@ -248,20 +297,32 @@ export default async function BusStandPage({ params }) {
 
   return (
     <>
-      <Script id="stand-breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} strategy="afterInteractive" />
-      <Script id="stand-taxi-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} strategy="afterInteractive" />
-      <Script id="stand-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} strategy="afterInteractive" />
-      <Script id="stand-local-business-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} strategy="afterInteractive" />
-      <Script id="stand-product-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} strategy="afterInteractive" />
-      <Script id="stand-howto-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} strategy="afterInteractive" />
-      <Script id="stand-article-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} strategy="afterInteractive" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} strategy="afterInteractive" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(taxiServiceSchema) }} strategy="afterInteractive" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} strategy="afterInteractive" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} strategy="afterInteractive" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} strategy="afterInteractive" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} strategy="afterInteractive" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} strategy="afterInteractive" />
       {cityPlaceSchema && (
-        <Script id="stand-place-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityPlaceSchema) }} strategy="afterInteractive" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cityPlaceSchema) }} strategy="afterInteractive" />
       )}
-      <Script id="stand-busstation-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(busStationSchema) }} strategy="afterInteractive" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(busStationSchema) }} strategy="afterInteractive" />
 
       <AEOHead pageType="busStand" data={{ url: `/bus-stand-taxi/${slug}`, title: `${stand.name} Taxi Service`, city: stand.city }} />
       <BusStandClient stand={stand} slug={slug} allStands={busStands} faqs={standFaqs} />
+      {/* Week 49: the fixed fares from this stand as a plain table (the same records the fare cards show). */}
+      {Array.isArray(stand.destinations) && stand.destinations.length > 1 && (
+        <section className="mx-auto max-w-6xl px-4 py-10">
+          <DataTable
+            title={`What does a taxi from ${stand.name} cost?`}
+            caption={`Fixed sedan fares from ${stand.name}, ${stand.city}, by destination`}
+            intro="AC sedan (Swift Dzire or Honda Amaze), fixed fare, no hidden charges; tolls and parking extra at actuals."
+            columns={[{ key: 'name', label: 'Destination', strong: true }, { key: 'distance', label: 'Distance' }, { key: 'time', label: 'Time' }, { key: 'fare', label: 'Sedan fare', align: 'right' }]}
+            rows={stand.destinations}
+          />
+        </section>
+      )}
     </>
   );
 }

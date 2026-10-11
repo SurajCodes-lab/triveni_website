@@ -12,9 +12,9 @@ export const metadata = {
   title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['guru purab amritsar cab 2026', 'guru nanak jayanti cab service', 'golden temple cab booking', 'delhi to amritsar cab guru purab', 'amritsar darshan cab', 'wagah border cab', 'gurudwara visit cab service', 'guru purab travel package', 'amritsar transport service', 'sikh pilgrimage cab'],
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${slug}`,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Amritsar/Golden_Temple.jpg', width: 1200, height: 630, alt: 'Guru Purab Amritsar Cab Service' }],
   },
   twitter: { card: 'summary_large_image', title: pageTitle, description: pageDesc, creator: '@trivenicabs', site: '@trivenicabs', images: ['/images/sightseeing/Amritsar/Golden_Temple.jpg'] },
@@ -45,8 +45,7 @@ export default function GuruPurabPage() {
     "name": "Guru Purab 2026 Amritsar Transport — Triveni Cabs",
     "description": pageDesc,
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in" },
-    "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Amritsar" }],
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('guru-purab-amritsar-transport')), "bestRating": "5" }
+    "areaServed": [{ "@type": "City", "name": "Delhi" }, { "@type": "City", "name": "Amritsar" }]
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",

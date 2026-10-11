@@ -31,7 +31,7 @@ export default function Page() {
       slug="innova-crysta-rent-per-km"
       vehicleName="Innova Crysta"
       h1="Innova Crysta Rent per KM — Upfront, All-Inclusive Fare"
-      intro="The Toyota Innova Crysta is India's most trusted family SUV — comfortable captain seats, powerful AC and a smooth ride. Triveni Cabs rents it chauffeur-driven at a transparent per-km rate that already includes fuel, the driver and AC, so the number you see is the number you pay. Perfect for outstation tours, airport transfers and long family road trips."
+      intro="The Toyota Innova Crysta is India's most trusted family SUV — comfortable captain seats, powerful AC and a smooth ride. Triveni Cabs™ rents it chauffeur-driven at a transparent per-km rate that already includes fuel, the driver and AC, so the number you see is the number you pay. Perfect for outstation tours, airport transfers and long family road trips."
       category="SUV"
       seating="6 + 1"
       fareRows={[

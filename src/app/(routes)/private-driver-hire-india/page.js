@@ -9,10 +9,10 @@ export const metadata = {
   title: tightenTitle('Hire Car with English-Speaking Driver in India 2026'),
   description: 'Hire a car with English-speaking driver in India. Multi-day packages from $45/day. Golden Triangle, Rajasthan, Kerala circuits.',
   keywords: 'hire car with driver india for foreigners, private driver india, english speaking driver india, chauffeur hire india, india car rental with driver',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/private-driver-hire-india' },
-  openGraph: { title: 'Hire Car with Driver in India | English-Speaking Chauffeurs', description: 'Private car with English-speaking driver from $45/day. Safe, reliable, trusted by 2000+ international tourists.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/private-driver-hire-india', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Hire Car with Driver in India | English-Speaking Chauffeurs', description: 'Private car with English-speaking driver from $45/day. Safe, reliable, trusted by 2000+ international tourists.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/private-driver-hire-india', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Hire Private Driver in India for Foreign Tourists 2026' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -60,8 +60,7 @@ export default function PrivateDriverHirePage() {
     "description": "Hire a car with English-speaking driver in India for multi-day tours. Safe, reliable, affordable.",
     "provider": { "@type": "LocalBusiness", "name": "Triveni Cabs", "telephone": "+91-7668570551", "url": "https://www.trivenicabs.in", "address": { "@type": "PostalAddress", "addressCountry": "IN" } },
     "areaServed": { "@type": "Country", "name": "India" },
-    "offers": { "@type": "AggregateOffer", "lowPrice": "45", "highPrice": "110", "priceCurrency": "USD", "unitText": "per day" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount('private-driver-hire-india')), "bestRating": "5" }
+    "offers": { "@type": "AggregateOffer", "lowPrice": "45", "highPrice": "110", "priceCurrency": "USD", "unitText": "per day" }
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -84,14 +83,14 @@ export default function PrivateDriverHirePage() {
           <div className="absolute inset-0 bg-gradient-to-br from-stone-950 via-amber-950/40 to-stone-950" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent" />
-          <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-20 left-10 w-[300px] h-[300px] bg-orange-500/8 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[150px]" />
+          <div className="absolute bottom-20 left-10 w-[300px] h-[300px] bg-orange-500/8 rounded-full blur-[120px]" style={{ animationDelay: '2s' }} />
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(251,191,36,0.3) 1px, transparent 0)`,
             backgroundSize: '40px 40px'
           }} />
 
-          <div className="max-w-7xl mx-auto px-4 py-20 relative z-10 w-full">
+          <div className="max-w-7xl mx-auto px-4 py-12 sm:py-20 relative z-10 w-full">
             <nav className="flex items-center gap-2 text-sm text-stone-500 mb-8">
               <Link href="/" className="hover:text-amber-400 transition-colors">Home</Link>
               <ChevronRight className="w-4 h-4" />
@@ -185,10 +184,10 @@ export default function PrivateDriverHirePage() {
         </section>
 
         {/* Trust Features */}
-        <section className="py-20 px-4 bg-gradient-to-b from-stone-950 via-stone-900/50 to-stone-950 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-stone-950 via-stone-900/50 to-stone-950 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[200px]" />
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 px-6 py-3 rounded-full mb-6 border border-amber-500/30">
                 <Shield className="w-5 h-5 text-amber-400" />
                 <span className="text-amber-300 font-semibold text-sm tracking-wider uppercase">Why Choose Us</span>
@@ -217,10 +216,10 @@ export default function PrivateDriverHirePage() {
         </section>
 
         {/* Pricing */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/5 via-transparent to-transparent" />
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 px-6 py-3 rounded-full mb-6 border border-amber-500/30">
                 <Star className="w-5 h-5 text-amber-400" />
                 <span className="text-amber-300 font-semibold text-sm tracking-wider uppercase">Transparent Pricing</span>
@@ -260,10 +259,10 @@ export default function PrivateDriverHirePage() {
         </section>
 
         {/* Popular Circuits */}
-        <section className="py-20 px-4 bg-stone-900/30 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 bg-stone-900/30 relative overflow-hidden">
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[150px]" />
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 px-6 py-3 rounded-full mb-6 border border-amber-500/30">
                 <MapPin className="w-5 h-5 text-amber-400" />
                 <span className="text-amber-300 font-semibold text-sm tracking-wider uppercase">Tour Circuits</span>
@@ -294,10 +293,10 @@ export default function PrivateDriverHirePage() {
         </section>
 
         {/* How It Works */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-500/5 via-transparent to-transparent" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-white">
                 How It <span className="text-transparent bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">Works</span>
               </h2>
@@ -322,7 +321,7 @@ export default function PrivateDriverHirePage() {
         </section>
 
         {/* Related Pages */}
-        <section className="py-16 px-4 bg-stone-900/30">
+        <section className="py-10 sm:py-16 px-4 bg-stone-900/30">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-2xl font-bold text-center mb-8 text-white">More for International Tourists</h2>
             <div className="grid md:grid-cols-3 gap-4">
@@ -349,10 +348,10 @@ export default function PrivateDriverHirePage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[200px]" />
           <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
                 Frequently Asked
                 <span className="block text-transparent bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text">Questions</span>
@@ -375,14 +374,14 @@ export default function PrivateDriverHirePage() {
         {/* CTA */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-amber-950/40 to-stone-900" />
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/15 rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-amber-500/15 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[120px]" style={{ animationDelay: '1s' }} />
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(251,191,36,0.3) 1px, transparent 0)`,
             backgroundSize: '30px 30px'
           }} />
 
-          <div className="relative z-10 max-w-4xl mx-auto px-4 py-24 text-center">
+          <div className="relative z-10 max-w-4xl mx-auto px-4 py-14 sm:py-24 text-center">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               Start Planning Your
               <span className="block text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 bg-clip-text">India Adventure</span>

@@ -12,8 +12,11 @@ import {
 } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import CabSearchWidget from '@/components/home/CabSearchWidget';
-import { searchRoute } from '@/lib/searchUtils';
-import { phoneNumber } from '@/utilis/data';
+// searchUtils is NOT imported here. searchRoute() needs the whole 470 KiB route
+// dataset, and it was running in the browser purely because from/to were read
+// from useSearchParams. The server sees the same query string, so the lookup is
+// done there and only the matched route crosses the boundary.
+import { phoneNumber } from '@/utilis/contact';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 
 /* ═══════════════════════════════════════════════════════
@@ -278,13 +281,13 @@ function EmptySearchState() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <CabSearchWidget />
+            <CabSearchWidget cities={cities} />
           </motion.div>
         </div>
       </section>
 
       {/* Popular Routes */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-10 sm:pb-16">
         <h2 className="text-xl font-black text-gray-900 mb-5">Popular Routes</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {popularRoutes.map((route, i) => (
@@ -320,7 +323,7 @@ function EmptySearchState() {
 /* ═══════════════════════════════════════════════════════
    MAIN SEARCH RESULTS PAGE
    ═══════════════════════════════════════════════════════ */
-export default function SearchResultsClient() {
+export default function SearchResultsClient({ result = null, cities = [] }) {
   const searchParams = useSearchParams();
   const from = searchParams.get('from') || '';
   const to = searchParams.get('to') || '';
@@ -330,10 +333,7 @@ export default function SearchResultsClient() {
   const [filter, setFilter] = useState('all');
   const [showModify, setShowModify] = useState(false);
 
-  const result = useMemo(() => {
-    if (!from || !to) return null;
-    return searchRoute(from, to, type);
-  }, [from, to, type]);
+  // result arrives as a prop. See the note on the import above.
 
   const filteredVehicles = useMemo(() => {
     if (!result) return [];
@@ -462,6 +462,7 @@ export default function SearchResultsClient() {
               className="mt-4"
             >
               <CabSearchWidget
+                cities={cities}
                 compact
                 initialFrom={fromDisplay}
                 initialTo={toDisplay}

@@ -6,23 +6,23 @@ import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 export const metadata = {
-  title: tightenTitle('Triveni Cabs Reviews | 4.8★ Rating | 2,847+ Customer Reviews 2026'),
-  description: 'Read 2,847+ genuine Triveni Cabs reviews. 4.8/5 rating. Customer feedback on outstation cabs, airport taxi, wedding cars & more.',
+  title: tightenTitle('Triveni Cabs™ Reviews | 4.8★ Rating | 2,847+ Customer Reviews 2026'),
+  description: 'Read 2,847+ genuine Triveni Cabs™ reviews. 4.8/5 rating. Customer feedback on outstation cabs, airport taxi, wedding cars & more.',
   keywords: 'Triveni Cabs reviews, Triveni Cabs rating, cab service reviews, taxi service rating, customer feedback Triveni Cabs, Triveni Cabs testimonials, outstation cab reviews, airport taxi reviews, wedding car reviews, best cab service reviews India, Triveni Cabs customer experience, Triveni Cabs feedback, reliable cab reviews, safe cab service reviews',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: {
     canonical: '/reviews',
   },
   openGraph: {
-    title: 'Triveni Cabs Reviews | 4.8★ | 2,847+ Happy Customers',
+    title: 'Triveni Cabs™ Reviews | 4.8★ | 2,847+ Happy Customers',
     description: 'Read genuine customer reviews. 4.8/5 rating from 2,847+ travelers. Outstation, airport, wedding, and local cab reviews.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/reviews',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: '/images/about/about_banner.webp',
@@ -34,7 +34,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Triveni Cabs Reviews | 4.8★ | 2,847+ Customers | Trusted Service',
+    title: 'Triveni Cabs™ Reviews | 4.8★ | 2,847+ Customers | Trusted Service',
     description: 'Genuine customer reviews from 2,847+ travelers. 4.8/5 rating for safety, punctuality, and value.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -69,56 +69,12 @@ export default function ReviewsPage() {
     "telephone": "+91-7668570551",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "366 Dandupura near Tajganj",
+      "streetAddress": "366, Dandupura, near Tajganj",
       "addressLocality": "Agra",
       "addressRegion": "Uttar Pradesh",
       "postalCode": "282006",
       "addressCountry": "IN"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "2847",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Rajesh Kumar" },
-        "datePublished": "2025-12-15",
-        "reviewBody": "Excellent outstation cab service from Delhi to Agra. Driver was punctual, car was clean and well-maintained. Very reasonable pricing with no hidden charges. Will definitely book again.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Priya Sharma" },
-        "datePublished": "2025-11-28",
-        "reviewBody": "Booked a wedding car and the service was outstanding. Car was decorated beautifully, driver was professional and arrived well before time. Made our special day even better.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Amit Verma" },
-        "datePublished": "2025-11-10",
-        "reviewBody": "Used Triveni Cabs for airport pickup from Delhi IGI. Flight was delayed by 2 hours but the driver waited patiently. Great tracking system and communication.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Sunita Agarwal" },
-        "datePublished": "2025-10-22",
-        "reviewBody": "Family trip to Jaipur from Delhi - round trip for 3 days. Same driver throughout, very helpful with sightseeing suggestions. Innova was comfortable for our family of 5.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Mohammed Farhan" },
-        "datePublished": "2025-10-05",
-        "reviewBody": "Corporate monthly cab service for our Agra office. Consistent quality, on-time pickups, and professional drivers. Their billing system is transparent and hassle-free.",
-        "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" }
-      }
-    ]
+    }
   };
 
   const breadcrumbSchema = {
@@ -132,8 +88,8 @@ export default function ReviewsPage() {
 
   const articleSchema = getArticleSchema({
     slug: 'reviews',
-    headline: 'Triveni Cabs Reviews — 4.8/5 from 2,847+ Verified Customers',
-    description: 'Genuine Triveni Cabs customer reviews. 4.8/5 average rating across outstation, airport, wedding, and corporate cab services.',
+    headline: 'Triveni Cabs™ Reviews — 4.8/5 from 2,847+ Verified Customers',
+    description: 'Genuine Triveni Cabs™ customer reviews. 4.8/5 average rating across outstation, airport, wedding, and corporate cab services.',
     image: '/images/about/about_banner.webp',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
   });
@@ -147,15 +103,15 @@ export default function ReviewsPage() {
 
   const faqData = [
     {
-      question: "Are Triveni Cabs reviews genuine?",
+      question: "Are Triveni Cabs™ reviews genuine?",
       answer: "Yes, all reviews on this page are from verified customers who have completed trips with us. We collect feedback after every trip via WhatsApp and phone. We display both positive and constructive feedback transparently."
     },
     {
-      question: "What is Triveni Cabs overall rating?",
-      answer: "Triveni Cabs has an overall rating of 4.8 out of 5 based on 2,847+ customer reviews. Our highest-rated categories are driver behavior (4.9/5) and punctuality (4.8/5)."
+      question: "What is Triveni Cabs™ overall rating?",
+      answer: "Triveni Cabs™ has an overall rating of 4.8 out of 5 based on 2,847+ customer reviews. Our highest-rated categories are driver behavior (4.9/5) and punctuality (4.8/5)."
     },
     {
-      question: "How can I leave a review for Triveni Cabs?",
+      question: "How can I leave a review for Triveni Cabs™?",
       answer: "After your trip, our team sends a feedback request via WhatsApp. You can also call us at 7668570551 to share your experience. We value all feedback and use it to continuously improve our services."
     },
     {
@@ -163,7 +119,7 @@ export default function ReviewsPage() {
       answer: "Customers consistently praise our outstation service for transparent pricing, punctual pickups, clean vehicles, and experienced drivers. The most common positive mentions are about driver behavior, vehicle condition, and no-hidden-charges policy."
     },
     {
-      question: "How does Triveni Cabs handle negative feedback?",
+      question: "How does Triveni Cabs™ handle negative feedback?",
       answer: "We take all feedback seriously. For any complaint, our team investigates within 24 hours. Issues with drivers lead to retraining or removal. Service complaints result in fare adjustments or complimentary rides. Call 7668570551 with any concerns."
     },
     {
@@ -171,7 +127,7 @@ export default function ReviewsPage() {
       answer: "Our airport taxi service has a 4.9/5 rating based on 1,250+ airport transfers. Customers particularly appreciate our flight tracking, on-time arrivals, and the meet-and-greet service at arrival gates."
     },
     {
-      question: "Do wedding car clients recommend Triveni Cabs?",
+      question: "Do wedding car clients recommend Triveni Cabs™?",
       answer: "Yes, our wedding car service has a 4.9/5 rating. Clients praise the car decoration quality, driver professionalism, punctuality, and the overall premium experience. 95% of wedding clients recommend us."
     },
     {
@@ -227,7 +183,7 @@ export default function ReviewsPage() {
       date: "November 2025",
       service: "Airport",
       rating: 5,
-      text: "Used Triveni Cabs for airport pickup from Delhi IGI. Flight was delayed by 2 hours but the driver waited patiently without any extra charge. Great tracking system and communication. The driver helped with all our luggage too.",
+      text: "Used Triveni Cabs™ for airport pickup from Delhi IGI. Flight was delayed by 2 hours but the driver waited patiently without any extra charge. Great tracking system and communication. The driver helped with all our luggage too.",
       highlight: false,
     },
     {
@@ -290,7 +246,7 @@ export default function ReviewsPage() {
       date: "July 2025",
       service: "Wedding",
       rating: 5,
-      text: "We booked multiple cars for our wedding - 1 bridal car and 4 guest vehicles. Everything was coordinated perfectly. All drivers arrived on time, cars were spotless. The bridal car decoration was stunning. Thank you Triveni Cabs!",
+      text: "We booked multiple cars for our wedding - 1 bridal car and 4 guest vehicles. Everything was coordinated perfectly. All drivers arrived on time, cars were spotless. The bridal car decoration was stunning. Thank you Triveni Cabs™!",
       highlight: false,
     },
     {
@@ -308,7 +264,7 @@ export default function ReviewsPage() {
       date: "June 2025",
       service: "Outstation",
       rating: 5,
-      text: "Solo trip from Delhi to Shimla as a woman traveler. Was initially nervous but Triveni Cabs made me feel completely safe. Got driver details beforehand, GPS tracking was shared with my family. Driver was respectful and professional. Highly recommend for women travelers.",
+      text: "Solo trip from Delhi to Shimla as a woman traveler. Was initially nervous but Triveni Cabs™ made me feel completely safe. Got driver details beforehand, GPS tracking was shared with my family. Driver was respectful and professional. Highly recommend for women travelers.",
       highlight: true,
     },
   ];
@@ -375,11 +331,11 @@ export default function ReviewsPage() {
             </div>
 
             <h1 className="speakable-headline font-display-serif text-xl md:text-2xl font-medium text-rose-100/70 mb-4 max-w-2xl mx-auto">
-              Triveni Cabs is rated 4.8 out of 5 based on <strong className="text-white font-bold">2,847+</strong> verified customer reviews
+              Triveni Cabs™ is rated 4.8 out of 5 based on <strong className="text-white font-bold">2,847+</strong> verified customer reviews
             </h1>
 
             <p className="speakable-lead text-rose-200/50 max-w-lg mx-auto text-sm">
-              Real feedback from real travelers who trust Triveni Cabs for outstation, airport, wedding, and local cab services across North India.
+              Real feedback from real travelers who trust Triveni Cabs™ for outstation, airport, wedding, and local cab services across North India.
             </p>
           </div>
 
@@ -392,14 +348,14 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── OVERVIEW: SEO prose content section ─── */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-center mb-8 text-[#1c1017]">
-              Why Thousands of Travellers Trust Triveni Cabs
+              Why Thousands of Travellers Trust Triveni Cabs™
             </h2>
             <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
-              <p>With an overall rating of <strong className="text-[#1c1017]">4.8 out of 5 stars from 2,847+ verified customer reviews</strong>, Triveni Cabs is one of the highest-rated cab services in North India. Our customers consistently praise driver professionalism, vehicle cleanliness, punctual pickups, and transparent billing — the four pillars that have earned us this reputation since our founding in Agra.</p>
-              <p>What makes <strong className="text-[#1c1017]">Triveni Cabs reviews</strong> stand out is the variety of travellers who vouch for us. Families booking outstation trips to Jaipur, corporate teams using our monthly cab packages, tourists visiting the Taj Mahal for the first time, couples renting luxury wedding cars, pilgrims heading to Haridwar and Varanasi — each segment reports high satisfaction across different service parameters.</p>
+              <p>With an overall rating of <strong className="text-[#1c1017]">4.8 out of 5 stars from 2,847+ verified customer reviews</strong>, Triveni Cabs™ is one of the highest-rated cab services in North India. Our customers consistently praise driver professionalism, vehicle cleanliness, punctual pickups, and transparent billing — the four pillars that have earned us this reputation since our founding in Agra.</p>
+              <p>What makes <strong className="text-[#1c1017]">Triveni Cabs™ reviews</strong> stand out is the variety of travellers who vouch for us. Families booking outstation trips to Jaipur, corporate teams using our monthly cab packages, tourists visiting the Taj Mahal for the first time, couples renting luxury wedding cars, pilgrims heading to Haridwar and Varanasi — each segment reports high satisfaction across different service parameters.</p>
               <p>We believe that genuine customer feedback is the best quality control mechanism. After every completed trip, our team proactively collects feedback via WhatsApp. Positive reviews motivate our drivers, while constructive criticism drives real operational improvements — from vehicle upgrades to driver retraining. This feedback loop is why our satisfaction rate has improved year over year.</p>
               <p>Read the reviews below to hear directly from travellers who have experienced our outstation cabs, airport transfers, local taxi packages, wedding car services, and corporate transportation. Every review is from a verified customer — no fake testimonials, no paid endorsements. Your trust matters more than any marketing campaign.</p>
             </div>
@@ -407,7 +363,7 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── CATEGORY RATINGS: Horizontal bar chart ─── */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <span className="inline-block text-sm font-bold text-rose-600 bg-rose-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Breakdown</span>
@@ -438,7 +394,7 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── SERVICE TYPE RATINGS: Gradient pill cards ─── */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
               <span className="inline-block text-sm font-bold text-amber-600 bg-amber-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">By Service</span>
@@ -465,7 +421,7 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── FEATURED REVIEWS: Masonry-style with highlight cards ─── */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-pink-600 bg-pink-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Testimonials</span>
@@ -531,7 +487,7 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── TRUST SECTION: Dark warm section with glass cards ─── */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-br from-[#1c1017] via-[#2a1520] to-[#1a0f1e]">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden bg-gradient-to-br from-[#1c1017] via-[#2a1520] to-[#1a0f1e]">
           <div className="absolute top-10 right-20 w-80 h-80 bg-rose-500/10 rounded-full blur-[100px]" />
           <div className="absolute bottom-20 left-10 w-60 h-60 bg-amber-500/10 rounded-full blur-[80px]" />
 
@@ -539,7 +495,7 @@ export default function ReviewsPage() {
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-amber-300 bg-amber-500/10 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase border border-amber-400/20">Why Us</span>
               <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-white mb-4">
-                Why 2,847+ Customers <span className="text-gold-foil">Trust Triveni Cabs</span>
+                Why 2,847+ Customers <span className="text-gold-foil">Trust Triveni Cabs™</span>
               </h2>
             </div>
 
@@ -563,9 +519,9 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── SEO Prose Section with Contextual Links ─── */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-[#1c1017] mb-6 text-center">Why Customers Rate Triveni Cabs 4.8 Out of 5</h2>
+            <h2 className="font-display-serif text-3xl md:text-4xl font-bold text-[#1c1017] mb-6 text-center">Why Customers Rate Triveni Cabs™ 4.8 Out of 5</h2>
             <div className="prose prose-lg max-w-none text-stone-700 space-y-4">
               <p>
                 Our <strong>4.8-star rating</strong> across 2,847+ verified reviews reflects a relentless focus on three things: <Link href="/safety" className="text-rose-600 hover:text-pink-600 underline underline-offset-2">passenger safety</Link>, transparent pricing, and genuine hospitality. Whether customers book an <Link href="/outstation-cabs" className="text-rose-600 hover:text-pink-600 underline underline-offset-2">outstation cab</Link> for a family vacation, a <Link href="/one-way-cab" className="text-rose-600 hover:text-pink-600 underline underline-offset-2">one-way cab</Link> to save 50% on intercity travel, or a <Link href="/wedding" className="text-rose-600 hover:text-pink-600 underline underline-offset-2">wedding car</Link> for their special day — the consistent praise centers on driver behavior (4.9/5) and no-hidden-charges billing.
@@ -578,19 +534,19 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── SHARE YOUR REVIEW CTA ─── */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-3xl mx-auto">
             <div className="bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50 rounded-3xl p-8 md:p-12 text-center border border-rose-100/50">
               <Quote className="w-10 h-10 text-rose-300 mx-auto mb-4" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#1c1017] mb-4">
-                Traveled with Triveni Cabs? Share Your Experience
+                Traveled with Triveni Cabs™? Share Your Experience
               </h2>
               <p className="text-stone-600 mb-8 max-w-lg mx-auto">
                 Your feedback helps us improve and helps other travelers make informed decisions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  href="https://wa.me/917668570551?text=I want to share my review for Triveni Cabs"
+                  href="https://wa.me/917668570551?text=I want to share my review for Triveni Cabs™"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-rose-500/15 hover:shadow-rose-500/25 hover:scale-[1.02] transition-all"
                 >
                   Share Review on WhatsApp
@@ -608,7 +564,7 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── FAQ: Warm cards ─── */}
-        <section className="faq-section py-20 px-4 bg-white">
+        <section className="faq-section py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <span className="inline-block text-sm font-bold text-rose-600 bg-rose-100 px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">FAQ</span>
@@ -639,7 +595,7 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── INTERLINKING: Comprehensive footer-style grids ─── */}
-        <section className="py-16 px-4 border-t border-rose-100">
+        <section className="py-10 sm:py-16 px-4 border-t border-rose-100">
           <div className="max-w-7xl mx-auto space-y-12">
 
             {/* Related Services */}
@@ -702,7 +658,7 @@ export default function ReviewsPage() {
               <div className="flex flex-wrap gap-2">
                 {[
                   { l: "Pricing & Fare Chart", h: "/pricing" }, { l: "Vehicle Fleet", h: "/vehicles" },
-                  { l: "Safety Standards", h: "/safety" }, { l: "About Triveni Cabs", h: "/about" },
+                  { l: "Safety Standards", h: "/safety" }, { l: "About Triveni Cabs™", h: "/about" },
                   { l: "Corporate Service", h: "/corporate-transportation-service" }, { l: "Contact Us", h: "/contact" },
                   { l: "Tempo Traveller", h: "/tempo-traveller" }, { l: "All Routes", h: "/routes" },
                 ].map((q, i) => (
@@ -714,7 +670,7 @@ export default function ReviewsPage() {
         </section>
 
         {/* ─── CTA: Glass card on dark bg ─── */}
-        <section className="py-20 px-4 bg-gradient-to-br from-[#1c1017] to-[#2a1520]">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-[#1c1017] to-[#2a1520]">
           <div className="max-w-3xl mx-auto">
             <div className="bg-white/[0.05] backdrop-blur-2xl rounded-3xl p-10 md:p-14 text-center border border-white/[0.08]">
               <div className="flex items-center justify-center gap-1.5 mb-6">

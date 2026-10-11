@@ -8,9 +8,9 @@ export const metadata = {
   title: tightenTitle('Agra Day Trip from Delhi | Complete Guide & Cost ₹4,500'),
   description: 'Complete Agra day trip guide from Delhi. Budget breakdown: cab ₹4,500 + entries ₹200 + food ₹500. 3 itinerary options. Money-saving tips. Call 7668570551.',
   keywords: 'agra day trip from delhi, agra one day trip cost, delhi to agra day trip budget, agra trip cost from delhi, one day agra tour cost',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/agra-day-trip-from-delhi' },
   openGraph: {
@@ -19,7 +19,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/agra-day-trip-from-delhi',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Agra Day Trip from Delhi Guide' }],
   },
   twitter: {
@@ -52,7 +52,7 @@ export default function AgraDayTripFromDelhiPage() {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
     },
     "offers": { "@type": "AggregateOffer", "lowPrice": "4500", "highPrice": "12000", "priceCurrency": "INR" },
   };
@@ -196,21 +196,21 @@ export default function AgraDayTripFromDelhiPage() {
         </section>
 
         {/* === OVERVIEW: SEO prose content section === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-center mb-8 text-stone-800">
               Agra Day Trip from Delhi — Complete Cost & Planning Guide
             </h2>
             <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
-              <p>Planning an <strong className="text-stone-800">Agra day trip from Delhi</strong>? The 233-kilometre journey via the Yamuna Expressway takes just 3 to 3.5 hours by car, making it the most popular same-day excursion from the capital. Whether you want a quick 6-hour Taj-only visit, a 10-hour full Agra exploration, or an extended 14-hour day covering Fatehpur Sikri and local markets, Triveni Cabs offers transparent, all-inclusive pricing with no hidden costs.</p>
+              <p>Planning an <strong className="text-stone-800">Agra day trip from Delhi</strong>? The 233-kilometre journey via the Yamuna Expressway takes just 3 to 3.5 hours by car, making it the most popular same-day excursion from the capital. Whether you want a quick 6-hour Taj-only visit, a 10-hour full Agra exploration, or an extended 14-hour day covering Fatehpur Sikri and local markets, Triveni Cabs™ offers transparent, all-inclusive pricing with no hidden costs.</p>
               <p>The total cost of a <strong className="text-stone-800">Delhi to Agra one-day trip</strong> includes more than just the cab fare. You need to budget for Taj Mahal entry tickets (₹50 for Indians, ₹1,100 for foreigners), Agra Fort entry (₹50/₹650), Yamuna Expressway toll charges (₹735 return), meals, and optional shopping at Sadar Bazaar for marble inlay souvenirs. Our detailed cost breakdown below helps you plan an accurate budget so there are no surprises.</p>
-              <p>Triveni Cabs is <strong className="text-stone-800">headquartered in Agra</strong> — our drivers know every shortcut, the best parking spots near the Taj Mahal, which entry gate has the shortest queue, and where to find the most authentic Mughlai food. This local expertise makes your day trip smoother and more enjoyable than any generic tour operator from Delhi can offer. Sedan fares start at just ₹4,500 for the complete round trip.</p>
+              <p>Triveni Cabs™ is <strong className="text-stone-800">headquartered in Agra</strong> — our drivers know every shortcut, the best parking spots near the Taj Mahal, which entry gate has the shortest queue, and where to find the most authentic Mughlai food. This local expertise makes your day trip smoother and more enjoyable than any generic tour operator from Delhi can offer. Sedan fares start at just ₹4,500 for the complete round trip.</p>
             </div>
           </div>
         </section>
 
         {/* === COST BREAKDOWN TABLE === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Full Transparency</div>
@@ -249,7 +249,7 @@ export default function AgraDayTripFromDelhiPage() {
         </section>
 
         {/* === OVERVIEW === */}
-        <section className="py-20 px-4 bg-gradient-to-br from-emerald-50 via-stone-50 to-teal-50/30">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-emerald-50 via-stone-50 to-teal-50/30">
           <div className="max-w-5xl mx-auto">
             <div className="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-wider uppercase">Honest Guide</div>
             <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6 leading-tight">
@@ -270,7 +270,7 @@ export default function AgraDayTripFromDelhiPage() {
         </section>
 
         {/* === MONEY-SAVING TIPS: Bento Grid === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-4 py-1.5 rounded-full mb-4 tracking-wider uppercase">Save Money</div>
@@ -294,7 +294,7 @@ export default function AgraDayTripFromDelhiPage() {
         </section>
 
         {/* === FAQs === */}
-        <section className="py-20 px-4 bg-gradient-to-br from-stone-50 to-emerald-50/30">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-br from-stone-50 to-emerald-50/30">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900">
@@ -321,7 +321,7 @@ export default function AgraDayTripFromDelhiPage() {
         </section>
 
         {/* === INTERLINKS === */}
-        <section className="py-16 px-4 bg-stone-100/50">
+        <section className="py-10 sm:py-16 px-4 bg-stone-100/50">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-900 text-center mb-10">
               Related <span className="text-transparent bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text">Agra Tours</span>
@@ -351,7 +351,7 @@ export default function AgraDayTripFromDelhiPage() {
         </section>
 
         {/* === CTA === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600" />
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'50\' height=\'50\' viewBox=\'0 0 50 50\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%23fff\' stroke-width=\'0.5\'%3E%3Crect width=\'50\' height=\'50\'/%3E%3C/g%3E%3C/svg%3E")' }} />
 

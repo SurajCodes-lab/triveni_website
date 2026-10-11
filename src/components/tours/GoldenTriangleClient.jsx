@@ -162,7 +162,7 @@ export default function GoldenTriangleClient({ data, others = [] }) {
 
       {/* ITINERARY */}
       <section className="bg-white border-y border-stone-100">
-        <div className="max-w-5xl mx-auto px-4 py-16">
+        <div className="max-w-5xl mx-auto px-4 py-10 sm:py-16">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">Day by day</p>
             <h2 className="mt-2 text-2xl md:text-3xl font-black">Suggested {data.name} itinerary</h2>
@@ -185,7 +185,7 @@ export default function GoldenTriangleClient({ data, others = [] }) {
       </section>
 
       {/* PRICING */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section className="max-w-7xl mx-auto px-4 py-10 sm:py-16">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">Packages</p>
           <h2 className="mt-2 text-2xl md:text-3xl font-black">{data.name} pricing</h2>
@@ -226,7 +226,7 @@ export default function GoldenTriangleClient({ data, others = [] }) {
       </section>
 
       {/* FAQ */}
-      <section className="max-w-3xl mx-auto px-4 py-16">
+      <section className="max-w-3xl mx-auto px-4 py-10 sm:py-16">
         <Reveal><h2 className="text-center text-2xl md:text-3xl font-black">{data.name} — FAQs</h2></Reveal>
         <div className="mt-8 space-y-3">
           {data.faqs.map((f, i) => (
@@ -266,7 +266,7 @@ export default function GoldenTriangleClient({ data, others = [] }) {
       {/* FINAL CTA */}
       <section className="relative overflow-hidden bg-[#140f0a] text-white">
         <div className="pointer-events-none absolute -top-24 left-1/3 h-72 w-72 rounded-full bg-amber-500/25 blur-[120px]" />
-        <div className="relative max-w-4xl mx-auto px-4 py-16 text-center">
+        <div className="relative max-w-4xl mx-auto px-4 py-10 sm:py-16 text-center">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-black">Plan your {data.name}</h2>
             <p className="mt-3 text-white/60 text-lg">From ₹{data.priceFrom.toLocaleString("en-IN")} · private car + driver · flexible itinerary · 24/7 support</p>

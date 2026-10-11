@@ -3,6 +3,9 @@ import { Phone, MapPin, Clock, Star, ChevronRight, Shield, Users, Calendar } fro
 import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
 import { buildStaticService, buildPlaceSchemas, getArticleSchema, getHowToSchema, getComparisonSchema } from '@/utilis/tripSchemaHelper';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+// servedHref: two destination slugs here are redirect sources, so the ItemList
+// markup was publishing a URL that 301s instead of the page actually served.
+import { servedHref } from '@/lib/seo/route-exists';
 
 const SLUG = 'weekend-getaways-from-jaipur-by-car';
 
@@ -10,9 +13,9 @@ export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Top 20 Weekend Getaways from Jaipur by Car 2026'),
-  description: 'Best weekend trips from Jaipur by car in 2026. Udaipur, Pushkar, Ranthambore, Mount Abu & more. Distance, drive time, costs. AC cab from ₹9/km. Call 7668570551.',
+  description: 'Best weekend trips from Jaipur by car in 2026. Udaipur, Pushkar, Ranthambore, Mount Abu & more. Distance, drive time, costs. AC cab from ₹11/km. Call 7668570551.',
   keywords: 'weekend trips from jaipur by car, weekend getaways from jaipur, short trips from jaipur, road trips from jaipur, places to visit near jaipur by car',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/weekend-getaways-from-jaipur-by-car' },
   openGraph: {
@@ -20,7 +23,7 @@ export const metadata = {
     description: 'Plan the perfect weekend escape from Jaipur. 20 destinations with distance, costs & tips.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/weekend-getaways-from-jaipur-by-car',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: { card: 'summary_large_image', title: 'Top 20 Weekend Getaways from Jaipur by Car 2026' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
@@ -52,7 +55,7 @@ const destinations = [
 const faqData = [
   { question: 'What is the best weekend getaway from Jaipur for couples?', answer: 'Udaipur (395 km) is the most romantic weekend trip from Jaipur — the City of Lakes offers stunning palace views, boat rides, and fine dining. Pushkar (145 km) is a quicker option with its serene lakeside setting.' },
   { question: 'Which is the cheapest weekend trip from Jaipur by car?', answer: 'Sambhar Lake (80 km, ₹2,000 sedan) and Chand Baori at Abhaneri (95 km, ₹2,000 sedan) are the most budget-friendly weekend escapes. Both are under 2 hours from Jaipur.' },
-  { question: 'Can I book a cab from Jaipur for a weekend trip?', answer: 'Yes! Triveni Cabs offers outstation cabs from Jaipur starting at ₹9/km for sedans and ₹12/km for SUVs. All-inclusive pricing covers fuel, driver allowance, and tolls. Call 7668570551.' },
+  { question: 'Can I book a cab from Jaipur for a weekend trip?', answer: 'Yes! Triveni Cabs™ offers outstation cabs from Jaipur starting at ₹11/km for sedans and ₹11/km for SUVs. All-inclusive pricing covers fuel, driver allowance, and tolls. Call 7668570551.' },
   { question: 'Which wildlife destination is closest to Jaipur?', answer: 'Ranthambore National Park (180 km, 3.5 hrs) is the closest major wildlife destination. Sariska Tiger Reserve (110 km, 2 hrs) is even closer for a quick safari weekend.' },
   { question: 'Is it safe to drive from Jaipur to Udaipur for a weekend?', answer: 'Yes, the Jaipur-Udaipur highway (NH48) is well-maintained. Our experienced drivers handle this route regularly. The 6-hour drive passes through scenic Rajasthani countryside with good food stops at Ajmer and Bhilwara.' },
   { question: 'What is the best time for a weekend road trip from Jaipur?', answer: 'October to March is ideal — pleasant weather, clear skies, and perfect for sightseeing. Avoid May-June (extreme heat in Rajasthan) and July-August (monsoon can cause waterlogging on some routes).' },
@@ -129,7 +132,7 @@ export default function WeekendGetawaysFromJaipurPage() {
     "@context": "https://schema.org", "@type": "ItemList",
     "name": "Top 20 Weekend Getaways from Jaipur by Car",
     "numberOfItems": 20,
-    "itemListElement": destinations.map((dest, i) => ({ "@type": "ListItem", "position": i + 1, "name": dest.name, "url": `https://www.trivenicabs.in${dest.slug}` }))
+    "itemListElement": destinations.map((dest, i) => ({ "@type": "ListItem", "position": i + 1, "name": dest.name, "url": `https://www.trivenicabs.in${servedHref(dest.slug) || dest.slug}` }))
   };
 
   return (
@@ -159,10 +162,10 @@ export default function WeekendGetawaysFromJaipurPage() {
           <div className="absolute bottom-10 left-10 w-96 h-96 bg-orange-500/10 rounded-full blur-[140px]" />
           <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-yellow-400/10 rounded-full blur-[100px]" />
 
-          <div className="max-w-7xl mx-auto px-4 relative z-10 py-20">
+          <div className="max-w-7xl mx-auto px-4 relative z-10 py-12 sm:py-20">
             <div className="text-center max-w-4xl mx-auto">
               <div className="inline-flex items-center gap-3 bg-amber-500/10 border border-amber-500/25 backdrop-blur-sm px-6 py-3 rounded-full mb-10">
-                <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-amber-400 rounded-full" />
                 <span className="text-amber-300 text-sm font-medium tracking-widest uppercase">20 Royal Destinations</span>
               </div>
 
@@ -175,7 +178,7 @@ export default function WeekendGetawaysFromJaipurPage() {
               </h1>
 
               <p className="speakable-lead text-amber-200/60 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-                The best weekend getaways from Jaipur by car include Udaipur, Pushkar, Jodhpur, Ranthambore and Mount Abu. Triveni Cabs runs all-inclusive AC cabs covering fuel, tolls and driver allowance to desert forts, lake palaces, tiger safaris and sacred temples across royal Rajasthan.
+                The best weekend getaways from Jaipur by car include Udaipur, Pushkar, Jodhpur, Ranthambore and Mount Abu. Triveni Cabs™ runs all-inclusive AC cabs covering fuel, tolls and driver allowance to desert forts, lake palaces, tiger safaris and sacred temples across royal Rajasthan.
               </p>
 
               {/* Neumorphic stat cards */}
@@ -207,10 +210,10 @@ export default function WeekendGetawaysFromJaipurPage() {
         </section>
 
         {/* Destinations - Bento Grid with Tags */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-amber-950 via-amber-950/95 to-stone-950" />
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 sm:mb-16">
               <span className="text-amber-500 text-sm font-medium tracking-widest uppercase">Explore Rajasthan & Beyond</span>
               <h2 className="text-4xl md:text-5xl font-black mt-3 text-white">All 20 Destinations</h2>
               <p className="text-amber-300/40 mt-4 max-w-2xl mx-auto">Royal forts, desert safaris, lake palaces, and wildlife — each one handpicked for the perfect weekend from Jaipur.</p>
@@ -274,11 +277,11 @@ export default function WeekendGetawaysFromJaipurPage() {
         </section>
 
         {/* Why Us - Neumorphic Cards */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-stone-950" />
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-14">
-              <span className="text-amber-500 text-sm font-medium tracking-widest uppercase">Why Triveni Cabs</span>
+              <span className="text-amber-500 text-sm font-medium tracking-widest uppercase">Why Triveni Cabs™</span>
               <h2 className="text-3xl md:text-4xl font-black mt-3 text-white">Your Royal Rajasthan Guide</h2>
             </div>
             <div className="grid md:grid-cols-4 gap-6">
@@ -301,7 +304,7 @@ export default function WeekendGetawaysFromJaipurPage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-amber-950/50" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-10 text-white">More Road Trip Ideas</h2>
@@ -312,7 +315,7 @@ export default function WeekendGetawaysFromJaipurPage() {
                 { title: 'Rajasthan Desert Circuit', href: '/rajasthan-desert-circuit-tour', desc: 'Jaisalmer-Jodhpur-Bikaner' },
                 { title: '10-Day North India Trip', href: '/10-day-north-india-road-trip', desc: 'Epic North India road trip' },
                 { title: 'Weekend Getaways from Chandigarh', href: '/weekend-getaways-from-chandigarh-by-car', desc: '18 destinations from Chandigarh' },
-                { title: 'Golden Triangle Tour', href: '/sightseeing/golden-triangle-tour', desc: 'Delhi-Agra-Jaipur circuit' },
+                { title: 'Golden Triangle Tour', href: '/sightseeing/golden-triangle-tour-3-days', desc: 'Delhi-Agra-Jaipur circuit' },
                 { title: 'Jaipur City Hub', href: '/jaipur', desc: 'Jaipur cab services' },
               ].map((link, i) => (
                 <Link key={i} href={link.href} className="bg-amber-900/20 backdrop-blur-sm border border-amber-700/15 p-5 rounded-2xl hover:bg-amber-900/30 hover:border-amber-500/25 transition-all duration-300 flex items-center gap-4">
@@ -330,7 +333,7 @@ export default function WeekendGetawaysFromJaipurPage() {
         </section>
 
         {/* Related Guides */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-stone-950" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-3 text-white">Travel Guides & Resources</h2>
@@ -353,7 +356,7 @@ export default function WeekendGetawaysFromJaipurPage() {
         </section>
 
         {/* FAQ - Accordion Style */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-stone-950" />
           <div className="max-w-3xl mx-auto relative z-10">
             <div className="text-center mb-14">
@@ -377,7 +380,7 @@ export default function WeekendGetawaysFromJaipurPage() {
         </section>
 
         {/* CTA - Gradient Mesh */}
-        <section className="relative py-20 px-4 overflow-hidden">
+        <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-700 via-orange-700 to-red-800" />
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-400/20 rounded-full blur-[120px]" />
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-orange-500/20 rounded-full blur-[100px]" />
@@ -385,7 +388,7 @@ export default function WeekendGetawaysFromJaipurPage() {
             <h2 className="text-4xl md:text-5xl font-black mb-5">
               <span className="text-transparent bg-gradient-to-r from-yellow-200 to-amber-100 bg-clip-text">Plan Your Royal Escape</span>
             </h2>
-            <p className="text-amber-100/70 text-lg mb-10 max-w-xl mx-auto">AC cabs from ₹9/km with doorstep pickup from anywhere in Jaipur. Experienced Rajasthan drivers.</p>
+            <p className="text-amber-100/70 text-lg mb-10 max-w-xl mx-auto">AC cabs from ₹11/km with doorstep pickup from anywhere in Jaipur. Experienced Rajasthan drivers.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="tel:7668570551" className="inline-flex items-center gap-3 bg-black/30 hover:bg-black/40 backdrop-blur-sm border border-white/20 text-white font-bold px-10 py-4 rounded-2xl transition-all duration-300 shadow-xl">
                 <Phone className="w-5 h-5" /> Call 7668570551

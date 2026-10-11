@@ -16,6 +16,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight as FaArrowRight, Star as FaStar, Quote as FaQuote } from "@/components/ui/icons";
 import { cn } from "@/utilis/cn";
+import { canonicalClientHref } from '@/lib/seo/client-route-exists';
+import { groupDigits } from '@/utilis/pricing';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -85,7 +87,7 @@ export function PopularRoutes({ routes = [], accent, limit = 6, title = "Popular
             transition={{ duration: 0.5, ease, delay: (i % 3) * 0.06 }}
           >
             <Link
-              href={`/${r}`}
+              href={canonicalClientHref(`/${r}`)}
               className="group relative block overflow-hidden rounded-3xl ring-1 ring-inset ring-white/10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.9)] transition-all duration-500 hover:ring-amber-400/50 hover:-translate-y-1"
             >
               <div className="relative aspect-[16/10] w-full">
@@ -196,7 +198,7 @@ export function ComparisonTable({ current, others, accent }) {
         {Array.from({ length: padCount }).map((_, i) => <div key={`hp${i}`} />)}
       </div>
       {row("Seats", (c) => c.seaters.map((s) => s.seats).join(" / "))}
-      {row("From", (c) => <span className="bg-gradient-to-br from-amber-300 to-orange-500 bg-clip-text text-transparent">₹{c.perKm}/km</span>)}
+      {row("From", (c) => <span className="bg-gradient-to-br from-amber-300 to-orange-500 bg-clip-text text-transparent">₹{groupDigits(c.perKm)}/km</span>)}
       {row("Capacity", (c) => c.capacity)}
       {row("Best for", (c) => <span className="text-xs font-normal text-white/60">{c.kicker}</span>)}
       {row("Driver", () => "Included")}

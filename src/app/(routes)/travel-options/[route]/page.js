@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import { getTravelOptionsRoute, getAllTravelOptionsSlugs, getRelatedTravelRoutes } from '@/utilis/travelOptionsData';
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import TravelOptionsClient from '@/components/travel-options/TravelOptionsClient';
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }) {
   const carMode = route.modes.find(m => m.mode === 'Car');
   const title = tightenTitle(`${route.origin} to ${route.destination}: Car vs Train vs Bus vs Flight | Cab ${carMode?.cost || ''} — 4.9★`);
   const description = `Compare travel options from ${route.origin} to ${route.destination}. Car (${carMode?.duration}), Train, Bus, Flight — cost, time, comfort compared. Book cab from ${carMode?.cost}. Call 7668570551.`;
-  const ogTitle = `${route.origin} to ${route.destination} — Best Way to Travel | Car vs Train vs Bus | Triveni Cabs`;
+  const ogTitle = `${route.origin} to ${route.destination} — Best Way to Travel | Car vs Train vs Bus | Triveni Cabs™`;
 
   return {
     title,
@@ -42,9 +43,9 @@ export async function generateMetadata({ params }) {
       `${route.origin.toLowerCase()} ${route.destination.toLowerCase()} travel guide`,
       `best transport ${route.origin.toLowerCase()} to ${route.destination.toLowerCase()}`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/travel-options/${slug}` },
     openGraph: {
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/travel-options/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: `${route.origin} to ${route.destination} Travel Options` }],
     },
     twitter: {
@@ -64,7 +65,7 @@ export async function generateMetadata({ params }) {
       site: '@trivenicabs',
       images: ['/images/citypage_hero_section_image.jpg'],
     },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -92,13 +93,12 @@ export default async function TravelOptionsPage({ params }) {
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
       "url": "https://www.trivenicabs.in",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "addressRegion": "UP", "postalCode": "282006", "addressCountry": "IN" }
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "addressRegion": "Uttar Pradesh", "postalCode": "282006", "addressCountry": "IN" }
     },
     "areaServed": [
       { "@type": "City", "name": route.origin },
       { "@type": "City", "name": route.destination }
-    ],
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": String(getDeterministicReviewCount(slug)), "bestRating": "5" }
+    ]
   };
 
   const breadcrumbSchema = {

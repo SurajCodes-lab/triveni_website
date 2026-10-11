@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import dynamic from 'next/dynamic';
+import { trackWhatsAppClick, whatsAppIntentRecentlyRecorded } from '@/utilis/analytics';
 
 // Lazy-load the form so it only ships when the quote modal is opened.
 const QuickEnquiryForm = dynamic(() => import('@/components/ui/QuickEnquiryForm'), { ssr: false });
@@ -33,11 +34,32 @@ export function StickyCtaProvider({ children }) {
       const a = e.target?.closest?.('a[href*="wa.me"], a[href*="api.whatsapp.com"], a[href*="whatsapp.com/send"]');
       if (!a) return;
       if (a.hasAttribute('data-direct-wa')) return; // explicit bypass if ever needed
+      // preventDefault is what stops the navigation and makes the capture form work.
+      // stopPropagation used to sit here too, to "beat inline handlers" — but the handlers
+      // it was beating are the per-link trackWhatsAppClick calls, so WhatsApp intent went
+      // uncounted on every page except contact (which sidesteps it by tracking on
+      // pointerdown). Let the event through: each link fires its own event once, and the
+      // capture form still opens first because this listener runs in the capture phase.
       e.preventDefault();
-      e.stopPropagation();
       openQuote();
+
+      // Fallback intent event. Most WhatsApp links on the site carry no tracking
+      // handler of their own — including ones written as raw HTML inside blog
+      // content, which can never carry a React handler. This listener sees every
+      // WhatsApp click, so it can record intent for exactly those. The check runs
+      // on a timeout so it happens AFTER the click has finished dispatching: by
+      // then a link that tracks itself (on pointerdown, which precedes the click,
+      // or on click during bubble) has already recorded, and we stay silent. That
+      // ordering is what makes this safe — the failure mode to avoid here is
+      // double-counting, not missing one.
+      const label = (a.getAttribute('data-wa-subject') || a.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 60);
+      const slug = label.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 30);
+      setTimeout(() => {
+        if (whatsAppIntentRecentlyRecorded()) return;
+        try { trackWhatsAppClick(`wa_untracked_${slug || 'link'}`, label, label); } catch { /* never block the form */ }
+      }, 0);
     };
-    document.addEventListener('click', onClick, true); // capture phase, beats inline handlers
+    document.addEventListener('click', onClick, true); // capture phase, so the form opens before anything else reacts
     return () => document.removeEventListener('click', onClick, true);
   }, [openQuote]);
 

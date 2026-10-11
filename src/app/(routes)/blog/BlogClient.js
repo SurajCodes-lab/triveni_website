@@ -261,7 +261,7 @@ export default function BlogClient({ posts }) {
 
           {/* Empty state */}
           {filteredPosts.length === 0 && (
-            <div className="py-20 text-center">
+            <div className="py-12 sm:py-20 text-center">
               <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-amber-200 bg-white">
                 <Compass className="h-8 w-8 text-amber-400" />
               </div>
@@ -347,7 +347,7 @@ export default function BlogClient({ posts }) {
           </h2>
           <div className="space-y-5 text-base leading-relaxed text-slate-700">
             <p>
-              Welcome to the Triveni Cabs travel blog — your go-to resource for planning the perfect trip across India.
+              Welcome to the Triveni Cabs™ travel blog — your go-to resource for planning the perfect trip across India.
               Whether you are looking for the best hill stations in North India, spiritual pilgrimage routes, heritage
               sightseeing tours, or adventure destinations, our expert travel guides cover it all. We publish in-depth
               destination guides for popular cities like <Link href="/sightseeing/agra" className="font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">Agra</Link>,{' '}
@@ -366,7 +366,7 @@ export default function BlogClient({ posts }) {
               BMW, Audi, and Mercedes.
             </p>
             <p>
-              With 10,000+ happy customers, a 4.8-star rating, and service across 500+ destinations in India, Triveni Cabs
+              With 10,000+ happy customers, a 4.8-star rating, and service across 500+ destinations in India, Triveni Cabs™
               is trusted by solo travellers, families, corporate groups, and wedding planners alike. Browse our travel
               articles above, or <Link href="/contact" className="font-semibold text-amber-700 underline underline-offset-4 hover:text-amber-800">contact us</Link> for
               a personalized travel plan and free quote.

@@ -8,6 +8,17 @@ import { tightenTitle } from '@/lib/seo/serp-ctr';
 
 export const revalidate = 3600;
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FACF2D' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+};
+
 export const metadata = {
   metadataBase: new URL('https://www.trivenicabs.in'),
   title: tightenTitle('Bus Hire India from ₹30/km — 22-56 Seater AC 4.9★ | Book Now'),
@@ -16,20 +27,10 @@ export const metadata = {
   alternates: {
     canonical: 'https://www.trivenicabs.in/bus-routes'
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FACF2D' },
-    { media: '(prefers-color-scheme: dark)', color: '#000000' }
-  ],
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Triveni Cabs Bus Rental'
+    title: 'Triveni Cabs™ Bus Rental'
   },
   formatDetection: {
     telephone: true,
@@ -42,7 +43,7 @@ export const metadata = {
     url: 'https://www.trivenicabs.in/bus-routes',
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [
       {
         url: 'https://www.trivenicabs.in/images/bus/hero_section_image.webp',
@@ -71,9 +72,9 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  authors: [{ name: 'Triveni Cabs - Bus Rental Services' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs India',
+  authors: [{ name: 'Triveni Cabs™ - Bus Rental Services' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™ India',
   other: {
     'mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-capable': 'yes',
@@ -362,9 +363,9 @@ export default function BusRoutesPage() {
       "addressRegion": "Delhi"
     },
     "sameAs": [
-      "https://facebook.com/trivenicabs",
+      "https://www.facebook.com/trivenicabs",
       "https://twitter.com/trivenicabs",
-      "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo"
+      "https://www.instagram.com/cabstriveni"
     ]
   };
 

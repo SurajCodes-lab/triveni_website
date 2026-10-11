@@ -10,7 +10,8 @@
 // ============================================================================
 
 import { useState, useMemo } from 'react';
-import Link from 'next/link';
+import clientSlugs from '@/generated/client-slugs.json';
+import Link from '@/components/ui/JourneyLink';
 import Image from 'next/image';
 import {
   MapPin, Users, Clock, Star, Shield, Phone, MessageCircle, Car, CheckCircle,
@@ -18,8 +19,12 @@ import {
   CreditCard, Headphones, MapPinned, Sparkles, Zap,
   Mountain, Sun, Play, Crown, ShieldCheck
 } from '@/components/ui/icons';
-import { getAttractionsForCity } from '@/utilis/touristAttractionsData';
-import { routeDescriptions } from '@/utilis/tempoTravellerData';
+// touristAttractionsData is NOT imported here. It is a 26 KB table of
+// attractions for every city and this client component reads one destination
+// from it. The destination's attractions arrive as a prop.
+// routeDescriptions is NOT imported here. This is a client component, and that
+// map lives in a 265 KB module — the whole thing was shipped to the browser on
+// all 235 route pages to read one entry. The single entry arrives as a prop.
 import { formatDestinationForDisplay } from '@/utilis/tempoColors';
 // Rich UI + ranking-lift components — wired May 23 2026
 import InfographicPanel from '@/components/seo/InfographicPanel';
@@ -39,6 +44,9 @@ import Section from '@/components/ui/Section';
 import AuroraHeading from '@/components/ui/AuroraHeading';
 import RouteLine from '@/components/ui/RouteLine';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+// canonicalLink keeps these internal links off the Week 43 redirects — see
+// src/lib/seo/canonical-link.js for why a prefix rule cannot do this.
+import { canonicalLink } from '@/lib/seo/canonical-link';
 
 const TRUST_ROW = '4.9★ · Since 2015 · No hidden charges · Pay after trip';
 
@@ -51,7 +59,9 @@ const realValue = (v) => {
   return s && !PLACEHOLDER_VALUE.test(s) ? s : null;
 };
 
-export default function DynamicTempoRoutesClient({ data }) {
+import OtherVehicleStrip from '@/components/tempo/OtherVehicleStrip';
+
+export default function DynamicTempoRoutesClient({ data, destinationAttractions = [] }) {
   const { routeSlug, origin, destination, routeData, hasTouristSpots, localSightseeing, fleet, relatedRoutes, corridorLinks = [] } = data;
 
   const fleetList = useMemo(() => (Array.isArray(fleet) ? fleet : []), [fleet]);
@@ -61,7 +71,7 @@ export default function DynamicTempoRoutesClient({ data }) {
   const [selectedIdx, setSelectedIdx] = useState(defaultSeaterIdx);
   const selectedVehicle = fleetList[selectedIdx] || fleetList[0] || null;
 
-  const routeDescription = routeDescriptions[routeSlug] || null;
+  const routeDescription = data?.routeDescription || null;
   const displayDestination = formatDestinationForDisplay(destination);
   // Distance / drive time for the compact fact strips. Prefer the clean dataset
   // figure resolved server-side ("530 km"); routeDescription values can be prose-y.
@@ -299,8 +309,12 @@ export default function DynamicTempoRoutesClient({ data }) {
             {/* Giant route title */}
             <h1 className="speakable-headline font-display-serif text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
               <span className="text-gradient-gold">{origin}</span>
-              <span className="mx-2 text-white/40 sm:mx-3">→</span>
-              <span className="text-gradient-gold">{displayDestination}</span>
+              {/* See RouteClientContent: sr-only restores the word "to" in the
+                  heading text at zero layout cost; the arrow stays decorative. */}
+              <span className="sr-only"> to </span>
+              <span className="mx-2 text-white/40 sm:mx-3" aria-hidden="true">→</span>
+              <span className="sr-only"> </span>
+              <span className="text-gradient-gold">{displayDestination}</span>{' '}
               <span className="mt-2 block text-lg font-bold text-white/75 sm:text-2xl">
                 Tempo Traveller on Rent · 12–26 Seater AC
               </span>
@@ -884,6 +898,8 @@ export default function DynamicTempoRoutesClient({ data }) {
       {/* ============================================ */}
       {/* DIRECT ANSWER BOX (AEO/Featured Snippet Target) */}
       {/* ============================================ */}
+      {/* Week 49: the Force Urbania and Maharaja pages for the same route, where they exist. */}
+      <OtherVehicleStrip slug={routeSlug} current="tempo-traveller" place="route" />
       <section className="border-b border-slate-100 bg-white py-8 text-slate-900 md:py-12">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="direct-answer rounded-2xl border border-amber-200/60 bg-gradient-to-br from-amber-50 to-yellow-50 p-6 md:p-8" data-snippet-type="direct-answer">
@@ -927,7 +943,7 @@ export default function DynamicTempoRoutesClient({ data }) {
       <Section tone="dark">
         <AuroraHeading
           tone="dark"
-          eyebrow="Why Triveni Cabs"
+          eyebrow="Why Triveni Cabs™"
           title={`Why book a ${origin} to ${displayDestination} tempo traveller`}
           highlight="with us?"
           subtitle={`Best tempo traveller service for ${origin} to ${destination} — safe drivers, GPS tracking, 24/7 support, transparent pricing.`}
@@ -1059,7 +1075,7 @@ export default function DynamicTempoRoutesClient({ data }) {
       {/* TOURIST ATTRACTIONS                           */}
       {/* ============================================ */}
       {(() => {
-        const attractions = getAttractionsForCity(destination);
+        const attractions = destinationAttractions;
         if (attractions.length > 0) {
           return (
             <Section tone="light">
@@ -1135,7 +1151,12 @@ export default function DynamicTempoRoutesClient({ data }) {
             { to: 'Rishikesh', type: 'Adventure' },
             { to: 'Dharamshala', type: 'Hill Station' },
             { to: 'Amritsar', type: 'Spiritual' },
-          ].map((route, index) => (
+          ]
+            // Week 47: only destinations that have a page from THIS origin —
+            // the fixed list produced links like /tempo-traveller/faridabad-to-dharamshala
+            // that were never built, and Googlebot 404-ed on them.
+            .filter((route) => clientSlugs['tempo-traveller'].includes(`${origin.toLowerCase().replace(/\s+/g, '-')}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`))
+            .map((route, index) => (
             <Link
               key={index}
               href={`/tempo-traveller/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`}
@@ -1272,7 +1293,7 @@ export default function DynamicTempoRoutesClient({ data }) {
               <p className="mt-1 text-sm text-slate-500">22-56 seater luxury buses from ₹30/km</p>
             </Link>
             <Link
-              href={`/one-way-cab/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`}
+              href={canonicalLink(`/one-way-cab/${origin.toLowerCase().replace(/\s+/g, '-')}-to-${destination.toLowerCase().replace(/\s+/g, '-')}`)}
               className="group rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:border-amber-400 hover:shadow-lg"
             >
               <div className="mb-2 text-2xl">🚕</div>
@@ -1303,13 +1324,13 @@ export default function DynamicTempoRoutesClient({ data }) {
 
       {/* ============================================ */}
       {/* SEO Content Section */}
-      <section className="border-t border-slate-100 bg-white px-4 py-16 text-slate-900">
+      <section className="border-t border-slate-100 bg-white px-4 py-10 sm:py-16 text-slate-900">
         <div className="prose prose-gray prose-lg mx-auto max-w-4xl">
           <h2 className="mb-6 text-2xl font-bold text-slate-900">
             {origin} to {displayDestination} Tempo Traveller — Book AC 12–26 Seater with Driver
           </h2>
           <p className="leading-relaxed text-slate-700">
-            Book a comfortable AC tempo traveller from {origin} to {displayDestination} with Triveni Cabs. We offer 12-seater,
+            Book a comfortable AC tempo traveller from {origin} to {displayDestination} with Triveni Cabs™. We offer 12-seater,
             17-seater, 20-seater, and 26-seater Maharaja tempo travellers with professional drivers, GPS tracking, pushback
             recliner seats, music system, and charging points. Our rates start at just <strong>₹23/km</strong> for a 12-seater —
             making group travel affordable and comfortable.
@@ -1320,7 +1341,7 @@ export default function DynamicTempoRoutesClient({ data }) {
             vehicle costs. Only toll and state tax are extra. We provide both one-way drop and round-trip packages.
           </p>
           <p className="leading-relaxed text-slate-700">
-            Triveni Cabs has completed 2500+ group trips with a 4.8-star customer rating. Our drivers have 5+ years of
+            Triveni Cabs™ has completed 2500+ group trips with a 4.8-star customer rating. Our drivers have 5+ years of
             commercial driving experience with police verification and valid licences. Browse our full{' '}
             <Link href="/tempo-traveller" className="text-blue-600 hover:underline">tempo traveller fleet and routes</Link>,
             compare <Link href="/pricing" className="text-blue-600 hover:underline">vehicle pricing</Link>, or{' '}
@@ -1407,7 +1428,7 @@ function TempoRouteRichBlock({ origin, destination, displayDestination, routeDat
         </section>
       )}
 
-      <section className="py-16 px-4 sm:px-6">
+      <section className="py-10 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-amber-400 font-semibold text-sm tracking-widest uppercase">Tempo Q&amp;A</span>

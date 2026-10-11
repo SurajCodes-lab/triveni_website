@@ -1,8 +1,10 @@
 import React from "react";
+import { NOINDEX_ROBOTS } from '@/lib/seo/noindex-families.mjs';
 import Image from "next/image";
 import { getDeterministicReviewCount } from "@/lib/seo/review-helpers";
 import Link from "next/link";
 import AEOHead from '@/components/seo/AEOHead';
+import FamilyFacts from '@/components/seo/FamilyFacts';
 import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import InclusionBadges from '@/components/shared/InclusionBadges';
 import SectionDivider from '@/components/shared/SectionDivider';
@@ -330,7 +332,7 @@ export async function generateMetadata({ params }) {
       ],
       type: 'website',
       locale: 'en_IN',
-      siteName: 'Triveni Cabs'
+      siteName: 'Triveni Cabs™'
     },
     twitter: {
       card: 'summary_large_image',
@@ -341,17 +343,7 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `https://www.trivenicabs.in/tour-package/${slug}`
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
+    robots: NOINDEX_ROBOTS,
   };
 }
 
@@ -367,7 +359,7 @@ export default function TourPackagePage({ params }) {
   const content = seoContent[slug];
 
   if (!packageInfo || !content) {
-    return <div className="text-center py-16">Package not found</div>;
+    return <div className="text-center py-10 sm:py-16">Package not found</div>;
   }
 
   // FAQ Schema generation
@@ -428,7 +420,7 @@ export default function TourPackagePage({ params }) {
       "@type": "TravelAgency",
       "name": "Triveni Cabs",
       "url": "https://www.trivenicabs.in",
-      "telephone": "7668570551",
+      "telephone": "+91-7668570551",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "IN"
@@ -448,14 +440,7 @@ export default function TourPackagePage({ params }) {
       "name": item.title,
       "description": item.details,
       "url": `https://www.trivenicabs.in/tour-package/${slug}#day-${index + 1}`
-    })),
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount(slug)),
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    }))
   };
 
   const breadcrumbData = {
@@ -514,10 +499,13 @@ export default function TourPackagePage({ params }) {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/70">
-            <div className="max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-16 text-white">
+            <div className="max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-10 sm:pb-16 text-white">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
                 {packageInfo.title}
               </h1>
+
+              {/* Week 48: the direct answer (duration, origin, destination, published price) built from the package record. */}
+              <FamilyFacts family="tour-package" data={{ ...packageInfo, ...content }} />
 
               <p className="text-lg md:text-xl mb-6 max-w-3xl leading-relaxed">
                 {content.intro}
@@ -641,6 +629,8 @@ export default function TourPackagePage({ params }) {
                     Here is the detailed day-wise itinerary for your {packageInfo.destination} tour.
                     Each day is carefully planned to ensure you experience the best of {packageInfo.destination}.
                   </p>
+                  {/* Week 49: the itinerary as a table of days, for readers and answer engines alike. */}
+                  <FamilyFacts family="tour-package" data={{ ...packageInfo, ...content }} details />
                   <ItinerarySection itinerary={packageInfo.itinerary} />
                 </section>
               </ItineraryWrapper>
@@ -703,7 +693,7 @@ export default function TourPackagePage({ params }) {
               {/* Why Book With Us */}
               <section className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl">
                 <h2 className="text-2xl font-bold mb-6 text-gray-900">
-                  Why Book {packageInfo.title} with Triveni Cabs?
+                  Why Book {packageInfo.title} with Triveni Cabs™?
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="flex items-start">

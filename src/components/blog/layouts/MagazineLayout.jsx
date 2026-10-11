@@ -1,7 +1,9 @@
-'use client';
-
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 // Centralized icon imports for better bundle optimization
 import {
   Calendar, Clock, MapPin, BookOpen, Share2,
@@ -9,6 +11,7 @@ import {
 } from '@/components/ui/icons';
 import DynamicSidebar from '../DynamicSidebar';
 import WhatsAppCTA from '../WhatsAppCTA';
+import { rupeeText } from '@/utilis/pricing';
 
 export default function MagazineLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -34,7 +37,7 @@ export default function MagazineLayout({ post, relatedLinks }) {
 
       {/* Magazine-Style Header */}
       <header className="bg-white border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 py-16 text-center">
+        <div className="max-w-5xl mx-auto px-4 py-10 sm:py-16 text-center">
           {/* Category Badge */}
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-[#FACF2D]/60 bg-[#FACF2D]/10 px-4 py-2 text-sm font-bold text-amber-700 backdrop-blur-sm mb-6">
@@ -97,7 +100,7 @@ export default function MagazineLayout({ post, relatedLinks }) {
       </div>
 
       {/* 3-Column Magazine Content */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-7xl mx-auto px-4 py-10 sm:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left Column - Quick Info */}
           <aside className="lg:col-span-3 order-2 lg:order-1">
@@ -156,28 +159,19 @@ export default function MagazineLayout({ post, relatedLinks }) {
             </blockquote>
 
             {/* Article Content with Drop Cap */}
-            <article className="blog-prose prose prose-lg max-w-[70ch] mx-auto
-              prose-p:text-gray-700 prose-p:leading-[1.9] prose-p:text-[17px]
-              prose-headings:font-serif prose-headings:text-slate-900
-              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-              prose-h3:text-2xl
-              prose-a:text-amber-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-slate-900
-              prose-li:text-gray-700
-              first-letter:text-6xl first-letter:font-serif first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:text-amber-600
-            ">
+            <article className="blog-prose prose prose-lg max-w-[70ch] mx-auto prose-p:text-gray-700 prose-p:leading-[1.9] prose-p:text-[17px] prose-headings:font-serif prose-headings:text-slate-900 prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-2xl prose-a:text-amber-700 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-900 prose-li:text-gray-700 first-letter:text-6xl first-letter:font-serif first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:text-amber-600">
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
             </article>
 
             {/* Author Box */}
-            <div className="mt-16 p-8 bg-white rounded-2xl border border-gray-100 shadow-sm">
+            <div className="mt-10 sm:mt-16 p-8 bg-white rounded-2xl border border-gray-100 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 bg-[#FACF2D] rounded-full flex items-center justify-center">
                   <BookOpen className="w-7 h-7 text-black" />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">Written by</p>
-                  <h4 className="font-bold text-slate-900">Triveni Cabs Editorial</h4>
+                  <h4 className="font-bold text-slate-900">Triveni Cabs™ Editorial</h4>
                   <p className="text-sm text-gray-500">Your trusted travel companion across India</p>
                 </div>
               </div>
@@ -227,7 +221,7 @@ export default function MagazineLayout({ post, relatedLinks }) {
                         <h4 className="font-medium text-slate-900 group-hover:text-amber-700 transition-colors text-sm">
                           {tour.name}
                         </h4>
-                        <p className="text-xs text-gray-500">{tour.price}</p>
+                        <p className="text-xs text-gray-500">{rupeeText(tour.price)}</p>
                       </Link>
                     ))}
                   </div>
@@ -275,7 +269,7 @@ export default function MagazineLayout({ post, relatedLinks }) {
       </div>
 
       {/* Internal Links Section */}
-      <div className="bg-[#faf9f6] py-16">
+      <div className="bg-[#faf9f6] py-10 sm:py-16">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 text-center mb-8">Explore More</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

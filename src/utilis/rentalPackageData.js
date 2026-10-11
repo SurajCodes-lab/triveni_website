@@ -1,6 +1,12 @@
 export const rentalPackageData = [
   {
     slug: "half-day-cab-rental",
+    // h1 lead taken from this page's own title. The h1 used to be
+    // templated as "<duration> Cab Rental Package" — "30 days Cab Rental
+    // Package" for this one — a phrase nobody searches, while the title
+    // and slug already carried the real one.
+    headingLead: "Half Day Cab Rental",
+    headingTail: "4 Hours, 40 km",
     title: "Half Day Cab Rental | 4 Hours 40 km Package",
     duration: "4 hours",
     km: "40 km included",
@@ -45,6 +51,8 @@ export const rentalPackageData = [
   },
   {
     slug: "full-day-cab-rental",
+    headingLead: "Full Day Cab Rental",
+    headingTail: "8 Hours, 80 km",
     title: "Full Day Cab Rental | 8 Hours 80 km Package",
     duration: "8 hours",
     km: "80 km included",
@@ -89,6 +97,8 @@ export const rentalPackageData = [
   },
   {
     slug: "monthly-car-rental",
+    headingLead: "Monthly Car Rental",
+    headingTail: "with Driver, 30 Days",
     title: "Monthly Car Rental with Driver | Long-Term Hire Packages",
     duration: "30 days",
     km: "2,500 km included",
@@ -122,6 +132,8 @@ export const rentalPackageData = [
   },
   {
     slug: "airport-city-tour-combo",
+    headingLead: "Airport Pickup + City Tour",
+    headingTail: "Combo Package",
     title: "Airport Pickup + City Tour Combo Package | Best Value",
     duration: "12 hours",
     km: "120 km included",
@@ -155,6 +167,8 @@ export const rentalPackageData = [
   },
   {
     slug: "multi-day-cab-hire",
+    headingLead: "Multi-Day Cab Hire",
+    headingTail: "2 to 7 Day Packages",
     title: "Multi-Day Cab Hire | 2-7 Day Outstation Packages",
     duration: "2-7 days",
     km: "250 km/day included",

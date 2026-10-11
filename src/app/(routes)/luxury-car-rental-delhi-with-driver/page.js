@@ -31,7 +31,7 @@ export default function Page() {
       slug="luxury-car-rental-delhi-with-driver"
       vehicleName="Luxury Car"
       h1="Luxury Car Rental in Delhi with Driver — Premium, Chauffeur-Driven"
-      intro="Arrive in style with a chauffeur-driven luxury car from Triveni Cabs. From the commanding Toyota Fortuner to the refined Camry and the flagship Mercedes-Benz E-Class, our premium fleet is maintained to showroom condition and driven by experienced, discreet chauffeurs who know Delhi NCR and outstation routes. Transparent per-km pricing — fuel, driver and AC included."
+      intro="Arrive in style with a chauffeur-driven luxury car from Triveni Cabs™. From the commanding Toyota Fortuner to the refined Camry and the flagship Mercedes-Benz E-Class, our premium fleet is maintained to showroom condition and driven by experienced, discreet chauffeurs who know Delhi NCR and outstation routes. Transparent per-km pricing — fuel, driver and AC included."
       category="Luxury"
       seating="4 + 1"
       fareRows={[
@@ -65,7 +65,7 @@ export default function Page() {
         { question: 'Can I book a luxury car for Delhi airport pickup?', answer: 'Yes. We track your flight for delays and the chauffeur meets you inside the terminal with a name placard. Luxury airport transfers are available 24/7 at [Delhi airport taxi](/airport-service/delhi).' },
       ]}
       relatedLinks={[
-        { href: '/fortuner-hire', anchor: 'Fortuner on rent' },
+        { href: '/vehicles/fortuner', anchor: 'Fortuner on rent' },
         { href: '/innova-crysta-rent-per-km', anchor: 'Innova Crysta rent per km' },
         { href: '/wedding-car-rental-near-me', anchor: 'Wedding car rental near me' },
         { href: '/luxury-car-for-events', anchor: 'Luxury car for events' },

@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import { trackPhoneCall, trackWhatsAppClick } from '@/utilis/analytics';
 import { captureLead } from '@/utilis/captureLead';
+import { groupDigits } from '@/utilis/pricing';
 
 // Define constants
 const availableLocations = [
@@ -120,7 +121,7 @@ export default function TourGuideClient({ faqs = FALLBACK_FAQS, languageRows = [
 📱 *Phone:* ${formData.phoneNumber}
 🌍 *Language:* ${formData.language}
 📍 *City:* ${formData.city}
-💰 *Price:* ₹${price}
+💰 *Price:* ₹${groupDigits(price)}
 
 📝 *Message:*
 ${formData.message || 'No additional message'}
@@ -153,8 +154,6 @@ Please confirm my booking. Thank you!`;
         </div>
 
         {/* Static Gradient Orbs */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-orange-400/30 to-amber-400/30 rounded-full blur-3xl opacity-40" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-teal-400/20 to-blue-400/20 rounded-full blur-3xl opacity-30" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center pb-8 pt-[22px]">
@@ -181,7 +180,10 @@ Please confirm my booking. Thank you!`;
             >
               Your Journey, Guided by Licensed Local Experts
             </motion.h1>
-            <motion.h1
+            {/* A div, not an h1. This is a decorative typing animation and it
+                renders EMPTY in the served HTML, because the animation has not
+                started server-side — the page was shipping an empty second h1. */}
+            <motion.div
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -200,7 +202,7 @@ Please confirm my booking. Thank you!`;
                 speed={50}
                 repeat={Infinity}
               />
-            </motion.h1>
+            </motion.div>
           </div>
 
           {/* Subtitle */}
@@ -288,7 +290,7 @@ Please confirm my booking. Thank you!`;
       </motion.section>
 
       {/* Features Section - Tourist Theme */}
-      <section className="py-20 bg-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
 
           {/* Section Header */}
@@ -297,7 +299,7 @@ Please confirm my booking. Thank you!`;
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-16"
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -357,7 +359,7 @@ Please confirm my booking. Thank you!`;
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-16 bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-8 md:p-12 border-2 border-orange-100"
+            className="mt-10 sm:mt-16 bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-8 md:p-12 border-2 border-orange-100"
           >
             <div className="text-center mb-8">
               <h3 className="text-3xl font-black text-gray-900 mb-4">
@@ -388,7 +390,7 @@ Please confirm my booking. Thank you!`;
       </section>
 
       {/* ===== DIRECT-ANSWER LEAD (AEO/Voice) ===== */}
-      <section className="py-16 bg-gradient-to-b from-white to-orange-50/40">
+      <section className="py-10 sm:py-16 bg-gradient-to-b from-white to-orange-50/40">
         <div className="max-w-4xl mx-auto px-4">
           <div className="relative overflow-hidden bg-white rounded-3xl shadow-xl border-2 border-orange-100 p-8 md:p-10 pl-9 md:pl-12">
             <span aria-hidden className="absolute inset-y-6 left-0 w-1.5 rounded-full bg-gradient-to-b from-[#FACF2D] via-orange-500 to-[#FACF2D]" />
@@ -401,7 +403,7 @@ Please confirm my booking. Thank you!`;
             </h2>
             <p className="speakable-lead text-lg text-gray-700 leading-relaxed">
               To hire a licensed tour guide in India, choose your city and preferred language, then book a
-              Ministry-of-Tourism certified guide through Triveni Cabs. Day rates start at
+              Ministry-of-Tourism certified guide through Triveni Cabs™. Day rates start at
               <strong> ₹1,200/day for Hindi and ₹1,500/day for English</strong> guides, with French, Spanish,
               German and Chinese guides from ₹2,000–₹2,500/day. Every guide holds a valid government licence and
               photo-ID — shared on WhatsApp before your tour begins — and can be booked on its own or
@@ -414,7 +416,7 @@ Please confirm my booking. Thank you!`;
 
       {/* ===== GUIDE LANGUAGES & FEES TABLE ===== */}
       {languageRows.length > 0 && (
-        <section className="py-16 bg-white">
+        <section className="py-10 sm:py-16 bg-white">
           <div className="max-w-5xl mx-auto px-4">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
@@ -481,7 +483,7 @@ Please confirm my booking. Thank you!`;
       )}
 
       {/* ===== HOW TO BOOK STEPS ===== */}
-      <section className="py-16 bg-gradient-to-b from-orange-50/40 to-white">
+      <section className="py-10 sm:py-16 bg-gradient-to-b from-orange-50/40 to-white">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
@@ -516,7 +518,7 @@ Please confirm my booking. Thank you!`;
 
       {/* ===== LICENSED vs UNLICENSED COMPARISON ===== */}
       {compareRows.length > 0 && (
-        <section className="py-16 bg-white">
+        <section className="py-10 sm:py-16 bg-white">
           <div className="max-w-5xl mx-auto px-4">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
@@ -579,7 +581,7 @@ Please confirm my booking. Thank you!`;
       )}
 
       {/* Booking Form Section - Modern Tourist Design */}
-      <section className="py-20 bg-gradient-to-b from-white via-orange-50/30 to-amber-50/30 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white via-orange-50/30 to-amber-50/30 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-4">
 
           {/* Form Header */}
@@ -668,7 +670,7 @@ Please confirm my booking. Thank you!`;
                     >
                       <option value="">Select Language</option>
                       {Object.keys(languagePrices).map(lang => (
-                        <option key={lang} value={lang}>{lang} - ₹{languagePrices[lang]}/day</option>
+                        <option key={lang} value={lang}>{lang} - ₹{groupDigits(languagePrices[lang])}/day</option>
                       ))}
                     </select>
                   </div>
@@ -711,7 +713,7 @@ Please confirm my booking. Thank you!`;
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm text-gray-600 mb-1">Guide Price</p>
-                        <p className="text-3xl font-black text-orange-600">₹{price}</p>
+                        <p className="text-3xl font-black text-orange-600">₹{groupDigits(price)}</p>
                         <p className="text-sm text-gray-600">per day for {formData.language} guide</p>
                       </div>
                       <BadgeCheck className="w-16 h-16 text-orange-600" />
@@ -787,7 +789,7 @@ Please confirm my booking. Thank you!`;
       </section>
 
       {/* Contact & Info Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
 
         {/* Background Pattern */}
         <div
@@ -805,7 +807,7 @@ Please confirm my booking. Thank you!`;
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-black mb-4">
               Need <span className="bg-gradient-to-r from-[#FACF2D] to-orange-500 bg-clip-text text-transparent">Instant Assistance?</span>
@@ -863,14 +865,14 @@ Please confirm my booking. Thank you!`;
       </section>
 
       {/* FAQ Section - Optimized Content */}
-      <section className="faq-section py-20 bg-white">
+      <section className="faq-section py-12 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-16"
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -913,7 +915,7 @@ Please confirm my booking. Thank you!`;
           </div>
 
           {/* ===== INTERNAL LINKS ===== */}
-          <div className="mt-16 bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-8 border-2 border-orange-100">
+          <div className="mt-10 sm:mt-16 bg-gradient-to-br from-orange-50 to-amber-50 rounded-3xl p-8 border-2 border-orange-100">
             <h3 className="text-2xl font-black text-gray-900 mb-6 text-center">
               Explore guided tours &amp; city guides
             </h3>
@@ -941,7 +943,7 @@ Please confirm my booking. Thank you!`;
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: 'radial-gradient(circle at 20px 20px, black 2px, transparent 0)',

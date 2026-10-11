@@ -23,8 +23,7 @@ export const BookNowButton = ({ slug, packageTitle }) => {
     <Link href={`/tour-package/${slug}/book`}>
       <button
         onClick={handleBookNowClick}
-        className="w-full mt-8 bg-[#FACF2D] text-black py-2 rounded-xl font-semibold text-lg
-        hover:bg-black hover:text-white transition-colors shadow-lg"
+        className="w-full mt-8 bg-[#FACF2D] text-black py-2 rounded-xl font-semibold text-lg hover:bg-black hover:text-white transition-colors shadow-lg"
       >
         Book Now
       </button>

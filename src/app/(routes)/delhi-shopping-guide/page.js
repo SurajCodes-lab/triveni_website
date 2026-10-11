@@ -3,15 +3,16 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Delhi Shopping Guide 2026 | Chandni Chowk, Khan Market & More'),
   description: 'Delhi shopping guide. Chandni Chowk, Khan Market, Dilli Haat, Sarojini Nagar, Janpath. Designer to street fashion, wedding shopping, spices, electronics.',
   keywords: 'delhi shopping guide, shopping in delhi, chandni chowk shopping, khan market delhi, dilli haat, sarojini nagar market, delhi wedding shopping, janpath market',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/delhi-shopping-guide' },
   openGraph: {
@@ -20,7 +21,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/delhi-shopping-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Delhi/Delhi_hero_section.jpg', width: 1200, height: 630, alt: 'Delhi Shopping Guide' }],
   },
   twitter: {
@@ -245,7 +246,7 @@ export default function DelhiShoppingGuidePage() {
         </section>
 
         {/* Shopping Categories */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3 text-center">What to Buy in Delhi</h2>
             <p className="text-stone-500 text-center mb-14">The capital city where every Indian craft, cuisine, and culture converges</p>
@@ -289,7 +290,7 @@ export default function DelhiShoppingGuidePage() {
         </section>
 
         {/* Market Areas */}
-        <section className="py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-3 text-center">Best Shopping Areas in Delhi</h2>
             <p className="text-purple-200/60 text-center mb-14">Five iconic markets spanning Mughal heritage to modern luxury</p>
@@ -322,7 +323,7 @@ export default function DelhiShoppingGuidePage() {
         </section>
 
         {/* Bargaining Tips */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-3 text-center">Bargaining Tips from Locals</h2>
             <p className="text-stone-500 text-center mb-12">Eight rules that save our tourists money every single day</p>
@@ -340,7 +341,7 @@ export default function DelhiShoppingGuidePage() {
         </section>
 
         {/* Combo */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-3xl overflow-hidden">
               <div className="bg-gradient-to-r from-purple-700 via-fuchsia-600 to-purple-700 px-6 py-5" style={{ backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite' }}>
@@ -372,21 +373,26 @@ export default function DelhiShoppingGuidePage() {
         </section>
 
         {/* SEO Content */}
-        <section className="py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-8 text-center">Shopping in Delhi: India&apos;s Ultimate Market City</h2>
             <div className="glass-card-light rounded-3xl p-8 md:p-10">
               <div className="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
               <p>Delhi is not just India&apos;s capital -- it is the country&apos;s ultimate shopping destination. The city&apos;s markets span seven centuries of commercial history, from Chandni Chowk&apos;s Mughal-era bazaars (built in 1650 by Shah Jahan&apos;s daughter) to contemporary luxury malls. No other Indian city offers this range: you can buy a ₹100 export-surplus top at Sarojini Nagar in the morning and a designer lehenga at Shahpur Jat in the afternoon, all in the same city.</p>
               <p>What makes Delhi shopping uniquely rewarding for tourists is the concentration of pan-Indian products. Dilli Haat brings artisans from every state under one roof. The Central Cottage Industries Emporium stocks certified handicrafts from Kashmir to Kerala. And Chandni Chowk&apos;s specialized lanes offer wholesale prices on everything from spices and jewelry to wedding trimmings and textiles. Delhi is where India&apos;s trade routes converge -- and the savings compared to buying the same products in tourist cities can be substantial.</p>
-              <p>A cab is essential for shopping in Delhi. The city&apos;s best markets are spread across different zones -- Old Delhi (Chandni Chowk), Central (CP, Khan Market), and South Delhi (Sarojini, Dilli Haat, Lajpat Nagar). Our Triveni Cabs drivers navigate Delhi&apos;s traffic effortlessly, know the parking spots at every market, and can carry your bags to the car between stops. For tourists arriving at Delhi Airport, we offer a seamless airport pickup combined with a full shopping day before heading to your hotel or onward destination.</p>
+              <p>A cab is essential for shopping in Delhi. The city&apos;s best markets are spread across different zones -- Old Delhi (Chandni Chowk), Central (CP, Khan Market), and South Delhi (Sarojini, Dilli Haat, Lajpat Nagar). Our Triveni Cabs™ drivers navigate Delhi&apos;s traffic effortlessly, know the parking spots at every market, and can carry your bags to the car between stops. For tourists arriving at Delhi Airport, we offer a seamless airport pickup combined with a full shopping day before heading to your hotel or onward destination.</p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Delhi" citySlug="delhi" />
+
+
         {/* FAQ */}
-        <section className="py-20 px-4 bg-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-12 text-center">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -406,7 +412,7 @@ export default function DelhiShoppingGuidePage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-10 text-center">More Delhi & Travel Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -434,7 +440,7 @@ export default function DelhiShoppingGuidePage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-800 via-violet-700 to-fuchsia-800" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[15%] w-2 h-2 bg-white/30 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite' }} />
           <div className="absolute top-[40%] right-[20%] w-1.5 h-1.5 bg-white/20 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite 1s' }} />

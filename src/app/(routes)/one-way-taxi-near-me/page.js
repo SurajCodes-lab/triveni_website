@@ -30,7 +30,7 @@ export default function Page() {
     <NearMePage
       slug="one-way-taxi-near-me"
       h1="One-Way Taxi Near You — Pay Only for the Onward Journey"
-      intro="Moving to another city and don't need the cab back? A one-way taxi from Triveni Cabs means you pay only for the onward distance — no return-fuel charge. Drop anywhere across North India in a sedan, SUV or tempo traveller, with an upfront fare confirmed before you book and a verified driver at your doorstep."
+      intro="Moving to another city and don't need the cab back? A one-way taxi from Triveni Cabs™ means you pay only for the onward distance — no return-fuel charge. Drop anywhere across North India in a sedan, SUV or tempo traveller, with an upfront fare confirmed before you book and a verified driver at your doorstep."
       fareChips={[
         { label: 'Sedan drop', value: '₹11/km' },
         { label: 'Ertiga drop', value: '₹15/km' },

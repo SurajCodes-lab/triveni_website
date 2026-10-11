@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getWeddingSpecialService } from '@/utilis/weddingCarModels';
+import DataTable from '@/components/seo/DataTable';
 import { getWeddingPages } from '@/utilis/linkingHelper';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import {
@@ -14,13 +15,13 @@ export const revalidate = 3600;
 const service = getWeddingSpecialService('doli-car-rental');
 
 export const metadata = {
-  title: tightenTitle(service?.metaTitle || 'Doli Car Rental | Triveni Cabs'),
+  title: tightenTitle(service?.metaTitle || 'Doli Car Rental | Triveni Cabs™'),
   description: service?.metaDescription || 'Book doli car for bride vidai ceremony.',
   alternates: { canonical: 'https://www.trivenicabs.in/wedding/doli-car-rental' },
   openGraph: {
-    title: 'Doli Car Rental for Wedding | Bride Vidai Car | Triveni Cabs',
+    title: 'Doli Car Rental for Wedding | Bride Vidai Car | Triveni Cabs™',
     description: 'Decorated luxury car for bride vidai ceremony. BMW, Audi, Mercedes doli car with driver.',
-    type: 'website', locale: 'en_IN', siteName: 'Triveni Cabs',
+    type: 'website', locale: 'en_IN', siteName: 'Triveni Cabs™',
     images: [{ url: '/images/wedding/luxury_car.jpg', width: 1200, height: 630, alt: 'Doli Car for Wedding Vidai' }]
   },
   keywords: service?.keywords || '',
@@ -28,7 +29,7 @@ export const metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: "Doli Car Rental for Wedding | Bride Vidai Car | Triveni Cabs",
+    title: "Doli Car Rental for Wedding | Bride Vidai Car | Triveni Cabs™",
     description: "Decorated luxury car for bride vidai ceremony. BMW, Audi, Mercedes doli car with driver.",
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -42,6 +43,8 @@ export default function DoliCarPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    // Week 53: Merchant listings treats a missing `image` as critical.
+    "image": "https://www.trivenicabs.in/images/wedding/luxury_car.jpg",
     "name": `${data.title} | Triveni Cabs`,
     "description": data.description,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
@@ -100,7 +103,7 @@ export default function DoliCarPage() {
             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0F0A1A] to-transparent" />
           </div>
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12 sm:py-20">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-sm text-slate-500 mb-10">
               <Link href="/" className="hover:text-pink-400 transition-colors">Home</Link>
@@ -139,7 +142,27 @@ export default function DoliCarPage() {
         </section>
 
         {/* === SECTION: The Vidai Promise === */}
-        <section className="relative py-24 px-4">
+        {Array.isArray(service.options) && service.options.length > 1 && (
+          <div className="container mx-auto px-4 py-10">
+            <DataTable
+              title="Which doli car for the bride, and what does it cost?"
+              caption="Doli car options: the car, the price range and what each includes"
+              intro="Prices are per event and include the decoration listed; the exact figure depends on the date, the car and the hours. The chauffeur is included."
+              columns={[
+                { key: 'name', label: 'Option' },
+                { key: 'price', label: 'Price range' },
+                { key: 'includes', label: 'What it includes' },
+              ]}
+              rows={service.options.map((o) => ({
+                name: o.car ? `${o.name} (${o.car})` : o.name,
+                price: o.price,
+                includes: (o.features || o.includes || []).join(', '),
+              }))}
+            />
+          </div>
+        )}
+
+        <section className="relative py-14 sm:py-24 px-4">
           <div className="absolute inset-0 bg-gradient-to-b from-[#0F0A1A] via-[#150E22] to-[#0F0A1A]" />
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-pink-500/20 to-transparent" />
 
@@ -194,7 +217,7 @@ export default function DoliCarPage() {
         </section>
 
         {/* === SECTION: Doli Car Options - Cinematic Film Reel Cards === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-[#0F0A1A]" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(244,114,182,0.04),transparent_60%)]" />
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
@@ -253,7 +276,7 @@ export default function DoliCarPage() {
         </section>
 
         {/* === SECTION: FAQ - Emotional Storytelling Cards === */}
-        <section className="relative py-24 px-4">
+        <section className="relative py-14 sm:py-24 px-4">
           <div className="absolute inset-0 bg-gradient-to-b from-[#0F0A1A] via-[#1A0A2E]/30 to-[#0F0A1A]" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(217,169,130,0.04),transparent_50%)]" />
 
@@ -315,7 +338,7 @@ export default function DoliCarPage() {
         </section>
 
         {/* === SECTION: Related Services Cards === */}
-        <section className="relative py-24 px-4">
+        <section className="relative py-14 sm:py-24 px-4">
           <div className="absolute inset-0 bg-gradient-to-b from-[#0F0A1A] via-[#150E22] to-[#0F0A1A]" />
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="text-center mb-14">
@@ -352,7 +375,7 @@ export default function DoliCarPage() {
         </section>
 
         {/* === SECTION: Popular Links Footer Grid === */}
-        <section className="relative py-16 px-4">
+        <section className="relative py-10 sm:py-16 px-4">
           <div className="absolute inset-0 bg-[#0F0A1A]" />
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 

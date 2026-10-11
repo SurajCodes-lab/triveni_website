@@ -19,6 +19,7 @@ import {
   getTodayDate,
 } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 export const revalidate = 3600;
 
@@ -36,7 +37,7 @@ const LANG_FEE_ROWS = [
 ];
 
 const LANG_FAQS = [
-  { question: 'Can I get a tour guide who speaks my language?', answer: 'Yes. Triveni Cabs deploys Ministry-of-Tourism licensed guides in 10 spoken languages — English, Hindi, French, German, Spanish, Italian, Japanese, Russian, Mandarin and Portuguese — with Korean, Arabic, Dutch, Polish and Thai available on request. Tell us your language at booking and we match a fluent licensed guide.' },
+  { question: 'Can I get a tour guide who speaks my language?', answer: 'Yes. Triveni Cabs™ deploys Ministry-of-Tourism licensed guides in 10 spoken languages — English, Hindi, French, German, Spanish, Italian, Japanese, Russian, Mandarin and Portuguese — with Korean, Arabic, Dutch, Polish and Thai available on request. Tell us your language at booking and we match a fluent licensed guide.' },
   { question: 'How much does a foreign-language tour guide cost?', answer: 'English guides are ₹1,500/day and Hindi ₹1,200/day. European languages (French, German, Spanish, Italian, Russian, Portuguese) are ₹2,500–₹2,800/day. Japanese and Mandarin are ₹3,000/day. The rate covers a full 8–10 hour touring day and is fixed at booking.' },
   { question: 'Are foreign-language guides government-licensed?', answer: 'Yes. Every guide is a Ministry-of-Tourism Regional Level Tourist Guide — licensed, photo-ID verified and with at least 5 years on the Agra / Delhi / Jaipur circuit. We share licence proof on WhatsApp at confirmation.' },
   { question: 'How far in advance should I book a foreign-language guide?', answer: 'Book at least 24–48 hours ahead for French, German, Spanish, Japanese and Mandarin guides, especially in peak season (October–March). English and Hindi guides are often available same-day or next-day.' },
@@ -61,7 +62,7 @@ export const metadata = {
     url,
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: `${baseUrl}/images/sightseeing/Agra/Taj_mahal.jpg`, width: 1200, height: 630, alt: 'Tour Guide by Language — Triveni Cabs' }],
   },
   twitter: {
@@ -123,7 +124,7 @@ export default function ByGuideLanguageHub() {
         serviceType: 'Tour Guide Service',
         description: 'Ministry-of-Tourism licensed tour guides in 10 spoken languages for Taj Mahal, Delhi, Jaipur and the Golden Triangle.',
         provider: { '@id': `${baseUrl}/#organization` },
-        brand: { '@type': 'Brand', name: 'Triveni Cabs' },
+        brand: { '@type': 'Brand', name: 'Triveni Cabs™' },
         areaServed: ['Delhi', 'Agra', 'Jaipur', 'India'],
         url,
         offers: { '@type': 'Offer', priceCurrency: 'INR', price: '1200' },
@@ -145,7 +146,7 @@ export default function ByGuideLanguageHub() {
         description: 'Hire a Ministry-licensed tour guide who speaks your language: English, Hindi, French, German, Spanish, Italian, Japanese, Russian, Mandarin or Portuguese — with day rates and use cases.',
         image: `${baseUrl}/images/sightseeing/Agra/Taj_mahal.jpg`,
         datePublished: '2026-01-01',
-        dateModified: getTodayDate(),
+        dateModified: (getContentUpdatedOn(url) || getTodayDate()),
         authorName: 'editorial',
         speakableSelectors: ['.speakable-lead', '.speakable-faq-first'],
       }),
@@ -203,7 +204,7 @@ export default function ByGuideLanguageHub() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a14]/60 via-[#0a0a14]/85 to-[#0a0a14]" />
             <DotsTexture />
           </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 lg:pt-28 pb-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 lg:pt-28 pb-10 sm:pb-16">
             <nav className="flex flex-wrap items-center gap-2 text-[11px] text-amber-200/60 mb-6" aria-label="Breadcrumb">
               <Link href="/" className="hover:text-amber-300 transition">Home</Link>
               <span className="text-amber-300/40">/</span>
@@ -283,7 +284,7 @@ export default function ByGuideLanguageHub() {
           <AnswerBox
             theme="guide"
             title="Quick Answer"
-            answer="Triveni Cabs deploys Ministry-of-Tourism licensed tour guides in 10 spoken languages: English, Hindi, French, German, Spanish, Italian, Japanese, Russian, Mandarin and Portuguese. Day rates: English/Hindi ₹1,200–₹1,500, European languages ₹2,500–₹2,800, Japanese & Mandarin ₹3,000. License proof shared at confirmation."
+            answer="Triveni Cabs™ deploys Ministry-of-Tourism licensed tour guides in 10 spoken languages: English, Hindi, French, German, Spanish, Italian, Japanese, Russian, Mandarin and Portuguese. Day rates: English/Hindi ₹1,200–₹1,500, European languages ₹2,500–₹2,800, Japanese & Mandarin ₹3,000. License proof shared at confirmation."
             stats={[
               { label: 'Languages', value: '10' },
               { label: 'License', value: 'Govt. of India' },
@@ -291,7 +292,7 @@ export default function ByGuideLanguageHub() {
               { label: 'Day rate', value: '₹1,200–₹3,000' },
             ]}
             lastReviewed="2026-04-29"
-            source="Triveni Cabs licensed-guide partnership data"
+            source="Triveni Cabs™ licensed-guide partnership data"
             className="shadow-[0_30px_80px_-30px_rgba(251,191,36,0.3)]"
           />
         </section>
@@ -300,7 +301,7 @@ export default function ByGuideLanguageHub() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14">
           <AnswerCard question="Can I get a tour guide who speaks my language?">
             <p className="speakable-lead text-base md:text-lg text-slate-200/95 leading-relaxed">
-              Yes — Triveni Cabs provides Ministry-of-Tourism licensed tour guides in
+              Yes — Triveni Cabs™ provides Ministry-of-Tourism licensed tour guides in
               <span className="text-amber-200 font-semibold"> 10 spoken languages</span>: English, Hindi, French,
               German, Spanish, Italian, Japanese, Russian, Mandarin and Portuguese, with Korean, Arabic, Dutch,
               Polish and Thai on request. Day rates run from <span className="text-amber-200 font-semibold">₹1,200/day
@@ -312,7 +313,7 @@ export default function ByGuideLanguageHub() {
         </section>
 
         {/* ============= LANGUAGE CARDS ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
           <SectionTitle eyebrow="Ten spoken languages" title="Pick your guide's language" sub="Each card opens a deep page with day rate, sample itinerary and WhatsApp lock-in." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
             {groupB.map(t => {
@@ -360,19 +361,19 @@ export default function ByGuideLanguageHub() {
         </section>
 
         {/* ============= INLINE CTA ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
           <InlineCTA
             theme="guide"
             headline="Need a guide in a less-common language?"
             sub="We have associate guides in Korean, Arabic, Dutch, Polish and Thai on request. WhatsApp us 12 hours in advance."
             context="tours-with-guide-language-hub"
-            waMessage="Hi Triveni Cabs, I need a tour guide who speaks: ___"
+            waMessage="Hi Triveni Cabs™, I need a tour guide who speaks: ___"
             variant="full"
           />
         </section>
 
         {/* ============= DEEP PAGES BY TOUR ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="Pick a tour, then a language" title="Top tours in your language" sub="Three most-booked itineraries published in every supported language." />
           {['C-taj', 'C-sameday', 'C-gt'].map(cluster => {
             const items = groupC.filter(t => t.cluster === cluster);
@@ -426,19 +427,19 @@ export default function ByGuideLanguageHub() {
         </section>
 
         {/* ============= LANGUAGE FEE TABLE ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="Day rates" title="What does a guide cost in each language?" sub="Fixed day rates, confirmed at booking. Covers a full 8–10 hour touring day." />
           <LanguageFeeTable rows={LANG_FEE_ROWS} flags={LANG_FLAG} />
         </section>
 
         {/* ============= FAQ ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="Good to know" title="Language guides — frequently asked questions" sub="Languages, day rates, licensing, female guides and booking lead time." />
           <FaqAccordion faqs={LANG_FAQS} />
         </section>
 
         {/* ============= INTERNAL LINKS ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
           <div className="rounded-[1.4rem] border border-amber-400/15 bg-gradient-to-br from-slate-900/60 via-slate-950 to-slate-900/40 p-7 md:p-9">
             <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-amber-300/80">Keep exploring</p>
             <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -457,18 +458,18 @@ export default function ByGuideLanguageHub() {
         </section>
 
         {/* ============= REASSURANCE BAND ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <ReassuranceBand />
         </section>
 
         {/* ============= FINAL CTA ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pb-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pb-14 sm:pb-24">
           <InlineCTA
             theme="guide"
             headline="Lock in your language guide today"
             sub="License proof on WhatsApp at confirmation · Day rate fixed at booking · Cancellation up to 48 hrs · No surcharge"
             context="tours-with-guide-language-final"
-            waMessage="Hi Triveni Cabs, I want to book a tour guide. Language preference: ___"
+            waMessage="Hi Triveni Cabs™, I want to book a tour guide. Language preference: ___"
             variant="banner"
           />
         </section>
@@ -504,7 +505,7 @@ function FaqAccordion({ faqs }) {
       {faqs.map((f, i) => (
         <details key={i} className="group rounded-2xl border border-amber-400/12 bg-slate-900/40 open:border-amber-300/40 open:bg-slate-900/60 hover:border-amber-300/30 transition">
           <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 min-h-[44px] focus-visible:outline-none focus-visible:bg-amber-400/5 rounded-2xl">
-            <span className="text-base md:text-lg font-black text-amber-100 leading-snug">{f.question}</span>
+            <h3 className="m-0 text-base md:text-lg font-black text-amber-100 leading-snug">{f.question}</h3>
             <span aria-hidden className="shrink-0 w-8 h-8 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-300 flex items-center justify-center group-open:rotate-180 group-open:bg-amber-400/20 transition-transform duration-300">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" /></svg>
             </span>
@@ -583,7 +584,6 @@ function ReassuranceBand() {
   ];
   return (
     <div className="relative overflow-hidden rounded-[1.6rem] border border-amber-400/15 bg-gradient-to-br from-[#1a1408]/60 via-slate-950 to-slate-900/40 p-6 sm:p-8">
-      <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full bg-amber-400/[0.08] blur-3xl" />
       <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-amber-300/80 text-center mb-5">Why book Triveni</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
         {items.map((it, i) => (

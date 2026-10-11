@@ -36,12 +36,12 @@ import {
 
 import { phoneNumber, vehicleDetails } from "../utilis/data";
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { groupDigits } from '@/utilis/pricing';
 
 const VehicleDetails = ({ slug }) => {
   const [selectedSeating, setSelectedSeating] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("overview");
-  const [isLoading, setIsLoading] = useState(true);
 
   const selectedVehicles =
     vehicleDetails.find((v) => v.type.toLowerCase().replace(/\s+/g, '-') === slug) ||
@@ -50,7 +50,7 @@ const VehicleDetails = ({ slug }) => {
   // SEO optimized vehicle data
   const vehicleSEOData = {
     sedan: {
-      title: "Book Sedan Car Rental in India | Triveni Cabs - Best Rates",
+      title: "Book Sedan Car Rental in India | Triveni Cabs™ - Best Rates",
       description: "Rent premium sedan cars for outstation & local trips in India. AC sedans with driver at ₹11/km. Book online for Delhi, Mumbai, Agra, Jaipur travel.",
       keywords: "sedan car rental india, sedan taxi booking, ac sedan car hire, sedan car rental delhi, sedan booking mumbai, sedan taxi service",
       schema: {
@@ -60,7 +60,7 @@ const VehicleDetails = ({ slug }) => {
       }
     },
     suv: {
-      title: "SUV Car Rental India | 6-7 Seater SUV Hire | Triveni Cabs",
+      title: "SUV Car Rental India | 6-7 Seater SUV Hire | Triveni Cabs™",
       description: "Book 6-7 seater SUV cars for family trips in India. Innova, Ertiga SUV rental with driver. Best rates for outstation & local SUV booking.",
       keywords: "suv rental india, 7 seater car rental, innova car hire, ertiga booking, family car rental india, suv taxi service",
       schema: {
@@ -103,10 +103,6 @@ const VehicleDetails = ({ slug }) => {
 
   const currentSEO = vehicleSEOData[slug] || vehicleSEOData.sedan;
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
   const seatingOptions = {
     "tempo-traveller": [
       { seats: 12, priceMultiplier: 1, popular: false, rate: "₹23/km", localRate: "₹6,000-7,500/Day" },
@@ -148,7 +144,7 @@ const VehicleDetails = ({ slug }) => {
 
     return {
       ...selectedVehicles,
-      perKm: `₹${Math.round(basePrice * multiplier)}/km`,
+      perKm: `₹${groupDigits(Math.round(basePrice * multiplier))}/km`,
     };
   };
 
@@ -201,11 +197,7 @@ const VehicleDetails = ({ slug }) => {
         },
         "availability": "https://schema.org/InStock"
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": selectedVehicles.rating || "4.5",
-        "reviewCount": selectedVehicles.reviews || "100"
-      },
+      
       "vehicleEngine": {
         "@type": "EngineSpecification",
         "fuelType": "Petrol/Diesel"
@@ -526,16 +518,11 @@ const VehicleDetails = ({ slug }) => {
     </div>
   );
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-white to-[#FFFCD1] flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-400 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading vehicle details...</p>
-        </div>
-      </div>
-    );
-  }
+  // There was an artificial loading gate here: `isLoading` started true and was
+  // cleared in a mount effect, so the server-rendered HTML for all five legacy
+  // vehicle pages was a spinner with no heading and no content — the h1 below
+  // only ever appeared after hydration. The vehicle data is resolved
+  // synchronously from a local module, so there is nothing to wait for. Removed.
 
   return (
     <>
@@ -567,7 +554,7 @@ const VehicleDetails = ({ slug }) => {
       >
         {/* Breadcrumb Navigation */}
         <nav
-          className="relative bg-cover bg-center bg-no-repeat text-sm text-gray-600 py-32"
+          className="relative bg-cover bg-center bg-no-repeat text-sm text-gray-600 py-16 sm:py-32"
           aria-label="Breadcrumb"
           style={{
             backgroundImage: `url('/images/about/about_banner.webp')`,
@@ -602,7 +589,7 @@ const VehicleDetails = ({ slug }) => {
           </div>
         </nav>
 
-        <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="max-w-7xl mx-auto px-4 py-10 sm:py-16">
           <motion.div
             initial={{ y: 20 }}
             animate={{ y: 0 }}
@@ -652,7 +639,12 @@ const VehicleDetails = ({ slug }) => {
                   {selectedVehicles.type} Rental Service
                 </h2>
                 <div className="flex items-center max-sm:flex-col gap-4">
-                  <div className="flex items-center" itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating">
+                  {/* The ratingValue and reviewCount spans below were commented out before
+                      this week, which left an AggregateRating scope declared with no
+                      values inside it — invalid structured data rather than a claim.
+                      The microdata attributes are removed; the star stays as the
+                      decoration it now is. */}
+                  <div className="flex items-center">
                     <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                     {/* <span className="ml-2 font-semibold" itemProp="ratingValue">
                       {selectedVehicles.rating}
@@ -978,11 +970,11 @@ const VehicleDetails = ({ slug }) => {
               {[
                 {
                   question: `What is the per km rate for ${selectedVehicles.type} rental?`,
-                  answer: `Our ${selectedVehicles.type} rental starts at ${adjustedPrices.perKm} plus driver charges of ${selectedVehicles.driverCharges}. Final cost depends on distance and duration.`
+                  answer: `Our ${selectedVehicles.type} rental is ${adjustedPrices.perKm}; the driver is ${selectedVehicles.driverCharges.toLowerCase()}. Outstation trips bill ${selectedVehicles.perDayLimit}; tolls and parking are extra at actuals.`
                 },
                 {
                   question: `Is driver included in ${selectedVehicles.type} booking?`,
-                  answer: `Yes, all our ${selectedVehicles.type} rentals come with experienced, licensed drivers. Driver charges are ${selectedVehicles.driverCharges}.`
+                  answer: `Yes, every ${selectedVehicles.type} comes with an experienced, licensed chauffeur; the driver is ${selectedVehicles.driverCharges.toLowerCase()}.`
                 },
                 {
                   question: `What is the cancellation policy?`,

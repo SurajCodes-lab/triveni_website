@@ -1,7 +1,10 @@
 import { notFound } from 'next/navigation';
 import { getTollCostRoute, getAllTollCostSlugs, getRelatedTollCostRoutes, cityNameToGeoSlug } from '@/utilis/tollCostData';
 import TollCostClient from '@/components/toll-cost/TollCostClient';
+import PriorityPageGuide from '@/components/content/PriorityPageGuide';
 import { getCorridorLinks } from '@/utilis/corridorLinks';
+import { getSeasonalCorridorCallout } from '@/utilis/seasonalCorridors';
+import { canonicalLink } from '@/lib/seo/canonical-link';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
@@ -10,6 +13,7 @@ import {
   getComparisonSchema, getCityPlaceSchema, getTodayDate,
 } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { groupDigits } from '@/utilis/pricing';
 export const revalidate = 3600;
 export const dynamicParams = false;
 
@@ -28,13 +32,28 @@ export async function generateMetadata({ params }) {
 
   const o = route.origin.toLowerCase();
   const d = route.destination.toLowerCase();
-  const title = tightenTitle(`${route.origin} to ${route.destination} Toll Cost ₹${route.totalTollCost.car} | Toll Plaza List 2026`);
-  const description = `${route.origin} to ${route.destination} toll cost is ₹${route.totalTollCost.car} for car & ₹${route.totalTollCost.suv} for SUV. ${route.tollPlazas.length} toll plaza(s) on ${route.totalDistance} km route. FASTag info, plaza-wise rates, cab fare ₹${route.cabFare.toLocaleString('en-IN')}. Call 7668570551.`;
-  const ogTitle = `${route.origin} to ${route.destination} Toll Cost ₹${route.totalTollCost.car} — ${route.tollPlazas.length} Toll Plazas | Book Cab from ₹${route.cabFare.toLocaleString('en-IN')} | Triveni Cabs`;
+  // Week 48 C3: expressway corridors lead with the road's name. The toll family
+  // converts well (Delhi–Haridwar 2.4%, Delhi–Chandigarh 2.6%) and those pages
+  // are untouched controls; the two that lag it (Delhi–Meerut 0.54%) are
+  // expressway runs whose titles never named the expressway, which is what a
+  // large share of their searches type. The origin–destination pair stays in
+  // the first clause so the title clamp can only ever drop the tail.
+  const plazaCount = route.tollPlazas.length;
+  const plazaWord = plazaCount === 1 ? 'plaza' : 'plazas';
+  const title = route.corridorRoad
+    ? tightenTitle(`${route.corridorRoad} Toll ₹${groupDigits(route.totalTollCost.car)}: ${route.origin} to ${route.destination} | Plazas 2026`)
+    : tightenTitle(`${route.origin} to ${route.destination} Toll Cost ₹${groupDigits(route.totalTollCost.car)} | Toll Plaza List 2026`);
+  const description = route.corridorRoad
+    ? `${route.origin} to ${route.destination} on the ${route.corridorRoad}: toll ₹${groupDigits(route.totalTollCost.car)} for a car and ₹${groupDigits(route.totalTollCost.suv)} for an SUV across ${plazaCount} ${plazaWord} on ${route.totalDistance} km. Plaza-wise rates, FASTag, and the cab fare of ₹${route.cabFare.toLocaleString('en-IN')}. Call 7668570551.`
+    : `${route.origin} to ${route.destination} toll cost is ₹${groupDigits(route.totalTollCost.car)} for car & ₹${groupDigits(route.totalTollCost.suv)} for SUV. ${plazaCount} toll ${plazaWord} on ${route.totalDistance} km route. FASTag info, plaza-wise rates, cab fare ₹${route.cabFare.toLocaleString('en-IN')}. Call 7668570551.`;
+  const ogTitle = `${route.origin} to ${route.destination} Toll Cost ₹${groupDigits(route.totalTollCost.car)} — ${route.tollPlazas.length} Toll Plazas | Book Cab from ₹${route.cabFare.toLocaleString('en-IN')} | Triveni Cabs™`;
+  const planningEstimate = ['delhi-to-dehradun', 'delhi-to-haridwar'].includes(slug);
+  const reviewedTitle = `${route.origin} to ${route.destination} Toll & Route Guide`;
+  const reviewedDescription = `Plan ${route.origin} to ${route.destination} toll expenses with the listed route estimates. Check current plaza rates, vehicle class, return conditions and cab inclusions.`;
 
   return {
-    title,
-    description,
+    title: planningEstimate ? reviewedTitle : title,
+    description: planningEstimate ? reviewedDescription : description,
     keywords: [
       `${o} to ${d} toll cost`,
       `${o} to ${d} toll tax`,
@@ -52,24 +71,24 @@ export async function generateMetadata({ params }) {
       `${o} to ${d} total trip cost`,
       `${o} to ${d} toll plaza list`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/toll-cost/${slug}` },
     openGraph: {
-      title: ogTitle,
-      description,
+      title: planningEstimate ? reviewedTitle : ogTitle,
+      description: planningEstimate ? reviewedDescription : description,
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/toll-cost/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: getOgImageForSlug(slug), width: 1200, height: 630, alt: `${route.origin} to ${route.destination} Toll Cost Guide` }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: ogTitle,
-      description,
+      title: planningEstimate ? reviewedTitle : ogTitle,
+      description: planningEstimate ? reviewedDescription : description,
       creator: '@trivenicabs',
       site: '@trivenicabs',
       images: [getOgImageForSlug(slug)],
@@ -98,8 +117,8 @@ export default async function TollCostPage({ params }) {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": `Cab Service ${route.origin} to ${route.destination}`,
-    "name": `${route.origin} to ${route.destination} Cab — Toll Cost ₹${route.totalTollCost.car}`,
-    "description": `Book AC cab from ${route.origin} to ${route.destination}. ${route.totalDistance} km route with ${route.tollPlazas.length} toll plaza(s). Total toll: ₹${route.totalTollCost.car} (car). Cab fare from ₹${route.cabFare.toLocaleString('en-IN')}.`,
+    "name": `${route.origin} to ${route.destination} Cab — Toll Cost ₹${groupDigits(route.totalTollCost.car)}`,
+    "description": `Book AC cab from ${route.origin} to ${route.destination}. ${route.totalDistance} km route with ${route.tollPlazas.length} toll plaza(s). Total toll: ₹${groupDigits(route.totalTollCost.car)} (car). Cab fare from ₹${route.cabFare.toLocaleString('en-IN')}.`,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "provider": {
       "@type": "LocalBusiness",
@@ -110,9 +129,9 @@ export default async function TollCostPage({ params }) {
       "url": "https://www.trivenicabs.in",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "366 Dandupura near Tajganj",
+        "streetAddress": "366, Dandupura, near Tajganj",
         "addressLocality": "Agra",
-        "addressRegion": "UP",
+        "addressRegion": "Uttar Pradesh",
         "postalCode": "282006",
         "addressCountry": "IN"
       }
@@ -157,7 +176,7 @@ export default async function TollCostPage({ params }) {
   const articleSchema = getArticleSchema({
     slug: `toll-cost/${slug}`,
     headline: `${route.origin} to ${route.destination} Toll Cost & Plaza List 2026`,
-    description: `Plaza-by-plaza toll breakdown for the ${route.totalDistance} km ${route.origin}–${route.destination} highway: ₹${route.totalTollCost.car} car, ₹${route.totalTollCost.suv} SUV across ${route.tollPlazas.length} plaza(s), with FASTag tips and toll-inclusive cab fares.`,
+    description: `Plaza-by-plaza toll breakdown for the ${route.totalDistance} km ${route.origin}–${route.destination} highway: ₹${groupDigits(route.totalTollCost.car)} car, ₹${groupDigits(route.totalTollCost.suv)} SUV across ${route.tollPlazas.length} plaza(s), with FASTag tips and toll-inclusive cab fares.`,
     image: ogImage,
     speakableSelectors: ['.speakable-headline', '.speakable-lead'],
   });
@@ -169,10 +188,10 @@ export default async function TollCostPage({ params }) {
     totalTime: 'PT5M',
     estimatedCost: { currency: 'INR', value: route.totalTollCost.car },
     steps: [
-      { name: 'Fit a FASTag', text: `Affix an active FASTag RFID sticker on your windshield and keep at least ₹${Math.max(route.totalTollCost.car * 2, 500)} balance before starting from ${route.origin}.` },
+      { name: 'Fit a FASTag', text: `Affix an active FASTag RFID sticker on your windshield and keep at least ₹${groupDigits(Math.max(route.totalTollCost.car * 2, 500))} balance before starting from ${route.origin}.` },
       { name: 'Use the FASTag lane', text: `At each of the ${route.tollPlazas.length} plaza(s), drive through the dedicated FASTag lane — the toll is auto-debited without stopping.` },
       { name: 'Keep cash as backup', text: 'Carry a small amount of cash in case a FASTag reader fails; cash lanes are available at most plazas but have longer queues.' },
-      { name: 'Verify the debit SMS', text: `Confirm each toll debit via the SMS alert. Total car toll for ${route.origin} to ${route.destination} should be about ₹${route.totalTollCost.car}.` },
+      { name: 'Verify the debit SMS', text: `Confirm each toll debit via the SMS alert. Total car toll for ${route.origin} to ${route.destination} should be about ₹${groupDigits(route.totalTollCost.car)}.` },
       { name: 'Or book a cab', text: 'Book a Triveni Cab and the FASTag-equipped driver handles every toll for you — you simply settle the actual toll amount at the end.' },
     ],
   });
@@ -210,7 +229,17 @@ export default async function TollCostPage({ params }) {
         <script key={`place-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
       <AEOHead pageType="route" data={{ url: `/toll-cost/${slug}`, title: `${route.origin} to ${route.destination} Toll Cost`, origin: route.origin, destination: route.destination, city: route.origin }} />
-      <TollCostClient route={route} relatedRoutes={relatedRoutes} corridorLinks={getCorridorLinks(slug, 'toll-cost')} />
+      <TollCostClient
+        planningGuide={<PriorityPageGuide path={`/toll-cost/${slug}`} />}
+        route={route}
+        relatedRoutes={relatedRoutes}
+        corridorLinks={getCorridorLinks(slug, 'toll-cost')}
+        seasonalCallout={getSeasonalCorridorCallout({
+          destination: route.destination,
+          origin: route.origin,
+          bookingHref: canonicalLink(`/one-way-cab/${route.slug}`),
+        })}
+      />
     </>
   );
 }

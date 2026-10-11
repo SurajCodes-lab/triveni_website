@@ -2,28 +2,29 @@ import { getTripCostBySlug } from '@/utilis/tripCostData';
 import TripCostClient from '@/components/tripcost/TripCostClient';
 import { getArticleSchema, getHowToSchema, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { buildTripCostService } from '@/utilis/tripSchemaHelper';
-import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { buildTripCostMeta } from '@/lib/seo/serp-ctr';
 
 const data = getTripCostBySlug('ayodhya-trip-cost-from-delhi');
+const meta = buildTripCostMeta(data);
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: tightenTitle(data.title),
-  description: data.metaDescription,
+  title: meta.title,
+  description: meta.description,
   keywords: data.keywords,
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/ayodhya-trip-cost-from-delhi' },
   openGraph: {
-    title: data.title,
-    description: data.metaDescription,
+    title: meta.title,
+    description: meta.description,
     type: 'article',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/ayodhya-trip-cost-from-delhi',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{
       url: '/images/sightseeing/Ayodhya/ayodha_hero_section.jpg',
       width: 1200, height: 630,
@@ -32,8 +33,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: data.title,
-    description: data.metaDescription,
+    title: meta.title,
+    description: meta.description,
     creator: '@trivenicabs',
     site: '@trivenicabs',
     images: ['/images/sightseeing/Ayodhya/ayodha_hero_section.jpg'],
@@ -54,7 +55,7 @@ export default function AyodhyaTripCostPage() {
   const articleSchema = getArticleSchema({
     slug: "ayodhya-trip-cost-from-delhi",
     headline: data.title,
-    description: data.metaDescription,
+    description: meta.description,
     image: '/images/triveni-cabs-og.jpg',
     datePublished: '2025-01-01',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.cost-table', '#faq-answer-0']

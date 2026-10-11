@@ -11,7 +11,7 @@ import {
   CheckCircle2, BadgeCheck, Accessibility
 } from '@/components/ui/icons';
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
-import { phoneNumber } from '@/utilis/data';
+import { phoneNumber } from '@/utilis/contact';
 import { FAQSection } from '@/components/seo/FAQSection';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
@@ -63,8 +63,6 @@ const SpecialTransportClient = ({ service, heroImage, fleetImages }) => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(251,191,36,0.1),transparent_50%)]" />
 
         {/* Floating orbs */}
-        <div className="absolute top-24 left-[12%] w-48 h-48 md:w-72 md:h-72 bg-gradient-to-br from-amber-400/15 to-yellow-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-16 right-[10%] w-56 h-56 md:w-80 md:h-80 bg-gradient-to-br from-orange-400/10 to-amber-500/10 rounded-full blur-3xl" />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 text-center pt-24 md:pt-0">
@@ -306,7 +304,7 @@ const SpecialTransportClient = ({ service, heroImage, fleetImages }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900">
-              Why <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">Triveni Cabs</span>?
+              Why <span className="bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent">Triveni Cabs™</span>?
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
@@ -371,8 +369,6 @@ const SpecialTransportClient = ({ service, heroImage, fleetImages }) => {
       <section className="py-20 md:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="relative bg-gradient-to-r from-amber-600 to-yellow-500 rounded-3xl p-8 md:p-14 text-center shadow-2xl shadow-amber-500/20 overflow-hidden">
-            <div className="absolute top-0 left-0 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl" />
             <div className="relative">
               <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
                 <ShieldCheck className="w-8 h-8 text-white" />

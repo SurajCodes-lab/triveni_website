@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Phone, MessageCircle, MapPin, Users, Star, Shield, ChevronRight, ChevronDown, Mountain, Calendar, IndianRupee, Navigation, Sparkles, ArrowRight, CheckCircle, XCircle, Clock, Sun, Award } from '@/components/ui/icons';
 import { inclusions, exclusions, openingDates2026, registrationSteps } from '@/utilis/chardhamYatraData';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { groupDigits } from '@/utilis/pricing';
 
 export default function ChardhamVehicleHubClient({ data }) {
   const [expandedFaq, setExpandedFaq] = useState(null);
@@ -40,7 +41,7 @@ export default function ChardhamVehicleHubClient({ data }) {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 to-slate-950/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/40" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-24 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-14 sm:py-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div>
@@ -58,18 +59,18 @@ export default function ChardhamVehicleHubClient({ data }) {
               </div>
 
               <h1 className="speakable-headline font-display-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 leading-[1.05] tracking-tight">
-                {titleMain}
+                {titleMain}{' '}
                 <span className="mt-2 block text-gold-foil text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{titleAccent}</span>
               </h1>
               <p className="speakable-lead text-indigo-200/75 text-base md:text-lg mb-3 max-w-2xl leading-relaxed">
-                Book the {vehicle.name} ({vehicle.seats}-seater, AC) for Char Dham Yatra 2026 at ₹{vehicle.perKm}/km — about {estimatedPrice} for the full circuit, with experienced Garhwal hill drivers.
+                Book the {vehicle.name} ({vehicle.seats}-seater, AC) for Char Dham Yatra 2026 at ₹{groupDigits(vehicle.perKm)}/km — about {estimatedPrice} for the full circuit, with experienced Garhwal hill drivers.
               </p>
               <p className="text-amber-400/80 italic text-lg mb-8">{vehicle.tagline}</p>
 
               {/* Key Stats */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
                 {[
-                  { icon: IndianRupee, label: 'Per Km', value: `₹${vehicle.perKm}` },
+                  { icon: IndianRupee, label: 'Per Km', value: `₹${groupDigits(vehicle.perKm)}` },
                   { icon: Users, label: 'Seats', value: vehicle.seats },
                   { icon: Sun, label: 'Fuel', value: vehicle.fuelType },
                   { icon: Award, label: 'Luggage', value: vehicle.luggage?.split('+')[0]?.trim() || vehicle.luggage },
@@ -116,7 +117,7 @@ export default function ChardhamVehicleHubClient({ data }) {
               </div>
               {/* Floating Badges */}
               <div className="absolute top-4 right-4 bg-amber-500/90 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">{vehicle.seats} Seats</div>
-              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur text-amber-400 text-sm font-bold px-3 py-1.5 rounded-full">₹{vehicle.perKm}/km</div>
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur text-amber-400 text-sm font-bold px-3 py-1.5 rounded-full">₹{groupDigits(vehicle.perKm)}/km</div>
               <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur text-slate-300 text-xs px-3 py-1.5 rounded-full">{vehicle.fuelType}</div>
             </div>
           </div>
@@ -171,8 +172,8 @@ export default function ChardhamVehicleHubClient({ data }) {
                 { label: 'Fuel Type', value: vehicle.fuelType, icon: Sun },
                 { label: 'Transmission', value: vehicle.transmission, icon: Navigation },
                 { label: 'AC', value: vehicle.ac ? 'Yes - Powerful AC' : 'No', icon: Sun },
-                { label: 'Per Km (Outstation)', value: `₹${vehicle.perKm}`, icon: IndianRupee },
-                { label: 'Per Km (Local)', value: `₹${vehicle.localPerKm || vehicle.perKm + 2}`, icon: IndianRupee },
+                { label: 'Per Km (Outstation)', value: `₹${groupDigits(vehicle.perKm)}`, icon: IndianRupee },
+                { label: 'Per Km (Local)', value: `₹${groupDigits(vehicle.localPerKm || vehicle.perKm + 2)}`, icon: IndianRupee },
                 { label: 'Best For', value: vehicle.bestFor, icon: Star },
               ].map((spec, i) => {
                 const Icon = spec.icon;
@@ -212,7 +213,7 @@ export default function ChardhamVehicleHubClient({ data }) {
                   <h3 className="text-white font-bold text-sm mb-2">{item.name}</h3>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-slate-400 text-xs">{item.seats} Seats</span>
-                    <span className="text-amber-400 font-bold text-sm">₹{item.perKm}/km</span>
+                    <span className="text-amber-400 font-bold text-sm">₹{groupDigits(item.perKm)}/km</span>
                   </div>
                   <div className="flex items-center gap-0.5">
                     {Array.from({ length: 5 }).map((_, s) => (
@@ -395,10 +396,12 @@ export default function ChardhamVehicleHubClient({ data }) {
           <div className="grid gap-3 md:grid-cols-2 md:items-start">
             {faqs.map((faq, idx) => (
               <div key={idx} className="bg-white/[0.03] backdrop-blur border border-white/10 rounded-xl overflow-hidden">
+                <h3 className="m-0">
                 <button onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)} aria-expanded={expandedFaq === idx} className="w-full flex items-center justify-between p-5 text-left">
                   <span className="text-white font-semibold text-sm pr-4">{faq.question}</span>
                   <ChevronDown className={`w-5 h-5 text-[#FACF2D] shrink-0 transition-transform ${expandedFaq === idx ? 'rotate-180' : ''}`} />
                 </button>
+                </h3>
                 {expandedFaq === idx && (
                   <p className={`px-5 pb-5 text-slate-400 text-sm leading-relaxed${idx === 0 ? ' speakable-faq-first' : ''}`}>{faq.answer}</p>
                 )}
@@ -436,7 +439,7 @@ export default function ChardhamVehicleHubClient({ data }) {
         <div className="max-w-4xl mx-auto prose prose-invert">
           <h2 className="text-2xl font-bold text-white font-display-serif">{vehicle.name} for Char Dham Yatra — Complete Guide</h2>
           <p className="text-slate-300 leading-relaxed">
-            The {vehicle.name} is {vehicleType === 'sedan' ? 'the most affordable' : vehicleType === 'ertiga' ? 'the best family' : vehicleType === 'fortuner' ? 'the most premium' : vehicleType === 'innova' ? 'India’s most popular' : 'an excellent'} vehicle for Char Dham Yatra, offering {vehicle.seats} seats at just ₹{vehicle.perKm}/km. The {destinationData.fullName} circuit covers all four sacred temples — Yamunotri, Gangotri, Kedarnath, and Badrinath — across the majestic Garhwal Himalayas of Uttarakhand.
+            The {vehicle.name} is {vehicleType === 'sedan' ? 'the most affordable' : vehicleType === 'ertiga' ? 'the best family' : vehicleType === 'fortuner' ? 'the most premium' : vehicleType === 'innova' ? 'India’s most popular' : 'an excellent'} vehicle for Char Dham Yatra, offering {vehicle.seats} seats at just ₹{groupDigits(vehicle.perKm)}/km. The {destinationData.fullName} circuit covers all four sacred temples — Yamunotri, Gangotri, Kedarnath, and Badrinath — across the majestic Garhwal Himalayas of Uttarakhand.
           </p>
           <p className="text-slate-300 leading-relaxed">
             With our experienced hill drivers, your {vehicle.name} journey covers approximately {distance} with {duration} of comfortable travel. Every booking includes fuel, tolls, driver charges, and 24/7 trip support. Compare with other options on our <Link href="/chardham-yatra" className="text-amber-400 underline">Char Dham Yatra hub page</Link>, or explore <Link href="/tempo-traveller" className="text-amber-400 underline">tempo traveller options</Link> for larger groups. Call <a href="tel:+917668570551" className="text-amber-400">7668570551</a> to book.

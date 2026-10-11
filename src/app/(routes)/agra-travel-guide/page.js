@@ -4,15 +4,16 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, Car, CheckCirc
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import QuickAnswer from '@/components/seo/QuickAnswer';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Agra Travel Guide 2026 | Attractions, Food, Tips'),
   description: 'Complete Agra travel guide 2026. Best time to visit, all attractions, food guide, shopping, local transport. By Agra locals. Call 7668570551.',
   keywords: 'agra travel guide, agra tourist guide, agra sightseeing guide, visiting agra, agra tourism, things to do in agra, agra attractions',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/agra-travel-guide' },
   openGraph: {
@@ -21,7 +22,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/agra-travel-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Agra Travel Guide 2026' }],
   },
   twitter: {
@@ -138,7 +139,7 @@ export default function AgraTravelGuidePage() {
   const foodSubtitle = "A city with Mughal culinary heritage and unique local specialties";
   const bestTimeLegend = [{ color: "bg-emerald-500", label: "Best (Oct-Mar)" }, { color: "bg-amber-400", label: "Okay (Jul-Sep)" }, { color: "bg-red-400", label: "Avoid (May-Jun)" }];
   const transportOptions = [
-    { mode: "Triveni Cabs (Private Taxi)", price: "₹1,500-2,500/day", desc: "AC car with driver. Most comfortable and flexible. Cover all sights without hassle. Call 7668570551.", highlight: true },
+    { mode: "Triveni Cabs™ (Private Taxi)", price: "₹1,500-2,500/day", desc: "AC car with driver. Most comfortable and flexible. Cover all sights without hassle. Call 7668570551.", highlight: true },
     { mode: "Auto-rickshaw", price: "₹30-100/trip", desc: "Negotiate fare before riding. Good for short distances. Can be hot in summer.", highlight: false },
     { mode: "E-rickshaw", price: "₹10-30/trip", desc: "Electric rickshaws for short distances. Cheap and eco-friendly. Available near Taj and market areas.", highlight: false },
     { mode: "Battery Bus (Taj Route)", price: "₹10/trip", desc: "Eco-friendly buses from parking to Taj gates. Mandatory as private vehicles cannot go near the Taj.", highlight: false },
@@ -270,7 +271,7 @@ export default function AgraTravelGuidePage() {
         </section>
 
         {/* TABLE OF CONTENTS - Glass cards with hover-lift */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3">Table of Contents</h2>
@@ -291,7 +292,7 @@ export default function AgraTravelGuidePage() {
         </section>
 
         {/* WELCOME - Glass card with gradient corners and stats */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-3xl p-8 md:p-12 relative">
               <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-amber-200/40 to-transparent rounded-br-full rounded-tl-3xl" />
@@ -315,7 +316,7 @@ export default function AgraTravelGuidePage() {
         </section>
 
         {/* BEST TIME - Enhanced bar chart */}
-        <section className="py-16 px-4 bg-white/80">
+        <section className="py-10 sm:py-16 px-4 bg-white/80">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 1</div>
@@ -346,7 +347,7 @@ export default function AgraTravelGuidePage() {
         </section>
 
         {/* ATTRACTIONS - Glass cards with gradient number badges */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 2</div>
@@ -385,13 +386,13 @@ export default function AgraTravelGuidePage() {
         </section>
 
         {/* BOOK / SELL */}
-        <section className="py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-br from-stone-900 via-amber-950 to-stone-900 relative overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px]" />
           <div className="max-w-6xl mx-auto relative">
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 bg-amber-500/20 px-5 py-2 rounded-full mb-4 border border-amber-400/30">
                 <Car className="w-4 h-4 text-amber-300" />
-                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs</span>
+                <span className="text-amber-200 font-semibold text-xs tracking-[0.2em] uppercase">Book With Triveni Cabs™</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Book Your {cityName} Trip</h2>
               <p className="text-amber-100/70 max-w-2xl mx-auto">Clean, air-conditioned cars with professional drivers. Transparent per-km pricing, no hidden charges — pick the vehicle that fits your group.</p>
@@ -432,7 +433,7 @@ export default function AgraTravelGuidePage() {
         </section>
 
         {/* FOOD - Glass cards with emoji watermark */}
-        <section className="py-16 px-4 bg-gradient-to-br from-orange-50/80 to-amber-50/80">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-br from-orange-50/80 to-amber-50/80">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 3</div>
@@ -459,7 +460,7 @@ export default function AgraTravelGuidePage() {
         </section>
 
         {/* SHOPPING - Glass cards with gradient price tags */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 4</div>
@@ -484,8 +485,8 @@ export default function AgraTravelGuidePage() {
           </div>
         </section>
 
-        {/* TRANSPORT - Triveni Cabs card with animated border */}
-        <section className="py-16 px-4 bg-white/80">
+        {/* TRANSPORT - Triveni Cabs™ card with animated border */}
+        <section className="py-10 sm:py-16 px-4 bg-white/80">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 5</div>
@@ -510,7 +511,7 @@ export default function AgraTravelGuidePage() {
         </section>
 
         {/* STAY - Glass cards with gradient header bars */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">CHAPTER 6</div>
@@ -531,8 +532,13 @@ export default function AgraTravelGuidePage() {
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Agra" citySlug="agra" />
+
+
         {/* FAQ - Glass cards with Q-number badges */}
-        <section className="py-16 px-4 bg-white/80">
+        <section className="py-10 sm:py-16 px-4 bg-white/80">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold tracking-wider shadow-md">APPENDIX</div>
@@ -553,7 +559,7 @@ export default function AgraTravelGuidePage() {
         </section>
 
         {/* LINKS - Glass cards with group-hover */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-2 text-center">Explore More About {cityName}</h2>
             <p className="text-stone-500 text-center mb-8 text-sm">Related guides and tour pages from our collection</p>
@@ -574,7 +580,7 @@ export default function AgraTravelGuidePage() {
         </section>
 
         {/* CTA - Animated Gradient with floating particles */}
-        <section className="relative py-20 px-4 overflow-hidden">
+        <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-700 via-orange-600 to-yellow-700" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[10%] w-3 h-3 bg-white/20 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />
           <div className="absolute top-[60%] right-[15%] w-2 h-2 bg-white/15 rounded-full" style={{ animation: 'float 8s ease-in-out infinite 2s' }} />

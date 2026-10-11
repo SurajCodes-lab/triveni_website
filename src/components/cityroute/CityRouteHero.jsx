@@ -12,6 +12,7 @@
 import { Phone, Star, Clock, MapPin, ShieldCheck, ArrowRight } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
 import RouteLine from '@/components/ui/RouteLine';
+import { groupDigits } from '@/utilis/pricing';
 
 export default function CityRouteHero({
   from,
@@ -85,7 +86,7 @@ export default function CityRouteHero({
             <div className="border-gradient-gold group relative overflow-hidden rounded-3xl glass-dark p-6 sm:p-7">
               <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Fixed all-inclusive fare</p>
               <div className="mt-2 flex items-end gap-2">
-                <span className="text-5xl font-black text-white sm:text-6xl">₹{startingPrice}</span>
+                <span className="text-5xl font-black text-white sm:text-6xl">₹{groupDigits(startingPrice)}</span>
                 <span className="mb-2 text-sm text-white/50">
                   /{tripType === 'roundTrip' ? 'round trip' : 'one way'}
                 </span>

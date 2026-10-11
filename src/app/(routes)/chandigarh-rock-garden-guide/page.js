@@ -9,9 +9,9 @@ export const metadata = {
   title: tightenTitle('Rock Garden Chandigarh Guide 2026 | Nek Chand\'s Outsider-Art Masterpiece'),
   description: 'Complete Rock Garden Chandigarh guide. Nek Chand\'s 40-acre sculpture park from industrial waste. Tickets, timing, photography spots, history, how to reach.',
   keywords: 'rock garden chandigarh, nek chand rock garden, sector 1 chandigarh, rock garden timing, rock garden ticket price, things to do chandigarh, sculpture park chandigarh',
-  authors: [{ name: 'Triveni Cabs Editorial' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™ Editorial' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/chandigarh-rock-garden-guide' },
   openGraph: {
@@ -20,7 +20,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/chandigarh-rock-garden-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg', width: 1200, height: 630, alt: 'Rock Garden Chandigarh — Nek Chand' }],
   },
   twitter: {
@@ -78,7 +78,7 @@ export default function ChandigarhRockGardenGuidePage() {
     { question: "How long does it take to see the Rock Garden?", answer: "Plan 2-3 hours for a thorough visit. The garden has 4 phases: Phase 1 (initial sculptures), Phase 2 (the famous animal kingdom courtyard), Phase 3 (the giant amphitheatre and human figure army), and Phase 4 (waterfalls and swing chains). Each phase has its own atmosphere. The amphitheatre and waterfalls in Phase 3 are the photography highlights." },
     { question: "What is the best time to visit Rock Garden?", answer: "October to March is ideal — pleasant temperature, soft natural light for photography. Visit early morning (9-11 AM) for fewer crowds and the best photography light. Avoid weekends and public holidays for quieter experience. Summer (April-June) brings 35-42°C heat and most courtyards are open-air. Monsoon (July-September) makes the waterfalls more dramatic but slippery." },
     { question: "What should I expect to see at Rock Garden?", answer: "Sculptures of dancing women, animals (elephants, monkeys, birds), human figure armies, traditional musicians, all made from broken household items — bangles, plates, tiles, sockets. Highlights: the Hall of Mirrors, the Mughal Garden replica, the giant swinging chains in Phase 3, the central amphitheatre, the waterfall complex, and Nek Chand's original army of 'Mukherjee' figures. The labyrinthine path keeps revealing new corners." },
-    { question: "How do I reach Rock Garden from city center?", answer: "Rock Garden is in Sector 1, near Sukhna Lake — about 4 km from Sector 17 Plaza, 6 km from ISBT Bus Stand, 12 km from Chandigarh Airport. Auto from Sector 17: Rs 80-120 (5-10 min). Taxi: Rs 200-350. Triveni Cabs hourly cab: Rs 250/hour. Walking distance from Sukhna Lake (1.5 km, 20 min). Free parking available outside the entrance." },
+    { question: "How do I reach Rock Garden from city center?", answer: "Rock Garden is in Sector 1, near Sukhna Lake — about 4 km from Sector 17 Plaza, 6 km from ISBT Bus Stand, 12 km from Chandigarh Airport. Auto from Sector 17: Rs 80-120 (5-10 min). Taxi: Rs 200-350. Triveni Cabs™ hourly cab: Rs 250/hour. Walking distance from Sukhna Lake (1.5 km, 20 min). Free parking available outside the entrance." },
     { question: "Is Rock Garden good for kids?", answer: "Excellent for kids — they love spotting animal sculptures, climbing through tunnels, and posing with the giant figures. The 4-section labyrinth design feels like a treasure hunt. The amphitheatre area has open space for kids to run around. Strollers can be tricky in narrow passages. Plan 1.5-2 hours with kids. Combine with Sukhna Lake nearby (1.5 km) for a full kid-friendly day." },
   ];
 
@@ -155,7 +155,7 @@ export default function ChandigarhRockGardenGuidePage() {
         </section>
 
         {/* THE STORY */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-amber-700 font-bold text-sm tracking-widest uppercase">The Story</span>
@@ -170,7 +170,7 @@ export default function ChandigarhRockGardenGuidePage() {
         </section>
 
         {/* HOW TO VISIT (Steps) */}
-        <section className="py-20 px-4 bg-amber-50">
+        <section className="py-12 sm:py-20 px-4 bg-amber-50">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-amber-700 font-bold text-sm tracking-widest uppercase">2-Hour Plan</span>
@@ -200,7 +200,7 @@ export default function ChandigarhRockGardenGuidePage() {
         </section>
 
         {/* PHOTOGRAPHY TIPS */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-amber-700 font-bold text-sm tracking-widest uppercase">Photography</span>
@@ -226,7 +226,7 @@ export default function ChandigarhRockGardenGuidePage() {
         </section>
 
         {/* COMBINE WITH NEARBY */}
-        <section className="py-16 px-4 bg-stone-50">
+        <section className="py-10 sm:py-16 px-4 bg-stone-50">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">Combine with Nearby Attractions</h2>
@@ -253,7 +253,7 @@ export default function ChandigarhRockGardenGuidePage() {
         </section>
 
         {/* FAQ */}
-        <section className="faq-section py-20 px-4">
+        <section className="faq-section py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Rock Garden FAQs</h2>
@@ -273,10 +273,10 @@ export default function ChandigarhRockGardenGuidePage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 px-4 bg-gradient-to-r from-amber-600 to-rose-600">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-r from-amber-600 to-rose-600">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-3xl md:text-4xl font-black mb-4">Ready to Visit Rock Garden?</h2>
-            <p className="text-lg mb-8 opacity-90">Book a Triveni Cabs hourly cab for door-to-door pickup, free parking included. Combine with Sukhna Lake + Sector 17 in one day.</p>
+            <p className="text-lg mb-8 opacity-90">Book a Triveni Cabs™ hourly cab for door-to-door pickup, free parking included. Combine with Sukhna Lake + Sector 17 in one day.</p>
             <Link href="tel:+917668570551" className="inline-flex items-center justify-center gap-2 bg-white text-amber-700 px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl hover:scale-[1.02] transition-all">
               <Phone className="w-5 h-5" /> Call: 7668570551
             </Link>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
+import { groupDigits } from '@/utilis/pricing';
 
 // Hardcoded distances between major Indian cities (in km)
 const cityDistances = {
@@ -283,7 +284,7 @@ export default function BookingTrip({
               <option value="">Choose a cab type</option>
               {Object.entries(cabTypes).map(([key, cab]) => (
                 <option key={key} value={key}>
-                  {cab.type} - ₹{cab.costPerKm}/km
+                  {cab.type} - ₹{groupDigits(cab.costPerKm)}/km
                 </option>
               ))}
             </select>
@@ -292,7 +293,7 @@ export default function BookingTrip({
           {/* Total Cost */}
           {totalCost !== null && (
             <div className="mt-4 font-semibold text-lg">
-              Total Cost: ₹{totalCost.toFixed(2)}
+              Total Cost: ₹{groupDigits(totalCost.toFixed(2))}
             </div>
           )}
 
@@ -304,13 +305,13 @@ export default function BookingTrip({
                   <strong>Car Type:</strong> <span className="text-green-600">{cabTypes[selectedCab].type}</span>
                 </p>
                 <p>
-                  <strong>Cost per Km:</strong> <span className="text-green-600"> ₹{cabTypes[selectedCab].costPerKm}</span>
+                  <strong>Cost per Km:</strong> <span className="text-green-600"> ₹{groupDigits(cabTypes[selectedCab].costPerKm)}</span>
                 </p>
                 <p>
                   <strong>Included Km:</strong> <span className="text-green-600">{cabTypes[selectedCab].includedKm} km</span>
                 </p>
                 <p>
-                  <strong>Extra Fare:</strong> <span className="text-green-600">₹{cabTypes[selectedCab].extraFarePerKm}/km</span>
+                  <strong>Extra Fare:</strong> <span className="text-green-600">₹{groupDigits(cabTypes[selectedCab].extraFarePerKm)}/km</span>
                 </p>
                 <p>
                   <strong>Fuel Charges:</strong> <span className="text-green-600"> {cabTypes[selectedCab].fuelCharges}</span>

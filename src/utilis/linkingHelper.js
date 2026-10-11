@@ -2,9 +2,11 @@
 // DYNAMIC linking from actual sightseeingData.js
 
 import { sightseeingTours, getToursByCity, getCitiesWithTours, getAllTours } from './sightseeingData';
+import { deepFilterLinks } from '../lib/seo/route-exists';
+import { groupDigits } from '@/utilis/pricing';
 
 // Get all available cities dynamically
-export function getAllCities() {
+function getAllCities__raw() {
   const cities = getCitiesWithTours();
   return cities.map(city => ({
     slug: city,
@@ -14,7 +16,7 @@ export function getAllCities() {
 }
 
 // Get city info with all tours
-export function getCityInfo(cityName) {
+function getCityInfo__raw(cityName) {
   if (!cityName) return null;
 
   const city = cityName.toLowerCase();
@@ -31,7 +33,7 @@ export function getCityInfo(cityName) {
     tours: tours.map(tour => ({
       slug: tour.slug,
       name: tour.name,
-      price: tour.price?.sedan ? `₹${tour.price.sedan}` : 'Contact for price',
+      price: tour.price?.sedan ? `₹${groupDigits(tour.price.sedan)}` : 'Contact for price',
       duration: tour.duration,
       url: `/sightseeing/${tour.slug}`,
     })),
@@ -39,14 +41,14 @@ export function getCityInfo(cityName) {
 }
 
 // Get tours for a city (limited)
-export function getCityTours(cityName, limit = 4) {
+function getCityTours__raw(cityName, limit = 4) {
   const cityInfo = getCityInfo(cityName);
   if (!cityInfo) return [];
   return cityInfo.tours.slice(0, limit);
 }
 
 // MAIN FUNCTION: Get all related links for a blog post
-export function getRelatedLinks(blogPost) {
+function getRelatedLinks__raw(blogPost) {
   const { city, slug, nearbyAttractions = [] } = blogPost;
 
   // If no city specified, return default links
@@ -186,12 +188,12 @@ export const attractionTypes = {
 };
 
 // Get attraction type info
-export function getAttractionTypeInfo(type) {
+function getAttractionTypeInfo__raw(type) {
   return attractionTypes[type?.toLowerCase()] || attractionTypes.monument;
 }
 
 // Build breadcrumb for blog
-export function buildBlogBreadcrumb(blogPost) {
+function buildBlogBreadcrumb__raw(blogPost) {
   const { city, title, slug } = blogPost;
 
   const breadcrumbs = [
@@ -217,7 +219,7 @@ export function buildBlogBreadcrumb(blogPost) {
 }
 
 // Get SEO internal links for content injection
-export function getSEOLinks(city) {
+function getSEOLinks__raw(city) {
   const cityInfo = getCityInfo(city);
   const links = [];
 
@@ -278,7 +280,7 @@ export function getSEOLinks(city) {
 }
 
 // Search for related tours by keyword
-export function searchRelatedTours(keyword, limit = 4) {
+function searchRelatedTours__raw(keyword, limit = 4) {
   const allTours = getAllTours();
   const searchTerm = keyword.toLowerCase();
 
@@ -292,7 +294,7 @@ export function searchRelatedTours(keyword, limit = 4) {
     .map(tour => ({
       slug: tour.slug,
       name: tour.name,
-      price: tour.price?.sedan ? `₹${tour.price.sedan}` : 'Contact',
+      price: tour.price?.sedan ? `₹${groupDigits(tour.price.sedan)}` : 'Contact',
       url: `/sightseeing/${tour.slug}`,
     }));
 }
@@ -307,7 +309,7 @@ export function searchRelatedTours(keyword, limit = 4) {
  * @param {string} destination - Current destination (to exclude + reverse-exclude)
  * @param {number} limit - Max routes to return
  */
-export function getRelatedRoutes(origin, destination = '', limit = 12) {
+function getRelatedRoutes__raw(origin, destination = '', limit = 12) {
   // Null check to prevent toLowerCase errors
   if (!origin) return [];
 
@@ -361,7 +363,7 @@ export function getRelatedRoutes(origin, destination = '', limit = 12) {
  * @param {string} currentSlug - Current tour slug to exclude
  * @param {number} limit - Max tours to return
  */
-export function getRelatedToursByCity(city, currentSlug = '', limit = 4) {
+function getRelatedToursByCity__raw(city, currentSlug = '', limit = 4) {
   const cityInfo = getCityInfo(city);
   if (!cityInfo) return [];
 
@@ -375,7 +377,7 @@ export function getRelatedToursByCity(city, currentSlug = '', limit = 4) {
  * @param {string} city - Current city
  * @param {number} limit - Max destinations
  */
-export function getNearbyDestinations(city, limit = 6) {
+function getNearbyDestinations__raw(city, limit = 6) {
   // Null check to prevent toLowerCase errors
   if (!city) return [];
 
@@ -533,7 +535,7 @@ const SIGHTSEEING_CITIES = ['agra', 'ahmedabad', 'amritsar', 'ayodhya', 'bikaner
  * Only returns links for pages that ACTUALLY exist (no 404s)
  * @param {string} city - City name
  */
-export function getServiceCrossLinks(city) {
+function getServiceCrossLinks__raw(city) {
   // Null check to prevent toLowerCase errors
   if (!city) return [];
 
@@ -643,27 +645,27 @@ export function getServiceCrossLinks(city) {
  * Get popular routes for footer/navigation
  * @param {number} limit - Max routes
  */
-export function getPopularRoutes(limit = 10) {
+function getPopularRoutes__raw(limit = 10) {
   return [
     { origin: 'Delhi', destination: 'Agra', distance: 230, price: 3500, url: '/delhi-to-agra' },
     { origin: 'Delhi', destination: 'Jaipur', distance: 280, price: 4000, url: '/delhi-to-jaipur' },
     { origin: 'Jaipur', destination: 'Agra', distance: 240, price: 3800, url: '/jaipur-to-agra' },
     { origin: 'Delhi', destination: 'Chandigarh', distance: 250, price: 3800, url: '/delhi-to-chandigarh' },
-    { origin: 'Delhi', destination: 'Haridwar', distance: 210, price: 3200, url: '/delhi-to-haridwar' },
+    { origin: 'Delhi', destination: 'Haridwar', distance: 210, price: 3200, url: '/one-way-cab/delhi-to-haridwar' },
     { origin: 'Delhi', destination: 'Rishikesh', distance: 230, price: 3500, url: '/delhi-to-rishikesh' },
     { origin: 'Delhi', destination: 'Shimla', distance: 350, price: 5000, url: '/delhi-to-shimla' },
-    { origin: 'Delhi', destination: 'Manali', distance: 530, price: 7500, url: '/delhi-to-manali' },
+    { origin: 'Delhi', destination: 'Manali', distance: 530, price: 7500, url: '/one-way-cab/delhi-to-manali' },
     { origin: 'Chandigarh', destination: 'Shimla', distance: 115, price: 2500, url: '/chandigarh-to-shimla' },
     { origin: 'Chandigarh', destination: 'Manali', distance: 310, price: 5000, url: '/chandigarh-to-manali' },
     { origin: 'Delhi', destination: 'Amritsar', distance: 450, price: 6500, url: '/delhi-to-amritsar' },
-    { origin: 'Agra', destination: 'Jaipur', distance: 240, price: 3800, url: '/agra-to-jaipur' },
+    { origin: 'Agra', destination: 'Jaipur', distance: 240, price: 3800, url: '/one-way-cab/agra-to-jaipur' },
   ].slice(0, limit);
 }
 
 /**
  * Get popular cities for footer/navigation
  */
-export function getPopularCities() {
+function getPopularCities__raw() {
   return [
     { name: 'Delhi', slug: 'delhi', url: '/delhi' },
     { name: 'Jaipur', slug: 'jaipur', url: '/jaipur' },
@@ -689,7 +691,7 @@ export function getPopularCities() {
  * Get popular tours for footer/navigation
  * @param {number} limit - Max tours
  */
-export function getPopularTours(limit = 8) {
+function getPopularTours__raw(limit = 8) {
   const allTours = getAllTours();
 
   // Sort by popularity (reviews) and return top tours
@@ -729,7 +731,7 @@ function getCityFromTourSlug(slug) {
  * @param {string} content - HTML content
  * @param {string[]} excludeCities - Cities to exclude from linking
  */
-export function autoLinkCities(content, excludeCities = []) {
+function autoLinkCities__raw(content, excludeCities = []) {
   const cities = getPopularCities();
   let linkedContent = content;
 
@@ -757,7 +759,7 @@ export function autoLinkCities(content, excludeCities = []) {
  * Get related content/guide pages for a city
  * Used to show new content pages on existing city/sightseeing pages
  */
-export function getRelatedContent(city) {
+function getRelatedContent__raw(city) {
   if (!city) return getGeneralContent();
 
   const cityKey = city.toLowerCase().replace(/\s+/g, '-');
@@ -856,7 +858,7 @@ export function getRelatedContent(city) {
 /**
  * Get general content pages (not city-specific)
  */
-export function getGeneralContent() {
+function getGeneralContent__raw() {
   return [
     { title: 'India Road Trip Guide', url: '/india-road-trip-guide-for-tourists', description: 'Everything you need to know about road trips in India' },
     { title: 'Safe Travel in India', url: '/safe-travel-india-for-tourists', description: 'Safety tips and advice for tourists' },
@@ -869,7 +871,7 @@ export function getGeneralContent() {
 /**
  * Get cab service category pages
  */
-export function getServicePages() {
+function getServicePages__raw() {
   return [
     { title: 'One Way Cab', url: '/one-way-cab', description: 'Affordable one-way taxi between cities' },
     { title: 'Round Trip Cab', url: '/round-trip-cab', description: 'Book return journey cabs at best rates' },
@@ -881,7 +883,7 @@ export function getServicePages() {
 /**
  * Get wedding service pages
  */
-export function getWeddingPages() {
+function getWeddingPages__raw() {
   return [
     { title: 'Baraat Tempo Traveller', url: '/wedding/baraat-tempo-traveller', description: 'DJ-equipped vehicles for baraat procession' },
     { title: 'Car Decoration Packages', url: '/wedding/car-decoration-packages', description: 'Beautiful flower and ribbon car decorations' },
@@ -897,7 +899,7 @@ export function getWeddingPages() {
  * @param {number} limit - Max links to return
  * @returns {Array} Array of {text, url, type, priority} objects
  */
-export function getMoneyPageLinks(city, limit = 8) {
+function getMoneyPageLinks__raw(city, limit = 8) {
   if (!city) return getDefaultMoneyPages();
 
   const citySlug = city.toLowerCase().replace(/\s+/g, '-');
@@ -946,7 +948,7 @@ export function getMoneyPageLinks(city, limit = 8) {
  * @param {number} limit
  * @returns {Array<{text, url, vehicle, fare}>}
  */
-export function getToursWithGuideForCity(cityName, limit = 6) {
+function getToursWithGuideForCity__raw(cityName, limit = 6) {
   if (!cityName) return [];
   const cityKey = cityName.toLowerCase().replace(/[^a-z]/g, '');
   // Static map matching keys used in toursWithGuideData
@@ -1022,3 +1024,32 @@ export default {
   // Tours-with-guide linking
   getToursWithGuideForCity,
 };
+
+
+// ---------------------------------------------------------------------------
+// Week 47: every list this module returns is filtered against the build
+// manifest (src/generated/known-routes.json) so no internal link points at a
+// page that was never built. See src/lib/seo/route-exists.js for why.
+// ---------------------------------------------------------------------------
+export const getAllCities = (...a) => deepFilterLinks(getAllCities__raw(...a));
+export const getCityInfo = (...a) => deepFilterLinks(getCityInfo__raw(...a));
+export const getCityTours = (...a) => deepFilterLinks(getCityTours__raw(...a));
+export const getRelatedLinks = (...a) => deepFilterLinks(getRelatedLinks__raw(...a));
+export const getAttractionTypeInfo = (...a) => deepFilterLinks(getAttractionTypeInfo__raw(...a));
+export const buildBlogBreadcrumb = (...a) => deepFilterLinks(buildBlogBreadcrumb__raw(...a));
+export const getSEOLinks = (...a) => deepFilterLinks(getSEOLinks__raw(...a));
+export const searchRelatedTours = (...a) => deepFilterLinks(searchRelatedTours__raw(...a));
+export const getRelatedRoutes = (...a) => deepFilterLinks(getRelatedRoutes__raw(...a));
+export const getRelatedToursByCity = (...a) => deepFilterLinks(getRelatedToursByCity__raw(...a));
+export const getNearbyDestinations = (...a) => deepFilterLinks(getNearbyDestinations__raw(...a));
+export const getServiceCrossLinks = (...a) => deepFilterLinks(getServiceCrossLinks__raw(...a));
+export const getPopularRoutes = (...a) => deepFilterLinks(getPopularRoutes__raw(...a));
+export const getPopularCities = (...a) => deepFilterLinks(getPopularCities__raw(...a));
+export const getPopularTours = (...a) => deepFilterLinks(getPopularTours__raw(...a));
+export const autoLinkCities = (...a) => deepFilterLinks(autoLinkCities__raw(...a));
+export const getRelatedContent = (...a) => deepFilterLinks(getRelatedContent__raw(...a));
+export const getGeneralContent = (...a) => deepFilterLinks(getGeneralContent__raw(...a));
+export const getServicePages = (...a) => deepFilterLinks(getServicePages__raw(...a));
+export const getWeddingPages = (...a) => deepFilterLinks(getWeddingPages__raw(...a));
+export const getMoneyPageLinks = (...a) => deepFilterLinks(getMoneyPageLinks__raw(...a));
+export const getToursWithGuideForCity = (...a) => deepFilterLinks(getToursWithGuideForCity__raw(...a));

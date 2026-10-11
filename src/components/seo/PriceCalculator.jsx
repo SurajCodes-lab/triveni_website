@@ -19,12 +19,13 @@
  *  - originName / destinationName: optional for WhatsApp pre-fill
  */
 import { useMemo, useState } from 'react';
+import { groupDigits } from '@/utilis/pricing';
 
 const TONES = {
-  amber: { bg: 'from-amber-50 to-yellow-50', accent: 'amber', border: 'border-amber-200', text: 'text-amber-700', btn: 'bg-amber-500 hover:bg-amber-600' },
-  cyan:  { bg: 'from-cyan-50 to-blue-50',    accent: 'cyan',   border: 'border-cyan-200',   text: 'text-cyan-700',  btn: 'bg-cyan-500 hover:bg-cyan-600'  },
-  emerald: { bg: 'from-emerald-50 to-teal-50', accent: 'emerald', border: 'border-emerald-200', text: 'text-emerald-700', btn: 'bg-emerald-500 hover:bg-emerald-600' },
-  violet: { bg: 'from-violet-50 to-purple-50', accent: 'violet',  border: 'border-violet-200', text: 'text-violet-700', btn: 'bg-violet-500 hover:bg-violet-600' },
+  amber: { bg: 'from-amber-50 to-yellow-50', accent: 'amber', border: 'border-amber-200', text: 'text-amber-800', btn: 'bg-amber-700 hover:bg-amber-800' },
+  cyan:  { bg: 'from-cyan-50 to-blue-50',    accent: 'cyan',   border: 'border-cyan-200',   text: 'text-cyan-800',  btn: 'bg-cyan-700 hover:bg-cyan-800'  },
+  emerald: { bg: 'from-emerald-50 to-teal-50', accent: 'emerald', border: 'border-emerald-200', text: 'text-emerald-800', btn: 'bg-emerald-700 hover:bg-emerald-800' },
+  violet: { bg: 'from-violet-50 to-purple-50', accent: 'violet',  border: 'border-violet-200', text: 'text-violet-800', btn: 'bg-violet-700 hover:bg-violet-800' },
 };
 
 export default function PriceCalculator({
@@ -98,7 +99,7 @@ export default function PriceCalculator({
               className={`px-3 py-3 rounded-xl text-sm font-semibold transition-all border-2 ${selected === v.key ? `${t.btn} text-white border-transparent shadow-md` : 'bg-white text-slate-700 border-slate-200 hover:border-slate-300'}`}
             >
               <div className="font-bold">{v.label}</div>
-              <div className={`text-xs mt-0.5 ${selected === v.key ? 'text-white/80' : 'text-slate-500'}`}>₹{v.ratePerKm}/km</div>
+              <div className={`text-xs mt-0.5 ${selected === v.key ? 'text-white' : 'text-slate-600'}`}>₹{groupDigits(v.ratePerKm)}/km</div>
             </button>
           ))}
         </div>
@@ -158,11 +159,11 @@ export default function PriceCalculator({
               {selectedVehicle.label} · {oneWayEqualsRoundTrip && mode !== 'round-trip'
                 ? `${Math.round(km)} km (billed both ways)`
                 : `${Math.round(kmCharged)} km charged`}
-              {mode === 'round-trip' && days > 1 && ` · +₹${driverHaltCharges} driver halt`}
+              {mode === 'round-trip' && days > 1 && ` · +₹${groupDigits(driverHaltCharges)} driver halt`}
             </p>
           </div>
         </div>
-        <p className="text-xs text-slate-400 mb-4 leading-relaxed">
+        <p className="text-xs text-slate-600 mb-4 leading-relaxed">
           Includes fuel, driver allowance, AC, tolls included for FASTag routes. State tax & parking extra at actual.
           Inter-state permit may apply for Himachal / Uttarakhand / J&amp;K routes.
         </p>

@@ -3,15 +3,16 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Agra Food Tour 2026 | Petha, Mughlai & Street Food Guide'),
   description: 'Agra food & culinary tour. Famous Petha, Dalmoth, Bedai-Jalebi, Mughlai cuisine. Street food itinerary, best restaurants. By Agra locals. Call 7668570551.',
   keywords: 'agra food tour, agra street food, agra famous food, petha agra, agra food guide, mughlai food agra, best restaurants agra',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/agra-food-tour' },
   openGraph: {
@@ -20,7 +21,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/agra-food-tour',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Agra Food Tour Guide' }],
   },
   twitter: {
@@ -217,21 +218,21 @@ export default function AgraFoodTourPage() {
         </section>
 
         {/* SEO Prose */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-stone-800">
               Agra Food Tour — A Culinary Journey Through Mughal Heritage
             </h2>
             <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
               <p>Agra is not just the city of the Taj Mahal — it is a <strong className="text-stone-800">culinary capital of North India</strong> with a food heritage dating back to the Mughal era. From the world-famous Agra Petha (a translucent sweet made from white pumpkin, available in 50+ varieties) to the addictive Dalmoth spice mix, from melt-in-your-mouth Bedai-Jalebi breakfasts to rich Mughlai curries — the flavours of Agra rival those of Old Delhi and Lucknow.</p>
-              <p>Our <strong className="text-stone-800">Agra food tour by car</strong> takes you on a curated culinary circuit through the city, covering street food stalls at Sadar Bazaar, legendary sweet shops at Noori Gate, hole-in-the-wall kebab joints near Jama Masjid, and the famous Chaat Gali where generations of families have perfected their recipes. Your Triveni Cabs driver serves as your local guide, navigating narrow lanes and knowing exactly which vendors to trust.</p>
+              <p>Our <strong className="text-stone-800">Agra food tour by car</strong> takes you on a curated culinary circuit through the city, covering street food stalls at Sadar Bazaar, legendary sweet shops at Noori Gate, hole-in-the-wall kebab joints near Jama Masjid, and the famous Chaat Gali where generations of families have perfected their recipes. Your Triveni Cabs™ driver serves as your local guide, navigating narrow lanes and knowing exactly which vendors to trust.</p>
               <p>This food experience pairs perfectly with sightseeing — combine it with a Taj Mahal visit in the morning, a Mehtab Bagh sunset session, or a full Agra heritage walk. The best time for an <strong className="text-stone-800">Agra street food tour</strong> is during the cooler months (October to March) when outdoor eating is pleasant and seasonal specialities like Gajar Ka Halwa and fresh Petha varieties are at their peak.</p>
             </div>
           </div>
         </section>
 
         {/* Famous Foods - Glassmorphism Cards */}
-        <section className="py-16 px-4 bg-orange-50/80">
+        <section className="py-10 sm:py-16 px-4 bg-orange-50/80">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3">Famous Foods of Agra</h2>
@@ -262,7 +263,7 @@ export default function AgraFoodTourPage() {
         </section>
 
         {/* Street Food Itinerary - Premium Timeline */}
-        <section className="py-16 px-4 bg-gradient-to-b from-red-950 via-orange-950 to-red-950">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-b from-red-950 via-orange-950 to-red-950">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-3">Street Food Tour Itinerary</h2>
@@ -301,7 +302,7 @@ export default function AgraFoodTourPage() {
         </section>
 
         {/* Best Restaurants - Premium Card Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Best Restaurants in Agra</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -330,7 +331,7 @@ export default function AgraFoodTourPage() {
         </section>
 
         {/* Markets - Glass Map Cards */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Food Markets to Visit</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -353,7 +354,7 @@ export default function AgraFoodTourPage() {
         </section>
 
         {/* Combine with Sightseeing */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-2xl overflow-hidden shadow-xl">
               <div className="bg-gradient-to-r from-red-600 to-orange-600 p-6" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }}>
@@ -386,8 +387,13 @@ export default function AgraFoodTourPage() {
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Agra" citySlug="agra" />
+
+
         {/* FAQ - Expandable-looking Cards */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-10 sm:py-16 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-10 text-center">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -405,7 +411,7 @@ export default function AgraFoodTourPage() {
         </section>
 
         {/* Interlinks - Interactive Grid */}
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-8 text-center">More Agra Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -433,7 +439,7 @@ export default function AgraFoodTourPage() {
         </section>
 
         {/* CTA - Animated Gradient */}
-        <section className="relative py-20 px-4 overflow-hidden">
+        <section className="relative py-12 sm:py-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-red-700 via-orange-600 to-amber-600" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[10%] w-3 h-3 bg-white/20 rounded-full" style={{ animation: 'float 6s ease-in-out infinite' }} />
           <div className="absolute top-[60%] right-[15%] w-2 h-2 bg-white/15 rounded-full" style={{ animation: 'float 8s ease-in-out infinite 2s' }} />

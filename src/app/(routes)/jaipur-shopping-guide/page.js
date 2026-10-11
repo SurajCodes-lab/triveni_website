@@ -3,15 +3,16 @@ import { Phone, MapPin, Shield, Clock, Users, Star, ChevronRight, CheckCircle2, 
 
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Jaipur Shopping Guide 2026 | Jewelry, Block Print & Handicrafts'),
   description: 'Jaipur shopping guide. Kundan jewelry, block print, Blue Pottery, Bandhani textiles, gemstones. Johari Bazaar, Bapu Bazaar, Tripolia Bazaar. Prices & tips.',
   keywords: 'jaipur shopping guide, shopping in jaipur, johari bazaar jaipur, jaipur jewelry market, jaipur block print, blue pottery jaipur, bandhani jaipur, jaipur handicrafts',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/jaipur-shopping-guide' },
   openGraph: {
@@ -20,7 +21,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/jaipur-shopping-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Jaipur/jaipur_hero_section_image.jpg', width: 1200, height: 630, alt: 'Jaipur Shopping Guide' }],
   },
   twitter: {
@@ -245,7 +246,7 @@ export default function JaipurShoppingGuidePage() {
         </section>
 
         {/* Shopping Categories */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-stone-800 mb-3 text-center">What to Buy in Jaipur</h2>
             <p className="text-stone-500 text-center mb-14">The Pink City&apos;s bazaars have dazzled shoppers for three centuries</p>
@@ -289,7 +290,7 @@ export default function JaipurShoppingGuidePage() {
         </section>
 
         {/* Market Areas */}
-        <section className="py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-purple-950 via-violet-950 to-purple-950">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-3 text-center">Best Shopping Areas in Jaipur</h2>
             <p className="text-purple-200/60 text-center mb-14">Five legendary bazaars inside the Pink City walls and beyond</p>
@@ -322,7 +323,7 @@ export default function JaipurShoppingGuidePage() {
         </section>
 
         {/* Bargaining Tips */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-3 text-center">Bargaining Tips from Locals</h2>
             <p className="text-stone-500 text-center mb-12">Eight rules that save our tourists money every single day</p>
@@ -340,7 +341,7 @@ export default function JaipurShoppingGuidePage() {
         </section>
 
         {/* Combo */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
             <div className="glass-card-light rounded-3xl overflow-hidden">
               <div className="bg-gradient-to-r from-purple-700 via-fuchsia-600 to-purple-700 px-6 py-5" style={{ backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite' }}>
@@ -372,21 +373,26 @@ export default function JaipurShoppingGuidePage() {
         </section>
 
         {/* SEO Content */}
-        <section className="py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-violet-50 to-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-8 text-center">Shopping in Jaipur: The Pink City&apos;s Bazaar Heritage</h2>
             <div className="glass-card-light rounded-3xl p-8 md:p-10">
               <div className="prose prose-stone max-w-none text-stone-600 leading-relaxed space-y-4">
               <p>Jaipur&apos;s bazaars are not just markets -- they are living museums of Rajasthani craft traditions that stretch back over three centuries. When Maharaja Sawai Jai Singh II founded Jaipur in 1727, he designed the city with dedicated bazaar streets, each assigned to specific trades. That layout survives today. Johari Bazaar still sparkles with gem dealers, Maniharon Ka Rasta still echoes with bangle-makers shaping lac over open flames, and Tripolia Bazaar still clinks with brassware artisans.</p>
               <p>What makes Jaipur shopping truly special is that you are buying directly from the source. The city is India&apos;s largest hub for gemstone cutting, Blue Pottery production, and block print textiles. Sanganer and Bagru -- both on Jaipur&apos;s outskirts -- are the birthplaces of India&apos;s most famous block printing traditions. The gem cutters of Johari Bazaar handle a significant share of the world&apos;s emerald and colored gemstone trade. This means prices in Jaipur are substantially lower than in Delhi, Mumbai, or export markets.</p>
-              <p>For the best shopping experience, hire a local cab for the day so you can cover multiple bazaars without exhaustion. Our Triveni Cabs drivers know the genuine artisan shops, help you avoid tourist traps, and can carry your purchases safely back to the car between bazaar visits. Whether you are hunting for a statement Kundan necklace, hand-blocked fabric, or a set of colorful juttis, Jaipur delivers an unmatched shopping adventure.</p>
+              <p>For the best shopping experience, hire a local cab for the day so you can cover multiple bazaars without exhaustion. Our Triveni Cabs™ drivers know the genuine artisan shops, help you avoid tourist traps, and can carry your purchases safely back to the car between bazaar visits. Whether you are hunting for a statement Kundan necklace, hand-blocked fabric, or a set of colorful juttis, Jaipur delivers an unmatched shopping adventure.</p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Jaipur" citySlug="jaipur" />
+
+
         {/* FAQ */}
-        <section className="py-20 px-4 bg-stone-50">
+        <section className="py-12 sm:py-20 px-4 bg-stone-50">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-stone-800 mb-12 text-center">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -406,7 +412,7 @@ export default function JaipurShoppingGuidePage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-20 px-4 bg-white">
+        <section className="py-12 sm:py-20 px-4 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-bold text-stone-800 mb-10 text-center">More Jaipur & Rajasthan Guides</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -434,7 +440,7 @@ export default function JaipurShoppingGuidePage() {
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-800 via-violet-700 to-fuchsia-800" style={{ backgroundSize: '400% 400%', animation: 'gradient-shift 10s ease infinite' }} />
           <div className="absolute top-[20%] left-[15%] w-2 h-2 bg-white/30 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite' }} />
           <div className="absolute top-[40%] right-[20%] w-1.5 h-1.5 bg-white/20 rounded-full" style={{ animation: 'sparkle 3s ease-in-out infinite 1s' }} />

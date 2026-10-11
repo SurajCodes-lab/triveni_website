@@ -274,7 +274,7 @@ export default function QuickEnquiryForm({ fromCity = '', toCity = '', pageType 
             <p className="text-red-400 text-xs mt-1 ml-1">{errors.phone}</p>
           )}
           {/* Micro-trust signal at friction point */}
-          <p className="text-white/30 text-[10px] mt-1 ml-1 flex items-center gap-1">
+          <p className="text-slate-300 text-[10px] mt-1 ml-1 flex items-center gap-1">
             <Lock className="w-2.5 h-2.5" />
             We&apos;ll only contact you about this enquiry
           </p>
@@ -382,7 +382,7 @@ export default function QuickEnquiryForm({ fromCity = '', toCity = '', pageType 
         </button>
 
         {/* Micro-trust signal near submit */}
-        <div className="flex items-center justify-center gap-3 text-white/30 text-[10px]">
+        <div className="flex flex-wrap items-center justify-center gap-3 text-slate-300 text-[10px]">
           <span className="flex items-center gap-1">
             <Shield className="w-2.5 h-2.5" />
             No spam

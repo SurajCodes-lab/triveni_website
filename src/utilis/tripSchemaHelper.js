@@ -85,8 +85,7 @@ export function buildTouristTrip({ slug, name, description, touristType, lowPric
       telephone: '+91-7668570551',
       url: BASE,
     },
-    aggregateRating: rr.aggregateRating,
-    review: rr.review,
+
     offers: {
       '@type': 'AggregateOffer',
       lowPrice: String(lowPrice),
@@ -135,8 +134,7 @@ export function buildServiceSchema({ slug, name, description, areaServed = 'Indi
     serviceType: 'Trip Cab Service',
     provider: { '@id': `${BASE}/#organization` },
     areaServed: { '@type': 'Country', name: areaServed },
-    aggregateRating: rr.aggregateRating,
-    review: rr.review,
+
     offers: {
       '@type': 'AggregateOffer',
       lowPrice: String(lowPrice),
@@ -270,8 +268,7 @@ export function buildTripCostService({ slug, data }) {
     serviceType: 'Outstation Trip Cab Service',
     provider: { '@id': `${BASE}/#organization` },
     areaServed: { '@type': 'Country', name: 'India' },
-    aggregateRating: rr.aggregateRating,
-    review: rr.review,
+
   };
   if (lowPerKm) {
     schema.offers = {
@@ -347,8 +344,7 @@ export function buildStaticService({ slug, name, description, lowPrice, highPric
     serviceType,
     provider: { '@id': `${BASE}/#organization` },
     areaServed: { '@type': 'Country', name: 'India' },
-    aggregateRating: rr.aggregateRating,
-    review: rr.review,
+
   };
   if (lowPrice && highPrice) {
     schema.offers = {

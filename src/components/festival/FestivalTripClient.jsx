@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 import Image from 'next/image';
 import {
   Phone, MapPin, Calendar, Check, Star,
@@ -10,10 +10,11 @@ import {
   Navigation, Award, Flame, PartyPopper
 } from '@/components/ui/icons';
 import { WhatsAppIcon as BsWhatsapp } from '@/components/ui/icons';
-import { phoneNumber } from '@/utilis/data';
+import { phoneNumber } from '@/utilis/contact';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
+import { filterClientLinks } from '@/lib/seo/client-route-exists';
 
 /* ─── Ultra-Premium v2 tokens ─────────────────────────────────────────────
    Gold CTA: gold background, BLACK text, compact on desktop.             */
@@ -62,7 +63,7 @@ const FestivalTripClient = ({ festival }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
         <span aria-hidden="true" className={`absolute inset-x-0 top-0 z-20 h-[3px] ${GOLD_LANE}`} />
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-28 sm:px-6 md:pb-16 lg:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-12 pt-16 sm:pt-28 sm:px-6 md:pb-16 lg:px-8">
           {/* Breadcrumb */}
           <nav className="mb-6 flex items-center gap-1.5 text-xs text-white/45" aria-label="Breadcrumb">
             <Link href="/" className="transition-colors hover:text-white/75">Home</Link>
@@ -415,7 +416,7 @@ const FestivalTripClient = ({ festival }) => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="font-display-serif text-balance text-3xl font-black text-slate-900 sm:text-4xl lg:text-5xl">
-              Why choose <span className="text-amber-600">Triveni Cabs</span>?
+              Why choose <span className="text-amber-600">Triveni Cabs™</span>?
             </h2>
           </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
@@ -492,7 +493,16 @@ const FestivalTripClient = ({ festival }) => {
               // an entry can supply an explicit `relatedLinks: [{href,label}]`
               // list instead — that is always preferred and prevents 404s.
               const locSlug = festival.location.toLowerCase().replace(/\s+/g, '-');
-              const links = festival.relatedLinks?.length
+              // Week 48: the guide that explains this trip (dates, where to
+              // stand, when to leave) is linked first from its booking page.
+              const FESTIVAL_GUIDE = {
+                'navratri-vaishno-devi-cab': { href: '/navratri-vaishno-devi-by-road', label: 'Navratri at Vaishno Devi by road: the guide' },
+                'diwali-ayodhya-transport': { href: '/deepotsav-ayodhya-2026-guide', label: 'Deepotsav in Ayodhya: how to reach, where to stand' },
+                'chhath-puja-varanasi-transport': { href: '/chhath-puja-varanasi-ghat-guide', label: 'Chhath on the Varanasi ghats: the guide' },
+                'pushkar-mela-transport': { href: '/pushkar-mela-2026-by-car', label: 'Pushkar Mela 2026 by car: the guide' },
+              };
+              const guideLink = FESTIVAL_GUIDE[festival.slug];
+              const baseLinks = festival.relatedLinks?.length
                 ? festival.relatedLinks
                 : [
                 { href: `/sightseeing/${locSlug}`, label: `${festival.location} Sightseeing Tour` },
@@ -504,7 +514,10 @@ const FestivalTripClient = ({ festival }) => {
                 { href: '/tour-package', label: 'Tour Packages from Delhi' },
                 { href: '/outstation-cabs', label: 'Outstation Cab Service' },
               ];
-              return links.map((link, i) => (
+              // Week 48: whichever list is used, a link is rendered only when its
+              // page exists in the build manifest (client-slugs.json).
+              const links = guideLink ? [guideLink, ...baseLinks] : baseLinks;
+              return filterClientLinks(links).map((link, i) => (
                 <Link key={i} href={link.href} className="group flex items-center gap-3 rounded-xl border border-amber-200/70 bg-white p-4 shadow-sm transition-all duration-300 hover:border-amber-400 hover:shadow-md">
                   <ArrowRight className="h-4 w-4 flex-shrink-0 text-amber-600 transition-transform group-hover:translate-x-1" />
                   <span className="text-sm font-semibold text-slate-700 transition-colors group-hover:text-slate-900">{link.label}</span>

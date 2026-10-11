@@ -8,10 +8,10 @@ export const metadata = {
   title: tightenTitle('Uttarakhand Spiritual Circuit by Car 2026 | Haridwar Rishikesh'),
   description: 'Uttarakhand spiritual tour plan by car: Haridwar, Rishikesh, Devprayag, Chopta, Badrinath circuit. 7-8 day itinerary. Sedan ₹38,000, SUV ₹55,000.',
   keywords: 'uttarakhand spiritual tour plan by car, haridwar rishikesh tour, devprayag chopta badrinath tour, uttarakhand pilgrimage by car, char dham lite tour',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/uttarakhand-spiritual-circuit-tour' },
-  openGraph: { title: 'Uttarakhand Spiritual Circuit Tour 2026 | Haridwar to Badrinath', description: 'Complete spiritual circuit: Haridwar, Rishikesh, Devprayag, Chopta, Badrinath.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/uttarakhand-spiritual-circuit-tour', siteName: 'Triveni Cabs' },
+  openGraph: { title: 'Uttarakhand Spiritual Circuit Tour 2026 | Haridwar to Badrinath', description: 'Complete spiritual circuit: Haridwar, Rishikesh, Devprayag, Chopta, Badrinath.', type: 'website', locale: 'en_IN', url: 'https://www.trivenicabs.in/uttarakhand-spiritual-circuit-tour', siteName: 'Triveni Cabs™' },
   twitter: { card: 'summary_large_image', title: 'Uttarakhand Spiritual Circuit Tour 2026' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
@@ -60,7 +60,7 @@ export default function UttarakhandSpiritualCircuitPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <div className="min-h-screen bg-gradient-to-b from-orange-50 to-amber-50">
-        <section className="relative bg-gradient-to-br from-orange-800 via-amber-700 to-yellow-800 text-white py-20 px-4">
+        <section className="relative bg-gradient-to-br from-orange-800 via-amber-700 to-yellow-800 text-white py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto text-center relative z-10">
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-4 py-2 rounded-full mb-6">
               <Heart className="w-4 h-4" /><span className="text-sm font-medium">8 Days | 5 Sacred Stops | Spiritual Awakening</span>
@@ -78,7 +78,7 @@ export default function UttarakhandSpiritualCircuitPage() {
           </div>
         </section>
 
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Day-by-Day Spiritual Circuit</h2>
             <div className="space-y-6">
@@ -130,7 +130,7 @@ export default function UttarakhandSpiritualCircuitPage() {
           </div>
         </section>
 
-        <section className="py-16 px-4">
+        <section className="py-10 sm:py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -167,7 +167,7 @@ export default function UttarakhandSpiritualCircuitPage() {
           </div>
         </section>
 
-        <section className="py-16 px-4 bg-gradient-to-r from-orange-800 to-amber-800 text-white">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-r from-orange-800 to-amber-800 text-white">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Begin Your Spiritual Journey</h2>
             <p className="text-orange-100 text-lg mb-8">Sedan from ₹38,000 | SUV from ₹55,000 | Experienced mountain drivers</p>

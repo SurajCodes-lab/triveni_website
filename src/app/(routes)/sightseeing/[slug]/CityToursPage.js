@@ -10,7 +10,10 @@
 // ============================================================================
 
 import { useState } from 'react';
-import { getToursByCity } from '@/utilis/sightseeingData';
+// getToursByCity is NOT imported here. This is a client component and that
+// function lives in sightseeingData.js — 1.24 MB — so importing it shipped the
+// entire tour dataset for the whole site to the browser, to list one city's
+// tours. The list is resolved on the server and arrives as a prop.
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -28,7 +31,9 @@ import QuickAnswer from '@/components/seo/QuickAnswer';
 import { SEOBreadcrumb } from '@/components/seo/Breadcrumb';
 import { CrossServiceLinks, NearbyDestinations } from '@/components/seo/RelatedContent';
 import { generateCityFAQs } from '@/lib/seo/faq-generator';
-import { getNearbyDestinations, getRelatedContent } from '@/utilis/linkingHelper';
+// linkingHelper is NOT imported here. It pulls in sightseeingData.js (1.24 MB)
+// and this is a client component, so the whole dataset shipped to the browser.
+// These values are computed on the server and arrive as props.
 import CityToursTable from '@/components/seo/CityToursTable';
 
 /* Emerald lane motif — a quiet road-lane divider, this family's signature. */
@@ -121,10 +126,10 @@ function FaqGrid({ faqs, title, subtitle }) {
   );
 }
 
-export default function CityToursPage({ city }) {
-  const tours = getToursByCity(city);
+export default function CityToursPage({ city, initialTours = [], nearbyDestinations = [], relatedContent = []}) {
+  const tours = initialTours;
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
-  const relatedContent = getRelatedContent(cityName);
+  // relatedContent arrives as a prop (see the note on the import above).
 
   if (!tours || tours.length === 0) {
     return (
@@ -195,7 +200,7 @@ export default function CityToursPage({ city }) {
     ? `, ${dayTours.length ? 'with day tours from' : 'from'} ₹${fromFare.toLocaleString()} for an AC sedan`
     : '';
   const cityQuickAnswer = [
-    `Triveni Cabs runs ${tours.length} ready-to-book ${cityName} sightseeing tour${tours.length === 1 ? '' : 's'}${farePhrase}.`,
+    `Triveni Cabs™ runs ${tours.length} ready-to-book ${cityName} sightseeing tour${tours.length === 1 ? '' : 's'}${farePhrase}.`,
     topSpots.length ? ` The most-visited stops are ${topSpots.join(', ')}.` : '',
     dayTours.length && multiDayCount > 0
       ? ` ${multiDayCount} multi-day package${multiDayCount > 1 ? 's run' : ' runs'} onward from ${cityName} as well.`
@@ -242,7 +247,7 @@ export default function CityToursPage({ city }) {
           <div className="pointer-events-none absolute -top-24 right-0 h-80 w-80 rounded-full bg-emerald-500/15 blur-[130px]" aria-hidden />
           <div className="pointer-events-none absolute bottom-24 -left-16 h-64 w-64 rounded-full bg-teal-400/10 blur-[110px]" aria-hidden />
 
-          <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-10 pt-24 sm:px-6 sm:pb-14 lg:px-8">
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-10 pt-14 sm:pt-24 sm:px-6 sm:pb-14 lg:px-8">
             <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.25em] text-emerald-300 backdrop-blur-md">
               <Sparkles className="h-3.5 w-3.5" />
               Explore {cityName}
@@ -445,7 +450,7 @@ export default function CityToursPage({ city }) {
           <EmeraldHeading
             eyebrow="The Triveni difference"
             title={`Why travellers book ${cityName} with`}
-            foil="Triveni Cabs"
+            foil="Triveni Cabs™"
           />
 
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -507,7 +512,7 @@ export default function CityToursPage({ city }) {
       {/* Nearby Destinations */}
       <NearbyDestinations
         currentCity={cityName}
-        destinations={getNearbyDestinations(city, 6)}
+        destinations={nearbyDestinations}
         title="Explore Nearby Destinations"
       />
 

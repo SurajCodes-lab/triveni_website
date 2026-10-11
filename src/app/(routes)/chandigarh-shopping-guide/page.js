@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Phone, MapPin, Clock, Star, ChevronRight, ShoppingBag, ArrowRight, Tag, IndianRupee } from '@/components/ui/icons';
 import { getArticleSchema, withSpeakableFAQ, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import HowToReachTable from '@/components/seo/HowToReachTable';
 
 export const revalidate = 3600;
 
@@ -9,9 +10,9 @@ export const metadata = {
   title: tightenTitle('Chandigarh Shopping Guide 2026 | Sector 17, Elante Mall, Phulkari'),
   description: 'Complete Chandigarh shopping guide. Sector 17 Plaza, Sector 22 Bazaar, Elante Mall, Sector 19 Fancy Bazaar. Phulkari, Punjabi jutti, paranda. Bargaining tips.',
   keywords: 'chandigarh shopping guide, sector 17 chandigarh, elante mall, sector 22 bazaar, phulkari embroidery, punjabi jutti, what to buy in chandigarh, chandigarh markets',
-  authors: [{ name: 'Triveni Cabs Editorial' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™ Editorial' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/chandigarh-shopping-guide' },
   openGraph: {
@@ -20,7 +21,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/chandigarh-shopping-guide',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Chandigarh/Chandigarh_hero_section.jpg', width: 1200, height: 630, alt: 'Chandigarh Shopping Guide 2026' }],
   },
   twitter: {
@@ -127,7 +128,7 @@ export default function ChandigarhShoppingGuidePage() {
         </section>
 
         {/* MARKETS GRID */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-emerald-700 font-bold text-sm tracking-widest uppercase">Top Markets</span>
@@ -148,7 +149,7 @@ export default function ChandigarhShoppingGuidePage() {
         </section>
 
         {/* WHAT TO BUY */}
-        <section className="py-20 px-4 bg-emerald-50">
+        <section className="py-12 sm:py-20 px-4 bg-emerald-50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-emerald-700 font-bold text-sm tracking-widest uppercase">Souvenirs</span>
@@ -169,7 +170,7 @@ export default function ChandigarhShoppingGuidePage() {
         </section>
 
         {/* BARGAINING TIPS */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-emerald-700 font-bold text-sm tracking-widest uppercase">Pro Tips</span>
@@ -193,8 +194,13 @@ export default function ChandigarhShoppingGuidePage() {
           </div>
         </section>
 
+        {/* Week 49: the table this page had no figures in — distances and fares from the site's own records */}
+
+        <HowToReachTable city="Chandigarh" citySlug="chandigarh" />
+
+
         {/* FAQ */}
-        <section className="faq-section py-20 px-4 bg-emerald-50">
+        <section className="faq-section py-12 sm:py-20 px-4 bg-emerald-50">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">Chandigarh Shopping FAQs</h2>
@@ -214,7 +220,7 @@ export default function ChandigarhShoppingGuidePage() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 px-4 bg-gradient-to-r from-emerald-600 to-teal-600">
+        <section className="py-10 sm:py-16 px-4 bg-gradient-to-r from-emerald-600 to-teal-600">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-3xl md:text-4xl font-black mb-4">Cover All Markets in One Day</h2>
             <p className="text-lg mb-8 opacity-90">Hire a local cab to navigate Sectors 17 → 22 → 19 → 23 → Elante. Skip parking hassle. Carry shopping bags door-to-door.</p>

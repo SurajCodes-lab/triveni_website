@@ -22,7 +22,7 @@ export default function FaqAccordion({ heading = 'Frequently Asked Questions', f
     <section className="faq-section py-12 sm:py-16 px-4 sm:px-6 bg-gray-50">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
-          <p className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-1">FAQ</p>
+          <p className="text-xs font-bold text-amber-800 uppercase tracking-widest mb-1">FAQ</p>
           <h2 className="text-2xl sm:text-3xl font-black text-gray-900">{heading}</h2>
         </div>
 
@@ -36,6 +36,7 @@ export default function FaqAccordion({ heading = 'Frequently Asked Questions', f
                   isOpen ? 'border-amber-300/60 shadow-md' : 'border-gray-200/60 hover:border-gray-300'
                 }`}
               >
+                <h3 className="m-0">
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   aria-expanded={isOpen}
@@ -50,6 +51,7 @@ export default function FaqAccordion({ heading = 'Frequently Asked Questions', f
                     <ChevronDown className={`w-4 h-4 ${isOpen ? 'text-amber-600' : 'text-gray-500'}`} />
                   </div>
                 </button>
+                </h3>
                 <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <div className="px-5 pb-5">
                     <div className="h-px bg-gray-100 mb-4" />

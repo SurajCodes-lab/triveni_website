@@ -1,10 +1,12 @@
 import { notFound } from 'next/navigation';
+import { NOINDEX_ROBOTS, isNoindexPath } from '@/lib/seo/noindex-families.mjs';
 import { getVehicleHireRoute, getAllVehicleHireRoutes, getVehicleSpec } from '@/utilis/vehicleRouteHireData';
 import VehicleHireClient from '@/components/vehicle-hire/VehicleHireClient';
 import AEOHead from '@/components/seo/AEOHead';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
 import { getArticleSchema, getHowToSchema, getSpeakableSchema, getTodayDate } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 const VEHICLE_TYPE = 'innova';
 const VEHICLE_SLUG = 'innova-hire';
 
@@ -27,7 +29,7 @@ export async function generateMetadata({ params }) {
 
   const title = tightenTitle(`${vehicleSpec.name} Hire: ${routeData.origin} to ${routeData.destination} | Rs ${routeData.fare.toLocaleString('en-IN')}`);
   const description = `Hire ${vehicleSpec.name} (${vehicleSpec.type}) from ${routeData.origin} to ${routeData.destination} at Rs ${routeData.fare.toLocaleString('en-IN')}. ${routeData.distanceKm} km, ${routeData.duration}. ${vehicleSpec.seating} seater, AC, experienced driver. Call 7668570551.`;
-  const ogTitle = `${vehicleSpec.name} on Hire: ${routeData.origin} to ${routeData.destination} — Rs ${routeData.fare.toLocaleString('en-IN')} All-Inclusive | Triveni Cabs`;
+  const ogTitle = `${vehicleSpec.name} on Hire: ${routeData.origin} to ${routeData.destination} — Rs ${routeData.fare.toLocaleString('en-IN')} All-Inclusive | Triveni Cabs™`;
 
   return {
     title,
@@ -46,9 +48,9 @@ export async function generateMetadata({ params }) {
       `${vehicleSpec.name.toLowerCase()} outstation ${routeData.origin.toLowerCase()}`,
       `best ${vehicleSpec.type.toLowerCase()} for ${routeData.destination.toLowerCase()} trip`,
     ],
-    authors: [{ name: 'Triveni Cabs' }],
-    creator: 'Triveni Cabs',
-    publisher: 'Triveni Cabs',
+    authors: [{ name: 'Triveni Cabs™' }],
+    creator: 'Triveni Cabs™',
+    publisher: 'Triveni Cabs™',
     metadataBase: new URL('https://www.trivenicabs.in'),
     alternates: { canonical: `/${VEHICLE_SLUG}/${slug}` },
     openGraph: {
@@ -57,7 +59,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       locale: 'en_IN',
       url: `https://www.trivenicabs.in/${VEHICLE_SLUG}/${slug}`,
-      siteName: 'Triveni Cabs',
+      siteName: 'Triveni Cabs™',
       images: [{ url: vehicleSpec.image, width: 1200, height: 630, alt: `${vehicleSpec.name} Hire ${routeData.origin} to ${routeData.destination}` }],
     },
     twitter: {
@@ -68,7 +70,7 @@ export async function generateMetadata({ params }) {
       site: '@trivenicabs',
       images: [vehicleSpec.image],
     },
-    robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+    robots: isNoindexPath(`/${VEHICLE_SLUG}/${slug}`) ? NOINDEX_ROBOTS : { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
   };
 }
 
@@ -101,7 +103,7 @@ export default async function VehicleHirePage({ params }) {
       "telephone": "+91-7668570551",
       "email": "cabstriveni@gmail.com",
       "url": "https://www.trivenicabs.in",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "addressRegion": "UP", "postalCode": "282006", "addressCountry": "IN" }
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "addressRegion": "Uttar Pradesh", "postalCode": "282006", "addressCountry": "IN" }
     },
     "areaServed": [{ "@type": "City", "name": routeData.origin }, { "@type": "City", "name": routeData.destination }],
     "offers": { "@type": "Offer", "price": routeData.fare.toString(), "priceCurrency": "INR", "availability": "https://schema.org/InStock", "url": pageUrl },
@@ -153,13 +155,13 @@ export default async function VehicleHirePage({ params }) {
     headline: `${vehicleSpec.name} on Rent ${routeData.origin} to ${routeData.destination}: Fare, Specs & Booking`,
     description: `Complete guide to hiring a ${vehicleSpec.name} from ${routeData.origin} to ${routeData.destination} — all-inclusive fare Rs ${routeData.fare.toLocaleString('en-IN')}, ${routeData.distanceKm} km, ${routeData.duration}.`,
     image: imageUrl,
-    dateModified: getTodayDate(),
+    dateModified: (getContentUpdatedOn(`/${VEHICLE_SLUG}/${slug}`) || getTodayDate()),
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first']
   });
 
   const howToSchema = getHowToSchema({
     name: `How to Book a ${vehicleSpec.name} for ${routeData.origin} to ${routeData.destination}`,
-    description: `Book a ${vehicleSpec.name} from ${routeData.origin} to ${routeData.destination} with Triveni Cabs in under 2 minutes.`,
+    description: `Book a ${vehicleSpec.name} from ${routeData.origin} to ${routeData.destination} with Triveni Cabs™ in under 2 minutes.`,
     totalTime: 'PT2M',
     estimatedCost: { currency: 'INR', value: routeData.fare },
     steps: routeData.bookingSteps

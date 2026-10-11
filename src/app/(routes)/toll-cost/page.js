@@ -20,13 +20,13 @@ function getItems() {
 
 export async function generateMetadata() {
   const title = tightenTitle("Toll Cost & Toll Plaza Lists for North India Routes");
-  const description = "Plaza-wise toll charges and total toll cost for North India car routes, plus toll-inclusive cab fares. Triveni Cabs — call 7668570551.";
+  const description = "Plaza-wise toll charges and total toll cost for North India car routes, plus toll-inclusive cab fares. Triveni Cabs™ — call 7668570551.";
   return {
     title,
     description,
     alternates: { canonical: `${BASE}/${DIR}` },
     openGraph: {
-      title: `${title} | Triveni Cabs`,
+      title: `${title} | Triveni Cabs™`,
       description,
       url: `${BASE}/${DIR}`,
       type: 'website',

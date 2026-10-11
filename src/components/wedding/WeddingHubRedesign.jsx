@@ -9,7 +9,7 @@ import {
   ArrowRight, Award, Calendar,
   WhatsAppIcon,
 } from '@/components/ui/icons';
-import { phoneNumber } from '@/utilis/data';
+import { phoneNumber } from '@/utilis/contact';
 import { trackPhoneCall, trackWhatsAppClick } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
@@ -29,7 +29,7 @@ const FLEET = [
     unit: '/ day',
     image: '/images/wedding/luxury_car.jpg',
     blurb: 'The signature bride & groom entry car. German luxury, leather interiors, and a presence that turns every head at the venue.',
-    wa: 'Hi Triveni Cabs, I want to book a decorated BMW / Audi wedding car (from Rs 15,000). Please share availability and packages.',
+    wa: 'Hi Triveni Cabs™, I want to book a decorated BMW / Audi wedding car (from Rs 15,000). Please share availability and packages.',
   },
   {
     name: 'Mercedes-Benz',
@@ -39,7 +39,7 @@ const FLEET = [
     unit: '/ day',
     image: '/images/wedding/luxury_car.jpg',
     blurb: 'For the grandest entry. Burmester sound, ambient lighting, and the unmistakable three-pointed star for a truly regal vidai.',
-    wa: 'Hi Triveni Cabs, I want to book a decorated Mercedes wedding car (from Rs 18,000). Please share availability and packages.',
+    wa: 'Hi Triveni Cabs™, I want to book a decorated Mercedes wedding car (from Rs 18,000). Please share availability and packages.',
   },
   {
     name: 'Vintage Classics',
@@ -49,7 +49,7 @@ const FLEET = [
     unit: '/ day',
     image: '/images/wedding/vintage_car.jpg',
     blurb: 'Old-world royalty for unforgettable photographs. Restored classics dressed in marigold & rose for a heritage-theme shaadi.',
-    wa: 'Hi Triveni Cabs, I want to book a decorated vintage wedding car (from Rs 25,000). Please share availability and packages.',
+    wa: 'Hi Triveni Cabs™, I want to book a decorated vintage wedding car (from Rs 25,000). Please share availability and packages.',
   },
   {
     name: 'Premium SUVs',
@@ -59,7 +59,7 @@ const FLEET = [
     unit: '/ day',
     image: '/images/car/innova_crysta.jpg',
     blurb: 'Spacious comfort for parents, VIP guests and hill-station venues. Perfect to complete the wedding convoy in style.',
-    wa: 'Hi Triveni Cabs, I want to book a premium SUV for the wedding (from Rs 8,000). Please share availability and packages.',
+    wa: 'Hi Triveni Cabs™, I want to book a premium SUV for the wedding (from Rs 8,000). Please share availability and packages.',
   },
   {
     name: 'Baraat Tempo Traveller',
@@ -69,7 +69,7 @@ const FLEET = [
     unit: '/ day',
     image: '/images/tempo/26_seater.jpg',
     blurb: 'Make the baraat the talk of the town — DJ sound, LED lights and decorated AC tempos that keep the whole party dancing.',
-    wa: 'Hi Triveni Cabs, I want to book a decorated baraat tempo traveller with DJ (from Rs 8,000). Please share seating options and price.',
+    wa: 'Hi Triveni Cabs™, I want to book a decorated baraat tempo traveller with DJ (from Rs 8,000). Please share seating options and price.',
   },
 ];
 
@@ -185,7 +185,7 @@ export default function WeddingHubRedesign({ faqs = [] }) {
   const [openFaq, setOpenFaq] = useState(0);
 
   const heroWa =
-    "Hi Triveni Cabs, I'd like to book a decorated wedding car for my special day. Please share the fleet, decoration packages and prices.";
+    "Hi Triveni Cabs™, I'd like to book a decorated wedding car for my special day. Please share the fleet, decoration packages and prices.";
 
   return (
     <main className="bg-[#FFF6DC] text-[#3a1220]">
@@ -215,7 +215,7 @@ export default function WeddingHubRedesign({ faqs = [] }) {
         </div>
 
         {/* Content — left aligned over the scrim */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-20">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="inline-flex items-center gap-2 text-xs sm:text-sm text-amber-100/70">
@@ -237,12 +237,12 @@ export default function WeddingHubRedesign({ faqs = [] }) {
             </div>
 
             <h1 className="speakable-headline font-display-serif text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] text-[#FFF9EC]">
-              A Grand Entrance,<br className="hidden sm:block" />{' '}
-              <span className="text-gold-foil">Worthy of Your Forever</span>
+              Wedding Car Rental —<br className="hidden sm:block" />{' '}
+              <span className="text-gold-foil">A Grand Entrance, Worthy of Your Forever</span>
             </h1>
 
             <p className="speakable-lead mt-6 text-base sm:text-lg text-rose-50/90 max-w-xl leading-relaxed">
-              Triveni Cabs rents <strong className="text-amber-200 font-semibold">decorated luxury wedding cars</strong> —
+              Triveni Cabs™ rents <strong className="text-amber-200 font-semibold">decorated luxury wedding cars</strong> —
               BMW, Audi, Mercedes, vintage classics and baraat tempo travellers — with flower decoration,
               uniformed chauffeurs and on-time arrival for your muhurat. Cars from <strong className="text-amber-200">₹15,000</strong>, baraat tempos from <strong className="text-amber-200">₹8,000</strong>.
             </p>
@@ -373,7 +373,7 @@ export default function WeddingHubRedesign({ faqs = [] }) {
                 Mix luxury cars, SUVs &amp; baraat tempos for every function. Multi-car packages save 10–15%.
               </p>
               <a
-                href={waLink('Hi Triveni Cabs, I need multiple wedding cars / a full convoy for different functions. Please share a package quote.')}
+                href={waLink('Hi Triveni Cabs™, I need multiple wedding cars / a full convoy for different functions. Please share a package quote.')}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick('wedding_fleet_convoy', '', 'convoy')}

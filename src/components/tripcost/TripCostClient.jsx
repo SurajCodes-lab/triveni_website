@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 import Image from 'next/image';
 import { Phone, IndianRupee, Car, MapPin, Clock, CheckCircle2, ChevronRight, Star, Shield, Calculator, Banknote, Hotel, Utensils, Ticket, Fuel, HelpCircle, Receipt, TrendingUp, Percent } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
@@ -111,9 +111,7 @@ export default function TripCostClient({ data, media }) {
           }} />
         </div>
         {/* Floating Orbs */}
-        <div className="absolute top-20 left-[10%] w-64 h-64 bg-amber-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-10 right-[15%] w-80 h-80 bg-teal-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-[15%] w-80 h-80 bg-teal-400/15 rounded-full blur-3xl" style={{ animationDelay: '1.5s' }} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-32 relative z-10">
           <div className="flex items-center gap-2 text-amber-400/80 text-sm mb-8">
@@ -134,7 +132,7 @@ export default function TripCostClient({ data, media }) {
                 <span className="text-white/90">Trip Cost Guide</span>
               </h1>
               <p className="speakable-lead text-lg md:text-xl text-amber-200/80 max-w-2xl">
-                A {data.destination} trip from {data.origin} costs from {data.totalBudget?.budget || ''} per person on a budget, covering a {data.distance} cab ride (sedan around {data.cabCost?.sedan?.perKm || ''}/km), hotel, food and sightseeing. This complete 2026 budget breakdown from Triveni Cabs details every cost — cab, hotel, food, monument tickets and tolls — so you can plan accurately.
+                A {data.destination} trip from {data.origin} costs from {data.totalBudget?.budget || ''} per person on a budget, covering a {data.distance} cab ride (sedan around {data.cabCost?.sedan?.perKm || ''}/km), hotel, food and sightseeing. This complete 2026 budget breakdown from Triveni Cabs™ details every cost — cab, hotel, food, monument tickets and tolls — so you can plan accurately.
               </p>
             </div>
           </div>
@@ -193,7 +191,7 @@ export default function TripCostClient({ data, media }) {
       </section>
 
       {/* Budget Tier Cards - Receipt Style */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-20 mb-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-20 mb-12 sm:mb-20">
         <div className="grid md:grid-cols-3 gap-8">
           {[
             { tier: "Budget", range: data.totalBudget.budget, gradient: "from-amber-600 to-yellow-600", bg: "bg-amber-50", border: "border-amber-200", icon: "₹", desc: "Hostels, street food, shared rides", tag: null },
@@ -229,7 +227,7 @@ export default function TripCostClient({ data, media }) {
 
       {/* Destination gallery — only rendered for pages that supply media */}
       {media?.gallery?.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 mb-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 mb-12 sm:mb-20">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 bg-amber-100 rounded-full px-4 py-2 mb-4">
               <MapPin className="w-4 h-4 text-amber-700" />
@@ -262,7 +260,7 @@ export default function TripCostClient({ data, media }) {
       )}
 
       {/* Cab Cost Breakdown - Invoice Style */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 mb-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mb-12 sm:mb-20">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-amber-100 rounded-full px-4 py-2 mb-4">
             <Car className="w-4 h-4 text-amber-700" />
@@ -473,7 +471,7 @@ export default function TripCostClient({ data, media }) {
       </section>
 
       {/* Description / SEO Content */}
-      <section className="bg-gradient-to-b from-amber-50/50 to-white py-20">
+      <section className="bg-gradient-to-b from-amber-50/50 to-white py-12 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-1 h-12 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full" />
@@ -493,8 +491,7 @@ export default function TripCostClient({ data, media }) {
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-amber-700 via-yellow-700 to-yellow-800" />
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-[20%] w-60 h-60 bg-amber-300 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-10 right-[20%] w-72 h-72 bg-orange-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-10 right-[20%] w-72 h-72 bg-orange-300 rounded-full blur-3xl" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
@@ -506,14 +503,14 @@ export default function TripCostClient({ data, media }) {
             Book Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 to-yellow-200">{data.destination}</span> Cab
           </h2>
           <p className="text-amber-200/80 text-lg mb-10 max-w-xl mx-auto">
-            Triveni Cabs — AC sedan at {data.cabCost.sedan.perKm}/km. Experienced drivers, no hidden charges, 24/7 support.
+            Triveni Cabs™ — AC sedan at {data.cabCost.sedan.perKm}/km. Experienced drivers, no hidden charges, 24/7 support.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <a
               onClick={() => trackPhoneCall('trip_cost')} href="tel:+917668570551"
               className="group flex items-center gap-3 bg-white text-amber-800 font-black px-8 py-4 rounded-2xl hover:shadow-2xl hover:shadow-amber-300/30 hover:scale-105 transition-all duration-300 text-lg"
             >
-              <Phone className="w-5 h-5 group-hover:animate-pulse" />
+              <Phone className="w-5 h-5 group-hover:" />
               Call 7668570551
             </a>
             <a
@@ -535,7 +532,7 @@ export default function TripCostClient({ data, media }) {
       </section>
 
       {/* Cross-Service Links */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 bg-amber-100 rounded-full px-4 py-2 mb-4">
             <Car className="w-4 h-4 text-amber-700" />

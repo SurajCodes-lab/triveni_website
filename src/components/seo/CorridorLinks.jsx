@@ -67,10 +67,10 @@ export default function CorridorLinks({ links = [], fromLabel = '', toLabel = ''
                 <Icon className="w-4 h-4" />
               </span>
               <span className="min-w-0 flex-1">
-                <span className={`block text-sm font-semibold truncate ${dark ? 'text-white' : 'text-slate-900'}`}>
+                <span className={`block text-sm font-semibold leading-snug ${dark ? 'text-white' : 'text-slate-900'}`}>
                   {l.label}
                 </span>
-                <span className={`block text-xs truncate ${dark ? 'text-slate-400' : 'text-slate-500'}`}>
+                <span className={`block break-words text-xs leading-snug ${dark ? 'text-slate-300' : 'text-slate-600'}`}>
                   {l.sub}
                 </span>
               </span>

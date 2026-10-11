@@ -57,8 +57,8 @@ export default function ChardhamVehicleTable({ vehicles, highlightType, classNam
           route; tolls, parking, stays and the Kedarnath trek or helicopter are extra.
         </p>
 
-        <div className="-mx-2 overflow-x-auto px-2">
-          <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+        <div className="-mx-2 sm:overflow-x-auto px-2">
+          <table className="w-full sm:min-w-[640px] border-collapse text-left text-sm rt-stack">
             <caption className="sr-only">
               Char Dham Yatra vehicles compared by seating capacity, luggage allowance,
               per-kilometre rate, indicative cost for the full 1,700 km circuit, and the

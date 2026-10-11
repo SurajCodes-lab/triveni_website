@@ -5,15 +5,18 @@ import { getServicePages, getWeddingPages } from '@/utilis/linkingHelper';
 import { getArticleSchema, withSpeakableFAQ } from '@/lib/seo/speakable-helpers';
 import { buildStaticService, buildPlaceSchemas, getHowToSchema, getComparisonSchema } from '@/utilis/tripSchemaHelper';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+// servedHref: two destination slugs here are redirect sources, so the ItemList
+// markup was publishing a URL that 301s instead of the page actually served.
+import { servedHref } from '@/lib/seo/route-exists';
 
 const SLUG = 'weekend-getaways-from-chandigarh-by-car';
 export const revalidate = 3600;
 
 export const metadata = {
   title: tightenTitle('Top 18 Weekend Getaways from Chandigarh by Car 2026'),
-  description: 'Best weekend trips from Chandigarh by car in 2026. Shimla, Kasauli, Manali, Dharamshala & more. Distance, drive time, costs. AC cab from ₹9/km. Call 7668570551.',
+  description: 'Best weekend trips from Chandigarh by car in 2026. Shimla, Kasauli, Manali, Dharamshala & more. Distance, drive time, costs. AC cab from ₹11/km. Call 7668570551.',
   keywords: 'weekend trips from chandigarh by car, weekend getaways from chandigarh, short trips from chandigarh, road trips from chandigarh, places near chandigarh by car',
-  authors: [{ name: 'Triveni Cabs' }],
+  authors: [{ name: 'Triveni Cabs™' }],
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/weekend-getaways-from-chandigarh-by-car' },
   openGraph: {
@@ -21,7 +24,7 @@ export const metadata = {
     description: 'Plan the perfect weekend escape from Chandigarh into the Himalayas. 18 destinations with distance, costs & tips.',
     type: 'website', locale: 'en_IN',
     url: 'https://www.trivenicabs.in/weekend-getaways-from-chandigarh-by-car',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: { card: 'summary_large_image', title: 'Top 18 Weekend Getaways from Chandigarh by Car 2026' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
@@ -51,7 +54,7 @@ const destinations = [
 const faqData = [
   { question: 'Which is the nearest hill station from Chandigarh?', answer: 'Kasauli is the nearest at just 60 km (1.5 hours). Parwanoo (35 km, 1 hour) is even closer if you want a quick escape with the Timber Trail cable car experience.' },
   { question: 'What is the best weekend trip from Chandigarh for families?', answer: 'Shimla (115 km, 3 hrs) is perfect for families with its Mall Road, Jakhoo Temple, and toy train. Chail (105 km) offers a quieter alternative with the cricket ground and nature walks.' },
-  { question: 'Can I hire a cab from Chandigarh for a weekend trip?', answer: 'Yes! Triveni Cabs provides AC cabs from Chandigarh starting ₹9/km (sedan) and ₹12/km (SUV). All-inclusive pricing. Call 7668570551 or WhatsApp to book.' },
+  { question: 'Can I hire a cab from Chandigarh for a weekend trip?', answer: 'Yes! Triveni Cabs™ provides AC cabs from Chandigarh starting ₹11/km (sedan) and ₹11/km (SUV). All-inclusive pricing. Call 7668570551 or WhatsApp to book.' },
   { question: 'Which Chandigarh weekend trip is best for adventure?', answer: 'Bir Billing (270 km) for paragliding, Kasol (300 km) for trekking, and Rishikesh (220 km) for river rafting. All are reachable within 5-7 hours by car.' },
   { question: 'Is it better to take a car or bus for Chandigarh to Shimla?', answer: 'A private car is recommended — it takes 3 hours vs 4-5 by bus, you get door-to-door service, can stop at viewpoints like Barog and Solan, and return at your own pace.' },
   { question: 'What type of vehicle is best for mountain trips from Chandigarh?', answer: 'SUV (Innova Crysta/Ertiga) is recommended for mountain roads beyond Shimla. For trips to Kasauli, Shimla, or Parwanoo, a sedan works fine. Larger groups can opt for our Tempo Traveller.' },
@@ -120,7 +123,7 @@ export default function WeekendGetawaysFromChandigarhPage() {
     "@context": "https://schema.org", "@type": "ItemList",
     "name": "Top 18 Weekend Getaways from Chandigarh by Car",
     "numberOfItems": 18,
-    "itemListElement": destinations.map((dest, i) => ({ "@type": "ListItem", "position": i + 1, "name": dest.name, "url": `https://www.trivenicabs.in${dest.slug}` }))
+    "itemListElement": destinations.map((dest, i) => ({ "@type": "ListItem", "position": i + 1, "name": dest.name, "url": `https://www.trivenicabs.in${servedHref(dest.slug) || dest.slug}` }))
   };
 
   const nearDestinations = destinations.filter(d => parseFloat(d.duration) <= 3);
@@ -163,11 +166,11 @@ export default function WeekendGetawaysFromChandigarhPage() {
           <div className="absolute bottom-20 right-10 w-80 h-80 bg-sky-400/15 rounded-full blur-[120px]" />
           <div className="absolute top-1/2 right-1/3 w-60 h-60 bg-teal-400/10 rounded-full blur-[100px]" />
 
-          <div className="max-w-7xl mx-auto px-4 relative z-10 py-20">
+          <div className="max-w-7xl mx-auto px-4 relative z-10 py-12 sm:py-20">
             <div className="grid lg:grid-cols-5 gap-12 items-center">
               <div className="lg:col-span-3">
                 <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-400/20 backdrop-blur-sm px-5 py-2.5 rounded-full mb-8">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full" />
                   <span className="text-cyan-300 text-sm font-medium tracking-wide uppercase">Gateway to the Himalayas</span>
                 </div>
                 <h1 className="speakable-headline text-5xl md:text-7xl font-black mb-6 leading-[0.9]">
@@ -178,7 +181,7 @@ export default function WeekendGetawaysFromChandigarhPage() {
                   <span className="text-slate-500 text-3xl md:text-4xl font-light">from The City Beautiful</span>
                 </h1>
                 <p className="speakable-lead text-slate-400 text-lg mb-10 max-w-xl leading-relaxed">
-                  The best weekend getaways from Chandigarh by car include Kasauli, Shimla, Manali, Dharamshala, Dalhousie and Khajjiar. Triveni Cabs runs all-inclusive AC cabs covering fuel, tolls and driver allowance — 18 hill, adventure and spiritual escapes from 30 minutes to 12 hours away.
+                  The best weekend getaways from Chandigarh by car include Kasauli, Shimla, Manali, Dharamshala, Dalhousie and Khajjiar. Triveni Cabs™ runs all-inclusive AC cabs covering fuel, tolls and driver allowance — 18 hill, adventure and spiritual escapes from 30 minutes to 12 hours away.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <a href="tel:7668570551" className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-400 hover:to-sky-400 text-black font-bold px-8 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-cyan-500/25">
@@ -212,11 +215,11 @@ export default function WeekendGetawaysFromChandigarhPage() {
         </section>
 
         {/* Destinations - Split into Near & Far with different card styles */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 to-slate-900" />
           <div className="max-w-7xl mx-auto relative z-10">
             {/* Near destinations - horizontal scrolling-style cards */}
-            <div className="mb-20">
+            <div className="mb-12 sm:mb-20">
               <div className="flex items-end justify-between mb-10">
                 <div>
                   <span className="text-cyan-400 text-sm font-medium tracking-widest uppercase">Quick Escapes</span>
@@ -266,7 +269,6 @@ export default function WeekendGetawaysFromChandigarhPage() {
               <div className="grid md:grid-cols-2 gap-5">
                 {farDestinations.map((dest, index) => (
                   <div key={index} className="group relative bg-gradient-to-br from-sky-900/20 to-slate-900/40 backdrop-blur-sm border border-sky-700/15 rounded-3xl p-7 hover:border-sky-400/30 transition-all duration-500 hover:shadow-lg hover:shadow-sky-500/5">
-                    <div className="absolute top-5 right-5 w-16 h-16 bg-sky-500/5 rounded-full blur-xl group-hover:bg-sky-500/10 transition-all" />
                     <div className="flex items-start justify-between mb-4 relative z-10">
                       <div>
                         <h3 className="text-xl font-bold text-white group-hover:text-sky-200 transition-colors">{dest.name}</h3>
@@ -312,7 +314,7 @@ export default function WeekendGetawaysFromChandigarhPage() {
         </section>
 
         {/* Travel Tips - Glass Panels */}
-        <section className="py-20 px-4 relative overflow-hidden">
+        <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-slate-950" />
           <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-500/8 rounded-full blur-[120px]" />
           <div className="max-w-4xl mx-auto relative z-10">
@@ -340,7 +342,7 @@ export default function WeekendGetawaysFromChandigarhPage() {
         </section>
 
         {/* Interlinks */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-slate-900" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-10 text-white">More Road Trip Ideas</h2>
@@ -369,7 +371,7 @@ export default function WeekendGetawaysFromChandigarhPage() {
         </section>
 
         {/* Related Guides */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-slate-950" />
           <div className="max-w-6xl mx-auto relative z-10">
             <h2 className="text-2xl font-bold text-center mb-3 text-white">Travel Guides & Resources</h2>
@@ -391,7 +393,7 @@ export default function WeekendGetawaysFromChandigarhPage() {
         </section>
 
         {/* Dynamic: Cab Services & Wedding */}
-        <section className="py-16 px-4 relative">
+        <section className="py-10 sm:py-16 px-4 relative">
           <div className="absolute inset-0 bg-slate-900" />
           <div className="max-w-6xl mx-auto relative z-10 space-y-14">
             <div>
@@ -420,7 +422,7 @@ export default function WeekendGetawaysFromChandigarhPage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 px-4 relative">
+        <section className="py-12 sm:py-20 px-4 relative">
           <div className="absolute inset-0 bg-slate-950" />
           <div className="max-w-3xl mx-auto relative z-10">
             <div className="text-center mb-14">
@@ -444,7 +446,7 @@ export default function WeekendGetawaysFromChandigarhPage() {
         </section>
 
         {/* CTA - Northern Lights Style */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-cyan-900 via-sky-900 to-slate-950" />
           <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-cyan-400/10 via-sky-500/5 to-transparent" />
           <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-cyan-500/15 rounded-full blur-[130px]" />
@@ -453,7 +455,7 @@ export default function WeekendGetawaysFromChandigarhPage() {
             <h2 className="text-4xl md:text-5xl font-black mb-5">
               <span className="text-transparent bg-gradient-to-r from-cyan-200 via-sky-100 to-teal-200 bg-clip-text">Into the Mountains</span>
             </h2>
-            <p className="text-cyan-100/50 text-lg mb-10 max-w-xl mx-auto">AC cabs with experienced mountain drivers from Chandigarh. Starting ₹9/km.</p>
+            <p className="text-cyan-100/50 text-lg mb-10 max-w-xl mx-auto">AC cabs with experienced mountain drivers from Chandigarh. Starting ₹11/km.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="tel:7668570551" className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/15 backdrop-blur-sm border border-white/20 text-white font-bold px-10 py-4 rounded-2xl transition-all duration-300 shadow-xl">
                 <Phone className="w-5 h-5" /> Call 7668570551

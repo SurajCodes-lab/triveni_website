@@ -31,7 +31,7 @@ export default function Page() {
       slug="maharaja-tempo-traveller-price"
       vehicleName="Maharaja Tempo Traveller"
       h1="Maharaja Tempo Traveller Price — Luxury Seater Fare Breakdown"
-      intro="The Maharaja tempo traveller is the premium configuration of the classic tempo — wide captain seats (1x1 or 2x1), extra legroom, powerful AC and a smoother ride for long outstation journeys. Triveni Cabs offers it in 9, 12 and 17-seater layouts at an upfront per-km fare that already includes fuel, the driver and AC. The comfortable choice for long pilgrimage and family tours."
+      intro="The Maharaja tempo traveller is the premium configuration of the classic tempo — wide captain seats (1x1 or 2x1), extra legroom, powerful AC and a smoother ride for long outstation journeys. Triveni Cabs™ offers it in 9, 12 and 17-seater layouts at an upfront per-km fare that already includes fuel, the driver and AC. The comfortable choice for long pilgrimage and family tours."
       category="Tempo Traveller"
       seating="9–17"
       fareRows={[

@@ -8,9 +8,9 @@ export const metadata = {
   title: tightenTitle('Moonlight Taj Mahal Tour | Full Moon Night Visit | 2026'),
   description: 'Moonlight Taj Mahal tour on full moon nights. ASI night viewing schedule, ticket booking guide. 5 nights monthly. Combine with Mehtab Bagh. Call 7668570551.',
   keywords: 'moonlight taj mahal tour, taj mahal night visit, full moon taj mahal, taj mahal moonlight viewing, night tour taj mahal',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/moonlight-taj-mahal-tour' },
   openGraph: {
@@ -19,7 +19,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/moonlight-taj-mahal-tour',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/sightseeing/Agra/Taj_mahal.jpg', width: 1200, height: 630, alt: 'Moonlight Taj Mahal Tour' }],
   },
   twitter: {
@@ -53,7 +53,7 @@ export default function MoonlightTajMahalTourPage() {
       "@type": "LocalBusiness",
       "name": "Triveni Cabs",
       "telephone": "+91-7668570551",
-      "address": { "@type": "PostalAddress", "streetAddress": "366 Dandupura near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
+      "address": { "@type": "PostalAddress", "streetAddress": "366, Dandupura, near Tajganj", "addressLocality": "Agra", "postalCode": "282006", "addressCountry": "IN" },
     },
     "offers": { "@type": "AggregateOffer", "lowPrice": "4500", "highPrice": "6500", "priceCurrency": "INR" },
   };
@@ -128,7 +128,6 @@ export default function MoonlightTajMahalTourPage() {
           ))}
 
           {/* Moon Glow */}
-          <div className="absolute top-[10%] right-[15%] w-24 h-24 bg-blue-100 rounded-full opacity-20 blur-sm" />
           <div className="absolute top-[10%] right-[15%] w-20 h-20 bg-blue-50 rounded-full opacity-40" />
           <div className="absolute top-[8%] right-[14%] w-[250px] h-[250px] bg-blue-200/5 rounded-full blur-[80px]" />
 
@@ -187,7 +186,7 @@ export default function MoonlightTajMahalTourPage() {
         </section>
 
         {/* === NIGHT SCHEDULE: Batch Timetable === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-block bg-indigo-500/10 text-indigo-300 text-xs font-bold px-4 py-1.5 rounded-full mb-4 border border-indigo-500/20 tracking-wider uppercase">Night Viewing Schedule</div>
@@ -215,7 +214,7 @@ export default function MoonlightTajMahalTourPage() {
         </section>
 
         {/* === OVERVIEW === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-slate-950 to-indigo-950/50">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-slate-950 to-indigo-950/50">
           <div className="max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-3 gap-10">
               <div className="lg:col-span-2">
@@ -265,7 +264,7 @@ export default function MoonlightTajMahalTourPage() {
         </section>
 
         {/* === TICKET INFO: Two Cards === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-4xl md:text-5xl font-bold text-white">
@@ -301,7 +300,7 @@ export default function MoonlightTajMahalTourPage() {
         </section>
 
         {/* === MEHTAB BAGH ALTERNATIVE === */}
-        <section className="py-20 px-4 bg-gradient-to-b from-indigo-950/50 to-slate-950">
+        <section className="py-12 sm:py-20 px-4 bg-gradient-to-b from-indigo-950/50 to-slate-950">
           <div className="max-w-5xl mx-auto">
             <div className="bg-gradient-to-r from-indigo-900/50 via-blue-900/30 to-purple-900/50 rounded-3xl p-8 md:p-12 border border-indigo-500/10">
               <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -343,7 +342,7 @@ export default function MoonlightTajMahalTourPage() {
         </section>
 
         {/* === FAQs === */}
-        <section className="py-20 px-4">
+        <section className="py-12 sm:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-4xl md:text-5xl font-bold text-white">
@@ -370,7 +369,7 @@ export default function MoonlightTajMahalTourPage() {
         </section>
 
         {/* === INTERLINKS === */}
-        <section className="py-16 px-4 bg-slate-900/50 border-t border-slate-800">
+        <section className="py-10 sm:py-16 px-4 bg-slate-900/50 border-t border-slate-800">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-white text-center mb-10">
               More <span className="text-transparent bg-gradient-to-r from-blue-300 to-indigo-300 bg-clip-text">Agra Experiences</span>
@@ -400,7 +399,7 @@ export default function MoonlightTajMahalTourPage() {
         </section>
 
         {/* === CTA === */}
-        <section className="relative py-24 px-4 overflow-hidden">
+        <section className="relative py-14 sm:py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-indigo-950 to-slate-950" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px]" />
 

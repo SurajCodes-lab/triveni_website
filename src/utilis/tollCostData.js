@@ -2,25 +2,31 @@
 // Realistic toll plaza data for major North India routes (2026 rates)
 // Pricing: Sedan ₹11/km, SUV ₹15/km (min 300km billing)
 
+// Week 49 (Workstream G): the toll guide's cab fare comes from the rate card
+// itself (pricing.js), which applies the local package to short runs; the
+// old copy here billed 300 km × ₹11 on every route, so Delhi–Meerut (70 km)
+// and Delhi–Noida (25 km) printed ₹3,300 where every other page prints the
+// local-package fare. The two figures now agree.
+import { fareFor } from './pricing';
+import { groupDigits } from '@/utilis/pricing';
 function calcCabFare(distanceKm) {
-  const billableKm = Math.max(distanceKm, 300);
-  return billableKm * 11;
+  return fareFor(distanceKm, 'sedan').amount;
 }
 
 function generateTollFaqs(origin, dest, totalTollCar, totalTollSuv, totalDistance, plazaCount, fastagInfo) {
   const sedanFare = calcCabFare(totalDistance);
   const roundTripToll = totalTollCar * 2;
   return [
-    { question: `What is the total toll cost from ${origin} to ${dest} by car?`, answer: `The total toll cost from ${origin} to ${dest} is approximately ₹${totalTollCar} for a car/sedan and ₹${totalTollSuv} for an SUV (one-way). There are ${plazaCount} toll plaza(s) on this ${totalDistance} km route. FASTag users get a small discount at all plazas.` },
+    { question: `What is the total toll cost from ${origin} to ${dest} by car?`, answer: `The total toll cost from ${origin} to ${dest} is approximately ₹${groupDigits(totalTollCar)} for a car/sedan and ₹${groupDigits(totalTollSuv)} for an SUV (one-way). There are ${plazaCount} toll plaza(s) on this ${totalDistance} km route. FASTag users get a small discount at all plazas.` },
     { question: `How many toll plazas are there on the ${origin} to ${dest} route?`, answer: `There are ${plazaCount} toll plaza(s) on the ${origin} to ${dest} route covering ${totalDistance} km. All toll plazas accept FASTag for contactless payment, reducing wait time significantly.` },
     { question: `Does FASTag work on the ${origin} to ${dest} route?`, answer: `Yes, all ${plazaCount} toll plazas on the ${origin} to ${dest} route accept FASTag. ${fastagInfo} FASTag lanes are faster and avoid cash queues.` },
-    { question: `How much is the toll for a sedan from ${origin} to ${dest}?`, answer: `A sedan (Swift Dzire, Etios, or similar private car) pays approximately ₹${totalTollCar} in total toll across ${plazaCount} plaza(s) on the ${origin} to ${dest} route. This is the single-journey car rate; the return leg costs the same.` },
-    { question: `How much is the toll for an SUV from ${origin} to ${dest}?`, answer: `An SUV/MUV (Innova, Ertiga, Fortuner, or similar) pays approximately ₹${totalTollSuv} in total toll on the ${origin} to ${dest} route. SUV rates are typically 60-65% higher than car rates because of the heavier vehicle category.` },
-    { question: `Are toll charges included in Triveni Cabs fare from ${origin} to ${dest}?`, answer: `Toll charges are extra and paid at actual during the journey. The cab fare from ${origin} to ${dest} starts at ₹${sedanFare.toLocaleString('en-IN')} (sedan). Toll of approximately ₹${totalTollCar} is paid separately. Our driver handles all toll payments at the plazas.` },
+    { question: `How much is the toll for a sedan from ${origin} to ${dest}?`, answer: `A sedan (Swift Dzire, Etios, or similar private car) pays approximately ₹${groupDigits(totalTollCar)} in total toll across ${plazaCount} plaza(s) on the ${origin} to ${dest} route. This is the single-journey car rate; the return leg costs the same.` },
+    { question: `How much is the toll for an SUV from ${origin} to ${dest}?`, answer: `An SUV/MUV (Innova, Ertiga, Fortuner, or similar) pays approximately ₹${groupDigits(totalTollSuv)} in total toll on the ${origin} to ${dest} route. SUV rates are typically 60-65% higher than car rates because of the heavier vehicle category.` },
+    { question: `Are toll charges included in Triveni Cabs™ fare from ${origin} to ${dest}?`, answer: `Toll charges are extra and paid at actual during the journey. The cab fare from ${origin} to ${dest} starts at ₹${sedanFare.toLocaleString('en-IN')} (sedan). Toll of approximately ₹${groupDigits(totalTollCar)} is paid separately. Our driver handles all toll payments at the plazas.` },
     { question: `How do I pay tolls on the ${origin} to ${dest} highway?`, answer: `The easiest way is FASTag — a prepaid RFID sticker on your windshield that is auto-debited at every plaza without stopping. Cash lanes also exist at most plazas but have longer queues. When you book a Triveni Cab, the driver's vehicle is FASTag-equipped and handles all payments for you.` },
-    { question: `What is the toll for a return trip from ${origin} to ${dest}?`, answer: `A round-trip ${origin}–${dest}–${origin} journey costs approximately ₹${roundTripToll} in car toll (₹${totalTollCar} each way) because the same plazas are crossed in both directions. Budget the same SUV doubling for ₹${totalTollSuv * 2} round-trip.` },
+    { question: `What is the toll for a return trip from ${origin} to ${dest}?`, answer: `A round-trip ${origin}–${dest}–${origin} journey costs approximately ₹${groupDigits(roundTripToll)} in car toll (₹${groupDigits(totalTollCar)} each way) because the same plazas are crossed in both directions. Budget the same SUV doubling for ₹${groupDigits(totalTollSuv * 2)} round-trip.` },
     { question: `Is there a night-time discount on tolls between ${origin} and ${dest}?`, answer: `National highway toll rates are the same 24 hours a day — there is no separate night discount on the ${origin} to ${dest} route. However, monthly-pass and local-vehicle concessions exist at some plazas for nearby residents, which do not apply to outstation cabs.` },
-    { question: `What is the total trip cost from ${origin} to ${dest} including toll?`, answer: `The total trip cost from ${origin} to ${dest} includes cab fare (from ₹${sedanFare.toLocaleString('en-IN')} for sedan) + toll charges (₹${totalTollCar} approx.) + fuel if self-driving. When booking with Triveni Cabs, you only pay cab fare + actual toll. No hidden charges.` },
+    { question: `What is the total trip cost from ${origin} to ${dest} including toll?`, answer: `The total trip cost from ${origin} to ${dest} includes cab fare (from ₹${sedanFare.toLocaleString('en-IN')} for sedan) + toll charges (₹${groupDigits(totalTollCar)} approx.) + fuel if self-driving. When booking with Triveni Cabs™, you only pay cab fare + actual toll. No hidden charges.` },
     { question: `Is there a cheaper toll-free route from ${origin} to ${dest}?`, answer: `Alternate state-road routes may bypass some tolls, but they usually add 30-60+ minutes to travel time and pass through congested towns with poorer road quality. The main highway toll route is recommended for comfort, safety, and faster travel. Our drivers always take the best route.` },
     { question: `Can I avoid toll plazas on the ${origin} to ${dest} route?`, answer: `While alternate routes may bypass some tolls, they usually add 30-60+ minutes to travel time and pass through congested areas. The toll route via the main highway is recommended for comfort, safety, and faster travel. Our drivers always take the best route.` },
   ];
@@ -29,16 +35,35 @@ function generateTollFaqs(origin, dest, totalTollCar, totalTollSuv, totalDistanc
 // `leadFaqs` are placed BEFORE the generated set: faqs[0] is what the client
 // renders as the speakable quick-answer card, so a route whose search demand is
 // phrased differently from the generic template can front-load that phrasing.
-function createTollRoute({ slug, origin, destination, totalDistance, tollPlazas, fastagInfo, tips, estimatedFuel, relatedRoutes, leadFaqs }) {
+// `corridorRoad` (Week 48 C3): the named expressway the corridor runs on, when
+// the whole journey is that road. The metadata leads with it, because the two
+// toll pages that lag the family are expressway corridors whose titles never
+// said so. Left null where the plazas are on ordinary national highway.
+function createTollRoute({ slug, origin, destination, totalDistance, tollPlazas, fastagInfo, tips, estimatedFuel, relatedRoutes, leadFaqs, corridorRoad }) {
   const totalTollCar = tollPlazas.reduce((sum, t) => sum + t.carCost, 0);
   const totalTollSuv = tollPlazas.reduce((sum, t) => sum + t.suvCost, 0);
   const cabFare = calcCabFare(totalDistance);
+  const reviewedPlanningRoute = ['delhi-to-dehradun', 'delhi-to-haridwar'].includes(slug);
+  const generatedFaqs = generateTollFaqs(origin, destination, totalTollCar, totalTollSuv, totalDistance, tollPlazas.length, fastagInfo);
+  // Keep every FAQ, but distinguish an estimate from a notified vehicle tariff.
+  // A cab marketed as an SUV is not automatically an NHAI LCV toll category.
+  if (reviewedPlanningRoute) {
+    generatedFaqs[0].answer = `The listed plazas total approximately ₹${groupDigits(totalTollCar)} in the car planning estimate for ${origin} to ${destination}. This is not a live tariff: check the actual road, current plaza rates and the vehicle's notified toll class before travel.`;
+    generatedFaqs[3].answer = `The car/sedan planning estimate for the listed ${origin} to ${destination} route is approximately ₹${groupDigits(totalTollCar)} one way. Verify the actual route and current plaza schedule. Return-journey conditions must be checked separately.`;
+    generatedFaqs[4].answer = `Check the toll class in each plaza's official schedule for the actual vehicle. An SUV or MUV cab label does not automatically mean a higher toll class. The SUV column here is a planning estimate, not confirmation of a separate official SUV tariff.`;
+    generatedFaqs[7].answer = `Allowing twice the car planning estimate gives ₹${groupDigits(totalTollCar * 2)} for budgeting both directions, but this is not a confirmed return tariff. Check the actual route, the plaza's return-journey conditions and travel timing before relying on a concession.`;
+  }
 
   return {
     slug,
     origin,
     destination,
     totalDistance,
+    corridorRoad: corridorRoad || null,
+    // Surfaced so the short-answer block can carry the same distinction the
+    // FAQs already make for these two corridors: a planning estimate built
+    // from the listed plazas, not a notified tariff.
+    planningEstimateOnly: reviewedPlanningRoute,
     tollPlazas,
     totalTollCost: { car: totalTollCar, suv: totalTollSuv },
     fastagInfo,
@@ -47,7 +72,7 @@ function createTollRoute({ slug, origin, destination, totalDistance, tollPlazas,
     cabFare,
     faqs: [
       ...(leadFaqs || []),
-      ...generateTollFaqs(origin, destination, totalTollCar, totalTollSuv, totalDistance, tollPlazas.length, fastagInfo),
+      ...generatedFaqs,
     ],
     relatedRoutes: relatedRoutes || [],
   };
@@ -59,7 +84,7 @@ export const tollCostRoutes = {
   // 1. DELHI TO AGRA
   // ═══════════════════════════════════════════
   "delhi-to-agra": createTollRoute({
-    slug: "delhi-to-agra", origin: "Delhi", destination: "Agra", totalDistance: 230,
+    slug: "delhi-to-agra", origin: "Delhi", destination: "Agra", totalDistance: 230, corridorRoad: "Yamuna Expressway",
     tollPlazas: [
       { name: "Jewar Toll Plaza", location: 60, carCost: 155, suvCost: 250, commercialCost: 535, acceptsFASTag: true },
       { name: "Mathura Toll Plaza", location: 160, carCost: 130, suvCost: 210, commercialCost: 450, acceptsFASTag: true },
@@ -128,7 +153,7 @@ export const tollCostRoutes = {
     tips: [
       "Leave Delhi by 2 PM to reach Haridwar in time for the famous Ganga Aarti at Har Ki Pauri (6-7 PM).",
       "The Delhi-Meerut Expressway toll is automated — FASTag is mandatory; no cash lanes available.",
-      "Budget ₹560 round-trip toll for car. Uttarakhand does not charge separate state entry tax for cars.",
+      "₹560 is twice this guide's car estimate for budgeting a return. Confirm current tolls, return concessions and any applicable permit or entry charges for the actual vehicle.",
     ],
     estimatedFuel: { petrol: 1380, diesel: 1035 },
     relatedRoutes: ["delhi-to-rishikesh", "delhi-to-dehradun", "delhi-to-mussoorie"],
@@ -179,7 +204,7 @@ export const tollCostRoutes = {
   // 7. DELHI TO LUCKNOW
   // ═══════════════════════════════════════════
   "delhi-to-lucknow": createTollRoute({
-    slug: "delhi-to-lucknow", origin: "Delhi", destination: "Lucknow", totalDistance: 550,
+    slug: "delhi-to-lucknow", origin: "Delhi", destination: "Lucknow", totalDistance: 550, corridorRoad: "Agra–Lucknow Expressway",
     tollPlazas: [
       { name: "Jewar Toll Plaza (Yamuna Exp)", location: 60, carCost: 155, suvCost: 250, commercialCost: 535, acceptsFASTag: true },
       { name: "Mathura Toll Plaza (Yamuna Exp)", location: 160, carCost: 130, suvCost: 210, commercialCost: 450, acceptsFASTag: true },
@@ -222,23 +247,23 @@ export const tollCostRoutes = {
   // 9. DELHI TO DEHRADUN
   // ═══════════════════════════════════════════
   "delhi-to-dehradun": createTollRoute({
-    slug: "delhi-to-dehradun", origin: "Delhi", destination: "Dehradun", totalDistance: 255,
+    slug: "delhi-to-dehradun", origin: "Delhi", destination: "Dehradun", totalDistance: 255, corridorRoad: "Delhi–Meerut Expressway",
     tollPlazas: [
       { name: "Delhi-Meerut Expressway Toll", location: 35, carCost: 120, suvCost: 195, commercialCost: 415, acceptsFASTag: true },
       { name: "Muzaffarnagar Toll Plaza", location: 130, carCost: 95, suvCost: 155, commercialCost: 325, acceptsFASTag: true },
     ],
     fastagInfo: "The Delhi–Dehradun expressway run starts on the Delhi-Meerut Expressway, which is FASTag-only (no cash lanes). The Muzaffarnagar plaza further along accepts both FASTag and cash.",
     tips: [
-      "Delhi–Dehradun Expressway toll totals just ₹215 for a car across 2 plazas — one of the most affordable toll routes from Delhi.",
+      "The two plazas listed in this guide total ₹215 in the car estimate. Verify the road and current tariff; this is not a confirmed toll total for every Delhi–Dehradun itinerary.",
       "Delhi-Meerut Expressway toll is FASTag-mandatory. Ensure your tag is active before entering.",
-      "Dehradun is the gateway to Mussoorie (35 km uphill). No additional toll for the Mussoorie stretch.",
+      "If you continue from Dehradun to Mussoorie, include that onward journey in the booking and confirm any additional road, parking or entry charges.",
     ],
     estimatedFuel: { petrol: 1530, diesel: 1148 },
     relatedRoutes: ["delhi-to-mussoorie", "delhi-to-haridwar", "delhi-to-rishikesh"],
     leadFaqs: [
       {
         question: "What is the toll on the Delhi–Dehradun Expressway?",
-        answer: "The Delhi–Dehradun expressway route is tolled at 2 plazas rather than one expressway gate, and comes to approximately ₹215 for a car or sedan and ₹350 for an SUV one-way. You pay ₹120 (car) or ₹195 (SUV) at the Delhi-Meerut Expressway plaza 35 km out, then ₹95 (car) or ₹155 (SUV) at the Muzaffarnagar plaza around the 130 km mark. The Delhi-Meerut Expressway section is FASTag-only, so make sure your tag is active before you enter.",
+        answer: "Check which Delhi–Dehradun road your vehicle will use before applying a toll total. This guide's two listed plazas relate to its Meerut–Muzaffarnagar itinerary and total ₹215 in the car estimate; they do not verify a tariff for a different expressway alignment. Confirm the current official plaza schedule, entry and exit points, and vehicle class before departure.",
       },
     ],
   }),
@@ -270,7 +295,7 @@ export const tollCostRoutes = {
   // 11. DELHI TO MEERUT
   // ═══════════════════════════════════════════
   "delhi-to-meerut": createTollRoute({
-    slug: "delhi-to-meerut", origin: "Delhi", destination: "Meerut", totalDistance: 70,
+    slug: "delhi-to-meerut", origin: "Delhi", destination: "Meerut", totalDistance: 70, corridorRoad: "Delhi–Meerut Expressway",
     tollPlazas: [
       { name: "Delhi-Meerut Expressway Toll", location: 35, carCost: 120, suvCost: 195, commercialCost: 415, acceptsFASTag: true },
     ],
@@ -372,7 +397,7 @@ export const tollCostRoutes = {
   // 16. AGRA TO DELHI
   // ═══════════════════════════════════════════
   "agra-to-delhi": createTollRoute({
-    slug: "agra-to-delhi", origin: "Agra", destination: "Delhi", totalDistance: 230,
+    slug: "agra-to-delhi", origin: "Agra", destination: "Delhi", totalDistance: 230, corridorRoad: "Yamuna Expressway",
     tollPlazas: [
       { name: "Mathura Toll Plaza", location: 70, carCost: 130, suvCost: 210, commercialCost: 450, acceptsFASTag: true },
       { name: "Jewar Toll Plaza", location: 170, carCost: 155, suvCost: 250, commercialCost: 535, acceptsFASTag: true },
@@ -466,7 +491,7 @@ export const tollCostRoutes = {
   // 21. DELHI TO MATHURA
   // ═══════════════════════════════════════════
   "delhi-to-mathura": createTollRoute({
-    slug: "delhi-to-mathura", origin: "Delhi", destination: "Mathura", totalDistance: 180,
+    slug: "delhi-to-mathura", origin: "Delhi", destination: "Mathura", totalDistance: 180, corridorRoad: "Yamuna Expressway",
     tollPlazas: [
       { name: "Jewar Toll Plaza", location: 60, carCost: 155, suvCost: 250, commercialCost: 535, acceptsFASTag: true },
     ],

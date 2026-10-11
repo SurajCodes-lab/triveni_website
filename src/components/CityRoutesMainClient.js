@@ -12,9 +12,11 @@ import {
 } from '@/components/ui/icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { WhatsAppIcon as BsWhatsapp, OutlineMailIcon as HiOutlineMail } from '@/components/ui/icons';
-import { phoneNumber, emailAddress } from '@/utilis/data';
+import { phoneNumber, emailAddress } from '@/utilis/contact';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
+import { canonicalClientHref } from '@/lib/seo/client-route-exists';
+import { groupDigits } from '@/utilis/pricing';
 
 // All 14 cities data
 const cityData = {
@@ -146,7 +148,7 @@ const serviceFeatures = [
 
 // Popular routes
 const popularRoutes = [
-  { from: "Delhi", to: "Agra", distance: "230 km", time: "4 hrs", price: "2,760" },
+  { from: "Delhi", to: "Agra", distance: "230 km", time: "4 hrs", price: "3,300" },
   { from: "Delhi", to: "Jaipur", distance: "280 km", time: "5 hrs", price: "3,360" },
   { from: "Delhi", to: "Manali", distance: "540 km", time: "12 hrs", price: "6,480" },
   { from: "Delhi", to: "Shimla", distance: "350 km", time: "7 hrs", price: "4,200" },
@@ -507,7 +509,6 @@ export default function CityRoutesMainClient({ data }) {
 
               {/* Contact Card */}
               <div className="bg-gradient-to-br from-[#FACF2D] to-amber-400 rounded-[2rem] p-6 relative overflow-hidden flex-1">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2" />
 
                 <div className="relative z-10">
                   <h3 className="text-black font-bold text-lg mb-2">Quick Booking</h3>
@@ -586,14 +587,14 @@ export default function CityRoutesMainClient({ data }) {
           {[...popularRoutes, ...popularRoutes].map((route, idx) => (
             <Link
               key={idx}
-              href={`/${route.from.toLowerCase().replace(/\s+/g, '-')}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`}
+              href={canonicalClientHref(`/${route.from.toLowerCase().replace(/\s+/g, '-')}-to-${route.to.toLowerCase().replace(/\s+/g, '-')}`)}
               className="flex items-center mx-6 flex-shrink-0 hover:scale-105 transition-transform group"
             >
               <span className="font-bold text-white whitespace-nowrap">{route.from}</span>
               <ArrowRight className="w-4 h-4 mx-2 text-[#FACF2D] flex-shrink-0" />
               <span className="font-bold text-white whitespace-nowrap">{route.to}</span>
               <span className="ml-3 bg-[#FACF2D] px-3 py-1 rounded-full text-black text-sm font-bold whitespace-nowrap">
-                ₹{route.price}
+                ₹{groupDigits(route.price)}
               </span>
             </Link>
           ))}
@@ -913,7 +914,7 @@ export default function CityRoutesMainClient({ data }) {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">
-              Why Triveni Cabs?
+              Why Triveni Cabs™?
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
               Trusted by 50,000+ customers for reliable outstation taxi service
@@ -930,7 +931,6 @@ export default function CityRoutesMainClient({ data }) {
               viewport={{ once: true }}
               className="lg:col-span-2 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
               <div className="relative z-10">
                 <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
                   <Shield className="w-7 h-7 text-white" />
@@ -1058,7 +1058,7 @@ export default function CityRoutesMainClient({ data }) {
                   </div>
                   <div className="p-4 text-slate-600 hidden md:block">{route.distance}</div>
                   <div className="p-4 text-slate-600">{route.time}</div>
-                  <div className="p-4 font-black text-[#FACF2D] text-lg">₹{route.price}</div>
+                  <div className="p-4 font-black text-[#FACF2D] text-lg">₹{groupDigits(route.price)}</div>
                 </motion.div>
               </Link>
             ))}
@@ -1114,7 +1114,7 @@ export default function CityRoutesMainClient({ data }) {
 
       {/* Feed the GLOBAL mobile sticky bar (no duplicate bar) */}
       <SetStickyCta
-        price="₹12/km"
+        price="₹11/km"
         label="Outstation Taxi"
         whatsappText="Hi, I need outstation taxi booking. Please share rates and availability."
       />

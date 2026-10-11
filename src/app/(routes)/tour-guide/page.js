@@ -8,6 +8,7 @@ import {
   getTodayDate,
 } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 
 export const revalidate = 3600;
 
@@ -38,7 +39,7 @@ const LICENSE_COMPARE_ROWS = [
 export const TOUR_GUIDE_FAQS = [
   {
     question: 'Are your tour guides licensed by the Ministry of Tourism?',
-    answer: 'Yes. Every Triveni Cabs tour guide holds a valid Regional Level Guide (RLG) licence issued by the Ministry of Tourism, Government of India, plus an ASI monument pass where required. We share the guide’s photo-ID and licence number on WhatsApp at booking confirmation so you can verify before the tour begins.',
+    answer: 'Yes. Every Triveni Cabs™ tour guide holds a valid Regional Level Guide (RLG) licence issued by the Ministry of Tourism, Government of India, plus an ASI monument pass where required. We share the guide’s photo-ID and licence number on WhatsApp at booking confirmation so you can verify before the tour begins.',
   },
   {
     question: 'What languages do your tour guides speak?',
@@ -256,10 +257,10 @@ export const metadata = {
   },
   openGraph: {
     title: 'Expert Tour Guides in India | Certified Multi-Language Local Guides',
-    description: 'Book certified professional tour guides across 14+ cities. Multi-language guides (English, Hindi, French, Spanish, German, Chinese). Licensed by Ministry of Tourism. Instant booking from ₹1200/day.',
+    description: 'Book certified professional tour guides across 14+ cities. Multi-language guides (English, Hindi, French, Spanish, German, Chinese). Licensed by Ministry of Tourism. Instant booking from ₹1,200/day.',
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     url: 'https://www.trivenicabs.in/tour-guide',
     images: [
       {
@@ -273,7 +274,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Book Expert Tour Guides Across India | Certified Local Guides',
-    description: '🎯 Certified guides in 14+ cities | 6 languages | Heritage & cultural tours | ₹1200/day onwards | Instant WhatsApp booking',
+    description: '🎯 Certified guides in 14+ cities | 6 languages | Heritage & cultural tours | ₹1,200/day onwards | Instant WhatsApp booking',
     images: ['/images/tour-guide.jpg'],
     creator: '@TriveniCabs',
     site: '@TriveniCabs'
@@ -313,7 +314,7 @@ export default function TourGuidePage() {
             "url": "https://www.trivenicabs.in/tour-guide",
             "telephone": "+91-7668570551",
             "image": "https://www.trivenicabs.in/images/tour-guide.jpg",
-            "priceRange": "₹1200-₹2500",
+            "priceRange": "₹1,200-₹2,500",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "366, Dandupura, near Tajganj",
@@ -532,8 +533,8 @@ export default function TourGuidePage() {
             ...getRatingAndReviews('tour-guide-hub', 'sightseeing'),
             "sameAs": [
               "https://www.facebook.com/trivenicabs",
-              "https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo",
-              "https://twitter.com/TriveniCabs"
+              "https://www.instagram.com/cabstriveni",
+              "https://twitter.com/trivenicabs"
             ],
             "potentialAction": {
               "@type": "ReserveAction",
@@ -607,7 +608,7 @@ export default function TourGuidePage() {
             description: 'How to hire a Ministry-of-Tourism licensed tour guide in India: languages, day-rate fees, female guides, monument tickets, tipping and booking with or without a vehicle.',
             image: TG_IMG,
             datePublished: '2026-01-01',
-            dateModified: getTodayDate(),
+            dateModified: (getContentUpdatedOn('/tour-guide') || getTodayDate()),
             authorName: 'editorial',
             speakableSelectors: ['.speakable-headline', '.speakable-lead', '.speakable-faq-first'],
           }))

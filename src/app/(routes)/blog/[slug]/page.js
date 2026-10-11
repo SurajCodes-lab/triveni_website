@@ -1,5 +1,9 @@
 import { notFound } from 'next/navigation';
 import { blogPosts } from '@/utilis/blog';
+// Computed on the server and passed down as props. These helpers pull in
+// sightseeingData.js (1.3 MB); importing them from the client component sent
+// that entire dataset to the browser on all 190 blog pages.
+import { getRelatedLinks, getRelatedRoutes, getMoneyPageLinks } from '@/utilis/linkingHelper';
 import { getOneWayRoute, getAllOneWayRouteSlugs } from '@/utilis/oneWayCabData';
 import { getAllTours, getCitiesWithTours } from '@/utilis/sightseeingData';
 import { getAllTourSlugs as getReligiousTourSlugs } from '@/utilis/religiousTourData';
@@ -7,9 +11,41 @@ import { getAllTourSlugs as getGuidedTourSlugs } from '@/utilis/toursWithGuideDa
 import { tempoCities, tempoRoutes } from '@/utilis/tempoTravellerData';
 import { cities as hubCities, tourDetails } from '@/utilis/data';
 import BlogPostPageClient from '@/components/blog/BlogPostPageClient';
+import PriorityPageGuide from '@/components/content/PriorityPageGuide';
+import { priorityPageGuides } from '@/lib/content/priority-page-guides';
+import { getSeasonalCorridorCallout } from '@/utilis/seasonalCorridors';
+
+// Airport guides (Jewar cheatsheet: 47,588 impressions/quarter at position 7.7;
+// IGI arrival guide) linked to terminal pages but never to the airport hubs,
+// which sit at position 18–34. Verified live routes only — no guessed URLs.
+const AIRPORT_HUB_LINKS = [
+  { href: '/airport-service/delhi', anchor: 'Delhi airport taxi service (IGI T1, T2, T3)', priority: 10 },
+  { href: '/airport-service/jewar', anchor: 'Jewar (Noida) airport taxi', priority: 9 },
+  { href: '/airport-service/hindon', anchor: 'Hindon airport taxi (Ghaziabad)', priority: 8 },
+  { href: '/delhi-ncr-airports-guide', anchor: 'IGI vs Jewar vs Hindon — which NCR airport', priority: 7 },
+  { href: '/airport-service/delhi/igi-terminal-3-international', anchor: 'IGI Terminal 3 cab', priority: 6 },
+  { href: '/delhi-airport-to-noida-cab', anchor: 'Delhi airport to Noida cab', priority: 5 },
+];
+const isAirportPost = (s) => /jewar|igi-airport|delhi-airport|hindon-airport|noida-airport/.test(String(s || ''));
+function blogMoneyLinks(post) {
+  const base = post?.city ? getMoneyPageLinks(post.city) : [];
+  if (!isAirportPost(post?.slug)) return base;
+  const seen = new Set();
+  return [...AIRPORT_HUB_LINKS, ...base].filter((l) => (seen.has(l.href) ? false : seen.add(l.href))).slice(0, 8);
+}
+function blogSeasonalCallout(post) {
+  const candidates = [post?.city, ...(post?.relatedDestinations || []).map((d) => d?.name || d?.slug)].filter(Boolean);
+  for (const c of candidates) {
+    const hit = getSeasonalCorridorCallout({ destination: c });
+    if (hit) return hit;
+  }
+  return null;
+}
 import AEOHead from '@/components/seo/AEOHead';
 import { getSpeakableSchema, getTodayDate, getCityPlaceSchema, getHowToSchema } from '@/lib/seo/speakable-helpers';
-import { buildAttractionBlogMeta, tightenTitle } from '@/lib/seo/serp-ctr';
+import { buildAttractionBlogMeta, attractionGuideEntity, tightenTitle } from '@/lib/seo/serp-ctr';
+import { getMonumentGlance } from '@/lib/seo/monument-glance';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
 // ISR - Revalidate every hour (3600 seconds)
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -32,13 +68,13 @@ function generateArticleSchema(post) {
     "datePublished": post.date,
     // Auto-fresh dateModified — re-evaluated every ISR cycle (1h). Reasonable
     // for blog posts because we routinely refresh fare data, distance, timing.
-    "dateModified": post.dateModified || getTodayDate(),
+    "dateModified": post.dateModified || (getContentUpdatedOn(`/blog/${post.slug}`) || getTodayDate()),
     "author": {
       "@type": "Organization",
       "@id": "https://www.trivenicabs.in/#editorial-team",
       "name": "Triveni Cabs Editorial Team",
       "url": "https://www.trivenicabs.in/about",
-      "description": "Travel experts at Triveni Cabs — covering Delhi, Agra, Jaipur, Chandigarh, Rajasthan, Himachal, Uttarakhand routes since 2015. 11 years of cab-service expertise informs every guide."
+      "description": "Travel experts at Triveni Cabs™ — covering Delhi, Agra, Jaipur, Chandigarh, Rajasthan, Himachal, Uttarakhand routes since 2015. 11 years of cab-service expertise informs every guide."
     },
     "publisher": {
       "@type": "Organization",
@@ -47,7 +83,7 @@ function generateArticleSchema(post) {
       "url": "https://www.trivenicabs.in",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.trivenicabs.in/images/logo/logo2.webp",
+        "url": "https://www.trivenicabs.in/images/logo/logo2-tm.webp",
         "width": 200,
         "height": 60
       }
@@ -95,7 +131,7 @@ function generateHowToSchema(post) {
     steps: [
       { name: 'Read the guide', text: `Read this guide — ${title} — to understand the route, timing and costs before you set off.`, image: post.image },
       { name: 'Pick your travel dates', text: 'Choose your travel dates based on the best-time-to-visit advice in this article.' },
-      { name: 'Book your transport', text: 'Book a Triveni Cabs vehicle (sedan, SUV or Tempo Traveller) on WhatsApp +91-7668570551 with no large advance.' },
+      { name: 'Book your transport', text: 'Book a Triveni Cabs™ vehicle (sedan, SUV or Tempo Traveller) on WhatsApp +91-7668570551 with no large advance.' },
       { name: 'Confirm the itinerary', text: 'Share your pickup point and any customisation; receive an all-inclusive quote and confirmation.' }
     ]
   });
@@ -266,10 +302,27 @@ function isAttractionPost(post) {
 function buildTripCTA(post) {
   const displayNames = namedDestinations(post);
 
-  // Probe the one-way table: human-written names first, slug guesses after.
+  // Probe the one-way table. Week 48: the destination the post is actually
+  // about goes first. relatedDestinations often lead with a neighbour (the
+  // Vaishno Devi guide lists Amritsar before Katra, which sits only in tags),
+  // and the fare quoted here is now also the price in the SERP title, so the
+  // probe prefers names mentioned in the title or slug, then city, then tags,
+  // then relatedDestinations, then slug guesses. Tags are probes only; the
+  // printed name still comes from the route table.
+  const mentioned = `${post.title || ''} ${post.slug || ''}`.toLowerCase();
+  const pool = [
+    ...(post.city ? [String(post.city)] : []),
+    ...(Array.isArray(post.tags) ? post.tags.map(String) : []),
+    ...displayNames,
+    ...slugDestinationGuesses(post),
+  ];
+  const isMentioned = (c) => {
+    const s = citySlug(c);
+    return Boolean(s) && (mentioned.includes(s) || mentioned.includes(s.replace(/-/g, ' ')));
+  };
   let route = null;
   let routeSlug = null;
-  for (const candidate of [...displayNames, ...slugDestinationGuesses(post)]) {
+  for (const candidate of [...pool.filter(isMentioned), ...pool]) {
     const slug = citySlug(candidate);
     if (!slug || DELHI_ALIASES.has(slug)) continue;
     const found = getOneWayRoute(`delhi-to-${slug}`);
@@ -326,7 +379,7 @@ function buildTripCTA(post) {
     ctaText,
     heading,
     blurb,
-    waMessage: `Hi Triveni Cabs, I just read "${post.title}" on your blog and want to book a cab${fromDelhi ? ` from Delhi to ${destination}` : ` in ${destination}`}. Please share fares and availability.`,
+    waMessage: `Hi Triveni Cabs™, I just read "${post.title}" on your blog and want to book a cab${fromDelhi ? ` from Delhi to ${destination}` : ` in ${destination}`}. Please share fares and availability.`,
   };
 }
 
@@ -340,6 +393,123 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for SEO
+// Related-post selection, moved off the client. RelatedPosts.jsx used to import
+// the entire 294 KB blog index to pick three articles; the scoring below is the
+// same logic, run at build time. Only the three chosen posts — and only the
+// fields the card renders — cross into the browser.
+function pickRelatedPosts(current) {
+  if (!current) return [];
+  return blogPosts
+    .filter((p) => p && p.id && p.slug && p.id !== current.id)
+    .map((p) => {
+      let score = 0;
+      if (p.category === current.category) score += 3;
+      const shared = p.tags && current.tags ? p.tags.filter((tag) => current.tags.includes(tag)) : [];
+      score += shared.length;
+      return { p, score };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map(({ p }) => ({
+      id: p.id,
+      slug: p.slug,
+      title: p.title,
+      excerpt: p.excerpt,
+      image: p.image,
+      category: p.category,
+      readTime: p.readTime,
+      date: p.date,
+    }));
+}
+
+// Week 43 — answer-box defence. 25 attraction guides carried 1,169,979
+// impressions (78% of all /blog impressions) at ~0.3% CTR because their
+// titles led with "Timings & Ticket Price" — precisely what Google's
+// knowledge panel prints above the result. buildAttractionBlogMeta kept
+// the timings keyword but led with "How to Reach".
+//
+// Week 48 C3 (attraction guides) — 24 of those pages still sat at position
+// 7.6 with 0.27% CTR on 1.1M impressions: "How to Reach" named no price and
+// answered nothing. The formula now leads with the cab fare the page's own
+// booking box quotes (or the ₹11/km rate card), then the entry fee and hours
+// read from the post's attractionData. Two posts about one monument (the
+// complete guide and a history/ticket angle) would collide on the entity, so
+// the non-primary sibling gets its distinguishing noun via `disambiguate`.
+//
+// Week 48 C3 — the other 166 posts (editorial: comparisons, itineraries,
+// cheatsheets, yatra guides) used to pass through as a bare 45-char clamp of
+// the authored title: no price, the hook cut mid-thought, several leading with
+// the panel's own number. They now take buildEditorialBlogMeta's formula
+// "<Subject>: <Answer hook> | Cab from ₹<fare>", where the fare is the one the
+// page's own booking box renders (buildTripCTA, from oneWayCabData) or the
+// published per-km rate card. The whole family is built once so the
+// uniqueness guard (`taken`) can see every sibling: seo-check flags duplicate
+// titles and several posts share a subject ("Varanasi", "Mussoorie").
+// See src/lib/seo/serp-ctr.js.
+let blogSeoIndex = null;
+function getBlogSeoMeta(post) {
+  if (!blogSeoIndex) {
+    const index = new Map();
+    const taken = new Set();
+
+    // Attraction posts sharing one entity ("Taj Mahal" complete guide and the
+    // ticket-price post). The primary keeps the bare entity; every other
+    // sibling is told to carry its distinguishing noun.
+    const siblings = new Map();
+    for (const p of blogPosts) {
+      if (!p || !p.slug) continue;
+      const entity = attractionGuideEntity(p);
+      if (!entity) continue;
+      const key = entity.toLowerCase();
+      if (!siblings.has(key)) siblings.set(key, []);
+      if (!siblings.get(key).includes(p.slug)) siblings.get(key).push(p.slug);
+    }
+    const needsAngle = new Set();
+    for (const slugs of siblings.values()) {
+      if (slugs.length < 2) continue;
+      const primary = slugs.find((s) => /complete-guide|-guide-20\d\d$/.test(s)) || slugs[0];
+      slugs.forEach((s) => { if (s !== primary) needsAngle.add(s); });
+    }
+
+    for (const p of blogPosts) {
+      if (!p || !p.slug) continue;
+      // blogPosts carries a few duplicated slugs (the Ayodhya guide, the
+      // Delhi to Manali tempo guide). generateStaticParams and the page both
+      // resolve the FIRST post for a slug, so the index must too; letting the
+      // second overwrite it served one post with the other's title.
+      if (index.has(p.slug)) continue;
+      const cta = buildTripCTA(p);
+      const fare = cta && cta.fare ? cta.fare : null;
+      const input = {
+        title: p.title,
+        metaTitle: p.metaTitle,
+        excerpt: p.excerpt,
+        metaDescription: p.metaDescription,
+        city: p.city,
+        attractionName: p.attractionData?.name,
+        attractionData: p.attractionData,
+        cab: cta,
+        slug: p.slug,
+        disambiguate: needsAngle.has(p.slug),
+        tags: p.tags,
+        fare,
+        fareRoute: fare ? (cta.fromDelhi ? `Delhi to ${cta.destination}` : cta.destination) : '',
+        taken,
+      };
+      let meta = buildAttractionBlogMeta(input);
+      // Last-resort guard: an attraction title already claimed by an earlier
+      // post is rebuilt with its distinguishing noun.
+      if (meta.formula === 'attraction-price' && !input.disambiguate && taken.has(meta.title)) {
+        meta = buildAttractionBlogMeta({ ...input, disambiguate: true });
+      }
+      taken.add(meta.title);
+      index.set(p.slug, meta);
+    }
+    blogSeoIndex = index;
+  }
+  return blogSeoIndex.get(post.slug) || { title: '', description: '' };
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = blogPosts.find((p) => p && p.slug === slug);
@@ -350,21 +520,8 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // Week 43 — answer-box defence. 25 attraction guides carried 1,169,979
-  // impressions (78% of all /blog impressions) at ~0.3% CTR because their
-  // titles led with "Timings & Ticket Price" — precisely what Google's
-  // knowledge panel prints above the result. buildAttractionBlogMeta keeps
-  // the timings keyword but leads with "How to Reach", the largest slice of
-  // the query basket the panel does not answer. Titles that are already
-  // differentiated are returned untouched. See src/lib/seo/serp-ctr.js.
-  const { title: seoTitle, description: seoDescription } = buildAttractionBlogMeta({
-    title: post.title,
-    metaTitle: post.metaTitle,
-    excerpt: post.excerpt,
-    metaDescription: post.metaDescription,
-    city: post.city,
-    attractionName: post.attractionData?.name,
-  });
+  const { title: seoTitle, description: seoDescription } = getBlogSeoMeta(post);
+  const visitorMeta = priorityPageGuides[`/blog/${post.slug}`];
 
   // OG/social keeps the original curated headline: a shared link is not
   // competing with a SERP answer box, so the fact-led title reads better there.
@@ -376,15 +533,15 @@ export async function generateMetadata({ params }) {
     // '%s | Triveni Cabs'. serp-ctr budgets the content half at 45 chars
     // (TITLE_BUDGET) so the rendered title lands inside Google's ~60-char
     // truncation instead of being cut mid-phrase.
-    title: seoTitle || socialTitle,
-    description: seoDescription || socialDescription,
+    title: visitorMeta?.metaTitle || seoTitle || socialTitle,
+    description: visitorMeta?.metaDescription || seoDescription || socialDescription,
     keywords: post.tags?.join(', ') || '',
     openGraph: {
       title: socialTitle,
       description: socialDescription,
       type: 'article',
       publishedTime: post.date,
-      authors: ['Triveni Cabs'],
+      authors: ['Triveni Cabs™'],
       images: post.image ? [post.image] : [],
     },
     twitter: {
@@ -406,6 +563,9 @@ export default async function BlogPostPage({ params }) {
   if (!post) {
     notFound();
   }
+
+  // Week 48: the at-a-glance rows (hours, closed day, ticket) for the monument guides.
+  const glance = getMonumentGlance(post);
 
   const articleSchema = generateArticleSchema(post);
   const breadcrumbSchema = generateBreadcrumbSchema(post);
@@ -443,7 +603,17 @@ export default async function BlogPostPage({ params }) {
       )}
       <AEOHead pageType="tour" data={{ url: `/blog/${slug}`, title: post.title || '' }} />
 
-      <BlogPostPageClient post={post} tripCTA={tripCTA} />
+      <BlogPostPageClient
+        planningGuide={<PriorityPageGuide path={`/blog/${post.slug}`} />}
+        glance={glance}
+        post={post}
+        tripCTA={tripCTA}
+        relatedPosts={pickRelatedPosts(post)}
+        relatedLinks={getRelatedLinks(post)}
+        routes={post?.city ? getRelatedRoutes(post.city) : []}
+        moneyLinks={blogMoneyLinks(post)}
+        seasonalCallout={blogSeasonalCallout(post)}
+      />
     </>
   );
 }

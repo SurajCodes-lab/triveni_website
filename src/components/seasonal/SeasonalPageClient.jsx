@@ -202,7 +202,7 @@ export default function SeasonalPageClient({ title, subtitle, description, desti
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <p className={`text-[10px] font-bold ${a.text} uppercase tracking-widest mb-1`}>Our Promise</p>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">Why Book With Triveni Cabs?</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-8">Why Book With Triveni Cabs™?</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
@@ -226,7 +226,7 @@ export default function SeasonalPageClient({ title, subtitle, description, desti
       </section>
 
       <FaqAccordion faqs={faqs} />
-      <CTASection heading="Ready to Book Your Trip?" subheading="Get instant quotes, transparent pricing, and 24/7 support. Over 10,000 happy travelers trust Triveni Cabs." />
+      <CTASection heading="Ready to Book Your Trip?" subheading="Get instant quotes, transparent pricing, and 24/7 support. Over 10,000 happy travelers trust Triveni Cabs™." />
     </div>
   );
 }

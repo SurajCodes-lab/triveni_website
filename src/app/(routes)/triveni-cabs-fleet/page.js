@@ -6,25 +6,25 @@ import { tightenTitle } from '@/lib/seo/serp-ctr';
 export const revalidate = 3600;
 
 const slug = 'triveni-cabs-fleet';
-const pageTitle = 'Triveni Cabs Fleet: Sedans, SUVs, Tempo Travellers | Our Vehicles — 4.9★';
-const pageDesc = 'Explore Triveni Cabs fleet: Swift Dzire, Toyota Etios, Innova Crysta, Ertiga, Tempo Travellers. Well-maintained AC vehicles, GPS-tracked, sanitized. Book from ₹9/km. Call 7668570551.';
+const pageTitle = 'Triveni Cabs™ Fleet: Sedans, SUVs, Tempo Travellers | Our Vehicles — 4.9★';
+const pageDesc = 'Explore Triveni Cabs™ fleet: Swift Dzire, Toyota Etios, Innova Crysta, Ertiga, Tempo Travellers. Well-maintained AC vehicles, GPS-tracked, sanitized. Book from ₹11/km. Call 7668570551.';
 
 export const metadata = {
   title: tightenTitle(pageTitle),
   description: pageDesc,
   keywords: ['triveni cabs fleet', 'triveni cabs vehicles', 'innova crysta cab booking', 'swift dzire cab service', 'suv cab booking north india', 'tempo traveller booking', 'ac cab fleet india', 'sedan cab booking', 'ertiga cab service', 'premium cab fleet north india'],
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: `/${slug}` },
   openGraph: {
-    title: 'Triveni Cabs Fleet — Sedans, SUVs & Tempo Travellers | Well-Maintained AC Vehicles',
+    title: 'Triveni Cabs™ Fleet — Sedans, SUVs & Tempo Travellers | Well-Maintained AC Vehicles',
     description: pageDesc,
     type: 'website',
     locale: 'en_IN',
     url: `https://www.trivenicabs.in/${slug}`,
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: '/images/citypage_hero_section_image.jpg', width: 1200, height: 630, alt: 'Triveni Cabs Fleet' }],
   },
   twitter: { card: 'summary_large_image', title: pageTitle, description: pageDesc, creator: '@trivenicabs', site: '@trivenicabs' },
@@ -32,10 +32,10 @@ export const metadata = {
 };
 
 const faqs = [
-  { question: 'What types of vehicles does Triveni Cabs offer?', answer: 'We offer AC sedans (Swift Dzire, Toyota Etios), AC SUVs (Maruti Ertiga, Toyota Innova, Innova Crysta), luxury vehicles, and tempo travellers (12 to 26 seater). All vehicles are well-maintained and regularly inspected.' },
-  { question: 'How old are the vehicles in Triveni Cabs fleet?', answer: 'We maintain a modern fleet with most vehicles being under 3-4 years old. Older vehicles are regularly refurbished and replaced to ensure passenger comfort and safety.' },
+  { question: 'What types of vehicles does Triveni Cabs™ offer?', answer: 'We offer AC sedans (Swift Dzire, Toyota Etios), AC SUVs (Maruti Ertiga, Toyota Innova, Innova Crysta), luxury vehicles, and tempo travellers (12 to 26 seater). All vehicles are well-maintained and regularly inspected.' },
+  { question: 'How old are the vehicles in Triveni Cabs™ fleet?', answer: 'We maintain a modern fleet with most vehicles being under 3-4 years old. Older vehicles are regularly refurbished and replaced to ensure passenger comfort and safety.' },
   { question: 'Can I choose a specific vehicle model?', answer: 'Yes! You can request a specific model (e.g., Innova Crysta vs regular Innova) while booking. We accommodate model preferences subject to availability. Call 7668570551 to confirm.' },
-  { question: 'Are Triveni Cabs vehicles sanitized?', answer: 'Yes, all vehicles are sanitized before each trip. We follow a comprehensive cleaning checklist including AC filter cleaning, surface sanitization, and fresh seat covers.' },
+  { question: 'Are Triveni Cabs™ vehicles sanitized?', answer: 'Yes, all vehicles are sanitized before each trip. We follow a comprehensive cleaning checklist including AC filter cleaning, surface sanitization, and fresh seat covers.' },
   { question: 'Do you have luxury vehicles for weddings and VIP travel?', answer: 'Yes, we offer premium and luxury vehicles for weddings, corporate VIP travel, and special occasions. This includes Innova Crysta, premium sedans, and decorated wedding cars. Contact us for availability.' },
 ];
 
@@ -50,7 +50,7 @@ export default function FleetPage() {
   };
   const articleSchema = getArticleSchema({
     slug,
-    headline: 'Triveni Cabs Fleet: Sedans, SUVs & Tempo Travellers',
+    headline: 'Triveni Cabs™ Fleet: Sedans, SUVs & Tempo Travellers',
     description: pageDesc,
     image: '/images/citypage_hero_section_image.jpg',
     speakableSelectors: ['.speakable-headline', '.speakable-lead', '.faq-section .speakable-faq-first']
@@ -104,7 +104,7 @@ export default function FleetPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <TrustPageClient
         title="Our Fleet: Well-Maintained Vehicles for Every Journey"
-        subtitle="Triveni Cabs Vehicle Fleet"
+        subtitle="Triveni Cabs™ Vehicle Fleet"
         description="From compact sedans for city rides to spacious SUVs for family trips and tempo travellers for groups. Every vehicle is AC, GPS-tracked, sanitized, and regularly inspected."
         sections={[
           {
@@ -112,9 +112,9 @@ export default function FleetPage() {
             badge: 'Economy Class',
             description: 'Ideal for couples, solo travelers, and small families. Comfortable, fuel-efficient, and perfect for highway travel.',
             features: [
-              { title: 'Maruti Swift Dzire', description: 'India\'s most popular sedan. Spacious boot, excellent AC, and smooth ride. Perfect for 2-3 passengers. From ₹9/km.' },
-              { title: 'Toyota Etios', description: 'Reliable Toyota build quality. Extra legroom, powerful AC, and large boot space. Ideal for longer trips. From ₹10/km.' },
-              { title: 'Hyundai Aura/Xcent', description: 'Modern interiors, great suspension, and fuel-efficient. Comfortable for city and short outstation trips. From ₹9/km.' },
+              { title: 'Maruti Swift Dzire', description: 'India\'s most popular sedan. Spacious boot, excellent AC, and smooth ride. Perfect for 2-3 passengers. From ₹11/km.' },
+              { title: 'Toyota Etios', description: 'Reliable Toyota build quality. Extra legroom, powerful AC, and large boot space. Ideal for longer trips. From ₹11/km.' },
+              { title: 'Hyundai Aura/Xcent', description: 'Modern interiors, great suspension, and fuel-efficient. Comfortable for city and short outstation trips. From ₹11/km.' },
             ],
           },
           {
@@ -122,7 +122,7 @@ export default function FleetPage() {
             badge: 'Premium Class',
             description: 'Perfect for families, groups, and those who prefer extra space and comfort. All SUVs come with powerful AC and ample luggage space.',
             features: [
-              { title: 'Maruti Ertiga', description: '7-seater with flexible seating. Great for families with kids. Good boot space and smooth ride. From ₹12/km.' },
+              { title: 'Maruti Ertiga', description: '7-seater with flexible seating. Great for families with kids. Good boot space and smooth ride. From ₹15/km.' },
               { title: 'Toyota Innova', description: 'The gold standard of travel SUVs. 7-8 seats, captain seats, powerful engine. Ideal for outstation. From ₹18/km.' },
               { title: 'Toyota Innova Crysta', description: 'Premium variant with luxury interiors, better suspension, and superior comfort. Our most requested vehicle. From ₹16/km.' },
             ],

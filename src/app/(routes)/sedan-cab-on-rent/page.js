@@ -31,12 +31,12 @@ export default function Page() {
       slug="sedan-cab-on-rent"
       vehicleName="Sedan Cab"
       h1="Sedan Cab on Rent — Upfront Per-KM Fare, Chauffeur-Driven"
-      intro="A sedan is the smart pick for 3–4 travellers — fuel-efficient, easy to park, and comfortable on both city runs and outstation highways. Triveni Cabs rents chauffeur-driven sedans like the Maruti Dzire, Toyota Etios and Honda Amaze at a transparent per-km rate that already includes fuel, the driver and AC. No surge, no meter — the fare you see is the fare you pay."
+      intro="A sedan is the smart pick for 3–4 travellers — fuel-efficient, easy to park, and comfortable on both city runs and outstation highways. Triveni Cabs™ rents chauffeur-driven sedans like the Maruti Dzire, Toyota Etios and Honda Amaze at a transparent per-km rate that already includes fuel, the driver and AC. No surge, no meter — the fare you see is the fare you pay."
       category="Sedan"
       seating="4 + 1"
       fareRows={[
         { vehicle: 'Maruti Dzire (sedan)', perKm: '₹11/km', minKmDay: '300 km/day', note: 'Outstation · 4+1 · AC' },
-        { vehicle: 'Toyota Etios (sedan)', perKm: '₹12/km', minKmDay: '300 km/day', note: 'Roomier boot · AC' },
+        { vehicle: 'Toyota Etios (sedan)', perKm: '₹11/km', minKmDay: '300 km/day', note: 'Roomier boot · AC' },
         { vehicle: 'Honda Amaze (sedan)', perKm: '₹11/km', minKmDay: '300 km/day', note: 'Comfortable · AC' },
         { vehicle: 'Sedan (local 4hr/40km)', perKm: '₹1,800/day', minKmDay: '4 hr / 40 km', note: 'Within-city package' },
         { vehicle: 'Honda City (premium sedan)', perKm: '₹15/km', minKmDay: '300 km/day', note: 'Premium · AC' },
@@ -57,7 +57,7 @@ export default function Page() {
         'Same-day return tours for 3–4 people',
       ]}
       faqs={[
-        { question: 'What is the per km rent for a sedan cab?', answer: 'Our standard sedan (Dzire/Amaze) outstation rate is ₹11/km, all-inclusive of fuel, driver allowance and AC. The Toyota Etios is ₹12/km and a premium Honda City is ₹15/km. Toll and parking are extra at actual.' },
+        { question: 'What is the per km rent for a sedan cab?', answer: 'Our standard sedan (Dzire/Amaze) outstation rate is ₹11/km, all-inclusive of fuel, driver allowance and AC. The Toyota Etios is ₹11/km and a premium Honda City is ₹15/km. Toll and parking are extra at actual.' },
         { question: 'Is the driver included in the sedan per-km price?', answer: 'Yes. Every sedan rental is chauffeur-driven — Triveni does not offer self-drive. The driver, fuel and AC are all included in the per-km fare.' },
         { question: 'How many people and bags fit in a sedan?', answer: 'A sedan comfortably seats 3–4 passengers plus the driver, with boot space for 2–3 medium bags. For 5+ people or more luggage, consider an Ertiga or Innova Crysta.' },
         { question: 'What is the minimum billing for an outstation sedan?', answer: 'Outstation sedan trips are billed per km with a minimum of 300 km per day. For local use within a city, a 4-hour/40-km package starts at ₹1,800/day.' },

@@ -1,5 +1,7 @@
-'use client';
-
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
 import Image from 'next/image';
 import Link from 'next/link';
 // Centralized icon imports for better bundle optimization
@@ -9,6 +11,7 @@ import {
 } from '@/components/ui/icons';
 import DynamicSidebar from '../DynamicSidebar';
 import WhatsAppCTA from '../WhatsAppCTA';
+import { rupeeText } from '@/utilis/pricing';
 
 export default function AdventureLayout({ post, relatedLinks }) {
   const formattedDate = new Date(post.date || Date.now()).toLocaleDateString('en-US', {
@@ -37,7 +40,7 @@ export default function AdventureLayout({ post, relatedLinks }) {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 pb-16">
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 pb-10 sm:pb-16">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/90 mb-6 backdrop-blur-sm bg-white/10 w-fit px-4 py-2 rounded-full">
             <Link href="/" className="hover:text-[#FACF2D] transition-colors">Home</Link>
@@ -145,13 +148,7 @@ export default function AdventureLayout({ post, relatedLinks }) {
             {/* Content */}
             <article className="bg-white rounded-2xl p-8 shadow-xl">
               <div
-                className="blog-prose prose prose-lg max-w-[70ch] mx-auto
-                  prose-headings:text-slate-900 prose-headings:font-bold
-                  prose-h2:text-3xl prose-h2:pb-3
-                  prose-h3:text-2xl prose-h3:text-slate-800
-                  prose-p:text-slate-700 prose-p:leading-relaxed
-                  prose-a:text-amber-700 prose-a:font-semibold
-                  prose-strong:text-slate-900"
+                className="blog-prose prose prose-lg max-w-[70ch] mx-auto prose-headings:text-slate-900 prose-headings:font-bold prose-h2:text-3xl prose-h2:pb-3 prose-h3:text-2xl prose-h3:text-slate-800 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-amber-700 prose-a:font-semibold prose-strong:text-slate-900"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
@@ -182,7 +179,7 @@ export default function AdventureLayout({ post, relatedLinks }) {
                       className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all group"
                     >
                       <h4 className="font-bold group-hover:text-[#FACF2D]">{tour.name}</h4>
-                      <p className="text-slate-400 text-sm">{tour.price}</p>
+                      <p className="text-slate-400 text-sm">{rupeeText(tour.price)}</p>
                     </Link>
                   ))}
                 </div>

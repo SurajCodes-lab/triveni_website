@@ -2,7 +2,7 @@
 
 // Centralized icon imports for better bundle optimization
 import { MessageCircle, Phone } from '@/components/ui/icons';
-import { phoneNumber } from '@/utilis/data';
+import { phoneNumber } from '@/utilis/contact';
 import { trackWhatsAppClick } from '@/utilis/analytics';
 import { useStickyCta } from '@/components/ui/StickyCtaContext';
 
@@ -30,7 +30,7 @@ export default function WhatsAppCTA({
     return (
       <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-8 my-8 text-white shadow-xl">
         <div className="max-w-3xl mx-auto text-center">
-          <MessageCircle className="w-16 h-16 mx-auto mb-4 animate-bounce" />
+          <MessageCircle className="w-16 h-16 mx-auto mb-4" />
           <h3 className="text-2xl md:text-3xl font-bold mb-3">
             Ready to Plan Your Trip?
           </h3>

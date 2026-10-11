@@ -15,22 +15,22 @@ export const metadata = {
   title: tightenTitle('Railway Station Taxi Service | 27 Stations | 24/7 Cab Booking'),
   description: 'Book reliable taxi at 27+ railway stations across India. Fixed fares, 24/7 service, meet at platform exit.',
   keywords: 'railway station taxi, station cab booking, train station taxi service, railway station cab, station pickup taxi, india railway station taxi, station to hotel taxi, prepaid taxi railway station, 24/7 station taxi, railway station cab service near me',
-  authors: [{ name: 'Triveni Cabs' }],
-  creator: 'Triveni Cabs',
-  publisher: 'Triveni Cabs',
+  authors: [{ name: 'Triveni Cabs™' }],
+  creator: 'Triveni Cabs™',
+  publisher: 'Triveni Cabs™',
   metadataBase: new URL('https://www.trivenicabs.in'),
   alternates: { canonical: '/railway-station-taxi' },
   openGraph: {
-    title: 'Railway Station Taxi Service | 27+ Stations | Triveni Cabs',
+    title: 'Railway Station Taxi Service | 27+ Stations | Triveni Cabs™',
     description: 'Reliable 24/7 taxi service at 27+ major railway stations. Fixed fares, AC vehicles, meet at platform exit.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://www.trivenicabs.in/railway-station-taxi',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Railway Station Taxi | 27+ Stations | Triveni Cabs',
+    title: 'Railway Station Taxi | 27+ Stations | Triveni Cabs™',
     description: '24/7 taxi at major railway stations across India. Fixed fares, meet at platform.',
     creator: '@trivenicabs',
     site: '@trivenicabs',
@@ -90,13 +90,6 @@ export default function RailwayStationTaxiHub() {
     "areaServed": {
       "@type": "Country",
       "name": "India",
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": String(getDeterministicReviewCount('railway-station-taxi')),
-      "bestRating": "5",
-      "worstRating": "1"
     }
   };
 
@@ -152,7 +145,7 @@ export default function RailwayStationTaxiHub() {
           <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-slate-950/75 via-slate-950/30 to-transparent lg:w-3/4" />
           <div className="absolute inset-x-0 top-0 z-20 h-1.5 bg-gradient-to-r from-[#B8860B] via-[#FACF2D] to-[#FFE9A0]" aria-hidden />
 
-          <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-14 pt-28 text-center">
+          <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-14 pt-16 sm:pt-28 text-center">
             <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-amber-400/30 bg-slate-950/60 px-5 py-2.5 backdrop-blur-md">
               <span className="h-2 w-2 rounded-full bg-emerald-400" />
               <span className="font-mono text-sm tracking-wider text-amber-200">{totalStations} STATIONS COVERED</span>
@@ -255,7 +248,7 @@ export default function RailwayStationTaxiHub() {
           <div className="mx-auto max-w-5xl">
             <div className="mx-auto mb-14 max-w-3xl text-center">
               <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
-                Why Choose <span className={FOIL}>Triveni Cabs</span>
+                Why Choose <span className={FOIL}>Triveni Cabs™</span>
               </h2>
             </div>
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -311,7 +304,7 @@ export default function RailwayStationTaxiHub() {
               <h2 className="font-display-serif text-balance text-[1.7rem] font-black leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
                 Explore More <span className={FOIL}>Travel Services</span>
               </h2>
-              <p className="mt-4 text-slate-400">Other ways to travel across India with Triveni Cabs</p>
+              <p className="mt-4 text-slate-400">Other ways to travel across India with Triveni Cabs™</p>
             </div>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {[

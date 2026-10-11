@@ -20,6 +20,8 @@ import {
   getTodayDate,
 } from '@/lib/seo/speakable-helpers';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import { getContentUpdatedOn } from '@/lib/seo/content-updates';
+import { groupDigits } from '@/utilis/pricing';
 
 export const revalidate = 3600;
 
@@ -60,7 +62,7 @@ export const metadata = {
     url,
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Triveni Cabs',
+    siteName: 'Triveni Cabs™',
     images: [{ url: `${baseUrl}/images/tempo/17_seater.jpg`, width: 1200, height: 630, alt: 'Tour Vehicles — Triveni Cabs' }],
   },
   twitter: {
@@ -102,7 +104,7 @@ export default function ByVehicleHub() {
         serviceType: 'Guided Tour Package',
         description: 'Guided tour bundles by vehicle class — sedan, MPV, SUV, tempo traveller, mini-bus, Volvo coach and luxury car — each including a Ministry-licensed guide.',
         provider: { '@id': `${baseUrl}/#organization` },
-        brand: { '@type': 'Brand', name: 'Triveni Cabs' },
+        brand: { '@type': 'Brand', name: 'Triveni Cabs™' },
         areaServed: ['Delhi', 'Agra', 'Jaipur', 'India'],
         url,
         offers: { '@type': 'Offer', priceCurrency: 'INR', price: '3000' },
@@ -124,7 +126,7 @@ export default function ByVehicleHub() {
         description: 'Pick a guided-tour vehicle by group size — sedan, MPV, SUV, Force Urbania, Maharaja Tempo, Volvo coach or luxury BMW/Audi — with seats, starting fare and best use case.',
         image: `${baseUrl}/images/tempo/17_seater.jpg`,
         datePublished: '2026-01-01',
-        dateModified: getTodayDate(),
+        dateModified: (getContentUpdatedOn(url) || getTodayDate()),
         authorName: 'editorial',
         speakableSelectors: ['.speakable-lead', '.speakable-faq-first'],
       }),
@@ -182,7 +184,7 @@ export default function ByVehicleHub() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a14]/60 via-[#0a0a14]/85 to-[#0a0a14]" />
             <DotsTexture />
           </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 lg:pt-28 pb-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 lg:pt-28 pb-10 sm:pb-16">
             <nav className="flex flex-wrap items-center gap-2 text-[11px] text-amber-200/60 mb-6" aria-label="Breadcrumb">
               <Link href="/" className="hover:text-amber-300 transition">Home</Link>
               <span className="text-amber-300/40">/</span>
@@ -253,7 +255,7 @@ export default function ByVehicleHub() {
                           <p className="font-serif italic text-[13px] text-[#3a2a08] leading-tight">{v.name}</p>
                           <p className="text-[10px] uppercase tracking-widest text-[#7a6428]/80 font-bold">{v.seats} pax</p>
                         </div>
-                        <span className="text-[11px] font-black text-[#3a2a08]">₹{v.perKm}/km</span>
+                        <span className="text-[11px] font-black text-[#3a2a08]">₹{groupDigits(v.perKm)}/km</span>
                       </div>
                     </div>
                   ))}
@@ -277,7 +279,7 @@ export default function ByVehicleHub() {
               { label: 'Guide', value: 'Always bundled' },
             ]}
             lastReviewed="2026-04-29"
-            source="Triveni Cabs vehicle catalogue + tour bundle inventory"
+            source="Triveni Cabs™ vehicle catalogue + tour bundle inventory"
             className="shadow-[0_30px_80px_-30px_rgba(251,191,36,0.3)]"
           />
         </section>
@@ -297,7 +299,7 @@ export default function ByVehicleHub() {
         </section>
 
         {/* ============= VEHICLE CARDS ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
           <SectionTitle eyebrow="Browse by vehicle class" title="Which vehicle fits your group?" sub="Tap a card to jump to its tour bundles below." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
             {vehicleEntries.map(v => (
@@ -330,7 +332,7 @@ export default function ByVehicleHub() {
                   </div>
                   <div>
                     <p className="text-[10px] uppercase tracking-[0.25em] text-slate-500 font-bold">From</p>
-                    <p className="font-black text-amber-200 mt-1">₹{v.perKm}/km</p>
+                    <p className="font-black text-amber-200 mt-1">₹{groupDigits(v.perKm)}/km</p>
                   </div>
                 </div>
               </a>
@@ -339,22 +341,21 @@ export default function ByVehicleHub() {
         </section>
 
         {/* ============= INLINE CTA ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
           <InlineCTA
             theme="guide"
             headline="Not sure which vehicle?"
             sub="Tell us your group size and route — we'll recommend the right vehicle + guide bundle in 5 minutes on WhatsApp."
             context="tours-with-guide-vehicle-mid"
-            waMessage="Hi Triveni Cabs, I have a group of __ people travelling to __. Which vehicle fits best?"
+            waMessage="Hi Triveni Cabs™, I have a group of __ people travelling to __. Which vehicle fits best?"
             variant="full"
           />
         </section>
 
         {/* ============= PER-VEHICLE LISTINGS ============= */}
         {vehicleEntries.map(v => (
-          <section key={v.slug} id={`vehicle-${v.slug}`} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 scroll-mt-24">
+          <section key={v.slug} id={`vehicle-${v.slug}`} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24 scroll-mt-24">
             <div className="relative overflow-hidden rounded-[1.6rem] border border-amber-400/15 bg-gradient-to-br from-slate-900/80 via-slate-950 to-slate-900/40 p-6 md:p-8 mb-8">
-              <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full bg-amber-400/[0.08] blur-3xl" />
               <div className="grid md:grid-cols-12 gap-6 items-center">
                 <div className="md:col-span-7">
                   <p className="text-[10px] uppercase tracking-[0.3em] text-amber-300/80 font-bold">{v.category} class</p>
@@ -367,7 +368,7 @@ export default function ByVehicleHub() {
                     {v.seats} passengers · {v.bagSpace} · {v.tours.length} bundled tours available
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <span className="inline-flex items-center rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-100 text-[11px] font-semibold px-3 py-1">From ₹{v.perKm}/km</span>
+                    <span className="inline-flex items-center rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-100 text-[11px] font-semibold px-3 py-1">From ₹{groupDigits(v.perKm)}/km</span>
                     <span className="inline-flex items-center rounded-full bg-emerald-400/10 border border-emerald-300/30 text-emerald-100 text-[11px] font-semibold px-3 py-1">AC · all-day</span>
                     <span className="inline-flex items-center rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-100 text-[11px] font-semibold px-3 py-1">Verified driver</span>
                   </div>
@@ -415,19 +416,19 @@ export default function ByVehicleHub() {
         ))}
 
         {/* ============= VEHICLE FARE TABLE ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="At a glance" title="Vehicle capacity, fare and best use" sub="Every bundle includes a Ministry-licensed guide. Fares are fixed at booking." />
           <VehicleFareTable rows={VEHICLE_FEE_ROWS} />
         </section>
 
         {/* ============= FAQ ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <SectionTitle eyebrow="Good to know" title="Tour vehicles — frequently asked questions" sub="Capacity, pricing, AC, luggage, Golden Triangle and luxury options." />
           <FaqAccordion faqs={VEHICLE_FAQS} />
         </section>
 
         {/* ============= INTERNAL LINKS ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-20">
           <div className="rounded-[1.4rem] border border-amber-400/15 bg-gradient-to-br from-slate-900/60 via-slate-950 to-slate-900/40 p-7 md:p-9">
             <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-amber-300/80">Keep exploring</p>
             <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -446,18 +447,18 @@ export default function ByVehicleHub() {
         </section>
 
         {/* ============= REASSURANCE BAND ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-24">
           <ReassuranceBand />
         </section>
 
         {/* ============= FINAL CTA ============= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pb-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pb-14 sm:pb-24">
           <InlineCTA
             theme="guide"
             headline="Lock in your tour bundle today"
             sub="Pick a vehicle · pick a guide language · we lock the price · no surprise fees"
             context="tours-with-guide-vehicle-final"
-            waMessage="Hi Triveni Cabs, I want to book a Tour With Guide. Vehicle preference: ___"
+            waMessage="Hi Triveni Cabs™, I want to book a Tour With Guide. Vehicle preference: ___"
             variant="banner"
           />
         </section>
@@ -477,7 +478,6 @@ function ReassuranceBand() {
   ];
   return (
     <div className="relative overflow-hidden rounded-[1.6rem] border border-amber-400/15 bg-gradient-to-br from-[#1a1408]/60 via-slate-950 to-slate-900/40 p-6 sm:p-8">
-      <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full bg-amber-400/[0.08] blur-3xl" />
       <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-amber-300/80 text-center mb-5">Why book Triveni</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
         {items.map((it, i) => (
@@ -552,7 +552,7 @@ function FaqAccordion({ faqs }) {
       {faqs.map((f, i) => (
         <details key={i} className="group rounded-2xl border border-amber-400/12 bg-slate-900/40 open:border-amber-300/40 open:bg-slate-900/60 hover:border-amber-300/30 transition">
           <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-5 min-h-[44px] focus-visible:outline-none focus-visible:bg-amber-400/5 rounded-2xl">
-            <span className="text-base md:text-lg font-black text-amber-100 leading-snug">{f.question}</span>
+            <h3 className="m-0 text-base md:text-lg font-black text-amber-100 leading-snug">{f.question}</h3>
             <span aria-hidden className="shrink-0 w-8 h-8 rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-300 flex items-center justify-center group-open:rotate-180 group-open:bg-amber-400/20 transition-transform duration-300">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" /></svg>
             </span>
@@ -630,7 +630,6 @@ function VehicleFan({ vehicles }) {
   if (!vehicles || vehicles.length === 0) return null;
   return (
     <div className="relative h-[480px] w-full">
-      <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/15 via-transparent to-emerald-500/10 blur-3xl rounded-full" />
       {vehicles.map((v, i) => {
         const positions = [
           { top: '4%',  left: '0',   rotate: '-5deg', z: 30, scale: '1.0' },
@@ -652,7 +651,7 @@ function VehicleFan({ vehicles }) {
                 <p className="font-serif italic text-[13px] text-[#3a2a08] leading-tight">{v.name}</p>
                 <p className="text-[10px] uppercase tracking-widest text-[#7a6428]/80 font-bold">{v.seats} pax</p>
               </div>
-              <span className="text-[11px] font-black text-[#3a2a08]">₹{v.perKm}/km</span>
+              <span className="text-[11px] font-black text-[#3a2a08]">₹{groupDigits(v.perKm)}/km</span>
             </div>
           </div>
         );

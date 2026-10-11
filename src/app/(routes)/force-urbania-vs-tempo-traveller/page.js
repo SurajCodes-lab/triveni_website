@@ -1,6 +1,7 @@
 import ComparisonPage from '@/components/seo/ComparisonPage';
 import { BASE_URL, COMPANY_INFO } from '@/lib/seo/constants';
 import { tightenTitle } from '@/lib/seo/serp-ctr';
+import SiblingPages from '@/components/seo/SiblingPages';
 
 export const revalidate = 3600;
 
@@ -27,7 +28,8 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <ComparisonPage
+    <>
+      <ComparisonPage
       slug="force-urbania-vs-tempo-traveller"
       title="Force Urbania vs Tempo Traveller"
       h1="Force Urbania vs Tempo Traveller — Which Group Vehicle Should You Book?"
@@ -53,7 +55,7 @@ export default function Page() {
         { question: 'Which is cheaper — Urbania or Tempo Traveller?', answer: 'The Tempo Traveller starts lower at ₹23/km versus the Urbania at ₹25/km. For a large group of 20–26, a single Tempo Traveller is usually cheaper than splitting into two smaller Urbanias. For a premium group of 10–17, the Urbania gives more comfort per rupee.' },
         { question: 'Which is better for hilly trips like Manali or Char Dham?', answer: 'The Tempo Traveller is the proven choice for hills — rugged, high-torque and widely available in mountain regions. The Urbania also handles hills well and is more comfortable, but for Char Dham yatra by tempo traveller we most often recommend the Tempo Traveller for reliability and group size.' },
         { question: 'What sizes do the Urbania and Tempo Traveller come in?', answer: 'Force Urbania: 10, 12, 13 and 17 seater. Tempo Traveller: 12, 16, 17, 20 and 26 seater. If you have 18–26 people, the Tempo Traveller is your option; the Urbania maxes out at 17 seats.' },
-        { question: 'Are both vehicles chauffeur-driven?', answer: 'Yes. Triveni Cabs rents both the Urbania and Tempo Traveller chauffeur-driven only — fuel, driver and AC are included in the per-km fare. We do not offer self-drive on group vehicles.' },
+        { question: 'Are both vehicles chauffeur-driven?', answer: 'Yes. Triveni Cabs™ rents both the Urbania and Tempo Traveller chauffeur-driven only — fuel, driver and AC are included in the per-km fare. We do not offer self-drive on group vehicles.' },
       ]}
       relatedLinks={[
         { href: '/force-urbania', anchor: 'Force Urbania on rent' },
@@ -63,5 +65,8 @@ export default function Page() {
         { href: '/20-seater-tempo-traveller', anchor: '20 seater tempo traveller' },
       ]}
     />
+    {/* Week 49: nothing linked to this page — the comparison family now links itself */}
+    <SiblingPages contains="-vs-" current="/force-urbania-vs-tempo-traveller" title="Other comparisons on this site" intro="The other side-by-side pages travellers ask us for." limit={14} />
+    </>
   );
 }

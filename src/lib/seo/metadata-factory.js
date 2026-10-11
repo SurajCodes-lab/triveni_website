@@ -22,7 +22,17 @@ import {
   SERVICE_AREAS,
   CITY_GEO_COORDS
 } from './constants';
-import { tightenTitle, finalizeTitle } from './serp-ctr';
+import {
+  tightenTitle,
+  finalizeTitle,
+  pickTitle,
+  clamp,
+  formatINR,
+  tightenDescription,
+  DISPLAY_BUDGET,
+  DESC_BUDGET
+} from './serp-ctr';
+import { groupDigits } from '@/utilis/pricing';
 
 /**
  * Generate local-SEO geo meta tags (geo.region, geo.placename, geo.position,
@@ -49,20 +59,91 @@ export function generateGeoMeta(city) {
   return meta;
 }
 
+/** "₹3,600" / "3,600" / 3600 -> 3600. NaN-safe: returns null when no digits. */
+function toRupees(value) {
+  const digits = String(value == null ? '' : value).replace(/[^\d]/g, '');
+  return digits ? Number(digits) : null;
+}
+
+/** First fare in a route's price table whose vehicle label matches. */
+function fareFor(prices, pattern) {
+  if (!Array.isArray(prices)) return null;
+  const row = prices.find((p) => p && pattern.test(String(p.vehicle || '')));
+  return row ? toRupees(row.price) : null;
+}
+
 /**
- * Generate route page metadata (A to B taxi)
- * CTR Formula: [Keyword] [Price] — [Benefit] [Trust] | [CTA]
+ * Generate route page metadata (A to B taxi) — /<origin>-to-<destination>
+ *
+ * Week 48 (GSC, 12 pages at position 8.1 with 0.12% CTR on 84K impressions).
+ *
+ * The old title was a token label — "Dehradun to Agra Cab ₹3,600 — AC, 24/7
+ * 4.9★" — which is the shape every competitor listing on that page also uses,
+ * so at position 8 it gave the searcher no reason to scroll past the first
+ * three. The description then spent its opening clause on the km and hours
+ * that the Maps panel already prints above the results, and filled the rest
+ * with a rating and a traveller count.
+ *
+ * The listing now answers the question the query is asking ("how much is a
+ * taxi from A to B?") in the title itself: the sedan fare, that it is a
+ * one-way fare, and the round-trip figure, which no competitor shows. The
+ * description names the SUV and Innova fares from the page's own fare table,
+ * says what the fare includes (fuel, driver, GST; tolls extra — exactly what
+ * the page's FAQ states), and leaves the km and drive time to the end as proof
+ * of relevance rather than the lead. No rating, no count, no em-dash.
+ *
+ * One skeleton for the whole family: "<pair> Taxi ₹<one way> One Way" plus a
+ * tail that shrinks with the length of the city pair so nothing is cut
+ * mid-clause (pickTitle takes the longest variant that fits the 58-character
+ * content budget; the layout appends " | Triveni Cabs").
+ *
+ * `prices` is the route's own price table from cityRoutesData (Sedan first,
+ * then SUV Ertiga, SUV Innova, Tempos). `price` stays accepted as the sedan
+ * one-way fallback for any caller that does not pass the table.
  */
-export function generateRouteMetadata({ origin, destination, price, distance, duration, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Cab ₹${price} — AC, 24/7 4.9★ | Book Now`);
-  const ogTitle = truncateOGTitle(`Book ${origin} to ${destination} Cab ₹${price} — AC Sedan, Verified Drivers, 24/7 Pickup | Triveni Cabs`);
-  const description = truncateDescription(
-    `AC sedan ${origin} to ${destination} ₹${price}. ${distance}, ${duration}. ` +
-    `Verified driver, no hidden charges. 4.9★ by 10K+ travellers. Book in 2 min.`
+export function generateRouteMetadata({ origin, destination, price, prices, distance, duration, slug }) {
+  const pair = `${origin} to ${destination}`;
+  const sedanOneWay = fareFor(prices, /^sedan$/i) ?? toRupees(price);
+  const sedanRow = Array.isArray(prices) ? prices.find((p) => p && /^sedan$/i.test(String(p.vehicle || ''))) : null;
+  const sedanRoundTrip = sedanRow ? toRupees(sedanRow.roundTrip) : null;
+  const suvFare = fareFor(prices, /^suv(?!\s*innova)/i);
+  const innovaFare = fareFor(prices, /innova/i);
+
+  const oneWay = formatINR(sedanOneWay);
+  const roundTrip = formatINR(sedanRoundTrip);
+
+  const titleVariants = [];
+  if (oneWay && roundTrip) titleVariants.push(`${pair} Taxi ${oneWay} One Way, ${roundTrip} Round Trip`);
+  if (oneWay) {
+    titleVariants.push(`${pair} Taxi ${oneWay} One Way, AC Sedan`);
+    titleVariants.push(`${pair} Taxi ${oneWay} One Way`);
+  }
+  titleVariants.push(`${pair} Taxi Fare & Booking`);
+  const title = tightenTitle(pickTitle(titleVariants, DISPLAY_BUDGET), DISPLAY_BUDGET);
+
+  const fareSentence = oneWay
+    ? `${pair} taxi fare is ${oneWay} one way in an AC sedan${roundTrip ? ` and ${roundTrip} round trip` : ''}. `
+    : `${pair} taxi with fixed one way and round trip fares in an AC sedan. `;
+  const otherVehicles = [
+    suvFare ? `SUV Ertiga ${formatINR(suvFare)}` : '',
+    innovaFare ? `Innova ${formatINR(innovaFare)}` : ''
+  ].filter(Boolean).join(', ');
+  const description = tightenDescription(
+    fareSentence +
+    (otherVehicles ? `${otherVehicles}. ` : '') +
+    `Fuel, driver and GST included, tolls extra. ` +
+    `${distance}, ${duration}.`,
+    DESC_BUDGET
   );
-  const ogDescription = truncateDescription(
-    `Book ${origin} to ${destination} cab at just ₹${price}. ${distance} in ${duration}. ` +
-    `AC sedan/SUV, verified drivers, GPS tracking. 4.9★ rated, 10,000+ trips. Call now!`
+
+  const ogTitle = clamp(
+    `Book ${pair} Taxi: ${oneWay ? `${oneWay} One Way` : 'Fixed Fares'}${roundTrip ? `, ${roundTrip} Round Trip` : ''}, AC Sedan, Verified Drivers | Triveni Cabs™`,
+    95
+  );
+  const ogDescription = tightenDescription(
+    `${pair} taxi ${oneWay ? `from ${oneWay} one way` : 'at fixed fares'}${otherVehicles ? `; ${otherVehicles}` : ''}. ` +
+    `Fuel, driver and GST included, tolls extra. ${distance} in ${duration}. AC vehicles, verified drivers, 24/7 pickup.`,
+    DESC_BUDGET
   );
 
   return {
@@ -101,7 +182,7 @@ export function generateRouteMetadata({ origin, destination, price, distance, du
     robots: getDefaultRobots(),
     category: 'Transportation',
     other: {
-      'price-range': `₹${price}`,
+      'price-range': oneWay || `₹${groupDigits(price)}`,
       'service-type': 'Intercity Taxi',
       'service-area': `${origin}, ${destination}`,
       'rating': String(AGGREGATE_RATING.ratingValue),
@@ -118,23 +199,23 @@ export function generateTourMetadata({ tourName, city, price, duration, slug, de
   // Build keyword-rich title with specific attractions
   const topHighlights = highlights.slice(0, 2).map(h => typeof h === 'string' ? h : h.name || h.title || '').filter(Boolean).join(', ');
   const titleWithAttractions = topHighlights
-    ? truncateTitle(`${tourName} ₹${price} — ${topHighlights} | Book`)
-    : truncateTitle(`${tourName} ₹${price} — ${duration} Tour 4.9★ | Book`);
+    ? truncateTitle(`${tourName} ₹${groupDigits(price)} — ${topHighlights} | Book`)
+    : truncateTitle(`${tourName} ₹${groupDigits(price)} — ${duration} Tour 4.9★ | Book`);
   const title = titleWithAttractions;
-  const ogTitle = truncateOGTitle(`${tourName} ₹${price} — ${duration}, All Inclusive AC Vehicle & Expert Guide | Book Today`);
+  const ogTitle = truncateOGTitle(`${tourName} ₹${groupDigits(price)} — ${duration}, All Inclusive AC Vehicle & Expert Guide | Book Today`);
 
   // Build description with specific attractions instead of generic text
   const highlightText = highlights.slice(0, 4).map(h => typeof h === 'string' ? h : h.name || h.title || '').filter(Boolean).join(', ');
   const description = truncateDescription(
     tourDesc ||
     (highlightText
-      ? `${tourName} ₹${price}: ${highlightText}. ${duration}, AC car, expert guide. 4.9★ rated. Book in 2 min.`
-      : `${tourName} at ₹${price}. ${duration}, AC vehicle, expert driver. 4.9★ by 10K+ travellers. No hidden cost. Book in 2 min.`)
+      ? `${tourName} ₹${groupDigits(price)}: ${highlightText}. ${duration}, AC car, expert guide. 4.9★ rated. Book in 2 min.`
+      : `${tourName} at ₹${groupDigits(price)}. ${duration}, AC vehicle, expert driver. 4.9★ by 10K+ travellers. No hidden cost. Book in 2 min.`)
   );
   const ogDescription = truncateDescription(
     highlightText
-      ? `Book ${tourName} ₹${price}: ${highlightText}. ${duration} all-inclusive tour. 4.9★ rated. Book now!`
-      : `Book ${tourName} at just ₹${price}. ${duration} all-inclusive tour with AC vehicle & expert guide. 4.9★ rated. Book now!`
+      ? `Book ${tourName} ₹${groupDigits(price)}: ${highlightText}. ${duration} all-inclusive tour. 4.9★ rated. Book now!`
+      : `Book ${tourName} at just ₹${groupDigits(price)}. ${duration} all-inclusive tour with AC vehicle & expert guide. 4.9★ rated. Book now!`
   );
 
   return {
@@ -157,7 +238,7 @@ export function generateTourMetadata({ tourName, city, price, duration, slug, de
       url: `${BASE_URL}/sightseeing/${slug}`,
       siteName: SITE_CONFIG.siteName,
       images: [{
-        url: image || `${BASE_URL}/images/tours/${slug}-og.jpg`,
+        url: image || `${BASE_URL}/images/sightseeing/Sightseeingpage_hero_section_image.jpg`,
         width: 1200,
         height: 630,
         alt: `${tourName} — ${city} Sightseeing Tour`
@@ -173,7 +254,7 @@ export function generateTourMetadata({ tourName, city, price, duration, slug, de
     robots: getDefaultRobots(),
     category: 'Travel',
     other: {
-      'price-range': `₹${price}`,
+      'price-range': `₹${groupDigits(price)}`,
       'duration': duration,
       'tour-type': 'Sightseeing',
       'location': city,
@@ -188,14 +269,14 @@ export function generateTourMetadata({ tourName, city, price, duration, slug, de
  * CTR Formula: [City Tours] [Price] — [Count] [Trust] | [CTA]
  */
 export function generateSightseeingCityMetadata({ city, tourCount, lowestPrice, slug, heroImage }) {
-  const title = truncateTitle(`${city} Tours from ₹${lowestPrice} — ${tourCount}+ Packages 4.9★ | Book`);
-  const ogTitle = truncateOGTitle(`Explore ${city} — ${tourCount}+ Sightseeing Tours from ₹${lowestPrice} | Expert Guides | Triveni Cabs`);
+  const title = truncateTitle(`${city} Tours from ₹${groupDigits(lowestPrice)} — ${tourCount}+ Packages 4.9★ | Book`);
+  const ogTitle = truncateOGTitle(`Explore ${city} — ${tourCount}+ Sightseeing Tours from ₹${groupDigits(lowestPrice)} | Expert Guides | Triveni Cabs™`);
   const description = truncateDescription(
-    `${city} sightseeing: ${tourCount}+ packages from ₹${lowestPrice}. AC vehicle, expert guide. ` +
+    `${city} sightseeing: ${tourCount}+ packages from ₹${groupDigits(lowestPrice)}. AC vehicle, expert guide. ` +
     `4.9★ by 10K+ tourists. No hidden cost. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
-    `Discover ${tourCount}+ sightseeing tours in ${city} starting ₹${lowestPrice}. ` +
+    `Discover ${tourCount}+ sightseeing tours in ${city} starting ₹${groupDigits(lowestPrice)}. ` +
     `Heritage sites, cultural experiences & guided day trips. Book now!`
   );
 
@@ -236,7 +317,7 @@ export function generateSightseeingCityMetadata({ city, tourCount, lowestPrice, 
     category: 'Travel',
     other: {
       'tour-count': String(tourCount),
-      'price-range': `From ₹${lowestPrice}`,
+      'price-range': `From ₹${groupDigits(lowestPrice)}`,
       'location': city,
       'rating': String(AGGREGATE_RATING.ratingValue),
       'review_count': String(AGGREGATE_RATING.reviewCount)
@@ -248,17 +329,51 @@ export function generateSightseeingCityMetadata({ city, tourCount, lowestPrice, 
  * Generate city hub page metadata
  * CTR Formula: [City Cab] [Price] — [Benefit] [Trust] | [CTA]
  */
-export function generateCityHubMetadata({ city, minPrice = 11, services = [], slug }) {
-  const title = truncateTitle(`${city} Cab ₹${minPrice}/km — AC, Verified Drivers 4.9★ | Book Now`);
-  const ogTitle = truncateOGTitle(`${city} Taxi & Cab Service — From ₹${minPrice}/km, AC Vehicles, Verified Drivers | Triveni Cabs`);
+export function generateCityHubMetadata({ city, minPrice = 11, services = [], slug, facts = null }) {
+  // Week 49: "taxi service in <city>" sat at positions 17 to 27 across this
+  // family, and every one of the 42 city pages carried the same sentence with
+  // the name swapped. A snippet that repeats has nothing to rank on. The
+  // description is now built from the city's own record: its loudest corridors
+  // with their distances, the published local package, and what else the city
+  // has a page for. `facts` is null-safe: a city with no record falls back to
+  // the older sentence.
+  const routes = (facts && Array.isArray(facts.routes) ? facts.routes : []).filter((r) => r && r.to);
+  const namedRoutes = routes.slice(0, 3)
+    .map((r) => (r.km ? `${r.to} (${r.km} km)` : r.to))
+    .join(', ');
+  const localLine = facts && facts.localPrice ? `local 4 hr/40 km ${facts.localPrice}` : '';
+  const extras = (facts && Array.isArray(facts.extras) ? facts.extras : []).slice(0, 2).join(' and ');
+
+  // A ladder rather than a truncation: the longest variant that fits the
+  // 45-character display budget is used whole, so no title ends mid-clause.
+  const title = facts && facts.localPrice
+    ? pickTitle([
+        `Taxi Service in ${city}: Cab ₹${groupDigits(minPrice)}/km, Local ${facts.localPrice}`,
+        `Taxi Service in ${city}: Cab ₹${groupDigits(minPrice)}/km, AC 24/7`,
+        `Taxi Service in ${city}: Cab ₹${groupDigits(minPrice)}/km`,
+        `Taxi Service in ${city} — ₹${groupDigits(minPrice)}/km`,
+      ], 45)
+    : truncateTitle(`Taxi Service in ${city} — Cab ₹${groupDigits(minPrice)}/km, AC, 24/7 | Book Now`);
+  const ogTitle = truncateOGTitle(`${city} Taxi & Cab Service — From ₹${groupDigits(minPrice)}/km, AC Vehicles, Verified Drivers | Triveni Cabs™`);
   const serviceList = services.length > 0 ? services.slice(0, 3).join(', ') : 'Airport, Local, Outstation';
+
+  const twoRoutes = routes.slice(0, 2).map((r) => (r.km ? `${r.to} (${r.km} km)` : r.to)).join(' and ');
+  const built = [
+    `Taxi service in ${city}: AC sedan ₹${groupDigits(minPrice)}/km`,
+    localLine ? `, ${localLine}` : '',
+    twoRoutes ? `. Outstation to ${twoRoutes}` : '',
+    !twoRoutes && extras ? `. ${extras.charAt(0).toUpperCase()}${extras.slice(1)}` : '',
+    '. Chauffeur included; tolls extra.',
+  ].filter(Boolean).join('');
+
   const description = truncateDescription(
-    `${city} cab from ₹${minPrice}/km. ${serviceList}. AC sedan/SUV, verified drivers. ` +
-    `4.9★ by 10K+ travellers. No hidden charges. Book in 2 min.`
+    namedRoutes || localLine
+      ? built
+      : `${city} cab from ₹${groupDigits(minPrice)}/km. ${serviceList}. AC sedan/SUV, verified drivers. ` +
+        `No hidden charges. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
-    `Book ${city} taxi & cab service from just ₹${minPrice}/km. ${serviceList} with AC vehicles & verified drivers. ` +
-    `4.9★ rated. Book now!`
+    `Book ${city} taxi & cab service from just ₹${groupDigits(minPrice)}/km. ${serviceList} with AC vehicles & verified drivers.`
   );
 
   return {
@@ -298,7 +413,7 @@ export function generateCityHubMetadata({ city, minPrice = 11, services = [], sl
     category: 'Transportation',
     other: {
       ...generateGeoMeta(city),
-      'price-range': `From ₹${minPrice}/km`,
+      'price-range': `From ₹${groupDigits(minPrice)}/km`,
       'service-area': city,
       'available-services': serviceList,
       'rating': String(AGGREGATE_RATING.ratingValue),
@@ -312,14 +427,14 @@ export function generateCityHubMetadata({ city, minPrice = 11, services = [], sl
  * CTR Formula: [Airport Cab] [Price] — [Benefit] [Trust] | [CTA]
  */
 export function generateAirportMetadata({ city, airportName, price, slug }) {
-  const title = truncateTitle(`${city} Airport Cab ₹${price} — 24/7 Pickup 4.9★ | Book Now`);
-  const ogTitle = truncateOGTitle(`${city} Airport Cab ₹${price} — Meet at Terminal Exit, AC Vehicle, No Hidden Charges | Triveni Cabs`);
+  const title = truncateTitle(`${city} Airport Taxi Service — Cab ₹${groupDigits(price)}, 24/7 Pickup | Book Now`);
+  const ogTitle = truncateOGTitle(`${city} Airport Cab ₹${groupDigits(price)} — Meet at Terminal Exit, AC Vehicle, No Hidden Charges | Triveni Cabs™`);
   const description = truncateDescription(
-    `${city} airport cab ₹${price}. ${airportName} terminal pickup, AC sedan/SUV. ` +
+    `${city} airport cab ₹${groupDigits(price)}. ${airportName} terminal pickup, AC sedan/SUV. ` +
     `No surge, fixed fare. 4.9★ by 10K+ travellers. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
-    `Book ${city} airport cab from ₹${price}. ${airportName} terminal pickup, meet at exit gate. ` +
+    `Book ${city} airport cab from ₹${groupDigits(price)}. ${airportName} terminal pickup, meet at exit gate. ` +
     `AC vehicles, fixed fares, 24/7. Book now!`
   );
 
@@ -360,7 +475,7 @@ export function generateAirportMetadata({ city, airportName, price, slug }) {
     category: 'Transportation',
     other: {
       ...generateGeoMeta(city),
-      'price-range': `₹${price}`,
+      'price-range': `₹${groupDigits(price)}`,
       'service-type': 'Airport Transfer',
       'airport': airportName,
       'rating': String(AGGREGATE_RATING.ratingValue),
@@ -480,8 +595,8 @@ export function generateCorporateMetadata({ city, industry, useCase, slug }) {
  * Title: {City} Wedding Car ₹4,999 — BMW, Audi, Mercedes | Book Now
  */
 export function generateWeddingMetadata({ city, slug }) {
-  const title = truncateTitle(`${city} Wedding Car ₹4,999 — BMW, Audi, Mercedes | Book Now`);
-  const ogTitle = truncateOGTitle(`${city} Wedding Car Rental from ₹4,999 — BMW, Audi, Mercedes, Decorated Baraat | Triveni Cabs`);
+  const title = truncateTitle(`Wedding Car Rental in ${city} from ₹4,999 — BMW, Audi, Mercedes | Book Now`);
+  const ogTitle = truncateOGTitle(`${city} Wedding Car Rental from ₹4,999 — BMW, Audi, Mercedes, Decorated Baraat | Triveni Cabs™`);
   const description = truncateDescription(
     `${city} wedding car from ₹4,999. BMW, Audi, Mercedes, baraat tempo. ` +
     `Professional chauffeurs. 4.9★ rated, 500+ weddings. Call 7668570551.`
@@ -590,16 +705,74 @@ export function generateEventMetadata({ eventType, city, slug }) {
  * Generate tempo traveller route page metadata
  * CTR Formula: [Route Tempo] [Price] — [Seats] [Trust] | [CTA]
  */
-export function generateTempoMetadata({ origin, destination, price, seats, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Tempo ₹${price} — ${seats} Seater AC 4.9★ | Book`);
-  const ogTitle = truncateOGTitle(`${origin} to ${destination} Tempo Traveller from ₹${price} — ${seats} Seater AC | Triveni Cabs`);
-  const description = truncateDescription(
-    `${origin} to ${destination} tempo ₹${price}. ${seats}-seater AC, pushback seats. ` +
-    `4.9★ by 2,500+ groups. No hidden cost. Book in 2 min.`
+/**
+ * Tempo route listing copy, Week 48 (workstream C3).
+ *
+ * The old formula was "<pair> Tempo ₹23/km — 12-26 Seater AC 4.9★ | Book". On
+ * the five pages GSC ranked 4th-10th it earned 0.32% CTR from 23,241
+ * impressions, and the reasons are visible in the rendered titles:
+ *
+ *   - "Tempo" is a label, not the searcher's term. Every query in the basket says
+ *     "tempo traveller", so the listing never read as an exact answer.
+ *   - The rating and the CTA were filler that tightenTitle stripped anyway, and on
+ *     the longest pairs the tightener also cut the fare, leaving a bare place name
+ *     ("Delhi to Amritsar Golden Temple Wagah Border | Triveni Cabs").
+ *   - The description spent its budget on the km figure and a rating instead of
+ *     answering "what does it cost", which is the question the searcher has.
+ *
+ * The new listing answers that question in the searcher's own words and keeps the
+ * rate-card fare visible on every pair. Variants run longest-first so a short pair
+ * gets the full sentence and a long circuit still ends in the price; the pair is
+ * the distinguishing noun, so no two routes can share a title. A parenthetical in
+ * the destination ("Delhi Agra (Golden Triangle)") is dropped from the copy only,
+ * never from the canonical.
+ *
+ * `estimate` is optional: { seats, km, fare } computed by the page from the same
+ * distance and rate the client renders, so the description can name a total the
+ * reader will actually find on the page. Nothing in the copy is an invented
+ * rating or count.
+ */
+const cleanPlace = (s) => String(s || '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s{2,}/g, ' ').trim();
+
+function tempoRouteTitle(pair, price) {
+  return pickTitle([
+    `${pair} Tempo Traveller Fare from ₹${groupDigits(price)}`,
+    `${pair} Tempo Traveller from ₹${groupDigits(price)}`,
+    `${pair} Tempo Traveller ₹${groupDigits(price)}`,
+    `${pair} Tempo from ₹${groupDigits(price)}`,
+    `${pair} Tempo ₹${groupDigits(price)}`,
+    // Two 46-50 character circuit pairs (Delhi Haridwar-Rishikesh-Dehradun-
+    // Mussoorie, Haridwar Char Dham) cannot fit "Tempo" and the rate. The rate
+    // wins: the /tempo-traveller/ path and the description carry the vehicle.
+    `${pair} ₹${groupDigits(price)}`,
+    `${pair} Tempo`,
+  ], DISPLAY_BUDGET);
+}
+
+function tempoRouteDescription({ pair, price, seats, estimate }) {
+  const [lo, hi] = String(seats || '').split(/\s*[-–]\s*/);
+  const seaterClause = lo && hi
+    ? `from ₹${groupDigits(price)} for a ${lo} seater, AC up to ${hi} seats`
+    : `${seats ? `${seats} seater ` : ''}AC from ₹${groupDigits(price)}`;
+  // Week 49: the published rate card carries one tempo figure, the 12-seater at
+  // ₹23 a kilometre. The 17, 20 and 26 seaters are priced per seater on quotation,
+  // so the listing names the distance and says so rather than printing a total
+  // worked from a rate the site does not publish.
+  const est = estimate && estimate.km > 0 && estimate.seats
+    ? ` ${estimate.km} km each way; ${estimate.seats} seater and larger quoted on request, billed both ways.`
+    : '';
+  return tightenDescription(
+    `${pair} tempo traveller ${seaterClause}.${est} Driver and fuel included, tolls extra. Call 7668570551.`
   );
+}
+
+export function generateTempoMetadata({ origin, destination, price, seats, slug, estimate = null }) {
+  const pair = `${cleanPlace(origin)} to ${cleanPlace(destination)}`;
+  const title = tempoRouteTitle(pair, price);
+  const description = tempoRouteDescription({ pair, price, seats, estimate });
+  const ogTitle = truncateOGTitle(`${pair} Tempo Traveller from ₹${groupDigits(price)}: ${seats} Seater AC | Triveni Cabs™`);
   const ogDescription = truncateDescription(
-    `Book ${origin} to ${destination} tempo traveller at ₹${price}. ${seats}-seater AC, professional drivers, GPS tracking. ` +
-    `2,500+ happy groups. Book now!`
+    `Book a ${seats} seater AC tempo traveller from ${pair} at ₹${groupDigits(price)}. Driver and fuel included, tolls extra. Call 7668570551.`
   );
 
   return {
@@ -638,7 +811,7 @@ export function generateTempoMetadata({ origin, destination, price, seats, slug 
     robots: getDefaultRobots(),
     category: 'Transportation',
     other: {
-      'price-range': `₹${price}`,
+      'price-range': `₹${groupDigits(price)}`,
       'service-type': 'Tempo Traveller Rental',
       'service-area': `${origin}, ${destination}`,
       'rating': String(AGGREGATE_RATING.ratingValue),
@@ -652,14 +825,14 @@ export function generateTempoMetadata({ origin, destination, price, seats, slug 
  * CTR Formula: [Route Bus] [Price] — [Seats] [Trust] | [CTA]
  */
 export function generateBusMetadata({ origin, destination, price, seats, slug }) {
-  const title = truncateTitle(`${origin} to ${destination} Bus ₹${price} — ${seats} Seater AC 4.9★ | Book`);
-  const ogTitle = truncateOGTitle(`${origin} to ${destination} Bus Route & Hire from ₹${price} — AC ${seats} Seater | Triveni Cabs`);
+  const title = truncateTitle(`${origin} to ${destination} Bus ₹${groupDigits(price)} — ${seats} Seater AC 4.9★ | Book`);
+  const ogTitle = truncateOGTitle(`${origin} to ${destination} Bus Route & Hire from ₹${groupDigits(price)} — AC ${seats} Seater | Triveni Cabs™`);
   const description = truncateDescription(
-    `${origin} to ${destination} bus hire ₹${price}. ${seats}-seater AC Volvo. ` +
+    `${origin} to ${destination} bus hire ₹${groupDigits(price)}. ${seats}-seater AC Volvo. ` +
     `4.9★ by 1,000+ groups. Fixed fare, no hidden cost. Book in 2 min.`
   );
   const ogDescription = truncateDescription(
-    `${origin} to ${destination} bus route info & luxury bus hire from ₹${price}. ${seats}-seater AC Volvo. ` +
+    `${origin} to ${destination} bus route info & luxury bus hire from ₹${groupDigits(price)}. ${seats}-seater AC Volvo. ` +
     `1,000+ groups trusted us. Book now!`
   );
 
@@ -699,7 +872,7 @@ export function generateBusMetadata({ origin, destination, price, seats, slug })
     robots: getDefaultRobots(),
     category: 'Transportation',
     other: {
-      'price-range': `₹${price}`,
+      'price-range': `₹${groupDigits(price)}`,
       'service-type': 'Bus Hire',
       'service-area': `${origin}, ${destination}`,
       'rating': String(AGGREGATE_RATING.ratingValue)
@@ -1008,7 +1181,7 @@ export function generateTourWithGuideMetadata({
   const baseTitle = headline
     ? headline
     : group === 'B'
-    ? `${guideLanguage || 'English'}-Speaking Tour Guide India ₹${guideFee}/day — Ministry-Licensed | Book`
+    ? `${guideLanguage || 'English'}-Speaking Tour Guide India ₹${groupDigits(guideFee)}/day — Ministry-Licensed | Book`
     : group === 'C'
     ? `${monumentSegment} with ${langTag}Guide ₹${bundledFare?.toLocaleString('en-IN')} — All-In | Book`
     : `${monumentSegment} ₹${bundledFare?.toLocaleString('en-IN')} — Vehicle + Licensed Guide | Book`;
@@ -1037,18 +1210,18 @@ export function generateTourWithGuideMetadata({
   const title = truncateTitle(langLed);
   const ogTitle = truncateOGTitle(
     group === 'B'
-      ? `Hire a ${guideLanguage}-Speaking Tour Guide in India — ₹${guideFee}/day, Ministry-Licensed | Triveni Cabs`
-      : `${monumentSegment} Tour with ${langTag}Guide — ${vehicle} + Guide Bundle ₹${bundledFare?.toLocaleString('en-IN')} | Triveni Cabs`
+      ? `Hire a ${guideLanguage}-Speaking Tour Guide in India — ₹${groupDigits(guideFee)}/day, Ministry-Licensed | Triveni Cabs™`
+      : `${monumentSegment} Tour with ${langTag}Guide — ${vehicle} + Guide Bundle ₹${bundledFare?.toLocaleString('en-IN')} | Triveni Cabs™`
   );
 
   const description = truncateDescription(
     group === 'B'
-      ? `Book a Ministry-licensed ${guideLanguage}-speaking tour guide for the Taj Mahal, Delhi, Jaipur or Golden Triangle. ₹${guideFee}/day. License proof shared at confirmation.`
+      ? `Book a Ministry-licensed ${guideLanguage}-speaking tour guide for the Taj Mahal, Delhi, Jaipur or Golden Triangle. ₹${groupDigits(guideFee)}/day. License proof shared at confirmation.`
       : `${monumentSegment} bundled tour ₹${bundledFare?.toLocaleString('en-IN')}: ${vehicle} + ${langTag.trim()} guide. ${duration}. Hotel pickup, no surprise fees. 4.9★, book in 2 min.`
   );
   const ogDescription = truncateDescription(
     group === 'B'
-      ? `Hire a Ministry-licensed ${guideLanguage}-speaking tour guide in India from ₹${guideFee}/day. License proof on confirmation. Book on WhatsApp.`
+      ? `Hire a Ministry-licensed ${guideLanguage}-speaking tour guide in India from ₹${groupDigits(guideFee)}/day. License proof on confirmation. Book on WhatsApp.`
       : `Book ${monumentSegment} with a ${langTag.trim()} guide + ${vehicle} from ₹${bundledFare?.toLocaleString('en-IN')}. ${duration}, hotel pickup, no surprise fees. 4.9★ rated.`
   );
 
@@ -1090,7 +1263,7 @@ export function generateTourWithGuideMetadata({
     robots: getDefaultRobots(),
     category: 'Travel',
     other: {
-      'price-range': bundledFare ? `₹${bundledFare}` : (guideFee ? `From ₹${guideFee}/day` : '₹₹'),
+      'price-range': bundledFare ? `₹${groupDigits(bundledFare)}` : (guideFee ? `From ₹${groupDigits(guideFee)}/day` : '₹₹'),
       'service-type': group === 'B' ? 'Tour Guide Hire' : 'Tour With Guide',
       'duration': duration || '',
       'language': guideLanguage || 'English',

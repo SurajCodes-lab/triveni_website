@@ -5,7 +5,18 @@
 
 export const COMPANY_INFO = {
   name: 'Triveni Cabs',
-  legalName: 'Triveni Cabs Private Limited',
+  // The brand operates without a private-limited registration, so the legal
+  // owner named in the footer trademark notice is simply 'Triveni Cabs'.
+  legalName: 'Triveni Cabs',
+  // Trademark: application filed, not yet granted, so the correct notice is ™
+  // (not ®). When registration is granted, change `mark` to '®' and `notice`
+  // to read 'is a registered trademark of' — every marked string on the site
+  // is built from the brand name plus this symbol.
+  trademark: {
+    mark: '™',
+    brandMarked: 'Triveni Cabs™',
+    notice: 'Triveni Cabs™ is a trademark of Triveni Cabs.',
+  },
   founder: 'Pankaj Singh Gaur',
   foundingDate: '2015',
   slogan: 'Your Journey, Our Priority',
@@ -41,9 +52,9 @@ export const COMPANY_INFO = {
   // Social Media
   social: {
     facebook: 'https://www.facebook.com/trivenicabs',
-    instagram: 'https://www.instagram.com/cabstriveni?igsh=YzlzYmZsZjZ5bnlo',
-    twitter: 'https://twitter.com/TriveniCabs',
-    linkedin: 'https://www.linkedin.com/company/triveni-cabs'
+    instagram: 'https://www.instagram.com/cabstriveni',
+    twitter: 'https://twitter.com/trivenicabs',
+    linkedin: 'https://www.linkedin.com/company/trivenicabs'
   }
 };
 
@@ -56,7 +67,9 @@ export const SITE_CONFIG = {
   language: 'en',
   twitterHandle: '@TriveniCabs',
   defaultImage: '/images/triveni-cabs-og.jpg',
-  logoUrl: '/images/logo.png'
+  // Week 47: /images/logo.png never existed on disk (Googlebot logged 404s for the
+  // Organization logo). The real file is the webp under /images/logo/.
+  logoUrl: '/images/logo/logo-tm.webp'
 };
 
 // Service-specific pricing for schema

@@ -1,6 +1,8 @@
-'use client';
-
-import { Star, Users, Shield, Clock } from '@/components/ui/icons';
+// Server component. The 'use client' directive was removed because this file
+// has no state, effects, event handlers or browser APIs — it was being
+// serialised into the hydration payload and re-executed in the browser for
+// no reason. Re-add the directive if interactivity is introduced here.
+import { Star, MapPin, Shield, Clock } from '@/components/ui/icons';
 
 /**
  * SocialProofStrip — compact social proof bar showing key trust metrics.
@@ -19,9 +21,14 @@ export default function SocialProofStrip({ theme = 'dark', variant = 'default' }
       fillIcon: true,
     },
     {
-      icon: Users,
-      value: '10,000+',
-      label: 'Happy Travelers',
+      // Week 53: this read "10,000+ Happy Travelers". It rendered on 3,458 pages
+      // and it is the same invented round number that was published as a review
+      // count in the structured markup until Week 52 — 10,000 was never a figure
+      // anyone had counted. Replaced with one the site can substantiate from its
+      // own route manifest, stated conservatively.
+      icon: MapPin,
+      value: '400+',
+      label: 'Routes Covered',
       iconColor: isDark ? 'text-sky-400' : 'text-sky-600',
     },
     {

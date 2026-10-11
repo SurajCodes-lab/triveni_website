@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/ui/JourneyLink';
 import Image from 'next/image';
 import { Phone, MapPin, Clock, CheckCircle2, ChevronRight, Star, Shield, Car, HelpCircle, ThumbsUp, ThumbsDown, Award, Route, Trophy, Target } from '@/components/ui/icons';
 import { WhatsAppIcon } from '@/components/ui/icons';
@@ -125,8 +125,7 @@ export default function DestinationCompareClient({ data, images }) {
           backgroundSize: '50px 50px'
         }} />
         {/* Floating Orbs */}
-        <div className="absolute top-20 left-[15%] w-64 h-64 bg-blue-500/15 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-[15%] w-64 h-64 bg-orange-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-20 right-[15%] w-64 h-64 bg-orange-500/15 rounded-full blur-3xl" style={{ animationDelay: '1s' }} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-32 relative z-10">
           <div className="flex items-center gap-2 text-white/50 text-sm mb-10">
@@ -238,7 +237,7 @@ export default function DestinationCompareClient({ data, images }) {
       )}
 
       {/* Side-by-Side Destination Cards */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 -mt-6 relative z-20 mb-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 -mt-6 relative z-20 mb-12 sm:mb-20">
         <div className="grid md:grid-cols-2 gap-8">
           {[
             { dest: data.dest1, side: "blue", label: "OPTION A", photo: img1?.card },
@@ -352,8 +351,6 @@ export default function DestinationCompareClient({ data, images }) {
           backgroundImage: 'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)',
           backgroundSize: '50px 50px'
         }} />
-        <div className="absolute top-20 left-[10%] w-48 h-48 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-[10%] w-48 h-48 bg-orange-500/10 rounded-full blur-3xl" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-14">
@@ -476,8 +473,7 @@ export default function DestinationCompareClient({ data, images }) {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-white/20" />
         </div>
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-[20%] w-48 h-48 bg-blue-300 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-10 right-[20%] w-48 h-48 bg-orange-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-10 right-[20%] w-48 h-48 bg-orange-300 rounded-full blur-3xl" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
@@ -486,7 +482,7 @@ export default function DestinationCompareClient({ data, images }) {
               Book Your Trip Now
             </h2>
             <p className="text-white/70 text-lg max-w-xl mx-auto">
-              Triveni Cabs — AC sedan at ₹11/km, SUV at ₹15/km. Expert drivers for every route.
+              Triveni Cabs™ — AC sedan at ₹11/km, SUV at ₹15/km. Expert drivers for every route.
             </p>
           </div>
 
@@ -536,7 +532,7 @@ export default function DestinationCompareClient({ data, images }) {
       </section>
 
       {/* Cross-Service Links */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-black text-gray-900">Explore More Services</h2>
         </div>

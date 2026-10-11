@@ -5,9 +5,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 // Centralized icon imports for better bundle optimization
 import { ArrowRight, Clock, Phone, MessageCircle } from '@/components/ui/icons';
-import { blogPosts } from '@/utilis/blog';
-import { phoneNumber } from '@/utilis/data';
+// blogPosts is NOT imported here any more. This is a client component, so
+// importing the blog index pulled all 294 KB of it into the browser bundle on
+// every one of the 190 blog pages — to choose three links. The selection is
+// done on the server now and the chosen posts arrive as a prop.
+import { phoneNumber } from '@/utilis/contact';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
+import { canonicalClientHref } from '@/lib/seo/client-route-exists';
 
 function RelatedPostCard({ post }) {
   const [imageError, setImageError] = useState(false);
@@ -16,7 +20,7 @@ function RelatedPostCard({ post }) {
 
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={canonicalClientHref(`/blog/${post.slug}`)}
       className="group"
     >
       <article className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
@@ -49,10 +53,10 @@ function RelatedPostCard({ post }) {
             <Clock className="w-4 h-4" />
             <span>{post.readTime || '5 min read'}</span>
           </div>
-          <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-[#FACF2D] transition-colors line-clamp-2">
+          <h3 className="break-words text-lg font-bold leading-snug text-gray-900 mb-3 group-hover:text-amber-700 transition-colors">
             {post.title}
           </h3>
-          <p className="text-gray-600 text-sm line-clamp-2 mb-4">
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">
             {post.excerpt || ''}
           </p>
           <div className="flex items-center text-[#FACF2D] font-semibold text-sm group-hover:gap-2 transition-all">
@@ -65,31 +69,14 @@ function RelatedPostCard({ post }) {
   );
 }
 
-export default function RelatedPosts({ currentPostId, currentCategory, currentTags }) {
-  // Find related posts based on category and tags
-  const relatedPosts = blogPosts
-    .filter(post => post && post.id && post.slug && post.id !== currentPostId) // Safety check and exclude current post
-    .map(post => {
-      let score = 0;
-
-      // Same category gets higher score
-      if (post.category === currentCategory) {
-        score += 3;
-      }
-
-      // Matching tags
-      const matchingTags = post.tags && currentTags ? post.tags.filter(tag => currentTags.includes(tag)) : [];
-      score += matchingTags.length;
-
-      return { ...post, score };
-    })
-    .sort((a, b) => b.score - a.score) // Sort by relevance
-    .slice(0, 3); // Get top 3
+export default function RelatedPosts({ posts = [] }) {
+  // Chosen on the server. See the note on the import above.
+  const relatedPosts = posts;
 
   if (relatedPosts.length === 0) return null;
 
   return (
-    <section className="mt-16 pt-16 border-t">
+    <section className="mt-10 sm:mt-16 pt-10 sm:pt-16 border-t">
       {/* Conversion CTA before related posts */}
       <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-6 md:p-8 mb-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">

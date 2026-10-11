@@ -1,3 +1,4 @@
+import { groupDigits } from '@/utilis/pricing';
 // src/utilis/stationTaxiEnrichment.js
 // Programmatic rich-content generators for railway station taxi pages.
 // Provides pickup details, things-to-do, reviews, seasonal tips, extended FAQs,
@@ -33,7 +34,7 @@ const STATION_DETAILS = {
   'jaipur-junction': {
     platforms: "6 platforms, main station for Jaipur city",
     exits: ["Main Exit (Platform 1 side) — toward Station Road and Sindhi Camp Bus Stand", "North Exit (Durgapura side) — less crowded, good for Mumbai train arrivals"],
-    bestExit: "Driver stands at Main Exit opposite the pink-façade station building, next to the heritage bus stand. Hold your Triveni Cabs confirmation SMS visible.",
+    bestExit: "Driver stands at Main Exit opposite the pink-façade station building, next to the heritage bus stand. Hold your Triveni Cabs™ confirmation SMS visible.",
     nearestPointsOfInterest: ["Hawa Mahal (3 km)", "City Palace (3.5 km)", "Amber Fort (11 km)", "Jaipur Airport (13 km)"],
   },
   'mathura-junction': {
@@ -122,7 +123,7 @@ export function getOutstationFromCity(city) {
 
 // ─── STATION-SPECIFIC REVIEWS (6 per station) ─────────────────────
 const REVIEW_TEMPLATES = [
-  { name: "Anand B.", rating: 5, vehicle: "Sedan", text: "Arrived at {station} on the Shatabdi at 9:15 AM. Driver was at Exit Gate 1 with my name placard bang on time. Clean Dzire, FASTag on dashboard, air-conditioned. Fare was exactly the ₹{fare} quoted on WhatsApp — no extras." },
+  { name: "Anand B.", rating: 5, vehicle: "Sedan", text: "Arrived at {station} on the Shatabdi at 9:15 AM. Driver was at Exit Gate 1 with my name placard bang on time. Clean Dzire, FASTag on dashboard, air-conditioned. Fare was exactly the ₹{groupDigits(fare)} quoted on WhatsApp — no extras." },
   { name: "Kavita R.", rating: 5, vehicle: "Innova Crysta", text: "Family of 5 with four large suitcases arriving at {station}. Booked the Innova Crysta in advance — driver handled all luggage, knew the shortest route to our hotel, and was polite with kids. Much better than the prepaid booth chaos." },
   { name: "Rohit S.", rating: 5, vehicle: "SUV (Ertiga)", text: "Late-night Rajdhani arrival at {station} past midnight. Most booths were closed. Triveni driver was waiting exactly where promised. AC on full, bottled water offered. Reached hotel in 25 minutes safely." },
   { name: "Sujatha P.", rating: 4, vehicle: "Sedan", text: "Pre-booked on WhatsApp the night before. Fare at {fare} was ₹150 less than what the prepaid booth quoted. Driver was friendly and gave me local restaurant recommendations on the way. Only suggestion: SMS confirmation 2 hrs before would be nice." },

@@ -1,3 +1,4 @@
+import { groupDigits } from '@/utilis/pricing';
 // src/utilis/roadTripData.js - Complete data for 9 Road Trip Circuit Guide pages
 // Pricing: Sedan ₹11/km, SUV ₹15/km
 
@@ -25,7 +26,7 @@ const roadTrips = {
     bestSeason: "October to March — Pleasant weather, clear skies for monument photography",
     faqs: [
       { question: "How many days do I need for the Golden Triangle road trip?", answer: "Ideally 5 days / 4 nights covers all major sights comfortably. Delhi (1N), Agra (1N), Jaipur (2N). A rushed 3-day version is possible but you'll miss key attractions." },
-      { question: "What is the total cost of Golden Triangle by car?", answer: "With Triveni Cabs, the Golden Triangle circuit costs from ₹7,920 (Sedan) to ₹10,800 (SUV) for the 720 km journey. This includes driver, fuel, and AC. Toll, parking, and state tax are extra." },
+      { question: "What is the total cost of Golden Triangle by car?", answer: "With Triveni Cabs™, the Golden Triangle circuit costs from ₹7,920 (Sedan) to ₹10,800 (SUV) for the 720 km journey. This includes driver, fuel, and AC. Toll, parking, and state tax are extra." },
       { question: "Which is the best route for Delhi-Agra-Jaipur by car?", answer: "The standard route is Delhi → Agra (230 km via Yamuna Expressway, 3 hrs) → Jaipur (240 km via NH-21, 4.5 hrs) → Delhi (280 km via NH-48, 5 hrs). All are excellent highways." },
       { question: "Is the Golden Triangle road trip safe for families?", answer: "Absolutely. The Golden Triangle routes are among India's safest and best-maintained highways. Our GPS-tracked vehicles and experienced drivers ensure complete safety. 24/7 support available." },
       { question: "Can I customize the Golden Triangle itinerary?", answer: "Yes! Popular add-ons include Mathura-Vrindavan (near Agra), Ranthambore (between Agra-Jaipur), and Pushkar (near Jaipur). Call 7668570551 to customize." },
@@ -205,7 +206,7 @@ const roadTrips = {
     bestSeason: "Year-round — each destination has its own best season. Hill stations peak in summer, wildlife parks in winter.",
     faqs: [
       { question: "What are the best weekend getaways from Delhi by car?", answer: "Top picks: Agra (230 km, 3 hrs), Mathura (180 km, 3 hrs), Rishikesh (240 km, 5.5 hrs), Mussoorie (290 km, 6 hrs), Jim Corbett (260 km, 5.5 hrs), Neemrana (120 km, 2 hrs), and Alwar (160 km, 3 hrs)." },
-      { question: "How much does a weekend road trip from Delhi cost?", answer: "With Triveni Cabs, a weekend trip starts from ₹3,300 (Sedan) for destinations within 300 km. This covers one-way travel. Round trip with 2 days use starts from ₹5,500." },
+      { question: "How much does a weekend road trip from Delhi cost?", answer: "With Triveni Cabs™, a weekend trip starts from ₹3,300 (Sedan) for destinations within 300 km. This covers one-way travel. Round trip with 2 days use starts from ₹5,500." },
       { question: "Can I book a cab for a 2-day weekend trip?", answer: "Yes! We offer multi-day packages with driver stay included. The driver stays with you throughout the trip. Per-day rates: Sedan ₹2,500, SUV ₹3,500 (including 250 km/day)." },
       { question: "Which weekend trip is best for couples from Delhi?", answer: "Mussoorie (Queen of Hills, romantic walks), Rishikesh (adventure + spa), Neemrana Fort (heritage luxury), and Agra (Taj Mahal magic). Each offers unique couple experiences." },
       { question: "Which weekend trip is best for families with kids?", answer: "Jim Corbett (jungle safari, kids love it), Nainital (boating, horse riding, zoo), and Mathura-Vrindavan (cultural, colorful temples). All are well-suited for family enjoyment." },
@@ -239,7 +240,7 @@ const roadTrips = {
     bestSeason: "October to March — Ideal Rajasthan weather. Pushkar Camel Fair in November is unmissable.",
     faqs: [
       { question: "What are the best weekend trips from Jaipur by car?", answer: "Top picks: Pushkar (145 km, 3 hrs), Ranthambore (180 km, 3.5 hrs), Ajmer (135 km, 2.5 hrs), Udaipur (395 km, 6 hrs), Bundi (215 km, 4 hrs), and Chittorgarh (310 km, 5 hrs)." },
-      { question: "How much does a weekend trip from Jaipur cost?", answer: "With Triveni Cabs, weekend trips from Jaipur start at ₹4,400 (Sedan) for destinations within 400 km. Round trip with 2-day use starts from ₹6,000." },
+      { question: "How much does a weekend trip from Jaipur cost?", answer: "With Triveni Cabs™, weekend trips from Jaipur start at ₹4,400 (Sedan) for destinations within 400 km. Round trip with 2-day use starts from ₹6,000." },
       { question: "Can I do Ranthambore as a day trip from Jaipur?", answer: "Technically yes (3 hrs each way), but we recommend 1 night stay. Morning safaris start at 6 AM and evening safaris at 2 PM — staying overnight lets you do both." },
       { question: "Is Udaipur feasible for a weekend from Jaipur?", answer: "Yes, if you leave early Friday. The 6-hour drive via NH-48 is scenic. Spend Saturday exploring the City of Lakes and return Sunday. An SUV makes the long drive comfortable." },
       { question: "Which is the closest weekend getaway from Jaipur?", answer: "Ajmer-Pushkar at 135-145 km (2.5-3 hrs) is the closest meaningful weekend destination. You can cover both in a single weekend — Ajmer for Dargah and Pushkar for the lake temple." },
@@ -292,9 +293,9 @@ function commonRoadTripFaqs(trip) {
   const sedan = trip.totalCost.sedan.toLocaleString('en-IN');
   const suv = trip.totalCost.suv.toLocaleString('en-IN');
   return [
-    { question: `How do I plan the ${trip.name} road trip?`, answer: `Plan the ${trip.name} as a ${trip.totalDays}-day circuit covering ${trip.totalDistance} km via ${route}. Book a chauffeur-driven cab from ₹${sedan} (sedan) or ₹${suv} (SUV), confirm hotels at each overnight stop, keep a flexible day-1 start (5-6 AM) and let the driver handle navigation, tolls and parking. Call 7668570551 to lock dates.` },
+    { question: `How do I plan the ${trip.name} road trip?`, answer: `Plan the ${trip.name} as a ${trip.totalDays}-day circuit covering ${trip.totalDistance} km via ${route}. Book a chauffeur-driven cab from ₹${groupDigits(sedan)} (sedan) or ₹${groupDigits(suv)} (SUV), confirm hotels at each overnight stop, keep a flexible day-1 start (5-6 AM) and let the driver handle navigation, tolls and parking. Call 7668570551 to lock dates.` },
     { question: `Is self-drive or a chauffeur-driven cab better for the ${trip.name}?`, answer: `For the ${trip.name}, a chauffeur-driven cab is usually better: no fatigue across ${trip.totalDistance} km, a driver who knows the hill bends and shortcuts, and no one-way drop charges to worry about. Self-drive suits experienced drivers who want full flexibility but adds fuel, tolls, and the stress of unfamiliar mountain or highway roads.` },
-    { question: `What is included in the ${trip.name} cab package?`, answer: `Your ${trip.name} cab fare (from ₹${sedan}) includes the AC vehicle, fuel, an experienced driver, GPS tracking, and 24/7 support. Toll, parking, state taxes, and driver night allowance (₹300/night) are charged separately at actuals. There are no hidden charges.` },
+    { question: `What is included in the ${trip.name} cab package?`, answer: `Your ${trip.name} cab fare (from ₹${groupDigits(sedan)}) includes the AC vehicle, fuel, an experienced driver, GPS tracking, and 24/7 support. Toll, parking, state taxes, and driver night allowance (₹300/night) are charged separately at actuals. There are no hidden charges.` },
     { question: `When is the best time to do the ${trip.name}?`, answer: `${trip.bestSeason} Booking your cab and hotels in advance during this window ensures availability and better rates.` },
     { question: `Can the ${trip.name} itinerary be customised?`, answer: `Yes — the ${trip.name} can be extended, shortened, or combined with nearby add-on destinations. You can add or drop overnight halts, change the start city from ${startCity}, or upgrade to an SUV/tempo for larger groups. Call 7668570551 or WhatsApp to tailor the route.` },
   ];
