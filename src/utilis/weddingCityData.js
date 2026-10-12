@@ -489,7 +489,252 @@ export const weddingCityData = {
     ],
     priceRange: "₹9,000 - ₹45,000 per day",
     popularCars: ["BMW X3", "Audi Q5", "Fortuner 4x4", "Innova Crysta", "Tempo Traveller Mountain Edition"]
-  }
+  },
+  gurgaon: {
+    name: "Gurgaon",
+    slug: "gurgaon",
+    description: "Wedding car rental in Gurgaon for farmhouse and hotel weddings across Golf Course Road, Sohna Road and the Gurgaon-Faridabad belt. Luxury sedans, vintage cars and Tempo Travellers for guest transfers, with IGI airport coordination and chauffeurs who know the Aravalli farmhouse approach roads.",
+    keywords: "wedding car rental gurgaon, luxury wedding car gurgaon, bridal car gurgaon, baraat car gurgaon, vintage wedding car gurgaon, wedding car hire gurugram, decorated wedding car gurgaon, farmhouse wedding car gurgaon, wedding car with driver gurgaon, sohna road wedding car, golf course road wedding car, wedding car packages gurgaon, best wedding car gurgaon, tempo traveller wedding gurgaon, IGI airport wedding transfer gurgaon",
+    popularVenues: [
+      { name: "The Oberoi Gurgaon", area: "Udyog Vihar" },
+      { name: "Westin Gurgaon", area: "Sector 29" },
+      { name: "Heritage Village Resort", area: "Manesar" },
+      { name: "Sohna Road farmhouse belt", area: "Sohna Road" },
+      { name: "Trident Gurgaon", area: "Golf Course Road" }
+    ],
+    nearbyDestinations: [
+      { name: "Delhi", distance: "30 km", time: "1-1.5 hours" },
+      { name: "Faridabad", distance: "30 km", time: "1 hour" },
+      { name: "Neemrana", distance: "95 km", time: "1.5-2 hours" }
+    ],
+    specialties: [
+      "Farmhouse and resort wedding transport",
+      "IGI airport guest transfers",
+      "Corporate-standard fleet and chauffeurs",
+      "Multi-day guest shuttle operations",
+      "Aravalli venue route planning"
+    ],
+    priceRange: "₹9,000 - ₹55,000 per day",
+    popularCars: ["Mercedes E-Class", "BMW 5 Series", "Audi A6", "Vintage Impala", "Tempo Traveller 26-Seater"]
+  },
+
+  noida: {
+    name: "Noida",
+    slug: "noida",
+    description: "Wedding car rental in Noida and Greater Noida for banquet, hotel and farmhouse weddings across the sector grid and the Expressway. Luxury sedans and decorated cars for the bride and groom, Tempo Travellers for guest movement, with IGI and Jewar airport coordination.",
+    keywords: "wedding car rental noida, luxury wedding car noida, bridal car noida, baraat car noida, vintage wedding car noida, greater noida wedding car, decorated wedding car noida, wedding car hire noida, wedding car with driver noida, noida expressway wedding car, banquet wedding car noida, wedding car packages noida, best wedding car noida, tempo traveller wedding noida, jewar airport wedding transfer",
+    popularVenues: [
+      { name: "Radisson Blu MBD Noida", area: "Sector 18" },
+      { name: "Crowne Plaza Greater Noida", area: "Greater Noida" },
+      { name: "The Grand Venice", area: "Greater Noida" },
+      { name: "Yamuna Expressway farm venues", area: "Sector 150 and beyond" },
+      { name: "Shipra Mall banquet belt", area: "Indirapuram side" }
+    ],
+    nearbyDestinations: [
+      { name: "Delhi", distance: "25 km", time: "45 minutes - 1 hour" },
+      { name: "Ghaziabad", distance: "25 km", time: "45 minutes" },
+      { name: "Mathura", distance: "150 km", time: "2-2.5 hours" }
+    ],
+    specialties: [
+      "Sector-grid venue navigation",
+      "IGI and Jewar airport transfers",
+      "Greater Noida and Expressway venues",
+      "Multi-vehicle guest shuttle",
+      "Decorated car and baraat vehicles"
+    ],
+    priceRange: "₹8,000 - ₹50,000 per day",
+    popularCars: ["BMW 5 Series", "Audi A6", "Mercedes E-Class", "Innova Crysta", "Tempo Traveller 26-Seater"]
+  },
+
+  faridabad: {
+    name: "Faridabad",
+    slug: "faridabad",
+    description: "Wedding car rental in Faridabad for banquet and farmhouse weddings along the Mathura Road belt and the Surajkund and Aravalli side. Decorated cars for the ceremony, Tempo Travellers for guest transfers, and chauffeurs who know the ridge-road venue approaches.",
+    keywords: "wedding car rental faridabad, luxury wedding car faridabad, bridal car faridabad, baraat car faridabad, decorated wedding car faridabad, surajkund wedding car, wedding car hire faridabad, wedding car with driver faridabad, farmhouse wedding car faridabad, mathura road wedding car, wedding car packages faridabad, best wedding car faridabad, tempo traveller wedding faridabad, aravalli venue wedding car",
+    popularVenues: [
+      { name: "Surajkund resort belt", area: "Surajkund" },
+      { name: "Radisson Blu Faridabad", area: "Sector 20" },
+      { name: "Aravalli ridge farmhouses", area: "Anangpur and Mangar side" },
+      { name: "Mathura Road banquet halls", area: "Sectors 15 to 21" }
+    ],
+    nearbyDestinations: [
+      { name: "Delhi", distance: "30 km", time: "1 hour" },
+      { name: "Gurgaon", distance: "30 km", time: "1 hour" },
+      { name: "Agra", distance: "170 km", time: "2.5-3 hours" }
+    ],
+    specialties: [
+      "Surajkund and Aravalli venue transport",
+      "Industrial-belt corporate weddings",
+      "IGI airport guest transfers",
+      "Decorated car and baraat vehicles",
+      "Delhi and Gurgaon guest movement"
+    ],
+    priceRange: "₹7,500 - ₹45,000 per day",
+    popularCars: ["BMW 5 Series", "Audi A4", "Mercedes E-Class", "Innova Crysta", "Tempo Traveller 26-Seater"]
+  },
+
+  ghaziabad: {
+    name: "Ghaziabad",
+    slug: "ghaziabad",
+    description: "Wedding car rental in Ghaziabad for banquet and farm weddings across Indirapuram, Vaishali, Raj Nagar and the Hapur Road belt. Luxury and decorated cars for the ceremony, Tempo Travellers for guest transfers, with IGI and Hindon airport coordination.",
+    keywords: "wedding car rental ghaziabad, luxury wedding car ghaziabad, bridal car ghaziabad, baraat car ghaziabad, decorated wedding car ghaziabad, indirapuram wedding car, wedding car hire ghaziabad, wedding car with driver ghaziabad, raj nagar wedding car, vaishali wedding car, wedding car packages ghaziabad, best wedding car ghaziabad, tempo traveller wedding ghaziabad, hindon airport wedding transfer",
+    popularVenues: [
+      { name: "Radisson Blu Kaushambi", area: "Kaushambi" },
+      { name: "Indirapuram banquet belt", area: "Indirapuram" },
+      { name: "Raj Nagar Extension venues", area: "Raj Nagar Extension" },
+      { name: "Hapur Road farm venues", area: "Hapur Road" },
+      { name: "Vaishali hotel banquets", area: "Vaishali" }
+    ],
+    nearbyDestinations: [
+      { name: "Delhi", distance: "20 km", time: "45 minutes - 1 hour" },
+      { name: "Noida", distance: "25 km", time: "45 minutes" },
+      { name: "Haridwar", distance: "190 km", time: "3.5 hours" }
+    ],
+    specialties: [
+      "Indirapuram and Vaishali banquet transport",
+      "Hapur Road farm venue routing",
+      "IGI and Hindon airport transfers",
+      "Multi-vehicle guest shuttle",
+      "Decorated car and baraat vehicles"
+    ],
+    priceRange: "₹7,000 - ₹45,000 per day",
+    popularCars: ["BMW 5 Series", "Audi A4", "Mercedes E-Class", "Innova Crysta", "Tempo Traveller 26-Seater"]
+  },
+
+  ajmer: {
+    name: "Ajmer",
+    slug: "ajmer",
+    description: "Wedding car rental in Ajmer for hotel, lakeside and heritage weddings around Ana Sagar and the Pushkar road. Decorated cars and vintage vehicles for the ceremony, Tempo Travellers for guest transfers, with Kishangarh airport and Ajmer Junction coordination.",
+    keywords: "wedding car rental ajmer, luxury wedding car ajmer, bridal car ajmer, baraat car ajmer, vintage wedding car ajmer, decorated wedding car ajmer, wedding car hire ajmer, wedding car with driver ajmer, ana sagar wedding car, heritage wedding car ajmer, wedding car packages ajmer, best wedding car ajmer, tempo traveller wedding ajmer, kishangarh airport wedding transfer",
+    popularVenues: [
+      { name: "Ana Sagar lakeside venues", area: "Ana Sagar" },
+      { name: "Hotel Mansingh Palace", area: "Vaishali Nagar" },
+      { name: "Heritage havelis on the Pushkar road", area: "Pushkar Road" },
+      { name: "Kishangarh marble-city venues", area: "Kishangarh" }
+    ],
+    nearbyDestinations: [
+      { name: "Pushkar", distance: "15 km", time: "30 minutes" },
+      { name: "Jaipur", distance: "135 km", time: "2.5 hours" },
+      { name: "Jodhpur", distance: "200 km", time: "3.5 hours" }
+    ],
+    specialties: [
+      "Ana Sagar lakeside ceremonies",
+      "Pushkar road heritage venues",
+      "Kishangarh airport transfers",
+      "Dargah-area route planning",
+      "Vintage and decorated cars"
+    ],
+    priceRange: "₹7,000 - ₹40,000 per day",
+    popularCars: ["BMW 5 Series", "Audi A4", "Vintage Impala", "Innova Crysta", "Tempo Traveller 26-Seater"]
+  },
+
+  pushkar: {
+    name: "Pushkar",
+    slug: "pushkar",
+    description: "Wedding car rental in Pushkar for lakeside and tented destination weddings around the ghats and the Ajmer road camp belt. Decorated and vintage cars for the ceremony, Tempo Travellers for guest transfers from Ajmer and Kishangarh, with chauffeurs who know which approaches are open to vehicles.",
+    keywords: "wedding car rental pushkar, destination wedding car pushkar, bridal car pushkar, baraat car pushkar, vintage wedding car pushkar, decorated wedding car pushkar, wedding car hire pushkar, wedding car with driver pushkar, lakeside wedding car pushkar, tented wedding car pushkar, wedding car packages pushkar, best wedding car pushkar, tempo traveller wedding pushkar, camel fair wedding car",
+    popularVenues: [
+      { name: "Lakeside tented venues", area: "Pushkar Lake periphery" },
+      { name: "Ananta Spa and Resort", area: "Leela Sewri" },
+      { name: "Camp and resort belt on the Ajmer road", area: "Ajmer Road" },
+      { name: "Heritage haveli courtyards", area: "Old Pushkar" }
+    ],
+    nearbyDestinations: [
+      { name: "Ajmer", distance: "15 km", time: "30 minutes" },
+      { name: "Jaipur", distance: "145 km", time: "2.5-3 hours" },
+      { name: "Jodhpur", distance: "185 km", time: "3-3.5 hours" }
+    ],
+    specialties: [
+      "Lakeside and tented destination weddings",
+      "Guest transfers from Ajmer and Kishangarh",
+      "Walking-town access planning",
+      "Vintage and decorated cars",
+      "Camel fair season coordination"
+    ],
+    priceRange: "₹7,500 - ₹42,000 per day",
+    popularCars: ["BMW 5 Series", "Audi A4", "Vintage Impala", "Innova Crysta", "Tempo Traveller 26-Seater"]
+  },
+
+  bikaner: {
+    name: "Bikaner",
+    slug: "bikaner",
+    description: "Wedding car rental in Bikaner for palace, haveli and resort weddings around Junagarh, the Rampuria havelis and the Gajner road. Vintage and luxury cars for the ceremony, Tempo Travellers for guest transfers, with Nal airport and Bikaner Junction coordination.",
+    keywords: "wedding car rental bikaner, luxury wedding car bikaner, bridal car bikaner, baraat car bikaner, vintage wedding car bikaner, palace wedding car bikaner, decorated wedding car bikaner, wedding car hire bikaner, wedding car with driver bikaner, haveli wedding car bikaner, wedding car packages bikaner, best wedding car bikaner, tempo traveller wedding bikaner, gajner wedding car",
+    popularVenues: [
+      { name: "Lalgarh Palace", area: "Lalgarh" },
+      { name: "Narendra Bhawan", area: "Civil Lines" },
+      { name: "Gajner Palace", area: "Gajner, 32 km" },
+      { name: "Rampuria haveli courtyards", area: "Old City" }
+    ],
+    nearbyDestinations: [
+      { name: "Jodhpur", distance: "250 km", time: "4.5 hours" },
+      { name: "Jaipur", distance: "335 km", time: "5.5-6 hours" },
+      { name: "Jaisalmer", distance: "330 km", time: "5.5 hours" }
+    ],
+    specialties: [
+      "Palace and haveli ceremonies",
+      "Gajner lake-palace weddings",
+      "Nal airport and rail transfers",
+      "Old-city haveli access planning",
+      "Vintage and decorated cars"
+    ],
+    priceRange: "₹7,000 - ₹45,000 per day",
+    popularCars: ["BMW 5 Series", "Audi A4", "Vintage Impala", "Innova Crysta", "Tempo Traveller 26-Seater"]
+  },
+
+  'mount-abu': {
+    name: "Mount Abu",
+    slug: "mount-abu",
+    description: "Wedding car rental in Mount Abu for hill-station weddings around Nakki Lake and the plateau resorts. Decorated cars for the ceremony and Tempo Travellers for guest transfers up the Abu Road ghat, with chauffeurs experienced on the twenty-seven-kilometre hairpin climb.",
+    keywords: "wedding car rental mount abu, hill station wedding car mount abu, bridal car mount abu, baraat car mount abu, decorated wedding car mount abu, nakki lake wedding car, wedding car hire mount abu, wedding car with driver mount abu, resort wedding car mount abu, wedding car packages mount abu, best wedding car mount abu, tempo traveller wedding mount abu, abu road wedding transfer",
+    popularVenues: [
+      { name: "Nakki Lake resorts", area: "Nakki Lake" },
+      { name: "Hotel Hilltone", area: "Main Market" },
+      { name: "Plateau resort belt", area: "Dilwara Road" },
+      { name: "Sunset Point side venues", area: "Sunset Road" }
+    ],
+    nearbyDestinations: [
+      { name: "Udaipur", distance: "165 km", time: "3-3.5 hours" },
+      { name: "Jodhpur", distance: "265 km", time: "5 hours" },
+      { name: "Ahmedabad", distance: "225 km", time: "4 hours" }
+    ],
+    specialties: [
+      "Hill-station plateau weddings",
+      "Abu Road ghat guest transfers",
+      "Nakki Lake venue coordination",
+      "Monsoon and summer season weddings",
+      "Decorated cars for ghat-road use"
+    ],
+    priceRange: "₹8,000 - ₹45,000 per day",
+    popularCars: ["Innova Crysta", "Ertiga", "BMW 5 Series", "Audi A4", "Tempo Traveller 26-Seater"]
+  },
+
+  dharamshala: {
+    name: "Dharamshala",
+    slug: "dharamshala",
+    description: "Wedding car rental in Dharamshala for ridge and Kangra valley weddings around McLeod Ganj, the stadium side and the valley resorts. Decorated cars for the ceremony and Tempo Travellers for guest transfers from Gaggal and Pathankot, with chauffeurs used to the McLeod Ganj gradient.",
+    keywords: "wedding car rental dharamshala, hill wedding car dharamshala, bridal car dharamshala, baraat car dharamshala, decorated wedding car dharamshala, mcleod ganj wedding car, wedding car hire dharamshala, wedding car with driver dharamshala, kangra valley wedding car, resort wedding car dharamshala, wedding car packages dharamshala, best wedding car dharamshala, tempo traveller wedding dharamshala, gaggal airport wedding transfer",
+    popularVenues: [
+      { name: "Kangra valley resorts", area: "Lower Dharamshala" },
+      { name: "Hyatt Regency Dharamshala", area: "Sidhbari" },
+      { name: "McLeod Ganj ridge hotels", area: "McLeod Ganj" },
+      { name: "Palampur tea-estate venues", area: "Palampur, 35 km" }
+    ],
+    nearbyDestinations: [
+      { name: "Amritsar", distance: "200 km", time: "4.5 hours" },
+      { name: "Chandigarh", distance: "240 km", time: "6 hours" },
+      { name: "Dalhousie", distance: "120 km", time: "3.5-4 hours" }
+    ],
+    specialties: [
+      "Kangra valley and ridge venues",
+      "Gaggal and Pathankot guest transfers",
+      "McLeod Ganj gradient route planning",
+      "Tea-estate and resort ceremonies",
+      "Decorated cars for hill-road use"
+    ],
+    priceRange: "₹8,000 - ₹45,000 per day",
+    popularCars: ["Innova Crysta", "Ertiga", "BMW 5 Series", "Audi A4", "Tempo Traveller 26-Seater"]
+  },
 };
 
 // Helper function to get city data

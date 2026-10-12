@@ -520,6 +520,299 @@ export const weddingCityLocal = {
       'around Nainital far better than one large one, because the lakeside road and the venue ' +
       'approaches both constrain size.',
   },
+  gurgaon: {
+    seasonWindow:
+      'The same two NCR peaks as Delhi — November to early December, then late January through ' +
+      'February — but Gurgaon runs a longer shoulder because so many of its venues are indoor hotel ' +
+      'ballrooms that work in March and even April. Book six to eight weeks out for the November ' +
+      'dates; on the biggest auspicious days the whole NCR fleet is committed and Gurgaon competes ' +
+      'with Delhi for it.',
+    venueGeography:
+      'Three belts, and they behave differently. The hotel and ballroom corridor along Golf Course ' +
+      'Road, MG Road and Sector 29 gives short transfers but constrained parking and strict ' +
+      'drop-off arrangements. The Sohna Road and Manesar resort belt sits 30 to 50 minutes out on ' +
+      'roads that congest badly from five in the evening. And the Aravalli farmhouse venues on the ' +
+      'Gurgaon-Faridabad road and the Mangar side are the furthest, on narrower approach roads where ' +
+      'a large coach needs checking in advance.',
+    baraatNote:
+      'A procession on Golf Course Road or MG Road is a traffic-police matter rather than a timing ' +
+      'one — these are arterial roads carrying heavy evening volume and a slow-moving baraat on them ' +
+      'will be moved on. The workable pattern is to start the procession inside the venue approach ' +
+      'or a side road and keep it off the arterial entirely. The farmhouse venues are much easier ' +
+      'because the approach road is effectively private for the length of the procession.',
+    guestArrival:
+      'IGI is 15 to 25 minutes away depending on terminal and traffic, which is closer than from ' +
+      'most of Delhi and is the single biggest practical advantage of a Gurgaon wedding. Terminal 3 ' +
+      'handles the international arrivals that matter for a diaspora wedding. Rail guests come into ' +
+      'Delhi stations and need a 60 to 90 minute transfer. Multi-day weddings here usually run a ' +
+      'shuttle between the guest hotel and the venue rather than individual cars.',
+    vehicleFit:
+      'Full-size luxury sedans work everywhere in the hotel corridor and are what the venue ' +
+      'forecourts are built for. Vintage cars are fine in the hotel belt but need checking against ' +
+      'the farmhouse approach roads, some of which are unmade for the last stretch. The 26-seat ' +
+      'Tempo Traveller is the workhorse of guest movement here and fits every venue on the list; ' +
+      'full coaches need confirming for the Aravalli venues specifically.',
+  },
+
+  noida: {
+    seasonWindow:
+      'November to early December and late January through February, as across the NCR. Noida has ' +
+      'an unusually large supply of indoor banquet capacity relative to its size, which keeps the ' +
+      'shoulder season workable into March. The Greater Noida and Expressway venues are the ones to ' +
+      'book earliest because there are fewer of them and they take the larger weddings.',
+    venueGeography:
+      'The sector grid is the thing that makes Noida easy and the thing that catches people out. ' +
+      'Addresses are precise and the roads are wide and fast, but a venue given only as a sector ' +
+      'number is not a location — the sectors are large and the banquet belts in 18, 32 and 62 have ' +
+      'several venues within a kilometre of each other. The Greater Noida venues and the ' +
+      'Expressway-side farm venues beyond Sector 150 are 30 to 50 minutes from central Noida, which ' +
+      'surprises guests staying in Delhi.',
+    baraatNote:
+      'Easier here than in most of the NCR. The sector roads are wide with service lanes, so a ' +
+      'procession can run on a service road without obstructing the main carriageway, and the ' +
+      'banquet venues are generally set back with their own forecourt. The exceptions are the ' +
+      'older Sector 18 market area, where evening congestion is heavy, and anything on the Noida ' +
+      'Expressway itself, which is a high-speed road and not a procession route under any ' +
+      'circumstances.',
+    guestArrival:
+      'IGI is 45 minutes to an hour and a half from Noida depending on the sector and the time, ' +
+      'through Delhi traffic either via DND or Kalindi Kunj. Jewar airport changes this ' +
+      'substantially for the southern sectors and Greater Noida, and for an Expressway-side venue it ' +
+      'is now the sensible plan. Rail guests arrive at Delhi stations or Ghaziabad. The Aqua and ' +
+      'Blue metro lines are genuinely useful for local guests, which reduces the car count.',
+    vehicleFit:
+      'Everything works on the sector grid — full-size luxury sedans, vintage cars and full coaches ' +
+      'all fit the roads and the venue forecourts, which is not true of most cities on this list. ' +
+      'The constraint is the older Sector 18 area and the Greater Noida farm venues, where the last ' +
+      'stretch should be confirmed for a full coach. The 26-seat Tempo Traveller is the default for ' +
+      'guest movement.',
+  },
+
+  faridabad: {
+    seasonWindow:
+      'November to February, with the NCR peaks in November and late January. One local factor worth ' +
+      'planning around: the Surajkund crafts mela runs for about a fortnight each February and puts ' +
+      'heavy traffic through exactly the belt where the resort venues are. A February wedding at a ' +
+      'Surajkund venue needs the mela dates checked first.',
+    venueGeography:
+      'Two belts on either side of the city. The Mathura Road corridor through sectors 15 to 21 ' +
+      'carries the hotel and banquet venues, with short transfers and ordinary city parking. The ' +
+      'Surajkund and Aravalli side to the west holds the resorts and farmhouses, 20 to 40 minutes ' +
+      'out on ridge roads that narrow toward Anangpur and Mangar — pleasant to drive and not built ' +
+      'for a convoy of coaches.',
+    baraatNote:
+      'Mathura Road is a national highway carrying heavy commercial traffic and is not a procession ' +
+      'route; a baraat there will be stopped. The practical arrangement is to run the procession on ' +
+      'the sector road or the venue approach. The Aravalli and Surajkund venues are far easier ' +
+      'because their approach roads carry almost nothing else, and a procession can take as long as ' +
+      'it likes.',
+    guestArrival:
+      'IGI is 40 km and an hour to an hour and a half via the Faridabad-Gurgaon road or Badarpur, ' +
+      'and the Badarpur stretch is the one to avoid in the evening. Rail guests come into Delhi ' +
+      'and Faridabad has its own station on the Delhi-Mathura line, which is useful for guests ' +
+      'travelling up from Agra or Mathura. The violet metro line reaches Faridabad and local guests ' +
+      'use it.',
+    vehicleFit:
+      'Full-size sedans and vintage cars work along the Mathura Road belt. For the Aravalli ridge ' +
+      'venues the approach roads are narrow and in places unmade, so a vintage car with low ' +
+      'clearance and a full coach both need confirming against the specific venue. The 26-seat ' +
+      'Tempo Traveller handles every venue on the list and is the right default for guest movement.',
+  },
+
+  ghaziabad: {
+    seasonWindow:
+      'November to early December and late January through February, as across the NCR. The ' +
+      'Indirapuram and Vaishali banquet belt runs a longer season because the venues are indoor, ' +
+      'and March weddings there are common. The Hapur Road farm venues are outdoor and effectively ' +
+      'limited to the winter window.',
+    venueGeography:
+      'Three distinct areas. The Kaushambi, Vaishali and Indirapuram belt is effectively contiguous ' +
+      'with east Delhi, so transfers are short and the traffic is Delhi traffic. Raj Nagar ' +
+      'Extension to the north-west has newer venues with better parking and 20 to 30 minute ' +
+      'transfers from the city. The Hapur Road farm venues are 30 to 45 minutes out on the ' +
+      'Delhi-Meerut Expressway side, which is fast road but a real distance for guests staying ' +
+      'centrally.',
+    baraatNote:
+      'The Indirapuram and Vaishali roads are dense and congest heavily in the evening, and a ' +
+      'procession there needs to stay on the internal colony road rather than the main road. GT ' +
+      'Road and the Hapur Road are commercial arterials and not procession routes. The Raj Nagar ' +
+      'Extension and Hapur Road farm venues are the easiest, with set-back forecourts and quiet ' +
+      'approach roads.',
+    guestArrival:
+      'IGI is 50 km and an hour and a half to two hours across Delhi, which is the longest airport ' +
+      'transfer of any NCR city on this list and should be planned as a real journey rather than a ' +
+      'pickup. Hindon has limited scheduled service 10 km away. Rail is the better answer here: ' +
+      'Ghaziabad Junction is a major stop on the Delhi-Howrah and Delhi-Lucknow lines, and many ' +
+      'guests from the east arrive there directly rather than via Delhi. The Blue and Red metro ' +
+      'lines reach Vaishali and Shaheed Sthal.',
+    vehicleFit:
+      'Full-size sedans and vintage cars work in the Raj Nagar and Hapur Road venues with their ' +
+      'wider approaches. In the older Indirapuram and Vaishali colony roads a smaller luxury sedan ' +
+      'is the practical choice and a full coach should be confirmed against the specific venue ' +
+      'approach. The 26-seat Tempo Traveller fits everywhere on the list.',
+  },
+
+  ajmer: {
+    seasonWindow:
+      'October to March, with November and February the heaviest. Two local dates override ' +
+      'everything else: the Urs at the Dargah, in the Islamic month of Rajab, and the Pushkar camel ' +
+      'fair around Kartik Purnima in November, 15 km away. Both fill every room and vehicle in the ' +
+      'Ajmer-Pushkar area and both close roads. A wedding in either window needs the dates checked ' +
+      'before the venue is booked, not after.',
+    venueGeography:
+      'The lakeside venues along Ana Sagar are the most sought after and have the tightest access — ' +
+      'the circular road around the lake is narrow and parking is genuinely limited. The hotel ' +
+      'venues in Vaishali Nagar and along the Jaipur road have proper forecourts and easy transfers. ' +
+      'The heritage havelis and resorts on the Pushkar road sit 5 to 15 km out over the Nag Pahar ' +
+      'side, on a road that is slower than its distance suggests.',
+    baraatNote:
+      'The old city around the Dargah is the thing to understand. Those lanes are narrow, often ' +
+      'closed to vehicles entirely near the shrine, and during the Urs they carry pedestrian ' +
+      'traffic in numbers that make any vehicle movement impossible. A procession planned anywhere ' +
+      'near the Dargah Bazaar needs local confirmation on the day. The Ana Sagar and Pushkar road ' +
+      'venues are straightforward by comparison.',
+    guestArrival:
+      'Kishangarh airport is 30 km and has limited scheduled service, so most air guests come ' +
+      'through Jaipur, 135 km and two and a half hours away — which means Jaipur-to-Ajmer guest ' +
+      'transport is usually part of the booking rather than only local cars. Ajmer Junction is ' +
+      'central and well served on the Delhi-Ahmedabad line, and for most guests the train is the ' +
+      'better plan.',
+    vehicleFit:
+      'Vintage cars suit the heritage haveli and Ana Sagar venues and are what the photographs here ' +
+      'are built around. Full-size sedans work on the Jaipur road and Vaishali Nagar side. The ' +
+      'constraint is the lake circular road and the old city, where a long vehicle struggles — ' +
+      'confirm the specific approach. The 26-seat Tempo Traveller handles the Pushkar road and ' +
+      'hotel venues but not the old-city lanes.',
+  },
+
+  pushkar: {
+    seasonWindow:
+      'October to March, and then one absolute constraint: the camel fair around Kartik Purnima in ' +
+      'November. For that fortnight the entire town is at capacity, rooms and vehicles are committed ' +
+      'months ahead, the fairground fills the open land on the Ajmer side, and roads are closed or ' +
+      'diverted. A Pushkar wedding is either deliberately timed to the fair as a spectacle or ' +
+      'deliberately kept well clear of it. There is no middle option.',
+    venueGeography:
+      'The town itself is walked, not driven, and that shapes everything. The lake and its ' +
+      'fifty-two ghats are closed to vehicles and the bazaar lanes around them are pedestrian, so a ' +
+      'ceremony at a lakeside venue means the cars stop at the edge of town and the last stretch is ' +
+      'on foot. The resort and tented venues on the Ajmer road and toward Leela Sewri are where the ' +
+      'larger weddings happen, 3 to 8 km out with proper vehicle access and space for a convoy.',
+    baraatNote:
+      'A procession in the old town is a walking procession by necessity — the lanes do not take ' +
+      'vehicles and the ghat area is closed to them. That is often better than it sounds, because a ' +
+      'baraat on foot through Pushkar is a genuinely striking thing and the distances are short. For ' +
+      'a vehicle procession the Ajmer road resort venues are the only practical choice, and there ' +
+      'the approach road is quiet enough to take any length of procession.',
+    guestArrival:
+      'Almost everybody arrives through Ajmer, 15 km over the Nag Pahar on a slower road than the ' +
+      'distance implies, or through Jaipur at 145 km. Kishangarh airport is 45 km with limited ' +
+      'service. Ajmer Junction is the practical railhead and the 15 km transfer from it is part of ' +
+      'most bookings. For a destination wedding here, guest transport from Jaipur or Ajmer is ' +
+      'usually a larger part of the job than the local cars.',
+    vehicleFit:
+      'Vintage and decorated cars for the resort and tented venues, where they have the room to be ' +
+      'seen and photographed. For anything in the old town the vehicle only reaches the edge, so ' +
+      'the car matters less than where it can stop. The 26-seat Tempo Traveller works on the Ajmer ' +
+      'road venues and for the Jaipur and Ajmer guest runs, and is the right vehicle for those ' +
+      'distances.',
+  },
+
+  bikaner: {
+    seasonWindow:
+      'October to March, firmly. This is deep desert and from April to June daytime temperatures ' +
+      'pass 45 degrees, which rules out an outdoor ceremony entirely. The camel festival in January ' +
+      'concentrates demand for a few days. November to February is the window, and the palace venues ' +
+      'book a long way ahead because there are only a few of them.',
+    venueGeography:
+      'The palace venues are the draw and they are spread out. Lalgarh Palace and Narendra Bhawan ' +
+      'are in or near Civil Lines with proper access and grounds. Gajner Palace, which is the ' +
+      'lakeside one most people want, is 32 km out on the Jaisalmer road — a half-hour drive that ' +
+      'has to be built into every transfer. The Rampuria haveli courtyards in the old city are ' +
+      'magnificent and reached on foot, because those lanes do not take vehicles.',
+    baraatNote:
+      'In the old city a procession is a walking one — the haveli lanes are narrow and a vehicle ' +
+      'cannot follow. At the palace venues the opposite applies: the grounds and approach roads are ' +
+      'generous and a mounted or vehicle procession works without any traffic consideration at all, ' +
+      'which is unusual and is one of the reasons people choose Bikaner for a wedding.',
+    guestArrival:
+      'Nal airport is 15 km with limited scheduled service, so most air guests come through Jaipur ' +
+      'at 335 km and nearly six hours, or Jodhpur at 250 km. That makes long-distance guest ' +
+      'transport the main logistical problem of a Bikaner wedding rather than local cars. Bikaner ' +
+      'Junction is well served on the Delhi and Jaipur lines and for most guests the overnight train ' +
+      'is both easier and more comfortable than the drive.',
+    vehicleFit:
+      'Vintage cars belong at the palace venues and that is what Lalgarh and Gajner are built ' +
+      'around. Full-size sedans work everywhere except the old-city lanes. The 26-seat Tempo ' +
+      'Traveller is the right vehicle for the Gajner run and for guest movement from the railway ' +
+      'station, and the straight desert roads make it comfortable over distance.',
+  },
+
+  'mount-abu': {
+    seasonWindow:
+      'Unusual among the cities here, and worth getting right. The peak is April to June, because ' +
+      'Mount Abu is the cool option for all of Gujarat and Rajasthan when the plains are ' +
+      'unbearable — which is the opposite of the normal wedding calendar. The monsoon from July to ' +
+      'September is the second season and the hillside is at its greenest. October to March is ' +
+      'pleasant but can be genuinely cold at night, which matters for an outdoor ceremony. Long ' +
+      'weekends fill the town whatever the month.',
+    venueGeography:
+      'Everything on the plateau is close together — Nakki Lake is central, Dilwara 3 km, Sunset ' +
+      'Point 4 — so local transfers are minutes rather than half-hours. The constraint is not ' +
+      'distance but the ghat: the 27 km climb from Abu Road is a continuous hairpin ascent that ' +
+      'takes a full hour whatever a map says, and every arrival and departure is governed by it. ' +
+      'Parking on the plateau in peak season is tight.',
+    baraatNote:
+      'Short and easy on the plateau, because the distances between venues and hotels are small and ' +
+      'the roads are quiet outside peak hours. The one thing to plan is the Dilwara road and the ' +
+      'main market area, which congest badly on peak-season evenings. Nothing about a Mount Abu ' +
+      'procession involves the ghat, which is the part people worry about unnecessarily.',
+    guestArrival:
+      'This is the whole logistical question of a Mount Abu wedding. Abu Road is the railhead, 27 km ' +
+      'and an hour down the ghat, on the Delhi-Ahmedabad line and well served. The nearest useful ' +
+      'airport is Udaipur at 165 km and three and a half hours, with Ahmedabad at 225 km the ' +
+      'alternative. So guest transport is a shuttle operation up and down the ghat, and it needs ' +
+      'building into the schedule properly — an hour each way, and more when the road is busy.',
+    vehicleFit:
+      'An Innova Crysta or Ertiga for anything involving the ghat, because engine braking on a ' +
+      'loaded descent is a practical requirement rather than a preference, and that covers most of ' +
+      'the guest movement. Full-size luxury sedans are fine on the plateau for the ceremony itself. ' +
+      'A vintage car can work on the plateau but should not be taken up the ghat. Passengers prone ' +
+      'to travel sickness should sit forward on the climb.',
+  },
+
+  dharamshala: {
+    seasonWindow:
+      'March to June and September to November. The monsoon is the thing to avoid here more than ' +
+      'anywhere else on this list — Dharamshala is among the wettest inhabited places in India and ' +
+      'July and August are not viable for an outdoor ceremony. Winter is cold and the higher ridge ' +
+      'venues can see snow. One local factor: the Dalai Lama\'s teaching schedule fills McLeod Ganj ' +
+      'at dates outside the normal tourist pattern, and those are the hardest weeks to find rooms ' +
+      'or vehicles.',
+    venueGeography:
+      'Two levels and the road between them is the issue. Lower Dharamshala and Sidhbari, where the ' +
+      'larger resort venues and the stadium are, have proper access and room for a convoy. McLeod ' +
+      'Ganj is 9 km above on a steep narrow road that takes 25 minutes and congests badly in ' +
+      'season, with very limited parking at the top. The Kangra valley and Palampur tea-estate ' +
+      'venues are 20 to 35 km out on good valley road and are the easiest of all to reach.',
+    baraatNote:
+      'A procession in McLeod Ganj is constrained by the road itself — it is narrow, two-way and ' +
+      'carries all the traffic for the upper town, so a slow-moving baraat blocks everything behind ' +
+      'it. Keep it short and off the main road, or hold it inside the venue approach. The Sidhbari ' +
+      'and Kangra valley venues have no such problem and a full procession works comfortably.',
+    guestArrival:
+      'Gaggal airport is 13 km from lower Dharamshala but the runway is short and the approach is ' +
+      'weather-sensitive, so flights are cancelled often enough that it should not be the only plan. ' +
+      'Pathankot is the practical railhead at 90 km and two and a half hours, with Amritsar airport ' +
+      'at 200 km and four and a half hours the reliable air option. Guest transport from Pathankot ' +
+      'or Amritsar is normally a substantial part of the booking.',
+    vehicleFit:
+      'An Innova Crysta or Ertiga for the McLeod Ganj gradient and for anything carrying guests up ' +
+      'from the valley, where clearance and engine braking both matter. Full-size luxury sedans work ' +
+      'in lower Dharamshala, Sidhbari and the Kangra valley venues. A vintage car is viable on the ' +
+      'valley floor and should not be taken up to McLeod Ganj. The 26-seat Tempo Traveller fits the ' +
+      'valley venues; for McLeod Ganj confirm the specific approach first.',
+  },
 };
 
 /** Local wedding facts for a city, or null when the city has none recorded. */

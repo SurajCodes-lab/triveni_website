@@ -384,3 +384,58 @@ export function deriveWeekendAnswer({ city, destinations }) {
       'allowance are charged at actuals.',
   };
 }
+
+// ---------------------------------------------------------------------------
+// Monthly rental city pages  —  /monthly-car-rental-{city}
+//
+// The highest-converting unbuilt shape measured on this site: the monthly and
+// corporate rental cluster runs at 6.57% against a 0.60% average. The enquiry
+// is narrow and commercial — what does a month cost, and do the included
+// kilometres cover what I do — so the block answers exactly those two.
+//
+// The rate is the same in every city, which is a problem for distinctiveness
+// and is handled honestly: the block states the rate (because that is the
+// question) and then the city's own usage arithmetic, which is the part that
+// differs. The daily kilometre allowance is computed, not written.
+// ---------------------------------------------------------------------------
+export function deriveMonthlyRentalAnswer(city, pkg) {
+  if (!city || !city.city || !pkg || !Array.isArray(pkg.vehicles) || pkg.vehicles.length === 0) {
+    return null;
+  }
+
+  const cheapest = pkg.vehicles.reduce((a, b) => (a.monthly <= b.monthly ? a : b));
+  const dearest = pkg.vehicles.reduce((a, b) => (a.monthly >= b.monthly ? a : b));
+  const perDayKm = Math.round(pkg.includedKm / pkg.days);
+  // What the month costs per included kilometre, which is the figure an
+  // enquiry is really trying to work out and which no page on the site states.
+  const perKm = (cheapest.monthly / pkg.includedKm).toFixed(1);
+
+  const lead =
+    `A car with a driver for a month in ${city.city} starts at ${money(cheapest.monthly)} for a ` +
+    `sedan and runs to ${money(dearest.monthly)} for an Innova Crysta. Every rate covers ` +
+    `${pkg.days} days with one dedicated vehicle and the same driver throughout, ` +
+    `${pkg.includedKm.toLocaleString('en-IN')} km and ${pkg.includedHoursPerDay} hours a day ` +
+    `included — about ${perDayKm} km a day, or roughly ₹${perKm} per included kilometre on the ` +
+    `sedan. Fuel, the driver and GST are in the rate.`;
+
+  const facts = [
+    { label: 'Sedan, per month', value: money(cheapest.monthly) },
+    ...pkg.vehicles
+      .filter((v) => v.key !== cheapest.key && v.key !== dearest.key)
+      .map((v) => ({ label: `${v.name.split(' (')[0]}, per month`, value: money(v.monthly) })),
+    { label: 'Innova Crysta, per month', value: money(dearest.monthly) },
+    { label: 'Kilometres included', value: `${pkg.includedKm.toLocaleString('en-IN')} km` },
+    { label: 'Works out at', value: `${perDayKm} km a day` },
+    { label: 'Hours included', value: `${pkg.includedHoursPerDay} a day` },
+  ];
+
+  return {
+    heading: `What does a monthly car rental with driver cost in ${city.city}?`,
+    lead,
+    facts,
+    note:
+      'Kilometres beyond the included allowance and hours beyond eight a day are charged at the ' +
+      'published extra rate. Tolls, parking, state permits and the driver night allowance are at ' +
+      'actuals. One vehicle and one driver for the full month, not a rotating fleet.',
+  };
+}
