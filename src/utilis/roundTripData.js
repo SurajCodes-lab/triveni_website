@@ -2,7 +2,13 @@
 // Pricing: Round trip = one-way fare * 2 with 10% discount
 // Per km: Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km (min 300km billing per direction)
 
-function calcRoundTripFares(distanceKm) {
+// Exported so the weekend-getaway pages quote round trips from the SAME model
+// the 79 live round-trip pages already publish, rather than introducing a second
+// one. Note for the client: the SUV and Tempo per-km figures here (14 and 20)
+// sit below the published rate card in pricing.js (15 and 23). That difference
+// predates this work and is a pricing decision, so it is reported rather than
+// changed.
+export function calcRoundTripFares(distanceKm) {
   const billableOneWay = Math.max(distanceKm, 300);
   const totalKm = billableOneWay * 2;
   // 10% discount on round trip

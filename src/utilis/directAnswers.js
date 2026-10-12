@@ -330,3 +330,57 @@ export function deriveWeddingCityAnswer(city, local) {
       'charge is at actuals.',
   };
 }
+
+// ---------------------------------------------------------------------------
+// Weekend getaway lists  —  /weekend-getaways-from-{city}-by-car
+//
+// Deliberately NOT the same answer as the day-trip page for the same city. The
+// day-trip block answers "where can I go and be back tonight"; this one answers
+// "where is worth a night", and the figures it uses — how many need two nights
+// rather than one, the return fare, the billed kilometres — only exist on this
+// page. That separation is what stops the two pages being one page twice.
+// ---------------------------------------------------------------------------
+export function deriveWeekendAnswer({ city, destinations }) {
+  const list = (Array.isArray(destinations) ? destinations : []).filter(
+    (d) => d && d.name && km(d.km) !== null,
+  );
+  if (!city || list.length < 3) return null;
+
+  const sorted = [...list].sort((a, b) => km(a.km) - km(b.km));
+  const nearest = sorted[0];
+  const furthest = sorted[sorted.length - 1];
+  const twoDay = sorted.filter((d) => Number(d.nights) === 1).length;
+  const threeDay = sorted.length - twoDay;
+
+  const lead =
+    `${sorted.length} destinations from ${city} are worth a night, ` +
+    `${km(nearest.km)} to ${km(furthest.km)} km away by road. ` +
+    `The closest is ${nearest.name} at ${km(nearest.km)} km` +
+    (nearest.driveTime ? `, about ${nearest.driveTime} of driving` : '') +
+    (nearest.sedanFare ? `, with the return journey from ${money(nearest.sedanFare)} in a sedan` : '') +
+    `. ` +
+    (threeDay === 0
+      ? `All of them work as a two-day weekend with one night away.`
+      : `${twoDay} work as a two-day weekend; ` +
+        `${threeDay === 1 ? 'one needs' : `${threeDay} need`} a third day because the drive is too ` +
+        `long to justify a single night — the longest being ${furthest.name} at ${km(furthest.km)} km.`);
+
+  const facts = [
+    { label: 'Destinations', value: String(sorted.length) },
+    { label: 'Two-day weekends', value: `${twoDay} of ${sorted.length}` },
+    { label: 'Nearest', value: `${nearest.name} — ${km(nearest.km)} km` },
+    { label: 'Furthest', value: `${furthest.name} — ${km(furthest.km)} km` },
+    nearest.sedanFare ? { label: 'Return fare from', value: money(nearest.sedanFare) } : null,
+    threeDay > 0 ? { label: 'Need three days', value: `${threeDay} of ${sorted.length}` } : null,
+  ].filter(Boolean);
+
+  return {
+    heading: `Where can you go for a weekend from ${city}?`,
+    lead,
+    facts,
+    note:
+      'Fares are the full return journey with a chauffeur, from the published round-trip rate card. ' +
+      'Fuel, the driver and GST are included; tolls, parking, state permits and the driver\'s night ' +
+      'allowance are charged at actuals.',
+  };
+}
