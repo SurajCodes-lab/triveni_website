@@ -78,11 +78,17 @@ for (const file of files) {
   // template literals and some real filenames contain an apostrophe
   // ("Humayun's_Tomb.jpg"). Stopping at the apostrophe made the checker refuse
   // a guide whose image was perfectly present.
-  const imgs = [...src.matchAll(/\$\{IMG\}([^`]+)/g)].map((m) => m[1]);
+  // Two forms to catch. `${IMG}/...` inside a template literal is the common
+  // one, but a guide can also carry a literal '/images/car/...' path in quotes,
+  // and checking only the first form would let that one through unverified.
+  const imgs = [
+    ...[...src.matchAll(/\$\{IMG\}([^`]+)/g)].map((m) => `/images/sightseeing${m[1]}`),
+    ...[...src.matchAll(/['"`](\/images\/[^'"`]+)['"`]/g)].map((m) => m[1]),
+  ];
   const missing = [];
   for (const rel of new Set(imgs)) {
     try {
-      await access(path.join(ROOT, "public", "images", "sightseeing", rel.replace(/^\//, "")));
+      await access(path.join(ROOT, "public", rel.replace(/^\//, "")));
     } catch {
       missing.push(rel);
     }
