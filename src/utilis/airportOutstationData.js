@@ -1,12 +1,14 @@
 import { airportLegacyRoutes } from './airportLegacyRoutes';
 import { airportFareOffers } from '@/lib/seo/airport-offers';
 import { groupDigits } from '@/utilis/pricing';
+import { buildAirportRoutesWave2 } from './airportRouteWave2';
 /**
  * Airport-to-Outstation Route Data
- * 46 routes covering Delhi, Jaipur, Chandigarh, Dehradun, Srinagar, and Amritsar airports
+ * 66 routes covering Delhi IGI, Jewar, Jaipur, Chandigarh, Dehradun, Srinagar,
+ * Amritsar, Lucknow, Varanasi and Udaipur airports
  */
 
-export const airportRoutes = {
+const airportRoutesBase = {
   ...airportLegacyRoutes,
 "udaipur-airport-to-city-taxi": {
     slug: "udaipur-airport-to-city-taxi",
@@ -1176,6 +1178,21 @@ export const airportRoutes = {
     ],
     relatedRoutes: ["chandigarh-airport-to-shimla-taxi", "chandigarh-airport-to-dharamshala-taxi", "chandigarh-airport-to-manali-taxi"],
   },
+};
+
+// Week 53. Twenty new routes, merged in here rather than written inline.
+//
+// They are built from `airportRoutesBase` rather than spread as a plain object
+// because their fares are INTERPOLATED FROM THE PUBLISHED POINTS ABOVE. The
+// existing fares do not follow the plain outstation rate card — Delhi to
+// Haridwar at 230 km publishes Rs 3,800 where `fareFor` gives Rs 3,300 — and
+// repricing 46 live pages is a pricing decision rather than ours. Interpolating
+// keeps each new page consistent with its nearest siblings instead of
+// introducing a second price level inside one family. See airportRouteWave2.js
+// for the measured per-km bands and vehicle multiples.
+export const airportRoutes = {
+  ...airportRoutesBase,
+  ...buildAirportRoutesWave2(airportRoutesBase),
 };
 
 /**
