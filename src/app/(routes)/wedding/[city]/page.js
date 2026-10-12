@@ -15,6 +15,7 @@ import WeddingCityLocal from '@/components/seo/WeddingCityLocal';
 import { getWeddingCityLocal } from '@/utilis/weddingCityLocal';
 import DirectAnswer from '@/components/content/DirectAnswer';
 import { deriveWeddingCityAnswer } from '@/utilis/directAnswers';
+import { servedHref } from '@/lib/seo/route-exists';
 
 // ISR: Revalidate every hour for better SEO and performance
 export const revalidate = 3600;
@@ -215,7 +216,18 @@ export default function CityWeddingPage({ params }) {
       <AEOHead pageType="wedding" data={{ url: `/wedding/${params.city}`, title: `${city.name} Wedding Car Rental`, city: city.name }} />
       {/* relatedRoutes resolved here — the helper imports sightseeingData.js (1.24 MB). */}
       <CityWeddingPageClient
-        city={city}
+        city={{
+          ...city,
+          // Resolved against the build manifest so the card can never link to a
+          // corridor page that does not exist, and starts linking automatically
+          // once one is built.
+          nearbyDestinations: (city.nearbyDestinations || []).map((d) => ({
+            ...d,
+            routeHref: servedHref(
+              `/${city.name.toLowerCase().replace(/\s+/g, '-')}-to-${String(d.name || '').toLowerCase().replace(/\s+/g, '-')}`,
+            ),
+          })),
+        }}
         citySlug={params.city}
         relatedRoutes={getRelatedRoutes(city.name)}
         shortAnswer={(() => {

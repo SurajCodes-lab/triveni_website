@@ -293,10 +293,17 @@ const PopularVenues = ({ city }) => {
 
 // Nearby Destinations - Clickable with Interlinking — dark band
 const NearbyDestinations = ({ city, citySlug }) => {
-  // Helper function to create route slug - handles multi-word city names
-  const createRouteSlug = (originCity, destinationCity) => {
-    return `${originCity.toLowerCase().replace(/\s+/g, '-')}-to-${destinationCity.toLowerCase().replace(/\s+/g, '-')}`;
-  };
+  // The route href is NOT synthesised here any more. It is resolved against the
+  // build manifest on the server (see the wedding page.js) and arrives as
+  // `destination.routeHref`, which is null when no such corridor page exists.
+  //
+  // This block used to build `/{origin}-to-{destination}` by convention, which
+  // held for the original nineteen cities and broke the moment the NCR cities
+  // were added — /gurgaon-to-faridabad, /noida-to-ghaziabad,
+  // /faridabad-to-gurgaon and /ghaziabad-to-noida are all pairs with no
+  // corridor page. Same fault as record C found in four places and record K
+  // shipped seven of. A card with no resolved target still renders, because the
+  // distance and drive time are useful on their own; it simply is not a link.
 
   return (
     <section className="py-16 md:py-24 bg-slate-950 relative overflow-hidden">
@@ -317,14 +324,15 @@ const NearbyDestinations = ({ city, citySlug }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {city.nearbyDestinations.map((destination, index) => {
-            // Create route URL (e.g., /delhi-to-jaipur)
-            const routeUrl = `/${createRouteSlug(city.name, destination.name)}`;
+            const routeUrl = destination.routeHref || null;
+            const Card = routeUrl ? Link : 'div';
+            const cardProps = routeUrl ? { href: routeUrl } : {};
 
             return (
-              <Link
+              <Card
                 key={index}
-                href={routeUrl}
-                className={`${glassPanel} p-6 hover:border-amber-300/40 hover:bg-white/10 hover:-translate-y-1 transition-all group`}
+                {...cardProps}
+                className={`${glassPanel} p-6 transition-all group${routeUrl ? ' hover:border-amber-300/40 hover:bg-white/10 hover:-translate-y-1' : ''}`}
               >
                 <div className="text-center">
                   <div className="w-14 h-14 bg-gradient-to-br from-[#FFE9A0] to-[#E8B923] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
@@ -333,12 +341,14 @@ const NearbyDestinations = ({ city, citySlug }) => {
                   <h3 className="text-xl font-bold text-amber-50 mb-2">{destination.name}</h3>
                   <p className="text-rose-100/70 text-sm mb-1">{destination.distance}</p>
                   <p className="text-[#FACF2D] font-semibold mb-3">{destination.time}</p>
-                  <div className="flex items-center justify-center text-amber-300 font-semibold text-sm">
-                    <span>View Route</span>
-                    <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  {routeUrl && (
+                    <div className="flex items-center justify-center text-amber-300 font-semibold text-sm">
+                      <span>View Route</span>
+                      <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  )}
                 </div>
-              </Link>
+              </Card>
             );
           })}
         </div>
