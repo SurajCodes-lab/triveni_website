@@ -47,7 +47,13 @@ function getQuality(q) {
   return QUALITY_COLORS.poor;
 }
 
-export default function TravelByCarClient({ route, relatedRoutes }) {
+export default function TravelByCarClient({
+  route,
+  relatedRoutes,
+  distanceHref = null,
+  oneWayHref = null,
+  tollHref = null,
+}) {
   const [expandedSeg, setExpandedSeg] = useState(0);
   const [activeSeason, setActiveSeason] = useState('winter');
   const whatsappMsg = `Hi, I want to book a cab from ${route.origin} to ${route.destination} (${route.totalDistance} km)`;
@@ -183,16 +189,33 @@ export default function TravelByCarClient({ route, relatedRoutes }) {
               {uniqueIntro}
             </p>
           )}
+          {/* Sibling-family chips. Each href is resolved against the build
+              manifest on the server and arrives null when that page is not
+              served, so a chip is absent rather than dead — and reappears on
+              its own once the target is built.
+
+              These were synthesised from route.slug until Week 53. That held
+              for the original 40 corridors and broke on all 42 reverse ones at
+              once, because none of them has a /toll-cost/ page. It is the fifth
+              occurrence of this same fault this week (records C, K, P, T), and
+              the cause is always the same: a sibling family's URL looks
+              guessable right up to the moment a new set of slugs arrives. */}
           <div className="flex flex-wrap gap-2 mt-4">
-            <Link href={`/distance/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
-              <Route className="w-3.5 h-3.5" /> {route.origin}-{route.destination} distance &amp; time
-            </Link>
-            <Link href={canonicalLink(`/one-way-cab/${route.slug}`)} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
-              <Car className="w-3.5 h-3.5" /> One-way cab {route.origin} to {route.destination}
-            </Link>
-            <Link href={`/toll-cost/${route.slug}`} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
-              <MapPin className="w-3.5 h-3.5" /> {route.origin} to {route.destination} toll cost
-            </Link>
+            {distanceHref && (
+              <Link href={distanceHref} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
+                <Route className="w-3.5 h-3.5" /> {route.origin}-{route.destination} distance &amp; time
+              </Link>
+            )}
+            {oneWayHref && (
+              <Link href={canonicalLink(oneWayHref)} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
+                <Car className="w-3.5 h-3.5" /> One-way cab {route.origin} to {route.destination}
+              </Link>
+            )}
+            {tollHref && (
+              <Link href={tollHref} className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition-colors">
+                <MapPin className="w-3.5 h-3.5" /> {route.origin} to {route.destination} toll cost
+              </Link>
+            )}
           </div>
         </div>
       </section>

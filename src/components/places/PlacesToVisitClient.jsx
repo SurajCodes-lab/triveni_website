@@ -356,7 +356,7 @@ export default function PlacesToVisitClient({ data, allCities }) {
       </section>
 
       {/* ━━━ EXPLORE BY CAB: Commercial CTA + authority flow to city hub & one-way routes ━━━ */}
-      <ExploreByCabCTA cityName={data.city} citySlug={data.slug} links={exploreLinks} />
+      <ExploreByCabCTA cityName={data.city} citySlug={data.slug} links={exploreLinks} cityHubHref={data.serviceLinks?.outstation} cabServiceHref={data.serviceLinks?.cabService} />
 
       {/* ━━━ BUDGET PLANNING: Receipt-style cards ━━━ */}
       <section className="py-20 md:py-28 px-4 sm:px-6 bg-gradient-to-b from-stone-50 to-white">

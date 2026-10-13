@@ -2,6 +2,8 @@
 // Pricing: Sedan ₹11/km, SUV ₹15/km, Tempo ₹23/km (min 300km billing)
 
 import { PER_KM } from './pricing';
+import { travelByCarReverse } from './travelByCarReverse';
+import { travelByCarWave2 } from './travelByCarWave2';
 
 function calcFares(distanceKm) {
   const billableKm = Math.max(distanceKm, 300);
@@ -65,7 +67,7 @@ function createTravelRoute({
   };
 }
 
-export const travelByCarRoutes = {
+const travelByCarRoutesBase = {
 
   // ═══════════════════════════════════════════
   // DELHI ORIGIN ROUTES (20 routes)
@@ -1135,6 +1137,17 @@ export const travelByCarRoutes = {
     bestCarType: "Sedan (Swift Dzire)",
     relatedRoutes: ["lucknow-to-ayodhya", "lucknow-to-varanasi", "delhi-to-varanasi", "delhi-to-ayodhya"],
   }),
+};
+
+// Week 53 wave 2 — reverse-direction guides, derived from the records above by
+// scripts/week53-gen-travel-reverse.mjs. A road is the same road both ways: the
+// segments and their surface are copied, the order is reversed, and every
+// km-from-origin figure is recomputed. The generator is passed in rather than
+// imported by the module to avoid a circular import.
+export const travelByCarRoutes = {
+  ...travelByCarRoutesBase,
+  ...travelByCarWave2(createTravelRoute),
+  ...travelByCarReverse(createTravelRoute),
 };
 
 // ═══════════════════════════════════════════

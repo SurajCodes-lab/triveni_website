@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getTravelByCarRoute, getAllTravelByCarSlugs, getRelatedTravelByCarRoutes, cityNameToGeoSlug } from '@/utilis/travelByCarData';
 import TravelByCarClient from '@/components/travel-by-car/TravelByCarClient';
+import { servedHref } from '@/lib/seo/route-exists';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
@@ -240,7 +241,16 @@ export default async function TravelByCarPage({ params }) {
         <script key={`place-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
       ))}
       <AEOHead pageType="route" data={{ url: `/travel-by-car/${slug}`, title: `${route.origin} to ${route.destination} by Car`, origin: route.origin, destination: route.destination, city: route.origin }} />
-      <TravelByCarClient route={route} relatedRoutes={relatedRoutes} />
+      {/* Sibling chips resolved here rather than synthesised in the client:
+          42 reverse corridors have no /toll-cost/ page, and a guessed href
+          would have 404-ed on every one of them. */}
+      <TravelByCarClient
+        route={route}
+        relatedRoutes={relatedRoutes}
+        distanceHref={servedHref(`/distance/${route.slug}`)}
+        oneWayHref={servedHref(`/one-way-cab/${route.slug}`)}
+        tollHref={servedHref(`/toll-cost/${route.slug}`)}
+      />
     </>
   );
 }

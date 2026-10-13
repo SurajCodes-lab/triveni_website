@@ -9,6 +9,7 @@ import { servedHref } from '@/lib/seo/route-exists';
 // carry hardcoded fare strings and these do not — mixing the two shapes in
 // one file would hide which is which.
 import { placesToVisitWave2 } from './placesToVisitWave2';
+import { placesToVisitWave3 } from './placesToVisitWave3';
 
 /**
  * Every `bookingSlug` below was written by convention — city slug, "-to-",
@@ -55,6 +56,10 @@ function resolveBookingLinks(pages) {
       sightseeing: servedHref(`/sightseeing/${page.slug}`),
       airport: servedHref(`/airport-service/${page.slug}`),
       wedding: servedHref(`/wedding/${page.slug}`),
+      // The /cab-service/<city> synonym of the hub. Resolved for the same
+      // reason as the rest: ExploreByCabCTA synthesised it, which held for
+      // the 28 cities that have one and broke on Srinagar in wave 3.
+      cabService: servedHref(`/cab-service/${page.slug}`),
     };
     for (const dest of page.destinations || []) {
       const served = servedHref(dest.bookingSlug);
@@ -67,6 +72,10 @@ function resolveBookingLinks(pages) {
 
 export const placesToVisitPages = resolveBookingLinks({
   ...placesToVisitWave2,
+  // Week 53 wave 3 — seven cities that had a local-taxi page but neither a
+  // day-trip list nor a weekend list. Kept in its own module for the same
+  // reason as wave 2; see that file's header for why Gwalior is excluded.
+  ...placesToVisitWave3,
 ghaziabad: {
     city: "Ghaziabad",
     slug: "ghaziabad",

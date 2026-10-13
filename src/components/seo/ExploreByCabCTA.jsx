@@ -15,7 +15,11 @@ import { Phone, MessageCircle, Car, ArrowRight, MapPin, IndianRupee, ShieldCheck
  *  - citySlug  : url slug for the city hub, e.g. "delhi" -> links to /delhi
  *  - links     : array of { label, href } internal route targets (one-way routes etc.)
  */
-export default function ExploreByCabCTA({ cityName, citySlug, links = [] }) {
+// cityHubHref is resolved against the build manifest by the caller and is null
+// when the city has no hub page. It used to be synthesised here as `/${citySlug}`,
+// which held for every city that had one and broke on Srinagar — where a
+// redirect then pointed the dead link at /cab-service/srinagar, also missing.
+export default function ExploreByCabCTA({ cityName, citySlug, links = [], cityHubHref = null, cabServiceHref = null }) {
   const waText = encodeURIComponent(
     `Hi, I want to book a cab to explore places near ${cityName}. Please share fares.`
   );
@@ -80,14 +84,16 @@ export default function ExploreByCabCTA({ cityName, citySlug, links = [] }) {
               </h3>
               <div className="grid sm:grid-cols-2 gap-2.5">
                 {/* City hub — flagship commercial page */}
+                {cityHubHref && (
                 <Link
-                  href={`/${citySlug}`}
+                  href={cityHubHref}
                   className="group flex items-center gap-2.5 rounded-xl border border-teal-200 bg-teal-50/60 px-4 py-3 hover:border-teal-400 hover:bg-teal-50 transition-all duration-300 sm:col-span-2"
                 >
                   <Car className="w-4 h-4 text-teal-600 flex-shrink-0" />
                   <span className="text-sm font-bold text-stone-800 group-hover:text-teal-700 transition-colors">{cityName} Taxi Service &amp; Outstation Cabs</span>
                   <ArrowRight className="w-4 h-4 text-teal-500 ml-auto flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
                 </Link>
+                )}
 
                 {/* Specific one-way route pages (page-2 commercial targets) */}
                 {links.map((link, i) => (
@@ -102,9 +108,9 @@ export default function ExploreByCabCTA({ cityName, citySlug, links = [] }) {
                 ))}
 
                 {/* Local taxi service in this city — targets "taxi service in <city>" */}
-                {citySlug && (
+                {cabServiceHref && (
                   <Link
-                    href={`/cab-service/${citySlug}`}
+                    href={cabServiceHref}
                     className="group flex items-center gap-2.5 rounded-xl border border-stone-200 px-4 py-3 hover:border-teal-300 hover:bg-stone-50 transition-all duration-300"
                   >
                     <Car className="w-4 h-4 text-teal-500 flex-shrink-0" />

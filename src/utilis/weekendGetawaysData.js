@@ -49,6 +49,7 @@
 // forward.
 
 import { calcRoundTripFares } from './roundTripData';
+import { weekendGetawaysWave2 } from './weekendGetawaysWave2';
 import { servedHref } from '@/lib/seo/route-exists';
 
 /**
@@ -1373,6 +1374,11 @@ export const weekendGetaways = {
         answer: 'Each destination carries its return fare, computed from the published round-trip rate card. Haridwar, Rishikesh, Corbett, Mathura, Agra, Lansdowne and Mussoorie price from the round-trip minimum; Nainital is marginally above it. Fuel, the driver and GST are included; tolls, parking, state permits and the driver night allowance are charged at actuals.' },
     ],
   },
+
+  // Week 53 wave 2 — seven more cities. Kept in their own module so a new
+  // wave cannot corrupt the 28 records already serving traffic; see the
+  // header of weekendGetawaysWave2.js for why Gwalior is not among them.
+  ...weekendGetawaysWave2,
 };
 
 /** Resolve a city's weekend record. */
