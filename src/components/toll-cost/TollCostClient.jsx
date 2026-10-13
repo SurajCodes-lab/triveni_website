@@ -45,7 +45,7 @@ const LANE = 'bg-[repeating-linear-gradient(90deg,#FACF2D_0_18px,transparent_18p
 // Radius is set per-usage (rounded-full pills in the hero, rounded-xl in cards).
 const GOLD_CTA = 'sheen inline-flex items-center justify-center gap-2 bg-[#FACF2D] font-black text-slate-900 shadow-[0_12px_36px_-10px_rgba(250,207,45,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-amber-300 active:scale-95';
 
-export default function TollCostClient({ route, relatedRoutes, corridorLinks = [], seasonalCallout = null, planningGuide = null, travelByCarHref = null }) {
+export default function TollCostClient({ route, relatedRoutes, corridorLinks = [], seasonalCallout = null, planningGuide = null, travelByCarHref = null, oneWayHref = null }) {
   // The facts of this corridor's toll, stated first. The measurement found this
   // family's existing summary sitting 43% of the way down the rendered text —
   // the deepest of any family — so the plaza table was reached before the
@@ -403,9 +403,14 @@ export default function TollCostClient({ route, relatedRoutes, corridorLinks = [
             <Link href={`/distance/${route.slug}`} className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-800 ring-1 ring-amber-200/70 transition-colors hover:bg-amber-100">
               <Route className="h-3.5 w-3.5" /> {route.origin}–{route.destination} distance &amp; time
             </Link>
-            <Link href={canonicalLink(`/one-way-cab/${route.slug}`)} className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-800 ring-1 ring-amber-200/70 transition-colors hover:bg-amber-100">
-              <Car className="h-3.5 w-3.5" /> Book {route.origin} to {route.destination} cab — one-way
-            </Link>
+            {/* Also resolved server-side. The Ahmedabad corridors have a toll
+                page and a distance page but no one-way booking page, which is
+                how this one surfaced. */}
+            {oneWayHref && (
+              <Link href={oneWayHref} className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-800 ring-1 ring-amber-200/70 transition-colors hover:bg-amber-100">
+                <Car className="h-3.5 w-3.5" /> Book {route.origin} to {route.destination} cab — one-way
+              </Link>
+            )}
             {/* Resolved against the build manifest on the server. This chip used
                 to synthesise `/travel-by-car/{slug}` by convention, which held
                 for the 25 hand-researched corridors and broke on all 20 reverse

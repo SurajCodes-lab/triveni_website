@@ -232,6 +232,7 @@ export default async function TollCostPage({ params }) {
       <AEOHead pageType="route" data={{ url: `/toll-cost/${slug}`, title: `${route.origin} to ${route.destination} Toll Cost`, origin: route.origin, destination: route.destination, city: route.origin }} />
       <TollCostClient
         travelByCarHref={servedHref(`/travel-by-car/${slug}`)}
+        oneWayHref={servedHref(`/one-way-cab/${slug}`)}
         planningGuide={<PriorityPageGuide path={`/toll-cost/${slug}`} />}
         route={route}
         relatedRoutes={relatedRoutes}

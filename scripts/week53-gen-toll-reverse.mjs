@@ -120,6 +120,110 @@ for (const c of corridors) {
   generated.push({ slug: rev, origin: c.destination, destination: c.origin, km: c.km, road: c.road, fastag: c.fastag, parent: c.slug, plazas, fuelPetrol: c.fuelPetrol, fuelDiesel: c.fuelDiesel });
 }
 
+// ---- second pass: interior sub-segments ----------------------------------
+//
+// A corridor A->B is also derivable when A and B are BOTH known points on one
+// researched corridor — its origin, one of its plazas, or its destination. The
+// plazas crossed are then the contiguous subset strictly between them, with
+// positions measured from A.
+//
+// This yields very little (two corridors) because plaza names are mostly not
+// places the site serves as destinations. It is implemented anyway so the claim
+// "the derivation is exhausted" is enforced by code rather than asserted.
+const townOf = (n) => {
+  let t = n.replace(/\s*\(.*?\)/g, "");
+  for (const junk of [" Toll Plaza", " Toll", " Exp", "-Meerut Expressway", " Flyway"]) {
+    t = t.split(junk).join("");
+  }
+  return t.trim().toLowerCase().replace(/\s+/g, "-");
+};
+
+for (const c of corridors) {
+  if (!c.origin || !c.destination || !c.km || c.plazas.length === 0) continue;
+  const pts = new Map();
+  pts.set(slugify(c.origin), 0);
+  for (const p of c.plazas) if (!pts.has(townOf(p.name))) pts.set(townOf(p.name), p.location);
+  if (!pts.has(slugify(c.destination))) pts.set(slugify(c.destination), c.km);
+
+  for (const [a, la] of pts) {
+    for (const [b, lb] of pts) {
+      if (a === b || lb <= la) continue;
+      const cand = `${a}-to-${b}`;
+      if (have.has(cand) || !real.has(cand)) continue;
+      if (generated.some((g) => g.slug === cand)) continue;
+      const plazas = c.plazas
+        .filter((p) => p.location > la && p.location < lb)
+        .map((p) => ({ ...p, location: p.location - la }))
+        .sort((x, y) => x.location - y.location);
+      if (plazas.length === 0) continue;
+      // Fuel scales with the segment's share of the parent corridor's distance.
+      const share = (lb - la) / c.km;
+      generated.push({
+        slug: cand,
+        origin: a.replace(/-/g, " ").replace(/\w/g, (m) => m.toUpperCase()),
+        destination: b.replace(/-/g, " ").replace(/\w/g, (m) => m.toUpperCase()),
+        km: lb - la,
+        road: c.road,
+        fastag: c.fastag,
+        parent: c.slug,
+        plazas,
+        fuelPetrol: c.fuelPetrol ? Math.round((c.fuelPetrol * share) / 5) * 5 : null,
+        fuelDiesel: c.fuelDiesel ? Math.round((c.fuelDiesel * share) / 5) * 5 : null,
+        segment: true,
+      });
+    }
+  }
+}
+
+// ---- third pass: plaza data already in distanceData ----------------------
+//
+// Eleven distanceData records carry their own researched toll plazas — name,
+// kilometre and cost — and five of those corridors have no toll page. That is
+// real data sitting unused in the repo.
+//
+// Those records give a CAR cost only, with no SUV figure and no FASTag flag, so
+// two things are derived and the method is stated on the page:
+//
+//   SUV        = car x 1.615   median of 65 real plaza records (range 1.50-1.65)
+//   commercial = car x 3.448   median of the same 65 (range 3.00-3.47)
+//   FASTag     = true          true on all 65; a plaza without it is now rare
+//
+// A narrow measured ratio applied to a real car tariff is a different thing from
+// inventing a tariff, and these records carry planningEstimateOnly like every
+// other derived one.
+const SUV_RATIO = 1.615;
+const COMMERCIAL_RATIO = 3.448;
+
+{
+  const dd = await readFile(path.join(ROOT, "src", "utilis", "distanceData.js"), "utf8");
+  const dRecs = [...dd.matchAll(/"([a-z-]+-to-[a-z-]+)": createRoute\(\{([\s\S]*?)\n  \}\),/g)];
+  for (const [, slug, body] of dRecs) {
+    if (have.has(slug) || generated.some((g) => g.slug === slug)) continue;
+    const plazas = [...body.matchAll(/\{ name: "([^"]+)", km: (\d+), cost: (\d+) \}/g)].map((m) => ({
+      name: m[1],
+      location: Number(m[2]),
+      carCost: Number(m[3]),
+      suvCost: Math.round((Number(m[3]) * SUV_RATIO) / 5) * 5,
+      commercialCost: Math.round((Number(m[3]) * COMMERCIAL_RATIO) / 5) * 5,
+      acceptsFASTag: true,
+    }));
+    if (plazas.length === 0) continue;
+    const km = Number((body.match(/distanceKm: (\d+)/) || [])[1]);
+    const o = (body.match(/origin: "([^"]+)"/) || [])[1];
+    const d = (body.match(/destination: "([^"]+)"/) || [])[1];
+    const hw = (body.match(/highway: "([^"]+)"/) || [])[1] || null;
+    const fuel = Number((body.match(/fuelCost: (\d+)/) || [])[1]) || null;
+    if (!km || !o || !d) continue;
+    generated.push({
+      slug, origin: o, destination: d, km, road: hw,
+      fastag: "FASTag is accepted at the plazas on this corridor; the dedicated lanes are considerably quicker than the cash lanes.",
+      parent: "distanceData", plazas,
+      fuelPetrol: fuel, fuelDiesel: fuel ? Math.round((fuel * 0.75) / 5) * 5 : null,
+      fromDistanceData: true,
+    });
+  }
+}
+
 // ---- emit the records ----------------------------------------------------
 const body = generated
   .map((g) => {
@@ -131,7 +235,7 @@ const body = generated
       .join("\n");
     return `  "${g.slug}": createTollRoute({
     slug: "${g.slug}", origin: "${esc(g.origin)}", destination: "${esc(g.destination)}", totalDistance: ${g.km},${g.road ? ` corridorRoad: "${esc(g.road)}",` : ""}
-    // Reverse of ${g.parent}. The plazas, tariffs and FASTag status are the
+    // ${g.fromDistanceData ? `Plazas from this corridor's own distanceData record. The car tariff is researched; SUV and commercial are derived at x1.615 and x3.448, the medians of 65 real plaza records.` : g.segment ? `Sub-segment of ${g.parent}. The plazas, tariffs and FASTag status are the` : `Reverse of ${g.parent}. The plazas, tariffs and FASTag status are the`}
     // researched records from that corridor; only the kilometre position is
     // recomputed, measured from ${g.origin} instead of ${g.destination}.
     // Marked as a planning estimate because a researched record lists what was

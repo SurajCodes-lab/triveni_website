@@ -37,6 +37,16 @@ import knownRoutes from "@/generated/known-routes.json";
 // existing /best-time-to-visit URLs and are already listed by that family).
 import { WEEK48_NEW_PATHS } from "@/utilis/guides/week48";
 import { WEEK49_NEW_PATHS } from "@/utilis/guides/week49";
+import { WEEK53_NEW_PATHS } from "@/utilis/guides/week53";
+// Week 53. These five are enumerated from their own data rather than from a
+// hardcoded slug list, which is why the lists below were stale: every family
+// that grew this week kept its old hardcoded set and the new pages fell to the
+// 0.6 catch-all sweep. Data-driven cannot go stale.
+import { getAllWeekendSlugs } from "@/utilis/weekendGetawaysData";
+import { getAllMonthlyRentalSlugs } from "@/utilis/monthlyRentalCityData";
+import { getAllCorridorTripCostSlugs } from "@/utilis/corridorTripCostData";
+import { getAllAirportRouteSlugs } from "@/utilis/airportOutstationData";
+import { placesToVisitPages } from "@/utilis/placesToVisitData";
 import { getAllHowToReachCities } from "@/utilis/howToReachData";
 import { getAllBestTimeSlugs } from "@/utilis/bestTimeToVisitData";
 import { getAllRoundTripSlugs } from "@/utilis/roundTripData";
@@ -693,6 +703,7 @@ export default function sitemap() {
     // Week 48: twenty-three search-led guides (near-me and weekend, the season, road and route)
     ...WEEK48_NEW_PATHS.map((p) => ({ url: `${baseUrl}${p}`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.85 })),
     ...WEEK49_NEW_PATHS.map((p) => ({ url: `${baseUrl}${p}`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.85 })),
+    ...WEEK53_NEW_PATHS.map((p) => ({ url: `${baseUrl}${p}`, lastModified: lastContentUpdate, changeFrequency: 'weekly', priority: 0.85 })),
 
     // Additional Tour Packages (Phase 14 - new)
     { url: `${baseUrl}/tour-package/golden-triangle-tour`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.9 },
@@ -1044,7 +1055,10 @@ export default function sitemap() {
   });
 
   // Add Places to Visit Near [City] Pages - HIGH PRIORITY CONTENT
-  const placesToVisitCities = ['delhi', 'agra', 'jaipur', 'chandigarh', 'lucknow', 'varanasi', 'dehradun', 'amritsar', 'noida', 'gurgaon', 'haridwar', 'shimla', 'udaipur', 'mathura', 'rishikesh', 'ghaziabad'];
+  // Was a hardcoded list of 16 while the data held 28, so the ten pages added
+  // in Week 53 and two earlier ones were listed only by the catch-all sweep at
+  // priority 0.6 instead of this family's 0.85. Read from the data instead.
+  const placesToVisitCities = Object.keys(placesToVisitPages);
   placesToVisitCities.forEach(city => {
     urls.push({
       url: `${baseUrl}/places-to-visit-near-${city}`,
@@ -1071,18 +1085,46 @@ export default function sitemap() {
   urls.push({ url: `${baseUrl}/bus-stand-taxi`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
 
   // Airport-to-Outstation Taxi Pages
-  const airportOutstationSlugs = [
-    'delhi-airport-to-jaipur-taxi', 'delhi-airport-to-haridwar-taxi', 'delhi-airport-to-shimla-taxi',
-    'delhi-airport-to-manali-taxi', 'delhi-airport-to-chandigarh-taxi', 'delhi-airport-to-dehradun-taxi',
-    'delhi-airport-to-rishikesh-taxi', 'delhi-airport-to-mathura-taxi', 'delhi-airport-to-noida-cab',
-    'delhi-airport-to-gurgaon-cab', 'delhi-airport-to-amritsar-taxi', 'delhi-airport-to-lucknow-taxi',
-    'jaipur-airport-to-udaipur-taxi', 'jaipur-airport-to-pushkar-taxi', 'jaipur-airport-to-agra-taxi',
-    'chandigarh-airport-to-shimla-taxi', 'chandigarh-airport-to-manali-taxi',
-    'chandigarh-airport-to-kasauli-taxi', 'chandigarh-airport-to-dharamshala-taxi', 'chandigarh-airport-to-dalhousie-taxi', 'chandigarh-airport-to-amritsar-taxi',
-    'dehradun-airport-to-mussoorie-taxi', 'dehradun-airport-to-haridwar-taxi', 'dehradun-airport-to-rishikesh-taxi',
-    'amritsar-airport-to-city-taxi', 'srinagar-airport-to-gulmarg-taxi', 'srinagar-airport-to-pahalgam-taxi',
-    'udaipur-airport-to-city-taxi', 'jaipur-airport-to-city-taxi',
-  ];
+  // Was a hardcoded list of 29 while the data held 67, so the 21 routes added
+  // in Week 53 fell to the catch-all. Read from the data.
+  const airportOutstationSlugs = getAllAirportRouteSlugs();
+
+  // ---- Week 53 families with no enumeration at all ----------------------
+  // All three were in the sitemap only via the catch-all sweep at priority 0.6
+  // and changefreq monthly. Listed here at the priority their siblings carry.
+
+  // Weekend getaway lists. 28 cities; only three were hardcoded before.
+  getAllWeekendSlugs().forEach((slug) => {
+    urls.push({
+      url: `${baseUrl}/weekend-getaways-from-${slug}-by-car`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    });
+  });
+
+  // Monthly rental city pages — the highest-converting unbuilt shape measured
+  // on this site at 6.57%, so they carry the same priority as the wedding
+  // cities rather than the generic 0.6.
+  getAllMonthlyRentalSlugs().forEach((slug) => {
+    urls.push({
+      url: `${baseUrl}/monthly-car-rental-${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    });
+  });
+
+  // End-to-end corridor trip cost. Matches the toll family's 0.7, since the two
+  // answer adjacent questions about the same corridor.
+  getAllCorridorTripCostSlugs().forEach((slug) => {
+    urls.push({
+      url: `${baseUrl}/trip-cost/${slug}`,
+      lastModified: lastContentUpdate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    });
+  });
   airportOutstationSlugs.forEach(slug => {
     urls.push({ url: `${baseUrl}/${slug}`, lastModified: lastContentUpdate, changeFrequency: 'monthly', priority: 0.85 });
   });
