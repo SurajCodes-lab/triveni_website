@@ -5,6 +5,7 @@ import PriorityPageGuide from '@/components/content/PriorityPageGuide';
 import { getCorridorLinks } from '@/utilis/corridorLinks';
 import { getSeasonalCorridorCallout } from '@/utilis/seasonalCorridors';
 import { canonicalLink } from '@/lib/seo/canonical-link';
+import { servedHref } from '@/lib/seo/route-exists';
 import AEOHead from '@/components/seo/AEOHead';
 import { getOgImageForSlug } from '@/lib/seo/ogImageMap';
 import { getRatingAndReviews } from '@/lib/seo/review-helpers';
@@ -230,6 +231,7 @@ export default async function TollCostPage({ params }) {
       ))}
       <AEOHead pageType="route" data={{ url: `/toll-cost/${slug}`, title: `${route.origin} to ${route.destination} Toll Cost`, origin: route.origin, destination: route.destination, city: route.origin }} />
       <TollCostClient
+        travelByCarHref={servedHref(`/travel-by-car/${slug}`)}
         planningGuide={<PriorityPageGuide path={`/toll-cost/${slug}`} />}
         route={route}
         relatedRoutes={relatedRoutes}

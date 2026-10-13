@@ -439,3 +439,53 @@ export function deriveMonthlyRentalAnswer(city, pkg) {
       'actuals. One vehicle and one driver for the full month, not a rotating fleet.',
   };
 }
+
+// ---------------------------------------------------------------------------
+// End-to-end trip cost  —  /trip-cost/{origin}-to-{destination}
+//
+// The block states the two exact components and their sum, then says plainly
+// which three charges are NOT in that sum. A headline that silently excluded
+// them would be the more flattering number and the less useful one.
+// ---------------------------------------------------------------------------
+export function deriveTripCostAnswer(t) {
+  if (!t || !t.origin || !t.destination || !Array.isArray(t.vehicles) || t.vehicles.length === 0) {
+    return null;
+  }
+  const sedan = t.vehicles[0];
+  const tollCar = km(t.toll?.car);
+  if (!sedan || tollCar === null) return null;
+
+  const total = sedan.amount + tollCar;
+  const est = t.toll.estimate === true;
+
+  const lead =
+    `A ${t.origin} to ${t.destination} trip is ${money(total)} all in for a sedan: ` +
+    `${money(sedan.amount)} cab fare for the ${t.km} km plus ${money(tollCar)} in toll across ` +
+    `${plural(t.toll.plazas.length, 'plaza', 'plazas')}` +
+    (est ? ' as a planning estimate' : '') +
+    `. The fare covers the vehicle, fuel, the driver and GST. Three charges sit on top and are ` +
+    `billed at actual: parking, the state entry levy` +
+    (t.crossing && !t.crossing.crosses ? ' (none on this route — both ends are in the same state)' : '') +
+    `, and the driver night allowance if the trip stays overnight.`;
+
+  const facts = [
+    { label: 'Cab fare, sedan', value: money(sedan.amount) },
+    { label: est ? 'Toll (estimate)' : 'Toll', value: money(tollCar) },
+    { label: 'Fare + toll', value: money(total) },
+    { label: 'Distance', value: `${t.km} km` },
+    { label: 'Toll plazas', value: String(t.toll.plazas.length) },
+    t.fuel && t.fuel.petrol
+      ? { label: 'Fuel if self-driving', value: money(t.fuel.petrol) }
+      : null,
+  ].filter(Boolean);
+
+  return {
+    heading: `What does a ${t.origin} to ${t.destination} trip cost, all in?`,
+    lead,
+    facts,
+    note:
+      'Parking, state entry and the driver night allowance are charged at actual and are not in ' +
+      'the figure above — we would rather give you a smaller number you can check than a rounder ' +
+      'one you cannot. Ask and we will estimate all three for your dates.',
+  };
+}

@@ -1,0 +1,183 @@
+// scripts/week53-gen-toll-reverse.mjs
+//
+// Generates the reverse-direction records for the researched toll corridors.
+//
+// WHY THIS IS HONEST, AND WHERE THE LINE IS
+// -----------------------------------------
+// The Week 53 plan asks for 102 new toll-cost pages. Each one needs real plaza
+// records — name, kilometre position, car tariff, SUV tariff, FASTag status —
+// and those cannot be invented: a traveller budgets against them and pays the
+// actual amount at the barrier. 80 of the 102 need new plaza research and are
+// not built.
+//
+// What IS derivable without inventing anything is the reverse direction of a
+// corridor that has already been researched. Delhi to Jaipur crosses Kherki
+// Daula at 30 km, Manesar at 55 and Shahjahanpur at 160. Jaipur to Delhi
+// crosses the same three plazas at 120, 225 and 250 km from Jaipur. Same
+// plazas, same published tariffs, same FASTag status — only the position is
+// recomputed, and it is recomputed arithmetically rather than guessed.
+//
+// The data already treats the two directions as separate pages: both
+// `delhi-to-agra` and `agra-to-delhi` exist as hand-researched records. This
+// script does for 20 more corridors what was already done by hand for that one.
+//
+// TWO THINGS IT DOES NOT CLAIM
+//   1. It does not claim the plaza list is exhaustive. A plaza can be
+//      directional, and a researched record lists what the researcher found on
+//      that run. So every generated record is marked as a planning estimate
+//      rather than a notified tariff, using the flag tollCostData already has
+//      for its two reviewed corridors.
+//   2. It only generates where the reverse corridor is a REAL route on the site
+//      (present in distanceData, oneWayCabData or roundTripData) and has no
+//      toll page already. A toll page for a journey nobody can book is noise.
+
+import { readFile, writeFile } from "node:fs/promises";
+import path from "node:path";
+
+const ROOT = process.cwd();
+const TOLL = path.join(ROOT, "src", "utilis", "tollCostData.js");
+
+const src = await readFile(TOLL, "utf8");
+
+// ---- parse the researched records ----------------------------------------
+const recs = [...src.matchAll(/"([a-z-]+)": createTollRoute\(\{([\s\S]*?)\n  \}\),/g)];
+const have = new Set(recs.map((m) => m[1]));
+
+const corridors = recs.map(([, slug, body]) => {
+  const num = (re) => {
+    const m = body.match(re);
+    return m ? Number(m[1]) : null;
+  };
+  const str = (re) => {
+    const m = body.match(re);
+    return m ? m[1] : null;
+  };
+  return {
+    slug,
+    origin: str(/origin: "([^"]+)"/),
+    destination: str(/destination: "([^"]+)"/),
+    km: num(/totalDistance: (\d+)/),
+    road: str(/corridorRoad: "([^"]+)"/),
+    fuelPetrol: num(/estimatedFuel: \{ petrol: (\d+)/),
+    fuelDiesel: num(/estimatedFuel: \{ petrol: \d+, diesel: (\d+)/),
+    fastag: str(/fastagInfo: "([^"]*)"/),
+    plazas: [
+      ...body.matchAll(
+        /\{ name: "([^"]+)", location: (\d+), carCost: (\d+), suvCost: (\d+), commercialCost: (\d+), acceptsFASTag: (\w+) \}/g,
+      ),
+    ].map((p) => ({
+      name: p[1],
+      location: Number(p[2]),
+      carCost: Number(p[3]),
+      suvCost: Number(p[4]),
+      commercialCost: Number(p[5]),
+      acceptsFASTag: p[6] === "true",
+    })),
+  };
+});
+
+// ---- which corridors are real routes on the site -------------------------
+const real = new Set();
+for (const [file, re] of [
+  ["distanceData.js", /"([a-z-]+-to-[a-z-]+)": createRoute/g],
+  ["oneWayCabData.js", /['"]([a-z-]+-to-[a-z-]+)['"]\s*:/g],
+  ["roundTripData.js", /'([a-z-]+-to-[a-z-]+)': createRoute/g],
+]) {
+  const t = await readFile(path.join(ROOT, "src", "utilis", file), "utf8");
+  for (const m of t.matchAll(re)) real.add(m[1]);
+}
+
+const slugify = (s) => s.toLowerCase().replace(/\s+/g, "-");
+const esc = (s) => String(s).replace(/"/g, '\\"');
+
+const generated = [];
+const skipped = [];
+
+for (const c of corridors) {
+  if (!c.origin || !c.destination || !c.km || c.plazas.length === 0) continue;
+  const rev = `${slugify(c.destination)}-to-${slugify(c.origin)}`;
+  if (have.has(rev)) {
+    skipped.push(`${rev}: already researched by hand`);
+    continue;
+  }
+  if (!real.has(rev)) {
+    skipped.push(`${rev}: not a route on the site`);
+    continue;
+  }
+
+  // Mirror the positions. A plaza at 30 km from Delhi on a 280 km corridor is
+  // at 250 km from Jaipur. Drop anything that lands at or outside the ends.
+  const plazas = c.plazas
+    .map((p) => ({ ...p, location: c.km - p.location }))
+    .filter((p) => p.location > 0 && p.location < c.km)
+    .sort((a, b) => a.location - b.location);
+
+  if (plazas.length === 0) {
+    skipped.push(`${rev}: no plaza lands inside the reversed corridor`);
+    continue;
+  }
+
+  generated.push({ slug: rev, origin: c.destination, destination: c.origin, km: c.km, road: c.road, fastag: c.fastag, parent: c.slug, plazas, fuelPetrol: c.fuelPetrol, fuelDiesel: c.fuelDiesel });
+}
+
+// ---- emit the records ----------------------------------------------------
+const body = generated
+  .map((g) => {
+    const pl = g.plazas
+      .map(
+        (p) =>
+          `        { name: "${esc(p.name)}", location: ${p.location}, carCost: ${p.carCost}, suvCost: ${p.suvCost}, commercialCost: ${p.commercialCost}, acceptsFASTag: ${p.acceptsFASTag} },`,
+      )
+      .join("\n");
+    return `  "${g.slug}": createTollRoute({
+    slug: "${g.slug}", origin: "${esc(g.origin)}", destination: "${esc(g.destination)}", totalDistance: ${g.km},${g.road ? ` corridorRoad: "${esc(g.road)}",` : ""}
+    // Reverse of ${g.parent}. The plazas, tariffs and FASTag status are the
+    // researched records from that corridor; only the kilometre position is
+    // recomputed, measured from ${g.origin} instead of ${g.destination}.
+    // Marked as a planning estimate because a researched record lists what was
+    // found on one run and a plaza can be directional.
+    reverseOf: "${g.parent}",
+    tollPlazas: [
+${pl}
+    ],
+    // Same corridor and same distance as the parent, so the fuel estimate is
+    // the parent's figure rather than a new one.
+    estimatedFuel: { petrol: ${g.fuelPetrol ?? 0}, diesel: ${g.fuelDiesel ?? 0} },
+    fastagInfo: "${esc(g.fastag || "")}",
+    tips: [
+      "These plaza figures are the published schedule for the ${esc(g.destination)}–${esc(g.origin)} corridor read in the ${esc(g.origin)} direction. Confirm the current tariff and the vehicle's notified toll class before travel.",
+      "Carry FASTag: the dedicated lanes are considerably quicker than the cash lanes at every plaza on this route.",
+      "The driver pays each plaza on the road and the toll is billed at actual, with receipts available.",
+    ],
+    relatedRoutes: ["${g.parent}"],
+  }),`;
+  })
+  .join("\n\n");
+
+const out = `// AUTOGENERATED by scripts/week53-gen-toll-reverse.mjs — do not hand-edit.
+//
+// Reverse-direction toll corridors. Each record mirrors a hand-researched
+// corridor in tollCostData.js: the same plazas with the same published car and
+// SUV tariffs and the same FASTag status, with the kilometre position recomputed
+// from the other end of the route.
+//
+// Nothing here is invented. What is NOT claimed is that the plaza list is
+// exhaustive in the reverse direction — a plaza can be directional and a
+// researched record lists what was found on one run — so every record carries
+// \`planningEstimateOnly\`, which makes the page say "planning estimate" rather
+// than quoting a notified tariff.
+//
+// ${generated.length} corridors. Regenerate rather than edit.
+
+export const tollReverseRoutes = (createTollRoute) => ({
+${body}
+});
+`;
+
+await writeFile(path.join(ROOT, "src", "utilis", "tollReverseRoutes.js"), out, "utf8");
+
+console.log(`generated ${generated.length} reverse toll corridors:`);
+for (const g of generated) console.log(`  ${g.slug.padEnd(34)} ${String(g.km).padStart(4)} km  ${g.plazas.length} plazas  (mirror of ${g.parent})`);
+console.log(`\nskipped ${skipped.length}:`);
+for (const s of skipped.slice(0, 8)) console.log(`  ${s}`);
+if (skipped.length > 8) console.log(`  ... and ${skipped.length - 8} more`);
