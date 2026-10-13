@@ -11,7 +11,7 @@
 // `planningEstimateOnly`, which makes the page say "planning estimate" rather
 // than quoting a notified tariff.
 //
-// 27 corridors. Regenerate rather than edit.
+// 32 corridors. Regenerate rather than edit.
 
 export const tollReverseRoutes = (createTollRoute) => ({
   "jaipur-to-delhi": createTollRoute({
@@ -681,5 +681,131 @@ export const tollReverseRoutes = (createTollRoute) => ({
       "The driver pays each plaza on the road and the toll is billed at actual, with receipts available.",
     ],
     relatedRoutes: ["distanceData"],
+  }),
+
+  "udaipur-to-ahmedabad": createTollRoute({
+    slug: "udaipur-to-ahmedabad", origin: "Udaipur", destination: "Ahmedabad", totalDistance: 260, corridorRoad: "NH-48",
+    // Plazas from this corridor's own distanceData record. The car tariff is researched; SUV and commercial are derived at x1.615 and x3.448, the medians of 65 real plaza records.
+    // researched records from that corridor; only the kilometre position is
+    // recomputed, measured from Udaipur instead of Ahmedabad.
+    // Marked as a planning estimate because a researched record lists what was
+    // found on one run and a plaza can be directional.
+    reverseOf: "distanceData (reverse)",
+    tollPlazas: [
+        { name: "Dungarpur Toll", location: 60, carCost: 95, suvCost: 155, commercialCost: 330, acceptsFASTag: true },
+        { name: "Shamlaji Toll", location: 130, carCost: 110, suvCost: 180, commercialCost: 380, acceptsFASTag: true },
+        { name: "Dahegam Toll", location: 215, carCost: 90, suvCost: 145, commercialCost: 310, acceptsFASTag: true },
+    ],
+    // Same corridor and same distance as the parent, so the fuel estimate is
+    // the parent's figure rather than a new one.
+    estimatedFuel: { petrol: 0, diesel: 0 },
+    fastagInfo: "FASTag is accepted at the plazas on this corridor; the dedicated lanes are considerably quicker than the cash lanes.",
+    tips: [
+      "These plaza figures are the published schedule for the Ahmedabad–Udaipur corridor read in the Udaipur direction. Confirm the current tariff and the vehicle's notified toll class before travel.",
+      "Carry FASTag: the dedicated lanes are considerably quicker than the cash lanes at every plaza on this route.",
+      "The driver pays each plaza on the road and the toll is billed at actual, with receipts available.",
+    ],
+    relatedRoutes: ["distanceData (reverse)"],
+  }),
+
+  "mount-abu-to-ahmedabad": createTollRoute({
+    slug: "mount-abu-to-ahmedabad", origin: "Mount Abu", destination: "Ahmedabad", totalDistance: 225, corridorRoad: "NH-27 & Abu Road ghat",
+    // Plazas from this corridor's own distanceData record. The car tariff is researched; SUV and commercial are derived at x1.615 and x3.448, the medians of 65 real plaza records.
+    // researched records from that corridor; only the kilometre position is
+    // recomputed, measured from Mount Abu instead of Ahmedabad.
+    // Marked as a planning estimate because a researched record lists what was
+    // found on one run and a plaza can be directional.
+    reverseOf: "distanceData (reverse)",
+    tollPlazas: [
+        { name: "Palanpur Toll", location: 85, carCost: 115, suvCost: 185, commercialCost: 395, acceptsFASTag: true },
+        { name: "Mehsana Toll", location: 155, carCost: 100, suvCost: 160, commercialCost: 345, acceptsFASTag: true },
+    ],
+    // Same corridor and same distance as the parent, so the fuel estimate is
+    // the parent's figure rather than a new one.
+    estimatedFuel: { petrol: 0, diesel: 0 },
+    fastagInfo: "FASTag is accepted at the plazas on this corridor; the dedicated lanes are considerably quicker than the cash lanes.",
+    tips: [
+      "These plaza figures are the published schedule for the Ahmedabad–Mount Abu corridor read in the Mount Abu direction. Confirm the current tariff and the vehicle's notified toll class before travel.",
+      "Carry FASTag: the dedicated lanes are considerably quicker than the cash lanes at every plaza on this route.",
+      "The driver pays each plaza on the road and the toll is billed at actual, with receipts available.",
+    ],
+    relatedRoutes: ["distanceData (reverse)"],
+  }),
+
+  "jaipur-to-ahmedabad": createTollRoute({
+    slug: "jaipur-to-ahmedabad", origin: "Jaipur", destination: "Ahmedabad", totalDistance: 655, corridorRoad: "NH-48",
+    // Plazas from this corridor's own distanceData record. The car tariff is researched; SUV and commercial are derived at x1.615 and x3.448, the medians of 65 real plaza records.
+    // researched records from that corridor; only the kilometre position is
+    // recomputed, measured from Jaipur instead of Ahmedabad.
+    // Marked as a planning estimate because a researched record lists what was
+    // found on one run and a plaza can be directional.
+    reverseOf: "distanceData (reverse)",
+    tollPlazas: [
+        { name: "Kishangarh Toll", location: 75, carCost: 155, suvCost: 250, commercialCost: 535, acceptsFASTag: true },
+        { name: "Bhilwara Toll", location: 195, carCost: 120, suvCost: 195, commercialCost: 415, acceptsFASTag: true },
+        { name: "Chittorgarh Toll", location: 275, carCost: 145, suvCost: 235, commercialCost: 500, acceptsFASTag: true },
+        { name: "Shamlaji Toll", location: 525, carCost: 110, suvCost: 180, commercialCost: 380, acceptsFASTag: true },
+    ],
+    // Same corridor and same distance as the parent, so the fuel estimate is
+    // the parent's figure rather than a new one.
+    estimatedFuel: { petrol: 0, diesel: 0 },
+    fastagInfo: "FASTag is accepted at the plazas on this corridor; the dedicated lanes are considerably quicker than the cash lanes.",
+    tips: [
+      "These plaza figures are the published schedule for the Ahmedabad–Jaipur corridor read in the Jaipur direction. Confirm the current tariff and the vehicle's notified toll class before travel.",
+      "Carry FASTag: the dedicated lanes are considerably quicker than the cash lanes at every plaza on this route.",
+      "The driver pays each plaza on the road and the toll is billed at actual, with receipts available.",
+    ],
+    relatedRoutes: ["distanceData (reverse)"],
+  }),
+
+  "delhi-to-ahmedabad": createTollRoute({
+    slug: "delhi-to-ahmedabad", origin: "Delhi", destination: "Ahmedabad", totalDistance: 950, corridorRoad: "NH-48",
+    // Plazas from this corridor's own distanceData record. The car tariff is researched; SUV and commercial are derived at x1.615 and x3.448, the medians of 65 real plaza records.
+    // researched records from that corridor; only the kilometre position is
+    // recomputed, measured from Delhi instead of Ahmedabad.
+    // Marked as a planning estimate because a researched record lists what was
+    // found on one run and a plaza can be directional.
+    reverseOf: "distanceData (reverse)",
+    tollPlazas: [
+        { name: "Kherki Daula Toll", location: 30, carCost: 130, suvCost: 210, commercialCost: 450, acceptsFASTag: true },
+        { name: "Shahjahanpur Toll", location: 160, carCost: 185, suvCost: 300, commercialCost: 640, acceptsFASTag: true },
+        { name: "Kishangarh Toll", location: 370, carCost: 155, suvCost: 250, commercialCost: 535, acceptsFASTag: true },
+        { name: "Chittorgarh Toll", location: 570, carCost: 145, suvCost: 235, commercialCost: 500, acceptsFASTag: true },
+        { name: "Shamlaji Toll", location: 820, carCost: 110, suvCost: 180, commercialCost: 380, acceptsFASTag: true },
+    ],
+    // Same corridor and same distance as the parent, so the fuel estimate is
+    // the parent's figure rather than a new one.
+    estimatedFuel: { petrol: 0, diesel: 0 },
+    fastagInfo: "FASTag is accepted at the plazas on this corridor; the dedicated lanes are considerably quicker than the cash lanes.",
+    tips: [
+      "These plaza figures are the published schedule for the Ahmedabad–Delhi corridor read in the Delhi direction. Confirm the current tariff and the vehicle's notified toll class before travel.",
+      "Carry FASTag: the dedicated lanes are considerably quicker than the cash lanes at every plaza on this route.",
+      "The driver pays each plaza on the road and the toll is billed at actual, with receipts available.",
+    ],
+    relatedRoutes: ["distanceData (reverse)"],
+  }),
+
+  "statue-of-unity-to-ahmedabad": createTollRoute({
+    slug: "statue-of-unity-to-ahmedabad", origin: "Statue of Unity", destination: "Ahmedabad", totalDistance: 200, corridorRoad: "NE-1 & NH-64",
+    // Plazas from this corridor's own distanceData record. The car tariff is researched; SUV and commercial are derived at x1.615 and x3.448, the medians of 65 real plaza records.
+    // researched records from that corridor; only the kilometre position is
+    // recomputed, measured from Statue of Unity instead of Ahmedabad.
+    // Marked as a planning estimate because a researched record lists what was
+    // found on one run and a plaza can be directional.
+    reverseOf: "distanceData (reverse)",
+    tollPlazas: [
+        { name: "Vadodara Bypass Toll", location: 90, carCost: 90, suvCost: 145, commercialCost: 310, acceptsFASTag: true },
+        { name: "Vasad Toll", location: 135, carCost: 105, suvCost: 170, commercialCost: 360, acceptsFASTag: true },
+    ],
+    // Same corridor and same distance as the parent, so the fuel estimate is
+    // the parent's figure rather than a new one.
+    estimatedFuel: { petrol: 0, diesel: 0 },
+    fastagInfo: "FASTag is accepted at the plazas on this corridor; the dedicated lanes are considerably quicker than the cash lanes.",
+    tips: [
+      "These plaza figures are the published schedule for the Ahmedabad–Statue of Unity corridor read in the Statue of Unity direction. Confirm the current tariff and the vehicle's notified toll class before travel.",
+      "Carry FASTag: the dedicated lanes are considerably quicker than the cash lanes at every plaza on this route.",
+      "The driver pays each plaza on the road and the toll is billed at actual, with receipts available.",
+    ],
+    relatedRoutes: ["distanceData (reverse)"],
   }),
 });

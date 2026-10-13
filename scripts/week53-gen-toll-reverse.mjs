@@ -224,6 +224,62 @@ const COMMERCIAL_RATIO = 3.448;
   }
 }
 
+// ---- fourth pass: the Week 49 reverse distance records -------------------
+//
+// distanceReverse.js already derives a reverse record for every forward
+// distance route that lacks one, and it reverses the plaza kilometres while
+// doing it — the same derivation this script does, written in Week 49 for the
+// distance family. So wherever a forward record carried plazas, its reverse
+// carries them too, measured from the other end.
+//
+// Five of those reverse corridors have no toll page: the Ahmedabad set in the
+// other direction. The plaza costs are the forward record's researched car
+// tariffs; SUV and commercial use the same measured ratios as the third pass.
+{
+  const dd = await readFile(path.join(ROOT, "src", "utilis", "distanceData.js"), "utf8");
+  const dRecs = [...dd.matchAll(/"([a-z-]+-to-[a-z-]+)": createRoute\(\{([\s\S]*?)\n  \}\),/g)];
+  for (const [, slug, body] of dRecs) {
+    const fwd = [...body.matchAll(/\{ name: "([^"]+)", km: (\d+), cost: (\d+) \}/g)];
+    if (fwd.length === 0) continue;
+    const km = Number((body.match(/distanceKm: (\d+)/) || [])[1]);
+    const o = (body.match(/origin: "([^"]+)"/) || [])[1];
+    const d = (body.match(/destination: "([^"]+)"/) || [])[1];
+    if (!km || !o || !d) continue;
+    const rev = `${slugify(d)}-to-${slugify(o)}`;
+    if (have.has(rev) || generated.some((g) => g.slug === rev)) continue;
+    // NOT guarded on `real` here, and the reason matters. `real` is regexed out
+    // of the data file SOURCE, which contains only forward records — the reverse
+    // distance routes are built at runtime by distanceReverse.js, so they never
+    // appear in that text and the guard rejected every one of them.
+    //
+    // distanceReverse's contract is that it derives a reverse for every forward
+    // route lacking one, so a forward record existing is sufficient. Verified
+    // against the build: all five of these are live at /distance/{rev}.
+    if (!real.has(rev) && !real.has(slug)) continue;
+    const plazas = fwd
+      .map((m) => ({
+        name: m[1],
+        location: km - Number(m[2]),
+        carCost: Number(m[3]),
+        suvCost: Math.round((Number(m[3]) * SUV_RATIO) / 5) * 5,
+        commercialCost: Math.round((Number(m[3]) * COMMERCIAL_RATIO) / 5) * 5,
+        acceptsFASTag: true,
+      }))
+      .filter((x) => x.location > 0 && x.location < km)
+      .sort((a, b) => a.location - b.location);
+    if (plazas.length === 0) continue;
+    const hw = (body.match(/highway: "([^"]+)"/) || [])[1] || null;
+    const fuel = Number((body.match(/fuelCost: (\d+)/) || [])[1]) || null;
+    generated.push({
+      slug: rev, origin: d, destination: o, km, road: hw,
+      fastag: "FASTag is accepted at the plazas on this corridor; the dedicated lanes are considerably quicker than the cash lanes.",
+      parent: "distanceData (reverse)", plazas,
+      fuelPetrol: fuel, fuelDiesel: fuel ? Math.round((fuel * 0.75) / 5) * 5 : null,
+      fromDistanceData: true,
+    });
+  }
+}
+
 // ---- emit the records ----------------------------------------------------
 const body = generated
   .map((g) => {
