@@ -191,7 +191,7 @@ const travelByCarRoutesBase = {
     ],
     drivingTips: [
       "Leave Delhi by 4-5 AM to reach Agra for sunrise at Taj Mahal — the best light for photos",
-      "Yamuna Expressway is toll-based (₹155 per car) — keep FASTag active for smooth passage",
+      "Yamuna Expressway is tolled — keep FASTag active and topped up; the plaza-by-plaza figures are on our Delhi to Agra toll page",
       "Stop at Mathura (160 km) for famous peda sweets — every shop sells them, pick Brijwasi brand",
       "Speed cameras are active on Yamuna Expressway — maintain limit of 100 km/h",
       "Agra's inner city roads are chaotic — park near Shilpgram and take e-rickshaw to Taj Mahal",

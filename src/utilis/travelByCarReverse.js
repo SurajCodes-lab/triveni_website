@@ -36,7 +36,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Peak tourist season (May-Jun). Expect heavy traffic near Manali. Book accommodation in advance. Start extra early.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-manali"],
+    relatedRoutes: ["delhi-to-manali", "shimla-to-delhi", "kasol-to-delhi", "dharamshala-to-delhi"],
     faqs: [
       { question: "Is the drive from Manali to Delhi easier than Delhi to Manali?", answer: "It is a different drive rather than an easier one. Going Manali to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Manali to Delhi journey?", answer: "Mandi town (120 km) and Chandigarh (280 km) are the practical stops, and the distances given are measured from Manali rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -73,7 +73,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Heavy traffic on weekends (May-Jun). The Kalka-Shimla road gets jammed. Travel on weekdays if possible.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["delhi-to-shimla"],
+    relatedRoutes: ["delhi-to-shimla", "manali-to-delhi", "kasol-to-delhi", "manali-to-shimla"],
     faqs: [
       { question: "Is the drive from Shimla to Delhi easier than Delhi to Shimla?", answer: "It is a different drive rather than an easier one. Going Shimla to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Shimla to Delhi journey?", answer: "Solan (60 km) and Barog (70 km) are the practical stops, and the distances given are measured from Shimla rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -110,7 +110,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Hot drive through UP plains (40°C+). Keep AC on and carry water. Rishikesh itself is pleasantly warm.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["delhi-to-rishikesh"],
+    relatedRoutes: ["delhi-to-rishikesh", "haridwar-to-delhi", "mussoorie-to-delhi", "dehradun-to-delhi"],
     faqs: [
       { question: "Is the drive from Rishikesh to Delhi easier than Delhi to Rishikesh?", answer: "The road and the distance are identical at 250 km, so the drive time is much the same at 5-6 hours. What changes is where the congestion falls: leaving Rishikesh you clear its outskirts first, and you arrive into Delhi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Rishikesh to Delhi journey?", answer: "Haridwar (25 km) and Roorkee (70 km) are the practical stops, and the distances given are measured from Rishikesh rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -146,7 +146,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Very hot drive (40°C+). Evening arrival recommended. Ganga dip is refreshing in summer heat.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["delhi-to-haridwar"],
+    relatedRoutes: ["delhi-to-haridwar", "rishikesh-to-delhi", "dehradun-to-delhi", "mussoorie-to-delhi"],
     faqs: [
       { question: "Is the drive from Haridwar to Delhi easier than Delhi to Haridwar?", answer: "It is a different drive rather than an easier one. Going Haridwar to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Haridwar to Delhi journey?", answer: "Roorkee (50 km) and Muzaffarnagar (100 km) are the practical stops, and the distances given are measured from Haridwar rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -171,7 +171,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       "Leave Agra by 6 AM to clear the city before the morning build-up — on a 230 km run the hour saved at the start is the hour you are not driving in the dark at the end",
       "Plan a stop every two to three hours; the food stops below are listed by distance from Agra",
       "Leave Delhi by 4-5 AM to reach Agra for sunrise at Taj Mahal — the best light for photos",
-      "Yamuna Expressway is toll-based (₹155 per car) — keep FASTag active for smooth passage",
+      "Yamuna Expressway is tolled — keep FASTag active and topped up; the plaza-by-plaza figures are on our Delhi to Agra toll page",
       "Speed cameras are active on Yamuna Expressway — maintain limit of 100 km/h",
     ],
     petrolStops: 3,
@@ -182,7 +182,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Extreme heat (45°C+) May-Jun. Visit Taj Mahal at sunrise or sunset only. Carry water, sunscreen, and hat.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["delhi-to-agra"],
+    relatedRoutes: ["delhi-to-agra", "jaipur-to-delhi", "jaipur-to-agra", "mathura-to-delhi"],
     faqs: [
       { question: "Is the drive from Agra to Delhi easier than Delhi to Agra?", answer: "The road and the distance are identical at 230 km, so the drive time is much the same at 3-4 hours. What changes is where the congestion falls: leaving Agra you clear its outskirts first, and you arrive into Delhi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Agra to Delhi journey?", answer: "Mathura (70 km) and Yamuna Expressway food court (110 km) are the practical stops, and the distances given are measured from Agra rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -219,7 +219,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Extremely hot (45°C+) May-Jun. Keep AC on full blast. Avoid midday sightseeing. Early morning or evening only.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["delhi-to-jaipur"],
+    relatedRoutes: ["delhi-to-jaipur", "agra-to-delhi", "udaipur-to-delhi", "udaipur-to-jaipur"],
     faqs: [
       { question: "Is the drive from Jaipur to Delhi easier than Delhi to Jaipur?", answer: "The road and the distance are identical at 280 km, so the drive time is much the same at 4-5 hours. What changes is where the congestion falls: leaving Jaipur you clear its outskirts first, and you arrive into Delhi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Jaipur to Delhi journey?", answer: "Shahpura (60 km) and Behror (130 km) are the practical stops, and the distances given are measured from Jaipur rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -256,7 +256,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Peak season (May-Jun). Nainital is pleasantly cool (15-25°C) while Delhi bakes. Book hotels early — they sell out.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-nainital"],
+    relatedRoutes: ["delhi-to-nainital", "mussoorie-to-delhi", "corbett-to-delhi", "lansdowne-to-delhi"],
     faqs: [
       { question: "Is the drive from Nainital to Delhi easier than Delhi to Nainital?", answer: "It is a different drive rather than an easier one. Going Nainital to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Nainital to Delhi journey?", answer: "Haldwani (35 km) and Rampur (120 km) are the practical stops, and the distances given are measured from Nainital rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -293,7 +293,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Most popular season (May-Jun). Mussoorie is 20°C when Delhi is 45°C. Expect traffic jams on weekends.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-mussoorie"],
+    relatedRoutes: ["delhi-to-mussoorie", "rishikesh-to-delhi", "haridwar-to-delhi", "dehradun-to-delhi"],
     faqs: [
       { question: "Is the drive from Mussoorie to Delhi easier than Delhi to Mussoorie?", answer: "It is a different drive rather than an easier one. Going Mussoorie to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Mussoorie to Delhi journey?", answer: "Kempty Falls area (15 km) and Dehradun (35 km) are the practical stops, and the distances given are measured from Mussoorie rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -330,7 +330,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Best season (Apr-Jun). Kasol is cool (15-25°C). Weekends get very crowded with backpackers.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-kasol"],
+    relatedRoutes: ["delhi-to-kasol", "manali-to-delhi", "shimla-to-delhi", "dharamshala-to-delhi"],
     faqs: [
       { question: "Is the drive from Kasol to Delhi easier than Delhi to Kasol?", answer: "It is a different drive rather than an easier one. Going Kasol to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Kasol to Delhi journey?", answer: "Bhuntar (40 km) and Mandi (90 km) are the practical stops, and the distances given are measured from Kasol rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -367,7 +367,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Ideal season (Apr-Jun). Pleasant 20-28°C. HPCA cricket stadium offers spectacular mountain-backdrop matches.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-dharamshala"],
+    relatedRoutes: ["delhi-to-dharamshala", "manali-to-delhi", "amritsar-to-delhi", "mcleodganj-to-delhi"],
     faqs: [
       { question: "Is the drive from Dharamshala to Delhi easier than Delhi to Dharamshala?", answer: "It is a different drive rather than an easier one. Going Dharamshala to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Dharamshala to Delhi journey?", answer: "Jalandhar (100 km) and Ludhiana (160 km) are the practical stops, and the distances given are measured from Dharamshala rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -404,7 +404,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Very hot (42°C+). Amritsar is sweltering May-Jun. Visit Golden Temple pool for cooling respite. Travel with AC on always.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["delhi-to-amritsar"],
+    relatedRoutes: ["delhi-to-amritsar", "chandigarh-to-delhi", "dharamshala-to-delhi", "dharamshala-to-amritsar"],
     faqs: [
       { question: "Is the drive from Amritsar to Delhi easier than Delhi to Amritsar?", answer: "The road and the distance are identical at 450 km, so the drive time is much the same at 7-8 hours. What changes is where the congestion falls: leaving Amritsar you clear its outskirts first, and you arrive into Delhi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Amritsar to Delhi journey?", answer: "Jalandhar (70 km) and Ludhiana (130 km) are the practical stops, and the distances given are measured from Amritsar rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -440,7 +440,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Hot (38-40°C) but manageable. AC car recommended. Chandigarh's tree-lined avenues provide shade.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["delhi-to-chandigarh"],
+    relatedRoutes: ["delhi-to-chandigarh", "shimla-to-delhi", "manali-to-delhi", "shimla-to-chandigarh"],
     faqs: [
       { question: "Is the drive from Chandigarh to Delhi easier than Delhi to Chandigarh?", answer: "The road and the distance are identical at 250 km, so the drive time is much the same at 4-5 hours. What changes is where the congestion falls: leaving Chandigarh you clear its outskirts first, and you arrive into Delhi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Chandigarh to Delhi journey?", answer: "Ambala (50 km) and Karnal (120 km) are the practical stops, and the distances given are measured from Chandigarh rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -476,7 +476,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Extremely hot (42-46°C) Apr-Jun. Not recommended unless necessary. Travel only with AC car. Avoid midday outdoor activities.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["delhi-to-udaipur"],
+    relatedRoutes: ["delhi-to-udaipur", "jaipur-to-delhi", "udaipur-to-jaipur", "jodhpur-to-udaipur"],
     faqs: [
       { question: "Is the drive from Udaipur to Delhi easier than Delhi to Udaipur?", answer: "It is a different drive rather than an easier one. Going Udaipur to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Udaipur to Delhi journey?", answer: "Bhilwara (115 km) and Ajmer (245 km) are the practical stops, and the distances given are measured from Udaipur rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -512,7 +512,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Brutal heat (45°C+) May-Jun. Not recommended. If you must go, drive at night and rest during daytime.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-varanasi"],
+    relatedRoutes: ["delhi-to-varanasi", "agra-to-delhi", "varanasi-to-lucknow", "ayodhya-to-varanasi"],
     faqs: [
       { question: "Is the drive from Varanasi to Delhi easier than Delhi to Varanasi?", answer: "The road and the distance are identical at 820 km, so the drive time is much the same at 12-14 hours. What changes is where the congestion falls: leaving Varanasi you clear its outskirts first, and you arrive into Delhi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Varanasi to Delhi journey?", answer: "Prayagraj (120 km) and Kanpur (310 km) are the practical stops, and the distances given are measured from Varanasi rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -549,7 +549,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Perfect weather Apr-Jun (18-25°C). Peak tourist season. Book accommodation well in advance.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-mcleodganj"],
+    relatedRoutes: ["delhi-to-mcleodganj", "dharamshala-to-delhi", "amritsar-to-delhi", "manali-to-delhi"],
     faqs: [
       { question: "Is the drive from McLeodganj to Delhi easier than Delhi to McLeodganj?", answer: "It is a different drive rather than an easier one. Going McLeodganj to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the McLeodganj to Delhi journey?", answer: "Jalandhar (110 km) and Ludhiana (170 km) are the practical stops, and the distances given are measured from McLeodganj rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -586,7 +586,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Hot (35-40°C) but excellent for tiger sighting — animals come to water holes. Apr-Jun is peak tiger season.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-corbett"],
+    relatedRoutes: ["delhi-to-corbett", "nainital-to-delhi", "lansdowne-to-delhi", "rishikesh-to-delhi"],
     faqs: [
       { question: "Is the drive from Jim Corbett National Park to Delhi easier than Delhi to Jim Corbett National Park?", answer: "The road and the distance are identical at 260 km, so the drive time is much the same at 5-6 hours. What changes is where the congestion falls: leaving Jim Corbett National Park you clear its outskirts first, and you arrive into Delhi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Jim Corbett National Park to Delhi journey?", answer: "Ramnagar (15 km) and Kashipur (50 km) are the practical stops, and the distances given are measured from Jim Corbett National Park rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -622,7 +622,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Pleasant (20-25°C) May-Jun. Less crowded than Nainital/Mussoorie. A true hidden gem.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-lansdowne"],
+    relatedRoutes: ["delhi-to-lansdowne", "rishikesh-to-delhi", "nainital-to-delhi", "corbett-to-delhi"],
     faqs: [
       { question: "Is the drive from Lansdowne to Delhi easier than Delhi to Lansdowne?", answer: "It is a different drive rather than an easier one. Going Lansdowne to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Lansdowne to Delhi journey?", answer: "Kotdwar (40 km) and Bijnor (110 km) are the practical stops, and the distances given are measured from Lansdowne rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -658,7 +658,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Perfect weather May-Jun (15-25°C). Peak season. Less crowded than Shimla/Manali. Great for families.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-dalhousie"],
+    relatedRoutes: ["delhi-to-dalhousie", "dharamshala-to-delhi", "amritsar-to-delhi", "manali-to-delhi"],
     faqs: [
       { question: "Is the drive from Dalhousie to Delhi easier than Delhi to Dalhousie?", answer: "It is a different drive rather than an easier one. Going Dalhousie to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Dalhousie to Delhi journey?", answer: "Pathankot (70 km) and Ludhiana (240 km) are the practical stops, and the distances given are measured from Dalhousie rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -694,7 +694,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Scorching (42-46°C) Apr-Jun. Drive with AC. Avoid midday sightseeing. Early morning or evening only.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["jaipur-to-udaipur"],
+    relatedRoutes: ["jaipur-to-udaipur", "udaipur-to-delhi", "jodhpur-to-udaipur", "jodhpur-to-jaipur"],
     faqs: [
       { question: "Is the drive from Udaipur to Jaipur easier than Jaipur to Udaipur?", answer: "It is a different drive rather than an easier one. Going Udaipur to Jaipur the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Jaipur's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Udaipur to Jaipur journey?", answer: "Chittorgarh (80 km) and Bhilwara (130 km) are the practical stops, and the distances given are measured from Udaipur rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -729,7 +729,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Extreme heat (48°C+). Not recommended. If you must go, drive only at night/early morning. Carry water obsessively.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["jaipur-to-jaisalmer"],
+    relatedRoutes: ["jaipur-to-jaisalmer", "jodhpur-to-jaipur", "udaipur-to-jaipur", "jaisalmer-to-udaipur"],
     faqs: [
       { question: "Is the drive from Jaisalmer to Jaipur easier than Jaipur to Jaisalmer?", answer: "The road and the distance are identical at 570 km, so the drive time is much the same at 9-10 hours. What changes is where the congestion falls: leaving Jaisalmer you clear its outskirts first, and you arrive into Jaipur at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Jaisalmer to Jaipur journey?", answer: "Pokhran (85 km) and Jodhpur (235 km) are the practical stops, and the distances given are measured from Jaisalmer rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -764,7 +764,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Brutal heat (45°C+). Avoid if possible. If must go, stay inside Mehrangarh and use AC car exclusively.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["jaipur-to-jodhpur"],
+    relatedRoutes: ["jaipur-to-jodhpur", "jaisalmer-to-jaipur", "udaipur-to-jaipur", "jodhpur-to-udaipur"],
     faqs: [
       { question: "Is the drive from Jodhpur to Jaipur easier than Jaipur to Jodhpur?", answer: "The road and the distance are identical at 335 km, so the drive time is much the same at 5-6 hours. What changes is where the congestion falls: leaving Jodhpur you clear its outskirts first, and you arrive into Jaipur at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Jodhpur to Jaipur journey?", answer: "Pali (75 km) and Beawar (155 km) are the practical stops, and the distances given are measured from Jodhpur rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -799,7 +799,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Mt Abu is a refuge from Rajasthan heat (25-33°C vs 45°C in plains). Peak season May-Jun. Book early.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["jaipur-to-mount-abu"],
+    relatedRoutes: ["jaipur-to-mount-abu", "udaipur-to-jaipur", "jodhpur-to-jaipur", "udaipur-to-delhi"],
     faqs: [
       { question: "Is the drive from Mount Abu to Jaipur easier than Jaipur to Mount Abu?", answer: "It is a different drive rather than an easier one. Going Mount Abu to Jaipur the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Jaipur's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Mount Abu to Jaipur journey?", answer: "Sirohi (80 km) and Pali (230 km) are the practical stops, and the distances given are measured from Mount Abu rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -835,7 +835,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Best time (Apr-Jun). Manali is cool (10-25°C). Very crowded on weekends. Weekday travel preferred.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["chandigarh-to-manali"],
+    relatedRoutes: ["chandigarh-to-manali", "manali-to-delhi", "shimla-to-chandigarh", "kasol-to-chandigarh"],
     faqs: [
       { question: "Is the drive from Manali to Chandigarh easier than Chandigarh to Manali?", answer: "It is a different drive rather than an easier one. Going Manali to Chandigarh the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Chandigarh's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Manali to Chandigarh journey?", answer: "Kullu (40 km) and Mandi (100 km) are the practical stops, and the distances given are measured from Manali rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -871,7 +871,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Weekend traffic jams (May-Jun). Leave by 6 AM from Chandigarh to avoid the queue at Shimla entry.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["chandigarh-to-shimla"],
+    relatedRoutes: ["chandigarh-to-shimla", "shimla-to-delhi", "manali-to-chandigarh", "manali-to-shimla"],
     faqs: [
       { question: "Is the drive from Shimla to Chandigarh easier than Chandigarh to Shimla?", answer: "It is a different drive rather than an easier one. Going Shimla to Chandigarh the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Chandigarh's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Shimla to Chandigarh journey?", answer: "Solan (45 km) and Barog (50 km) are the practical stops, and the distances given are measured from Shimla rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -907,7 +907,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Best season Apr-Jun (20-28°C). Perfect weather for trekking, monastery visits, and cafe culture.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["chandigarh-to-dharamshala"],
+    relatedRoutes: ["chandigarh-to-dharamshala", "dharamshala-to-delhi", "manali-to-chandigarh", "dharamshala-to-amritsar"],
     faqs: [
       { question: "Is the drive from Dharamshala to Chandigarh easier than Chandigarh to Dharamshala?", answer: "It is a different drive rather than an easier one. Going Dharamshala to Chandigarh the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Chandigarh's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Dharamshala to Chandigarh journey?", answer: "Kangra (60 km) and Una (140 km) are the practical stops, and the distances given are measured from Dharamshala rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -943,7 +943,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Best season Apr-Jun. Perfect 15-25°C. Parvati River is inviting. Peak backpacker season.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["chandigarh-to-kasol"],
+    relatedRoutes: ["chandigarh-to-kasol", "manali-to-chandigarh", "kasol-to-delhi", "shimla-to-chandigarh"],
     faqs: [
       { question: "Is the drive from Kasol to Chandigarh easier than Chandigarh to Kasol?", answer: "It is a different drive rather than an easier one. Going Kasol to Chandigarh the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Chandigarh's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Kasol to Chandigarh journey?", answer: "Bhuntar (50 km) and Mandi (100 km) are the practical stops, and the distances given are measured from Kasol rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -978,7 +978,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Very hot (42-46°C) Apr-Jun. Dawn and dusk visits only. The evening aarti is cooler. Carry water everywhere.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["lucknow-to-varanasi"],
+    relatedRoutes: ["lucknow-to-varanasi", "varanasi-to-delhi", "ayodhya-to-varanasi", "ayodhya-to-lucknow"],
     faqs: [
       { question: "Is the drive from Varanasi to Lucknow easier than Lucknow to Varanasi?", answer: "The road and the distance are identical at 300 km, so the drive time is much the same at 5-6 hours. What changes is where the congestion falls: leaving Varanasi you clear its outskirts first, and you arrive into Lucknow at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Varanasi to Lucknow journey?", answer: "Varanasi outskirts (20 km) and Jaunpur (80 km) are the practical stops, and the distances given are measured from Varanasi rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1013,7 +1013,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Hot (42°C+) but manageable with AC car. Morning and evening visits recommended. Ram Mandir has shade shelters.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["lucknow-to-ayodhya"],
+    relatedRoutes: ["lucknow-to-ayodhya", "ayodhya-to-varanasi", "varanasi-to-lucknow", "varanasi-to-delhi"],
     faqs: [
       { question: "Is the drive from Ayodhya to Lucknow easier than Lucknow to Ayodhya?", answer: "The road and the distance are identical at 135 km, so the drive time is much the same at 2.5-3 hours. What changes is where the congestion falls: leaving Ayodhya you clear its outskirts first, and you arrive into Lucknow at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Ayodhya to Lucknow journey?", answer: "Ayodhya (5 km) and Faizabad (20 km) are the practical stops, and the distances given are measured from Ayodhya rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1049,7 +1049,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Extremely hot (45°C+). Not recommended for sightseeing. If must go, start at dawn and finish by 10 AM.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["agra-to-jaipur", "delhi-to-agra"],
+    relatedRoutes: ["agra-to-jaipur", "agra-to-delhi", "jaipur-to-delhi", "udaipur-to-jaipur"],
     faqs: [
       { question: "Is the drive from Jaipur to Agra easier than Agra to Jaipur?", answer: "The road and the distance are identical at 240 km, so the drive time is much the same at 4-5 hours. What changes is where the congestion falls: leaving Jaipur you clear its outskirts first, and you arrive into Agra at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Jaipur to Agra journey?", answer: "Dausa (80 km) and Bharatpur (180 km) are the practical stops, and the distances given are measured from Jaipur rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1085,7 +1085,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Best time (Apr-Jun). Both Shimla and Manali are pleasant. Heavy tourist traffic on weekends.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["shimla-to-manali"],
+    relatedRoutes: ["shimla-to-manali", "shimla-to-delhi", "manali-to-delhi", "manali-to-chandigarh"],
     faqs: [
       { question: "Is the drive from Manali to Shimla easier than Shimla to Manali?", answer: "The road and the distance are identical at 250 km, so the drive time is much the same at 7-8 hours. What changes is where the congestion falls: leaving Manali you clear its outskirts first, and you arrive into Shimla at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Manali to Shimla journey?", answer: "Kullu (35 km) and Mandi (90 km) are the practical stops, and the distances given are measured from Manali rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1122,7 +1122,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Best window: Jun and Sep. July-Aug has rain and flood risk. September offers clearest skies and autumn colors.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["manali-to-leh"],
+    relatedRoutes: ["manali-to-leh", "leh-to-srinagar", "manali-to-delhi"],
     faqs: [
       { question: "Is the drive from Leh to Manali easier than Manali to Leh?", answer: "It is a different drive rather than an easier one. Going Leh to Manali the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Manali's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Leh to Manali journey?", answer: "Pang tent camps (175 km) and Sarchu tent camps (255 km) are the practical stops, and the distances given are measured from Leh rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1159,7 +1159,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Best time: Jun and Sep-Oct. July-Aug has rain risk at Zoji La but rest of the route is fine. October has autumn golden colors.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["srinagar-to-leh"],
+    relatedRoutes: ["srinagar-to-leh", "leh-to-manali", "manali-to-delhi"],
     faqs: [
       { question: "Is the drive from Leh to Srinagar easier than Srinagar to Leh?", answer: "It is a different drive rather than an easier one. Going Leh to Srinagar the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Srinagar's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Leh to Srinagar journey?", answer: "Lamayuru (115 km) and Kargil (215 km) are the practical stops, and the distances given are measured from Leh rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1194,7 +1194,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Best time Apr-Jun. Dharamshala is cool (20-28°C) while Amritsar bakes at 42°C. Perfect escape.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["amritsar-to-dharamshala"],
+    relatedRoutes: ["amritsar-to-dharamshala", "dharamshala-to-delhi", "dharamshala-to-chandigarh", "amritsar-to-delhi"],
     faqs: [
       { question: "Is the drive from Dharamshala to Amritsar easier than Amritsar to Dharamshala?", answer: "The road and the distance are identical at 200 km, so the drive time is much the same at 4-5 hours. What changes is where the congestion falls: leaving Dharamshala you clear its outskirts first, and you arrive into Amritsar at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Dharamshala to Amritsar journey?", answer: "Dharamshala (10 km) and Kangra (30 km) are the practical stops, and the distances given are measured from Dharamshala rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1228,7 +1228,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Warm (30-38°C) but manageable. Rafting is best Feb-May and Sep-Nov. International Yoga Festival in March.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["haridwar-to-rishikesh"],
+    relatedRoutes: ["haridwar-to-rishikesh", "haridwar-to-delhi", "rishikesh-to-delhi", "dehradun-to-delhi"],
     faqs: [
       { question: "Is the drive from Rishikesh to Haridwar easier than Haridwar to Rishikesh?", answer: "The road and the distance are identical at 25 km, so the drive time is much the same at 40-50 minutes. What changes is where the congestion falls: leaving Rishikesh you clear its outskirts first, and you arrive into Haridwar at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Rishikesh to Haridwar journey?", answer: "At 25 km this is short enough not to need a planned stop. Tell the driver if you want one and they will pick somewhere sensible." },
@@ -1264,7 +1264,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Extremely hot (45°C+). Not recommended. If must travel, drive early morning and stay indoors midday.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["udaipur-to-jodhpur"],
+    relatedRoutes: ["udaipur-to-jodhpur", "jodhpur-to-jaipur", "udaipur-to-jaipur", "jaisalmer-to-udaipur"],
     faqs: [
       { question: "Is the drive from Jodhpur to Udaipur easier than Udaipur to Jodhpur?", answer: "The road and the distance are identical at 260 km, so the drive time is much the same at 4-5 hours. What changes is where the congestion falls: leaving Jodhpur you clear its outskirts first, and you arrive into Udaipur at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Jodhpur to Udaipur journey?", answer: "Pali (80 km) and Ranakpur (160 km) are the practical stops, and the distances given are measured from Jodhpur rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1299,7 +1299,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Extreme heat (48°C+). Travel ONLY in AC vehicle. Carry extra water. Not recommended for tourists.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["udaipur-to-jaisalmer"],
+    relatedRoutes: ["udaipur-to-jaisalmer", "jaisalmer-to-jaipur", "jodhpur-to-udaipur", "udaipur-to-jaipur"],
     faqs: [
       { question: "Is the drive from Jaisalmer to Udaipur easier than Udaipur to Jaisalmer?", answer: "The road and the distance are identical at 530 km, so the drive time is much the same at 8-9 hours. What changes is where the congestion falls: leaving Jaisalmer you clear its outskirts first, and you arrive into Udaipur at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Jaisalmer to Udaipur journey?", answer: "Pokhran (120 km) and Jodhpur (270 km) are the practical stops, and the distances given are measured from Jaisalmer rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1335,7 +1335,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Hot (42°C+) but manageable with AC cab. Morning visits to temples, afternoon rest, evening aarti schedule works.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["varanasi-to-ayodhya"],
+    relatedRoutes: ["varanasi-to-ayodhya", "ayodhya-to-lucknow", "varanasi-to-lucknow", "varanasi-to-delhi"],
     faqs: [
       { question: "Is the drive from Ayodhya to Varanasi easier than Varanasi to Ayodhya?", answer: "The road and the distance are identical at 200 km, so the drive time is much the same at 4-5 hours. What changes is where the congestion falls: leaving Ayodhya you clear its outskirts first, and you arrive into Varanasi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Ayodhya to Varanasi journey?", answer: "Faizabad (5 km) and Sultanpur (55 km) are the practical stops, and the distances given are measured from Ayodhya rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1370,7 +1370,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "No difficulty beyond the heat. The drive is short enough that it hardly matters.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["delhi-to-meerut"],
+    relatedRoutes: ["delhi-to-meerut", "haridwar-to-delhi", "dehradun-to-delhi", "rishikesh-to-delhi"],
     faqs: [
       { question: "Is the drive from Meerut to Delhi easier than Delhi to Meerut?", answer: "The road and the distance are identical at 70 km, so the drive time is much the same at 1-1.5 hours. What changes is where the congestion falls: leaving Meerut you clear its outskirts first, and you arrive into Delhi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Meerut to Delhi journey?", answer: "Meerut bypass (5 km) and Dasna (32 km) are the practical stops, and the distances given are measured from Meerut rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1405,7 +1405,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Above 45°C through May and June, which makes the ghats and the temples unpleasant after mid-morning. Start before dawn and be indoors by eleven.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["delhi-to-mathura"],
+    relatedRoutes: ["delhi-to-mathura", "agra-to-delhi", "jaipur-to-delhi", "jaipur-to-agra"],
     faqs: [
       { question: "Is the drive from Mathura to Delhi easier than Delhi to Mathura?", answer: "The road and the distance are identical at 180 km, so the drive time is much the same at 2.5-3 hours. What changes is where the congestion falls: leaving Mathura you clear its outskirts first, and you arrive into Delhi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Mathura to Delhi journey?", answer: "Mathura bypass (5 km) and Yamuna Expressway plaza (90 km) are the practical stops, and the distances given are measured from Mathura rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1441,7 +1441,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "The plains are very hot to Roorkee and then the climb cools it. This is the most popular season precisely because Dehradun is the escape, so expect company on the road.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-dehradun"],
+    relatedRoutes: ["delhi-to-dehradun", "mussoorie-to-delhi", "haridwar-to-delhi", "rishikesh-to-delhi"],
     faqs: [
       { question: "Is the drive from Dehradun to Delhi easier than Delhi to Dehradun?", answer: "It is a different drive rather than an easier one. Going Dehradun to Delhi the hill section comes first, while you are fresh, and the plains run is at the end — which most passengers prefer, and which suits anyone prone to car sickness. The disadvantage is that you meet Delhi's traffic at the end of a long day rather than at the start of it." },
       { question: "Where should I break the Dehradun to Delhi journey?", answer: "Roorkee (65 km) and Khatauli (160 km) are the practical stops, and the distances given are measured from Dehradun rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1478,7 +1478,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Brutal across the Doab, above 45°C in May and June. The car is air-conditioned but a breakdown on an access-controlled road in that heat is a serious matter. Start before dawn.",
     },
     bestCarType: "SUV (Innova/Ertiga)",
-    relatedRoutes: ["delhi-to-lucknow"],
+    relatedRoutes: ["delhi-to-lucknow", "agra-to-delhi", "varanasi-to-delhi", "varanasi-to-lucknow"],
     faqs: [
       { question: "Is the drive from Lucknow to Delhi easier than Delhi to Lucknow?", answer: "The road and the distance are identical at 550 km, so the drive time is much the same at 8-9 hours. What changes is where the congestion falls: leaving Lucknow you clear its outskirts first, and you arrive into Delhi at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Lucknow to Delhi journey?", answer: "Kannauj (85 km) and Etawah plaza (195 km) are the practical stops, and the distances given are measured from Lucknow rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
@@ -1513,7 +1513,7 @@ export const travelByCarReverse = (createTravelRoute) => ({
       summer: "Above 45°C in May and June and the fort sightseeing at both ends becomes unpleasant by mid-morning. Start at dawn or move the dates.",
     },
     bestCarType: "Sedan (Swift Dzire)",
-    relatedRoutes: ["ajmer-to-jaipur"],
+    relatedRoutes: ["ajmer-to-jaipur", "udaipur-to-jaipur", "jodhpur-to-jaipur", "jaipur-to-agra"],
     faqs: [
       { question: "Is the drive from Jaipur to Ajmer easier than Ajmer to Jaipur?", answer: "The road and the distance are identical at 135 km, so the drive time is much the same at 2.5-3 hours. What changes is where the congestion falls: leaving Jaipur you clear its outskirts first, and you arrive into Ajmer at whatever that city's traffic is doing when you get there." },
       { question: "Where should I break the Jaipur to Ajmer journey?", answer: "Jaipur Ajmer Road (15 km) and Dudu (60 km) are the practical stops, and the distances given are measured from Jaipur rather than from the other end — a point worth making, because every listing of this route online measures them the other way. Plan a break every two to three hours." },
