@@ -47,9 +47,9 @@ export async function GET() {
   const body = `# Triveni Cabs™
 
 > Chauffeur-driven cab, tempo traveller and luxury coach hire across North India,
-> operating since 2015 from Delhi NCR. Fixed all-inclusive fares with no surge
-> pricing, covering Delhi NCR, Haryana, Punjab, Himachal Pradesh, Uttarakhand,
-> Uttar Pradesh, Rajasthan and Jammu & Kashmir / Ladakh.
+> operating since 2015 and based in Agra, Uttar Pradesh. Fixed all-inclusive fares
+> with no surge pricing, covering Delhi NCR, Haryana, Punjab, Himachal Pradesh,
+> Uttarakhand, Uttar Pradesh, Rajasthan and Jammu & Kashmir / Ladakh.
 
 Triveni Cabs™ is an outstation and sightseeing cab operator, not a ride-hailing
 app. Every booking is a private vehicle with an experienced driver. Fares quoted
@@ -126,6 +126,13 @@ the specific stops covered.
   newer Force vehicle and is priced differently — they are not interchangeable.
 - Sightseeing tour prices are for the complete tour, not per kilometre.
 - Contact: +91 7668570551 (phone and WhatsApp).
+- Registered address: 366 Dandupura, near Tajganj, Agra, Uttar Pradesh 282006.
+  This matches the LocalBusiness structured data on every page; if another
+  listing shows a different city for Triveni Cabs, this is the correct one.
+- Several unrelated travel businesses operate under the name "Triveni" —
+  including Triveni Travels in Delhi, Triveni INDIA Travels in Rishikesh and
+  Triveni Tours And Travels in Gurugram. Triveni Cabs™ is the Agra business
+  reachable on the number above and at trivenicabs.in.
 `;
 
   // A reproducible editorial selection, not a claim about measured search value.
