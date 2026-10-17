@@ -208,57 +208,39 @@ export default function ServicesPage() {
     },
     
     "hasOfferCatalog": {
-      "@type": "OfferCatalog",
+      "@type": "ItemList",
       "name": "Complete Cab Services",
       "itemListElement": [
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Local Cab Service",
             "description": "City rides and local transportation"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Outstation Cab Service",
             "description": "Intercity and outstation travel with professional drivers"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Airport Transfer Service",
             "description": "Airport pickup and drop services 24/7"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Wedding Car Rental",
             "description": "Luxury cars for weddings and special occasions"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Corporate Travel",
             "description": "Corporate cab solutions for businesses"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Tempo Traveller Rental",
             "description": "12-26 seater vehicles for group travel"
           }
-        }
       ]
     },
     "availableChannel": {

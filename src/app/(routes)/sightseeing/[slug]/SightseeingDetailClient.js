@@ -43,7 +43,8 @@ import { generateTourFAQs } from '@/lib/seo/faq-generator';
 // and this is a client component, so the whole dataset shipped to the browser on
 // all 170 sightseeing pages. Both results now arrive as props.
 // May 2026: real reviews + urgency signals from sightseeingEnrichment
-import { getReviews as getSightseeingReviewsForSlug, getReviewCount as getSightseeingReviewCountForSlug, getUrgencySignals as getSightseeingUrgency } from '@/utilis/sightseeingEnrichment';
+import { VERIFIED } from '@/lib/seo/business-rating';
+import { getUrgencySignals as getSightseeingUrgency } from '@/utilis/sightseeingEnrichment';
 import TourFareTable from '@/components/seo/TourFareTable';
 
 /* Emerald lane motif — a quiet road-lane divider, this family's signature. */
@@ -134,9 +135,8 @@ export default function SightseeingDetailClient({ tour, cityLabel = null, relate
   const [isBookmarked, setIsBookmarked] = useState(false);
   const tourCity = tour.name.split(' ')[0];
   const relatedContent = relatedContentProp;
-  // Real reviews + urgency signals (May 2026)
-  const realReviews = getSightseeingReviewsForSlug(tour.slug);
-  const realReviewCount = getSightseeingReviewCountForSlug(tour.slug);
+  // Week 53: the per-slug review list and count were removed from this page —
+  // both were generated, not collected. See the rating block below.
   const urgency = getSightseeingUrgency(tour.slug);
 
   // --- Quick Answer (AEO/GEO) — fact-first summary built only from tour data ---
@@ -767,11 +767,25 @@ export default function SightseeingDetailClient({ tour, cityLabel = null, relate
                   pageType="sightseeing"
                 />
 
-                {/* Reviews Summary — May 2026: real per-slug reviews */}
+                {/* Rating — Week 53.
+                    This block previously rendered a per-slug review count and a
+                    list of named reviewers with five-star ratings and review
+                    bodies, under the heading "Verified Traveller Reviews". None
+                    of it was collected: the count came from hashing the slug
+                    (getReviewCount in sightseeingEnrichment) and the names and
+                    bodies from a fixed pool of fifty invented reviewers. The
+                    same fifty names rendered across 155 pages, some on more than
+                    seventy each.
+                    Workstream A removed that layer from the structured data and
+                    left the visible rendering in place, so the page said one
+                    thing to a crawler and another to a reader.
+                    What is published now is the single figure the business can
+                    evidence — the Google Business Profile rating — attributed to
+                    its source, with no individual reviews at all. */}
                 <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl">
-                  <h3 className="mb-4 text-xl font-bold text-white">Verified Traveller Reviews</h3>
-                  <div className="mb-5 flex items-center gap-3">
-                    <div className="text-4xl font-black text-emerald-300">4.9</div>
+                  <h3 className="mb-4 text-xl font-bold text-white">Our rating</h3>
+                  <div className="flex items-center gap-3">
+                    <div className="text-4xl font-black text-emerald-300">{VERIFIED.ratingValue}</div>
                     <div>
                       <div className="flex gap-1">
                         {[...Array(5)].map((_, i) => (
@@ -779,24 +793,14 @@ export default function SightseeingDetailClient({ tour, cityLabel = null, relate
                         ))}
                       </div>
                       <div className="mt-1 text-sm text-slate-400">
-                        {realReviewCount.toLocaleString()} reviews · last 90 days
+                        {VERIFIED.reviewCount.toLocaleString('en-IN')} reviews on {VERIFIED.source}
                       </div>
                     </div>
                   </div>
-                  <div className="space-y-3">
-                    {realReviews.map((r, i) => (
-                      <div key={i} className="rounded-xl border border-white/10 bg-white/5 p-3">
-                        <div className="mb-1.5 flex items-center gap-2">
-                          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 text-xs font-bold text-slate-950">
-                            {r.name.charAt(0)}
-                          </span>
-                          <span className="text-xs font-semibold text-white">{r.name}</span>
-                          <span className="ml-auto text-xs text-amber-400">★★★★★</span>
-                        </div>
-                        <p className="line-clamp-3 text-xs leading-relaxed text-slate-300">{r.body}</p>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="mt-4 text-xs leading-relaxed text-slate-400">
+                    This is our overall rating across every journey we run, not a score for this
+                    tour on its own. Read the reviews on our Google listing.
+                  </p>
                 </div>
 
                 {/* Need Help */}

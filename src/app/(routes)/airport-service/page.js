@@ -94,33 +94,24 @@ export default function AirportServicePage() {
     },
 
     "hasOfferCatalog": {
-      "@type": "OfferCatalog",
+      "@type": "ItemList",
       "name": "Airport Transfer Fleet",
       "itemListElement": [
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Product",
             "name": "Sedan Airport Taxi",
             "description": "Comfortable sedan for 1-4 passengers"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Product",
             "name": "SUV Airport Taxi",
             "description": "Spacious SUV for families and groups"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Product",
             "name": "Tempo Traveller Airport Transfer",
             "description": "Group transfer for 12-26 passengers"
           }
-        }
       ]
     },
     "availableChannel": {

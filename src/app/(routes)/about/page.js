@@ -124,14 +124,14 @@ export default function AboutPage() {
       "name": "India"
     },
     "hasOfferCatalog": {
-      "@type": "OfferCatalog",
+      "@type": "ItemList",
       "name": "Triveni Cabs Services",
       "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Outstation Cab Service"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Local Taxi Service"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Airport Transfer"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Wedding Car Rental"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tempo Traveller Rental"}}
+        {"@type": "Service", "name": "Outstation Cab Service"},
+        {"@type": "Service", "name": "Local Taxi Service"},
+        {"@type": "Service", "name": "Airport Transfer"},
+        {"@type": "Service", "name": "Wedding Car Rental"},
+        {"@type": "Service", "name": "Tempo Traveller Rental"}
       ]
     }
   };

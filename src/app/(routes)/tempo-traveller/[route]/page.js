@@ -11,6 +11,7 @@ export const dynamicParams = false;
 import { chardhamRoutes, getChardhamExtendedFaqs, DHAM_FACTS } from '@/utilis/chardhamData';
 import { generateTempoMetadata } from '@/lib/seo/metadata-factory';
 import { generateTempoServiceSchema } from '@/lib/seo/schema-generators';
+import { VERIFIED } from '@/lib/seo/business-rating';
 import { getRatingAndReviews, getYatraReviews, getDeterministicReviewCount } from '@/lib/seo/review-helpers';
 import { getSpeakableSchema, getHowToSchema, getArticleSchema, getTodayDate, getCityPlaceSchema } from '@/lib/seo/speakable-helpers';
 import DynamicTempoRoutesClient from '@/components/DynamicTempoRoutes';
@@ -550,7 +551,7 @@ export default async function TempoTravellerRoutePage({ params }) {
         <ChardhamTempoClient
           data={chardhamData}
           reviews={getYatraReviews(route)}
-          reviewCount={getDeterministicReviewCount(route)}
+          reviewCount={VERIFIED.reviewCount}
         />
       </>
     );

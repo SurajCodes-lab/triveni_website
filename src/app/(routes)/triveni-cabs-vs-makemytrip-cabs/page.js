@@ -50,7 +50,7 @@ const comparisonData = {
     { feature: 'Itinerary Flexibility', triveni: 'Fully customizable', competitor: 'Fixed packages', winner: 'triveni', note: 'Personalization' },
     { feature: 'Same Driver Guarantee', triveni: 'Yes, always', competitor: 'No guarantee', winner: 'triveni', note: 'Multi-day trips' },
     { feature: 'Cancellation Process', triveni: 'Instant, one call', competitor: 'Through app, delayed', winner: 'triveni', note: 'Ease of cancellation' },
-    { feature: 'Google Rating', triveni: '4.9★ (10,000+)', competitor: 'Varies by vendor', winner: 'triveni', note: 'Accountable reviews' },
+    { feature: 'Google Rating', triveni: '4.9★ (354 Google reviews)', competitor: 'Varies by vendor', winner: 'triveni', note: 'Accountable reviews' },
     { feature: 'Local Route Knowledge', triveni: 'Expert drivers', competitor: 'Random vendor assignment', winner: 'triveni', note: 'Regional expertise' },
     { feature: 'Repeat Customer Benefits', triveni: 'Loyalty discounts', competitor: 'MMT points only', winner: 'triveni', note: 'Long-term value' },
   ],

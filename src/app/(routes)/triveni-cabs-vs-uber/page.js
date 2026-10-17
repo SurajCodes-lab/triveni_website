@@ -50,7 +50,7 @@ const comparisonData = {
     { feature: 'Multi-Day Trips', triveni: 'Specialized packages', competitor: 'Not supported', winner: 'triveni', note: 'Trip duration' },
     { feature: 'Driver Consistency', triveni: 'Same driver, full trip', competitor: 'Different each ride', winner: 'triveni', note: 'Service continuity' },
     { feature: 'Phone Support', triveni: '24/7 phone line', competitor: 'App-based only', winner: 'triveni', note: 'Help accessibility' },
-    { feature: 'Google Rating', triveni: '4.9★ (10,000+)', competitor: '4.1★ (mixed)', winner: 'triveni', note: 'Customer reviews' },
+    { feature: 'Google Rating', triveni: '4.9★ (354 Google reviews)', competitor: '4.1★ (mixed)', winner: 'triveni', note: 'Customer reviews' },
     { feature: 'Sightseeing Packages', triveni: 'Curated city tours', competitor: 'Not available', winner: 'triveni', note: 'Tourism support' },
     { feature: 'Flight Tracking', triveni: 'Included free', competitor: 'Not available', winner: 'triveni', note: 'Airport service' },
   ],

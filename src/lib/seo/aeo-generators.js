@@ -171,14 +171,18 @@ export function generateEntityDefinitionSchema() {
       name: 'Transportation Services',
       itemListElement: [
         {
-          '@type': 'OfferCatalog',
+          // Week 53: this emitted one Offer per served city with no price —
+          // sixty of them on the homepage — which Search Console reports as a
+          // critical error: "Either 'price' or 'priceSpecification.price'
+          // should be specified (in 'offers')". An outstation fare depends on
+          // the corridor and the vehicle, so there is no single price to put
+          // here, and inventing one to satisfy a validator would be worse than
+          // the warning. Listed as services instead.
+          '@type': 'ItemList',
           name: 'Outstation Taxi',
           itemListElement: SERVICE_AREAS.map(city => ({
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'TaxiService',
-              name: `${city} Taxi Service`
-            }
+            '@type': 'TaxiService',
+            name: `${city} Taxi Service`
           }))
         },
         {

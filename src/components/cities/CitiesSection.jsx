@@ -475,16 +475,19 @@ export default function CityServiceClient({
       "@type": "City",
       "name": formattedCityName
     },
+    // Week 53: this emitted an Offer per vehicle with an itemOffered and no
+    // price — 60 of them on the homepage alone — which Search Console reports
+    // as a critical error: "Either 'price' or 'priceSpecification.price' should
+    // be specified (in 'offers')". A per-city taxi service has no single price
+    // to state, so rather than invent one the catalogue now describes the
+    // services without asserting an offer.
     "hasOfferCatalog": {
-      "@type": "OfferCatalog",
+      "@type": "ItemList",
       "name": `Taxi Services in ${formattedCityName}`,
-      "itemListElement": (vehiclesServices || []).slice(0, 5).map((vehicle, index) => ({
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": `${vehicle.type} Taxi Service`,
-          "description": `${vehicle.type} taxi booking in ${formattedCityName}`
-        }
+      "itemListElement": (vehiclesServices || []).slice(0, 5).map((vehicle) => ({
+        "@type": "Service",
+        "name": `${vehicle.type} Taxi Service`,
+        "description": `${vehicle.type} taxi booking in ${formattedCityName}`
       }))
     }
   });

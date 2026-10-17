@@ -100,17 +100,19 @@ export function generateLocalBusinessSchema(options = {}) {
       closes: '23:59'
     },
     
+    // Week 53: these were Offer nodes with an itemOffered and no price, which
+    // Search Console reports as a critical error — "Either 'price' or
+    // 'priceSpecification.price' should be specified (in 'offers')". A service
+    // list with no per-item price is an ItemList, not a set of Offers; claiming
+    // an Offer obliges us to state a price we do not have for these.
     hasOfferCatalog: specificServices.length > 0 ? {
-      '@type': 'OfferCatalog',
+      '@type': 'ItemList',
       name: 'Transportation Services',
       itemListElement: specificServices.map((service, index) => ({
-        '@type': 'Offer',
+        '@type': 'Service',
         position: index + 1,
-        itemOffered: {
-          '@type': 'Service',
-          name: service.name,
-          description: service.description
-        }
+        name: service.name,
+        description: service.description
       }))
     } : undefined
   };

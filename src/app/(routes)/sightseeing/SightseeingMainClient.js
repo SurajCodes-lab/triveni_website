@@ -20,12 +20,15 @@ import SocialProofStrip from '@/components/shared/SocialProofStrip';
 import QuickEnquiryForm from '@/components/ui/QuickEnquiryForm';
 import { SetStickyCta } from '@/components/ui/StickyCtaContext';
 import { trackWhatsAppClick, trackPhoneCall } from '@/utilis/analytics';
-import { getSightseeingReviews, getDeterministicReviewCount } from '@/lib/seo/review-helpers';
+import { VERIFIED } from '@/lib/seo/business-rating';
+
 import { getUrgencySignals } from '@/utilis/sightseeingEnrichment';
 
 // Real review snippets for the hub (rotates from the sightseeing review pool)
-const HUB_REVIEWS = getSightseeingReviews('sightseeing-hub-may-2026');
-const HUB_REVIEW_COUNT = getDeterministicReviewCount('sightseeing-hub-may-2026', 800, 1400);
+// Week 53: this was getDeterministicReviewCount('sightseeing-hub-may-2026', 800, 1400),
+// which hashes a string into a number between 800 and 1400 and rendered it as
+// "1,158+ Verified Reviews". It was not a review count. The verified figure is used now.
+const HUB_REVIEW_COUNT = VERIFIED.reviewCount;
 
 /* Emerald lane motif — a quiet road-lane divider, this family's signature. */
 function EmeraldLane({ className = '' }) {
@@ -166,7 +169,7 @@ export default function SightseeingMainClient({ data, faqData }) {
             <div className="mt-8 grid max-w-xl grid-cols-3 gap-2.5 sm:gap-3">
               {[
                 { number: `${data.allTours.length}+`, label: 'Tours' },
-                { number: `${HUB_REVIEW_COUNT.toLocaleString()}+`, label: 'Verified Reviews' },
+                { number: HUB_REVIEW_COUNT.toLocaleString('en-IN'), label: 'Google Reviews' },
                 { number: '4.9★', label: 'Avg Rating' }
               ].map((stat, index) => (
                 <div key={index} className="rounded-2xl border border-white/10 bg-white/5 p-3.5 text-center backdrop-blur-xl">
@@ -191,29 +194,43 @@ export default function SightseeingMainClient({ data, faqData }) {
             <div>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-1.5 backdrop-blur-md">
                 <Star className="h-4 w-4 text-emerald-300" fill="currentColor" />
-                <span className="text-xs font-semibold text-emerald-200">Verified Traveller Reviews</span>
+                <span className="text-xs font-semibold text-emerald-200">Our rating</span>
               </div>
+              {/* Week 53: this panel rendered three named travellers with
+                  five-star ratings and review bodies under the heading
+                  "What our travellers say". The names and the text came from a
+                  pool of fifty invented reviewers in review-helpers.js — the
+                  same fifty rendering across 155 pages. Workstream A removed
+                  that layer from the structured data and left this visible
+                  rendering in place, so the page told a reader something the
+                  markup no longer claimed.
+                  What is published now is the one figure the business can
+                  evidence, attributed to where it comes from. */}
               <h2 id="quote-cta-heading" className="mb-6 text-2xl font-black leading-tight md:text-4xl">
-                What our travellers say about
+                Rated {VERIFIED.ratingValue} on
                 <span className="block font-serif italic font-medium bg-gradient-to-r from-emerald-200 via-emerald-400 to-teal-600 bg-clip-text text-transparent">
-                  our sightseeing tours
+                  {VERIFIED.source}
                 </span>
               </h2>
-              <div className="space-y-4">
-                {HUB_REVIEWS.slice(0, 3).map((r, i) => (
-                  <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl transition-colors hover:border-emerald-400/30">
-                    <div className="mb-2 flex items-center gap-2">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 font-bold text-slate-950">
-                        {r.name.charAt(0)}
-                      </span>
-                      <div>
-                        <p className="text-sm font-semibold text-white">{r.name}</p>
-                        <p className="flex gap-0.5 text-amber-400">{'★★★★★'}</p>
-                      </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+                <div className="flex items-center gap-3">
+                  <div className="text-4xl font-black text-emerald-300">{VERIFIED.ratingValue}</div>
+                  <div>
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 text-amber-400" fill="currentColor" />
+                      ))}
                     </div>
-                    <p className="line-clamp-3 text-sm leading-relaxed text-slate-300">{r.body}</p>
+                    <p className="mt-1 text-sm text-slate-400">
+                      {VERIFIED.reviewCount.toLocaleString('en-IN')} reviews
+                    </p>
                   </div>
-                ))}
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-slate-400">
+                  That is our rating across every journey we run, not a score for sightseeing
+                  alone. The reviews themselves are on our Google listing, where you can see who
+                  wrote them.
+                </p>
               </div>
             </div>
             {/* Right: Above-the-fold enquiry form */}

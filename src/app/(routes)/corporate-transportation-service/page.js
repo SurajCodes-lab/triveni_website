@@ -253,49 +253,34 @@ export default function CorporateTransportationPage() {
       { "@type": "City", "name": "Dehradun", "containedInPlace": { "@type": "State", "name": "Uttarakhand" } }
     ],
     "hasOfferCatalog": {
-      "@type": "OfferCatalog",
+      "@type": "ItemList",
       "name": "Corporate Transportation Services",
       "itemListElement": [
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Employee Pick-up & Drop",
             "description": "Daily employee transportation with dedicated routes and schedules"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Executive Car Rental",
             "description": "Premium sedans and SUVs with professional chauffeurs for executives"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Airport Transfers",
             "description": "Reliable airport pickup and drop services for corporate travelers"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Fleet Management",
             "description": "Complete fleet solutions including vehicles, drivers, and management"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Night Shift Transport",
             "description": "Safe and reliable transportation for night shift employees"
           }
-        }
       ]
     },
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },

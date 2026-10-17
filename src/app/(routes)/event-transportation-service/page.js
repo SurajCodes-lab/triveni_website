@@ -249,41 +249,29 @@ export default function EventTransportationPage() {
       { "@type": "City", "name": "Dehradun", "containedInPlace": { "@type": "State", "name": "Uttarakhand" } }
     ],
     "hasOfferCatalog": {
-      "@type": "OfferCatalog",
+      "@type": "ItemList",
       "name": "Event Transportation Services",
       "itemListElement": [
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Wedding Transportation",
             "description": "Complete wedding guest transportation including baraat, vidai, and venue shuttles"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Corporate Event Transport",
             "description": "Professional transportation for conferences, seminars, and corporate gatherings"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Concert & Festival Shuttles",
             "description": "Group transportation for concerts, music festivals, and sporting events"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Service",
             "name": "Religious Event Transport",
             "description": "Transportation for pilgrimages, temple visits, and religious ceremonies"
           }
-        }
       ]
     },
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
@@ -301,14 +289,37 @@ export default function EventTransportationPage() {
     "image": `https://www.trivenicabs.in${ogImage}`,
     "brand": { "@type": "Brand", "name": "Triveni Cabs" },
     "category": "Event Transportation",
-    "offers": eventFleetTable.map((v) => ({
-      "@type": "Offer",
-      "name": v.name,
-      "description": `${v.capacity}. Ideal for ${v.ideal}. Options: ${v.vehicles.join(', ')}.`,
-      "priceCurrency": "INR",
-      "availability": "https://schema.org/InStock",
-      "seller": { "@id": "https://www.trivenicabs.in/#localbusiness" }
-    })),
+    // Week 53. These Offer nodes carried a priceCurrency and no price, which is
+    // the critical Product-snippets error Search Console reports: "Either
+    // 'price' or 'priceSpecification.price' should be specified (in 'offers')".
+    //
+    // eventFleetTable already holds a real published priceRange per vehicle —
+    // "₹18–22/km", "₹23–27/km", "₹55–85/km" — so the lower bound of that
+    // published range becomes a UnitPriceSpecification. Two rows read
+    // "On request" and genuinely have no figure; those emit no Offer at all
+    // rather than an Offer asserting a price that does not exist. A fleet with
+    // three priced offers is valid; five price-less ones are not.
+    "offers": eventFleetTable
+      .map((v) => {
+        const from = /(\d+)/.exec(String(v.priceRange || ''));
+        if (!from) return null;
+        return {
+          "@type": "Offer",
+          "name": v.name,
+          "description": `${v.capacity}. Ideal for ${v.ideal}. Options: ${v.vehicles.join(', ')}.`,
+          "priceCurrency": "INR",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": from[1],
+            "priceCurrency": "INR",
+            "unitText": "per kilometer",
+            "valueAddedTaxIncluded": false
+          },
+          "availability": "https://schema.org/InStock",
+          "seller": { "@id": "https://www.trivenicabs.in/#localbusiness" }
+        };
+      })
+      .filter(Boolean),
     ...eventRatingReviews
   };
 

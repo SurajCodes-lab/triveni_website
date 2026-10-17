@@ -73,7 +73,7 @@ export default function CompetitorCompareClient({ competitor, comparisonData }) 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { value: '4.9', label: 'Google Rating', icon: Star },
-              { value: '10,000+', label: 'Reviews', icon: Users },
+              { value: '354', label: 'Google Reviews', icon: Users },
               { value: '100+', label: 'Cities', icon: MapPin },
               { value: '24/7', label: 'Support', icon: Clock },
             ].map((s, i) => (

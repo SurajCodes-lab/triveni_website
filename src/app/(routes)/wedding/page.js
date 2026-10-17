@@ -88,49 +88,34 @@ export default function WeddingPage() {
     },
     ...getRatingAndReviews('wedding-hub', 'wedding'),
     "hasOfferCatalog": {
-      "@type": "OfferCatalog",
+      "@type": "ItemList",
       "name": "Wedding Car Fleet",
       "itemListElement": [
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Product",
             "name": "BMW Wedding Car",
             "description": "Luxury BMW for bride/groom entry with decoration"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Product",
             "name": "Audi Wedding Car",
             "description": "Premium Audi for royal wedding entry"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Product",
             "name": "Mercedes Wedding Car",
             "description": "Elegant Mercedes for special occasions"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Product",
             "name": "Vintage Wedding Car",
             "description": "Classic vintage car for timeless memories"
-          }
-        },
+          },
         {
-          "@type": "Offer",
-          "itemOffered": {
             "@type": "Product",
             "name": "Baraat Tempo Traveller",
             "description": "12-26 seater tempo traveller for wedding guests"
           }
-        }
       ]
     },
     "availableChannel": {
